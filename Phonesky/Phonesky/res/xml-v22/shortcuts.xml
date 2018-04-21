@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut android:icon="@drawable/ic_library_apps_homeshortcut_48dp" android:enabled="true" android:shortcutId="VIEW_MY_DOWNLOADS" android:shortcutShortLabel="@LEMON_transformed_from_string/my_downloads_menu">
+        <intent android:action="com.google.android.finsky.VIEW_MY_DOWNLOADS" />
+    </shortcut>
+</shortcuts>

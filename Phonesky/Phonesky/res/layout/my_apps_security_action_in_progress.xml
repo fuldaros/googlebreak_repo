@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.view.MyAppsSecurityActionInProgress android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/myapps_security_min_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/myapps_assist_message_size" android:textColor="@color/play_secondary_text" android:layout_gravity="center|left" android:id="@id/security_scanning_in_progress" android:padding="@dimen/myapps_assist_padding" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginRight="0.0dip" android:text="@string/myapps_security_uninstalling" android:layout_weight="1.0" />
+    <ProgressBar android:layout_gravity="center|right" android:id="@id/loading_spinner" android:padding="@dimen/myapps_security_refresh_padding" android:visibility="visible" android:layout_width="@dimen/myapps_security_refresh_size" android:layout_height="@dimen/myapps_security_refresh_size" android:layout_marginLeft="0.0dip" android:layout_marginRight="@dimen/myapps_security_refresh_xmargin" />
+</com.google.android.finsky.stream.controllers.view.MyAppsSecurityActionInProgress>

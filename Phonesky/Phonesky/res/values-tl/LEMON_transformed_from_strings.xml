@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play Store</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Kailangan ang pag-apruba</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Mga kontrol ng magulang</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Mga Review</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Instant na app</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Mga setting ng miyembro</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Mga app na bumubukas sa browser</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Mga preference sa Instant Apps</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play Store</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Aking apps</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Mga setting ng notification</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Mga pagpipilian sa pagbili</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Mga paraan ng pagbabayad</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Pinapayagan ang mga user na tingnan ang mga available na app mula sa app na ito.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">I-access ang Google Play App Discovery Service</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Binibigyang-daan ang user na bumili ng mga item sa pamamagitan ng Google Play mula sa loob ng app na ito.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Serbisyo sa pagsingil ng Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Makakapagsuri kung mayroon kang lisensya para sa app na ito mula sa Google Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Pagsusuri sa lisensya ng Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Pinapayagan ang user na mag-install ng mga P2P na app na Na-verify ng Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play Peer To Peer App Install API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Mga pahintulot sa app</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">Mga lisensya ng open source</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Hilingin ang pagpapatunay</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Kunin ang iyong code</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">I-rate ito!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Magpadala ng regalo</item>
+    <item type="LEMON_transformed_from_string" name="settings">Mga Setting</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Kumpletuhin ang pag-setup ng account</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Mai-install ang mga app kapag natapos na ang pag-set up</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Tingnan ang mga karagdagang app</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Mag-enjoy sa mabilis na checkout sa mga produkto ng Google</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Ibang uri pagbabayad</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">I-set up ang impormasyon sa pagbabayad</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">I-restore ang mga app mula sa isang device</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Aling device?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Piliin ang paraan ng pagbabayad</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Pumili ng halaga</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">I-update ang paraan ng pagbabayad</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">I-verify at i-install</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Nagsa-scan para sa mga isyu sa seguridad…</item>
+</resources>

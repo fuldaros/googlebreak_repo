@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Play Маркет</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Play Маркет</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Требуется разрешение</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Родительский контроль</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Отзывы</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Приложение с мгновенным запуском</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Настройки для родственников</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Приложения, открывающиеся в браузере</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Настройки приложений с мгнов. запуском</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play Маркет</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Защита</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Мои приложения</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Настройки уведомлений</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Варианты</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Способы оплаты</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Возможность просматривать доступные приложения из этого приложения</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Доступ к Google Play App Discovery Service</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Пользователь сможет делать покупки в Google Play с помощью этого приложения.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Платежная система Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Позволяет проверить, есть ли у вас лицензия Google Play на приложение.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Проверка лицензии Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Allows the user to install Play Verified P2P apps.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play Peer To Peer App Install API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Разрешения для приложения</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">Лицензии открытого ПО</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Обязательная аутентификация</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Активация промокода</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Оцените документ</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Подарок</item>
+    <item type="LEMON_transformed_from_string" name="settings">Настройки</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Завершите настройку</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Приложения будут установлены после окончания настройки</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Дополни­тельные приложения</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Быстрое оформление покупок в сервисах Google</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Добавить способ оплаты</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Укажите платежные данные</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Восстановите приложения с другого устройства</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Выберите устройство</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Выберите общий способ оплаты</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Выберите сумму</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Обновление способа оплаты</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Проверить и установить</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Проверка на наличие угроз безопасности…</item>
+</resources>

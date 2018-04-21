@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.view.JpkrMiniTopChartsControlBar android:id="@id/mini_top_charts_control_bar" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.finsky.stream.topcharts.view.PlayInstalledAppsFilterToggle android:id="@id/installed_apps_filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerVertical="true" xmlns:app="http://schemas.android.com/apk/res-auto">
+        <TextView android:textColor="@color/jpkr_grey_secondary" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/installed_apps_toggle_label" android:paddingLeft="0.0dip" android:paddingRight="@dimen/flat_filter_toggle_text_xpadding" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/installed_app_toggle_button_description" android:singleLine="true" style="@style/FlatClusterMore" />
+        <android.support.v7.widget.SwitchCompat android:layout_gravity="end|center" android:id="@id/toggle_switch_button" android:clickable="false" app:switchMinWidth="@dimen/filter_toggle_min_size" style="@style/PlayInstalledAppsToggle" />
+    </com.google.android.finsky.stream.topcharts.view.PlayInstalledAppsFilterToggle>
+    <include android:id="@id/category_spinner" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" layout="@layout/top_charts_category_spinner" />
+</com.google.android.finsky.stream.controllers.view.JpkrMiniTopChartsControlBar>

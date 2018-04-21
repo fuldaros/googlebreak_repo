@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/wishlist_panel" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/wishlist_panel_content" />
+    <com.google.android.finsky.fastscroll.ScrubberView android:layout_gravity="right" android:id="@id/scrubber_view" android:layout_width="@dimen/fast_scroll_scrubber_hover_zone_width" android:layout_height="fill_parent" finsky:fastScrollModel="universal" />
+</FrameLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SetupWizardHeaderTitle" parent="@style/SetupWizardTitle">
+        <item name="android:paddingTop">@dimen/setup_wizard_header_title_top_padding</item>
+        <item name="android:lineSpacingExtra">@dimen/setup_wizard_header_title_line_spacing_extra</item>
+        <item name="android:paddingStart">@dimen/setup_wizard_header_title_xpadding</item>
+        <item name="android:paddingEnd">@dimen/setup_wizard_header_title_xpadding</item>
+    </style>
+    <style name="SetupWizardTitle" parent="@style/SetupWizardLightText">
+        <item name="android:textSize">@dimen/setup_wizard_title_text_size</item>
+        <item name="android:textColor">?setup_wizard_title_text_color</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="SetupWizardUIControlsSecondaryItem" parent="@style/SetupWizardPlainText">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:alpha">0.54</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+</resources>

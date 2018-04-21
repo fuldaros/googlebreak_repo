@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/box_small_padding" android:paddingTop="@dimen/box_large_padding" android:paddingRight="@dimen/box_small_padding" android:paddingBottom="@dimen/box_large_padding" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/pe__cluster_media_item_min_width"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/image_frame" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/PEImageFrame">
+        <com.google.android.libraries.play.entertainment.bitmap.PEImageView android:layout_gravity="bottom|center" android:id="@id/image_media" android:layout_width="wrap_content" android:layout_height="0.0dip" style="@style/PEImageMedia" />
+        <com.caverock.androidsvg.SVGImageView android:id="@id/playback_button" android:layout_width="@dimen/pe_play_icon_cluster_size" android:layout_height="@dimen/pe_play_icon_cluster_size" android:contentDescription="@string/pe__content_description_play" app:svg="@raw/ic_play" style="@style/PEPlaybackButton" />
+    </FrameLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/text_container" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginTop="@dimen/box_small_padding">
+        <TextView android:ellipsize="end" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" style="@style/PEText.ClusterItemLabel" />
+        <TextView android:textSize="@dimen/pe_medium_small_text_size" android:ellipsize="end" android:id="@id/subtitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/pe__acquisition_text_margin" android:maxLines="1" style="@style/PEText" />
+        <TextView android:textSize="@dimen/pe_medium_small_text_size" android:ellipsize="end" android:id="@id/acquisition_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/pe__acquisition_text_margin" android:maxLines="1" android:textAllCaps="true" style="@style/PEText" />
+    </LinearLayout>
+</LinearLayout>

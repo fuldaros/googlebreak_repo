@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="@dimen/movies_mdp_margin" android:layout_marginStart="0.0dip" android:layout_marginEnd="@dimen/movies_mdp_margin"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:playcommon="http://schemas.android.com/apk/res-auto">
+    <com.google.android.play.layout.PlayTextView android:ellipsize="marquee" android:id="@id/li_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxLines="1" style="@style/PlayDetailTitle" />
+    <com.google.android.finsky.frameworkviews.DecoratedTextView android:id="@id/show_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/movies_mdp_subtitle_margin" style="@style/MdpCardSubtitle" />
+    <LinearLayout android:orientation="vertical" android:id="@id/subtitles" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.google.android.finsky.frameworkviews.DecoratedTextView android:id="@id/li_subtitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="14.0dip" android:layout_marginStart="0.0dip" android:layout_marginEnd="14.0dip" style="@style/MdpCardSubtitle" />
+        <com.google.android.finsky.frameworkviews.DecoratedTextView android:id="@id/li_subtitle_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/movies_mdp_subtitle_margin" style="@style/MdpCardSubtitle" />
+    </LinearLayout>
+    <com.google.android.finsky.frameworkviews.DecoratedTextView android:id="@id/release_date" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" style="@style/MdpCardRating" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/rating_info" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip">
+        <com.google.android.play.layout.StarRatingBar android:id="@id/li_rating" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="8.0dip" android:layout_marginStart="0.0dip" android:layout_marginEnd="8.0dip" playcommon:gap="2.0dip" playcommon:star_color="@color/play_primary_text" playcommon:star_height="@dimen/movies_mdp_image_size" playcommon:text_size="@dimen/content_generic_xsmall_size" />
+        <TextView android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="(" style="@style/MdpCardRating" />
+        <TextView android:id="@id/rating_count" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/MdpCardRating" />
+        <ImageView android:id="@id/rating_icon" android:focusable="false" android:layout_width="@dimen/movies_mdp_image_size" android:layout_height="@dimen/movies_mdp_image_size" android:layout_marginLeft="3.0dip" android:layout_marginRight="1.0dip" android:contentDescription="@null" android:layout_marginStart="3.0dip" android:layout_marginEnd="1.0dip" />
+        <TextView android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="14.0dip" android:text=")" android:layout_marginStart="0.0dip" android:layout_marginEnd="14.0dip" style="@style/MdpCardRating" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/rotten_tomatoes_info" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.google.android.play.image.FifeImageView android:id="@id/sentiment_image" android:layout_width="@dimen/movies_mdp_sentiment_image_size" android:layout_height="@dimen/movies_mdp_sentiment_image_size" />
+            <TextView android:id="@id/favorable_percent" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/MdpCardRating" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rotten_tomatoes_percent" style="@style/MdpCardRating" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

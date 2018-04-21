@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailsmodules.modules.bylinesv2.view.BylinesModuleCellViewV2 android:orientation="horizontal" android:paddingLeft="@dimen/d30_module_layout_padding" android:paddingTop="@dimen/d30_module_item_half_vertical_padding" android:paddingRight="@dimen/d30_module_layout_padding" android:paddingBottom="@dimen/d30_module_item_half_vertical_padding" android:focusable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:foreground="@drawable/play_highlight_overlay_light" android:layout_weight="1.0" android:paddingStart="@dimen/d30_module_layout_padding" android:paddingEnd="@dimen/d30_module_layout_padding" finsky:mark_as_button="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/byline_thumbnail" android:layout_width="@dimen/d30_byline_icon_size" android:layout_height="@dimen/d30_byline_icon_size" android:scaleType="fitCenter" />
+    <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/d30_module_item_horizontal_margin" android:paddingRight="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/d30_module_item_horizontal_margin" android:paddingEnd="0.0dip">
+        <TextView android:textColor="@color/play_fg_primary" android:id="@id/byline_title" android:paddingBottom="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/D30ModuleBodyText" />
+        <TextView android:id="@id/byline_subtitle" android:focusable="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/D30ModuleBodyText" />
+    </LinearLayout>
+</com.google.android.finsky.detailsmodules.modules.bylinesv2.view.BylinesModuleCellViewV2>

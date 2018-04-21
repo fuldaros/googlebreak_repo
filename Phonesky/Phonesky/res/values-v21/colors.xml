@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="setup_wizard_title_color">@color/white</color>
+    <color name="setup_wizard_app_details_byline">@color/setup_wizard_app_details_secondary_text</color>
+    <color name="setup_wizard_app_details_description">@color/setup_wizard_app_details_primary_text</color>
+    <color name="setup_wizard_app_details_divider">#2e000000</color>
+    <color name="setup_wizard_app_details_primary_text">#ff212121</color>
+    <color name="setup_wizard_app_details_secondary_text">#ff616161</color>
+    <color name="setup_wizard_app_details_title">@color/setup_wizard_app_details_primary_text</color>
+    <color name="setup_wizard_background_color_dark">#ff303030</color>
+    <color name="setup_wizard_background_color_light">#ffffffff</color>
+    <color name="setup_wizard_primary_text_color_dark">#ffffffff</color>
+    <color name="setup_wizard_primary_text_color_light">#de000000</color>
+    <color name="setup_wizard_row_divider_dark">#1ededede</color>
+    <color name="setup_wizard_row_divider_light">#1e212121</color>
+    <color name="setup_wizard_secondary_text_color_dark">#b3ffffff</color>
+    <color name="setup_wizard_secondary_text_color_light">#8a000000</color>
+    <color name="setup_wizard_section_title_text_color_dark">#b3ffffff</color>
+    <color name="setup_wizard_section_title_text_color_light">#de000000</color>
+    <color name="setup_wizard_title_text_color_dark">#ffffffff</color>
+    <color name="setup_wizard_title_text_color_light">#de000000</color>
+</resources>

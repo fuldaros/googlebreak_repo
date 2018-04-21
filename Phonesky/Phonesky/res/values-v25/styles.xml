@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Platform.AppCompat" parent="@style/Platform.V25.AppCompat" />
+    <style name="Platform.AppCompat.Light" parent="@style/Platform.V25.AppCompat.Light" />
+    <style name="SetupWizardHeaderTitle" parent="@style/SetupWizardTitle">
+        <item name="android:gravity">?suwGlifHeaderGravity</item>
+        <item name="android:paddingTop">@dimen/setup_wizard_header_title_top_padding</item>
+        <item name="android:lineSpacingExtra">@dimen/setup_wizard_header_title_line_spacing_extra</item>
+        <item name="android:paddingStart">@dimen/setup_wizard_header_title_xpadding</item>
+        <item name="android:paddingEnd">@dimen/setup_wizard_header_title_xpadding</item>
+    </style>
+    <style name="SetupWizardTitle" parent="@style/SetupWizardLightText">
+        <item name="android:textSize">@dimen/setup_wizard_title_text_size</item>
+        <item name="android:textColor">?setup_wizard_title_text_color</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="SetupWizardPreloadsDescription">
+        <item name="android:textSize">@dimen/content_generic_xsmall_size</item>
+        <item name="android:textColor">?setup_wizard_secondary_text_color</item>
+        <item name="android:gravity">?suwGlifHeaderGravity</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="Platform.V25.AppCompat" parent="@android:style/Theme.Material.NoActionBar" />
+    <style name="Platform.V25.AppCompat.Light" parent="@android:style/Theme.Material.Light.NoActionBar" />
+    <style name="SetupWizardPaiButton" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="android:textColor">@color/setup_wizard_button_text_color</item>
+        <item name="android:text">@string/setup_wizard_ok_button_label</item>
+    </style>
+</resources>

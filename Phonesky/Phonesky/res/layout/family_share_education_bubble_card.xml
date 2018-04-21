@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.frameworkviews.CardBubbleLinearLayout android:orientation="vertical" android:id="@id/family_education_card" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" finsky:playCardBackgroundColor="@color/play_apps_secondary" finsky:playCardBubbleOffset="-16.0dip" finsky:playCardBubblePosition="bubble_end" finsky:playCardBubbleSize="12.0dip" style="@style/PlayCardViewGroup"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <TextView android:textColor="@color/play_white" android:id="@id/notice_text" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/family_sharing_education_text" style="@style/PlayEduCardDescription" />
+    <com.google.android.finsky.frameworkviews.AccessibleTextView android:id="@id/got_it_label" android:background="@drawable/family_share_education_card_got_it_background" android:text="@string/got_it_button" style="@style/FamilyEducationCardAction" />
+</com.google.android.finsky.frameworkviews.CardBubbleLinearLayout>

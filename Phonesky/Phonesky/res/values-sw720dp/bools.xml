@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="use_combined_title_in_details_v2">false</bool>
+    <bool name="use_fixed_width_pages">true</bool>
+    <bool name="use_full_width_for_details_page_v2">true</bool>
+</resources>

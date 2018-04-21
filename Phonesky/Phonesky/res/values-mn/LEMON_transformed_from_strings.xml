@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play Дэлгүүр</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Зөвшөөрөл шаардлагатай</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Эцэг эхийн хяналт</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Сэтгэгдэл</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Шуурхай апп</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Гишүүний тохиргоо</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Хөтчид нээгдэх аппууд</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Шуурхай аппын сонголт</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play Store</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play хамгаалалт</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Миний апп</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Мэдэгдлийн тохиргоо</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Худалдан авалтын сонголт</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Төлбөрийн аргачлалууд</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Хэрэглэгчид энэ аппаас боломжит апп үзэхийг зөвшөөрдөг.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Google Play апп хайх үйлчилгээнд хандах</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Энэ апп-с Play ашиглан худалдан авалт хийхийг хэрэглэгчид зөвшөөрөх.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Google Play төлбөрийн үйлчилгээ</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Танд энэ апп-н Google Play лиценз байвал шалгах боломжтой.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Google Play лиценз шалгах</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Хэрэглэгчид Play-с баталгаажуулсан P2P аппыг суулгахыг зөвшөөрдөг.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play-н Peer To Peer апп суулгалт API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Апп зөвшөөрөл</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Баталгаажуулалт шаардлагатай</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Кодоор төлөх</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Үнэлнэ үү!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Бэлэг илгээх</item>
+    <item type="LEMON_transformed_from_string" name="settings">Тохиргоо</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Акаунтын тохиргоо дуусав</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Тохируулж дууссаны дараагаар апп-г суулгах болно</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Нэмэлт апп-г үнэлэх</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Google бүтээгдэхүүнийг хялбарханаар хараарай</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Төлбөрийн арга нэмэх</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Төлбөрийн мэдээллийг суулгана уу</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Төхөөрөмжөөс апп-уудыг сэргээх</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Аль төхөөрөмж вэ?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Гэр бүлийн төлбөрийн хэрэгслийг сонгох</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Хэмжээг сонгоно уу</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Төлбөрийн хэлбэрээ шинэчлэх</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Тулгаж үзээд суулгах</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Аюулгүй байдлын үүднээс скан хийж байна...</item>
+</resources>

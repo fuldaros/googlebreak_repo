@@ -1,0 +1,88 @@
+21:11358 AOSP PhotoViewer
+11401:11357 AOSP setup wizard
+22798:10695 Android Annotations Support Library
+33529:11344 Android Architecture Components
+44922:11344 Android Architecture Components Core Library
+56320:11344 Android Architecture Components Lifecycle Library
+67726:11344 Android Architecture Components Lifecycle Runtime Library
+79105:10695 Android Compat Support Library
+89837:10695 Android Compatibility Library v4
+100569:10695 Android Compatibility Library v7
+111310:10694 Android Constraint Layout Support Library
+122040:10695 Android Core UI Support Library
+132774:10691 Android Core Utils Support Library
+143505:10695 Android Custom Tabs Support Library
+154235:10695 Android Design Support Library
+164968:10695 Android Fragments Support Library
+175700:10695 Android Graphics Support Library
+186436:10691 Android Media Compat Support Library
+197164:10695 Android Multidex Support Library
+207898:10691 Android Transition Support Library
+218614:11358 Apache Commons Codec
+230033:10693 Compatibility Libraries for Android asynclayoutinflater.
+240779:10693 Compatibility Libraries for Android collections.
+251531:10693 Compatibility Libraries for Android coordinatorlayout.
+262279:10693 Compatibility Libraries for Android cursoradapter.
+273024:10693 Compatibility Libraries for Android customview.
+283771:10693 Compatibility Libraries for Android documentfile.
+294518:10693 Compatibility Libraries for Android drawerlayout.
+305265:10693 Compatibility Libraries for Android interpolator.
+316006:10693 Compatibility Libraries for Android loader.
+326762:10693 Compatibility Libraries for Android localbroadcastmanager.
+337502:10693 Compatibility Libraries for Android print.
+348254:10693 Compatibility Libraries for Android slidingpanelayout.
+359007:10693 Compatibility Libraries for Android swiperefreshlayout.
+369751:10693 Compatibility Libraries for Android viewpager.
+380455:11358 Dagger
+391829:11357 Error Prone
+403209:11358 FasterXML Jackson2
+414583:11358 Google Auto
+425956:11358 Guava JDK5
+437329:11362 Guava JDK7
+448702:11358 J2ObjC
+460072:11358 JSR 250
+471442:11365 JSR 330
+482819:11358 Keyczar
+494192:11358 LeakCanary
+505571:11357 LeakCanary No-op
+516939:11356 Lottie
+528331:11358 Material Components for Android
+539700:11358 OkHttp
+551067:11358 Okio
+562440:11358 OpenCensus
+573822:12992 Play Common Library
+586829:11416 TensorFlow
+598256:11358 Volley
+609645:11343 YouTube Android Player API
+620997:11365 absl
+632372:11358 agera
+643745:11361 androidsvg
+655126:12521 archive_patcher
+667668:10141 customtabsclient
+677836:11358 firebase_jobdispatcher
+689210:11342 flatbuffers
+700564:11358 flexbox
+711936:11358 gRPC Java
+723307:11358 gemmlowp
+734674:11358 gson
+746041:11357 haha
+757418:11361 instrumentedzip
+768791:11357 lullaby
+780161:9217 p2putils
+789393:11311 rxandroid2
+800716:11344 rxjava2
+812075:11358 safeparcel
+823452:10699 shortcutbadger
+834167:16013 Android SDK
+850199:1096 Animal Sniffer
+851306:1084 Brotli
+852399:1119 JSON
+853528:869 trove
+854421:1473 Auth client library
+855906:1602 JSR 305
+857526:1732 Protobuf Nano
+859273:2570 intrinsics
+861855:4535 libxsmm
+866412:22655 Checker Framework
+889078:43785 Cronet
+932875:87697 Eigen 3

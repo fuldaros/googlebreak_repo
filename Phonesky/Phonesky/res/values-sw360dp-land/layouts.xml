@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="layout" name="inline_app_details_direct_install">@layout/inline_app_details_direct_install_landscape</item>
+    <item type="layout" name="video_collection_card_view">@layout/card_view_video_collection_wide</item>
+</resources>

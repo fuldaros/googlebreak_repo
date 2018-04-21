@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Gedung Google Play</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Kelulusan diperlukan</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Kawalan ibu bapa</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Ulasan</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Apl segera</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Tetapan ahli</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Apl dibuka dalam penyemak imbas</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Pilihan Apl Segera</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Gedung Play</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Apl saya</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Tetapan pemberitahuan</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Pilihan pembelian</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Kaedah pembayaran</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Membenarkan pengguna melihat apl yang tersedia dari dalam apl ini.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Akses Perkhidmatan Penemuan Apl Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Membenarkan pengguna membeli item melalui Google Play dari dalam apl ini.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Perkhidmatan pengebilan Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Boleh menyemak jika anda mempunyai lesen untuk apl ini dari Google Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Semakan lesen Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Membenarkan pengguna memasang apl P2P yang disahkan Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">API Google Play Peer To Peer App Install</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Kebenaran apl</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">Lesen sumber terbuka</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Memerlukan pengesahan</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Tebus kod anda</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Nilaikan!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Hantar hadiah</item>
+    <item type="LEMON_transformed_from_string" name="settings">Tetapan</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Selesaikan persediaan akaun</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Apl akan dipasang setelah persediaan selesai</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Semak apl tambahan</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Nikmati daftar keluar pantas dengan produk Google</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Tambah kaedah pembayaran</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Sediakan maklumat pembayaran</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Pulihkan apl daripada peranti</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Peranti yang mana?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Pilih kaedah pembayaran keluarga</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Pilih jumlah</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Kemas kini kaedah pembayaran</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Sahkan dan pasang</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Mengimbas untuk mengesan isu keselamatan…</item>
+</resources>

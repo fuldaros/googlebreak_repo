@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.deprecateddetailscomponents.HeroGraphicView android:id="@id/hero_promo" android:background="@color/play_transparent" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/play_highlight_overlay_dark" android:contentDescription="@string/content_description_banner_image" android:importantForAccessibility="no" finsky:full_screen_on="@bool/use_wide_layout"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/hero_graphic_include" />
+</com.google.android.finsky.deprecateddetailscomponents.HeroGraphicView>

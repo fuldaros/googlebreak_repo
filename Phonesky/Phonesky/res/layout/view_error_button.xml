@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.AppCompatButton android:layout_gravity="end" android:id="@id/error_btn" android:visibility="gone" android:text="@android:string/ok" android:freezesText="true" style="?imPositiveButtonBarStyle"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

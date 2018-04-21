@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="unauth_home_prism_size">96.0dip</dimen>
+    <dimen name="unauth_home_sign_in_message_margin_top">62.0dip</dimen>
+</resources>

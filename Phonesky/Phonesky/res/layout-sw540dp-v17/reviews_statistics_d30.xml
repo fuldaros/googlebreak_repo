@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.google.android.finsky.frameworkviews.HistogramView android:id="@id/reviews_statistics_panel" android:paddingLeft="@dimen/d30_module_layout_padding" android:paddingRight="@dimen/d30_module_layout_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d30_module_layout_vertical_padding" android:paddingStart="@dimen/d30_module_layout_padding" android:paddingEnd="@dimen/d30_module_layout_padding" finsky:needs_height_correction="true">
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:baselineAlignedChildIndex="1">
+            <TextView android:textSize="72.0sp" android:textColor="@color/play_fg_primary" android:id="@id/average_value" android:paddingLeft="0.0dip" android:paddingRight="8.0dip" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:paddingStart="0.0dip" android:paddingEnd="8.0dip" style="@style/PlayLightText" />
+            <include android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/ratings_summary" />
+        </LinearLayout>
+        <com.google.android.finsky.frameworkviews.HistogramTable android:id="@id/histogram" android:paddingLeft="32.0dip" android:paddingRight="0.0dip" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:stretchColumns="1" android:shrinkColumns="1" android:paddingStart="32.0dip" android:paddingEnd="0.0dip" finsky:bar_height="16.0dip" finsky:bar_margin="0.0dip" finsky:labels_on="true" finsky:max_bar_width="221.0dip" />
+        <include layout="@layout/review_policy_icon" />
+    </com.google.android.finsky.frameworkviews.HistogramView>
+    <include layout="@layout/review_policy_tooltip" />
+</FrameLayout>

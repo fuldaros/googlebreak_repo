@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="antenna_title_vpadding">20.0dip</dimen>
+    <dimen name="d30_screenshots_max_height">320.0dip</dimen>
+    <dimen name="details_editorial_description_margin_bottom">32.0dip</dimen>
+    <dimen name="details_editorial_description_padding_bottom">32.0dip</dimen>
+    <dimen name="details_editorial_description_padding_top">24.0dip</dimen>
+    <dimen name="details_listing_section_extra_padding">80.0dip</dimen>
+    <dimen name="details_pack_row_padding">0.0dip</dimen>
+    <item type="dimen" name="details_text_callout_padding">@dimen/details_text_section_padding</item>
+    <item type="dimen" name="details_title_cover_padding">@dimen/details_new_content_margin</item>
+    <dimen name="discovery_bar_left_padding">32.0dip</dimen>
+    <item type="dimen" name="reviews_sample_row_padding">@dimen/details_new_content_margin</item>
+    <dimen name="screenshots_height">320.0dip</dimen>
+    <dimen name="screenshots_height_mixed">240.0dip</dimen>
+    <dimen name="screenshots_height_portrait">456.0dip</dimen>
+    <item type="dimen" name="stream_intro_card_radius">@dimen/play_card_default_radius</item>
+    <item type="dimen" name="summary_thumbnail_app_size_three_lines">@dimen/summary_thumbnail_large_size</item>
+    <dimen name="summary_thumbnail_large_size">308.0dip</dimen>
+    <dimen name="summary_thumbnail_small_size">214.0dip</dimen>
+    <dimen name="details_statistics_padding">104.0dip</dimen>
+</resources>

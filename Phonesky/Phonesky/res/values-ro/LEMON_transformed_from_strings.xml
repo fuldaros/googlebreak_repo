@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Magazin Google Play</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Este necesară aprobarea</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Control parental</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Recenzii</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Aplicație instantanee</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Setările privind membrii</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Aplicații care se deschid în browser</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Preferințe pentru aplicații instantanee</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Magazin Play</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Aplicațiile mele</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Setări pentru notificări</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Opțiuni de achiziționare</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Metodele de plată</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Permite utilizatorului să vadă aplicațiile disponibile din această aplicație.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Accesează serviciul de descoperire a aplicațiilor Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Permite utilizatorului să achiziționeze articole prin Google Play din cadrul acestei aplicații.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Serviciul de facturare Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Poate verifica dacă aveți o licență pentru această aplicație de la Google Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Verificare de licență Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Permite utilizatorului să instaleze aplicații P2P verificate de Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">API-ul Google Play Peer To Peer App Install</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Permisiuni pentru aplicație</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">Licențe open source</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Se solicită autentificarea</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Valorificați codul</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Evaluați!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Trimiteți un cadou</item>
+    <item type="LEMON_transformed_from_string" name="settings">Setări</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Finalizați configurarea contului</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Aplicațiile vor fi instalate după ce configurarea este finalizată</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Examinați aplicații suplimentare</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Validare rapidă a achizițiilor în produsele Google</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Adăugați o metodă de plată</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Configurați informațiile de plată</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Restabiliți aplicațiile de pe dispozitiv</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Care dintre dispozitive?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Selectați metoda de plată pentru familii</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Alegeți suma</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Actualizați metoda de plată</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Verificați și instalați</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Se caută probleme de securitate…</item>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.microg.gms.droidguard" platformBuildVersionCode="25" platformBuildVersionName="7.1.1">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application android:allowBackup="false" android:icon="@mipmap/ic_core_service_app" android:label="@string/droidguard_app_name">
+        <service android:enabled="true" android:exported="true" android:name="org.microg.gms.droidguard.RemoteDroidGuardService" android:permission="android.permission.INTERNET" android:process="com.google.android.gms.unstable">
+            <intent-filter>
+                <action android:name="org.microg.gms.droidguard.REMOTE"/>
+            </intent-filter>
+        </service>
+    </application>
+</manifest>

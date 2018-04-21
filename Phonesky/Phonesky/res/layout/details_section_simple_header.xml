@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.frameworkviews.DecoratedTextView android:id="@id/section_header" android:background="@drawable/play_highlight_overlay_light" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="@dimen/details_section_drawable_padding" finsky:decoration_position="end" style="@style/PlayDetailsTextTitle"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto" />

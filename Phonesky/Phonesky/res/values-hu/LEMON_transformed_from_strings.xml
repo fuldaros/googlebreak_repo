@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play Áruház</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Jóváhagyás szükséges</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Szülői felügyelet</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Vélemények</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Azonnali alkalmazás</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Tagok beállításai</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Böngészőben megnyíló alkalmazások</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Az azonnali alkalmazások beállításai</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play Áruház</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Alkalmazásaim</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Értesítési beállítások</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Vásárlási lehetőségek</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Fizetési módok</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Lehetővé teszi, hogy a felhasználó elérhető alkalmazásokat tekintsen meg az alkalmazáson belül.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Hozzáférés a Google Play App Discovery Service-hez</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Lehetővé teszi a felhasználó számára, hogy ezen az alkalmazáson keresztül vásároljon a Google Playből.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Google Play – Számlázási szolgáltatás</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Ellenőrizheti, hogy van-e licence ehhez a Google Playből származó alkalmazáshoz.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Google Play – Licencellenőrzés</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Lehetővé teszi a felhasználó számára a Play által ellenőrzött P2P-alkalmazások telepítését.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play Peer-to-peer alkalmazástelepítés API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Alkalmazás engedélyei</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">Nyílt forráskódú licencek</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Hitelesítés kérése</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Váltsd be a kódot</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Értékeld!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Ajándék küldése</item>
+    <item type="LEMON_transformed_from_string" name="settings">Beállítások</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">A fiók telepítésének befejezése</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Az alkalmazások telepítése a sikeres beállítás után történik meg</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">További alkalmazások áttekintése</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">A Google-termékekben gyorsan fizethetsz.</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Fizetési mód hozzáadása</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Fizetési adatok beállítása</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Alkalmazások visszaállítása másik eszközről</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Melyik eszköz?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Családi fizetőeszköz kiválasztása</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Válassz összeget</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Frissítsd a fizetési módot</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Ellenőrzés és telepítés</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Biztonsági problémák keresése…</item>
+</resources>

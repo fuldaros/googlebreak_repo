@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.playcard.PlayCardMoviesMdpView android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/PlayCardViewGroup"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <include android:id="@id/hero_graphic" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/hero_graphic" />
+    <RelativeLayout android:id="@id/item_details" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/hero_graphic">
+        <com.google.android.play.layout.PlayCardThumbnail android:id="@id/li_thumbnail_frame" android:layout_width="@dimen/movies_mdp_thumbnail_width_movie" android:layout_height="0.0dip" android:layout_marginLeft="@dimen/movies_mdp_margin" android:layout_marginTop="8.0dip" android:layout_marginRight="@dimen/movies_mdp_margin">
+            <include android:id="@id/li_thumbnail" layout="@layout/play_card_thumbnail" />
+        </com.google.android.play.layout.PlayCardThumbnail>
+        <ImageView android:id="@id/thumbnail_play_icon" android:focusable="true" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/btn_movie_play_normal" />
+        <include android:id="@id/title_section" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="@dimen/movies_mdp_margin" android:layout_toRightOf="@id/li_thumbnail_frame" layout="@layout/play_card_movies_mdp_title_section" />
+        <com.google.android.play.layout.PlayTextView android:gravity="start" android:id="@id/li_description" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="@dimen/movies_mdp_margin" android:maxLines="3" android:layout_toRightOf="@id/li_thumbnail_frame" android:layout_below="@id/title_section" finsky:lastLineOverdrawColor="@color/play_card_light_background" style="@style/MdpCardDescription" />
+    </RelativeLayout>
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/movies_mdp_margin" android:layout_below="@id/item_details" layout="@layout/action_buttons_layout" />
+</com.google.android.finsky.playcard.PlayCardMoviesMdpView>

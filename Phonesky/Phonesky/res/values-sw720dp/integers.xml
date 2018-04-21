@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="flat_grid_column_count">5</integer>
+    <integer name="flat_grid_column_count_in_details">4</integer>
+    <integer name="flat_grid_less_dense_column_count">4</integer>
+</resources>

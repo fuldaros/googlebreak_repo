@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.design.widget.AppBarLayout android:layout_width="fill_parent" android:layout_height="@dimen/play_search_toolbar_height">
+        <include android:id="@id/toolbar" layout="@layout/search_toolbar" />
+    </android.support.design.widget.AppBarLayout>
+    <com.google.android.finsky.recyclerview.PlayRecyclerView android:id="@id/recycler_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/play_search_toolbar_height" />
+    <com.google.android.finsky.fastscroll.ScrubberView android:layout_gravity="right" android:id="@id/scrubber_view" android:layout_width="@dimen/fast_scroll_scrubber_hover_zone_width" android:layout_height="fill_parent" android:layout_marginTop="@dimen/play_search_toolbar_height" app:fastScrollModel="universal" />
+</android.support.design.widget.CoordinatorLayout>

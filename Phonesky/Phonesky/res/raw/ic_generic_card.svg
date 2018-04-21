@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="20px" viewBox="0 0 32 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+  <title>ic_generic_card</title>
+  <desc>Created with Sketch.</desc>
+  <defs></defs>
+  <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="ic_generic_card">
+      <g id="Group-2">
+        <g id="container">
+          <path d="M0,2.00001277 C0,0.895436216 0.897688232,0 2.00174332,0 L29.9982567,0 C31.103789,0 32,0.894946575 32,2.00001277 L32,17.9999872 C32,19.1045638 31.1023118,20 29.9982567,20 L2.00174332,20 C0.89621101,20 0,19.1050534 0,17.9999872 L0,2.00001277 Z" id="Path" fill="#E0E0E0"></path>
+          <path d="M1,2.00001277 L1,17.9999872 C1,18.552368 1.44809514,19 2.00174332,19 L29.9982567,19 C30.5508447,19 31,18.5514616 31,17.9999872 L31,2.00001277 C31,1.44763204 30.5519049,1 29.9982567,1 L2.00174332,1 C1.44915533,1 1,1.44853838 1,2.00001277 Z" fill="#FFFFFF" fill-rule="nonzero"></path>
+        </g>
+        <rect id="Rectangle" fill="#757575" x="4" y="4" width="8" height="6" rx="1"></rect>
+      </g>
+      <g id="Group" transform="translate(4.000000, 14.000000)" fill="#757575">
+        <rect id="Rectangle" x="0" y="0" width="4" height="2" rx="1"></rect>
+        <rect id="Rectangle" x="6" y="0" width="4" height="2" rx="1"></rect>
+        <rect id="Rectangle" x="12" y="0" width="4" height="2" rx="1"></rect>
+        <rect id="Rectangle" x="18" y="0" width="4" height="2" rx="1"></rect>
+      </g>
+    </g>
+  </g>
+</svg>

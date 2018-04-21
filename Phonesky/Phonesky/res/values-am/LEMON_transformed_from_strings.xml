@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play መደብር</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">ፍቃድ ያስፈልጋል</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">የወላጅ መቆጣጠሪያዎች</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">ክለሳዎች</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">ቅጽበታዊ መተግበሪያ</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">የአባል ቅንብሮች</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">በአሳሽ ውስጥ የሚከፈቱ መተግበሪያዎች</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">የቅጽበት መተግበሪያዎች አማራጮች</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play መደብር</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play ጥቃት መከላከያ</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">"የእኔ  መተግበሪያዎች"</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">የማሳወቂያ ቅንብሮች</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">የግዢ አማራጮች</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">የክፍያ ስልቶች</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">ተጠቃሚው ከዚህ መተግበሪያ ሆኖ የሚገኙ መተግበሪያዎችን እንዲመለከት ያስችለዋል።</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">የGoogle Play መተግበሪያ ማግኛ አገልግሎቱ ይድረሱ</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">ተጠቃሚው በዚህ መተግበሪያ በኩል ንጥሎችን ከGoogle Play እንዲገዛ ያስችለዋል።</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">የGoogle Play የክፍያ ማዘዣ አገልግሎት</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">ለእዚህ መተግበሪያ ከGoogle Play የተሰጠህ ፍቃድ ካለ ሊያይልህ ይችላል።</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">የGoogle Play የፍቃድ መፈተሻ</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">ተጠቃሚው በPlay የተረጋገጡ P2P መተግበሪያዎችን እንዲጭን ያስችላል።</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">የGoogle Play አቻ ለአቻ መተግበሪያ ጭነት ኤፒአይ</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">የመተግበሪያ ፈቃዶች</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">የነፃ ምንጭ ፈቃዶች</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">ማረጋገጥ ጠይቅ</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">ኮድዎን ያስመልሱ</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">ደረጃ ስጥ!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">ስጦታ ይላኩ</item>
+    <item type="LEMON_transformed_from_string" name="settings">ቅንብሮች</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">መለያን ማዋቀር ያጠናቅቁ</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">ማዋቀር ከተጠናቀቀ በኋላ መተግበሪያዎች ይጫናሉ</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">ተጨማሪ መተግበሪያዎችን ይገምግሙ</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">በGoogle ምርቶች ላይ በፈጣን ተመዝግቦ መውጫ ይደሰቱ</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">የመክፈያ ዘዴ ያክሉ</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">የክፍያ መረጃ ያዋቅሩ</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">መተግበሪያዎችን ከመሣሪያ ላይ ወደነበሩበት መልስ</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">የትኛው መሣሪያ?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">የቤተሰብ መክፈያ ዘዴ ይምረጡ</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">መጠን ይምረጡ</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">የመክፈያ ዘዴ ያዘምኑ</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">አረጋግጥ እና ጫን</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">የደህንነት ችግሮች ካሉ በመቃኘት ላይ…</item>
+</resources>

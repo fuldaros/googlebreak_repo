@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/light_purchase_dialog_footer_left_right_padding" android:paddingTop="@dimen/light_purchase_dialog_footer_top_bottom_padding" android:paddingRight="@dimen/light_purchase_dialog_footer_left_right_padding" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.google.android.play.layout.PlayTextView android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="24.0dip" style="@style/LightPurchase_TitleText" />
+            <TextView android:id="@id/instrument_display_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-2.0dip" style="@style/LightPurchase_SubtitleText" />
+        </LinearLayout>
+        <LinearLayout android:gravity="end" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.google.android.finsky.frameworkviews.AccessibleTextView android:gravity="end" android:id="@id/price" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="3.0dip" style="@style/LightPurchase_Price" />
+            <TextView android:ellipsize="marquee" android:gravity="end" android:id="@id/price_byline" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-2.0dip" android:maxWidth="160.0dip" android:maxLines="2" style="@style/LightPurchase_PriceByline" />
+            <TextView android:ellipsize="marquee" android:gravity="end" android:id="@id/price_byline_2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-2.0dip" android:maxWidth="160.0dip" android:maxLines="2" style="@style/LightPurchase_PriceByline" />
+        </LinearLayout>
+    </LinearLayout>
+    <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.google.android.finsky.frameworkviews.ForegroundLinearLayout android:orientation="horizontal" android:id="@id/document_header" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+                <com.google.android.play.image.FifeImageView android:id="@id/application_icon" android:layout_width="@dimen/light_purchase_thumbnail_size" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="16.0dip" />
+                <LinearLayout android:orientation="vertical" android:id="@id/document_description" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <com.google.android.play.layout.PlayTextView android:ellipsize="end" android:id="@id/document_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-5.0dip" android:maxLines="2" style="@style/LightPurchase_Auth_ItemTitle" />
+                </LinearLayout>
+            </com.google.android.finsky.frameworkviews.ForegroundLinearLayout>
+            <com.google.android.finsky.frameworkviews.FlowLayout android:gravity="center_vertical" android:id="@id/badge_container" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" finsky:horizontal_gap="12.0dip" finsky:vertical_gap="16.0dip" />
+            <LinearLayout android:gravity="center_vertical" android:id="@id/consumption_app_details" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+                <com.google.android.play.image.FifeImageView android:id="@id/consumption_app_icon" android:visibility="gone" android:layout_width="@dimen/light_purchase_thumbnail_size" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="16.0dip" />
+                <TextView android:id="@id/consumption_app_disclaimer" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/play_medium_size" android:id="@id/requester_info" android:background="#ffefefef" android:padding="8.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
+            <TextView android:id="@id/approver_email" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" style="@style/LightPurchase_SubtitleText" />
+            <Spinner android:id="@id/approver_email_list" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
+            <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" layout="@layout/light_purchase_password_pin" />
+            <TextView android:id="@id/error_message" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/LightPurchase_ErrorByline" />
+            <TextView android:id="@id/purchase_disclaimer" android:focusable="true" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <CheckBox android:textSize="@dimen/play_purchase_message_size" android:textColor="@color/play_fg_secondary" android:id="@id/approval_checkbox" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="32.0dip" />
+            <TextView android:id="@id/footer" android:focusable="true" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" style="@style/LightPurchase_Footer" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

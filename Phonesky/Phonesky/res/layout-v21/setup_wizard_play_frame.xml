@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.google.android.finsky.layout.SetupWizardStickyHeaderScrollView android:id="@id/bottom_scroll_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/navigation_bar">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.google.android.finsky.setupui.SetupWizardIllustration android:id="@id/illustration" android:tag="stickyContainer" android:background="@drawable/setup_wizard_header_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:elevation="3.0dip" finsky:aspectRatio="2.0" finsky:collapsable="true">
+                <com.google.android.play.image.FifeImageView android:id="@id/setup_wizard_header_graphic" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+                <TextView android:id="@id/title" android:tag="sticky" android:layout_below="@id/setup_wizard_header_graphic" style="@style/SetupWizardHeaderTitle" />
+            </com.google.android.finsky.setupui.SetupWizardIllustration>
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                <include layout="@layout/setup_wizard_divider_and_progress" />
+                <include android:visibility="gone" layout="@layout/page_loading_indicator" />
+                <FrameLayout android:id="@id/content_frame" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/SetupWizardContentFrame" />
+            </FrameLayout>
+        </LinearLayout>
+    </com.google.android.finsky.layout.SetupWizardStickyHeaderScrollView>
+    <fragment android:name="com.google.android.finsky.setupui.SetupWizardNavBar" android:id="@id/navigation_bar" style="@style/SetupWizardNavbar" />
+    <FrameLayout android:id="@id/details_overlay_placeholder" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

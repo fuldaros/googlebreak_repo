@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="flat_cluster_card_to_content_xpadding_v2">16.0dip</dimen>
+    <dimen name="flat_grid_pack_content_row_vertical_gap_padding">12.0dip</dimen>
+    <dimen name="flat_mini_card_side_padding_v2">16.0dip</dimen>
+</resources>

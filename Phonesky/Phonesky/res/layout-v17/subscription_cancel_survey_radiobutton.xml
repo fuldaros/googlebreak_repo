@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioButton android:textColor="@color/subscription_dark_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:paddingStart="12.0dip" finsky:buttonTint="@drawable/subscription_cancel_survey_radio_color" style="@style/SubscriptionCancelSurveyText"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto" />

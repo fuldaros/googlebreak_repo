@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/edit_history_footer_divider" android:background="@color/play_translucent_separator_line" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/details_new_content_margin" android:layout_marginRight="@dimen/details_new_content_margin" />
+    <TextView android:textSize="@dimen/review_edit_history_footer_text_size" android:textColor="@color/play_fg_secondary" android:gravity="center_vertical" android:id="@id/edit_history_message" android:paddingTop="@dimen/review_edit_history_footer_padding" android:paddingBottom="@dimen/review_edit_history_footer_padding" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/details_new_content_margin" android:layout_marginRight="@dimen/details_new_content_margin" android:text="@string/public_reviews_edit_history_message" />
+</LinearLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.entitypivot.view.EntityPivotClusterView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/FlatNoBottomPaddingCardCluster"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/header" android:paddingLeft="@dimen/flat_cluster_header_xpadding" android:paddingTop="@dimen/flat_cluster_header_title_vpadding" android:paddingRight="@dimen/flat_cluster_header_xpadding" android:paddingBottom="@dimen/flat_cluster_header_title_vpadding" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/entity_pivot_cluster_heading" android:singleLine="true" style="@style/FlatClusterTitle" />
+    <com.google.android.finsky.stream.controllers.entitypivot.view.EntityPivotRecyclerView android:id="@id/entity_pivot_recycler_view" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</com.google.android.finsky.stream.controllers.entitypivot.view.EntityPivotClusterView>

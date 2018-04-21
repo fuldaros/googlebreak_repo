@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play Winkel</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Goedkeuring word vereis</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Ouerkontroles</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Resensies</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Kitsprogram</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Lidinstellings</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">"Programme wat in 'n blaaier oopmaak"</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Kitsprogramvoorkeure</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play Winkel</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Beskerming</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">My programme</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Kennisgewinginstellings</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Koopopsies</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Betaalmetodes</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Maak dit vir die gebruiker moontlik om beskikbare programme van binne hierdie program af te bekyk.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Toegang tot die Google Play-programontdekkingdiens</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Laat die gebruiker toe om items via Google Play vanuit hierdie program aan te koop.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Google Play-rekeningdiens</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">"Kan kyk of jy 'n lisensie het vir hierdie program van Google Play."</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Google Play-lisensiekontrole</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Laat gebruiker toe om Portuurprogramme wat deur Play geverifieer is, te installeer.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play Portuurprograminstallering-API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Apptoestemmings</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">Oopbronlisensies</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Vereis stawing</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Gebruik jou kode</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Gradeer dit!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Stuur geskenk</item>
+    <item type="LEMON_transformed_from_string" name="settings">Instellings</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Volledige rekening-opstelling</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Programme sal geïnstalleer word nadat die opstelling voltooi is</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Hersien bykomende programme</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Geniet vinnige betaling met Google-produkte</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Voeg betaalmetode by</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Stel betalinginligting op</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Stel programme van toestel af terug</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Watter toestel?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Kies gesinsbetaalmetode</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Kies bedrag</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Dateer betaalmetode op</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Verifieer en installeer</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Soek tans sekuriteitkwessies …</item>
+</resources>

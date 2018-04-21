@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.6 (26304) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_movie_48dp</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="7.32828776%" y1="7.35270182%" x2="98.1770771%" y2="7.35270158%" id="linearGradient-1">
+            <stop stop-color="#E12653" offset="0%"></stop>
+            <stop stop-color="#FF3A44" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_movie_48dp">
+            <path d="M0,0 L48,0 L0,48 L0,0 Z" id="Rectangle-72-Copy" fill="url(#linearGradient-1)"></path>
+            <path d="M7,7 L7,19 L22,19 L22,7 L7,7 L7,7 Z M10,16.75 L8.5,16.75 L8.5,15.25 L10,15.25 L10,16.75 L10,16.75 Z M10,13.75 L8.5,13.75 L8.5,12.25 L10,12.25 L10,13.75 L10,13.75 Z M10,10.75 L8.5,10.75 L8.5,9.25 L10,9.25 L10,10.75 L10,10.75 Z M20.5,16.75 L19,16.75 L19,15.25 L20.5,15.25 L20.5,16.75 L20.5,16.75 Z M20.5,13.75 L19,13.75 L19,12.25 L20.5,12.25 L20.5,13.75 L20.5,13.75 Z M20.5,10.75 L19,10.75 L19,9.25 L20.5,9.25 L20.5,10.75 L20.5,10.75 Z" id="Shape" fill="#FFFFFF"></path>
+        </g>
+    </g>
+</svg>

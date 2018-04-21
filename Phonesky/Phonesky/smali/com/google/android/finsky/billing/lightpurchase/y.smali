@@ -1,0 +1,67 @@
+.class final Lcom/google/android/finsky/billing/lightpurchase/y;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/lang/Runnable;
+
+
+# instance fields
+.field public final synthetic a:I
+
+.field public final synthetic b:Lcom/google/android/finsky/billing/lightpurchase/LightPurchaseFlowActivity;
+
+
+# direct methods
+.method constructor <init>(Lcom/google/android/finsky/billing/lightpurchase/LightPurchaseFlowActivity;I)V
+    .locals 0
+
+    .prologue
+    .line 1
+    iput-object p1, p0, Lcom/google/android/finsky/billing/lightpurchase/y;->b:Lcom/google/android/finsky/billing/lightpurchase/LightPurchaseFlowActivity;
+
+    iput p2, p0, Lcom/google/android/finsky/billing/lightpurchase/y;->a:I
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final run()V
+    .locals 2
+
+    .prologue
+    .line 2
+    iget-object v0, p0, Lcom/google/android/finsky/billing/lightpurchase/y;->b:Lcom/google/android/finsky/billing/lightpurchase/LightPurchaseFlowActivity;
+
+    .line 3
+    iget-object v0, v0, Lcom/google/android/finsky/billing/lightpurchase/LightPurchaseFlowActivity;->al:Lcom/google/android/finsky/billing/lightpurchase/ah;
+
+    .line 4
+    if-eqz v0, :cond_0
+
+    .line 5
+    iget-object v0, p0, Lcom/google/android/finsky/billing/lightpurchase/y;->b:Lcom/google/android/finsky/billing/lightpurchase/LightPurchaseFlowActivity;
+
+    .line 6
+    iget-object v0, v0, Lcom/google/android/finsky/billing/lightpurchase/LightPurchaseFlowActivity;->al:Lcom/google/android/finsky/billing/lightpurchase/ah;
+
+    .line 7
+    iget v1, p0, Lcom/google/android/finsky/billing/lightpurchase/y;->a:I
+
+    invoke-virtual {v0, v1}, Lcom/google/android/finsky/billing/lightpurchase/ah;->a(I)V
+
+    .line 8
+    iget-object v0, p0, Lcom/google/android/finsky/billing/lightpurchase/y;->b:Lcom/google/android/finsky/billing/lightpurchase/LightPurchaseFlowActivity;
+
+    .line 9
+    const/4 v1, 0x0
+
+    iput-object v1, v0, Lcom/google/android/finsky/billing/lightpurchase/LightPurchaseFlowActivity;->al:Lcom/google/android/finsky/billing/lightpurchase/ah;
+
+    .line 10
+    :cond_0
+    return-void
+.end method

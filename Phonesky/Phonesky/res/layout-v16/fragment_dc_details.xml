@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/pe__default_window_background_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/pe__toolbar" />
+    <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.google.android.libraries.play.entertainment.media.FixedAspectRatioRelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" app:heightRatio="9.0" app:widthRatio="16.0">
+                <com.google.android.libraries.play.entertainment.bitmap.PEImageView android:id="@id/pe_hero_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" app:bindScale="0.2" app:fadesInImage="true" />
+                <FrameLayout android:id="@id/image_frame" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/pe_page_side_padding" android:layout_marginTop="@dimen/default_padding" android:layout_marginBottom="@dimen/pe__dc_details_main_image_bottom_margin" android:layout_alignParentTop="true" android:layout_alignParentBottom="true" android:importantForAccessibility="noHideDescendants" style="@style/PEImageFrame">
+                    <com.google.android.libraries.play.entertainment.bitmap.PEImageView android:id="@id/pe_image_view" android:background="@color/pe__dc_details_thumbnail_background_color" android:layout_width="wrap_content" android:layout_height="fill_parent" android:scaleType="fitCenter" android:adjustViewBounds="true" app:fadesInImage="true" app:hidesBackgroundWhenBound="true" />
+                </FrameLayout>
+                <LinearLayout android:orientation="vertical" android:id="@id/pe_hero_text_container" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/default_padding" android:layout_marginRight="@dimen/default_padding" android:layout_marginBottom="@dimen/pe__dc_details_hero_text_container_bottom_margin" android:layout_toRightOf="@id/image_frame" android:layout_alignParentBottom="true">
+                    <TextView android:ellipsize="end" android:id="@id/pe_hero_title_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/pe_button_touch_extension" android:maxLines="3" style="@style/PETitleText" />
+                    <TextView android:ellipsize="end" android:id="@id/pe_hero_subtitle_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/pe_button_touch_extension" android:maxLines="2" style="@style/PEText" />
+                    <Button android:id="@id/free_sample" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pe__free_sample" style="@style/PEText.CallToAction.BorderedButton" />
+                </LinearLayout>
+            </com.google.android.libraries.play.entertainment.media.FixedAspectRatioRelativeLayout>
+            <TextView android:id="@id/pe_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/pe_page_side_padding" android:layout_marginTop="@dimen/pe_page_side_padding" android:layout_marginRight="@dimen/pe_page_side_padding" android:layout_marginBottom="@dimen/default_padding" style="@style/PEPanelTitleText" />
+            <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/pe_page_side_padding" android:layout_marginTop="@dimen/pe__critic_layout_negative_top_margin" android:layout_marginRight="@dimen/pe_page_side_padding" layout="@layout/critic_rating_layout" />
+            <TextView android:id="@id/pe_subtitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/pe_page_side_padding" android:layout_marginRight="@dimen/pe_page_side_padding" android:layout_marginBottom="@dimen/box_small_padding" style="@style/PEText.BodyText" />
+            <TextView android:id="@id/attribution" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/pe_page_side_padding" android:layout_marginRight="@dimen/pe_page_side_padding" android:layout_marginBottom="@dimen/box_vertical_margin" style="@style/PEText.Attribution" />
+            <View android:id="@id/padding" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/pe__padding_panel_height" />
+        </LinearLayout>
+    </ScrollView>
+    <include layout="@layout/pe__dc_action_dock" />
+</LinearLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/checked_text_view" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.google.android.finsky.dialogbuilder.layout.CheckedView android:layout_gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:checkMark="?android:listChoiceIndicatorSingle" android:foreground="?android:selectableItemBackgroundBorderless" android:drawableLeft="?android:listChoiceIndicatorSingle" android:layout_weight="1.0" />
+    <com.google.android.play.layout.PlayTextView android:id="@id/caret_text" android:layout_width="wrap_content" android:layout_height="wrap_content" finsky:allowsCompactLineSpacing="true" style="@style/PlayLightText" />
+</LinearLayout>

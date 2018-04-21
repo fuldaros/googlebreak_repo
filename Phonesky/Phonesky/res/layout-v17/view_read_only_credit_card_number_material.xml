@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:im="http://schemas.android.com/apk/res-auto">
+    <com.google.android.wallet.ui.common.MaterialFieldLayout android:id="@id/card_number_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" im:internalUicFieldLabel="@string/wallet_uic_card_number" style="?internalUicMaterialFieldLayoutStyle">
+        <com.google.android.wallet.ui.common.FormEditText android:id="@id/credit_card_label" android:paddingLeft="@dimen/wallet_uic_card_number_with_icon_on_start_padding_start" android:paddingBottom="@dimen/wallet_uic_card_number_with_icon_on_start_padding_bottom" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="?uicFormItemHeight" android:freezesText="true" android:layoutDirection="ltr" style="?uicFormInputTextAppearance" />
+    </com.google.android.wallet.ui.common.MaterialFieldLayout>
+    <com.google.android.wallet.ui.common.ImageWithCaptionView android:id="@id/card_logo" android:layout_width="@dimen/wallet_uic_credit_card_icon_width" android:layout_height="@dimen/wallet_uic_credit_card_icon_height" android:layout_marginLeft="@dimen/wallet_uic_margin_touchable" android:layout_marginBottom="@dimen/wallet_uic_credit_card_icon_bottom_margin" android:layout_alignLeft="@id/card_number_layout" android:layout_alignBottom="@id/card_number_layout" im:internalUicDefaultImage="?uicCardUnresolvedDrawable" />
+</RelativeLayout>

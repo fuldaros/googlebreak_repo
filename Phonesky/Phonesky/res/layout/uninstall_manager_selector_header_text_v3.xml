@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.uninstallmanager.PlayCardViewUninstallManagerV3 android:id="@id/callout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/uninstall_manager_card_look_edge_margins" android:layout_marginRight="@dimen/uninstall_manager_card_look_edge_margins" style="@style/PlayCardMyApps2"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/uninstall_manager_callout_text_size" android:layout_gravity="start" android:id="@id/text" android:padding="@dimen/uninstall_manager_row_padding" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</com.google.android.finsky.uninstallmanager.PlayCardViewUninstallManagerV3>

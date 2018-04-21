@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play Խանութ</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Պահանջվում է հաստատում</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Ծնողական վերահսկողություն</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Կարծիքներ</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Ակնթարթային հավելված</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Անդամների կարգավորումներ</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Դիտարկիչում բացվող հավելվածներ</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Ակնթարթային հավելվածների կարգավորումներ</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play Խանութ</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Իմ հավելվածները</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Ծանուցումների կարգավորումներ</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Տարբերակներ</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Վճարման եղանակներ</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Օգտատերը կարողանում է դիտել հասանելի հավելվածներն այս հավելվածից։</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Google Play App Discovery ծառայության հասանելիություն</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Թույլ է տալիս նյութեր գնել Google Play-ից այս ծրագրի օգնությամբ:</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Google Play վճարման ծառայություն</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Կարող է ստուգել, ​​արդյոք դուք Google Play-ի լիցենզիա ունեք այս ծրագրի համար, թե ոչ:</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Google Play լիցենզիա ստուգում</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Թույլ է տալիս օգտատիրոջը տեղադրել Play Verified P2P հավելվածներ։</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play Peer To Peer App Install API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Ծրագրի թույլտվությունները</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Պարտադիր իսկորոշում</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Զեղչային կոդի ակտիվացում</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Գնահատեք այն</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Ուղարկել նվեր</item>
+    <item type="LEMON_transformed_from_string" name="settings">Կարգավորումներ</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Ավարտեք հաշվի կարգավորումը</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Հավելվածները կտեղադրվեն, երբ կարգավորումն ավարտվի</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Դիտարկեք լրացուցիչ հավելվածներ</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Պատվերի արագ ձևակերպում Google-ի արտադրանքներում</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Ավելացնել վճարման եղանակ</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Նշեք վճարային տվյալները</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Հավելվածների վերականգնում սարքից</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Ո՞ր սարքը:</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Ընտրեք ընտանեկան վճարման եղանակը</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Ընտրեք գումարը</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Թարմացրեք վճարման եղանակը</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Ստուգել և տեղադրել</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Անվտանգության խնդիրների ստուգում…</item>
+</resources>

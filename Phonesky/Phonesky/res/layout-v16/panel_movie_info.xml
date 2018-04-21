@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.libraries.play.entertainment.story.BackgroundPanelView android:id="@id/background_panel" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.libraries.play.entertainment.story.ParallaxContainer android:id="@id/parallax_container" android:layout_width="fill_parent" android:layout_height="@dimen/pe_leading_image_height">
+        <com.google.android.libraries.play.entertainment.bitmap.PEImageView android:id="@id/image_main" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" app:fadesInImage="true" />
+    </com.google.android.libraries.play.entertainment.story.ParallaxContainer>
+    <LinearLayout android:orientation="vertical" android:id="@id/text_container" android:paddingTop="@dimen/box_vertical_margin" android:paddingBottom="@dimen/box_vertical_margin" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/parallax_container" style="@style/PETextContainer">
+        <include layout="@layout/pe__panel_title_in_slanted_style" />
+        <TextView android:id="@id/movie_name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/box_small_padding" style="@style/PETitleText" />
+        <include layout="@layout/critic_rating_layout" />
+        <com.google.android.libraries.play.entertainment.story.SnippetView android:id="@id/movie_synopsis" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="4" app:moreHintContentDescription="@string/pe__content_description_more" app:moreHintText="@string/pe__more" style="@style/PEText.BodyText" />
+        <include layout="@layout/pe__panel_dc_actions" />
+    </LinearLayout>
+</com.google.android.libraries.play.entertainment.story.BackgroundPanelView>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/backdrop_view" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.play.image.FifeImageView android:id="@id/blurred_backdrop_image" android:layout_width="fill_parent" android:layout_height="fill_parent" app:request_scale_factor="50.0%" />
+    <View android:layout_gravity="center_horizontal" android:background="@color/play_main_background" android:layout_width="@dimen/width_for_fixed_width_pages" android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android" />
+</FrameLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="details_horizontal_button_spacing">10.0dip</dimen>
+    <dimen name="details_new_content_margin">16.0dip</dimen>
+    <dimen name="details_review_module_title_padding_bottom">18.0dip</dimen>
+    <dimen name="finsky_scrolling_tab_xpadding">20.0dip</dimen>
+    <dimen name="jpkr_banner_title_size">16.0sp</dimen>
+    <dimen name="jpkr_editorial_page_header_title">20.0sp</dimen>
+    <dimen name="jpkr_highlights_banner_title_bottom_margin">12.0dip</dimen>
+    <dimen name="jpkr_mini_top_charts_spinner_item_size">14.0sp</dimen>
+    <dimen name="jpkr_quicklink_label_size">14.0sp</dimen>
+    <dimen name="jpkr_recommended_categories_item_bottom_padding">4.0dip</dimen>
+    <dimen name="jpkr_recommended_categories_item_top_padding">12.0dip</dimen>
+    <dimen name="jpkr_recommended_category_label_size">14.0sp</dimen>
+    <dimen name="mw_play_column_min_size">180.0dip</dimen>
+    <dimen name="unauth_home_google_play_margin_top">23.0dip</dimen>
+    <dimen name="unauth_home_sign_in_button_margin_top">22.0dip</dimen>
+    <dimen name="unauth_home_sign_in_message_margin_top">27.0dip</dimen>
+</resources>

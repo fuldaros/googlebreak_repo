@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.layout.CombinedHeaderTitleLayout android:layout_gravity="bottom" android:id="@id/combined_header_title" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_gravity="bottom|center" android:orientation="vertical" android:id="@id/header_title_group" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.google.android.play.layout.PlayTextView android:gravity="center" android:id="@id/header_title" android:background="@color/play_white" android:paddingTop="@dimen/combined_header_text_padding" android:paddingBottom="@dimen/combined_header_text_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" finsky:allowsCompactLineSpacing="true" style="@style/PlayDetailTitle" />
+        <com.google.android.play.layout.PlayTextView android:gravity="center" android:id="@id/header_sub_title" android:background="@color/play_white" android:paddingLeft="@dimen/combined_header_text_padding" android:paddingRight="@dimen/combined_header_text_padding" android:paddingBottom="@dimen/combined_header_text_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/combined_header_text_padding" android:paddingEnd="@dimen/combined_header_text_padding" finsky:allowsCompactLineSpacing="true" style="@style/PlayDetailDescription" />
+    </LinearLayout>
+    <com.google.android.play.image.FifeImageView android:layout_gravity="center_horizontal" android:id="@id/header_thumbnail" android:clipToPadding="false" android:layout_width="@dimen/play_profile_avatar_size" android:layout_height="@dimen/play_profile_avatar_size" android:scaleType="fitCenter" finsky:fixed_bounds="true" />
+</com.google.android.finsky.layout.CombinedHeaderTitleLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailsmodules.modules.preregiaprewards.view.PreregIapRewardModuleView android:orientation="vertical" android:id="@id/prereg_iap_reward" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/D30ModuleLayout"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/prereg_header_d30" />
+    <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+        <com.google.android.play.image.FifeImageView android:id="@id/reward_badge" android:layout_width="@dimen/prereg_rewards_badge_size" android:layout_height="@dimen/prereg_rewards_badge_size" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/reward_badge" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+            <com.google.android.play.layout.PlayTextView android:text="@string/preregistration_iap_reward_label" style="@style/D30ModuleBodyText" />
+            <com.google.android.play.layout.PlayTextView android:textColor="@color/play_primary_text" android:id="@id/reward_description" style="@style/D30ModuleBodyText" />
+        </LinearLayout>
+    </RelativeLayout>
+    <include layout="@layout/prereg_reward_footer_d30" />
+</com.google.android.finsky.detailsmodules.modules.preregiaprewards.view.PreregIapRewardModuleView>

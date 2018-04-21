@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.headerlistlayout.FinskyTabTextView android:textSize="@dimen/finsky_fixed_tab_text_size" android:textColor="@color/play_white" android:gravity="center" android:layout_gravity="center" android:id="@id/title" android:background="@drawable/focus_overlay" android:paddingLeft="@dimen/finsky_scrolling_tab_xpadding" android:paddingRight="@dimen/finsky_scrolling_tab_xpadding" android:paddingBottom="@dimen/play_home_scrolling_tab_text_bottom_padding" android:focusable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxLines="2" style="@style/PlayHeaderListTabText"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

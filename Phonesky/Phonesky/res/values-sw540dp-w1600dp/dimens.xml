@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="flat_cluster_edge_margin_v2">48.0dip</dimen>
+</resources>

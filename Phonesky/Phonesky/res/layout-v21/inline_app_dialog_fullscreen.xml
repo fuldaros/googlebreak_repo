@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.frameworkviews.FullScreenDialogRootFrameLayout android:layout_width="0.0dip" android:layout_height="0.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.finsky.inlinedetails.view.InlineAppDetailsDialogRootFrameLayout android:gravity="center" android:layout_gravity="center" android:id="@id/content_frame" android:background="@drawable/fullscreen_dialog_child_default_background" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:elevation="@dimen/fullscreen_dialog_child_default_elevation" style="@style/InlineAppDetailsDialog" />
+</com.google.android.finsky.frameworkviews.FullScreenDialogRootFrameLayout>

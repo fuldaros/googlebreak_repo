@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/list_tab_wrapper" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/data_view" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.google.android.finsky.nestedrecyclerviews.NestedParentRecyclerView android:id="@id/tab_recycler_view" android:paddingBottom="@dimen/nested_parent_recycler_view_padding_bottom" android:visibility="gone" android:fadingEdgeLength="0.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="@color/play_main_background" android:overScrollMode="never" />
+        <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/no_results_view" />
+        <com.google.android.finsky.fastscroll.ScrubberView android:layout_gravity="right" android:id="@id/scrubber_view" android:layout_width="@dimen/fast_scroll_scrubber_hover_zone_width" android:layout_height="fill_parent" finsky:fastScrollModel="universal" />
+    </FrameLayout>
+    <include layout="@layout/list_loading_indicator" />
+    <include android:visibility="gone" layout="@layout/page_error_indicator" />
+    <include android:visibility="gone" layout="@layout/page_error_indicator_with_notify" />
+</FrameLayout>

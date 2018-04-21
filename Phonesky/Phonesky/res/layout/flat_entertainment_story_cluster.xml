@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.view.FlatEntertainmentStoryClusterView android:id="@id/flat_entertainment_story_cluster_container" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/FlatCardCluster"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/flat_card_cluster_header" />
+    <com.google.android.finsky.stream.base.playcluster.PlayClusterViewContentV2 android:id="@id/cluster_content" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</com.google.android.finsky.stream.controllers.view.FlatEntertainmentStoryClusterView>

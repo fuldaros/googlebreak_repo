@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="layout" name="video_collection_card_view">@layout/card_view_video_collection_wide</item>
+</resources>

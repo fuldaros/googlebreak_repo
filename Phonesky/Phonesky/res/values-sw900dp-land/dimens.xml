@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="flat_mdp_content_bottom_padding">16.0dip</dimen>
+    <dimen name="flat_mdp_extra_labels_section_top_margin">8.0dip</dimen>
+    <dimen name="flat_mdp_height">360.0dip</dimen>
+    <dimen name="flat_mdp_inner_margin">32.0dip</dimen>
+    <dimen name="flat_mdp_rating_top_margin">21.0dip</dimen>
+    <dimen name="flat_mdp_thumbnail_size">100.0dip</dimen>
+    <dimen name="flat_mdp_title_top_margin">32.0dip</dimen>
+    <dimen name="inline_top_charts_content_tab_horizontal_padding">20.0dip</dimen>
+    <dimen name="width_for_fixed_width_pages">808.0dip</dimen>
+</resources>

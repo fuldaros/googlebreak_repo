@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="dimen" name="setup_wizard_apps_row_xpadding">@dimen/setup_wizard_horizontal_padding</item>
+    <item type="dimen" name="setup_wizard_content_xpadding">@dimen/setup_wizard_horizontal_padding</item>
+    <dimen name="setup_wizard_content_ypadding">8.0dip</dimen>
+    <dimen name="setup_wizard_header_title_bottom_padding">8.0dip</dimen>
+    <dimen name="setup_wizard_header_title_top_padding">24.0dip</dimen>
+    <item type="dimen" name="setup_wizard_header_title_xpadding">@dimen/setup_wizard_horizontal_padding</item>
+    <dimen name="setup_wizard_apps_row_ypadding">20.0dip</dimen>
+    <item type="dimen" name="setup_wizard_header_graphic_start_padding">@dimen/setup_wizard_horizontal_padding</item>
+    <dimen name="setup_wizard_header_graphic_top_padding">48.0dip</dimen>
+    <dimen name="setup_wizard_horizontal_padding">40.0dip</dimen>
+    <dimen name="setup_wizard_optional_header_bottom_padding">24.0dip</dimen>
+    <item type="dimen" name="setup_wizard_optional_header_end_padding">@dimen/setup_wizard_horizontal_padding</item>
+    <dimen name="setup_wizard_card_elevation">1.0dip</dimen>
+</resources>

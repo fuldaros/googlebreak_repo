@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="display_categories_in_two_columns">true</bool>
+    <bool name="flat_use_extended_margin_listing">false</bool>
+    <bool name="pe__is_tablet">true</bool>
+    <bool name="play_can_use_mini_cards">false</bool>
+    <bool name="play_dynamic_column_count">true</bool>
+    <bool name="play_warm_welcome_single_column_shows_graphic">true</bool>
+    <bool name="preinflate_large_count">true</bool>
+    <bool name="setup_wizard_use_tablet_graphic">true</bool>
+    <bool name="show_review_edit_history_header">true</bool>
+    <bool name="subnav_use_forced_peaking">false</bool>
+    <bool name="use_1_5x_card_width_for_double_wide_ad_card">false</bool>
+    <bool name="use_overlay_for_screenshot">true</bool>
+    <bool name="use_wide_layout">false</bool>
+    <bool name="wallet_uic_is_tablet">true</bool>
+</resources>

@@ -1,0 +1,27 @@
+.class final Lcom/google/common/flogger/backend/a/h;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# direct methods
+.method constructor <init>()V
+    .locals 0
+
+    .prologue
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method static a()Z
+    .locals 1
+
+    .prologue
+    .line 2
+    invoke-static {}, Lcom/google/common/flogger/backend/a/f;->j()Z
+
+    move-result v0
+
+    return v0
+.end method

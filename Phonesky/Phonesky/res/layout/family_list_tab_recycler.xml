@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/list_loading_indicator" />
+    <include android:visibility="gone" layout="@layout/page_error_indicator" />
+    <include android:visibility="gone" layout="@layout/page_error_indicator_with_notify" />
+    <com.google.android.finsky.recyclerview.PlayRecyclerView android:scrollbarStyle="outsideOverlay" android:id="@id/content_list" android:paddingBottom="@dimen/card_list_vpadding" android:visibility="gone" android:fadingEdgeLength="0.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="@color/play_main_background" android:divider="@null" />
+    <include android:visibility="gone" layout="@layout/family_empty_view" />
+</FrameLayout>

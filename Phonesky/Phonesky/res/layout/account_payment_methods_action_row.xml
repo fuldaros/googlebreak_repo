@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.billing.myaccount.layout.AccountPaymentMethodsActionRowView style="@style/AccountRow"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/image_icon" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip" />
+    <TextView android:textColor="@color/account_action_fg" android:id="@id/title" style="@style/AccountPaymentMethodsActionTitle" />
+</com.google.android.finsky.billing.myaccount.layout.AccountPaymentMethodsActionRowView>

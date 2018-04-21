@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.frameworkviews.FullScreenDialogRootFrameLayout android:layout_width="0.0dip" android:layout_height="0.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.finsky.instantappsquickinstall.QuickInstallDetailsContentFrame android:layout_gravity="center" android:id="@id/content_frame" android:background="@color/white" android:fitsSystemWindows="true" android:layout_width="wrap_content" android:layout_height="wrap_content" finsky:contentId="@id/page_content" style="@style/Theme.QuickInstallDetailsDialog"
+      xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto" />
+</com.google.android.finsky.frameworkviews.FullScreenDialogRootFrameLayout>

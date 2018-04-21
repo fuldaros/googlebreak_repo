@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="@dimen/inline_app_dialog_fullscreen_minwidth_v2"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_width="fill_parent" android:layout_height="@dimen/inline_details_height_fill_remaining_space" android:fillViewport="true" android:layout_weight="@integer/inline_details_weight_fill_remaining_space"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <com.google.android.finsky.frameworkviews.HorizontalSeparatorContainer android:orientation="vertical" android:id="@id/details_stack" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include layout="@layout/inline_details_title_row" />
+            <com.google.android.finsky.inlinedetails.view.InlineDetailsWarningMessageRowLinearLayout android:orientation="vertical" android:id="@id/warning_message_row" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <include layout="@layout/inline_details_decide_bar_row" />
+            <include layout="@layout/inline_details_screenshots_row_portrait" />
+        </com.google.android.finsky.frameworkviews.HorizontalSeparatorContainer>
+    </ScrollView>
+    <include android:id="@id/footer" android:background="@android:color/transparent" layout="@layout/inline_app_details_footer" />
+</LinearLayout>

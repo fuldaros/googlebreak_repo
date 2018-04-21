@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailsmodules.modules.refundandflag.view.RefundPolicyAndFlagContentModuleView android:gravity="center_vertical" android:orientation="vertical" android:id="@id/flag_row" android:background="@drawable/flag_bg_with_highlight" android:paddingLeft="@dimen/details_new_content_margin" android:paddingTop="8.0dip" android:paddingRight="@dimen/details_new_content_margin" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="0.0dip" android:minHeight="48.0dip" android:layout_weight="1.0" android:paddingStart="@dimen/details_new_content_margin" android:paddingEnd="@dimen/details_new_content_margin" android:layout_marginStart="4.0dip" android:layout_marginEnd="0.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:id="@id/refund" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/focus_overlay" finsky:mark_as_button="true">
+        <ImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/ic_refund_gray_24dp" android:scaleType="fitCenter" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/refund_policy_title" style="@style/RefundAndFlagText" />
+    </LinearLayout>
+    <LinearLayout android:id="@id/flag" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/focus_overlay" finsky:mark_as_button="true">
+        <ImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/ic_flagcontent" android:scaleType="fitCenter" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/flagging_title" style="@style/RefundAndFlagText" />
+    </LinearLayout>
+</com.google.android.finsky.detailsmodules.modules.refundandflag.view.RefundPolicyAndFlagContentModuleView>

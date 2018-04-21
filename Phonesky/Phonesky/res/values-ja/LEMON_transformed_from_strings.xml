@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play ストア</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">許可が必要</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">保護者による使用制限</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">レビュー</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Instant App</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">メンバー設定</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">ブラウザで開くアプリ</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Instant Apps の設定</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play ストア</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play プロテクト</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">マイアプリ</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">通知設定</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">購入オプション</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">お支払い方法</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">利用可能なアプリをこのアプリ内から表示することをユーザーに許可します。</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Google Play App Discovery Service へのアクセス</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">このアプリを通じてGoogle Playで商品を購入することをユーザーに許可します。</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Google Play請求サービス</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">アプリがGoogle Playからライセンスを取得しているかどうかを確認します。</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Google Playライセンス確認</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Play Verified P2P アプリをインストールすることをユーザーに許可します。</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play Peer To Peer App Install API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">アプリの権限</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">オープンソースライセンス</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">認証が必要なときは？</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">コードの利用</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">評価する</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">ギフトの送信</item>
+    <item type="LEMON_transformed_from_string" name="settings">設定</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">アカウント設定の完了</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">アプリはセットアップの完了後にインストールされます</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">追加するアプリ</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Google サービスでのご購入手続きが簡単になります</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">お支払い方法の追加</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">お支払い情報の設定</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">端末からアプリを復元</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">端末を指定してください</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">ファミリー用お支払い方法の選択</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">金額の選択</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">お支払い方法の更新</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">確認してインストール</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">セキュリティ上の問題をスキャンしています…</item>
+</resources>

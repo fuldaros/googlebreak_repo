@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.inlinedetails.view.InlineDetailsDecideBadgeLinearLayout android:orientation="vertical" android:paddingLeft="@dimen/inline_details_decidebar_badge_padding" android:paddingRight="@dimen/inline_details_decidebar_badge_padding" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:paddingBottom="@dimen/inline_details_decidebar_badge_padding" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/DiscoveryBadgeIconContainer">
+        <TextView android:id="@id/title_text" style="@style/D30DecideBarTitleText" />
+        <com.google.android.play.image.FifeImageView android:layout_gravity="center_vertical" android:id="@id/icon_image" android:visibility="gone" android:layout_width="@dimen/inline_details_decidebar_icon_size" android:layout_height="@dimen/inline_details_decidebar_icon_size" android:layout_marginLeft="@dimen/inline_details_decidebar_badge_padding" android:layout_marginRight="0.0dip" />
+    </LinearLayout>
+    <TextView android:layout_gravity="center_horizontal" android:id="@id/subtitle_text" style="@style/D30DecideBarSubTitleText" />
+</com.google.android.finsky.inlinedetails.view.InlineDetailsDecideBadgeLinearLayout>

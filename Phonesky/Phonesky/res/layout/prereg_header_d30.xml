@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailsmodules.base.view.PreregRewardsHeaderView android:orientation="vertical" android:id="@id/prereg_header_view" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.play.layout.PlayTextView android:text="@string/preregistration_rewards_title" style="@style/D30ModuleTitle" />
+    <com.google.android.play.layout.PlayTextView android:id="@id/reward_subtitle" android:text="@string/preregistration_rewards_subtitle" style="@style/D30ModuleTitle" />
+</com.google.android.finsky.detailsmodules.base.view.PreregRewardsHeaderView>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play Store</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">ต้องได้รับอนุมัติ</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">การควบคุมโดยผู้ปกครอง</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">ความเห็น</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Instant App</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">การตั้งค่าสมาชิก</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">แอปที่เปิดในเบราว์เซอร์</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">ค่ากำหนดของ Instant App</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play Store</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">แอปพลิเคชันของฉัน</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">การตั้งค่าการแจ้งเตือน</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">ตัวเลือกการซื้อ</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">วิธีการชำระเงิน</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">อนุญาตให้ผู้ใช้ดูแอปที่พร้อมใช้งานจากภายในแอปนี้</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">เข้าถึงบริการค้นหาแอปของ Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">ช่วยให้ผู้ใช้ซื้อสินค้าผ่านทาง Google Play ได้จากภายในแอปพลิเคชันนี้</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">บริการเรียกเก็บเงินของ Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">สามารถตรวจสอบว่าคุณมีใบอนุญาตสำหรับแอปพลิเคชันนี้จาก Google Play หรือไม่</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">การตรวจสอบใบอนุญาตของ Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">อนุญาตให้ผู้ใช้ติดตั้งแอป P2P ที่ผ่านการยืนยันจาก Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">API การติดตั้งแอปแบบเพียร์ทูเพียร์ของ Google Play</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">สิทธิ์ของแอป</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">ใบอนุญาตโอเพนซอร์ส</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">ต้องมีการตรวจสอบสิทธิ์</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">แลกรหัสของคุณ</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">ให้คะแนนเลย!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">ส่งของขวัญ</item>
+    <item type="LEMON_transformed_from_string" name="settings">การตั้งค่า</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">สร้างบัญชีให้เสร็จสมบูรณ์</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">แอปจะติดตั้งหลังจากตั้งค่าเสร็จสมบูรณ์</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">ตรวจสอบแอปเพิ่มเติม</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">ชำระเงินได้รวดเร็วด้วยผลิตภัณฑ์ของ Google</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">เพิ่มวิธีการชำระเงิน</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">ตั้งค่าข้อมูลการชำระเงิน</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">คืนค่าแอปจากอุปกรณ์</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">อุปกรณ์เครื่องใด</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">เลือกวิธีการชำระเงินของครอบครัว</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">เลือกจำนวนเงิน</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">อัปเดตวิธีการชำระเงิน</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">ตรวจสอบและติดตั้ง</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">กำลังสแกนหาปัญหาด้านความปลอดภัย…</item>
+</resources>

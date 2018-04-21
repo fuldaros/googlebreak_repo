@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/white" android:padding="@dimen/family_benefit_v2_content_padding" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/content_entry_large_size" android:textColor="@color/play_fg_primary" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:orientation="vertical" android:id="@id/benefits_list" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.google.android.finsky.frameworkviews.MaxWidthLinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:paddingTop="@dimen/family_benefit_v2_button_padding_top" android:layout_width="fill_parent" android:layout_height="wrap_content" finsky:max_width="410.0dip">
+        <com.google.android.finsky.frameworkviews.PlayActionButtonV2 android:id="@id/explore_button" android:layout_width="0.0dip" android:layout_height="36.0dip" android:layout_margin="6.0dip" android:layout_weight="1.0" finsky:action_style="primaryInverted" />
+        <com.google.android.finsky.frameworkviews.PlayActionButtonV2 android:id="@id/start_trial_button" android:layout_width="0.0dip" android:layout_height="36.0dip" android:layout_margin="6.0dip" android:layout_weight="1.0" />
+    </com.google.android.finsky.frameworkviews.MaxWidthLinearLayout>
+</LinearLayout>

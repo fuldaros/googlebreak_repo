@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.billing.myaccount.layout.OrderHistoryRowView android:id="@id/order_history_row" style="@style/AccountListPageRow"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.google.android.play.layout.PlayCardThumbnail android:id="@id/li_thumbnail_frame" finsky:app_thumbnail_padding="0.0dip" style="@style/AccountThumbnail">
+            <include android:id="@id/li_thumbnail" layout="@layout/play_card_thumbnail_view" />
+        </com.google.android.play.layout.PlayCardThumbnail>
+        <TextView android:id="@id/title" android:layout_toLeftOf="@id/price" android:layout_toRightOf="@id/li_thumbnail_frame" android:layout_alignBaseline="@id/price" android:layout_alignWithParentIfMissing="true" style="@style/AccountDfeListTitle" />
+        <TextView android:id="@id/date" android:layout_toLeftOf="@id/status" android:layout_toRightOf="@id/li_thumbnail_frame" android:layout_below="@id/title" android:layout_alignBaseline="@id/status" android:layout_alignWithParentIfMissing="true" style="@style/AccountDfeListSubtitle" />
+        <com.google.android.play.layout.PlayTextView android:id="@id/purchase_details" android:layout_toRightOf="@id/li_thumbnail_frame" android:layout_below="@id/status" finsky:lastLineOverdrawColor="@color/play_white" style="@style/AccountDfeListDetails" />
+        <TextView android:id="@id/price" android:layout_alignParentRight="true" style="@style/AccountDfeListPrice" />
+        <TextView android:id="@id/status" android:layout_below="@id/price" android:layout_alignParentRight="true" style="@style/AccountDfeListStatus" />
+        <com.google.android.finsky.frameworkviews.PlayActionButtonV2 android:id="@id/refund_button" android:layout_toLeftOf="@id/open_button" android:layout_alignParentBottom="true" android:layout_alignWithParentIfMissing="true" style="@style/AccountRowButton" />
+        <com.google.android.finsky.frameworkviews.PlayActionButtonV2 android:id="@id/open_button" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/AccountRowButton" />
+    </RelativeLayout>
+</com.google.android.finsky.billing.myaccount.layout.OrderHistoryRowView>

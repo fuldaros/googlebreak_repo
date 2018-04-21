@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:maxLevel="0">
+        <shape
+          xmlns:android="http://schemas.android.com/apk/res/android">
+            <stroke android:width="1.0dip" android:color="@color/flat_card_cluster_header_title_text_color" />
+            <corners android:radius="2.0dip" />
+        </shape>
+    </item>
+    <item android:maxLevel="1">
+        <shape
+          xmlns:android="http://schemas.android.com/apk/res/android">
+            <stroke android:width="1.0dip" android:color="@color/flat_card_cluster_header_title_text_color_dark_theme" />
+            <corners android:radius="2.0dip" />
+        </shape>
+    </item>
+    <item android:maxLevel="2">
+        <shape
+          xmlns:android="http://schemas.android.com/apk/res/android">
+            <stroke android:width="1.0dip" android:color="@color/flat_card_cluster_header_title_text_color_black" />
+            <corners android:radius="2.0dip" />
+        </shape>
+    </item>
+</level-list>

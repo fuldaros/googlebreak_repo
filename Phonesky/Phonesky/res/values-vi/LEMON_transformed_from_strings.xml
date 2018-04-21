@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Cửa hàng Google Play</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Yêu cầu phê duyệt</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Kiểm soát của phụ huynh</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Bài đánh giá</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Ứng dụng tức thì</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Cài đặt thành viên</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Ứng dụng mở trong trình duyệt</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Tùy chọn Ứng dụng tức thì</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">CH Play</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Ứng dụng của tôi</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Cài đặt thông báo</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Tùy chọn mua</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Phương thức thanh toán</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Cho phép người dùng xem các ứng dụng có sẵn trong ứng dụng này.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Truy cập Dịch vụ khám phá ứng dụng của Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Cho phép người dùng mua các mục qua Google Play ngay từ ứng dụng này.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Dịch vụ thanh toán trong Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Có thể kiểm tra xem bạn đã có giấy phép cho ứng dụng này từ Google Play hay chưa.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Kiểm tra giấy phép của Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Cho phép người dùng cài đặt ứng dụng P2P đã được xác minh trên Play,</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">API cài đặt ứng dụng ngang hàng (Peer to peer - P2P) Google Play</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Quyền của ứng dụng</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">Giấy phép nguồn mở</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Yêu cầu xác thực</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Đỗi mã của bạn</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Xếp hạng!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Gửi quà tặng</item>
+    <item type="LEMON_transformed_from_string" name="settings">Cài đặt</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Hoàn tất thiết lập tài khoản</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Ứng dụng sẽ được cài đặt sau khi thiết lập hoàn tất</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Xem lại ứng dụng bổ sung</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Sử dụng thanh toán nhanh với sản phẩm của Google</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Thêm phương thức thanh toán</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Thiết lập thông tin thanh toán</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Khôi phục ứng dụng từ thiết bị</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Thiết bị nào?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Chọn phương thức thanh toán cho gia đình</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Chọn số tiền</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Cập nhật phương thức thanh toán</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Xác minh và cài đặt</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Đang quét tìm vấn đề bảo mật…</item>
+</resources>

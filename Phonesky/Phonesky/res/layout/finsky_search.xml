@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.search.FinskySearch android:layout_width="fill_parent" android:layout_height="wrap_content" playcommon:idleBackgroundContentDescription="@string/play_accessibility_search_plate_search_button" playcommon:idleBackgroundSrc="@drawable/ic_searchbox_google"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:playcommon="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/play_search_content" />
+</com.google.android.finsky.search.FinskySearch>

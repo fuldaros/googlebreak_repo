@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Obchod Google Play</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Vyžaduje sa schválenie</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Rodičovská kontrola</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Recenzie</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Okamžitá aplikácia</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Nastavenia členov</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Aplikácie sa otvárajú v prehliadači</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Predvoľby okamžitých aplikácií</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Obchod Play</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Moje aplikácie</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Nastavenia upozornení</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Možnosti nákupu</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Spôsoby platby</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Umožňuje používateľovi zobraziť dostupné aplikácie v rámci tejto aplikácie.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Prístup k službe Google Play App Discovery</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Umožní používateľovi tejto aplikácie nakupovať položky prostredníctvom služby Google Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Fakturačná služba Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Môže skontrolovať, či máte pre túto aplikáciu zo služby Google Play licenciu.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Kontrola licencie v službe Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Umožňuje používateľovi inštalovať aplikácie typu P2P overené službou Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play Peer To Peer App Install API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Povolenia aplikácie</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">Licencie open source</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Požadovať overenie totožnosti</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Uplatnenie kódu</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Ohodnotiť</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Odoslať darček</item>
+    <item type="LEMON_transformed_from_string" name="settings">Nastavenia</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Úplné nastavenie účtu</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Aplikácie sa nainštalujú po dokončení nastavenia</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Vyskúšať ďalšie aplikácie</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Využite rýchle platenie pomocou služieb Google</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Pridať spôsob platby</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Nastavenie platobných údajov</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Obnovenie aplikácií zo zariadenia</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Ktoré zariadenie?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Výber rodinného spôsobu platby</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Výber čiastky</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Aktualizujte spôsob platby</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Overenie a inštalácia</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Hľadajú sa problémy so zabezpečením…</item>
+</resources>

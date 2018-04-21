@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.searchmessage.view.SearchMessageClusterView android:orientation="vertical" android:background="@drawable/play_highlight_overlay_light" android:paddingBottom="@dimen/search_message_extra_bottom_padding" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textColor="@color/play_fg_secondary" android:id="@id/search_message_text_view" android:paddingLeft="@dimen/search_message_horizontal_padding" android:paddingRight="@dimen/search_message_horizontal_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</com.google.android.finsky.stream.controllers.searchmessage.view.SearchMessageClusterView>

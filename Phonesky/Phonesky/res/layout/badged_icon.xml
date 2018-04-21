@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="@dimen/icon_wrapper_size" android:layout_height="@dimen/icon_wrapper_size"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:id="@id/icon_view" android:layout_width="@dimen/icon_size" android:layout_height="@dimen/icon_size" android:src="@drawable/unknown_icon" />
+    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/bolt_view" android:layout_width="@dimen/bolt_size" android:layout_height="@dimen/bolt_size" android:src="@drawable/ic_lightning_badge" />
+</FrameLayout>

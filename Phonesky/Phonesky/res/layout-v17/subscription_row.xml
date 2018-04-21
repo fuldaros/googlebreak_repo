@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.billing.myaccount.layout.SubscriptionRowView android:id="@id/subscription_row" style="@style/AccountListPageRow"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.google.android.play.layout.PlayCardThumbnail android:id="@id/li_thumbnail_frame" finsky:app_thumbnail_padding="0.0dip" style="@style/AccountThumbnail">
+            <include android:id="@id/li_thumbnail" layout="@layout/play_card_thumbnail_view" />
+        </com.google.android.play.layout.PlayCardThumbnail>
+        <TextView android:id="@id/title" android:layout_toLeftOf="@id/price" android:layout_toRightOf="@id/li_thumbnail_frame" android:layout_alignBaseline="@id/price" android:layout_alignWithParentIfMissing="true" android:layout_toStartOf="@id/price" android:layout_toEndOf="@id/li_thumbnail_frame" style="@style/AccountDfeListTitle" />
+        <TextView android:id="@id/subscription_details" android:layout_toLeftOf="@id/status" android:layout_toRightOf="@id/li_thumbnail_frame" android:layout_below="@id/price" android:layout_alignWithParentIfMissing="true" android:layout_toStartOf="@id/status" android:layout_toEndOf="@id/li_thumbnail_frame" style="@style/AccountDfeListSubtitle" />
+        <com.google.android.play.image.FifeImageView android:id="@id/title_byline_icon" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="0.0dip" android:layout_marginRight="2.0dip" android:layout_toRightOf="@id/li_thumbnail_frame" android:layout_below="@id/subscription_details" android:layout_marginStart="0.0dip" android:layout_marginEnd="2.0dip" android:layout_toEndOf="@id/li_thumbnail_frame" />
+        <TextView android:id="@id/price" android:layout_alignParentRight="true" android:layout_alignParentEnd="true" style="@style/AccountDfeListPrice" />
+        <TextView android:id="@id/status" android:layout_below="@id/price" android:layout_alignParentRight="true" android:layout_alignParentEnd="true" style="@style/AccountDfeListStatus" />
+        <com.google.android.finsky.billing.common.LoggingActionButton android:id="@id/primary_button" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:layout_alignParentEnd="true" style="@style/AccountRowButton" />
+        <com.google.android.finsky.billing.common.LoggingActionButton android:id="@id/secondary_button" android:layout_toLeftOf="@id/primary_button" android:layout_alignParentBottom="true" android:layout_alignWithParentIfMissing="true" android:layout_toStartOf="@id/primary_button" style="@style/AccountRowButton" />
+    </RelativeLayout>
+</com.google.android.finsky.billing.myaccount.layout.SubscriptionRowView>

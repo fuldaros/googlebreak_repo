@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.google.android.play.layout.PlayTextView android:gravity="center_horizontal" android:id="@id/li_ranking" android:visibility="gone" android:layout_width="@dimen/flat_ranking_width" android:layout_height="fill_parent" style="@style/FlatRanking" />
+    <com.google.android.play.layout.PlayCardLabelView android:id="@id/li_label" android:layout_marginLeft="0.0dip" android:layout_marginRight="@dimen/flat_listing_inner_margin" style="@style/PlayCardLabel" />
+    <TextView android:id="@id/li_alternate_format" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="@dimen/flat_listing_inner_margin" style="@style/FlatCardSubtitle.Listing" />
+    <TextView android:id="@id/li_ad_label_v2" android:visibility="gone" android:layout_marginLeft="0.0dip" android:layout_marginRight="6.0dip" style="@style/PlayAdLabelV2" />
+    <com.google.android.play.layout.PlayTextView android:id="@id/li_ad_creative" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" style="@style/FlatCardSubtitle.Listing.AdCreative" />
+    <com.google.android.finsky.frameworkviews.DecoratedTextView android:id="@id/li_subtitle_2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/FlatCardSubtitle.Listing" />
+    <TextView android:id="@id/li_format" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/FlatCardSubtitle.Listing.Format" />
+    <com.google.android.finsky.frameworkviews.FlexBoxBulletSeparatorFlowLayout android:id="@id/details_section" android:layout_width="wrap_content" android:layout_height="wrap_content" finsky:separator_bullet_size="3.0dip" finsky:separator_gap_size="11.0dip">
+        <TextView android:id="@id/li_app_download_size" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/FlatCardSubtitle.Listing" />
+        <include layout="@layout/flat_card_rating_badge" />
+    </com.google.android.finsky.frameworkviews.FlexBoxBulletSeparatorFlowLayout>
+    <include android:id="@id/li_snippet_2" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/flat_card_snippet" />
+</merge>

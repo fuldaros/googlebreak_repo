@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.playcardview.editorial.PlayCardEditorialKeyPointView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/jpkr_editorial_details_keypoint_index_text_size" android:textColor="@color/play_white" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/key_point_index" android:background="@drawable/key_point_index_background" android:layout_width="@dimen/jpkr_editorial_details_keypoint_index_size" android:layout_height="@dimen/jpkr_editorial_details_keypoint_index_size" android:layout_marginLeft="0.0dip" android:layout_marginRight="4.0dip" />
+    <com.google.android.play.layout.PlayTextView android:id="@id/key_point_content" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/PlayDetailDescription" />
+</com.google.android.finsky.playcardview.editorial.PlayCardEditorialKeyPointView>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.familycommon.FamilyEducationCard android:orientation="vertical" android:id="@id/family_education_card" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" finsky:playCardBackgroundColor="@color/play_apps_secondary" finsky:playCardCornerRadius="2.0dip" finsky:playCardElevation="@dimen/play_card_default_elevation"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <TextView android:textColor="@color/play_white" android:id="@id/card_title" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/play_edu_main_content_padding" style="@style/PlayEduCardTitle" />
+    <TextView android:textColor="@color/play_white" android:textColorLink="@color/play_white" android:id="@id/card_text" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/PlayEduCardDescription" />
+    <LinearLayout android:gravity="end" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip">
+        <com.google.android.finsky.frameworkviews.AccessibleTextView android:id="@id/secondary_button" android:background="@drawable/play_highlight_overlay_light" android:visibility="gone" style="@style/FamilyEducationCardAction" />
+        <com.google.android.finsky.frameworkviews.AccessibleTextView android:id="@id/primary_button" android:background="@drawable/family_share_education_card_got_it_background" android:text="@string/got_it_button" style="@style/FamilyEducationCardAction" />
+    </LinearLayout>
+</com.google.android.finsky.familycommon.FamilyEducationCard>

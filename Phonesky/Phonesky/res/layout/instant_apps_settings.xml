@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/instant_apps_settings_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="?android:dividerHorizontal"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.v7.widget.Toolbar android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" android:id="@id/instant_apps_settings_toolbar" android:background="@color/instant_apps_settings_v3_action_bar_color" android:layout_width="fill_parent" android:layout_height="?actionBarSize" app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <FrameLayout android:id="@id/settings_fragment" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

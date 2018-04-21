@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.libraries.play.entertainment.story.BackgroundPanelView android:id="@id/background_panel" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:paddingTop="@dimen/box_large_padding" android:paddingBottom="@dimen/box_vertical_margin" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/PETextContainer">
+        <TextView android:id="@id/panel_title" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/PEPanelTitleText" />
+        <FrameLayout android:id="@id/image_frame" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/box_large_padding" style="@style/PEImageFrame">
+            <com.google.android.libraries.play.entertainment.bitmap.PEImageView android:id="@id/image_media" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/PEImageMedia" />
+            <com.caverock.androidsvg.SVGImageView android:id="@id/playback_button" android:layout_width="@dimen/pe_play_icon_panel_size" android:layout_height="@dimen/pe_play_icon_panel_size" android:contentDescription="@string/pe__content_description_play" app:svg="@raw/ic_play" style="@style/PEPlaybackButton" />
+        </FrameLayout>
+        <TextView android:gravity="start" android:id="@id/trailer_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/box_small_padding" style="@style/PETitleText.Panel" />
+    </LinearLayout>
+</com.google.android.libraries.play.entertainment.story.BackgroundPanelView>

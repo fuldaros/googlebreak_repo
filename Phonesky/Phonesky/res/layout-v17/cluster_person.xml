@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="?selectableItemBackground" android:paddingLeft="@dimen/box_small_padding" android:paddingTop="@dimen/box_large_padding" android:paddingRight="@dimen/box_small_padding" android:paddingBottom="@dimen/box_large_padding" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/box_small_padding" android:paddingEnd="@dimen/box_small_padding"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.libraries.play.entertainment.bitmap.PEImageView android:id="@id/image_person" android:layout_width="@dimen/pe__cluster_item_height_cast" android:layout_height="@dimen/pe__cluster_item_height_cast" android:scaleType="fitCenter" app:fadesInImage="true" app:hidesBackgroundWhenBound="true" />
+    <TextView android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/person_name" android:layout_width="@dimen/pe__cluster_item_height_cast" android:layout_height="wrap_content" android:layout_marginTop="@dimen/box_small_padding" android:lines="3" style="@style/PEText.ClusterItemLabel" />
+</LinearLayout>

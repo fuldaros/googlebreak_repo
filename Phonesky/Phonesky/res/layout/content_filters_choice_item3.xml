@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.contentfilterui.ContentFilterChoiceItemView android:orientation="horizontal" android:background="@color/play_main_background" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/play_highlight_overlay_light" android:minHeight="48.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/connector_holder" android:layout_width="48.0dip" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <View android:id="@id/top_connector" android:background="@color/content_filter_v3_primary_color" android:layout_width="2.0dip" android:layout_height="0.0dip" android:layout_marginLeft="23.0dip" android:layout_marginRight="0.0dip" android:layout_marginBottom="10.0dip" android:layout_weight="1.0" />
+            <View android:id="@id/bottom_connector" android:background="@color/content_filter_v3_primary_color" android:layout_width="2.0dip" android:layout_height="0.0dip" android:layout_marginLeft="23.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="0.0dip" android:layout_weight="1.0" />
+        </LinearLayout>
+        <View android:layout_gravity="center" android:id="@id/connector_dot" android:background="@drawable/content_filter_selected_indicator" android:layout_width="20.0dip" android:layout_height="20.0dip" />
+        <ImageView android:layout_gravity="center" android:id="@id/selection_indicator" android:layout_width="@dimen/content_filter_selection_indicator_size" android:layout_height="@dimen/content_filter_selection_indicator_size" />
+    </FrameLayout>
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="16.0dip" android:layout_weight="1.0">
+        <TextView android:textAppearance="?android:textAppearanceMedium" android:id="@id/choice_label" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:id="@id/choice_label_summary" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <com.google.android.play.image.FifeImageView android:layout_gravity="center_vertical" android:id="@id/choice_icon" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="0.0dip" android:layout_marginRight="24.0dip" />
+    <CheckBox android:layout_gravity="center_vertical" android:id="@id/choice_checkbox" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="19.0dip" android:layout_marginLeft="0.0dip" android:layout_marginRight="8.0dip" />
+</com.google.android.finsky.contentfilterui.ContentFilterChoiceItemView>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="should_center_floating_highlights_banner_content_for_single_banner">true</bool>
+    <bool name="use_larger_banner_height">true</bool>
+</resources>

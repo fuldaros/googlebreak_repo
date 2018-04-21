@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.playcardview.base.FlatCardSnippet android:paddingTop="4.0dip" android:paddingBottom="4.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:playcommon="http://schemas.android.com/apk/res-auto">
+    <include android:id="@id/li_snippet_avatar" android:layout_width="@dimen/play_card_snippet_avatar_size" android:layout_height="@dimen/play_card_snippet_avatar_size" android:layout_marginLeft="0.0dip" android:layout_marginRight="4.0dip" layout="@layout/play_card_snippet_avatar" />
+    <com.google.android.play.layout.PlayTextView android:textColor="@color/play_secondary_text" android:ellipsize="marquee" android:id="@id/li_snippet_text" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:singleLine="false" playcommon:allowsCompactLineSpacing="true" style="@style/PlayCardSnippet" />
+</com.google.android.finsky.playcardview.base.FlatCardSnippet>

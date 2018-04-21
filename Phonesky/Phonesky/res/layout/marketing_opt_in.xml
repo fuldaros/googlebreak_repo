@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.frameworkviews.MaxWidthLinearLayout style="@style/EmailMarketingOptInModalDialog"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <TextView android:id="@id/opt_in_title" style="@style/EmailMarketingOptInModalDialogTitle" />
+    <ScrollView android:id="@id/layout_scroll_view_main" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:id="@id/layout_linear_main" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:id="@id/layout_text_icon" android:paddingTop="@dimen/opt_in_text_padding_top" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:id="@id/opt_in_text" style="@style/EmailMarketingOptInModalDialogText" />
+                <com.caverock.androidsvg.SVGImageView android:id="@id/artboard" android:contentDescription="@null" finsky:svg="@raw/ic_open_envelope" style="@style/EmailMarketingIcon" />
+            </LinearLayout>
+            <RadioGroup android:id="@id/opt_in_selection" style="@style/EmailMarketingRadioGroup">
+                <android.support.v7.widget.AppCompatRadioButton android:id="@id/radio_button_yes" android:text="@string/yes" finsky:buttonTint="@drawable/marketing_optin_radio_color" style="@style/EmailMarketingRadioButton" />
+                <android.support.v7.widget.AppCompatRadioButton android:id="@id/radio_button_no" android:layout_marginTop="@dimen/opt_in_radio_group_vertical_spacing" android:text="@string/no_thanks" finsky:buttonTint="@drawable/marketing_optin_radio_color" style="@style/EmailMarketingRadioButton" />
+            </RadioGroup>
+        </LinearLayout>
+    </ScrollView>
+    <include layout="@layout/optin_button_bar" />
+</com.google.android.finsky.frameworkviews.MaxWidthLinearLayout>

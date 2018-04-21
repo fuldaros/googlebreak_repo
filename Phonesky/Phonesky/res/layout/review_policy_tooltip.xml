@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.playcard.Tooltip android:id="@id/tooltip" android:paddingLeft="@dimen/tooltip_padding_horizontal" android:paddingRight="@dimen/tooltip_padding_horizontal" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/review_policy_tooltip_description" finsky:duration="@integer/tooltip_duration" finsky:playCardBackgroundColor="@color/play_secondary_light" finsky:playCardBubbleGravity="end" finsky:playCardBubbleOffset="0.0dip" finsky:playCardBubbleSize="@dimen/tooltip_bubble_size" finsky:playCardClipToOutline="false" finsky:playCardCornerRadius="@dimen/play_card_default_radius" finsky:playCardElevation="@dimen/tooltip_elevation" finsky:playCardInset="@dimen/play_card_default_inset"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <TextView android:textColor="@color/play_white" android:layout_gravity="center_vertical" android:id="@id/tooltip_text" android:paddingTop="@dimen/tooltip_padding_vertical" android:paddingBottom="@dimen/tooltip_padding_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <include layout="@layout/tooltip_close_button" />
+</com.google.android.finsky.playcard.Tooltip>

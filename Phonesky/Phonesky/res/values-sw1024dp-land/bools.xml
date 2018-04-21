@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="floating_highlight_banner_use_50_50_width_for_two_banner">true</bool>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="cond_perm_action">
+        <item quantity="other">Solicitar permissões em falta</item>
+    </plurals>
+    <plurals name="cond_perm_summary">
+        <item quantity="other">Falta uma ou mais permissões para a funcionalidade adequada do MicroG Service Core.</item>
+    </plurals>
+    <plurals name="gcm_registered_apps_counter">
+        <item quantity="other">%1$d registered Apps</item>
+    </plurals>
+</resources>

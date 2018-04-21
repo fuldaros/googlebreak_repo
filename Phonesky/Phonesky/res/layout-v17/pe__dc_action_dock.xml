@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:theme="@style/Theme.AppCompat.Light" android:orientation="vertical" android:id="@id/dc_action_dock" android:background="@android:color/white" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/pe_dc_action_dock_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/pe__dc_dock_divider_color" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="1.0">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/dc_action_wishlist" android:background="?selectableItemBackground" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:baselineAligned="false" android:layout_weight="0.5">
+            <View android:id="@id/dc_action_wishlist_icon" android:layout_width="@dimen/pe__dc_action_icon_size" android:layout_height="@dimen/pe__dc_action_icon_size" android:importantForAccessibility="no" />
+            <TextView android:id="@id/dc_action_wishlist_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/pe__wishlist" android:importantForAccessibility="no" android:layout_marginStart="4.0dip" style="@style/PEText.CallToAction" />
+        </LinearLayout>
+        <View android:id="@id/center" android:background="@color/pe__dc_dock_divider_color" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+        <TextView android:gravity="center" android:orientation="horizontal" android:id="@id/dc_primary_action" android:background="?selectableItemBackground" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:baselineAligned="false" android:layout_weight="0.5" style="@style/PEText.CallToAction" />
+    </LinearLayout>
+</LinearLayout>

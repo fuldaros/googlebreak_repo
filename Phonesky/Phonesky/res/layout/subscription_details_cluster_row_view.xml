@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.subscriptiondetails.view.SubscriptionDetailsClusterRowView android:orientation="vertical" style="@style/SubscriptionClusterRow"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/subscription_secondary_title_text_size" android:textColor="@color/subscription_light_text" android:id="@id/title" android:layout_marginBottom="2.0dip" style="@style/SubscriptionText" />
+    <TextView android:textSize="@dimen/subscription_text_size" android:textColor="@color/subscription_dark_text" android:id="@id/message" style="@style/SubscriptionText" />
+    <TextView android:id="@id/error_message" style="@style/SubscriptionAlertText" />
+    <com.google.android.finsky.billing.common.LoggingActionButton android:id="@id/call_to_action" style="@style/SubscriptionButton" />
+</com.google.android.finsky.stream.controllers.subscriptiondetails.view.SubscriptionDetailsClusterRowView>

@@ -1,0 +1,26 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: GmsCore.apk
+compressionType: false
+doNotCompress:
+- arsc
+- so
+isFrameworkApk: false
+packageInfo:
+  forcedPackageId: '127'
+  renameManifestPackage: null
+sdkInfo:
+  minSdkVersion: '9'
+  targetSdkVersion: '27'
+sharedLibrary: false
+sparseResources: false
+unknownFiles:
+  org/oscim/tiling/source/mapnik/carto.xml: '8'
+  org/oscim/tiling/source/oscimap2/TileData.proto: '8'
+usesFramework:
+  ids:
+  - 1
+  tag: null
+version: 2.3.2
+versionInfo:
+  versionCode: '99999999'
+  versionName: 0.2.4-111-gf1cdb48

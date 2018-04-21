@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="abc_config_activityDefaultDur">220</integer>
+    <integer name="abc_config_activityShortDur">150</integer>
+    <integer name="angle_rtl_180">0</integer>
+    <integer name="app_bar_elevation_anim_duration">150</integer>
+    <integer name="bottom_sheet_slide_duration">150</integer>
+    <integer name="config_tooltipAnimTime">150</integer>
+    <integer name="design_snackbar_text_max_lines">2</integer>
+    <integer name="design_tab_indicator_anim_duration_ms">300</integer>
+    <integer name="details_extra_primary_items_per_row">1</integer>
+    <integer name="details_extra_secondary_items_per_row">2</integer>
+    <integer name="details_extra_secondary_items_per_row_d30">1</integer>
+    <integer name="details_text_collapsed_lines">4</integer>
+    <integer name="editorial_bucket_columns">1</integer>
+    <integer name="flat_grid_column_count">3</integer>
+    <item type="integer" name="flat_grid_column_count_in_details">@integer/flat_grid_column_count</item>
+    <integer name="flat_grid_less_dense_column_count">3</integer>
+    <integer name="flat_grid_pack_cluster_row_count">2</integer>
+    <integer name="flat_leading_gap_cluster_leading_item_gap">2</integer>
+    <integer name="flat_merch_banner_title_text_max_lines">4</integer>
+    <integer name="google_play_services_version">11910000</integer>
+    <integer name="inline_details_weight_fill_remaining_space">1</integer>
+    <integer name="instant_apps_launch_button_tooltip_render_delay_ms">600</integer>
+    <integer name="instrument_title_max_rows">3</integer>
+    <integer name="jpkr_flat_deals_and_promos_banner_per_row_default">2</integer>
+    <integer name="jpkr_flat_deals_and_promos_peek_percent_default">17</integer>
+    <integer name="jpkr_highlights_banner_peek_percent">10</integer>
+    <integer name="jpkr_highlights_banner_per_row">2</integer>
+    <integer name="jpkr_mini_top_charts_tooltip_visible_time">7000</integer>
+    <integer name="layout_slide_in_animation_duration_ms">300</integer>
+    <integer name="max_review_length">512</integer>
+    <integer name="music_merch_banner_title_text_max_lines">4</integer>
+    <integer name="mw_play_featured_grid_width">2</integer>
+    <integer name="num_of_grid_pack_clusters_per_row">1</integer>
+    <integer name="pe__card_height_ratio">3</integer>
+    <integer name="pe__card_height_ratio_v2">2</integer>
+    <integer name="pe__card_width_ratio">4</integer>
+    <integer name="pe__card_width_ratio_v2">3</integer>
+    <integer name="placeholder_max_column_count">7</integer>
+    <integer name="reenter_fullscreen_delay_time_in_millis">5000</integer>
+    <integer name="related_items_per_row">3</integer>
+    <integer name="sample_reviews_max_rows">3</integer>
+    <integer name="sample_reviews_max_rows_v2">3</integer>
+    <integer name="sample_reviews_per_row">1</integer>
+    <integer name="sample_reviews_per_row_v2">1</integer>
+    <integer name="snippets_max_rows">6</integer>
+    <integer name="snippets_per_row">1</integer>
+    <integer name="suwTransitionDuration">300</integer>
+    <integer name="tooltip_duration">7000</integer>
+    <integer name="vertical_cluster_max_rows">7</integer>
+    <integer name="warm_welcome_card_columns">1</integer>
+    <item type="integer" name="APKTOOL_DUMMY_5">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_6">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_7">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_17">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_1b">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_23">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_24">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_25">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_26">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_27">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_2a">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_31">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_32">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_33">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_34">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_35">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_36">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_37">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_38">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_39">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_3a">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_41">false</item>
+    <item type="integer" name="APKTOOL_DUMMY_44">false</item>
+</resources>

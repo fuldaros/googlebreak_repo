@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="cond_perm_action">
+        <item quantity="other">Brakuje wymaganych uprawnień</item>
+        <item quantity="one">Brakuje wymaganego uprawnienia</item>
+        <item quantity="few">Brakuje wymaganych uprawnień</item>
+        <item quantity="many">Brakuje wymaganych uprawnień</item>
+    </plurals>
+    <plurals name="cond_perm_summary">
+        <item quantity="other">Nie udzielono uprawnień wymaganych do prawidłowego działania usługi microG.</item>
+        <item quantity="one">Nie udzielono uprawnienia wymaganego do prawidłowego działania usługi microG.</item>
+        <item quantity="few">Nie udzielono uprawnień wymaganych do prawidłowego działania usługi microG.</item>
+        <item quantity="many">Nie udzielono uprawnień wymaganych do prawidłowego działania usługi microG.</item>
+    </plurals>
+    <plurals name="gcm_registered_apps_counter">
+        <item quantity="other">%1$d zarejestrowanych aplikacji</item>
+        <item quantity="one">%1$d zarejestrowana aplikacja</item>
+        <item quantity="few">%1$d zarejestrowane aplikacje</item>
+        <item quantity="many">%1$d zarejestrowanych aplikacji</item>
+    </plurals>
+    <plurals name="pref_unifiednlp_summary">
+        <item quantity="other">%1$d usług skonfigurowanych</item>
+        <item quantity="one">%1$d usługa skonfigurowana</item>
+        <item quantity="few">%1$d usługi skonfigurowane</item>
+        <item quantity="many">%1$d usług skonfigurowanych</item>
+    </plurals>
+</resources>

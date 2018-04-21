@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.billing.myaccount.layout.AccountSeparatorRowView android:orientation="vertical" android:minHeight="48.0dip" style="@style/AccountRow"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center" android:layout_gravity="center" android:id="@android:id/title" android:padding="8.0dip" android:textAllCaps="true" style="@style/AccountPaymentMethodsActionTitle" />
+</com.google.android.finsky.billing.myaccount.layout.AccountSeparatorRowView>

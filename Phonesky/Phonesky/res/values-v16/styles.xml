@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="D30DecideBarSubTitleText">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/play_secondary_text</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:lineSpacingExtra">4.0sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="D30DecideBarTitleText">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/play_primary_text</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:height">@dimen/d30_decidebar_badge_title_height</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="D30ModuleBodyText">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/play_secondary_text</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:lineSpacingExtra">6.0sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="D30ModuleSecondaryBodyText">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/play_primary_text</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="D30ModuleSecondaryTitle">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/play_secondary_text</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="D30ModuleSubtitle">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/play_secondary_text</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="D30ModuleTextButton">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:background">@drawable/focus_overlay</item>
+        <item name="android:paddingTop">10.0dip</item>
+        <item name="android:paddingBottom">10.0dip</item>
+        <item name="android:focusable">true</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">6.0dip</item>
+        <item name="android:layout_marginBottom">6.0dip</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="D30ModuleTitle">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/play_primary_text</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="EmailMarketingOptInModalDialogTitle">
+        <item name="android:textSize">@dimen/content_entry_large_size</item>
+        <item name="android:textColor">@color/play_fg_primary</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:lineSpacingExtra">4.0sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="FlatCardSubtitle.Listing.AdCreative" parent="@style/FlatCardSubtitle.Listing">
+        <item name="android:textStyle">italic</item>
+        <item name="android:layout_marginTop">4.0dip</item>
+        <item name="android:layout_marginBottom">4.0dip</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+    <style name="FlatClusterSubtitle">
+        <item name="android:textSize">@dimen/flat_cluster_header_subtitle_size</item>
+        <item name="android:textColor">@color/flat_card_cluster_header_title_text_color</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="FlatMediumText">
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="GiftEmailTitleText">
+        <item name="android:textSize">@dimen/play_purchase_title_size</item>
+        <item name="android:textColor">@color/play_white</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="GuidedDiscoveryPillTitle" parent="@style/PlayCardAction">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">@dimen/guided_discovery_pill_title_xpadding</item>
+        <item name="android:paddingTop">@dimen/guided_discovery_pill_title_vpadding</item>
+        <item name="android:paddingRight">@dimen/guided_discovery_pill_title_xpadding</item>
+        <item name="android:paddingBottom">@dimen/guided_discovery_pill_title_vpadding</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="InlineDetails_Subtitle" parent="@style/PlayPlainText">
+        <item name="android:textSize">@dimen/inline_details_subtitle_size</item>
+        <item name="android:textColor">@color/inline_details_subtitle_default_color</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="LiveReengagementTitle">
+        <item name="android:textSize">@dimen/live_reengagement_card_title_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/play_fg_secondary</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:paddingTop">@dimen/live_reengagement_title_padding_top</item>
+        <item name="android:paddingBottom">@dimen/live_reengagement_title_padding_bottom</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineSpacingExtra">0.0sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="allowsCompactLineSpacing">true</item>
+    </style>
+    <style name="PECardText">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textColor">@color/play_white</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">start|center</item>
+        <item name="android:layout_marginLeft">16.0dip</item>
+        <item name="android:layout_marginRight">16.0dip</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="PECardText.CallToAction" parent="@style/PECardText">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="PECardText.Source" parent="@style/PECardText">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textColor">@color/material_grey_300</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="PEPanelTitleText">
+        <item name="android:textSize">@dimen/pe_medium_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">@dimen/default_half_padding</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="PEText">
+        <item name="android:textSize">@dimen/pe_medium_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:textColorLink">?android:textColorSecondary</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="PETitleText">
+        <item name="android:textSize">@dimen/pe_large_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+    <style name="PETrackListItem">
+        <item name="android:textSize">@dimen/pe_medium_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="PlayCondensedText">
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+    <style name="PlayGridBoldText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="PlayLightText">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+    <style name="PlayPlainText">
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="Play_DetailDescriptionV2">
+        <item name="android:textSize">@dimen/play_description_size_v2</item>
+        <item name="android:textColor">@color/play_fg_secondary</item>
+        <item name="android:gravity">start</item>
+        <item name="android:lineSpacingExtra">4.0sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="Play_DetailsPage_SubtitleD30" parent="@style/PlayPlainText">
+        <item name="android:textSize">@dimen/play_details_subtitle_size_d30</item>
+        <item name="android:textColor">@color/d30_details_subtitle_default_color</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="PreregRewardsMediumText" parent="@style/PreregRewardsRegularText">
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="PreregRewardsRegularText">
+        <item name="android:textSize">@dimen/prereg_milestone_rewards_text_size</item>
+        <item name="android:textColor">@color/play_primary_text</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="RetailModeButton" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:textSize">@dimen/retail_mode_body_text_size</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/retail_mode_button</item>
+        <item name="android:layout_marginBottom">@dimen/retail_mode_button_bottom_margin</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">google-sans-medium</item>
+    </style>
+    <style name="RetailModeText">
+        <item name="android:textSize">@dimen/retail_mode_body_text_size</item>
+        <item name="android:textColor">#ff616161</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:lineSpacingMultiplier">@dimen/retail_mode_text_line_spacing</item>
+        <item name="android:fontFamily">google-sans</item>
+    </style>
+    <style name="RetailModeTitleText">
+        <item name="android:textSize">@dimen/retail_mode_title_text_size</item>
+        <item name="android:textColor">#ff212121</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginBottom">@dimen/retail_mode_title_bottom_margin</item>
+        <item name="android:lineSpacingMultiplier">@dimen/retail_mode_title_line_spacing</item>
+        <item name="android:fontFamily">google-sans-medium</item>
+    </style>
+    <style name="SetupWizardNavbarButton" parent="@android:style/Widget.Material.Button.Borderless">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textColor">?setup_wizard_navbar_text_color</item>
+        <item name="android:background">@drawable/setup_wizard_navbar_btn_bg</item>
+        <item name="android:paddingLeft">10.0dip</item>
+        <item name="android:paddingRight">10.0dip</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:minWidth">0.0dip</item>
+        <item name="android:drawablePadding">6.0dip</item>
+        <item name="android:layout_weight">0.0</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="SetupWizardUIControlsPrimaryItem" parent="@style/SetupWizardPlainText">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:alpha">0.87</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="SetupWizardUIControlsSecondaryItem" parent="@style/SetupWizardPlainText">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:alpha">0.54</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="SubscriptionCancelSurveyText">
+        <item name="android:textSize">@dimen/content_generic_medium_size</item>
+        <item name="android:textColor">@color/subscription_light_text</item>
+        <item name="android:fontFamily">sans-serif-regular</item>
+    </style>
+    <style name="SubscriptionCancelSurveyTitle">
+        <item name="android:textSize">@dimen/play_details_title_size_d30</item>
+        <item name="android:textColor">@color/subscription_dark_text</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="SubscriptionsCenterEmptyTitle">
+        <item name="android:textSize">@dimen/content_generic_medium_size</item>
+        <item name="android:textColor">@color/play_fg_secondary</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="SuwGlifHeaderTitle" parent="@style/SuwBaseHeaderTitle">
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:gravity">?suwGlifHeaderGravity</item>
+        <item name="android:layout_marginLeft">?suwMarginSides</item>
+        <item name="android:layout_marginTop">@dimen/suw_glif_header_title_margin_top</item>
+        <item name="android:layout_marginRight">?suwMarginSides</item>
+        <item name="android:layout_marginBottom">@dimen/suw_glif_header_title_margin_bottom</item>
+        <item name="android:fontFamily">@string/suwFontSecondary</item>
+    </style>
+    <style name="SuwNavBarButtonStyle" parent="@android:style/Widget.Button">
+        <item name="android:textSize">@dimen/suw_navbar_text_size</item>
+        <item name="android:textColor">?suwNavBarTextColor</item>
+        <item name="android:background">?suwNavBarButtonBackground</item>
+        <item name="android:paddingLeft">@dimen/suw_navbar_button_padding_sides</item>
+        <item name="android:paddingRight">@dimen/suw_navbar_button_padding_sides</item>
+        <item name="android:minWidth">0.0dip</item>
+        <item name="android:drawablePadding">@dimen/suw_navbar_button_drawable_padding</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="TestingProgramButton">
+        <item name="android:textSize">@dimen/testing_program_button_text_size</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">@dimen/testing_program_button_side_padding</item>
+        <item name="android:paddingRight">@dimen/testing_program_button_side_padding</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/testing_program_button_height</item>
+        <item name="android:minWidth">@dimen/testing_program_button_min_width</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="TestingProgramDescription">
+        <item name="android:textSize">@dimen/testing_program_description_text_size</item>
+        <item name="android:textColor">@color/play_fg_secondary</item>
+        <item name="android:layout_marginLeft">@dimen/testing_program_side_margin</item>
+        <item name="android:layout_marginRight">@dimen/testing_program_side_margin</item>
+        <item name="android:layout_marginBottom">@dimen/testing_program_bottom_margin</item>
+        <item name="android:lineSpacingExtra">8.0sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="TestingProgramTitle">
+        <item name="android:textSize">@dimen/testing_program_title_text_size</item>
+        <item name="android:textColor">@color/play_fg_primary</item>
+        <item name="android:layout_marginLeft">@dimen/testing_program_side_margin</item>
+        <item name="android:layout_marginRight">@dimen/testing_program_side_margin</item>
+        <item name="android:layout_marginBottom">@dimen/testing_program_bottom_margin</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="TextAppearance.AppCompat.Tooltip" parent="@style/TextAppearance.AppCompat">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="Theme.QuickInstallProgress.AppNameText" parent="@android:style/TextAppearance.Material.Subhead">
+        <item name="android:textSize">18.0sp</item>
+        <item name="android:textColor">#ff333333</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="UicFlatButton_TextLink" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:textSize">@dimen/wallet_uic_font_material_body</item>
+        <item name="android:background">@drawable/wallet_uic_link_button_background</item>
+        <item name="android:paddingLeft">?internalUicNonFormFieldTextStartMargin</item>
+        <item name="android:paddingRight">?internalUicNonFormFieldTextStartMargin</item>
+        <item name="android:minWidth">0.0dip</item>
+        <item name="android:minHeight">0.0dip</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="WarmWelcomeV3CardButton">
+        <item name="android:textSize">@dimen/warm_welcome_v3_button_text_size</item>
+        <item name="android:textColor">@color/play_primary_text_v2</item>
+        <item name="android:background">@color/play_transparent</item>
+        <item name="android:padding">8.0dip</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:foreground">@drawable/play_highlight_round_overlay_light</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="WarmWelcomeV3CardTitle">
+        <item name="android:textSize">@dimen/warm_welcome_v3_title_size</item>
+        <item name="android:textColor">@color/play_secondary_text</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="PlayDrawerDownloadToggle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:textOn">" "</item>
+        <item name="android:textOff">" "</item>
+        <item name="android:switchMinWidth">56.0dip</item>
+    </style>
+</resources>

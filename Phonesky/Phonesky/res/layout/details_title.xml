@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailsmodules.modules.title.view.DetailsTitleView android:id="@id/title_title" android:layout_width="fill_parent" android:layout_height="wrap_content" finsky:allowsCompactLineSpacing="true" style="@style/PlayDetailTitle"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto" />

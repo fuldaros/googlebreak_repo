@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="editors_choice_v2_card_banner_height">84.0dip</dimen>
+    <dimen name="editors_choice_v2_card_banner_width">149.0dip</dimen>
+    <dimen name="editors_choice_v2_card_horizontal_padding">24.0dip</dimen>
+    <dimen name="editors_choice_v2_card_icon_margin_right">8.0dip</dimen>
+    <dimen name="editors_choice_v2_card_icon_size">36.0dip</dimen>
+    <dimen name="editors_choice_v2_card_vertical_padding">16.0dip</dimen>
+    <dimen name="jpkr_editorial_details_screenshot_max_height">280.0dip</dimen>
+    <dimen name="jpkr_editorial_details_thumbnail_right_margin">24.0dip</dimen>
+    <dimen name="jpkr_editorial_page_header_title">22.0sp</dimen>
+</resources>

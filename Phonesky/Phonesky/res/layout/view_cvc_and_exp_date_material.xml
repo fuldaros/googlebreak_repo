@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="?uicFormVerticalMargin" android:layout_marginBottom="?uicFormVerticalMargin" android:baselineAligned="false" android:layerType="hardware"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:im="http://schemas.android.com/apk/res-auto">
+    <com.google.android.wallet.ui.common.MaterialFieldLayout android:id="@id/exp_date_layout" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="?internalUicMaterialFieldLayoutStyle">
+        <com.google.android.wallet.ui.common.DateEditText android:ellipsize="end" android:id="@id/exp_date" android:nextFocusDown="@id/cvc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="?uicFormItemHeight" android:singleLine="true" style="?uicFormInputTextAppearance" />
+    </com.google.android.wallet.ui.common.MaterialFieldLayout>
+    <RelativeLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/wallet_uic_horizontal_margin_between_fields_with_padding" android:layout_weight="1.0">
+        <com.google.android.wallet.ui.common.MaterialFieldLayout android:id="@id/cvc_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" style="?internalUicMaterialFieldLayoutStyle">
+            <com.google.android.wallet.ui.common.FormEditText android:id="@id/cvc" android:nextFocusUp="@id/exp_date" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="?uicFormItemHeight" android:hint="@string/wallet_im_cvc" android:ems="4" android:inputType="number" im:internalUicValidateWhenNotVisible="true" im:internalUicValidatorErrorString="@string/wallet_uic_error_cvc_invalid" im:internalUicValidatorType="numeric" style="?uicFormInputTextAppearance" />
+        </com.google.android.wallet.ui.common.MaterialFieldLayout>
+        <ImageView android:id="@id/cvc_hint" android:layout_width="@dimen/wallet_uic_inline_cvc_tooltip_icon_width" android:layout_height="@dimen/wallet_uic_inline_cvc_tooltip_icon_height" android:layout_marginRight="@dimen/wallet_uic_margin_touchable" android:layout_marginBottom="@dimen/wallet_uic_credit_card_icon_bottom_margin" android:src="@drawable/wallet_uic_cvc_hint_default" android:scaleType="fitXY" android:layout_alignRight="@id/cvc_layout" android:layout_alignBottom="@id/cvc_layout" android:contentDescription="@string/wallet_im_cvc_code_popup_content_description" style="@style/UicClickableItem" />
+    </RelativeLayout>
+</LinearLayout>

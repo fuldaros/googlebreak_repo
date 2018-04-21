@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play स्टोर</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">अनुमोदन आवश्यक छ</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">अभिभावकीय नियन्त्रण</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">समीक्षाहरू</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">तात्कालिक अनुप्रयोग</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">सदस्य सम्बन्धी सेटिङहरू</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">ब्राउजरमा खुल्ने अनुप्रयोगहरू</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">तात्कालिक एपसम्बन्धी प्राथमिकताहरू</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play स्टोर</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play संरक्षण</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">मेरा अनुप्रयोगहरू</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">सूचनासम्बन्धी सेटिङहरू</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">खरिद विकल्पहरू</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">भुक्तानी विधिहरू</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">उक्त प्रयोगकर्तालाई यस अनुप्रयोग भित्र उपलब्ध अनुप्रयोगरू हेर्न मिल्छ।</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Google Play एपको खोज सेवामा पहुँच राख्नुहोस्</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">यस अनुप्रयोग बीचमा Google Play मार्फत प्रयोगकर्तालाई यो वस्तुहरू खरिद गर्न अनुमति दिन्छ।</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Google Play बिलिङ सेवा</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Google Play बाट यस अनुप्रयोगको लागि तपाईँसँग लाइसेन्स भएको वा नभएको भन्ने जाँच गर्न सक्दछ।</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Google Play लाइसेन्स जाँच</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">प्रयोगकर्तालाई Play द्वारा पुष्टि गरिएका P2P अनुप्रयोगहरू स्थापना गर्न दिन्छ।</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play को पियर टु पियर अनुप्रयोग स्थापना API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">अनुप्रयोग अनुमतिहरू</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">प्रमाणीकरण आवश्यक पर्छ</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">तपाईँको कोड मुक्त गर्नुहोस्</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">यसको मूल्याङ्कन गर्नुहोस्!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">उपहार पठाउनुहोस्</item>
+    <item type="LEMON_transformed_from_string" name="settings">सेटिङहरू</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">खाता सेटअप पूरा गर्नुहोस्</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">सेटअप सम्पन्न भएपछि अनुप्रयोगहरू स्थापना हुनेछन्</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">थप अनुप्रयोगहरूका समीक्षा गर्नुहोस्</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Google उत्पादनहरूलाई शीघ्र चेकआउट गरी आनन्द लिनुहोस्</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">भुक्तानी विधि थप्नुहोस्</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">भुक्तान जानकारी सेट गर्नुहोस्</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">यन्त्रबाट अनुप्रयोगहरूलाई पुनर्स्थापना गर्नुहोस्</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">कुन यन्त्र?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">परिवार भुक्तानी विधि चयन गर्नुहोस्</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">रकम छनौट गर्नुहोस्</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">भुक्तानीको विधि अद्यावधिक गर्नुहोस्</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">प्रमाणित गरेर स्थापना गर्नुहोस्</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">सुरक्षा सम्बन्धी समस्याका लागि स्क्यान गर्दै…</item>
+</resources>

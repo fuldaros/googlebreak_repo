@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play 商店</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">必須獲得核准</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">家長監護</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">評論</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">免安裝應用程式</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">成員設定</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">在瀏覽器中開啟的應用程式</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">免安裝應用程式偏好設定</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play 商店</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play 安全防護</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">我的應用程式</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">通知設定</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">消費方案</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">付款方式</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">允許使用者在這個應用程式內查看可用的應用程式。</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">使用 Google Play App Discovery Service</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">允許使用者在這個應用程式中透過 Google Play 購買商品。</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Google Play 結帳服務</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">可以檢查您是否擁有這個應用程式的 Google Play 授權。</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Google Play 授權檢查</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">允許使用者安裝經過 Play 驗證的 P2P 應用程式。</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play Peer To Peer App Install API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">應用程式權限</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">開放原始碼授權</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">需要通過驗證</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">兌換代碼</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">評分！</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">傳送禮物</item>
+    <item type="LEMON_transformed_from_string" name="settings">設定</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">完成帳戶設定程序</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">設定完成後就會安裝應用程式</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">查看其他應用程式</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">可在各項 Google 產品中快速結帳</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">新增付款方式</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">設定付款資訊</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">從裝置還原應用程式</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">請問是哪一個裝置？</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">選取家庭群組付款方式</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">選擇金額</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">更新付款方式</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">驗證並安裝</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">正在掃描安全性問題…</item>
+</resources>

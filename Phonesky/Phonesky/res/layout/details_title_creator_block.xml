@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.google.android.finsky.layout.DetailsTitleCreatorBlock android:id="@id/title_creator_block" android:background="@drawable/play_highlight_overlay_light" android:paddingLeft="0.0dip" android:paddingRight="@dimen/details_new_content_margin" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:id="@id/creator_image_wrapper" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.google.android.play.image.FifeImageView android:id="@id/creator_image" android:layout_width="@dimen/review_avatar_size" android:layout_height="@dimen/review_avatar_size" android:layout_marginLeft="0.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="8.0dip" android:scaleType="fitStart" android:layout_centerVertical="true" finsky:fixed_bounds="true" finsky:request_scale_factor="@dimen/details_title_creator_scale_factor" />
+        </FrameLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/creator_image_wrapper" android:layout_centerVertical="true">
+            <com.google.android.finsky.frameworkviews.DecoratedTextView android:textSize="@dimen/content_generic_small_size" android:textColor="@color/play_fg_primary" android:ellipsize="marquee" android:id="@id/creator_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:drawablePadding="4.0dip" style="@style/PlayPlainText" />
+            <TextView android:textSize="@dimen/content_generic_xsmall_size" android:textColor="@color/play_fg_secondary" android:ellipsize="marquee" android:id="@id/creator_publisher" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/PlayPlainText" />
+            <TextView android:textSize="@dimen/content_generic_xsmall_size" android:textColor="@color/play_fg_secondary" android:ellipsize="marquee" android:id="@id/creator_date" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/PlayPlainText" />
+        </LinearLayout>
+    </com.google.android.finsky.layout.DetailsTitleCreatorBlock>
+    <com.google.android.finsky.detailsmodules.modules.title.view.DetailsTitleCreatorBlockView android:id="@id/title_creator_block_mvc" android:background="@drawable/play_highlight_overlay_light" android:paddingLeft="0.0dip" android:paddingRight="@dimen/details_new_content_margin" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:id="@id/creator_image_wrapper_mvc" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.google.android.play.image.FifeImageView android:id="@id/creator_image_mvc" android:layout_width="@dimen/review_avatar_size" android:layout_height="@dimen/review_avatar_size" android:layout_marginLeft="0.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="8.0dip" android:scaleType="fitStart" android:layout_centerVertical="true" finsky:fixed_bounds="true" finsky:request_scale_factor="@dimen/details_title_creator_scale_factor" />
+        </FrameLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/creator_image_wrapper_mvc" android:layout_centerVertical="true">
+            <com.google.android.finsky.frameworkviews.DecoratedTextView android:textSize="@dimen/content_generic_small_size" android:textColor="@color/play_fg_primary" android:ellipsize="marquee" android:id="@id/creator_title_mvc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:drawablePadding="4.0dip" style="@style/PlayPlainText" />
+            <TextView android:textSize="@dimen/content_generic_xsmall_size" android:textColor="@color/play_fg_secondary" android:ellipsize="marquee" android:id="@id/creator_publisher_mvc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/PlayPlainText" />
+            <TextView android:textSize="@dimen/content_generic_xsmall_size" android:textColor="@color/play_fg_secondary" android:ellipsize="marquee" android:id="@id/creator_date_mvc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/PlayPlainText" />
+        </LinearLayout>
+    </com.google.android.finsky.detailsmodules.modules.title.view.DetailsTitleCreatorBlockView>
+</merge>

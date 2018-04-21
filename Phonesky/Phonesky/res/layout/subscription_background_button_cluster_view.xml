@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.subscriptionbackgroundbutton.view.SubscriptionBackgroundButtonClusterView android:orientation="vertical" style="@style/SubscriptionCluster"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.finsky.billing.common.LoggingActionButton android:id="@id/action_button" android:layout_marginTop="@dimen/subscription_button_margin_top_offset" style="@style/SubscriptionButton" />
+</com.google.android.finsky.stream.controllers.subscriptionbackgroundbutton.view.SubscriptionBackgroundButtonClusterView>

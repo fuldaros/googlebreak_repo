@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingLeft="@dimen/d30_module_layout_padding" android:paddingTop="@dimen/d30_module_layout_vertical_padding" android:paddingRight="@dimen/d30_module_layout_padding" android:paddingBottom="@dimen/d30_module_layout_vertical_padding" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:text="@string/translate" android:layout_toLeftOf="@id/translate_switch" android:layout_centerVertical="true" style="@style/D30ModuleSecondaryTitle" />
+    <Switch android:id="@id/translate_switch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" style="@style/PlayDrawerDownloadToggle" />
+</RelativeLayout>

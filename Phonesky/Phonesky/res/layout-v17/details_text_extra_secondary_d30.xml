@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.expandeddescriptionpage.view.DetailsExpandedExtraSecondaryView android:orientation="horizontal" android:background="@drawable/play_highlight_overlay_light" android:paddingLeft="@dimen/d30_module_layout_padding" android:paddingTop="@dimen/details_text_section_extras_padding" android:paddingRight="@dimen/d30_module_layout_padding" android:paddingBottom="@dimen/details_text_section_extras_padding" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/d30_module_layout_padding" android:paddingEnd="@dimen/d30_module_layout_padding"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/extra_title" android:textAlignment="viewStart" android:paddingEnd="32.0dip" style="@style/D30ModuleSecondaryTitle" />
+    <TextView android:id="@id/extra_description" android:layout_weight="1.0" android:textAlignment="viewEnd" style="@style/D30ModuleSecondaryBodyText" />
+</com.google.android.finsky.expandeddescriptionpage.view.DetailsExpandedExtraSecondaryView>

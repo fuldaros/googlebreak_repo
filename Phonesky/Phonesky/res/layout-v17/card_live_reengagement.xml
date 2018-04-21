@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.playcardview.livereengagement.CardViewLiveReEngagement android:paddingLeft="0.0dip" android:paddingRight="@dimen/live_reengagement_text_padding_right" android:paddingBottom="@dimen/live_reengagement_padding_bottom" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/play_highlight_round_overlay_light" android:paddingStart="0.0dip" android:paddingEnd="@dimen/live_reengagement_text_padding_right"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:playcommon="http://schemas.android.com/apk/res-auto">
+    <com.google.android.play.layout.PlayCardThumbnail android:id="@id/thumbnail_frame" android:layout_width="@dimen/live_reengagement_thumbnail_width" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/live_reengagement_thumbnail_margin" android:layout_marginTop="@dimen/live_reengagement_thumbnail_margin" android:layout_marginRight="@dimen/live_reengagement_thumbnail_margin" android:layout_marginBottom="@dimen/live_reengagement_thumbnail_margin" android:layout_marginStart="@dimen/live_reengagement_thumbnail_margin" android:layout_marginEnd="@dimen/live_reengagement_thumbnail_margin">
+        <com.google.android.finsky.frameworkviews.ThumbnailImageView android:id="@id/li_thumbnail" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+    </com.google.android.play.layout.PlayCardThumbnail>
+    <com.google.android.play.layout.PlayTextView android:id="@id/live_reengagement_text" android:layout_width="0.0dip" android:layout_height="wrap_content" playcommon:allowsCompactLineSpacing="true" style="@style/LiveReengagementSnippet" />
+    <com.google.android.play.layout.PlayTextView android:id="@id/title" android:layout_width="0.0dip" android:layout_height="wrap_content" style="@style/LiveReengagementTitle" />
+    <include layout="@layout/card_live_reengagement_action_buttons" />
+</com.google.android.finsky.playcardview.livereengagement.CardViewLiveReEngagement>

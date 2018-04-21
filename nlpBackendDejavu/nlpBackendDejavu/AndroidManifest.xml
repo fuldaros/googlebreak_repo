@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.fitchfamily.android.dejavu">
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <meta-data android:name="android.support.VERSION" android:value="25.3.1"/>
+    <application android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true" android:theme="@style/AppTheme">
+        <service android:label="@string/app_name" android:name="org.fitchfamily.android.dejavu.BackendService" android:permission="android.permission.ACCESS_COARSE_LOCATION">
+            <intent-filter>
+                <action android:name="org.microg.nlp.LOCATION_BACKEND"/>
+            </intent-filter>
+            <meta-data android:name="org.microg.nlp.BACKEND_SUMMARY" android:value="@string/summary"/>
+        </service>
+        <service android:name="org.fitchfamily.android.dejavu.GpsMonitor" android:permission="android.permission.ACCESS_FINE_LOCATION"/>
+        <meta-data android:name="org.microg.nlp.API_VERSION" android:value="@string/nlp_api_version"/>
+        <activity android:exported="true" android:name="org.microg.nlp.api.MPermissionHelperActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+    </application>
+</manifest>

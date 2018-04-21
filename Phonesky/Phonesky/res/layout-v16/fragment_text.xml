@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/pe__toolbar" />
+    <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/box_vertical_margin" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.google.android.libraries.play.entertainment.media.FixedAspectRatioRelativeLayout android:id="@id/leading_image_wrapper" android:layout_width="fill_parent" android:layout_height="wrap_content" app:heightRatio="9.0" app:widthRatio="16.0">
+                <com.google.android.libraries.play.entertainment.bitmap.PEImageView android:id="@id/leading_image" android:background="@color/pe__dc_details_thumbnail_background_color" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" app:fadesInImage="true" app:hidesBackgroundWhenBound="true" />
+            </com.google.android.libraries.play.entertainment.media.FixedAspectRatioRelativeLayout>
+            <com.google.android.libraries.play.entertainment.bitmap.PEImageView android:layout_gravity="center_horizontal" android:id="@id/avatar_image" android:layout_width="@dimen/pe__cluster_item_height_cast" android:layout_height="@dimen/pe__cluster_item_height_cast" android:layout_marginTop="@dimen/box_vertical_margin" android:scaleType="fitCenter" />
+            <View android:layout_width="0.0dip" android:layout_height="25.0dip" />
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/PETextContainer">
+                <TextView android:id="@id/subtitle_1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/box_small_padding" style="@style/PEPanelTitleText" />
+                <TextView android:id="@id/subtitle_2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/box_small_padding" style="@style/PEPanelTitleText" />
+                <TextView android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/box_small_padding" style="@style/PETitleText" />
+                <TextView android:id="@id/body" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/PEText.BodyText" />
+                <TextView android:id="@id/attribution" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/box_large_padding" style="@style/PEText.Attribution" />
+            </LinearLayout>
+            <View android:id="@id/padding" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/pe__padding_panel_height" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

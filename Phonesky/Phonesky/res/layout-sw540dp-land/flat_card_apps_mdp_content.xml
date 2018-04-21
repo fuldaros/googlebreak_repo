@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/mdp_content" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/flat_mdp_height">
+        <RelativeLayout android:paddingBottom="@dimen/flat_mdp_content_bottom_padding" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="0.51">
+            <LinearLayout android:orientation="horizontal" android:id="@id/thumbnail_and_item_details" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.google.android.play.layout.PlayCardThumbnail android:id="@id/li_thumbnail_frame" android:layout_width="@dimen/flat_mdp_thumbnail_size" android:layout_height="@dimen/flat_mdp_thumbnail_size" android:layout_marginLeft="0.0dip" android:layout_marginTop="@dimen/flat_mdp_inner_margin" android:layout_marginRight="@dimen/flat_mdp_thumbnail_end_margin">
+                    <include android:id="@id/li_thumbnail" layout="@layout/play_card_thumbnail" />
+                </com.google.android.play.layout.PlayCardThumbnail>
+                <LinearLayout android:orientation="vertical" android:id="@id/item_details" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="@dimen/flat_mdp_title_top_margin" android:layout_marginRight="@dimen/flat_mdp_inner_margin">
+                    <com.google.android.play.layout.PlayTextView android:ellipsize="end" android:id="@id/li_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" finsky:allowsCompactLineSpacing="true" style="@style/FlatCardTitle.Listing" />
+                    <LinearLayout android:orientation="horizontal" android:id="@id/title_creator_panel" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-1.0dip" android:layout_marginBottom="0.0dip">
+                        <TextView android:id="@id/li_ad_label_v2" android:visibility="gone" android:layout_marginLeft="0.0dip" android:layout_marginRight="4.0dip" style="@style/PlayAdLabelV2" />
+                        <com.google.android.finsky.frameworkviews.DecoratedTextView android:id="@id/li_subtitle" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/FlatCardSubtitle.Listing" />
+                    </LinearLayout>
+                    <com.google.android.finsky.frameworkviews.FlexBoxBulletSeparatorFlowLayout android:id="@id/title_rating_size" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-1.0dip" finsky:separator_bullet_size="4.0dip" finsky:separator_gap_size="20.0dip">
+                        <LinearLayout android:orientation="horizontal" android:id="@id/title_content_rating_panel" android:background="@drawable/play_highlight_overlay_light" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <com.google.android.play.image.FifeImageView android:layout_gravity="center_vertical" android:id="@id/title_content_rating_icon" android:layout_width="@dimen/flat_mdp_rating_size" android:layout_height="@dimen/flat_mdp_rating_size" android:layout_marginLeft="0.0dip" android:layout_marginRight="4.0dip" />
+                            <com.google.android.finsky.frameworkviews.DecoratedTextView android:id="@id/title_content_rating" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/FlatCardSubtitle.Listing" />
+                        </LinearLayout>
+                    </com.google.android.finsky.frameworkviews.FlexBoxBulletSeparatorFlowLayout>
+                    <com.google.android.finsky.frameworkviews.FlexBoxBulletSeparatorFlowLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/flat_mdp_rating_top_margin" finsky:separator_bullet_size="3.0dip" finsky:separator_gap_size="11.0dip">
+                        <TextView android:id="@id/app_size" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/MdpCardRating" />
+                        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/rating_info" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="26.0dip">
+                            <com.google.android.play.layout.StarRatingBar android:id="@id/li_rating" android:layout_width="wrap_content" android:layout_height="wrap_content" finsky:text_size="@dimen/content_generic_xsmall_size" style="@style/FlatRatingBar" />
+                            <TextView android:id="@id/rating_count_left" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="0.0dip" android:text="(" style="@style/MdpCardRating" />
+                            <TextView android:id="@id/rating_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="4.0dip" style="@style/MdpCardRating" />
+                            <TextView android:id="@id/rating_count_right" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=")" style="@style/MdpCardRating" />
+                        </LinearLayout>
+                        <TextView android:id="@id/downloads_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="2.0dip" style="@style/MdpCardRating" />
+                    </com.google.android.finsky.frameworkviews.FlexBoxBulletSeparatorFlowLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <com.google.android.play.layout.PlayTextView android:gravity="center_horizontal" android:id="@id/li_description" android:visibility="gone" android:saveEnabled="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="@dimen/flat_mdp_inner_margin" android:maxLines="2" android:layout_below="@id/thumbnail_and_item_details" finsky:lastLineOverdrawColor="@color/white" style="@style/PlayDetailDescription" />
+            <TextView android:textSize="@dimen/content_generic_small_size" android:textColor="@color/play_apps_primary" android:gravity="center_horizontal" android:id="@id/li_more_info_link" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="@dimen/apps_mdp_margin" android:layout_marginRight="@dimen/flat_mdp_inner_margin" android:layout_marginBottom="8.0dip" android:text="@string/more_info" android:layout_below="@id/li_description" android:textAllCaps="true" style="@style/PlayMediumPlainText" />
+            <LinearLayout android:gravity="bottom" android:orientation="vertical" android:id="@id/bottom_buttons_and_labels_container" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="0.0dip" android:layout_marginTop="@dimen/apps_mdp_margin" android:layout_marginRight="@dimen/flat_mdp_inner_margin" android:layout_below="@id/li_more_info_link">
+                <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/action_buttons_layout" />
+                <include android:orientation="horizontal" android:id="@id/title_extra_labels_bottom" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/flat_mdp_extra_labels_section_top_margin" android:baselineAligned="false" layout="@layout/flat_details_summary_extra_labels_section" />
+            </LinearLayout>
+        </RelativeLayout>
+        <com.google.android.finsky.deprecateddetailscomponents.ScreenshotsRecyclerView android:id="@id/screenshots_container" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="0.49" finsky:use_auto_measure="false" />
+    </LinearLayout>
+</merge>

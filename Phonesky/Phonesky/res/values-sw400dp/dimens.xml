@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_list_vpadding">8.0dip</dimen>
+    <dimen name="details_histogram_max_bar_width_with_tooltip">160.0dip</dimen>
+    <item type="dimen" name="floating_highlight_banner_multi_card_gradient_coverage">0.5</item>
+    <dimen name="inline_details_screenshots_height">220.0dip</dimen>
+    <dimen name="pe_leading_image_height">380.0dip</dimen>
+    <dimen name="play_collection_edge_padding">12.0dip</dimen>
+    <dimen name="play_collection_edge_padding_minus_card_half_spacing">8.0dip</dimen>
+</resources>

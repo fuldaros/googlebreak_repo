@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailsmodules.modules.testingprogram.view.TestingProgramModuleView android:id="@id/testing_program_card" android:padding="@dimen/testing_program_card_inset" android:layout_width="fill_parent" android:layout_height="wrap_content" finsky:playCardBackgroundColor="@color/play_white" finsky:playCardCornerRadius="@dimen/play_card_default_radius" finsky:playCardElevation="@dimen/play_card_default_elevation" finsky:playCardInset="@dimen/testing_program_card_inset"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:padding="@dimen/testing_program_card_padding" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.google.android.finsky.frameworkviews.AccessibleTextView android:ellipsize="none" android:layout_gravity="start|center" android:id="@id/opt_in_header" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/TestingProgramTitle" />
+        <com.google.android.finsky.frameworkviews.AccessibleTextView android:layout_gravity="start|center" android:id="@id/opt_in_body" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/TestingProgramDescription" />
+        <LinearLayout android:gravity="end|center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.google.android.finsky.frameworkviews.AccessibleTextView android:id="@id/learn_more_button" android:focusable="true" android:layout_width="wrap_content" android:layout_height="@dimen/testing_program_button_height" android:text="@string/testing_program_learn_more" style="@style/TestingProgramLearnMoreButton" />
+            <com.google.android.finsky.frameworkviews.AccessibleTextView android:id="@id/opt_in_button" android:focusable="true" android:layout_width="wrap_content" android:layout_height="@dimen/testing_program_button_height" android:layout_marginLeft="@dimen/testing_program_button_left_margin" android:layout_marginRight="@dimen/testing_program_button_right_margin" style="@style/TestingProgramOptInButton" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.finsky.detailsmodules.modules.testingprogram.view.TestingProgramModuleView>

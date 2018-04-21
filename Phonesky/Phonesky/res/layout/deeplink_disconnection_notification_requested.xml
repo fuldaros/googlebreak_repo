@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/deeplink_disconnected_notification_requested" android:padding="@dimen/play_card_padding_xl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="@dimen/reconnect_notification_wifi_icon_size" android:layout_height="@dimen/reconnect_notification_wifi_icon_size" android:src="@drawable/check_on_grey_oval" />
+    <TextView android:textSize="@dimen/play_description_callout_size" android:paddingLeft="@dimen/play_card_padding_m" android:paddingTop="@dimen/play_card_padding_xl" android:paddingRight="@dimen/play_card_padding_m" android:paddingBottom="@dimen/play_card_padding_m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/play_card_padding_xl" android:text="@string/deeplink_loading_network_error_body_submitted" android:lineSpacingMultiplier="1.2" style="@style/PlayPlainText" />
+</LinearLayout>

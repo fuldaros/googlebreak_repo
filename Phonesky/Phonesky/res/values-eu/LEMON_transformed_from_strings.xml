@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play Store</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Onarpena behar da</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Gurasoen murriztapenak</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Iritziak</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Zuzeneko aplikazioa</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Kide-ezarpenak</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Arakatzailean irekitzen diren aplikaz.</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Zuzeneko aplikazioen hobespenak</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play Store</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Nire aplikazioak</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Jakinarazpen-ezarpenak</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Erosketa-aukerak</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Ordainketa-metodoak</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Aplikazioaren bidez erabilgarri dauden aplikazioak ikustea baimentzen dio erabiltzaileari.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Atzitu Google Play-ko aplikazioak aurkitzeko zerbitzua</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Aplikazioaren barruan eta Google Play bidez elementuak erostea baimentzen dio erabiltzaileari.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Google Play fakturazio-zerbitzua</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Google Play zerbitzuko aplikaziorako lizentzia duzun egiazta dezake.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Google Play lizentzia egiaztatzea</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Play-k egiaztatutako parekoen arteko aplikazioak instalatzea baimentzen die erabiltzaileei.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play Peer To Peer App Install API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Aplikazio-baimenak</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Eskatu autentifikazioa</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Erabili kodea</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Balora ezazu!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Bidali oparia</item>
+    <item type="LEMON_transformed_from_string" name="settings">Ezarpenak</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Osatu kontuaren konfigurazioa</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Konfiguratzen amaitu ondoren instalatuko dira aplikazioak</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Eman beste aplikazio batzuei buruzko iritzia</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Ordaindu bizkor Google produktuetan</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Gehitu ordainketa-metodoa</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Konfiguratu ordainketei buruzko informazioa</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Leheneratu aplikazioak gailu batetik</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Zein gailu?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Hautatu familiaren ordainketa-metodoa</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Aukeratu zenbatekoa</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Aldatu ordainketa-metodoa</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Egiaztatu eta instalatu</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Segurtasun-arazoak bilatzen…</item>
+</resources>

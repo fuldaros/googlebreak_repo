@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center" android:id="@id/cluster_header" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/myapps_empty_library_xpadding" android:layout_marginTop="@dimen/myapps_empty_library_top_padding" android:layout_marginRight="@dimen/myapps_empty_library_xpadding"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.caverock.androidsvg.SVGImageView android:layout_gravity="center_vertical" android:layout_width="@dimen/myapps_empty_library_image_size" android:layout_height="@dimen/myapps_empty_library_image_size" android:layout_marginLeft="0.0dip" android:layout_marginRight="@dimen/myapps_empty_library_image_end_margin" android:scaleType="center" finsky:svg="@raw/my_apps_library_empty_state" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/myapps_empty_cluster_title_size" android:textColor="@color/flat_card_cluster_header_title_text_color" android:gravity="start" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/my_apps_empty_library_title" style="@style/PlayMediumBoldText" />
+        <TextView android:textSize="@dimen/myapps_empty_cluster_description_size" android:textColor="@color/flat_card_cluster_header_title_text_color" android:gravity="start" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/myapps_empty_library_description_top_margin" android:text="@string/my_apps_empty_library_description" />
+    </LinearLayout>
+</LinearLayout>

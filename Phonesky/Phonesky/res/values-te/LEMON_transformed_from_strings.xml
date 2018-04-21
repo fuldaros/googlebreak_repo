@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play స్టోర్</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">ఆమోదం అవసరం</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">తల్లిదండ్రుల నియంత్రణలు</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">సమీక్షలు</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">తక్షణ అనువర్తనం</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">సభ్యుని సెట్టింగ్‌లు</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">బ్రౌజర్‌లో తెరవబడుతున్న యాప్‌లు</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">తక్షణ యాప్‌ల ప్రాధాన్యతలు</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play స్టోర్</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play రక్షణ</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">నా అనువర్తనాలు</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">నోటిఫికేషన్ సెట్టింగ్‌లు</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">కొనుగోలు ఎంపికలు</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">చెల్లింపు పద్ధతులు</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">ఈ అనువర్తనంలోనే అందుబాటులో ఉన్న అనువర్తనాలను వీక్షించడం కోసం వినియోగదారును అనుమతిస్తుంది.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Google Play అనువర్తన శోధన సేవని ప్రాప్యత చేయి</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">ఈ అనువర్తనంలో నుండి Google Play ద్వారా అంశాలను కొనుగోలు చేయడానికి వినియోగదారుని అనుమతిస్తుంది.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Google Play బిల్లింగ్ సేవ</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Google Play నుండి ఈ అనువర్తనం కోసం మీకు లైసెన్స్ ఉంటే తనిఖీ చేయవచ్చు.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Google Play లైసెన్స్ తనిఖీ</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Play ధృవీకరించిన P2P యాప్‌లను ఇన్‌స్టాల్ చేయడానికి వినియోగదారును అనుమతిస్తుంది.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play పీర్ టు పీర్ యాప్ ఇన్‌స్టాల్ API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">అనువర్తన అనుమతులు</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">ఓపెన్ సోర్స్ లైసెన్స్‌లు</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">ప్రామాణీకరణ అవసరం</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">మీ కోడ్‌ను రీడీమ్ చేయండి</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">దీన్ని రేట్ చేయండి!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">బహుమతిగా పంపండి</item>
+    <item type="LEMON_transformed_from_string" name="settings">సెట్టింగ్‌లు</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">ఖాతా సెటప్‌ని పూర్తి చేయండి</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">సెటప్ పూర్తయిన తర్వాత అనువర్తనాలు ఇన్‌స్టాల్ చేయబడతాయి</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">అదనపు అనువర్తనాలను సమీక్షించండి</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Google ఉత్పత్తులతో శీఘ్ర చెక్అవుట్‌ను ఆస్వాదించండి</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">చెల్లింపు పద్ధతిని జోడించండి</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">చెల్లింపు సమాచారాన్ని సెటప్ చేయండి</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">పరికరం నుండి అనువర్తనాలను పునరుద్ధరించండి</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">ఏ పరికరం?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">కుటుంబ చెల్లింపు పద్ధతిని ఎంచుకోండి</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">ఒక మొత్తాన్ని ఎంచుకోండి</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">చెల్లింపు పద్ధతిని నవీకరించు</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">ధృవీకరించి, ఇన్‌. చేయండి</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">భద్రతా సమస్యల కోసం స్కాన్ చేస్తోంది…</item>
+</resources>

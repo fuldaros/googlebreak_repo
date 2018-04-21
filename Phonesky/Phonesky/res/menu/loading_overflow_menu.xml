@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/open_in_browser" android:title="@string/loading_overflow_open_in_browser" />
+    <item android:id="@id/app_info" android:title="@string/loading_overflow_app_info" />
+    <item android:id="@id/help_and_feedback" android:title="@string/settings_menu_help_and_feedback" />
+</menu>

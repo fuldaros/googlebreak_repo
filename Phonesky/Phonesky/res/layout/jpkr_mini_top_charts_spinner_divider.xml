@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/spinner_dropdown_divider" android:paddingLeft="@dimen/jpkr_mini_top_charts_category_spinner_divider_xpadding" android:paddingRight="@dimen/jpkr_mini_top_charts_category_spinner_divider_xpadding" android:layout_width="@dimen/jpkr_mini_top_charts_category_spinner_item_width" android:layout_height="@dimen/jpkr_mini_top_charts_category_spinner_divider_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_gravity="center_vertical" android:background="@color/play_cards_separator_color" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+</LinearLayout>

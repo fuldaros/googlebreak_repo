@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.actionbar.DescriptionDetailsToolbarCustomView android:orientation="horizontal" android:id="@id/description_details_toolbar" android:layout_width="fill_parent" android:layout_height="@dimen/play_search_toolbar_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.play.layout.PlayCardThumbnail android:id="@id/li_thumbnail_frame" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="0.0dip" android:layout_marginRight="@dimen/d30_module_item_half_vertical_padding">
+        <com.google.android.finsky.frameworkviews.ThumbnailImageView android:layout_gravity="center_vertical" android:id="@id/li_thumbnail" android:layout_width="@dimen/d30_toolbar_icon_width" android:layout_height="@dimen/d30_toolbar_icon_height" android:scaleType="fitCenter" />
+    </com.google.android.play.layout.PlayCardThumbnail>
+    <LinearLayout android:gravity="center|left" android:orientation="vertical" android:paddingLeft="@dimen/d30_module_layout_half_vertical_padding" android:paddingRight="@dimen/d30_module_layout_half_vertical_padding" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <com.google.android.play.layout.PlayTextView android:gravity="left" android:id="@id/title_title" android:maxLines="1" style="@style/D30ModuleTitle" />
+        <com.google.android.play.layout.PlayTextView android:ellipsize="end" android:gravity="left" android:id="@id/subtitle" android:maxLines="1" style="@style/D30ModuleSecondaryTitle" />
+    </LinearLayout>
+</com.google.android.finsky.actionbar.DescriptionDetailsToolbarCustomView>

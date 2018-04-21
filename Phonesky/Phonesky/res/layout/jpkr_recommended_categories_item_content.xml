@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/icon_outer_frame" android:background="@drawable/jpkr_recommended_categories_background" android:layout_width="@dimen/jpkr_recommended_categories_oval_size" android:layout_height="@dimen/jpkr_recommended_categories_oval_size">
+        <com.google.android.play.image.FifeImageView android:layout_gravity="center" android:id="@id/li_icon" android:layout_width="@dimen/jpkr_recommended_categories_icon_size" android:layout_height="@dimen/jpkr_recommended_categories_icon_size" />
+    </FrameLayout>
+    <TextView android:layout_gravity="center_horizontal" android:id="@id/li_title" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/JpkrRecommendedCategoryLabel" />
+</merge>

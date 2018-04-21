@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.frameworkviews.FullScreenDialogRootFrameLayout android:layout_width="0.0dip" android:layout_height="0.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.finsky.inlinedetails.view.InlineAppDetailsDialogRootFrameLayout android:gravity="center" android:layout_gravity="center" android:id="@id/dialog_root_layout" android:background="@drawable/fullscreen_dialog_child_default_background" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:elevation="@dimen/fullscreen_dialog_child_default_elevation" style="@style/InlineAppDetailsDialog">
+        <FrameLayout android:layout_gravity="center" android:id="@id/content_frame_deep_link_shim_fragment" android:background="@color/play_white" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <FrameLayout android:layout_gravity="center" android:id="@id/content_frame_pre_purchase_fragment" android:background="@color/play_white" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.google.android.finsky.inlinedetails.view.LayoutBlockingFrameLayout android:layout_gravity="center" android:id="@id/content_frame_post_purchase_fragment" android:background="@color/play_white" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <FrameLayout android:layout_gravity="center" android:id="@id/content_frame_direct_install_fragment" android:background="@color/play_white" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </com.google.android.finsky.inlinedetails.view.InlineAppDetailsDialogRootFrameLayout>
+</com.google.android.finsky.frameworkviews.FullScreenDialogRootFrameLayout>

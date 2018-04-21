@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="setup_wizard_color_accent_dark">#ff4285f4</color>
+    <color name="setup_wizard_color_accent_light">#ff4285f4</color>
+    <color name="setup_wizard_navbar_bg_dark">#ff4285f4</color>
+    <color name="setup_wizard_navbar_bg_light">#ff4285f4</color>
+    <color name="setup_wizard_navbar_text_dark">@color/white</color>
+    <color name="setup_wizard_navbar_text_light">@color/white</color>
+    <color name="setup_wizard_background_pattern_tint">#ff4285f4</color>
+    <color name="setup_wizard_button_text_color">@color/white</color>
+</resources>

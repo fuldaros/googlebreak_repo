@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.layout.DetailsExpandedFrame android:id="@id/details_expanded_frame" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/left_bar" android:background="@color/white" android:layout_width="0.0dip" android:layout_height="fill_parent" />
+    <ScrollView android:id="@id/details_expanded_scroller" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:importantForAccessibility="yes" android:accessibilityTraversalAfter="@id/action_bar">
+        <com.google.android.finsky.layout.D30DetailsExpandedContainer android:orientation="vertical" android:id="@id/details_expanded_container" android:background="@color/white" android:paddingLeft="@dimen/details_listing_section_extra_padding" android:paddingRight="@dimen/details_listing_section_extra_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/details_listing_section_extra_padding" android:paddingEnd="@dimen/details_listing_section_extra_padding">
+            <include android:id="@id/details_translation_container" android:visibility="gone" layout="@layout/details_translation_container" />
+            <com.google.android.finsky.frameworkviews.SeparatorLinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" finsky:separator_position="top">
+                <include android:id="@id/body_container1" layout="@layout/details_expanded_text_block_view" />
+            </com.google.android.finsky.frameworkviews.SeparatorLinearLayout>
+            <com.google.android.finsky.frameworkviews.SeparatorLinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" finsky:separator_position="top">
+                <include android:id="@id/body_container2" layout="@layout/details_expanded_text_block_view" />
+            </com.google.android.finsky.frameworkviews.SeparatorLinearLayout>
+            <com.google.android.finsky.frameworkviews.SeparatorLinearLayout android:id="@id/details_expanded_primaries_title" android:layout_width="fill_parent" android:layout_height="wrap_content" finsky:separator_position="top">
+                <TextView android:paddingTop="@dimen/d30_module_layout_vertical_padding" android:layout_marginLeft="@dimen/d30_module_layout_padding" android:layout_marginRight="@dimen/d30_module_layout_padding" android:text="@string/description_details_more_info" android:layout_marginStart="@dimen/d30_module_layout_padding" android:layout_marginEnd="@dimen/d30_module_layout_padding" style="@style/D30ModuleTitle" />
+            </com.google.android.finsky.frameworkviews.SeparatorLinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/details_expanded_primaries" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <com.google.android.finsky.frameworkviews.SeparatorLinearLayout android:id="@id/details_expanded_secondaries_title" android:layout_width="fill_parent" android:layout_height="wrap_content" finsky:separator_position="top">
+                <TextView android:paddingTop="@dimen/d30_module_layout_vertical_padding" android:layout_marginLeft="@dimen/d30_module_layout_padding" android:layout_marginRight="@dimen/d30_module_layout_padding" android:text="@string/description_details_app_info" android:layout_marginStart="@dimen/d30_module_layout_padding" android:layout_marginEnd="@dimen/d30_module_layout_padding" style="@style/D30ModuleTitle" />
+            </com.google.android.finsky.frameworkviews.SeparatorLinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/details_expanded_secondaries" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <LinearLayout android:orientation="vertical" android:id="@id/details_expanded_extras" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </com.google.android.finsky.layout.D30DetailsExpandedContainer>
+    </ScrollView>
+    <View android:id="@id/right_bar" android:background="@color/white" android:layout_width="0.0dip" android:layout_height="fill_parent" />
+</com.google.android.finsky.layout.DetailsExpandedFrame>

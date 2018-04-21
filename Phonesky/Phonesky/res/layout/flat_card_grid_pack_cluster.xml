@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.gridpack.view.FlatGridPackClusterView android:id="@id/flat_grid_pack_cluster_container" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/FlatCardCluster"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/flat_card_cluster_header" />
+    <com.google.android.finsky.stream.controllers.gridpack.view.FlatGridPackClusterContentView android:id="@id/cluster_grid_content" android:layout_width="fill_parent" android:layout_height="wrap_content" finsky:firstRowTopPadding="@dimen/flat_grid_pack_content_first_row_top_padding" finsky:lastRowBottomPadding="@dimen/flat_grid_pack_content_last_row_bottom_padding" finsky:rowCount="@integer/flat_grid_pack_cluster_row_count" finsky:rowVerticalGapPadding="@dimen/flat_grid_pack_content_row_vertical_gap_padding" />
+</com.google.android.finsky.stream.controllers.gridpack.view.FlatGridPackClusterView>

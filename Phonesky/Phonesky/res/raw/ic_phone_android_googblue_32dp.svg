@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="20px" height="30px" viewBox="0 0 20 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_phone_android_black_24dp (2)</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_phone_android_black_24dp-(2)" transform="translate(-6.000000, -1.000000)">
+            <path d="M21.3333333,1.33333333 L10.6666667,1.33333333 C8.45333333,1.33333333 6.66666667,3.12 6.66666667,5.33333333 L6.66666667,26.6666667 C6.66666667,28.88 8.45333333,30.6666667 10.6666667,30.6666667 L21.3333333,30.6666667 C23.5466667,30.6666667 25.3333333,28.88 25.3333333,26.6666667 L25.3333333,5.33333333 C25.3333333,3.12 23.5466667,1.33333333 21.3333333,1.33333333 L21.3333333,1.33333333 Z M18.6666667,28 L13.3333333,28 L13.3333333,26.6666667 L18.6666667,26.6666667 L18.6666667,28 L18.6666667,28 Z M23,24 L9,24 L9,5.33333333 L23,5.33333333 L23,24 L23,24 Z" id="Shape" fill="#4285F4"></path>
+            <polygon id="Shape" points="0 0 32 0 32 32 0 32"></polygon>
+        </g>
+    </g>
+</svg>

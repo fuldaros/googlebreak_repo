@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout style="@style/ContactEmailBody"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <TextView android:id="@id/contact_email_until_verification" android:visibility="gone" style="@style/ContactEmailUntilVerificationText" />
+    <TextView android:id="@id/contact_email_address" android:layout_toLeftOf="@id/edit_contact_email_address" android:layout_below="@id/contact_email_until_verification" style="@style/ContactEmailAddressText" />
+    <TextView android:id="@id/pending_contact_email_verification" android:visibility="gone" android:text="@string/contact_email_pending_verification" android:layout_below="@id/contact_email_address" style="@style/ContactEmailPendingText" />
+    <com.caverock.androidsvg.SVGImageView android:id="@id/edit_contact_email_address" android:visibility="gone" android:clickable="true" android:layout_below="@id/contact_email_until_verification" android:layout_alignParentRight="true" android:contentDescription="@string/content_description_edit_contact_email" finsky:svg="@raw/ic_create_grey600_24dp" style="@style/ContactEmailEditIcon" />
+    <Button android:id="@id/contact_email_resend_button" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/contact_email_resend" android:layout_below="@id/pending_contact_email_verification" style="@style/ContactEmailResendButton" />
+    <Space android:id="@id/contact_email_footer_spacer" android:layout_width="fill_parent" android:layout_height="@dimen/contact_email_space_large" android:layout_below="@id/contact_email_resend_button" />
+    <TextView android:id="@id/contact_email_description" android:text="@string/contact_email_description" android:layout_below="@id/contact_email_footer_spacer" style="@style/ContactEmailFooterText" />
+</RelativeLayout>

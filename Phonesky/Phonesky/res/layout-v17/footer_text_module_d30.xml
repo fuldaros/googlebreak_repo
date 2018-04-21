@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailsmodules.modules.footertext.view.FooterTextModuleView android:textColor="@color/play_primary_text" android:background="@color/play_white" android:paddingLeft="@dimen/d30_module_layout_padding" android:paddingRight="@dimen/d30_module_layout_padding" android:paddingBottom="@dimen/d30_module_layout_padding" android:focusable="true" android:paddingStart="@dimen/d30_module_layout_padding" android:paddingEnd="@dimen/d30_module_layout_padding" style="@style/D30ModuleBodyText"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

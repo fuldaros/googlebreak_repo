@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.entitypivot.view.EntityPivotItemPillView android:gravity="center" android:paddingLeft="@dimen/entity_pivot_pill_x_padding" android:paddingTop="1.0dip" android:paddingRight="@dimen/entity_pivot_pill_x_padding" android:paddingBottom="@dimen/entity_pivot_pill_bottom_padding" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/entity_pivot_pill_x_padding" android:paddingEnd="@dimen/entity_pivot_pill_x_padding"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.google.android.play.layout.PlayCardThumbnail android:id="@id/thumbnail_frame" android:layout_width="@dimen/entity_pivot_thumbnail_size" android:layout_height="@dimen/entity_pivot_thumbnail_size" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:layout_marginStart="@dimen/entity_pivot_thumbnail_x_padding">
+        <com.google.android.finsky.frameworkviews.ThumbnailImageView android:id="@id/li_thumbnail" android:layout_width="fill_parent" android:layout_height="fill_parent" finsky:fixed_bounds="true" />
+    </com.google.android.play.layout.PlayCardThumbnail>
+    <TextView android:id="@id/pill_title" style="@style/EntityPivotTitle" />
+</com.google.android.finsky.stream.controllers.entitypivot.view.EntityPivotItemPillView>

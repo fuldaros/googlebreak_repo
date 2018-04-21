@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="inline_details_screenshots_height">110.0dip</dimen>
+    <item type="dimen" name="inline_details_screenshots_row_height">@dimen/inline_details_screenshots_row_height_landscape</item>
+    <dimen name="play_collection_edge_padding">60.0dip</dimen>
+    <dimen name="play_collection_edge_padding_minus_card_half_spacing">56.0dip</dimen>
+    <dimen name="play_header_list_tab_floating_padding">48.0dip</dimen>
+    <dimen name="play_header_list_tab_padding_side">12.0dip</dimen>
+    <dimen name="inline_details_screenshots_row_height_landscape">166.0dip</dimen>
+</resources>

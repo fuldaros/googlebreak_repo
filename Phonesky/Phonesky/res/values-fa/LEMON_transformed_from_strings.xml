@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">فروشگاه Google Play</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">به تأیید نیاز است</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">کنترل\u009d‌های والدین</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">نظرها</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">برنامه فوری</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">تنظیمات عضو</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">برنامه‌هایی که در مرورگر باز می‌شوند</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">تنظیمات برگزیده برنامه‌های فوری</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">فروشگاه Play</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">‫‏سپر ایمنی Play‬</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">برنامه‌های من</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">تنظیمات اعلان</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">گزینه‌های خرید</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">روش‌های پرداخت</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">به کاربر اجازه می‌دهد برنامه‌های در دسترس را از داخل این برنامه مشاهده کند.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">دسترسی به سرویس کاوش برنامه Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">به کاربر اجازه دهید تا موارد را از طریق Google Play و از این برنامه خریداری کند.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">خدمات صدور صورت‌حساب Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">بررسی کنید که آیا مجوز این برنامه را از Google Play دریافت کرده‌اید.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">بررسی مجوز Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">به کاربر اجازه می‌دهد برنامه‌های «همتا به همتای تأییدشده Play» را نصب کند.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">API نصب برنامه همتا به همتای Google Play</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">مجوزهای برنامه</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">مجوزهای منبع باز</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">احراز هویت لازم است</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">بازخرید کدتان</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">رتبه‌بندی کنید!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">ارسال هدیه</item>
+    <item type="LEMON_transformed_from_string" name="settings">تنظیمات</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">تنظیم کامل حساب</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">بعد از تکمیل راه‌اندازی، برنامه‌ها نصب می‌شوند</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">بررسی برنامه‌های بیشتر</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">با محصولات Google از تسویه‌حساب سریع لذت ببرید</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">افزودن روش پرداخت</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">تنظیم اطلاعات پرداخت</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">بازیابی برنامه‌ها از دستگاه</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">کدام دستگاه؟</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">انتخاب روش پرداخت خانواده</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">انتخاب مقدار</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">به‌روزرسانی روش پرداخت</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">تأیید صحت و نصب</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">درحال اسکن برای وجود مشکلات امنیتی...</item>
+</resources>

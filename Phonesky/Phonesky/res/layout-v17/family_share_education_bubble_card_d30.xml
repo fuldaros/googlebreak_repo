@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.frameworkviews.CardBubbleLinearLayout android:orientation="horizontal" android:id="@id/family_education_card" android:layout_width="fill_parent" android:layout_height="wrap_content" app:playCardBackgroundColor="@color/play_secondary_light" app:playCardBubbleOffset="-16.0dip" app:playCardBubblePosition="bubble_end" app:playCardBubbleSize="4.0dip" style="@style/PlayCardViewGroup"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:layout_gravity="center_vertical" android:id="@id/notice_text" android:paddingLeft="@dimen/tooltip_padding_horizontal" android:paddingTop="@dimen/tooltip_padding_vertical" android:paddingRight="0.0dip" android:paddingBottom="@dimen/tooltip_padding_vertical" android:focusable="true" android:text="@string/family_sharing_education_text" android:layout_weight="1.0" android:paddingStart="@dimen/tooltip_padding_horizontal" android:paddingEnd="0.0dip" style="@style/D30ModuleTooltipText" />
+    <include layout="@layout/tooltip_close_button" />
+</com.google.android.finsky.frameworkviews.CardBubbleLinearLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.subscriptionsummary.view.SubscriptionSummaryClusterView android:minHeight="@dimen/subscription_summary_cluster_min_height" style="@style/SubscriptionCluster"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.play.image.FifeImageView android:id="@id/thumbnail" android:layout_width="@dimen/subscription_thumbnail_size" android:layout_height="@dimen/subscription_thumbnail_size" android:layout_marginLeft="@dimen/subscription_cluster_padding" android:layout_marginRight="0.0dip" android:layout_alignParentRight="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/text_container" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/thumbnail" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <TextView android:textSize="@dimen/subscription_title_text_size" android:textColor="@color/subscription_light_text" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" style="@style/PlayMediumBoldText" />
+        <TextView android:textSize="@dimen/subscription_text_size" android:textColor="@color/subscription_light_text" android:id="@id/message" style="@style/SubscriptionText" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/icon_message_container" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/subscription_summary_cluster_message_vertical_gap">
+            <com.google.android.play.image.FifeImageView android:id="@id/icon" android:layout_width="@dimen/subscription_text_icon_size" android:layout_height="@dimen/subscription_text_icon_size" android:layout_marginLeft="0.0dip" android:layout_marginRight="@dimen/subscription_summary_cluster_icon_message_horizontal_gap" />
+            <TextView android:textSize="@dimen/subscription_text_size" android:textColor="@color/subscription_light_text" android:id="@id/icon_message" style="@style/SubscriptionText" />
+        </LinearLayout>
+        <TextView android:id="@id/error_message" android:layout_marginTop="@dimen/subscription_summary_cluster_message_vertical_gap" style="@style/SubscriptionAlertText" />
+    </LinearLayout>
+    <com.google.android.finsky.billing.common.LoggingActionButton android:id="@id/call_to_action" android:layout_below="@id/text_container" style="@style/SubscriptionButton" />
+</com.google.android.finsky.stream.controllers.subscriptionsummary.view.SubscriptionSummaryClusterView>

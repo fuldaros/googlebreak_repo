@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?android:selectableItemBackground" android:paddingTop="@dimen/instant_apps_settings_excluded_app_row_padding_top" android:paddingBottom="@dimen/instant_apps_settings_excluded_app_row_padding_bottom" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/aia_excluded_app_badged_icon" android:layout_width="@dimen/instant_apps_settings_excluded_app_row_icon_layout_width" android:layout_height="@dimen/instant_apps_settings_excluded_app_row_icon_layout_height" android:layout_marginStart="@dimen/instant_apps_settings_v3_row_margin_start" android:layout_marginEnd="@dimen/instant_apps_settings_excluded_app_row_icon_margin_end" layout="@layout/badged_icon" />
+    <TextView android:textAppearance="@android:style/TextAppearance.Material.Subhead" android:textSize="@dimen/instant_apps_settings_row_text_size" android:ellipsize="end" android:id="@id/aia_excluded_app_title" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLines="1" android:layout_weight="1.0" />
+    <ImageView android:id="@id/aia_excluded_app_remove" android:padding="@dimen/instant_apps_settings_excluded_app_row_action_image_padding" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/instant_apps_settings_v3_row_margin_end" />
+</LinearLayout>

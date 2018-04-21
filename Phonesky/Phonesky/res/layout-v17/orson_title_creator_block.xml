@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.layout.OrsonTitleCreatorBlock android:id="@id/orson_title_creator_block" android:background="@drawable/play_highlight_overlay_light" android:paddingLeft="0.0dip" android:paddingRight="@dimen/details_new_content_margin" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="0.0dip" android:paddingEnd="@dimen/details_new_content_margin"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true">
+        <TextView android:textSize="@dimen/content_generic_small_size" android:textColor="@color/play_fg_primary" android:ellipsize="marquee" android:id="@id/orson_creator_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:drawablePadding="4.0dip" style="@style/PlayPlainText" />
+        <TextView android:textSize="@dimen/content_generic_small_size" android:textColor="@color/play_fg_primary" android:ellipsize="marquee" android:id="@id/orson_title_line" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/PlayPlainText" />
+        <TextView android:textSize="@dimen/content_generic_small_size" android:textColor="@color/play_fg_primary" android:ellipsize="marquee" android:id="@id/orson_book_duration" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/PlayPlainText" />
+        <TextView android:textSize="@dimen/content_generic_small_size" android:textColor="@color/play_fg_primary" android:ellipsize="marquee" android:id="@id/orson_creator_date" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/PlayPlainText" />
+    </LinearLayout>
+</com.google.android.finsky.layout.OrsonTitleCreatorBlock>

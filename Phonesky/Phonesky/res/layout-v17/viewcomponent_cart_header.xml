@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/header" android:background="@drawable/play_highlight_overlay_light" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.google.android.play.image.FifeImageView android:id="@id/application_icon" android:visibility="gone" style="@style/LightPurchase_PurchaseFlow_IconImage" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <com.google.android.play.layout.PlayTextView android:ellipsize="marquee" android:layout_gravity="start" android:id="@id/item_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="16.0dip" android:maxLines="2" android:textAlignment="viewStart" android:layout_marginStart="0.0dip" android:layout_marginEnd="16.0dip" style="@style/LightPurchase_TitleText" />
+                <com.google.android.play.layout.PlayTextView android:ellipsize="marquee" android:layout_gravity="start" android:id="@id/item_subtitle" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-2.0dip" android:maxLines="2" android:textAlignment="viewStart" style="@style/LightPurchase_SubtitleText" />
+                <com.google.android.play.layout.PlayTextView android:ellipsize="marquee" android:layout_gravity="start" android:id="@id/instrument" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-2.0dip" android:maxLines="2" android:drawablePadding="8.0dip" android:textAlignment="viewStart" style="@style/LightPurchase_SubtitleText" />
+            </LinearLayout>
+            <LinearLayout android:gravity="end" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.google.android.play.layout.PlayTextView android:id="@id/item_price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="3.0dip" finsky:playAccessibilityClassOverride="android.widget.Button" style="@style/LightPurchase_Price" />
+                <com.google.android.play.layout.PlayTextView android:ellipsize="marquee" android:gravity="end" android:id="@id/price_byline" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-2.0dip" android:maxWidth="160.0dip" android:maxLines="2" style="@style/LightPurchase_PriceByline" />
+                <com.google.android.play.layout.PlayTextView android:ellipsize="marquee" android:gravity="end" android:id="@id/price_byline_2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-2.0dip" android:maxWidth="160.0dip" android:maxLines="2" style="@style/LightPurchase_PriceByline" />
+            </LinearLayout>
+        </LinearLayout>
+        <com.google.android.play.layout.PlayTextView android:gravity="center_vertical" android:id="@id/instrument_error_message" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/LightPurchase_ErrorByline" />
+    </LinearLayout>
+</LinearLayout>

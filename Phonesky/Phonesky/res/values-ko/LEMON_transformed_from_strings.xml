@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play 스토어</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">승인 필요</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">자녀 보호 기능</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">리뷰</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">인스턴트 앱</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">구성원 설정</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">브라우저에서 열리는 앱</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">인스턴트 앱 환경설정</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play 스토어</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play 프로텍트</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">내 애플리케이션</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">알림 설정</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">구매 옵션</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">결제 수단</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">사용자가 이 앱 내에서 사용 가능한 앱을 보도록 허용합니다.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Google Play 앱 검색 서비스에 액세스</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">이 앱 내에서 Google Play를 통해 항목을 구입할 수 있습니다.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Google Play 결제 서비스</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Google Play 앱을 사용할 권한 있는지 확인합니다.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Google Play 권한 확인</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">사용자가 Play 인증 P2P 앱을 설치하도록 허용합니다.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play Peer To Peer App Install API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">앱 권한</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">오픈소스 라이선스</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">구매 시 인증 필요</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">코드 사용</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">평가하기</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">선물 보내기</item>
+    <item type="LEMON_transformed_from_string" name="settings">설정</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">계정 설정 완료</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">설정이 완료되면 앱이 설치됩니다.</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">추가 앱 검토</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Google 제품에서 더욱 간편하게 결제하세요.</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">결제 수단 추가</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">결제 정보 설정</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">기기에서 앱 복원</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">어떤 기기인가요?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">가족 결제 수단 선택</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">금액 선택</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">결제 수단 업데이트</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">확인 및 설치</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">보안 문제 검사 중…</item>
+</resources>

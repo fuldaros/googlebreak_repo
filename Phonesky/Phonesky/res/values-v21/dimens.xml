@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="play_drawer_profile_info_height">172.0dip</dimen>
+    <dimen name="setup_wizard_apps_row_xpadding">16.0dip</dimen>
+    <dimen name="setup_wizard_content_text_size">16.0sp</dimen>
+    <item type="dimen" name="setup_wizard_content_xpadding">@dimen/setup_wizard_horizontal_padding</item>
+    <dimen name="setup_wizard_header_title_line_spacing_extra">3.669983sp</dimen>
+    <dimen name="setup_wizard_im_form_start_end_margin">40.0dip</dimen>
+    <dimen name="setup_wizard_im_form_top_margin">24.0dip</dimen>
+    <dimen name="setup_wizard_im_title_text_bottom_margin">18.0dip</dimen>
+    <dimen name="setup_wizard_im_title_text_end_margin">40.0dip</dimen>
+    <dimen name="setup_wizard_im_title_text_start_margin">40.0dip</dimen>
+    <dimen name="setup_wizard_im_title_text_top_margin">16.0dip</dimen>
+    <dimen name="setup_wizard_title_text_size">24.0sp</dimen>
+    <dimen name="wallet_im_platform_card_number_one_card_mode_start_margin">52.0dip</dimen>
+    <dimen name="wallet_im_platform_first_credit_card_logo_start_margin">4.0dip</dimen>
+    <dimen name="wallet_uic_platform_form_non_editable_text_start_margin">4.0dip</dimen>
+    <dimen name="wallet_uic_platform_form_spinner_view_start_padding">0.0dip</dimen>
+    <dimen name="setup_wizard_app_details_byline_top_margin">4.0dip</dimen>
+    <item type="dimen" name="setup_wizard_app_details_checkbox_start_margin">@dimen/setup_wizard_app_details_icon_end_margin</item>
+    <dimen name="setup_wizard_app_details_description_top_margin">16.0dip</dimen>
+    <dimen name="setup_wizard_app_details_divider_bottom_margin">16.0dip</dimen>
+    <dimen name="setup_wizard_app_details_divider_top_margin">15.0dip</dimen>
+    <dimen name="setup_wizard_app_details_icon_end_margin">12.0dip</dimen>
+    <dimen name="setup_wizard_app_details_icon_size">40.0dip</dimen>
+    <dimen name="setup_wizard_app_details_overlay_margin">16.0dip</dimen>
+    <dimen name="setup_wizard_app_details_overlay_padding">16.0dip</dimen>
+    <dimen name="setup_wizard_app_details_rating_count_drawable_padding">4.0dip</dimen>
+    <dimen name="setup_wizard_app_details_rating_count_icon_size">14.0dip</dimen>
+    <dimen name="setup_wizard_app_details_screenshot_height">193.0dip</dimen>
+    <dimen name="setup_wizard_app_details_screenshot_start_margin">2.0dip</dimen>
+    <dimen name="setup_wizard_app_details_screenshot_width">108.0dip</dimen>
+    <dimen name="setup_wizard_app_details_star_rating_drawable_padding">4.0dip</dimen>
+    <dimen name="setup_wizard_app_details_star_rating_icon_size">16.0dip</dimen>
+    <dimen name="setup_wizard_apps_row_ypadding">18.0dip</dimen>
+    <dimen name="setup_wizard_button_bar_horizontal_padding">12.0dip</dimen>
+    <dimen name="setup_wizard_button_bar_vertical_padding">4.0dip</dimen>
+    <dimen name="setup_wizard_card_height">0.0dip</dimen>
+    <dimen name="setup_wizard_card_width">0.0dip</dimen>
+    <dimen name="setup_wizard_content_list_bottom_margin">24.0dip</dimen>
+    <dimen name="setup_wizard_content_list_top_margin">0.0dip</dimen>
+    <dimen name="setup_wizard_header_graphic_start_padding">24.0dip</dimen>
+    <dimen name="setup_wizard_header_graphic_top_padding">48.0dip</dimen>
+    <dimen name="setup_wizard_horizontal_padding">40.0dip</dimen>
+    <dimen name="setup_wizard_optional_header_bottom_padding">24.0dip</dimen>
+    <item type="dimen" name="setup_wizard_optional_header_end_padding">@dimen/setup_wizard_horizontal_padding</item>
+    <dimen name="setup_wizard_optional_header_large_bottom_padding">24.0dip</dimen>
+    <dimen name="setup_wizard_restore_description_top_padding">16.0dip</dimen>
+    <dimen name="setup_wizard_restore_item_image_size">24.0dip</dimen>
+    <item type="dimen" name="setup_wizard_section_title_alpha">0.54</item>
+    <dimen name="setup_wizard_section_title_bottom_padding">16.0dip</dimen>
+    <dimen name="setup_wizard_vpa_description_top_padding">16.0dip</dimen>
+    <dimen name="setup_wizard_vpa_icon_size">32.0dip</dimen>
+    <dimen name="setup_wizard_vpa_image_bottom_margin">12.0dip</dimen>
+    <dimen name="setup_wizard_vpa_image_end_margin">16.0dip</dimen>
+    <dimen name="setup_wizard_vpa_image_top_margin">12.0dip</dimen>
+</resources>

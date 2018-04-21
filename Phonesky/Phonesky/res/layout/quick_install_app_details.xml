@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="@dimen/inline_app_dialog_fullscreen_minwidth"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true">
+        <com.google.android.finsky.frameworkviews.HorizontalSeparatorContainer android:orientation="vertical" android:id="@id/details_stack" android:layout_width="fill_parent" android:layout_height="wrap_content" finsky:separator_inset="16.0dip">
+            <include layout="@layout/details_warning_message" />
+            <include android:id="@id/item_details_panel" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/quick_install_details_summary" />
+            <include android:id="@id/footer" android:background="@android:color/transparent" layout="@layout/quick_install_app_details_footer" />
+        </com.google.android.finsky.frameworkviews.HorizontalSeparatorContainer>
+    </ScrollView>
+</FrameLayout>

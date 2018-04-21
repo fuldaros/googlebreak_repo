@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play ஸ்டோர்</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">அனுமதி தேவை</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">பெற்றோர் கட்டுப்பாடுகள்</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">மதிப்பாய்வுகள்</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">இன்ஸ்டண்ட் பயன்பாடு</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">உறுப்பினர் அமைப்புகள்</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">உலாவியில் திறக்கும் பயன்பாடுகள்</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">இன்ஸ்டண்ட் பயன்பாடு விருப்பத்தேர்வுகள்</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play ஸ்டோர்</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">எனது பயன்பாடுகள்</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">அறிவிப்பு அமைப்புகள்</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">வாங்குதல் விருப்பங்கள்</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">கட்டண முறைகள்</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">இந்தப் பயன்பாட்டிலிருந்து கிடைக்கும் பயன்பாடுகளைப் பார்க்க பயனரை அனுமதிக்கும்.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Google Play பயன்பாடு கண்டறிதல் சேவையை அணுகுவதற்கு</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">இந்தப் பயன்பாட்டிலேயே Google Play மூலம் உருப்படிகளை வாங்க பயனரை அனுமதிக்கிறது.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Google Play பில்லிங் சேவை</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Google Play இலிருந்து இந்தப் பயன்பாட்டிற்கு உரிமம் பெற்றிருப்பின், அதைச் சரிபார்க்கலாம்.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Google Play உரிமச் சரிபார்ப்பு</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Play சரிபார்த்த P2P பயன்பாடுகளை நிறுவ பயனரை அனுமதிக்கும்.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play Peer To Peer App Install API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">பயன்பாட்டு அனுமதிகள்</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">ஓப்பன் சோர்ஸ் உரிமங்கள்</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">அங்கீகாரம் தேவை</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">குறியீட்டைப் பயன்படுத்துக</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">இதனை மதிப்பிடவும்!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">கிஃப்ட் அனுப்பு</item>
+    <item type="LEMON_transformed_from_string" name="settings">அமைப்புகள்</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">கணக்கு அமைவை நிறைவுசெய்தல்</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">அமைவு முடிந்த பின்னர், பயன்பாடுகள் நிறுவப்படும்</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">கூடுதல் பயன்பாடுகளைப் பார்க்கவும்</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Google தயாரிப்புகளில் வேகமாக செக்அவுட் செய்யலாம்</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">கட்டண முறையைச் சேர்க்கவும்</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">கட்டணத் தகவலை அமை</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">சாதனத்திலிருந்து பயன்பாடுகளை மீட்டமைக்கவும்</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">எந்தச் சாதனம்?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">குடும்பக் கட்டண முறையை தேர்வுசெய்க</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">தொகையைத் தேர்வுசெய்க</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">கட்டண முறையைப் புதுப்பிக்கவும்</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">சரிபார்த்து நிறுவுக</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">பாதுகாப்புச் சிக்கல்கள் உள்ளதா என சோதிக்கிறது…</item>
+</resources>

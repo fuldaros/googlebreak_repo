@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector android:drawable="@drawable/$play_purchase_check_circle_animation__0"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt">
+    <target android:name="_R_G_L_2_G_N_3_T_0" android:animation="@drawable/$play_purchase_check_circle_animation__1" />
+    <target android:name="_R_G_L_1_G_D_0_P_0" android:animation="@drawable/$play_purchase_check_circle_animation__2" />
+    <target android:name="_R_G_L_1_G_D_1_P_0" android:animation="@drawable/$play_purchase_check_circle_animation__3" />
+    <target android:name="_R_G_L_1_G_N_3_T_0" android:animation="@drawable/$play_purchase_check_circle_animation__4" />
+    <target android:name="_R_G_L_0_G_D_0_P_0" android:animation="@drawable/$play_purchase_check_circle_animation__5" />
+    <target android:name="_R_G_L_0_G_D_1_P_0" android:animation="@drawable/$play_purchase_check_circle_animation__6" />
+    <target android:name="_R_G_L_0_G_N_3_T_0" android:animation="@drawable/$play_purchase_check_circle_animation__7" />
+    <target android:name="_R_G_L_0_G_N_3_T_0_M" android:animation="@drawable/$play_purchase_check_circle_animation__8" />
+    <target android:name="time_group" android:animation="@drawable/$play_purchase_check_circle_animation__9" />
+</animated-vector>

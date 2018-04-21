@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play സ്റ്റോർ</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">അംഗീകാരം ആവശ്യമാണ്</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">രക്ഷാകർതൃ നിയന്ത്രണങ്ങൾ</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">പുനരവലോകനങ്ങള്‍</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">ഇൻസ്‌റ്റന്റ് ആപ്പ്</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">അംഗത്തിന്റെ ക്രമീകരണം</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">ബ്രൗസറിൽ തുറക്കുന്ന ആപ്പുകൾ</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">ഇൻസ്‌റ്റന്‍റ് ആപ്പ് മുൻഗണനകൾ</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play സ്റ്റോർ</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play പരിരക്ഷ</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">എന്റെ അപ്ലിക്കേഷനുകൾ</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">അറിയിപ്പ് ക്രമീകരണം</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">വാങ്ങൽ ഓപ്ഷനുകൾ</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">പേയ്‌മെന്റ് രീതികൾ</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">ഈ ആപ്പിനുള്ളിൽ നിന്ന്, ലഭ്യമായ ആപ്‌സ് കാണുന്നതിന് ഉപയോക്താവിനെ അനുവദിക്കുന്നു.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Google Play ആപ്പ് കണ്ടെത്തൽ സേവനം ആക്സസ്സ് ചെയ്യുക</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">അപ്ലിക്കേഷന്റെ ഉള്ളിൽ നിന്ന് Google Play വഴി ഇനങ്ങൾ വാങ്ങുന്നതിന് ഉപയോക്താവിനെ അനുവദിക്കുന്നു.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Google Play ബില്ലിംഗ് സേവനം</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Google Play-യിൽ നിന്ന് ഈ അപ്ലിക്കേഷനായി നിങ്ങൾക്കൊരു ലൈസൻസ് ലഭിച്ചിട്ടുണ്ടോ എന്ന് പരിശോധിക്കാൻ കഴിയും.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Google Play ലൈസൻസ് പരിശോധന</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Play പരിശോധിച്ചുറപ്പിച്ച P2P ആപ്പുകൾ ഇൻസ്‌റ്റാൾ ചെയ്യാൻ ഉപയോക്താവിനെ അനുവദിക്കുന്നു.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play പിയർ-ടു-പിയർ ആപ്പ് ഇൻസ്‌റ്റാൾ API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">ആപ്പ് അനുമതികൾ</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">ഓപ്പൺ സോഴ്‌സ് ലൈസൻസുകൾ</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">പ്രാമാണീകരണം ആവശ്യമാണ്</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">കോഡ് റിഡീം ചെയ്യുക</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">ഇതിനെ റേറ്റുചെയ്യുക!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">സമ്മാനം അയയ്‌ക്കുക</item>
+    <item type="LEMON_transformed_from_string" name="settings">ക്രമീകരണം</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">പൂർണ്ണ അക്കൗണ്ട് സജ്ജീകരണം</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">സജ്ജമാക്കിയതിന് ശേഷം ആപ്പുകൾ ഇൻസ്‌റ്റാൾ ചെയ്യപ്പെടും</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">കൂടുതൽ ആപ്‌സ് അവലോകനം ചെയ്യുക</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Google ഉൽപ്പന്നങ്ങൾ ഉപയോഗിച്ച് പെട്ടെന്നുള്ള ചെക്കൗട്ട് ആസ്വദിക്കുക</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">പേയ്‌മെന്റ് രീതി ചേർക്കുക</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">പേയ്മെന്റ് വിവരം സജ്ജമാക്കുക</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">ഉപകരണത്തിൽ നിന്ന് ആപ്‌സ് പുനഃസ്ഥാപിക്കുക</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">ഏത് ഉപകരണം?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">ഫാമിലി പേയ്‌മെന്റ് രീതി തിരഞ്ഞെടുക്കുക</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">തുക തിരഞ്ഞെടുക്കുക</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">പേയ്‌മെന്റ് രീതി അപ്‌ഡേറ്റുചെയ്യുക</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">സ്ഥിരീകരിക്കുക, ഇൻസ്റ്റാളുചെയ്യുക</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">സുരക്ഷാ പ്രശ്നങ്ങൾ ഉണ്ടോയെന്നറിയാൻ സ്കാൻ ചെയ്യുന്നു…</item>
+</resources>

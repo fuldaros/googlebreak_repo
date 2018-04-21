@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.layout.IAPSnippet android:orientation="vertical" android:id="@id/iap_snippet" android:background="@drawable/play_highlight_overlay_light" android:paddingLeft="16.0dip" android:paddingTop="2.0dip" android:paddingRight="16.0dip" android:paddingBottom="2.0dip" android:layout_width="fill_parent" android:layout_height="57.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="56.0dip">
+        <TextView android:textSize="@dimen/content_generic_xsmall_size" android:textColor="@color/play_fg_secondary" android:layout_gravity="center" android:id="@id/iap_index" android:paddingLeft="0.0dip" android:paddingRight="@dimen/details_text_section_feature_badge_size" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/PlayPlainText" />
+        <TextView android:textSize="@dimen/content_generic_small_size" android:textColor="@color/play_fg_primary" android:layout_gravity="center" android:id="@id/iap_title" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/PlayPlainText" />
+        <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/content_generic_small_size" android:textColor="@color/play_fg_secondary" android:layout_gravity="end|center" android:id="@id/iap_price" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/PlayPlainText" />
+    </LinearLayout>
+    <View android:id="@id/iap_divider" android:background="@color/play_translucent_separator_line" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+</com.google.android.finsky.layout.IAPSnippet>

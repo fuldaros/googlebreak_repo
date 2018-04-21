@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailsmodules.watchaction.view.WatchActionSummaryView android:orientation="vertical" android:id="@id/watch_action_summary" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.google.android.finsky.frameworkviews.PlayActionButtonV2 android:id="@id/watch_action_button" android:layout_width="fill_parent" finsky:action_style="primary" style="@style/Play_DetailsPage_ActionButtonV2" />
+    <include android:id="@id/download_progress_panel" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/details_download_progress" />
+</com.google.android.finsky.detailsmodules.watchaction.view.WatchActionSummaryView>

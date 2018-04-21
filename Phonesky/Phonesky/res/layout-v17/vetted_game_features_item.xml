@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailsmodules.modules.vettedgamefeatures.view.VettedGameFeatureView android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/progress_bar_container" android:layout_width="@dimen/vetted_game_feature_rating_diameter" android:layout_height="@dimen/vetted_game_feature_rating_diameter" android:layout_marginLeft="@dimen/vetted_game_feature_rating_side_padding" android:layout_marginRight="@dimen/vetted_game_feature_rating_side_padding" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/vetted_game_feature_rating_side_padding" android:layout_marginEnd="@dimen/vetted_game_feature_rating_side_padding">
+        <ProgressBar android:layout_gravity="center" android:id="@id/rating_ring" android:layout_width="fill_parent" android:layout_height="fill_parent" android:max="100" android:progressDrawable="@drawable/vetted_game_features_rating_ring" style="@android:style/Widget.ProgressBar.Horizontal" />
+        <com.google.android.play.layout.StarRatingBar android:layout_gravity="center" android:id="@id/feature_rating" style="@style/VettedGamedFeatureRatingBar" />
+    </FrameLayout>
+    <TextView android:textSize="@dimen/vetted_game_feature_title_text_size" android:textColor="@color/vetted_game_feature_text_color" android:gravity="center" android:id="@id/feature_title" android:paddingTop="@dimen/vetted_game_feature_top_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fontFamily="sans-serif-medium" />
+</com.google.android.finsky.detailsmodules.modules.vettedgamefeatures.view.VettedGameFeatureView>

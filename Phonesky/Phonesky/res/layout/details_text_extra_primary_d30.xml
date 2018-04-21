@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.expandeddescriptionpage.view.DetailsExpandedExtraPrimaryView android:background="@drawable/play_highlight_overlay_light" android:paddingLeft="@dimen/d30_module_layout_padding" android:paddingTop="@dimen/details_text_section_extras_padding" android:paddingRight="@dimen/d30_module_layout_padding" android:paddingBottom="@dimen/details_text_section_extras_padding" android:focusable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.google.android.play.image.FifeImageView android:id="@id/extra_thumbnail" android:layout_width="@dimen/details_text_section_extras_icon_size" android:layout_height="@dimen/details_text_section_extras_icon_size" android:layout_marginLeft="0.0dip" android:layout_marginRight="24.0dip" android:scaleType="fitCenter" finsky:fixed_bounds="true" />
+    <TextView android:id="@id/extra_title" android:layout_toRightOf="@id/extra_thumbnail" android:layout_alignParentRight="true" style="@style/D30ModuleSecondaryBodyText" />
+    <TextView android:textColorLink="@color/play_apps_primary" android:id="@id/extra_description" android:layout_toRightOf="@id/extra_thumbnail" android:layout_below="@id/extra_title" android:layout_alignParentRight="true" style="@style/D30ModuleBodyText" />
+</com.google.android.finsky.expandeddescriptionpage.view.DetailsExpandedExtraPrimaryView>

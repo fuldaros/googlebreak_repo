@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailsmodules.modules.vettedgamefeatures.view.VettedGameFeaturesModuleView android:orientation="vertical" android:background="@color/play_white" android:focusable="false" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/vgf_section_title" android:paddingLeft="@dimen/details_new_content_margin" android:paddingRight="@dimen/details_new_content_margin" android:paddingBottom="@dimen/vetted_game_features_container_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/vetted_game_features_section_title" style="@style/VettedAppFeaturesModuleTitle" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/features_container" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/vetted_game_features_container_padding" />
+</com.google.android.finsky.detailsmodules.modules.vettedgamefeatures.view.VettedGameFeaturesModuleView>

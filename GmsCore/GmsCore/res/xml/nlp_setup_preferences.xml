@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:key="nlp_self_check_preferences"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/prefcat_setup">
+        <Preference android:title="@string/self_check_title" android:key="@string/self_check_title" android:summary="@string/self_check_desc" />
+    </PreferenceCategory>
+</PreferenceScreen>

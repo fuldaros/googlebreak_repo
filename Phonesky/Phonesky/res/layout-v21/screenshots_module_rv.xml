@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailsmodules.modules.screenshotsv2.view.ScreenshotsModuleViewV2 android:layout_width="fill_parent" android:layout_height="@dimen/screenshots_height" android:transitionGroup="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/strip_background" android:background="@color/play_white" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.google.android.finsky.deprecateddetailscomponents.ScreenshotsRecyclerView android:id="@id/screenshots_container" android:focusable="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.google.android.finsky.detailsmodules.modules.screenshotsv2.view.ScreenshotsModuleViewV2>

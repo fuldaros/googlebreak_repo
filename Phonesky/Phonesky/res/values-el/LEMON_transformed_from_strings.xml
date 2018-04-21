@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play Store</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Απαιτείται έγκριση</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Γονικοί έλεγχοι</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Κριτικές</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Instant Εφαρμογή</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Ρυθμίσεις μελών</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Εφαρμ. που ανοίγουν σε πρόγρ. περιήγησης</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Προτιμήσεις Instant Εφαρμογών</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play Store</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Οι εφαρμογές μου</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Ρυθμίσεις ειδοποιήσεων</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Επιλογές αγοράς</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Τρόποι πληρωμής</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Επιτρέπει στον χρήστη να βλέπει τις διαθέσιμες εφαρμογές μέσα από αυτήν την εφαρμογή</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Πρόσβαση στο Google Play App Discovery Service</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Επιτρέπει στον χρήστη να αγοράζει στοιχεία από το Google Play μέσω αυτής της εφαρμογής.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Υπηρεσία χρέωσης του Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">"Μπορεί να πραγματοποιηθεί έλεγχος εάν διαθέτετε άδεια γι' αυτήν την εφαρμογή από το Google Play."</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Έλεγχος άδειας του Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Επιτρέπει στον χρήστη να εγκαθιστά επαληθευμένες εφαρμογές P2P του Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">API εγκατάστασης εφαρμογών P2P για το Google Play</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Δικαιώματα εφαρμογών</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">Άδειες λογισμικού ανοικτού κώδικα</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Απαίτηση ελέγχου ταυτότητας</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Εξαργυρώστε τον κωδικό σας</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Αξιολογήστε το!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Αποστολή δώρου</item>
+    <item type="LEMON_transformed_from_string" name="settings">Ρυθμίσεις</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Ολοκλήρωση ρύθμισης λογαριασμού</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Οι εφαρμογές θα εγκατασταθούν μόλις ολοκληρωθεί η ρύθμιση</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Έλεγχος πρόσθετων εφαρμογών</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Απολαύστε γρήγορες πληρωμές με τα προϊόντα Google</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Προσθήκη τρόπου πληρωμής</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Ρύθμιση στοιχείων πληρωμής</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Επαναφορά εφαρμογών από συσκευή</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Ποια συσκευή;</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Επιλέξτε οικογεν. τρόπο πληρωμής</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Επιλογή ποσού</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Ενημερώστε τον τρόπο πληρωμής</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Επαλήθευση και εγκατάσταση</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Γίνεται σάρωση για ζητήματα ασφάλειας…</item>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <item android:icon="@drawable/ic_menu_translate" android:id="@id/translate_button" android:visible="false" finsky:showAsAction="always|withText" />
+    <item android:id="@id/env_button" android:visible="false" android:title="@string/debug_environment_action_bar_title" finsky:showAsAction="always" />
+    <item android:icon="@drawable/ic_share" android:id="@id/share_button" android:visible="false" android:title="@string/share" finsky:showAsAction="always" />
+    <item android:icon="@drawable/ic_settings" android:id="@id/notification_settings_button" android:visible="false" android:title="@string/settings_notifications_section_summary" finsky:showAsAction="always" />
+    <item android:icon="@drawable/ic_search_white" android:id="@id/search_button" android:title="@string/search_hint" finsky:actionViewClass="android.support.v7.widget.SearchView" finsky:showAsAction="always|collapseActionView" />
+    <item android:icon="@drawable/ic_menu_wish_off" android:id="@id/wishlist_button" android:visible="false" android:title="@string/label_wishlist_add_action" finsky:showAsAction="never" />
+    <item android:icon="@drawable/ic_flag_d30" android:id="@id/flag_inappropriate_button" android:visible="false" android:title="@string/flagging_title" finsky:showAsAction="never" />
+    <item android:id="@id/auto_update_button" android:visible="false" android:title="@string/allow_auto_updating" finsky:showAsAction="never" />
+</menu>

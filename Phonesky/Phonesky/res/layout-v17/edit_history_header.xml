@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="@dimen/review_edit_history_header_height">
+        <LinearLayout android:id="@id/close_edit_history_button" android:paddingLeft="@dimen/details_new_content_margin" android:paddingTop="20.0dip" android:paddingRight="24.0dip" android:paddingBottom="20.0dip" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:contentDescription="@string/review_edit_history_back_button_description" android:paddingStart="@dimen/details_new_content_margin" android:paddingEnd="24.0dip">
+            <ImageView android:background="?selectableItemBackgroundBorderless" android:focusable="false" android:clickable="false" android:layout_width="@dimen/review_edit_history_header_close_button_size" android:layout_height="@dimen/review_edit_history_header_close_button_size" android:src="@drawable/ic_arrow_back_grey600_24dp" android:scaleType="center" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/review_edit_history_header_text_size" android:textColor="@color/reviews_filtering_color" android:gravity="center_vertical" android:id="@id/edit_history_title" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/edit_history_label" />
+    </LinearLayout>
+    <View android:id="@id/edit_history_title_divider" android:background="@color/play_translucent_separator_line" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+</LinearLayout>

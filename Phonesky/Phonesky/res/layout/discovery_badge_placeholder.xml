@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/discovery_badge_placeholder" android:layout_width="@dimen/discovery_badge_title_width" android:showDividers="none" style="@style/DiscoveryBadge"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_gravity="center_horizontal" android:id="@id/discovery_badge_placeholder_icon" android:background="@drawable/discovery_badge_icon_placeholder" android:layout_width="@dimen/discovery_badge_icon_container_size" android:layout_height="@dimen/discovery_badge_icon_container_size" />
+    <TextView android:id="@id/discovery_badge_placeholder_title" android:background="@color/placeholder_grey" android:paddingTop="0.0dip" android:layout_marginTop="6.0dip" style="@style/DiscoveryBadgeTitle" />
+</LinearLayout>

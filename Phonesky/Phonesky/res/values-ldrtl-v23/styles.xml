@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.InstrumentManager" parent="@style/Theme.Common.InstrumentManager">
+        <item name="colorAccent">?android:colorAccent</item>
+        <item name="colorControlNormal">?android:colorControlNormal</item>
+        <item name="imProgressBarTopMargin">-5.0dip</item>
+        <item name="uicCardLogoGridToggleButtonStartMargin">-8.0dip</item>
+        <item name="uicCardLogoGridToggleButtonTopMargin">0.0dip</item>
+        <item name="uicDialogBodyStartEndMargin">24.0dip</item>
+        <item name="uicDialogBodyTopBottomMargin">24.0dip</item>
+        <item name="uicFlatButtonWithAccentTextStyle">@android:style/Widget.Material.Button.Borderless.Colored</item>
+        <item name="uicFormSpinnerStyle">@android:style/Widget.Material.Spinner.Underlined</item>
+    </style>
+    <style name="Theme.InstrumentManager.Light" parent="@style/Theme.Common.InstrumentManager.Light">
+        <item name="colorAccent">?android:colorAccent</item>
+        <item name="colorControlNormal">?android:colorControlNormal</item>
+        <item name="imProgressBarTopMargin">-5.0dip</item>
+        <item name="uicCardLogoGridToggleButtonStartMargin">-8.0dip</item>
+        <item name="uicCardLogoGridToggleButtonTopMargin">0.0dip</item>
+        <item name="uicDialogBodyStartEndMargin">24.0dip</item>
+        <item name="uicDialogBodyTopBottomMargin">24.0dip</item>
+        <item name="uicFlatButtonWithAccentTextStyle">@android:style/Widget.Material.Light.Button.Borderless.Colored</item>
+        <item name="uicFormSpinnerStyle">@android:style/Widget.Material.Spinner.Underlined</item>
+    </style>
+    <style name="Theme.InstrumentManager.Light.Dialog" parent="@style/Theme.Common.InstrumentManager.Light.Dialog" />
+    <style name="Theme.InstrumentManager.Phoenix.Light" parent="@style/Theme.Common.InstrumentManager.Phoenix.Light">
+        <item name="uicCardLogoGridToggleButtonStartMargin">-8.0dip</item>
+        <item name="uicCardLogoGridToggleButtonTopMargin">24.0dip</item>
+        <item name="uicDialogBodyStartEndMargin">24.0dip</item>
+        <item name="uicDialogBodyTopBottomMargin">24.0dip</item>
+        <item name="uicFlatButtonWithAccentTextStyle">@android:style/Widget.Material.Light.Button.Borderless.Colored</item>
+        <item name="uicFormSpinnerStyle">@android:style/Widget.Material.Spinner.Underlined</item>
+    </style>
+</resources>

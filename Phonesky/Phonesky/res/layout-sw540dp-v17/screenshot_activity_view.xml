@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/photo_activity_root_view" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/photo_activity_view_component" />
+    <ImageView android:layout_gravity="center|left" android:id="@id/photo_left_nav" android:layout_width="@dimen/screenshots_circle_button_size" android:layout_height="@dimen/screenshots_circle_button_size" android:layout_marginLeft="@dimen/screenshots_circle_button_margin" android:layout_marginRight="0.0dip" android:scaleType="center" android:contentDescription="@string/previous_screenshot" android:layout_marginStart="@dimen/screenshots_circle_button_margin" android:layout_marginEnd="0.0dip" app:srcCompat="@drawable/ic_chevron_start_wht_32dp" />
+    <ImageView android:layout_gravity="center|right" android:id="@id/photo_right_nav" android:layout_width="@dimen/screenshots_circle_button_size" android:layout_height="@dimen/screenshots_circle_button_size" android:layout_marginLeft="0.0dip" android:layout_marginRight="@dimen/screenshots_circle_button_margin" android:scaleType="center" android:contentDescription="@string/next_screenshot" android:layout_marginStart="0.0dip" android:layout_marginEnd="@dimen/screenshots_circle_button_margin" app:srcCompat="@drawable/ic_chevron_end_wht_32dp" />
+</FrameLayout>

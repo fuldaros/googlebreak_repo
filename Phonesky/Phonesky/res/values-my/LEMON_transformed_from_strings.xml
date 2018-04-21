@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play စတိုး</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">အတည်ပြုချက် လိုအပ်သည်</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">မိဘအုပ်ထိန်းမှုများ</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">သုံးသပ်ချက်များ</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">အသင့်သုံးအက်ပ်</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">အဖွဲ့ဝင် ဆက်တင်များ</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">ဘရောင်ဇာဖြင့် ဖွင့်ရသောအက်ပ်များ</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Instant Apps ရွေးချယ်မှုများ</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play စတိုး</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">ကျွန်ုပ်၏အက်ပ်များ</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">အကြောင်းကြားချက် ဆက်တင်များ</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">ဝယ်ယူရန် ရွေးချယ်စရာများ</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">ငွေပေးချေမှု နည်းလမ်းများ</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">ရရှိနိုင်သည့်အက်ပ်များကို ဤအက်ပ်ထဲတွင် သုံးစွဲသူများအား ကြည့်ခွင့်ပေးသည်။</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Google Play အက်ပ် ရှာဖွေရေး ဝန်ဆောင်မှုကို သုံးပါ</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">သုံးစွဲသူအား Google Play မှတဆင့် ဤအပ္ပလီကေးရှင်းအတွင်း ပစ္စည်းများ ဝယ်ယူခွင့်ပြုပါ။</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Google Play ငွေတောင်းခံလွှာ ဝန်ဆောင်မှု</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">ဤ အက်ပ်အတွက် Google Play မှ လိုင်စင် သင့်တွင် ရှိမရှိ စစ်နိုင်သည်။</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Google Play လိုင်စင် စစ်ဆေးမှု</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Play က အတည်ပြုထားသည့် P2P အက်ပ်များကို အသုံးပြုသူအား ထည့်သွင်းခွင့်ပြုသည်။</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play Peer To Peer App Install API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">အက်ပ်ခွင့်ပြုချက်များ</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">အထောက်အထားစစ်ဆေးရန် လိုသည်</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">သင့်ကုဒ်အား ပြန်ရွေးရန်</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">အဆင့် သတ်မှတ်ပါ!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">လက်ဆောင်ကို ပို့ပါ</item>
+    <item type="LEMON_transformed_from_string" name="settings">ဆက်တင်များ</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">အကောင့်သတ်မှတ်ခြင်း ပြီးစီးရန်</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">စနစ်ထည့်သွင်းမှု ပြီးသည့်အခါ အက်ပ်များကို ထည့်သွင်းသွားပါမည်</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">နောက်ထပ်အက်ပ်များကို ပြန်လည်သုံးသပ်ပါ</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Google ထုတ်ကုန်များဖြင့် ငွေအြမန်ရှင်းနိုင်ပါသည်</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">ငွေပေးချေမှုနည်းလမ်း ထည့်ပါ</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">ငွေပေးချေမှု အချက်အလက် ပြင်ဆင်သတ်မှတ်ရန်</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">စက်ပစ္စည်းမှ အက်ပ်များကို ပြန်ယူပါ</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">ဘယ်စက်ပစ္စည်းလဲ။</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">မိသားစု ငွေပေးချေမှုစနစ်ကိုရွေးပါ</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">ပမာဏ ရွေးရန်</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">ငွေပေးချေမှုနည်းလမ်းကို အပ်ဒိတ်လုပ်ပါ</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">အတည်ပြုပြီး ထည့်သွင်းရန်</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">လုံခြုံရေးအတွက် စစ်ဆေးနေပါသည်…</item>
+</resources>

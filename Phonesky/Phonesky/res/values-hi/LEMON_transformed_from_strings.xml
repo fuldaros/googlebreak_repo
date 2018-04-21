@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play स्टोर</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">स्वीकृति आवश्यक</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">माता-पिता के नियंत्रण में</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">समीक्षाएं</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">झटपट ऐप</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">सदस्‍य सेटिंग</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">ब्राउज़र में खुलने वाले ऐप्लिकेशन</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">झटपट ऐप्स प्राथमिकताएं</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play स्टोर</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">मेरे ऐप्स</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">सूचना सेटिंग</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">खरीदारी विकल्प</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">भुगतान के तरीके</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">उपयोगकर्ता को इस ऐप्लिकेशन के अंदर से उपलब्ध ऐप्लिकेशन देखने देती है.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Google Play ऐप्लिकेशन खोज सेवा का एक्सेस</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">"उपयोगकर्ता को इस ऐप्स  के अंतर्गत Google Play से आइटम खरीदने देता है."</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Google Play बिलिंग सेवा</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">"इस बात की जाँच की जा सकती है कि आपके पास Google Play से इस ऐप्स  के लिए लाइसेंस है या नहीं."</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Google Play लाइसेंस जाँच</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">उपयोगकर्ता को Play से पुष्टि किए गए P2P ऐप्लिकेशन इंस्टॉल करने दें.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play पीयर टू पीयर ऐप्लिकेशन इंस्टॉल API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">"ऐप्स  अनुमतियां"</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">ओपन सोर्स लाइसेंस</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">प्रमाणीकरण आवश्यक है</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">अपना कोड रिडीम करें</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">इसका मूल्‍यांकन करें!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">उपहार भेजें</item>
+    <item type="LEMON_transformed_from_string" name="settings">सेटिंग</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">खाता सेटअप पूर्ण करें</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">ऐप्लिकेशन सेटअप पूरा होने के बाद इंस्टॉल किए जाएंगे</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">अतिरिक्त ऐप्लिकेशन की समीक्षा करें</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Google उत्पादों के साथ त्वरित चेकआउट का आनंद लें</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">भुगतान विधि जोड़ें</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">पेमेंट जानकारी सेट करें</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">डिवाइस से ऐप्स पुन: स्थापित करें</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">कौन सा डिवाइस?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">परिवार की भुगतान विधि चुनना</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">राशि चुनें</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">भुगतान विधि अपडेट करें</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">सत्यापित करें और इंस्टॉल करें</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">सुरक्षा की समस्याओं के लिए स्कैन किया जा रहा है…</item>
+</resources>

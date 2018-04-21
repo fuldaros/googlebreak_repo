@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play Store</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Samþykkis er krafist</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Barnalæsing</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Umsagnir</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Skyndiforrit</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Meðlimastillingar</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Forrit opnast í vafra</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Kjörstillingar skyndiforrita</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play Store</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Forritin mín</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Tilkynningastillingar</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Valkostir fyrir kaup</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Greiðslumátar</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Gerir notandanum kleift að skoða tiltæk forrit úr þessu forriti.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Fá aðgang að leitarþjónustu forrita í Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Leyfir notanda að kaupa vörur gegnum Google Play úr þessu forriti.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Greiðsluþjónusta Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Getur athugað hvort þú ert með leyfi fyrir þetta forrit frá Google Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Google Play leyfiskönnun</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Gera notanda kleift að setja upp P2P-forrit sem eru staðfest á Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Forritaskil Google Play Peer To Peer App Install</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Heimildir forrits</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">Leyfi opins kóða</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Krefjast auðkenningar</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Innleystu kóðann þinn</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Gefðu einkunn!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Senda gjöf</item>
+    <item type="LEMON_transformed_from_string" name="settings">Stillingar</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Ljúka uppsetningu reiknings</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Forrit verða sett upp eftir að uppsetningu er lokið</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Yfirfara fleiri forrit</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Fljótlegt greiðsluferli með vörum Google</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Bæta við greiðslumáta</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Setja upp greiðsluupplýsingar</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Enduruppsetja forrit af tækinu</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Hvaða tæki?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Velja greiðslumáta fjölskyldunnar</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Veldu upphæð</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Uppfæra greiðslumáta</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Staðfesta og setja upp</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Leitar að öryggisvandamálum…</item>
+</resources>

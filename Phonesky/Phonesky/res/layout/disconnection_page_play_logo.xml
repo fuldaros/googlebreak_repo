@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_vertical" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="0.0dip" android:layout_marginRight="8.0dip" android:src="@mipmap/ic_menu_play" />
+    <ImageView android:layout_width="wrap_content" android:layout_height="@dimen/standard_button_touch_target_minsize" android:src="@drawable/logo_googleplay" />
+</merge>

@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="abc_input_method_navigation_guard">@android:color/black</color>
+    <color name="abc_search_url_text_normal">#ff7fa87f</color>
+    <color name="abc_search_url_text_pressed">@android:color/black</color>
+    <color name="abc_search_url_text_selected">@android:color/black</color>
+    <color name="accent_material_dark">@color/material_deep_teal_200</color>
+    <color name="accent_material_light">@color/material_deep_teal_500</color>
+    <color name="account_action_fg">#ff03838f</color>
+    <color name="account_email_dark_text_color">#ff212121</color>
+    <color name="account_email_error_color">#ffd50000</color>
+    <color name="account_email_light_text_color">#ff616161</color>
+    <color name="account_email_primary_color">#ff009688</color>
+    <color name="account_error_byline">#ffd23f31</color>
+    <color name="account_floating_action_button_bg">#ff00695c</color>
+    <color name="account_manage_subscriptions_error_subtitle">#ffdb4437</color>
+    <color name="account_selector_background">#ffd7d7d7</color>
+    <color name="account_separator">#1f000000</color>
+    <color name="action_bar_overlay_end">@color/play_transparent</color>
+    <color name="action_bar_overlay_start">@color/status_bar_overlay</color>
+    <color name="action_button_disabled_text_color">#61000000</color>
+    <color name="ad_badge_cluster_color">#fff6bf26</color>
+    <color name="audiobook_sample_control_hint_background">#70ffffff</color>
+    <color name="background_floating_material_dark">@color/material_grey_800</color>
+    <color name="background_floating_material_light">@android:color/white</color>
+    <color name="background_material_dark">@color/material_grey_850</color>
+    <color name="background_material_light">@color/material_grey_50</color>
+    <color name="black">#ff000000</color>
+    <color name="black_fifty_opacity">#80000000</color>
+    <color name="branded_status_bar">@color/play_multi_primary</color>
+    <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
+    <color name="bright_foreground_disabled_material_light">#80000000</color>
+    <color name="bright_foreground_material_dark">@android:color/white</color>
+    <color name="bright_foreground_material_light">@android:color/black</color>
+    <color name="button_material_dark">#ff5a595b</color>
+    <color name="button_material_light">#ffd6d7d7</color>
+    <color name="card_live_reengagement_progressbar_background">#ffd8d8d8</color>
+    <color name="card_live_reengagement_progressbar_progress">@color/play_apps_primary</color>
+    <color name="cardview_dark_background">#ff424242</color>
+    <color name="cardview_light_background">#ffffffff</color>
+    <color name="cardview_shadow_end_color">#03000000</color>
+    <color name="cardview_shadow_start_color">#37000000</color>
+    <color name="content_filter_email_text">#de000000</color>
+    <color name="content_filter_v3_primary_color">#ff009688</color>
+    <color name="country_icon">#ff78909c</color>
+    <color name="d30_card_separator_color">@color/play_cards_separator_color</color>
+    <color name="d30_details_subtitle_default_color">@color/play_fg_secondary</color>
+    <color name="d30_discover_tag_pill_outline_color">#ffdadce0</color>
+    <color name="d30_discover_tag_pill_text_color">@color/play_fg_secondary</color>
+    <color name="d30_stream_bottom_separator_color">@color/play_cards_separator_color</color>
+    <color name="d30_stream_internal_separator_color">@color/play_cards_separator_color</color>
+    <color name="d30_stream_top_separator_color">@color/play_cards_separator_color</color>
+    <color name="d30_toolbar_progress_ring_color">#fff5f3ff</color>
+    <color name="d30_warnings_message_background_color">#ffedfaf7</color>
+    <color name="d30_warnings_message_text_color">#ff008d5a</color>
+    <color name="d30_warnings_voucher_background_color">#fff5f3ff</color>
+    <color name="d30_warnings_voucher_text_color">#ff4c1eaf</color>
+    <color name="d30_warnings_warning_background_color">#fffbf3f5</color>
+    <color name="d30_warnings_warning_text_color">#ffb00039</color>
+    <color name="dark_text">@android:color/black</color>
+    <color name="design_fab_shadow_end_color">@android:color/transparent</color>
+    <color name="design_fab_shadow_mid_color">#14000000</color>
+    <color name="design_fab_shadow_start_color">#44000000</color>
+    <color name="design_fab_stroke_end_inner_color">#0a000000</color>
+    <color name="design_fab_stroke_end_outer_color">#0f000000</color>
+    <color name="design_fab_stroke_top_inner_color">#1affffff</color>
+    <color name="design_fab_stroke_top_outer_color">#2effffff</color>
+    <color name="design_snackbar_background_color">#ff323232</color>
+    <color name="detailed_permissions_footer_bg">#ffe7e7e7</color>
+    <color name="detailed_permissions_footer_text">#ff212121</color>
+    <color name="details_review_source_text">#ff3f9fe0</color>
+    <color name="details_screenshot_placeholder">#ffcccccc</color>
+    <color name="discovery_badge_drop_shadow_alpha_max">#40000000</color>
+    <color name="discovery_badge_drop_shadow_alpha_min">#30000000</color>
+    <color name="discovery_badge_drop_shadow_base_color">#ff000000</color>
+    <color name="discovery_plus_one_background">#ffd73d32</color>
+    <color name="divider_item_decoration_color">@color/black</color>
+    <color name="download_network_warning_dialog_title_color">@color/play_fg_primary</color>
+    <color name="download_now_subtext_color">#ff616161</color>
+    <color name="editorial_overlay_end">#66000000</color>
+    <color name="editorial_overlay_start">@color/play_transparent</color>
+    <color name="email_icon">#ff6db9e5</color>
+    <color name="entity_pivot_text_color">#ff616161</color>
+    <color name="error_color_material_dark">#ffff7043</color>
+    <color name="error_color_material_light">#ffff5722</color>
+    <color name="error_indicator_with_notify_text_color">#ff616161</color>
+    <color name="family_action">#ff0097a7</color>
+    <color name="family_icon">#ff4cb6ac</color>
+    <color name="family_library_settings_description_background">#fff5f5f5</color>
+    <color name="family_library_setup_primary">#ff455a64</color>
+    <color name="family_sharing_switch_thumb_disabled">#ffececec</color>
+    <color name="family_sharing_switch_track_disabled">#ffb2b2b2</color>
+    <color name="fast_scroll_scrubber_dragging_fill">#b3000000</color>
+    <color name="fast_scroll_scrubber_dragging_stroke">#7fffffff</color>
+    <color name="fast_scroll_scrubber_hover_fill">#b3000000</color>
+    <color name="fast_scroll_scrubber_hover_stroke">#7fffffff</color>
+    <color name="fast_scroll_scrubber_idle_fill">#7f000000</color>
+    <color name="fast_scroll_scrubber_idle_stroke">#4dffffff</color>
+    <color name="fingerprint_hint_color">@color/play_fg_secondary</color>
+    <color name="fingerprint_success_color">#ff009688</color>
+    <color name="fingerprint_warning_color">@color/purchase_flow_error_text_color</color>
+    <color name="flat_card_cluster_header_title_text_color">#ff616161</color>
+    <color name="flat_card_cluster_header_title_text_color_black">#ff212121</color>
+    <color name="flat_card_cluster_header_title_text_color_dark_theme">#ffffffff</color>
+    <color name="flat_card_cluster_header_title_text_color_hover">#ff424242</color>
+    <color name="flat_card_cluster_header_title_text_color_pressed">@color/play_secondary_light</color>
+    <color name="flat_card_cluster_light_background">#ffffffff</color>
+    <color name="flat_card_creator_avatar_background_color">#ff212121</color>
+    <color name="flat_card_star_icon_color_dark_theme">#8affffff</color>
+    <color name="flat_card_stroke_color">#ffe0e0e0</color>
+    <color name="flat_card_subtitle_text_color">@color/play_fg_secondary</color>
+    <color name="flat_card_subtitle_text_color_dark_theme">#b3ffffff</color>
+    <color name="flat_card_title_text_color">@color/play_primary_text</color>
+    <color name="flat_card_title_text_color_dark_theme">#ffffffff</color>
+    <color name="flat_overflow_menu_fill_color">#8a000000</color>
+    <color name="flat_overflow_menu_fill_color_dark_theme">#66ffffff</color>
+    <color name="floating_highlights_banner_dark_theme_subtitle_text_color">#b3ffffff</color>
+    <color name="floating_highlights_banner_dark_theme_text_color">#ffffffff</color>
+    <color name="floating_highlights_banner_light_theme_subtitle_text_color">#ff616161</color>
+    <color name="floating_highlights_banner_light_theme_text_color">#ff212121</color>
+    <color name="foreground_material_dark">@android:color/white</color>
+    <color name="foreground_material_light">@android:color/black</color>
+    <color name="game_loading_background">@android:color/white</color>
+    <color name="game_loading_negative_button_text_color">#ffadadad</color>
+    <color name="game_loading_positive_button_text_color">#ff449f5c</color>
+    <color name="game_loading_progressbar">#ff4cbc69</color>
+    <color name="game_loading_progressbar_background">#ffcfd8dc</color>
+    <color name="game_loading_subtitle_color">#ff6f6f6f</color>
+    <color name="game_loading_text_color">#ff000000</color>
+    <color name="green_500">#ff0f9d58</color>
+    <color name="grey">#ff999999</color>
+    <color name="guided_discovery_pill_drop_shadow_alpha">#403c4043</color>
+    <color name="highlight_banner_card_index_bg">#4d000000</color>
+    <color name="highlight_banner_card_text">#d7ffffff</color>
+    <color name="highlight_banner_overlay_title_shadow">#61000000</color>
+    <color name="highlighted_text_material_dark">#6680cbc4</color>
+    <color name="highlighted_text_material_light">#66009688</color>
+    <color name="highlights_gradient_overlay_end">#8f000000</color>
+    <color name="highlights_gradient_overlay_start">@color/play_transparent</color>
+    <color name="inline_details_subtitle_default_color">@color/play_fg_secondary</color>
+    <color name="instant_apps_launch_button_tooltip_text_color">#ffffffff</color>
+    <color name="instant_apps_settings_blue">#ff4285f4</color>
+    <color name="instant_apps_settings_description_text_color">#ff7f7f7f</color>
+    <color name="instant_apps_settings_divider_color">#ffd8d8d8</color>
+    <color name="instant_apps_settings_header_text_color">@color/instant_apps_settings_blue</color>
+    <color name="instant_apps_settings_help_primary_color">@color/primary_material_dark</color>
+    <color name="instant_apps_settings_message_color">#ff858585</color>
+    <color name="instant_apps_settings_radio_button_tint">#ff4285f4</color>
+    <color name="instant_apps_settings_v3_action_bar_color">@color/play_multi_primary</color>
+    <color name="instant_apps_settings_v3_primary_text">@color/play_primary_text</color>
+    <color name="instant_apps_settings_v3_secondary_text">@color/play_secondary_text</color>
+    <color name="instant_apps_settings_v3_status_bar_color">@color/play_multi_recents</color>
+    <color name="instrument_error_text">#ffc53929</color>
+    <color name="jpkr_disabled_grey">#ff898989</color>
+    <color name="jpkr_editorial_page_default_background_color">#ff006b76</color>
+    <color name="jpkr_editorial_page_default_text_color">#ffffffff</color>
+    <color name="jpkr_grey_primary">#ff212121</color>
+    <color name="jpkr_grey_secondary">#ff616161</color>
+    <color name="jpkr_mini_top_charts_category_spinner_label_color">@color/jpkr_vertical_secondary</color>
+    <color name="jpkr_mini_top_charts_empty_item_background_color">@color/white</color>
+    <color name="jpkr_mini_top_charts_tab_strip_background_color">#fff7f7f7</color>
+    <color name="jpkr_mini_top_charts_tooltip_background">#ff37474f</color>
+    <color name="jpkr_vertical_secondary">#ff0f9d58</color>
+    <color name="light_text">#61000000</color>
+    <color name="loading_accent_color">#ff4285f4</color>
+    <color name="loading_fs_app_name">@color/dark_text</color>
+    <color name="loading_fs_background">@android:color/white</color>
+    <color name="loading_fs_light_grey">@color/light_text</color>
+    <color name="loading_ia_background">#aaffffff</color>
+    <color name="loading_progressbar">@color/loading_accent_color</color>
+    <color name="loading_progressbar_background">#77bce4db</color>
+    <color name="material_blue_grey_800">#ff37474f</color>
+    <color name="material_blue_grey_950">#ff21272b</color>
+    <color name="material_deep_teal_200">#ff80cbc4</color>
+    <color name="material_deep_teal_500">#ff009688</color>
+    <color name="material_grey_100">#fff5f5f5</color>
+    <color name="material_grey_300">#ffe0e0e0</color>
+    <color name="material_grey_50">#fffafafa</color>
+    <color name="material_grey_600">#ff757575</color>
+    <color name="material_grey_800">#ff424242</color>
+    <color name="material_grey_850">#ff303030</color>
+    <color name="material_grey_900">#ff212121</color>
+    <color name="music_home_microsite_image_header_text">#ff3e0909</color>
+    <color name="myapps_data_ring_bad">#ffc53929</color>
+    <color name="myapps_data_ring_good">@color/play_apps_primary</color>
+    <color name="myapps_data_ring_warning">#fff09300</color>
+    <color name="myapps_progress_ring_bg">#ffd8d8d8</color>
+    <color name="myapps_progress_ring_fg">@color/play_apps_primary</color>
+    <color name="myapps_warning_color">@color/purchase_flow_error_text_color</color>
+    <color name="notification_center_card_timestamp_text_color">@color/play_secondary_light</color>
+    <color name="notification_center_terms_card_bg_color">#ffe7f5ee</color>
+    <color name="optin_dialog_positive_button_disabled_background_color">#424f4f4f</color>
+    <color name="optin_dialog_radio_unchecked_color">#54000000</color>
+    <color name="order_history_icon">#ff78909c</color>
+    <color name="package_malware_notification_color">#fff4511e</color>
+    <color name="payment_methods_icon">#ff9ccc66</color>
+    <color name="pe__card_divider_color">#4dffffff</color>
+    <color name="pe__dc_details_thumbnail_background_color">#ff37474f</color>
+    <color name="pe__dc_dock_divider_color">#20000000</color>
+    <color name="pe__default_action_bar_color">#ff262626</color>
+    <color name="pe__default_window_background_color">#ff1c1c1c</color>
+    <color name="pe__game_rating_star_bg_color">#33ffffff</color>
+    <color name="pe__status_bar_underlay_color">#ff1c1c1c</color>
+    <color name="pe__translucent_status_bar_color">#66000000</color>
+    <color name="pe_rotten_tomatoes_score">#fffafafa</color>
+    <color name="photo_crop_dim_color">#cc000000</color>
+    <color name="photo_crop_highlight_color">#ffffffff</color>
+    <color name="placeholder_color">#ffeeeeee</color>
+    <color name="placeholder_grey">#14616161</color>
+    <color name="play_action_button_pressed_grey">#80f0f0f0</color>
+    <color name="play_apps_ent_light">#1600796b</color>
+    <color name="play_apps_ent_primary">#ff00796b</color>
+    <color name="play_apps_ent_primary_disabled">#8000796b</color>
+    <color name="play_apps_ent_primary_hover">#ff005e52</color>
+    <color name="play_apps_ent_primary_pressed">#ff008a7e</color>
+    <color name="play_apps_ent_recents">#ff00695c</color>
+    <color name="play_apps_ent_secondary">#ff00796b</color>
+    <color name="play_apps_light">#800f9d58</color>
+    <color name="play_apps_primary">#ff0f9d58</color>
+    <color name="play_apps_primary_disabled">#800f9d58</color>
+    <color name="play_apps_primary_hover">#ff0b8043</color>
+    <color name="play_apps_primary_pressed">#ff33ac71</color>
+    <color name="play_apps_primary_v2">#ff0f9d58</color>
+    <color name="play_apps_secondary">#ff0b8043</color>
+    <color name="play_apps_snackbar_button">#ff57bb8a</color>
+    <color name="play_apps_tab_unselected">#94000000</color>
+    <color name="play_avatar_focused_outline">#8033b5e5</color>
+    <color name="play_avatar_outline">#33000000</color>
+    <color name="play_avatar_pressed_fill">@color/play_transparent</color>
+    <color name="play_avatar_pressed_outline">#ff33b5e5</color>
+    <color name="play_avatar_ring_color">@color/play_white</color>
+    <color name="play_banner_dark_fg">#ff333333</color>
+    <color name="play_banner_light_fg">#ffffffff</color>
+    <color name="play_books_light">#80039be5</color>
+    <color name="play_books_primary">#ff039be5</color>
+    <color name="play_books_primary_disabled">#80039be5</color>
+    <color name="play_books_primary_hover">#ff0277bd</color>
+    <color name="play_books_primary_pressed">#ff03a9f4</color>
+    <color name="play_books_secondary">#ff0277bd</color>
+    <color name="play_books_snackbar_button">#ff4fc3f7</color>
+    <color name="play_books_tab_unselected">@color/black_fifty_opacity</color>
+    <color name="play_card_ad_badge_color_v2">#ff0f9d58</color>
+    <color name="play_card_ad_badge_default_color">#ffefc439</color>
+    <color name="play_card_dismiss_x_color">#ff9e9e9e</color>
+    <color name="play_card_light_background">#fffafafa</color>
+    <color name="play_card_shadow_end_color">#01000000</color>
+    <color name="play_card_shadow_start_color">#27000000</color>
+    <color name="play_cards_separator_color">#1e000000</color>
+    <color name="play_commerce_primary">#ff0097a7</color>
+    <color name="play_commerce_primary_disabled">#800097a7</color>
+    <color name="play_commerce_primary_hover">#ff00838f</color>
+    <color name="play_commerce_primary_pressed">#ff00acc1</color>
+    <color name="play_credit_primary">#ff607d8b</color>
+    <color name="play_disabled_black">#ffc0c0c0</color>
+    <color name="play_disabled_grey">#ffd0d0d0</color>
+    <color name="play_dismissed_overlay">#d0eeeeee</color>
+    <color name="play_drawer_mini_profile_background">#ff689f38</color>
+    <color name="play_drawer_profile_overlay_shade">#38000000</color>
+    <color name="play_drawer_separator">#ffe5e5e5</color>
+    <color name="play_family_primary">#ff00796b</color>
+    <color name="play_fg_primary">#ff212121</color>
+    <color name="play_fg_secondary">#ff616161</color>
+    <color name="play_fg_secondary_half_transparent">#70616161</color>
+    <color name="play_fg_tertiary">#ff9e9e9e</color>
+    <color name="play_header_list_banner_background_color">#ff000000</color>
+    <color name="play_header_list_banner_text_color">#ffffffff</color>
+    <color name="play_header_list_tab_pressed_bg_color">#40cccccc</color>
+    <color name="play_header_list_tab_ripple_color">@color/ripple_material_dark</color>
+    <color name="play_header_list_tab_underline_color">#ffffffff</color>
+    <color name="play_highlight_blue_fill">#4033b5e5</color>
+    <color name="play_highlight_blue_outline">#ff0099cc</color>
+    <color name="play_highlight_grey_fill_dark">#40cccccc</color>
+    <color name="play_highlight_grey_fill_light">#33999999</color>
+    <color name="play_icon_default">#ff757575</color>
+    <color name="play_icon_selected">#ff455a64</color>
+    <color name="play_installed_apps_toggle_switch_thumb_off">#fff1f1f1</color>
+    <color name="play_installed_apps_toggle_switch_track_off">#41221f1f</color>
+    <color name="play_main_background">#ffeeeeee</color>
+    <color name="play_movies_light">#ffff8595</color>
+    <color name="play_movies_primary">#ffff1744</color>
+    <color name="play_movies_primary_disabled">#80ff1744</color>
+    <color name="play_movies_primary_hover">#ffd60b41</color>
+    <color name="play_movies_primary_pressed">#ffff3e5c</color>
+    <color name="play_movies_primary_v2">#ffff1744</color>
+    <color name="play_movies_secondary">#ffd60b41</color>
+    <color name="play_movies_snackbar_button">#ffff667a</color>
+    <color name="play_movies_tab_unselected">#99000000</color>
+    <color name="play_multi_light">#80455a64</color>
+    <color name="play_multi_primary">#ff455a64</color>
+    <color name="play_multi_primary_disabled">#80455a64</color>
+    <color name="play_multi_primary_hover">#ff37474f</color>
+    <color name="play_multi_primary_pressed">#ff546e7a</color>
+    <color name="play_multi_recents">#ff37474f</color>
+    <color name="play_multi_secondary">#ff455a64</color>
+    <color name="play_multi_snackbar_button">#ff90a4ae</color>
+    <color name="play_multi_tab_unselected">#94000000</color>
+    <color name="play_music_light">#80ff5722</color>
+    <color name="play_music_primary">#ffff5722</color>
+    <color name="play_music_primary_disabled">#80ff5722</color>
+    <color name="play_music_primary_hover">#ffd64214</color>
+    <color name="play_music_primary_pressed">#ffff7043</color>
+    <color name="play_music_primary_v2">#ffff5722</color>
+    <color name="play_music_secondary">#ffd64214</color>
+    <color name="play_music_snackbar_button">#ffff8a65</color>
+    <color name="play_music_tab_unselected">#82000000</color>
+    <color name="play_newsstand_light">#809c27b0</color>
+    <color name="play_newsstand_primary">#ff9c27b0</color>
+    <color name="play_newsstand_primary_disabled">#809c27b0</color>
+    <color name="play_newsstand_primary_hover">#ff7b1fa2</color>
+    <color name="play_newsstand_primary_pressed">#ffab47bc</color>
+    <color name="play_newsstand_secondary">#ff7b1fa2</color>
+    <color name="play_newsstand_snackbar_button">#ffba68c8</color>
+    <color name="play_newsstand_tab_unselected">#d9000000</color>
+    <color name="play_notification">#ffdb4437</color>
+    <color name="play_onboard__page_indicator_dot_active">#ffffffff</color>
+    <color name="play_onboard__page_indicator_dot_inactive">#66ffffff</color>
+    <color name="play_onboard_accent_color_a">#ff00bcd4</color>
+    <color name="play_onboard_accent_color_b">#ff0288d1</color>
+    <color name="play_onboard_accent_color_c">#ff3949ab</color>
+    <color name="play_onboard_accent_color_d">#ff3367d6</color>
+    <color name="play_onboard_app_color">#ffff7bca</color>
+    <color name="play_onboard_app_color_dark">#ffcc64a2</color>
+    <color name="play_rated_overlay">#f2ffffff</color>
+    <color name="play_reason_separator">#19000000</color>
+    <color name="play_ripple_dark">#20ffffff</color>
+    <color name="play_ripple_light">#20000000</color>
+    <color name="play_search_overlay_color">#80000000</color>
+    <color name="play_search_plate_hint_text_color">#ffbdbdbd</color>
+    <color name="play_search_plate_navigation_button_color">#ff616161</color>
+    <color name="play_search_suggestion_divider_background">#ffe0e0e0</color>
+    <color name="play_secondary_light">#ff757575</color>
+    <color name="play_secondary_text_pressed">#c033b5e5</color>
+    <color name="play_translucent_separator_line">#26000000</color>
+    <color name="play_transparent">#00000000</color>
+    <color name="play_uninstall_wizard_background_color">@color/play_apps_primary</color>
+    <color name="play_uninstall_wizard_button_text_color">#ff009688</color>
+    <color name="play_uninstall_wizard_positive_button_disabled_background_color">#434f4f4f</color>
+    <color name="play_uninstall_wizard_positive_button_disabled_text_color">@color/action_button_disabled_text_color</color>
+    <color name="play_uninstall_wizard_positive_button_enabled_text_color">#fffafafa</color>
+    <color name="play_uninstall_wizard_primary">#df000000</color>
+    <color name="play_uninstall_wizard_secondary">#89000000</color>
+    <color name="play_uninstall_wizard_separator">#1f000000</color>
+    <color name="play_uninstall_wizard_title_color">#ff212121</color>
+    <color name="play_white">#ffffffff</color>
+    <color name="play_white_disabled">#70ffffff</color>
+    <color name="play_white_half_transparent">#32ffffff</color>
+    <color name="preregistrable_games_rewards_tooltip_color">#ff36474f</color>
+    <color name="primary_dark_material_dark">@android:color/black</color>
+    <color name="primary_dark_material_light">@color/material_grey_600</color>
+    <color name="primary_material_dark">@color/material_grey_900</color>
+    <color name="primary_material_light">@color/material_grey_100</color>
+    <color name="primary_text_default_material_dark">#ffffffff</color>
+    <color name="primary_text_default_material_light">#de000000</color>
+    <color name="primary_text_disabled_material_dark">#4dffffff</color>
+    <color name="primary_text_disabled_material_light">#39000000</color>
+    <color name="purchase_flow_error_text_color">#ffc53929</color>
+    <color name="rate_review_title_text">@color/play_fg_secondary</color>
+    <color name="redeem_success_link_text">#ff00796b</color>
+    <color name="restore_notification">#ff607d8b</color>
+    <color name="review_histogram_1_bar">#ffff8a65</color>
+    <color name="review_histogram_2_bar">#ffffbb50</color>
+    <color name="review_histogram_3_bar">#ffffeb3b</color>
+    <color name="review_histogram_4_bar">#ff9ace6a</color>
+    <color name="review_histogram_5_bar">#ff57bb8a</color>
+    <color name="review_question_bg">#fff2f2f2</color>
+    <color name="review_question_option_text">#ff6d6d6d</color>
+    <color name="review_question_text">@color/play_fg_primary</color>
+    <color name="reviews_filtering_color">#ff616161</color>
+    <color name="rewards_icon">#ff7986cb</color>
+    <color name="ripple_material_dark">#33ffffff</color>
+    <color name="ripple_material_light">#1f000000</color>
+    <color name="screenshot_edge_fade">#ffbababa</color>
+    <color name="season_switching_overlay">#ccededed</color>
+    <color name="secondary_text_default_material_dark">#b3ffffff</color>
+    <color name="secondary_text_default_material_light">#8a000000</color>
+    <color name="secondary_text_disabled_material_dark">#36ffffff</color>
+    <color name="secondary_text_disabled_material_light">#24000000</color>
+    <color name="setup_wizard_color_accent_dark">#ff448aff</color>
+    <color name="setup_wizard_color_accent_light">#ff3367d6</color>
+    <color name="setup_wizard_color_secondary_dark">#ff9e9e9e</color>
+    <color name="setup_wizard_color_secondary_light">@color/play_secondary_light</color>
+    <color name="setup_wizard_divider_color">#ff5f5f60</color>
+    <color name="setup_wizard_navbar_bg_dark">#ff21272b</color>
+    <color name="setup_wizard_navbar_bg_light">#ffe4e7e9</color>
+    <color name="setup_wizard_navbar_text_dark">#deffffff</color>
+    <color name="setup_wizard_navbar_text_light">#de000000</color>
+    <color name="setup_wizard_title_color">#ff33b5e5</color>
+    <color name="setupwizard_background_color">#00000000</color>
+    <color name="simple_alert_dialog_title_color">@color/play_fg_primary</color>
+    <color name="status_bar_apps">#ff0d854b</color>
+    <color name="status_bar_apps_ent">#ff00695c</color>
+    <color name="status_bar_books">#ff0384c3</color>
+    <color name="status_bar_movies">#ffd9143a</color>
+    <color name="status_bar_multi">#ff37474f</color>
+    <color name="status_bar_music">#ffd91827</color>
+    <color name="status_bar_newsstand">#ff852196</color>
+    <color name="status_bar_overlay">#33000000</color>
+    <color name="subscription_alert_text">#ffdb4437</color>
+    <color name="subscription_dark_text">#ff212121</color>
+    <color name="subscription_disabled_text">#52000000</color>
+    <color name="subscription_light_text">#ff616161</color>
+    <color name="subscriptions_icon">#ffffb74d</color>
+    <color name="suggest_card_bg">#fff7f7f7</color>
+    <color name="suw_color_accent_dark">#ff448aff</color>
+    <color name="suw_color_accent_glif_dark">#ff4285f4</color>
+    <color name="suw_color_accent_glif_light">#ff4285f4</color>
+    <color name="suw_color_accent_glif_v3">#ff1a73e8</color>
+    <color name="suw_color_accent_light">#ff3367d6</color>
+    <color name="suw_color_background_dark">#ff303030</color>
+    <color name="suw_color_background_light">#fffafafa</color>
+    <color name="suw_glif_background_color_dark">#ff000000</color>
+    <color name="suw_glif_background_color_light">#ffffffff</color>
+    <color name="suw_glif_edit_text_bg_light_color">#fff1f3f4</color>
+    <color name="suw_glif_v3_nav_bar_color_light">#ffffffff</color>
+    <color name="suw_glif_v3_nav_bar_divider_color_light">#1f000000</color>
+    <color name="suw_link_color_dark">#ff448aff</color>
+    <color name="suw_link_color_light">#ff3367d6</color>
+    <color name="suw_list_item_icon_color_dark">#b3ffffff</color>
+    <color name="suw_list_item_icon_color_light">#89000000</color>
+    <color name="suw_navbar_bg_dark">#ff21272b</color>
+    <color name="suw_navbar_bg_light">#ffe4e7e9</color>
+    <color name="suw_progress_bar_color_dark">#ffffcd40</color>
+    <color name="suw_progress_bar_color_light">#fff4b400</color>
+    <color name="switch_thumb_disabled_material_dark">#ff616161</color>
+    <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
+    <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
+    <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
+    <color name="testing_program_cap_reached_message_bg">#fffcedec</color>
+    <color name="testing_program_cap_reached_message_fg">#ffc53929</color>
+    <color name="testing_program_learn_more_button_text">@color/play_apps_primary_text</color>
+    <color name="testing_program_opt_in_button_bg">@color/play_apps_primary</color>
+    <color name="testing_program_opt_in_button_text">#fff9f9f9</color>
+    <color name="tipper_sticker_edited">#ffaaaaaa</color>
+    <color name="tipper_sticker_explicit">#ffff5722</color>
+    <color name="tooltip_background_dark">#e6616161</color>
+    <color name="tooltip_background_light">#e6ffffff</color>
+    <color name="tos_text_secondary_color">@color/play_fg_secondary</color>
+    <color name="transparent_action_button_fill_color">#1e0f9d58</color>
+    <color name="unauth_sign_in_message_text_color">#8a000000</color>
+    <color name="unknown_icon_color">#ffd8d8d8</color>
+    <color name="vetted_game_feature_rating_bg">#4d689f38</color>
+    <color name="vetted_game_feature_rating_fg">@color/play_apps_primary</color>
+    <color name="vetted_game_feature_text_color">@color/play_fg_primary</color>
+    <color name="wallet_uic_button_disabled_light">#1a999999</color>
+    <color name="wallet_uic_circular_button_normal">#ff2196f3</color>
+    <color name="wallet_uic_circular_button_pressed">#ff96ccfd</color>
+    <color name="wallet_uic_disabled_color">#ffbdbdbd</color>
+    <color name="wallet_uic_disabled_quantum_black_secondary_text">#1b000000</color>
+    <color name="wallet_uic_disabled_quantum_black_text">#2c000000</color>
+    <color name="wallet_uic_disabled_quantum_white_secondary_text">#80ffffff</color>
+    <color name="wallet_uic_disabled_quantum_white_text">#80ffffff</color>
+    <color name="wallet_uic_error_color">#ffff0000</color>
+    <color name="wallet_uic_error_text">#ffdb4437</color>
+    <color name="wallet_uic_form_emphasis_color">#fff3f3f3</color>
+    <color name="wallet_uic_google_blue">#ff1a73e8</color>
+    <color name="wallet_uic_highlight_google_blue">@color/wallet_uic_google_blue</color>
+    <color name="wallet_uic_info_message_bullet_color">#ff616161</color>
+    <color name="wallet_uic_link_button_focused">#ffa2cfe7</color>
+    <color name="wallet_uic_link_button_normal">@android:color/transparent</color>
+    <color name="wallet_uic_link_button_pressed">#ff96ccfd</color>
+    <color name="wallet_uic_pending_text_color">#ffea6100</color>
+    <color name="wallet_uic_quantum_black_secondary_text">#89000000</color>
+    <color name="wallet_uic_quantum_black_text">#dd000000</color>
+    <color name="wallet_uic_quantum_white_secondary_text">#b3ffffff</color>
+    <color name="wallet_uic_quantum_white_text">#ffffffff</color>
+    <color name="wallet_uic_secondary_text_color">#ff757575</color>
+    <color name="warm_welcome_v2_primary_button_color">#33000000</color>
+    <color name="whatsnew_apps">#ffe2f3eb</color>
+    <color name="whatsnew_apps_ent">#ffd6e9e7</color>
+    <color name="whatsnew_books">#ffd6effa</color>
+    <color name="whatsnew_movies">#fffcdfdf</color>
+    <color name="whatsnew_music">#fffce7d6</color>
+    <color name="whatsnew_newsstand">#ffe3e7fe</color>
+    <color name="white">#ffffffff</color>
+    <color name="white_action_bar_icon_color">@color/play_fg_secondary</color>
+    <color name="white_action_bar_title_color">@color/play_fg_secondary</color>
+    <color name="your_review_label_bg_color">#80707070</color>
+    <item type="color" name="APKTOOL_DUMMY_28">false</item>
+    <item type="color" name="APKTOOL_DUMMY_2e">false</item>
+    <item type="color" name="APKTOOL_DUMMY_2f">false</item>
+    <item type="color" name="APKTOOL_DUMMY_30">false</item>
+    <item type="color" name="APKTOOL_DUMMY_33">false</item>
+    <item type="color" name="APKTOOL_DUMMY_34">false</item>
+    <item type="color" name="APKTOOL_DUMMY_38">false</item>
+    <item type="color" name="APKTOOL_DUMMY_39">false</item>
+    <item type="color" name="APKTOOL_DUMMY_3c">false</item>
+    <item type="color" name="APKTOOL_DUMMY_3d">false</item>
+    <item type="color" name="APKTOOL_DUMMY_3e">false</item>
+    <item type="color" name="APKTOOL_DUMMY_3f">false</item>
+    <item type="color" name="APKTOOL_DUMMY_48">false</item>
+    <item type="color" name="APKTOOL_DUMMY_49">false</item>
+    <item type="color" name="APKTOOL_DUMMY_4a">false</item>
+    <item type="color" name="APKTOOL_DUMMY_4b">false</item>
+    <item type="color" name="APKTOOL_DUMMY_4c">false</item>
+    <item type="color" name="APKTOOL_DUMMY_4d">false</item>
+    <item type="color" name="APKTOOL_DUMMY_4e">false</item>
+    <item type="color" name="APKTOOL_DUMMY_4f">false</item>
+    <item type="color" name="APKTOOL_DUMMY_50">false</item>
+    <item type="color" name="APKTOOL_DUMMY_51">false</item>
+    <item type="color" name="APKTOOL_DUMMY_52">false</item>
+    <item type="color" name="APKTOOL_DUMMY_53">false</item>
+    <item type="color" name="APKTOOL_DUMMY_54">false</item>
+    <item type="color" name="APKTOOL_DUMMY_55">false</item>
+    <item type="color" name="APKTOOL_DUMMY_68">false</item>
+    <item type="color" name="APKTOOL_DUMMY_69">false</item>
+    <item type="color" name="APKTOOL_DUMMY_6a">false</item>
+    <item type="color" name="APKTOOL_DUMMY_6b">false</item>
+    <item type="color" name="APKTOOL_DUMMY_74">false</item>
+    <item type="color" name="APKTOOL_DUMMY_79">false</item>
+    <item type="color" name="APKTOOL_DUMMY_7a">false</item>
+    <item type="color" name="APKTOOL_DUMMY_7b">false</item>
+    <item type="color" name="APKTOOL_DUMMY_7c">false</item>
+    <item type="color" name="APKTOOL_DUMMY_c4">false</item>
+    <item type="color" name="APKTOOL_DUMMY_cc">false</item>
+    <item type="color" name="APKTOOL_DUMMY_d8">false</item>
+    <item type="color" name="APKTOOL_DUMMY_de">false</item>
+    <item type="color" name="APKTOOL_DUMMY_e7">false</item>
+    <item type="color" name="APKTOOL_DUMMY_f2">false</item>
+    <item type="color" name="APKTOOL_DUMMY_f3">false</item>
+    <item type="color" name="APKTOOL_DUMMY_f4">false</item>
+    <item type="color" name="APKTOOL_DUMMY_f5">false</item>
+    <item type="color" name="APKTOOL_DUMMY_f6">false</item>
+    <item type="color" name="APKTOOL_DUMMY_f7">false</item>
+    <item type="color" name="APKTOOL_DUMMY_f8">false</item>
+    <item type="color" name="APKTOOL_DUMMY_f9">false</item>
+    <item type="color" name="APKTOOL_DUMMY_fa">false</item>
+    <item type="color" name="APKTOOL_DUMMY_fb">false</item>
+    <item type="color" name="APKTOOL_DUMMY_fc">false</item>
+    <item type="color" name="APKTOOL_DUMMY_fd">false</item>
+    <item type="color" name="APKTOOL_DUMMY_fe">false</item>
+    <item type="color" name="APKTOOL_DUMMY_ff">false</item>
+    <item type="color" name="APKTOOL_DUMMY_100">false</item>
+    <item type="color" name="APKTOOL_DUMMY_101">false</item>
+    <item type="color" name="APKTOOL_DUMMY_102">false</item>
+    <item type="color" name="APKTOOL_DUMMY_103">false</item>
+    <item type="color" name="APKTOOL_DUMMY_105">false</item>
+    <item type="color" name="APKTOOL_DUMMY_106">false</item>
+    <item type="color" name="APKTOOL_DUMMY_107">false</item>
+    <item type="color" name="APKTOOL_DUMMY_108">false</item>
+    <item type="color" name="APKTOOL_DUMMY_109">false</item>
+    <item type="color" name="APKTOOL_DUMMY_10a">false</item>
+    <item type="color" name="APKTOOL_DUMMY_112">false</item>
+    <item type="color" name="APKTOOL_DUMMY_115">false</item>
+    <item type="color" name="APKTOOL_DUMMY_116">false</item>
+    <item type="color" name="APKTOOL_DUMMY_125">false</item>
+    <item type="color" name="APKTOOL_DUMMY_126">false</item>
+    <item type="color" name="APKTOOL_DUMMY_129">false</item>
+    <item type="color" name="APKTOOL_DUMMY_139">false</item>
+    <item type="color" name="APKTOOL_DUMMY_143">false</item>
+    <item type="color" name="APKTOOL_DUMMY_145">false</item>
+    <item type="color" name="APKTOOL_DUMMY_146">false</item>
+    <item type="color" name="APKTOOL_DUMMY_158">false</item>
+    <item type="color" name="APKTOOL_DUMMY_159">false</item>
+    <item type="color" name="APKTOOL_DUMMY_15b">false</item>
+    <item type="color" name="APKTOOL_DUMMY_15c">false</item>
+    <item type="color" name="APKTOOL_DUMMY_161">false</item>
+    <item type="color" name="APKTOOL_DUMMY_16d">false</item>
+    <item type="color" name="APKTOOL_DUMMY_16f">false</item>
+    <item type="color" name="APKTOOL_DUMMY_170">false</item>
+    <item type="color" name="APKTOOL_DUMMY_171">false</item>
+    <item type="color" name="APKTOOL_DUMMY_175">false</item>
+    <item type="color" name="APKTOOL_DUMMY_176">false</item>
+    <item type="color" name="APKTOOL_DUMMY_17b">false</item>
+    <item type="color" name="APKTOOL_DUMMY_180">false</item>
+    <item type="color" name="APKTOOL_DUMMY_199">false</item>
+    <item type="color" name="APKTOOL_DUMMY_19c">false</item>
+    <item type="color" name="APKTOOL_DUMMY_1b5">false</item>
+    <item type="color" name="APKTOOL_DUMMY_1b8">false</item>
+    <item type="color" name="APKTOOL_DUMMY_1c3">false</item>
+    <item type="color" name="APKTOOL_DUMMY_1c4">false</item>
+    <item type="color" name="APKTOOL_DUMMY_1c6">false</item>
+    <item type="color" name="APKTOOL_DUMMY_1c7">false</item>
+    <item type="color" name="APKTOOL_DUMMY_1cb">false</item>
+    <item type="color" name="APKTOOL_DUMMY_1cc">false</item>
+    <item type="color" name="APKTOOL_DUMMY_1d5">false</item>
+    <item type="color" name="APKTOOL_DUMMY_1d6">false</item>
+    <item type="color" name="APKTOOL_DUMMY_1d7">false</item>
+    <item type="color" name="APKTOOL_DUMMY_1db">false</item>
+    <item type="color" name="APKTOOL_DUMMY_1dc">false</item>
+    <item type="color" name="APKTOOL_DUMMY_237">false</item>
+    <item type="color" name="APKTOOL_DUMMY_239">false</item>
+    <item type="color" name="APKTOOL_DUMMY_23a">false</item>
+    <item type="color" name="APKTOOL_DUMMY_23e">false</item>
+    <item type="color" name="APKTOOL_DUMMY_252">false</item>
+    <item type="color" name="APKTOOL_DUMMY_276">false</item>
+    <item type="color" name="APKTOOL_DUMMY_277">false</item>
+    <item type="color" name="APKTOOL_DUMMY_279">false</item>
+    <item type="color" name="APKTOOL_DUMMY_27a">false</item>
+    <item type="color" name="APKTOOL_DUMMY_289">false</item>
+    <item type="color" name="APKTOOL_DUMMY_28a">false</item>
+    <item type="color" name="APKTOOL_DUMMY_28b">false</item>
+    <item type="color" name="APKTOOL_DUMMY_28c">false</item>
+    <item type="color" name="APKTOOL_DUMMY_28d">false</item>
+    <item type="color" name="APKTOOL_DUMMY_28e">false</item>
+    <item type="color" name="APKTOOL_DUMMY_28f">false</item>
+    <item type="color" name="APKTOOL_DUMMY_295">false</item>
+    <item type="color" name="APKTOOL_DUMMY_29e">false</item>
+    <item type="color" name="APKTOOL_DUMMY_2ab">false</item>
+</resources>

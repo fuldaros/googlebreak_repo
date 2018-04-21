@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="cond_perm_action">
+        <item quantity="other">Запросить отсутствующие разрешения</item>
+        <item quantity="one">Запросить отсутствующее разрешение</item>
+    </plurals>
+    <plurals name="cond_perm_summary">
+        <item quantity="other">Не предоставлены разрешения, которые требуются для правильного функционирования microG Service Core.</item>
+        <item quantity="one">Не предоставлено разрешение, которое требуется для правильного функционирования microG Service Core.</item>
+    </plurals>
+    <plurals name="gcm_registered_apps_counter">
+        <item quantity="other">%1$d привязанных приложений</item>
+        <item quantity="one">%1$d привязанное приложение</item>
+    </plurals>
+    <plurals name="pref_unifiednlp_summary">
+        <item quantity="other">%1$d backend-программ(ы) сконфигурировано</item>
+        <item quantity="one">%1$d backend-программа сконфигурирована</item>
+    </plurals>
+</resources>

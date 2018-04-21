@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play Store</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Une approbation est requise</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Contrôles parentaux</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Avis</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Application instantanée</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Paramètres du membre</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">"Applications s'ouvrant dans le navigateur"</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Préf. applis instantanées</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play Store</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Mes applications</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Paramètres de notification</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">"Options d'achat"</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Modes de paiement</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">"Permet aux utilisateurs d'afficher des applications disponibles au sein de l'application."</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">"Accéder au service découverte d'appli Google Play"</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">"Permet à l'utilisateur d'acheter des articles sur Google Play depuis cette application."</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Service de facturation Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">"Permet de vérifier si vous disposez d'une licence Google Play pour cette application."</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Vérification de licence Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">"Permet à l'utilisateur d'installer des applications poste-à-poste validées pour Play."</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">API Google Play Peer To Peer App Install</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">"Autorisations de l'application"</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">"Exiger l'authentification"</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Utiliser votre code</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Donnez votre avis!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Envoyer un cadeau</item>
+    <item type="LEMON_transformed_from_string" name="settings">Paramètres</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Finaliser la configuration du compte</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Les applications seront installées une fois la configuration terminée</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">"Choisir d'autres applications"</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">"Profiter d'un mode de paiement rapide avec les produits Google"</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Ajouter un mode de paiement</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Configurer les données de paiement</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Restaurer les applications de cet appareil</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Quel appareil?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Sélectionner le mode de paiement familial</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Choisissez un montant</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Mettre à jour le mode de paiement</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Vérifier et installer</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Analyse des problèmes de sécurité en cours…</item>
+</resources>

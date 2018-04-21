@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view android:paddingTop="@dimen/prereg_milestone_rewards_item_vertical_padding" android:paddingBottom="@dimen/prereg_milestone_rewards_item_vertical_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" class="com.google.android.finsky.detailsmodules.modules.preregmilestonerewards.view.PreregMilestoneRewardsModuleView$MilestoneLayout"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/progress_circle_not_achieved" android:background="@drawable/reward_milestone_not_achieved" android:layout_width="@dimen/prereg_milestone_rewards_progress_bar_width" android:layout_height="@dimen/prereg_milestone_rewards_progress_bar_width" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:layout_alignParentStart="true" />
+    <com.google.android.play.image.FifeImageView android:id="@id/milestone_badge" android:layout_width="@dimen/prereg_rewards_badge_size" android:layout_height="@dimen/prereg_rewards_badge_size" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_toLeftOf="@id/milestone_badge" android:layout_toRightOf="@id/progress_circle_not_achieved" android:layout_centerVertical="true" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip" android:layout_toStartOf="@id/milestone_badge" android:layout_toEndOf="@id/progress_circle_not_achieved">
+        <com.google.android.play.layout.PlayTextView android:id="@id/milestone_target" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/PreregRewardsRegularText" />
+        <com.google.android.play.layout.PlayTextView android:id="@id/milestone_reward" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/PreregRewardsMediumText" />
+    </LinearLayout>
+</view>

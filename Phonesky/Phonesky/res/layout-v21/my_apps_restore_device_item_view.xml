@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/play_highlight_overlay_dark"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/setup_wizard_restore_item_top_padding" android:paddingBottom="@dimen/setup_wizard_content_ypadding" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <android.support.v4.widget.Space android:id="@id/spacer" android:visibility="invisible" android:layout_width="@dimen/restore_device_spacer_width" android:layout_height="@dimen/restore_device_item_button_padding" />
+        <RadioButton android:layout_gravity="center_vertical" android:id="@id/radio" android:paddingLeft="0.0dip" android:paddingRight="@dimen/restore_device_item_button_padding" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="0.0dip" android:paddingEnd="@dimen/restore_device_item_button_padding" android:buttonTint="@color/play_apps_primary" />
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textColor="@color/play_primary_text" android:id="@id/title" android:paddingBottom="@dimen/setup_wizard_restore_item_subtitle_bottom_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:backgroundTint="@color/play_white" style="@style/SetupWizardUIControlsPrimaryItem" />
+            <TextView android:textColor="@color/play_secondary_text" android:id="@id/subtitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:backgroundTint="@color/play_white" style="@style/SetupWizardUIControlsSecondaryItem" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

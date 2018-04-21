@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play Butik</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Godkännande krävs</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Föräldrakontroller</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Recensioner</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Snabbapp</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Medlemsinställningar</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Appar som öppnas i en webbläsare</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Snabbapp-inställningar</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play Butik</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Mina appar</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Aviseringsinställningar</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Köpalternativ</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Betalningsmetoder</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Gör det möjligt för användare att visa tillgängliga appar i den här appen.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Få åtkomst till tjänsten Google Play App Discovery</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Gör det möjligt för användaren att köpa objekt via Google Play i den här appen.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Faktureringstjänst för Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Kan kontrollera om du har en licens för den här appen från Google Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Licenskontroll för Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Gör det möjligt för användaren att installera Play-verifierade appar via icke-hierarkiska nätverk.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play Peer To Peer App Install API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Appens behörigheter</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">Licenser för öppen källkod</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Kräv autentisering</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Lös in koden</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Sätt betyg!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Skicka en present</item>
+    <item type="LEMON_transformed_from_string" name="settings">Inställningar</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Gör klart kontoregistreringen</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Apparna installeras när konfigurationen har slutförts</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Granska fler appar</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Betala snabbt med Googles produkter</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Lägg till betalningsmetod</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Ange betalningsinformation</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Återställ appar från enheten</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Vilken enhet?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Välj familjens betalningsmetod</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Välj belopp</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Uppdatera betalningsmetoden</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Verifiera och installera</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Söker efter säkerhetsproblem …</item>
+</resources>

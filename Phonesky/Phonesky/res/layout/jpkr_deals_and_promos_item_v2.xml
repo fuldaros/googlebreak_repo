@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.jpkrdealsandpromos.view.JpkrDealsAndPromosBannerItemViewV2 android:focusable="true" android:clickable="true" android:clipToPadding="false" android:layout_width="0.0dip" android:layout_height="wrap_content" android:foreground="@drawable/play_highlight_round_overlay_light" finsky:card_text_only_snippet_margin_left="0.0dip" finsky:playCardClipToOutline="false" style="@style/FlatCardViewGroup"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.google.android.finsky.frameworkviews.FadingEdgeImageView android:id="@id/merch_image" android:layout_width="fill_parent" android:layout_height="0.0dip" android:scaleType="centerCrop" finsky:fixed_bounds="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/title_container" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/merch_image">
+        <com.google.android.play.layout.PlayTextView android:id="@id/banner_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jpkr_flat_deals_and_promos_description_margin_top" style="@style/FlatCardTitle.DealsAndPromos" />
+    </LinearLayout>
+</com.google.android.finsky.stream.controllers.jpkrdealsandpromos.view.JpkrDealsAndPromosBannerItemViewV2>

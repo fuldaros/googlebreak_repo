@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play Store</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">តម្រូវឲ្យមានការយល់ព្រម</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">ការគ្រប់គ្រងដោយមាតាបិតា</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">ពិនិត្យ​មើល</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">កម្មវិធី​ប្រើភ្លាមៗ</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">ការកំណត់សមាជិក</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">កម្មវិធីដែលបើកក្នុង​កម្មវិធីរុករក​តាមអ៊ីនធឺណិត</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">ចំណូលចិត្ត​កម្មវិធីប្រើភ្លាមៗ</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">ហាង Play</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">កម្មវិធី​ខ្ញុំ</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">ការ​កំណត់​ការ​ជូនដំណឹង</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">ជម្រើស​​ទិញ</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">វិធីសាស្ត្របង់ប្រាក់</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">អនុញ្ញាត​ឲ្យ​អ្នកប្រើប្រាស់​មើល​កម្មវិធីដែល​មាន​ផ្តល់ជូនពី​ក្នុង​កម្មវិធីនេះ។</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">ចូល​ប្រើ​សេវាកម្ម​ស្វែងរក​កម្មវិធី​នៅលើ Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">អនុញ្ញាត​ឲ្យ​អ្នក​ប្រើ​ទិញ​ធាតុ​ទាំង​នេះ​តាម​រយៈ​កម្សាន្ត Google ពី​ក្នុង​កម្មវិធី​នេះ។</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">សេវាកម្ម​ចេញ​វិក្កយបត្រ​កម្សាន្ត Google</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">អាច​ពិនិត្យ​មើល​ប្រសិនបើ​​អ្នក​មាន​អាជ្ញាប័ណ្ណ​សម្រាប់​កម្មវិធី​នេះ​ពី​កម្សាន្ត Google ។</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">ពិនិត្យមើល​អាជ្ញាប័ណ្ណ​​​​កម្សាន្ត​ Google</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">អនុញ្ញាតឲ្យអ្នកប្រើប្រាស់ដំឡើងកម្មវិធី P2P ដែលផ្ទៀងផ្ទាត់ដោយ Play ។</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play Peer To Peer App Install API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">សិទ្ធិ​កម្មវិធី</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">តម្រូវឲ្យមានការផ្ទៀងផ្ទាត់</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">ទូទាត់​លេខ​កូដ​របស់​អ្នក</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">វាយ​តម្លៃ​​​​វា!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">ផ្ញើអំណោយ</item>
+    <item type="LEMON_transformed_from_string" name="settings">ការកំណត់</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">បញ្ចប់​ការ​បង្កើត​គណនី</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">កម្មវិធីនឹងត្រូវបានដំឡើងបន្ទាប់ពីការរៀបចំបានបញ្ចប់</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">ពិនិត្យកម្មវិធីបន្ថែម</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">រីករាយនឹងការបង់ប្រាក់ឆាប់រហ័សជាមួយផលិតផល Google</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">បន្ថែម​វិធីសាស្ត្រ​បង់​ប្រាក់</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">កំណត់ព័ត៌មានបង់ប្រាក់</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">ស្តារកម្មវិធីពីឧបករណ៍</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">ឧបករណ៍មួយណា?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">ជ្រើសវិធីបង់ប្រាក់លក្ខណៈគ្រួសារ</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">ជ្រើស​ចំនួន​ទឹកប្រាក់</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">អាប់ដេតវិធីសាស្ត្របង់ប្រាក់</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">ផ្ទៀងផ្ទាត់ និង​ដំឡើង</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">កំពុង​ស្កេនរក​បញ្ហា​សុវត្ថិភាព…</item>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.jpkrquicklinks.view.JpkrQuickLinksBannerItem android:orientation="vertical" android:background="@drawable/play_white_with_highlight" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.play.image.FifeImageView android:layout_gravity="center_horizontal" android:id="@id/li_icon" android:layout_width="@dimen/jpkr_quicklink_icon_size" android:layout_height="@dimen/jpkr_quicklink_icon_size" android:layout_marginTop="8.0dip" android:layout_marginBottom="-8.0dip" />
+    <TextView android:textSize="@dimen/jpkr_quicklink_label_size" android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/li_title" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/JpkrQuicklinksTitle" />
+</com.google.android.finsky.stream.controllers.jpkrquicklinks.view.JpkrQuickLinksBannerItem>

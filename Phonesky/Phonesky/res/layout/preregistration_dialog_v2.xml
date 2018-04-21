@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.preregistration.PreregistrationDialogView android:orientation="vertical" android:id="@id/preregistration_dialog" android:paddingTop="16.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/preregistration_dialog_top_panel_horizontal_padding" android:paddingRight="@dimen/preregistration_dialog_top_panel_horizontal_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip">
+        <include layout="@layout/prereg_dialog_v2_thumbnail" />
+        <LinearLayout android:orientation="vertical" android:paddingLeft="16.0dip" android:paddingRight="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.google.android.play.layout.PlayTextView android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/preregistration_dialog_supertitle_v2" android:drawablePadding="4.0dip" style="@style/PlayDetailTitle" />
+            <com.google.android.play.layout.PlayTextView android:textSize="@dimen/preregistration_dialog_body_text_size" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/preregistration_dialog_title_v2" android:singleLine="false" finsky:allowsCompactLineSpacing="true" style="@style/Play_DetailsPage_Subtitle" />
+        </LinearLayout>
+    </LinearLayout>
+    <android.support.v7.widget.AppCompatCheckBox android:textSize="@dimen/preregistration_dialog_body_text_size" android:textColor="@color/play_secondary_text" android:gravity="top" android:id="@id/notification_opt_in_checkbox" android:paddingLeft="@dimen/preregistration_dialog_opt_in_padding_start" android:paddingRight="@dimen/preregistration_dialog_opt_in_padding_end" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/preregistration_dialog_opt_in_margin_start" android:layout_marginTop="@dimen/preregistration_dialog_opt_in_margin_top" android:layout_marginRight="0.0dip" android:layout_marginBottom="@dimen/preregistration_dialog_opt_in_margin_bottom" android:text="@string/notification_for_all_prereg_opt_in_label" />
+</com.google.android.finsky.preregistration.PreregistrationDialogView>

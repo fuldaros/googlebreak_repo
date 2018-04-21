@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.asynccluster.view.PlaceholderClusterView android:orientation="vertical" android:id="@id/placeholder_cluster_container" android:paddingBottom="@dimen/flat_cluster_content_bottom_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/FlatCardCluster"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/header_placeholder" android:background="@color/placeholder_color" android:layout_width="@dimen/placeholder_cluster_title_width" android:layout_height="@dimen/placeholder_cluster_title_height" android:layout_marginLeft="@dimen/flat_cluster_header_xpadding" android:layout_marginTop="@dimen/flat_cluster_header_title_vpadding" android:layout_marginRight="@dimen/flat_cluster_header_xpadding" android:layout_marginBottom="@dimen/flat_cluster_header_title_vpadding" android:radius="@dimen/placeholder_text_radius" android:layout_marginStart="@dimen/flat_cluster_header_xpadding" android:layout_marginEnd="@dimen/flat_cluster_header_xpadding" />
+    <LinearLayout android:id="@id/content_placeholder" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</com.google.android.finsky.stream.controllers.asynccluster.view.PlaceholderClusterView>

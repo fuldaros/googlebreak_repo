@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Duka la Google Play</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Uidhinishaji unahitajika</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Udhibiti wa wazazi</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Ukaguzi</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Programu inayofunguka papo hapo</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Mipangilio ya wanachama</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Programu zinazofunguka katika kivinjari</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Mapendeleo ya Programu Zinazofunguka Papo Hapo</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Duka la Google Play</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Programu zangu</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Mipangilio ya arifa</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Chaguo za kununua</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Njia za kulipa</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Inaruhusu mtumiaji kuangalia programu zilizo katika programu hii.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Fikia Huduma ya Utambuzi wa Programu ya Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Huruhusu mtumiaji kununua vipengee kupitia Google Play kutoka ndani ya programu hii.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Huduma ya utozaji ya Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Inaweza kukagua kama una leseni ya programu hii kutoka kwa Google Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Ukaguzi wa leseni ya Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Huruhusu mtumiaji kusakinisha programu za Google Play za mtandao zilizothibitishwa.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">API ya Kusakinisha Programu ya Google Play ya Mtandao</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Idhini za programu</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">Leseni za programu huria</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Inahitaji uthibitisho</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Tumia msimbo wako</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Ikadiri!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Tuma zawadi</item>
+    <item type="LEMON_transformed_from_string" name="settings">Mipangilio</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Kamilisha kufungua akaunti</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Itasakinisha programu baada ya kuweka mipangilio</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Kagua programu za ziada</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Furahia kufanya malipo kwa haraka ukitumia bidhaa za Google</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Ongeza njia ya kulipa</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Weka maelezo ya malipo</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Rejesha programu kutoka kifaa</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Kifaa kipi?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Chagua njia ya kulipa ya familia</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Chagua kiwango</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Sasisha njia ya kulipa</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Thibitisha na usakinishe</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Inakagua matatizo ya usalama…</item>
+</resources>

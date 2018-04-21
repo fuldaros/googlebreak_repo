@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/notification_results" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.google.android.finsky.recyclerview.PlayRecyclerView android:id="@id/recycler_view" android:fadingEdgeLength="0.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="@color/play_main_background" android:divider="@null" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/no_results_view" android:background="@color/play_white" android:paddingLeft="@dimen/notification_center_no_results_padding" android:paddingRight="@dimen/notification_center_no_results_padding" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.caverock.androidsvg.SVGImageView android:layout_gravity="center" android:layout_width="@dimen/notification_center_empty_image_size" android:layout_height="@dimen/notification_center_empty_image_size" android:layout_marginTop="@dimen/notification_center_empty_image_top_margin" android:layout_marginBottom="@dimen/notification_center_empty_image_bottom_margin" android:scaleType="center" android:contentDescription="@null" finsky:svg="@raw/notification_center_empty" />
+        <TextView android:gravity="center" android:layout_height="wrap_content" android:text="@string/notification_center_caught_up" android:drawableTop="@raw/notification_center_empty" style="@style/NotificationCenterAllCaughtUp" />
+        <TextView android:gravity="center" android:layout_height="wrap_content" android:text="@string/notification_center_empty_explanation" style="@style/NotificationCenterEmptyExplanation" />
+    </LinearLayout>
+</FrameLayout>

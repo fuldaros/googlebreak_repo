@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/play_highlight_overlay_action_button_light" android:paddingLeft="@dimen/question_option_padding" android:paddingRight="@dimen/question_option_padding" android:focusable="true" android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.google.android.play.image.FifeImageView android:layout_gravity="center_horizontal" android:id="@id/question_option_icon" android:layout_width="@dimen/review_question_options_icon_size" android:layout_height="@dimen/review_question_options_icon_size" android:scaleType="fitCenter" finsky:fixed_bounds="true" />
+    <TextView android:textSize="@dimen/review_question_option_text_size" android:textColor="@color/review_question_option_text" android:ellipsize="none" android:layout_gravity="center" android:id="@id/question_option_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:lines="1" android:freezesText="true" style="@style/PlayLightText" />
+</LinearLayout>

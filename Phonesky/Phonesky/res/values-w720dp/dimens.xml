@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="finsky_scrolling_tab_xpadding">24.0dip</dimen>
+    <dimen name="flat_ad_label_horizontal_padding">4.0dip</dimen>
+    <dimen name="illustration_assist_card_icon_end_margin">40.0dip</dimen>
+    <dimen name="illustration_assist_card_icon_size">96.0dip</dimen>
+    <dimen name="illustration_assist_card_icon_start_margin">72.0dip</dimen>
+    <dimen name="myapps_assist_auto_update_card_icon_end_margin">40.0dip</dimen>
+    <dimen name="myapps_assist_auto_update_card_icon_size">96.0dip</dimen>
+    <dimen name="myapps_assist_auto_update_card_icon_start_margin">72.0dip</dimen>
+    <dimen name="myapps_assist_message_size">16.0sp</dimen>
+    <dimen name="myapps_assist_padding">14.0dip</dimen>
+    <dimen name="myapps_assist_title_size">18.0sp</dimen>
+    <dimen name="myapps_cluster_header_sort_padding">20.0dip</dimen>
+    <dimen name="myapps_cluster_header_sort_size">14.0sp</dimen>
+    <dimen name="myapps_cluster_header_title_ymargin">16.0dip</dimen>
+    <dimen name="myapps_cluster_subtitle_size">14.0sp</dimen>
+    <dimen name="myapps_cluster_title_size">16.0sp</dimen>
+    <dimen name="myapps_list_view_header_padding">24.0dip</dimen>
+    <dimen name="play_card_myapps_cluster_padding_top">12.0dip</dimen>
+    <dimen name="play_card_myapps_list_height">72.0sp</dimen>
+    <dimen name="play_card_myapps_thumbnail_size">40.0sp</dimen>
+    <dimen name="play_card_myapps_updates_empty_view_height">64.0sp</dimen>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.playcard.FlatCardAppsMdpView android:id="@id/flat_card_apps_mdp" android:paddingLeft="@dimen/flat_mdp_inner_margin" android:paddingRight="0.0dip" android:paddingBottom="@dimen/flat_mdp_bottom_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/flat_mdp_inner_margin" android:paddingEnd="0.0dip" finsky:card_show_inline_creator_badge="true" style="@style/FlatCardViewGroup"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/flat_card_apps_mdp_content" />
+</com.google.android.finsky.playcard.FlatCardAppsMdpView>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.jpkrrecommendedcategories.view.JpkrRecommendedCategoriesClusterView android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/FlatCardCluster"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/flat_card_cluster_header" />
+    <HorizontalScrollView android:id="@id/recommended_categories_scrollview" android:background="@drawable/jpkr_card_background" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/cluster_header">
+        <LinearLayout android:id="@id/recommended_categories_cell_grid" android:padding="@dimen/jpkr_recommended_categories_column_top_padding" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <include layout="@layout/jpkr_recommended_categories_item" />
+            <include layout="@layout/jpkr_recommended_categories_item" />
+            <include layout="@layout/jpkr_recommended_categories_item" />
+            <include layout="@layout/jpkr_recommended_categories_item" />
+            <include layout="@layout/jpkr_recommended_categories_item" />
+            <include layout="@layout/jpkr_recommended_categories_item" />
+            <include layout="@layout/jpkr_recommended_categories_item" />
+            <include layout="@layout/jpkr_recommended_categories_item" />
+        </LinearLayout>
+    </HorizontalScrollView>
+</com.google.android.finsky.stream.controllers.jpkrrecommendedcategories.view.JpkrRecommendedCategoriesClusterView>

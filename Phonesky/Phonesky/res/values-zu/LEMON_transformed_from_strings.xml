@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play Isitolo</item>
+    <item type="LEMON_transformed_from_string" name="app_name">play music</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Kudingeka ukuvunyelwa</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Izilawuli zomzali</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Izibuyekezi</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Uhlelo lokusebenza olusheshayo</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Izilungiselelo zelungu</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Izinhlelo zokusebenza ezivula kusiphequluli</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">izinketho zama-App Asheshayo</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">I-Play Store</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">I-Google Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Izinhlelo zami zokusebenza</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Izilungiselelo zesaziso</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Izinketho zokuthenga</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Izindlela zokukhokha</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Ivumela umsebenzisi ukuthi abuke izinhlelo zokusebenza ezitholakalayo kusukela ngaphakathi kwalolu hlelo lokusebenza.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Finyelela kusevisi yokutholakala kohlelo lokusebenza lwe-Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Vumela umsebenzisi ukuthi athenge izinto esebenzisa i-Google Play kule nsiza.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Isevisi yokukhokhisa ye-Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Ingabheka ukuthi unaso yini ilayisensi yale nsiza evela ku-Google Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Ukuhlolwa kwelayisensi ye-Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Ivumela umsebenzisi ukuthi afake izinhlelo zokusebenza ze-Google Play eziqinisekisiwe ze-P2P.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">I-API yokufakwa kohlelo lokusebenza lontanga ukuya kontanga ye-Google Play</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Izimvume zohlelo lokusebenza</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">Amalayisensi womthombo ovulekile</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Idinga ukuqinisekiswa</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Khipha ikhodi yakho</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Kala!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Thumela isipho</item>
+    <item type="LEMON_transformed_from_string" name="settings">Izilungiselelo</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Qedela ukusethwa kwe-akhawunti</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Izinhlelo zokusebenza zizofakwa ngemuva kokuthi kuqedwe ukusetha</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Buyekeza izinhlelo zokusebenza ezingeziwe</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Jabulela ukuphuma okusheshayo ngemikhiqizo ye-Google</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Engeza indlela yokukhokha</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Setha ulwazi lokukhokha</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Buyisa izinhlelo zokusebenza kusuka kudivayisi</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Yiphi idivayisi?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Khetha indlela yokukokha yomndeni</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Khetha inani</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Buyekeza indlela yokukhokha</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Qinisekisa uphinde ufake</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Iskena izinkinga zokuphepha…</item>
+</resources>

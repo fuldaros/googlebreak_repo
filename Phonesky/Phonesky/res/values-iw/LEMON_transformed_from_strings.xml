@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">חנות Google Play</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">נדרש אישור</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">בקרת הורים</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">ביקורות</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">אפליקציה אינסטנט</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">הגדרות חברים</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">אפליקציות שנפתחות בדפדפן</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">העדפות של אפליקציות אינסטנט</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">חנות Play</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">האפליקציות שלי</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">הגדרות של הודעות</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">אפשרויות רכישה</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">שיטת התשלום</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">מאפשרת למשתמש לראות את האפליקציות הזמינות מתוך האפליקציה הזו.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">גישה ל-Google Play App Discovery Service</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">מאפשר למשתמש לרכוש פריטים באמצעות Google Play מתוך אפליקציה זו.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">שירות החיוב של Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">יכול לבדוק אם יש לך רישיון לאפליקציה זו מ-Google Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">בדיקת רישיון Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">מאפשרת למשתמש להתקין אפליקציות Play Verified P2P.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play Peer To Peer App Install API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">הרשאות לאפליקציה</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">רישיונות קוד פתוח</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">נדרש אימות</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">ממש את הקוד שלך</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">דרג אותו!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">שלח מתנה</item>
+    <item type="LEMON_transformed_from_string" name="settings">הגדרות</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">סיים את הגדרת החשבון</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">האפליקציות יותקנו לאחר השלמת תהליך ההגדרה</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">בדיקת אפליקציות נוספות</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">ליהנות מסיום קנייה מהיר במוצרי Google</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">הוספת אמצעי תשלום</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">הגדרת פרטי תשלום</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">שחזור אפליקציות ממכשיר</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">איזה מכשיר?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">בחירת אמצעי תשלום למשפחה</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">בחר סכום</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">עדכן את אמצעי התשלום</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">אמת והתקן</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">מתבצעת סריקה של בעיות אבטחה…</item>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.marketingoptin.MarketingButtonBar android:id="@id/button_bar" style="@style/EmailMarketingButtonBar"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/logo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/logo_googleplay" />
+    <LinearLayout android:gravity="center|right" android:orientation="horizontal" android:id="@id/buttons_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <Button android:id="@id/negative_button" android:layout_marginLeft="0.0dip" android:layout_marginRight="@dimen/opt_in_bar_buttons_spacing" android:text="@string/no_thanks" style="@style/EmailMarketingButtonBarButton" />
+        <Button android:id="@id/positive_button" android:text="@string/yes" style="@style/EmailMarketingButtonBarButton" />
+    </LinearLayout>
+</com.google.android.finsky.marketingoptin.MarketingButtonBar>

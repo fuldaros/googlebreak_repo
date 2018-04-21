@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailsmodules.modules.warningmessage.view.SingleWarningMessageView android:orientation="horizontal" android:id="@id/warning_message_module" android:paddingLeft="@dimen/details_new_content_margin" android:paddingTop="@dimen/d30_module_item_half_vertical_padding" android:paddingRight="@dimen/details_new_content_margin" android:paddingBottom="@dimen/d30_module_item_half_vertical_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/details_special_row_min_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:layout_gravity="center_vertical" android:id="@id/warning_message" android:layout_marginLeft="@dimen/details_new_content_margin" android:layout_marginRight="@dimen/details_new_content_margin" style="@style/WarningMessageText" />
+</com.google.android.finsky.detailsmodules.modules.warningmessage.view.SingleWarningMessageView>

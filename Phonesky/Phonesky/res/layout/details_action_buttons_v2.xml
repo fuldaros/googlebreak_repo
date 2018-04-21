@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.google.android.finsky.frameworkviews.PlayActionButtonV2 android:id="@id/instant_app_launch_button" android:visibility="gone" finsky:action_style="secondary" style="@style/Play_DetailsPage_ActionButtonV2" />
+    <com.google.android.finsky.frameworkviews.PlayActionButtonV2 android:id="@id/cancel_download_button" android:visibility="gone" android:text="@string/cancel_download_now" finsky:action_style="secondary" style="@style/Play_DetailsPage_ActionButtonV2" />
+    <com.google.android.finsky.frameworkviews.PlayActionButtonV2 android:id="@id/download_now_button" android:visibility="gone" android:text="@string/download_now" finsky:action_style="secondary" style="@style/Play_DetailsPage_ActionButtonV2" />
+    <com.google.android.finsky.frameworkviews.PlayActionButtonV2 android:id="@id/download_button" android:visibility="gone" android:text="@string/download" finsky:action_style="secondary" style="@style/Play_DetailsPage_ActionButtonV2" />
+    <com.google.android.finsky.frameworkviews.PlayActionButtonV2 android:id="@id/uninstall_button" android:visibility="gone" android:text="@string/uninstall" finsky:action_style="secondary" style="@style/Play_DetailsPage_ActionButtonV2" />
+    <com.google.android.finsky.frameworkviews.PlayActionButtonV2 android:id="@id/update_button" android:visibility="gone" android:text="@string/update" finsky:action_style="secondary" style="@style/Play_DetailsPage_ActionButtonV2" />
+    <com.google.android.finsky.frameworkviews.PlayActionButtonV2 android:id="@id/launch_button" android:visibility="gone" android:text="@string/open" finsky:action_style="secondary" style="@style/Play_DetailsPage_ActionButtonV2" />
+    <com.google.android.finsky.frameworkviews.PlayActionButtonV2 android:id="@id/try_button" android:visibility="gone" android:text="@string/sample" finsky:action_style="secondary" style="@style/Play_DetailsPage_ActionButtonV2" />
+    <com.google.android.finsky.frameworkviews.PlayActionButtonV2 android:id="@id/preregister_button" android:visibility="gone" finsky:action_style="primary" style="@style/Play_DetailsPage_ActionButtonV2" />
+    <com.google.android.finsky.frameworkviews.PlayActionButtonV2 android:id="@id/buy_button2" android:visibility="gone" finsky:action_style="primary" style="@style/Play_DetailsPage_ActionButtonV2" />
+    <com.google.android.finsky.frameworkviews.PlayActionButtonV2 android:id="@id/buy_button" android:visibility="gone" finsky:action_style="primary" style="@style/Play_DetailsPage_ActionButtonV2" />
+    <com.google.android.finsky.actionbuttons.layout.WishlistPlayActionButton android:id="@id/wishlist_action_button" android:visibility="gone" finsky:action_style="primary" style="@style/Play_DetailsPage_ActionButtonV2" />
+    <com.google.android.finsky.frameworkviews.PlayActionButtonV2 android:id="@id/subscribe_button" android:visibility="gone" android:text="@string/download" finsky:action_style="primary" style="@style/Play_DetailsPage_ActionButton" />
+</merge>

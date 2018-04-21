@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.google.android.finsky.layout.play.PersonAvatarView android:id="@id/my_avatar" android:layout_width="@dimen/review_v2_avatar_size" android:layout_height="@dimen/review_v2_avatar_size" android:layout_marginTop="@dimen/d30_module_item_vertical_margin" android:scaleType="fitStart" finsky:fixed_bounds="true" finsky:is_avatar_no_ring="true" />
+    <TextView android:ellipsize="end" android:id="@id/my_display_name" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:focusable="true" android:layout_marginTop="@dimen/d30_module_item_vertical_margin" android:singleLine="true" style="@style/D30ModuleSecondaryBodyText" />
+    <TextView android:ellipsize="end" android:id="@id/my_rating_text" android:focusable="true" android:layout_width="wrap_content" android:singleLine="true" style="@style/D30ModuleBodyText" />
+</LinearLayout>

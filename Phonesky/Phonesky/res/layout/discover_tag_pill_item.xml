@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailspage.DiscoverTagView android:orientation="vertical" style="@style/D30DiscoverTagPill"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textStyle="normal" android:textColor="@color/d30_discover_tag_pill_text_color" android:id="@id/tag_title" android:paddingLeft="@dimen/d30_discover_tag_pill_text_horizontal_padding" android:paddingTop="@dimen/d30_discover_tag_pill_text_vertical_padding" android:paddingRight="@dimen/d30_discover_tag_pill_text_horizontal_padding" android:paddingBottom="@dimen/d30_discover_tag_pill_text_vertical_padding" android:maxWidth="@dimen/d30_discover_tag_max_width" style="@style/D30DiscoverTagPillText" />
+</com.google.android.finsky.detailspage.DiscoverTagView>

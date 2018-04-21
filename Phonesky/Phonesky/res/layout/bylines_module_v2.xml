@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailsmodules.modules.bylinesv2.view.BylinesModuleViewV2 android:orientation="vertical" android:id="@id/bylines_panel" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/byline_header" android:paddingLeft="@dimen/d30_module_layout_padding" android:paddingTop="@dimen/d30_module_layout_vertical_padding" android:paddingRight="@dimen/d30_module_layout_padding" android:paddingBottom="@dimen/d30_module_layout_vertical_padding" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.caverock.androidsvg.SVGImageView android:id="@id/expand_button" android:layout_width="@dimen/d30_expand_collapse_icon_size" android:layout_height="@dimen/d30_expand_collapse_icon_size" android:layout_alignParentTop="true" android:layout_alignParentRight="true" finsky:svg="@raw/ic_keyboard_arrow_down_black_24dp" />
+        <com.google.android.finsky.frameworkviews.DecoratedTextView android:id="@id/bylines_module_title" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" style="@style/D30ModuleTitle" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/listing_layout" android:paddingBottom="@dimen/d30_module_item_half_vertical_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</com.google.android.finsky.detailsmodules.modules.bylinesv2.view.BylinesModuleViewV2>

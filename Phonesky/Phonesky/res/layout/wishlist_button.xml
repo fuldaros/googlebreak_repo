@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.actionbuttons.layout.WishlistPlayActionButton android:id="@id/wishlist_action_button" android:visibility="gone" finsky:action_style="primary" style="@style/Play_DetailsPage_ActionButton"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto" />

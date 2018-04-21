@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.play.image.FifeImageView android:id="@id/start_icon" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.google.android.play.layout.PlayTextView android:id="@id/start_text" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/PlayLightText" />
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/middle_text" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <com.google.android.play.layout.PlayTextView android:id="@id/end_text" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/PlayLightText" />
+    <com.google.android.play.image.FifeImageView android:id="@id/end_icon" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</LinearLayout>

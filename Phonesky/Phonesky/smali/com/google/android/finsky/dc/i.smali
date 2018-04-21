@@ -1,0 +1,51 @@
+.class public final Lcom/google/android/finsky/dc/i;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ld/a/a;
+
+
+# static fields
+.field public static final a:Lcom/google/android/finsky/dc/i;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    .prologue
+    .line 4
+    new-instance v0, Lcom/google/android/finsky/dc/i;
+
+    invoke-direct {v0}, Lcom/google/android/finsky/dc/i;-><init>()V
+
+    sput-object v0, Lcom/google/android/finsky/dc/i;->a:Lcom/google/android/finsky/dc/i;
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .locals 0
+
+    .prologue
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final synthetic a()Ljava/lang/Object;
+    .locals 1
+
+    .prologue
+    .line 2
+    new-instance v0, Lcom/google/android/finsky/dc/h;
+
+    invoke-direct {v0}, Lcom/google/android/finsky/dc/h;-><init>()V
+
+    .line 3
+    return-object v0
+.end method

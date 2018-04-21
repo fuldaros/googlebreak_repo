@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="cond_perm_action">
+        <item quantity="other">請求遺失的多個權限</item>
+        <item quantity="one">請求遺失的一個權限</item>
+    </plurals>
+    <plurals name="cond_perm_summary">
+        <item quantity="other">microG Service Core遺失了多個權限以至於不能正常運作。</item>
+        <item quantity="one">microG Service Core遺失了一個權限以至於不能正常運作。</item>
+    </plurals>
+    <plurals name="gcm_registered_apps_counter">
+        <item quantity="other">已註冊%1$d個程式</item>
+        <item quantity="one">已註冊%1$d個程式</item>
+    </plurals>
+    <plurals name="pref_unifiednlp_summary">
+        <item quantity="other">已設定%1$d個背景伺服器</item>
+        <item quantity="one">已設定%1$d個背景伺服器</item>
+    </plurals>
+</resources>

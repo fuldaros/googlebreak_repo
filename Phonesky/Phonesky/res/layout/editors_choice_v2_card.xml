@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.editorschoice.view.EditorsChoiceV2CardView android:orientation="vertical" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/focus_overlay"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/play_cards_separator_color" android:layout_width="fill_parent" android:layout_height="@dimen/play_card_flat_list_separator_height" />
+    <LinearLayout android:paddingLeft="@dimen/editors_choice_v2_card_horizontal_padding" android:paddingTop="@dimen/editors_choice_v2_card_vertical_padding" android:paddingRight="@dimen/editors_choice_v2_card_horizontal_padding" android:paddingBottom="@dimen/editors_choice_v2_card_vertical_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/play_highlight_round_overlay_light">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <com.google.android.play.layout.PlayTextView android:textSize="@dimen/flat_cluster_header_title_size" android:id="@id/editors_choice_v2_card_title" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" android:lineSpacingExtra="4.0dip" style="@style/FlatCardTitle" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/icon_container" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/editors_choice_v2_card_icon_size" />
+            <com.google.android.play.layout.PlayTextView android:textSize="@dimen/flat_rating_bar_text_size" android:textColor="@color/play_secondary_text" android:id="@id/last_update_time" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" style="@style/PlayPlainText" />
+        </LinearLayout>
+        <com.google.android.play.image.FifeImageView android:id="@id/banner" android:layout_width="@dimen/editors_choice_v2_card_banner_width" android:layout_height="@dimen/editors_choice_v2_card_banner_height" android:layout_marginLeft="16.0dip" android:layout_marginRight="0.0dip" android:scaleType="fitEnd" />
+    </LinearLayout>
+</com.google.android.finsky.stream.controllers.editorschoice.view.EditorsChoiceV2CardView>

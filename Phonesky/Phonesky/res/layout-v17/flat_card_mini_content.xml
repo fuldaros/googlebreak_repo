@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:playcommon="http://schemas.android.com/apk/res-auto">
+    <com.google.android.play.layout.PlayCardThumbnail android:id="@id/li_thumbnail_frame" android:layout_width="fill_parent" android:layout_height="0.0dip" playcommon:app_thumbnail_padding="0.0dip">
+        <include android:id="@id/li_thumbnail" layout="@layout/play_card_thumbnail" />
+    </com.google.android.play.layout.PlayCardThumbnail>
+    <include layout="@layout/play_ad_container_v2" />
+    <com.google.android.play.layout.PlayTextView android:id="@id/li_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="@dimen/flat_mini_card_title_top_margin" android:layout_marginRight="0.0dip" android:lineSpacingExtra="@dimen/flat_mini_card_title_line_spacing_extra" android:textAlignment="viewStart" android:layout_marginStart="0.0dip" android:layout_marginEnd="0.0dip" style="@style/FlatCardTitle.Mini" />
+    <com.google.android.finsky.playcard.FadingEdgeTextView android:id="@id/li_fading_edge_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="@dimen/flat_mini_card_title_top_margin" android:layout_marginRight="0.0dip" android:lineSpacingExtra="@dimen/flat_mini_card_title_line_spacing_extra" android:textAlignment="viewStart" android:layout_marginStart="0.0dip" android:layout_marginEnd="0.0dip" playcommon:fading_edge_width="@dimen/flat_card_title_fading_edge_width" style="@style/FlatCardTitle.Mini" />
+    <com.google.android.play.layout.PlayCardLabelView android:id="@id/li_label" android:layout_marginLeft="6.0dip" android:layout_marginRight="0.0dip" android:layout_marginStart="6.0dip" android:layout_marginEnd="0.0dip" style="@style/FlatCardLabel.Mini" />
+    <com.google.android.finsky.playcardview.base.FlatCardStarRatingBar android:id="@id/li_rating" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="2.0dip" android:layout_marginStart="0.0dip" android:layout_marginEnd="2.0dip" style="@style/FlatRatingBar" />
+    <com.google.android.finsky.frameworkviews.DecoratedTextView android:id="@id/li_subtitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="6.0dip" android:textAlignment="viewStart" android:layout_marginStart="0.0dip" android:layout_marginEnd="6.0dip" style="@style/FlatCardSubtitle.Mini" />
+    <TextView android:id="@id/li_app_download_size" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/FlatCardSubtitle.Mini" />
+    <ProgressBar android:id="@id/loading_progress_bar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:indeterminate="true" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/li_overflow" android:focusable="false" android:layout_marginLeft="0.0dip" android:layout_marginTop="@dimen/flat_mini_card_overflow_top_margin" android:layout_marginRight="-10.0dip" android:layout_marginStart="0.0dip" android:layout_marginEnd="-10.0dip" style="@style/FlatCardMiniOverflow" />
+</merge>

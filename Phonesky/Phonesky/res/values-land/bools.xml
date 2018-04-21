@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="d30_use_full_width_single_action_button">false</bool>
+    <bool name="display_categories_in_two_columns">true</bool>
+    <bool name="mdp_buttons_expand_whole_width">false</bool>
+    <bool name="stretch_bottom_sheet_container">false</bool>
+    <bool name="subnav_use_forced_peaking">false</bool>
+    <bool name="use_full_width_buttons">false</bool>
+    <bool name="use_wide_layout">true</bool>
+</resources>

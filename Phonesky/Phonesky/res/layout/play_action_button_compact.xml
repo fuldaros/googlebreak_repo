@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.frameworkviews.PlayActionButtonV2 android:textSize="@dimen/play_price_small_size" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/play_action_button_compact_minwidth" android:minHeight="@dimen/play_action_button_compact_minheight" finsky:action_bottom_padding="0.0dip" finsky:action_style="compact" finsky:action_top_padding="0.0dip" finsky:action_xpadding="12.0dip" style="@style/PlayMediumPlainText"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto" />

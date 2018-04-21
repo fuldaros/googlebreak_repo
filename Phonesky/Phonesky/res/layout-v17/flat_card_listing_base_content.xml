@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.google.android.play.layout.PlayCardThumbnail android:id="@id/li_thumbnail_frame" android:layout_width="@dimen/flat_listing_thumbnail_size" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/flat_listing_inner_margin" android:layout_marginTop="@dimen/flat_listing_inner_margin" android:layout_marginRight="@dimen/flat_listing_inner_margin" android:layout_marginBottom="@dimen/flat_listing_inner_margin" android:layout_marginStart="@dimen/flat_listing_inner_margin" android:layout_marginEnd="@dimen/flat_listing_inner_margin">
+        <include android:id="@id/li_thumbnail" layout="@layout/play_card_thumbnail" />
+    </com.google.android.play.layout.PlayCardThumbnail>
+    <com.google.android.play.layout.PlayTextView android:id="@id/li_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" android:includeFontPadding="false" style="@style/FlatCardTitle.Listing" />
+    <com.google.android.finsky.playcard.FadingEdgeTextView android:id="@id/li_fading_edge_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" finsky:fading_edge_width="@dimen/flat_card_title_fading_edge_width" style="@style/FlatCardTitle.Listing" />
+    <com.google.android.finsky.frameworkviews.DecoratedTextView android:id="@id/li_subtitle" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/FlatCardSubtitle.Listing" />
+    <ImageView android:id="@id/li_overflow" android:focusable="false" android:nextFocusLeft="@id/play_card" android:layout_marginLeft="0.0dip" android:layout_marginTop="@dimen/flat_listing_overflow_margin_top" android:layout_marginRight="@dimen/flat_listing_overflow_margin_end" android:layout_marginStart="0.0dip" android:layout_marginEnd="@dimen/flat_listing_overflow_margin_end" style="@style/FlatCardOverflow" />
+</merge>

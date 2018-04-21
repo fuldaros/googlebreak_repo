@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.google.android.finsky.recyclerview.PlayRecyclerView android:id="@id/recycler_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/page_loading_indicator" />
+    <ScrollView android:id="@id/empty_state_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+      xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:paddingTop="@dimen/subscription_center_empty_view_padding_top" android:paddingBottom="@dimen/subscription_center_empty_view_padding_bottom" android:layout_width="@dimen/subscription_center_empty_view_width" android:layout_height="wrap_content">
+            <com.caverock.androidsvg.SVGImageView android:layout_gravity="center_horizontal" android:layout_width="@dimen/subscription_center_empty_image_size" android:layout_height="@dimen/subscription_center_empty_image_size" android:scaleType="center" android:contentDescription="@null" finsky:svg="@raw/subscriptions_center_empty_background" />
+            <TextView android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/subscription_center_empty_title_margin_top" android:text="@string/subscriptions_center_empty_title" style="@style/SubscriptionsCenterEmptyTitle" />
+            <TextView android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/subscription_center_empty_description_margin_top" android:text="@string/subscriptions_center_empty_description" style="@style/SubscriptionsCenterEmptyDescription" />
+            <com.google.android.finsky.frameworkviews.PlayActionButtonV2 android:layout_gravity="center_horizontal" android:id="@id/explore_button" android:layout_marginTop="@dimen/subscription_center_empty_button_margin_top" style="@style/Play_Purchase_ActionButton" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

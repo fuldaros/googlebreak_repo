@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.inlineminitopcharts.view.InlineMiniTopChartsContentView android:background="@drawable/play_white_with_highlight" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/content_data_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.google.android.finsky.frameworkviews.PeekableTabLayout android:layout_gravity="top" android:id="@id/inline_mini_top_charts_content_tab_layout" android:layout_width="fill_parent" android:layout_height="@dimen/inline_top_charts_content_tab_layout_height" android:minHeight="@dimen/inline_top_charts_content_tab_layout_min_height" finsky:tabIndicatorHeight="@dimen/inline_top_charts_content_tab_indicator_height" finsky:tabMode="scrollable" finsky:tabPaddingEnd="@dimen/inline_mini_top_charts_content_tab_horizontal_padding" finsky:tabPaddingStart="@dimen/inline_mini_top_charts_content_tab_horizontal_padding" finsky:tabTextAppearance="@style/InlineTopChartsTabTextAppearance" />
+        <include layout="@layout/inline_mini_top_charts_divider" />
+        <com.google.android.finsky.viewpager.WrapContentHeightViewPager android:id="@id/inline_mini_top_charts_content_viewpager" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <include layout="@layout/inline_mini_top_charts_divider" />
+        <com.google.android.finsky.stream.controllers.inlineminitopcharts.view.InlineMiniTopChartsFooterView android:textSize="@dimen/flat_cluster_header_more_size" android:gravity="center" android:id="@id/inline_mini_top_charts_footer" android:focusable="true" android:clickable="false" android:layout_width="fill_parent" android:layout_height="@dimen/inline_top_charts_content_tab_layout_height" android:foreground="@drawable/play_highlight_round_overlay_light" android:minHeight="@dimen/inline_top_charts_content_tab_layout_min_height" android:text="@string/inline_mini_top_charts_show_all" android:textAllCaps="true" style="@style/PlayClusterMore"
+          xmlns:android="http://schemas.android.com/apk/res/android" />
+    </LinearLayout>
+    <include android:id="@id/content_lists_loading_indicator" layout="@layout/list_loading_indicator" />
+    <include android:id="@id/content_page_error_indicator" android:visibility="gone" layout="@layout/page_error_indicator" />
+</com.google.android.finsky.stream.controllers.inlineminitopcharts.view.InlineMiniTopChartsContentView>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MilestoneRewardsShareButton" parent="@style/Play_DetailsPage_ActionButton">
+        <item name="android:background">@drawable/play_action_button_apps_base</item>
+        <item name="android:paddingLeft">24.0dip</item>
+        <item name="android:paddingTop">7.0dip</item>
+        <item name="android:paddingRight">24.0dip</item>
+        <item name="android:paddingBottom">8.0dip</item>
+        <item name="android:focusable">true</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:paddingStart">24.0dip</item>
+        <item name="android:paddingEnd">24.0dip</item>
+    </style>
+    <style name="Play_DetailsPage_ActionButton" parent="@style/PlayMediumPlainText">
+        <item name="android:textSize">@dimen/play_price_small_size</item>
+        <item name="android:textColor">@color/play_white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">16.0dip</item>
+        <item name="android:layout_marginRight">0.0dip</item>
+        <item name="android:layout_marginBottom">4.0dip</item>
+        <item name="android:foreground">@drawable/focus_overlay</item>
+        <item name="android:minWidth">@dimen/standard_button_minwidth</item>
+        <item name="android:minHeight">0.0dip</item>
+        <item name="android:layout_marginStart">16.0dip</item>
+        <item name="android:layout_marginEnd">0.0dip</item>
+        <item name="action_bottom_padding">8.0dip</item>
+        <item name="action_top_padding">7.0dip</item>
+        <item name="action_xpadding">24.0dip</item>
+    </style>
+</resources>

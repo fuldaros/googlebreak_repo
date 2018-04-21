@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailsmodules.modules.reviewstitle.view.ReviewsTitleModuleView android:orientation="vertical" android:id="@id/reviews_title_message_module" android:background="@color/play_white" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/play_highlight_overlay_light"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:svgimageview="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:paddingLeft="@dimen/d30_module_layout_padding" android:paddingTop="@dimen/d30_module_layout_vertical_padding" android:paddingRight="@dimen/d30_module_layout_padding" android:paddingBottom="@dimen/d30_module_layout_vertical_padding" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:ellipsize="end" android:id="@id/reviews_section_title" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/d30_reviews_section_title" android:layout_toLeftOf="@id/info_icon" android:layout_alignParentLeft="true" style="@style/D30ModuleTitle" />
+        <com.caverock.androidsvg.SVGImageView android:id="@id/info_icon" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_alignParentRight="true" android:contentDescription="@string/review_policy_info_icon_description" svgimageview:svg="@raw/ic_info_outline_grey600_24dp" />
+    </RelativeLayout>
+    <include layout="@layout/review_policy_tooltip" />
+</com.google.android.finsky.detailsmodules.modules.reviewstitle.view.ReviewsTitleModuleView>

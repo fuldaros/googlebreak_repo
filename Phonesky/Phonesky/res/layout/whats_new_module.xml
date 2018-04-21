@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailsmodules.modules.whatsnew.view.WhatsNewModuleView android:orientation="vertical" android:id="@id/whats_new_module_view" android:background="@color/play_white" android:foreground="@drawable/play_highlight_overlay_light" style="@style/D30ModuleLayout"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.google.android.play.layout.PlayTextView android:ellipsize="end" android:id="@id/whats_new_title" android:text="@string/details_whats_new" android:singleLine="true" android:drawablePadding="8.0dip" style="@style/D30ModuleTitle" />
+        <include android:id="@id/whats_new_title_dot" layout="@layout/green_dot" />
+    </LinearLayout>
+    <com.google.android.play.layout.PlayTextView android:id="@id/whats_new_subtitle" style="@style/D30ModuleSubtitle" />
+    <com.google.android.play.layout.PlayTextView android:id="@id/whats_new_body" android:paddingTop="@dimen/d30_module_item_vertical_margin" android:paddingBottom="@dimen/d30_module_item_vertical_margin" finsky:lastLineOverdrawColor="@color/white" style="@style/D30ModuleBodyText" />
+    <com.google.android.play.layout.PlayTextView android:id="@id/read_more_button" android:visibility="gone" android:layout_marginTop="@dimen/d30_text_button_vertical_margin" android:layout_marginBottom="@dimen/d30_text_button_vertical_margin" android:text="@string/d30_read_more" style="@style/D30ModuleTextButton" />
+</com.google.android.finsky.detailsmodules.modules.whatsnew.view.WhatsNewModuleView>

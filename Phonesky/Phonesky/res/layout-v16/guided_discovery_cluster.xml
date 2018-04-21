@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.guideddiscovery.view.GuidedDiscoveryClusterView android:id="@id/guided_discovery_cluster_container" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/FlatNoBottomPaddingCardCluster"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.play.image.FifeImageView android:id="@id/guided_discovery_background_image" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="matrix" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:importantForAccessibility="no" />
+    <include layout="@layout/flat_card_cluster_header" />
+    <com.google.android.finsky.stream.controllers.guideddiscovery.view.GuidedDiscoveryPillsRecyclerView android:id="@id/pills_container" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/cluster_header" style="@style/GuidedDiscoveryPillList" />
+    <com.google.android.finsky.stream.base.horizontalclusters.view.HorizontalClusterRecyclerView android:id="@id/cluster_content" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/pills_container" style="@style/GuidedDiscoveryAppsCluster" />
+    <FrameLayout android:id="@id/loading_indicator" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <ProgressBar android:layout_gravity="center" android:id="@id/loading_progress_bar" android:layout_width="40.0dip" android:layout_height="40.0dip" android:indeterminate="true" android:layout_centerInParent="true" android:layout_centerHorizontal="true" />
+    </FrameLayout>
+</com.google.android.finsky.stream.controllers.guideddiscovery.view.GuidedDiscoveryClusterView>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.billing.myaccount.layout.AccountSimpleRowView style="@style/AccountRow"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.finsky.frameworkviews.CircularImageView android:id="@id/sub_page_icon" android:padding="8.0dip" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/title_container" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <TextView android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/AccountLandingPageRowTitle" />
+        <TextView android:id="@id/subtitle" style="@style/AccountRowSubtitle" />
+    </LinearLayout>
+</com.google.android.finsky.billing.myaccount.layout.AccountSimpleRowView>

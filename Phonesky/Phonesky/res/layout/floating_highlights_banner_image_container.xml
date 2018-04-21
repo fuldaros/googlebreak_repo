@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="end" android:id="@id/banner_image_container" android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.google.android.finsky.frameworkviews.FadingEdgeImageView android:id="@id/banner_image" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" finsky:fixed_bounds="true" />
+    <View android:id="@id/banner_image_gradient" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

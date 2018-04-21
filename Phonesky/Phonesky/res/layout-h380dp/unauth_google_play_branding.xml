@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <ImageView android:layout_gravity="center" android:id="@id/unauth_play_prism" android:layout_width="@dimen/unauth_home_prism_size" android:layout_height="@dimen/unauth_home_prism_size" android:src="@drawable/play_store_144px" />
+    <ImageView android:layout_gravity="center" android:layout_width="@dimen/unauth_google_play_width" android:layout_height="@dimen/unauth_google_play_height" android:layout_marginTop="@dimen/unauth_home_google_play_margin_top" android:src="@drawable/ic_google_play_logo" android:scaleType="fitCenter" finsky:layout_constraintTop_toBottomOf="@id/unauth_play_prism" />
+</merge>

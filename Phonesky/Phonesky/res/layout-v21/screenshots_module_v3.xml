@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailsmodules.modules.screenshotsv3.view.ScreenshotsModuleLayoutV3 android:id="@id/screenshots_module_v3" android:background="@color/play_white" android:paddingTop="@dimen/d30_module_layout_vertical_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:transitionGroup="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.finsky.deprecateddetailscomponents.ScreenshotsRecyclerView android:id="@id/screenshots_container" android:paddingLeft="@dimen/d30_screenshots_row_start_padding" android:paddingRight="@dimen/d30_screenshots_row_end_padding" android:focusable="true" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/d30_screenshots_row_start_padding" android:paddingEnd="@dimen/d30_screenshots_row_end_padding" />
+</com.google.android.finsky.detailsmodules.modules.screenshotsv3.view.ScreenshotsModuleLayoutV3>

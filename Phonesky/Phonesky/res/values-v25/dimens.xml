@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="setup_wizard_content_ypadding">8.0dip</dimen>
+    <dimen name="setup_wizard_header_title_top_padding">24.0dip</dimen>
+    <item type="dimen" name="setup_wizard_header_title_xpadding">@dimen/setup_wizard_horizontal_padding</item>
+    <dimen name="setup_wizard_horizontal_padding">24.0dip</dimen>
+    <dimen name="setup_wizard_vpa_description_top_padding">4.0dip</dimen>
+</resources>

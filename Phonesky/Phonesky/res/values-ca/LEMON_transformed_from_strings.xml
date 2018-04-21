@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play Store</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Aprovació obligatòria</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Controls parentals</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Comentaris</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Aplicació instantània</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Configuració de membres</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">"Aplicacions que s'obren al navegador"</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">"Preferències d'Aplicacions instantànies"</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play Store</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Les meves aplicacions</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Configuració de notificacions</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Opcions de compra</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Formes de pagament</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">"Permet que l'usuari vegi les aplicacions disponibles des d'aquesta aplicació."</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">"Accedeix al servei Descoberta d'aplicacions de Google Play"</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">"Permet que l'usuari compri elements mitjançant Google Play des d'aquesta aplicació."</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Servei de facturació de Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Pot comprovar si tens una llicència per a aquesta aplicació de Google Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Comprovació de llicència de Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">"Permet que l'usuari instal·li aplicacions d'igual a igual verificades per Google Play."</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">API Peer To Peer App Install de Google Play</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">"Permisos de l'aplicació"</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">Llicències de programari lliure</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Sol·licita autenticació</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Bescanvia el codi</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">"Puntua'l!"</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Envia un regal</item>
+    <item type="LEMON_transformed_from_string" name="settings">Configuració</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Completa la configuració del compte</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">"Les aplicacions s'instal·laran una vegada completada la configuració"</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Revisa més aplicacions</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Gaudeix del pagament ràpid en productes de Google</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Afegeix una forma de pagament</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Configura les dades de pagament</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Restaura les aplicacions del dispositiu</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Quin dispositiu?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Selecciona la forma de pagament familiar</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Tria un import</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Actualitza la forma de pagament</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Verifica i instal·la</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">"S'estan cercant problemes de seguretat…"</item>
+</resources>

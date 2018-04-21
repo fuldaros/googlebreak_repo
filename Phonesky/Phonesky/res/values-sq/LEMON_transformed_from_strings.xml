@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Dyqani i \"Luaj me Google\"</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Luaj me Google</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Kërkohet miratimi</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Kontrollet prindërore</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Komente</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Aplikacioni i çastit</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Cilësimet e anëtarit</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Aplikacionet që hapen në shfletues</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Preferencat për \"Aplikacionet e çastit\"</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Dyqani</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Apl. e mia</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Cilësimet e njoftimeve</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Opsione blerjeje</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Mënyrat e pagesës</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Lejon që përdoruesi të shikojë aplikacionet e ofruara nga brenda këtij aplikacioni.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Qasu te \"Shërbimi i zbul. të apl\". të Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Lejon përdoruesin të blejë artikuj në \"Luaj me Google\" përmes këtij aplikacioni.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Shërbimi i faturimit i \"Luaj me Google\"</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Mund të kontrollojë nëse ke licencë për këtë aplikacion nga \"Luaj me Google\".</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Kontroll licence nga \"Luaj me Google\"</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Lejon që përdoruesi të instalojë aplikacione P2P të verifikuara nga Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">API-ja e instalimit të apl. P2P të Google Play</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Lejet e aplikacionit</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Kërko vërtetimin</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Paguaj me kod</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Vlerësoje!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Dërgo dhuratën</item>
+    <item type="LEMON_transformed_from_string" name="settings">Cilësimet</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Përfundo konfigurimin e llogarisë</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Aplikacionet do të instalohen pas përfundimit të konfigurimit</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Rishiko aplikacionet e tjera</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Provo përfundimin e shpejtë të blerjes me produktet e Google</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Shto mënyrë pagese</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Konfiguro informacionet e pagesës</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Restauro aplikacionet nga pajisja</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Cilën pajisje?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Zgjidh mënyrën e pagesës për familjen</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Zgjidh sasinë</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Përditëso mënyrën e pagesës</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Verifiko dhe instalo</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Po skanon për probleme të sigurisë…</item>
+</resources>

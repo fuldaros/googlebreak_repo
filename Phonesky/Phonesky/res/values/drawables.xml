@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="drawable" name="fullscreen_dialog_child_default_background">@drawable/abc_dialog_material_background</item>
+    <item type="drawable" name="person_card_overlay_light_cros">@drawable/person_card_overlay_light</item>
+    <item type="drawable" name="play_highlight_overlay_action_button">@drawable/play_highlight_button_overlay</item>
+    <item type="drawable" name="play_highlight_overlay_action_button_light">@drawable/play_highlight_button_overlay</item>
+    <item type="drawable" name="play_overlay_pressed_dark">@drawable/play_highlight_overlay_pressed_blue</item>
+    <item type="drawable" name="play_overlay_pressed_light">@drawable/play_highlight_overlay_pressed_blue</item>
+    <item type="drawable" name="play_overlay_round_pressed_dark">@drawable/play_highlight_round_overlay_pressed_blue</item>
+    <item type="drawable" name="play_overlay_round_pressed_light">@drawable/play_highlight_round_overlay_pressed_blue</item>
+</resources>

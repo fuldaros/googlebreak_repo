@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="24px" height="28px" viewBox="0 0 24 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_play_prism_clr_24dp</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="pai_1" transform="translate(-28.000000, -75.000000)">
+            <g id="ic_play_prism_clr_24dp" transform="translate(24.000000, 73.000000)">
+                <polygon id="Fill-1" fill="#FFFFFF" opacity="0" points="0 32 32 32 32 0 0 0"></polygon>
+                <path d="M4.48106667,3.07866667 C4.1784,3.39733333 3.99973333,3.89333333 3.99973333,4.536 L3.99973333,27.464 C3.99973333,28.1066667 4.1784,28.6026667 4.48106667,28.9213333 L4.5584,28.996 L17.4344,16.152 L17.4344,16 L17.4344,15.848 L4.5584,3.004 L4.48106667,3.07866667 Z" id="Fill-3" fill="#40C4FF"></path>
+                <path d="M21.7268,20.4348 L17.4348,16.1521333 L17.4348,16.0001333 L17.4348,15.8481333 L21.7281333,11.5654667 L21.8254667,11.6214667 L26.9108,14.5028 C28.3628,15.3268 28.3628,16.6734667 26.9108,17.4974667 L21.8254667,20.3788 L21.7268,20.4348 Z" id="Fill-5" fill="#FFCA28"></path>
+                <path d="M21.8249333,20.3792 L17.4342667,16.0005333 L4.48093333,28.9218667 C4.9596,29.4272 5.75026667,29.4898667 6.64093333,28.9845333 L21.8249333,20.3792" id="Fill-7" fill="#FF3A44"></path>
+                <path d="M21.8249333,11.6208 L6.64093333,3.01546667 C5.75026667,2.51013333 4.9596,2.5728 4.48093333,3.07813333 L17.4342667,15.9994667 L21.8249333,11.6208 Z" id="Fill-9" fill="#00E676"></path>
+            </g>
+        </g>
+    </g>
+</svg>

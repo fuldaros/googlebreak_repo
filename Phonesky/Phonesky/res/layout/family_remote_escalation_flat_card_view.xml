@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.family.remoteescalation.RemoteEscalationFlatCard android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/play_highlight_round_overlay_light" style="@style/PlayCardFlatList"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.play.image.FifeImageView android:id="@id/thumbnail" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_margin="16.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/header" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_toRightOf="@id/thumbnail">
+        <TextView android:id="@id/title" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/PlayCardTitle.Mini" />
+        <com.google.android.finsky.frameworkviews.AccessibleTextView android:textSize="@dimen/play_medium_size" android:id="@id/formatted_price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:maxLines="1" />
+    </LinearLayout>
+    <TextView android:id="@id/subtitle" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_toRightOf="@id/thumbnail" android:layout_below="@id/header" style="@style/PlayCardSubtitle" />
+    <TextView android:id="@id/subtitle_1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_toRightOf="@id/thumbnail" android:layout_below="@id/subtitle" style="@style/PlayCardSubtitle" />
+    <TextView android:id="@id/subtitle_2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_toRightOf="@id/thumbnail" android:layout_below="@id/subtitle_1" style="@style/PlayCardSubtitle" />
+    <Button android:textSize="@dimen/play_medium_size" android:textColor="@color/family_action" android:id="@id/deny_button" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_toLeftOf="@id/approve_button" android:layout_below="@id/subtitle_2" style="?buttonBarNegativeButtonStyle" />
+    <Button android:textSize="@dimen/play_medium_size" android:textColor="@color/family_action" android:id="@id/approve_button" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_below="@id/subtitle_2" android:layout_alignParentRight="true" style="?buttonBarPositiveButtonStyle" />
+</com.google.android.finsky.family.remoteescalation.RemoteEscalationFlatCard>

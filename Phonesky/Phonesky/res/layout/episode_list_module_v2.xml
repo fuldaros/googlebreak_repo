@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailspage.episodelist.EpisodeListModuleV2Layout android:orientation="vertical" android:id="@id/episode_list" android:background="@color/play_white" android:paddingLeft="@dimen/details_listing_section_extra_padding" android:paddingRight="@dimen/details_listing_section_extra_padding" android:paddingBottom="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/content_generic_small_size" android:textColor="@color/play_movies_primary" android:gravity="end" android:id="@id/filter_toggle" android:paddingLeft="@dimen/details_text_section_padding" android:paddingTop="6.0dip" android:paddingRight="@dimen/details_text_section_padding" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/PlayMediumPlainText" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/episodes" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <View android:id="@id/overlay" android:background="@color/season_switching_overlay" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@id/episodes" android:layout_alignBottom="@id/episodes" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/error_indicator" android:background="@color/play_white" android:paddingTop="24.0dip" android:paddingBottom="24.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/details_new_content_margin" android:layout_marginRight="@dimen/details_new_content_margin">
+            <TextView android:textSize="@dimen/content_generic_small_size" android:textColor="@color/play_secondary_text" android:gravity="center" android:id="@id/error_msg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/episode_load_error" android:drawableLeft="@drawable/ic_network_error" android:drawablePadding="4.0dip" />
+            <Button android:textColor="@color/play_primary_text" android:gravity="center" android:id="@id/retry_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/network_retry" />
+        </LinearLayout>
+    </RelativeLayout>
+</com.google.android.finsky.detailspage.episodelist.EpisodeListModuleV2Layout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/vetted_app_feature_text_padding" android:paddingRight="@dimen/vetted_app_feature_text_padding" android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/vetted_app_feature_title_size" android:textColor="@color/play_primary_text" android:layout_gravity="center_horizontal" android:id="@id/feature_title" android:paddingBottom="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/PlayMediumBoldText" />
+    <TextView android:textSize="@dimen/content_generic_xsmall_size" android:textColor="@color/play_secondary_text" android:layout_gravity="center_horizontal" android:id="@id/aggregate_value" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="@dimen/vetted_app_feature_icon_padding" style="@style/PlayMediumPlainText" />
+</LinearLayout>

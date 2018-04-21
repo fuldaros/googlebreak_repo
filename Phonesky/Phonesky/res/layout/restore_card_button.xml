@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.layout.WarmWelcomeCardLegacyButton android:orientation="horizontal" android:background="@drawable/play_highlight_overlay_light" android:paddingLeft="@dimen/play_edu_main_content_padding" android:paddingTop="10.0dip" android:paddingRight="@dimen/play_edu_main_content_padding" android:paddingBottom="10.0dip" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="40.0dip" finsky:mark_as_button="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.google.android.play.image.FifeImageView android:id="@id/icon" android:focusable="false" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="0.0dip" android:scaleType="centerInside" />
+    <TextView android:layout_gravity="center" android:id="@id/text" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/PlayCardAction" />
+</com.google.android.finsky.layout.WarmWelcomeCardLegacyButton>

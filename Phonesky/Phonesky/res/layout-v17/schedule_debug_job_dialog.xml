@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip" android:layout_marginStart="24.0dip" android:layout_marginEnd="24.0dip">
+        <TextView android:textStyle="bold" android:layout_gravity="start" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Minimum Latency (ms)" android:layout_marginEnd="16.0dip" />
+        <EditText android:gravity="end" android:layout_gravity="end" android:id="@id/minimum_latency" android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="number" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip" android:layout_marginStart="24.0dip" android:layout_marginEnd="24.0dip">
+        <TextView android:textStyle="bold" android:layout_gravity="start" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Override Deadline (ms)" android:layout_marginEnd="16.0dip" />
+        <EditText android:gravity="end" android:layout_gravity="end" android:id="@id/override_deadline" android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="number" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip" android:layout_marginStart="24.0dip" android:layout_marginEnd="24.0dip">
+        <TextView android:textStyle="bold" android:layout_gravity="start" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Requires Charging" android:layout_marginEnd="16.0dip" />
+        <CheckBox android:gravity="end" android:layout_gravity="end" android:id="@id/charging" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip" android:layout_marginStart="24.0dip" android:layout_marginEnd="24.0dip">
+        <TextView android:textStyle="bold" android:layout_gravity="start" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Requires Idle" android:layout_marginEnd="16.0dip" />
+        <CheckBox android:gravity="end" android:layout_gravity="end" android:id="@id/idle" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip" android:layout_marginStart="24.0dip" android:layout_marginEnd="24.0dip">
+        <TextView android:textStyle="bold" android:layout_gravity="start" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Required Network" android:layout_marginEnd="16.0dip" />
+        <Spinner android:gravity="end" android:layout_gravity="end" android:id="@id/network_selector" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip" android:layout_marginStart="24.0dip" android:layout_marginEnd="24.0dip">
+        <TextView android:textStyle="bold" android:layout_gravity="start" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Keep Alive for (ms)" android:layout_marginEnd="16.0dip" />
+        <EditText android:gravity="end" android:layout_gravity="end" android:id="@id/keep_alive" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="0" android:inputType="number" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip" android:layout_marginStart="24.0dip" android:layout_marginEnd="24.0dip">
+        <Button android:layout_gravity="start" android:id="@id/schedule_job" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Schedule Job" android:layout_marginEnd="16.0dip" />
+        <Button android:layout_gravity="start" android:id="@id/cancel_job" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cancel Job" android:layout_marginEnd="16.0dip" />
+    </LinearLayout>
+</LinearLayout>

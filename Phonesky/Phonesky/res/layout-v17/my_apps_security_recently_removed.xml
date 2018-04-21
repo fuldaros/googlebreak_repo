@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.view.MyAppsSecurityRecentlyRemoved android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/play_highlight_round_overlay_light" android:minHeight="@dimen/myapps_security_min_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center|left" android:id="@id/security_recently_removed_icon" android:padding="@dimen/myapps_assist_padding" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textSize="@dimen/myapps_assist_message_size" android:textColor="@color/play_secondary_text" android:layout_gravity="center|left" android:id="@id/security_recently_removed_message" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <ImageView android:layout_gravity="center|right" android:id="@id/security_recently_removed_refresh" android:padding="@dimen/myapps_security_refresh_padding" android:layout_width="@dimen/myapps_security_refresh_size" android:layout_height="@dimen/myapps_security_refresh_size" android:layout_marginLeft="0.0dip" android:layout_marginRight="@dimen/myapps_security_refresh_xmargin" android:layout_marginStart="0.0dip" android:layout_marginEnd="@dimen/myapps_security_refresh_xmargin" />
+</com.google.android.finsky.stream.controllers.view.MyAppsSecurityRecentlyRemoved>

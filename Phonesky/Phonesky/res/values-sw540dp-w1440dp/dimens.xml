@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="flat_cluster_header_more_size_v2">16.0sp</dimen>
+    <dimen name="flat_cluster_header_subtitle_size_v2">16.0sp</dimen>
+    <dimen name="flat_cluster_header_title_size_v2">22.0sp</dimen>
+    <dimen name="flat_mini_card_label_size_v2">16.0sp</dimen>
+    <dimen name="flat_mini_card_subtitle_size_v2">16.0sp</dimen>
+    <dimen name="flat_mini_card_title_size_v2">16.0sp</dimen>
+</resources>

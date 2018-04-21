@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.playcardview.familylibrary.FamilyLibraryCard android:id="@id/play_card_flat_list" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/play_highlight_round_overlay_light" android:minHeight="@dimen/play_card_flat_list_height" finsky:card_supports_subtitle_and_rating="true" finsky:card_text_only_snippet_margin_left="0.0dip" style="@style/PlayCardFlatList"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <com.google.android.play.layout.PlayCardThumbnail android:id="@id/thumbnail_frame" android:layout_width="56.0dip" android:layout_height="wrap_content" android:layout_margin="12.0dip">
+        <com.google.android.finsky.frameworkviews.ThumbnailImageView android:id="@id/li_thumbnail" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+    </com.google.android.play.layout.PlayCardThumbnail>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/title_subtitle_container" android:paddingLeft="0.0dip" android:paddingRight="@dimen/play_card_content_horizontal_inset" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/thumbnail_frame" android:layout_alignParentTop="true" android:layout_alignWithParentIfMissing="true">
+        <com.google.android.play.layout.PlayTextView android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/play_card_wide_content_vertical_inset" android:maxLines="1" android:singleLine="true" style="@style/PlayCardTitle" />
+        <include android:id="@id/subtitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-2.0dip" layout="@layout/play_card_subtitle" />
+    </LinearLayout>
+    <include android:id="@id/snippet" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/thumbnail_frame" android:layout_alignParentBottom="true" layout="@layout/play_card_snippet" />
+</com.google.android.finsky.playcardview.familylibrary.FamilyLibraryCard>

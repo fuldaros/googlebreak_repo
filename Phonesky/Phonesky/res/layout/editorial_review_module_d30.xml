@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailsmodules.modules.editorialreview.view.EditorialReviewModuleView android:id="@id/editorial_review_module" android:background="@color/play_white" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.google.android.play.image.FifeImageView android:id="@id/background_image" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <com.google.android.finsky.frameworkviews.ForegroundLinearLayout android:orientation="vertical" android:foreground="@drawable/play_highlight_overlay_light" style="@style/D30ModuleLayout">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.google.android.play.layout.PlayTextView android:id="@id/title" style="@style/D30ModuleTitle" />
+                <com.google.android.play.layout.PlayTextView android:id="@id/subtitle" style="@style/D30ModuleSubtitle" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/key_points_container" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d30_module_layout_padding" />
+            <TextView android:id="@id/footer_message" android:text="@string/d30_read_more" style="@style/D30ModuleTextButton" />
+        </com.google.android.finsky.frameworkviews.ForegroundLinearLayout>
+    </FrameLayout>
+</com.google.android.finsky.detailsmodules.modules.editorialreview.view.EditorialReviewModuleView>

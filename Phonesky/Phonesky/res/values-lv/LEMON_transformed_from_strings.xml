@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play veikals</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Nepieciešams apstiprinājums</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Vecāku kontrole</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Atsauksmes</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Tūlītējā lietotne</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Dalībnieka iestatījumi</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Lietotnes, kas tiek atvērtas pārlūkā</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Tūlītējo lietotņu preferences</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play veikals</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Manas lietotnes</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Paziņojumu iestatījumi</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Iegādes iespējas</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Maksājuma veidi</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Ļauj lietotājam skatīt pieejamās lietotnes no šīs lietotnes.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Piekļuve Google Play lietotņu atklāšanas pakalp.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Ļauj lietotājam iegādāties vienumus, izmantojot Google Play šajā lietotnē.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Google Play norēķinu pakalpojums</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Var pārbaudīt, vai jums ir šīs lietotnes licence no ​​Google Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Google Play licences pārbaude</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Ļauj lietotājam instalēt Play verificētas vienādranga lietotnes.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play vienādranga lietotņu instalēšanas API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Lietotnes atļaujas</item>
+    <item type="LEMON_transformed_from_string" name="preferences_license_title">Atklātā pirmkoda licences</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Autentifikācijas pieprasīšana</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Koda izmantošana</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Novērtējiet to!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Dāvanas sūtīšana</item>
+    <item type="LEMON_transformed_from_string" name="settings">Iestatījumi</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Pabeidziet konta iestatīšanu</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Lietotnes tiks instalētas pēc iestatīšanas pabeigšanas.</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Pārskatiet papildu lietotnes</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Veiciet ērtus norēķinus Google produktos</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Pievienot maksājuma veidu</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Maksājumu informācijas iestatīšana</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Lietotņu atjaunošana no ierīces</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Kura ierīce?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Atlasiet ģimenes maksājuma veidu</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Izvēlieties summu</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Atjaunināt maksājuma veidu</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Pārbaude un instalēšana</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Notiek drošības problēmu meklēšana…</item>
+</resources>

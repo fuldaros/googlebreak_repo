@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailspage.TestingProgramReviewModuleLayout android:id="@id/rate_and_review_section" android:background="@color/play_white" android:layout_width="fill_parent" android:layout_height="wrap_content" android:animateLayoutChanges="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:playcommon="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/rating_layout" android:background="@color/play_white" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.google.android.play.layout.PlayTextView android:id="@id/title" android:paddingLeft="@dimen/d30_module_layout_padding" android:paddingTop="@dimen/d30_module_layout_padding" android:paddingRight="0.0dip" android:text="@string/d30_testing_review_section_title" style="@style/D30ModuleTitle" />
+            <include layout="@layout/rate_review_v2_blurb_d30" />
+            <include android:layout_gravity="center" android:id="@id/review_rating_bar" android:layout_width="240.0dip" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" layout="@layout/rating_bar" />
+            <com.google.android.play.layout.StarRatingBar android:layout_gravity="center" android:id="@id/my_rating_bar" android:paddingTop="@dimen/details_review_section_rating_padding_top" android:paddingBottom="@dimen/details_review_section_rating_vpadding" android:focusable="true" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" playcommon:gap="@dimen/details_review_section_rating_star_gap" playcommon:show_empty_stars="false" playcommon:star_color="@color/play_fg_secondary" playcommon:star_height="@dimen/details_review_section_rating_star_height" />
+            <TextView android:textSize="@dimen/content_generic_xsmall_size" android:textStyle="italic" android:textColor="@color/rate_review_title_text" android:layout_gravity="center_horizontal" android:id="@id/gplus_disclaimer" android:focusable="true" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/public_reviews_message" style="@style/PlayLightText" />
+            <com.google.android.play.layout.PlayTextView android:textSize="@dimen/content_generic_small_size" android:gravity="center_horizontal" android:id="@id/review_text" android:background="@drawable/focus_overlay" android:padding="16.0dip" android:focusable="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/PlayDetailDescription" />
+            <ViewStub android:id="@id/review_reply_stub" android:layout="@layout/myreview_developer_reply_d30" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-4.0dip" />
+            <include android:id="@id/rate_review_editor" android:visibility="gone" layout="@layout/rate_review_editor_v2_d30" />
+            <include android:id="@id/contact_developer_view" android:visibility="gone" layout="@layout/contact_developer_view_d30" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="end|center|top" android:id="@id/rating_overflow" android:paddingLeft="0.0dip" android:paddingTop="@dimen/d30_module_layout_padding" android:paddingRight="@dimen/d30_module_layout_padding" android:visibility="gone" android:contentDescription="@string/content_description_options" style="@style/PlayCardOverflow" />
+    </FrameLayout>
+</com.google.android.finsky.detailspage.TestingProgramReviewModuleLayout>

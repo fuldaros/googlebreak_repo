@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.inlinetopcharts.view.InlineTopChartsClusterContentView android:id="@id/inline_top_charts_cluster_content_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/inline_top_charts_content_margin_top" style="@style/FlatNoBottomPaddingNorMarginCardCluster"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/content_data_view" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <android.support.design.widget.TabLayout android:layout_gravity="top" android:id="@id/inline_top_charts_content_tab_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/inline_top_charts_content_tab_layout_height" android:minHeight="@dimen/inline_top_charts_content_tab_layout_min_height" finsky:tabBackground="@drawable/focus_overlay" finsky:tabIndicatorHeight="@dimen/inline_top_charts_content_tab_indicator_height" finsky:tabMinWidth="@dimen/inline_top_charts_content_tab_min_width" finsky:tabMode="scrollable" finsky:tabPaddingEnd="@dimen/inline_top_charts_content_tab_horizontal_padding" finsky:tabPaddingStart="@dimen/inline_top_charts_content_tab_horizontal_padding" />
+        <View android:id="@id/inline_top_charts_content_tab_layout_divider" android:background="@color/flat_card_stroke_color" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/flat_cluster_card_to_card_vpadding" />
+        <com.google.android.finsky.viewpager.PatchedViewPager android:id="@id/inline_top_charts_content_viewpager" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <include android:id="@id/content_lists_loading_indicator" layout="@layout/list_loading_indicator" />
+    <include android:id="@id/content_page_error_indicator" android:visibility="gone" layout="@layout/page_error_indicator" />
+</com.google.android.finsky.stream.controllers.inlinetopcharts.view.InlineTopChartsClusterContentView>

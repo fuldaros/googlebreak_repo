@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.libraries.play.entertainment.story.BackgroundPanelView android:id="@id/background_panel" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.libraries.play.entertainment.story.ParallaxContainer android:id="@id/parallax_container" android:layout_width="fill_parent" android:layout_height="@dimen/pe_leading_image_height">
+        <com.google.android.libraries.play.entertainment.bitmap.PEImageView android:id="@id/image_main" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" app:fadesInImage="true" />
+    </com.google.android.libraries.play.entertainment.story.ParallaxContainer>
+    <LinearLayout android:orientation="vertical" android:id="@id/text_container" android:paddingTop="@dimen/box_vertical_margin" android:paddingBottom="@dimen/box_vertical_margin" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/parallax_container" style="@style/PETextContainer">
+        <include layout="@layout/pe__panel_title_in_slanted_style" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/default_half_padding">
+            <com.google.android.libraries.play.entertainment.bitmap.PEImageView android:id="@id/app_icon" android:layout_width="@dimen/pe__app_icon_size" android:layout_height="@dimen/pe__app_icon_size" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/default_half_padding" android:layout_alignParentStart="true" app:fadesInImage="true" />
+            <TextView android:id="@id/app_name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@id/app_icon" android:layout_toEndOf="@id/app_icon" style="@style/PETitleText" />
+            <TextView android:id="@id/app_developer_name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/app_name" android:layout_toEndOf="@id/app_icon" style="@style/PEText.Small" />
+            <LinearLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/app_developer_name" android:layout_toEndOf="@id/app_icon">
+                <TextView android:textColor="@color/play_apps_primary" android:id="@id/app_numerical_rating" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/PEText.Small" />
+                <com.google.android.play.layout.StarRatingBar android:id="@id/app_star_rating" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/default_quarter_padding" playcommon:gap="2.0dip" playcommon:range="5" playcommon:rating="2.5" playcommon:star_bg_color="@color/pe__game_rating_star_bg_color" playcommon:star_color="@color/play_apps_primary" playcommon:star_height="@dimen/pe_small_text_size" style="?android:ratingBarStyleSmall"
+                  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:playcommon="http://schemas.android.com/apk/res-auto" />
+                <TextView android:id="@id/app_rating_count_left" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="(" android:layout_marginStart="@dimen/default_quarter_padding" style="@style/PEText.Small" />
+                <TextView android:id="@id/app_rating_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="@dimen/default_quarter_padding" style="@style/PEText.Small" />
+                <TextView android:id="@id/app_rating_count_right" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=")" style="@style/PEText.Small" />
+            </LinearLayout>
+        </RelativeLayout>
+        <TextView android:id="@id/app_snippet" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/PEText.BodyText" />
+        <include layout="@layout/pe__panel_dc_actions" />
+    </LinearLayout>
+</com.google.android.libraries.play.entertainment.story.BackgroundPanelView>

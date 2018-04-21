@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.layout.DetailsExpandedTextBlockView android:orientation="vertical" android:paddingTop="@dimen/d30_module_layout_vertical_padding" android:paddingBottom="@dimen/d30_module_layout_vertical_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d30_module_layout_padding" android:layout_marginRight="@dimen/d30_module_layout_padding" android:layout_marginStart="@dimen/d30_module_layout_padding" android:layout_marginEnd="@dimen/d30_module_layout_padding"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:id="@id/extra_title_container" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.google.android.finsky.frameworkviews.AccessibleTextView android:id="@id/extra_title" android:clickable="false" android:saveEnabled="false" android:textAlignment="viewStart" style="@style/D30ModuleTitle" />
+        <include android:id="@id/extra_dot" android:visibility="gone" layout="@layout/green_dot" />
+    </LinearLayout>
+    <com.google.android.finsky.layout.DetailsTextView android:id="@id/extra_description" android:saveEnabled="false" android:layout_marginTop="12.0dip" android:layout_below="@id/extra_title_container" android:textAlignment="viewStart" finsky:lastLineOverdrawColor="@color/white" style="@style/D30ModuleBodyText" />
+</com.google.android.finsky.layout.DetailsExpandedTextBlockView>

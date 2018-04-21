@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Крама Google Play</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Патрабуецца ўхвала</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Бацькоўскі кантроль</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Водгукі</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Імгненная праграма</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Налады члена</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Праграмы, якія адкрываюцца ў браўзеры</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Параметры імгненных праграм</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Крама Play</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Абарона</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Мае праграмы</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Налады апавяшчэнняў</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Варыянты пакупкi</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Спосабы аплаты</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Дазваляе карыстальніку праглядаць даступныя праграмы з гэтай праграмы.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Доступ да сэрвісу выяўлення праграм Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Дазваляе карыстальніку набываць элементы ў Google Play з гэтага прыкладання.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Службы бiлiнгу Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Можна праверыць ліцэнзаванне гэтага прыкладання з Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Праверка лiцэнзавання Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Дазваляе карыстальніку ўсталёўваць праграмы P2P, спраўджаныя Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">API ўсталёўкі аднарангавай праграмы ў Google Play</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Дазволы для праграмы</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Патрабаваць праверкі сапраўдн.</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Актываваць код</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Ацаніць!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Адправіць падарунак</item>
+    <item type="LEMON_transformed_from_string" name="settings">Налады</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Завершыць наладку ўліковага запісу</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Праграмы будуць усталяваны пасля завяршэння наладжвання</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Агляд дадатковых праграм</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Хуткае афармленне заказаў на прадукты Google</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Дадаць спосаб аплаты</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Наладка інфармацыі аб аплаце</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Аднаўленне праграм з прылады</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Якая прылада?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">"Выберыце спосаб аплаты сям'і"</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Выбраць суму</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Абнавіць спосаб аплаты</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Праверка і ўсталёўка</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Ідзе праверка на наяўнасць праблем бяспекі…</item>
+</resources>

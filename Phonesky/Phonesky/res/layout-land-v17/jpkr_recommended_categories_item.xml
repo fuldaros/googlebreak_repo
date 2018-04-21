@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.jpkrrecommendedcategories.view.JpkrRecommendedCategoriesItem android:orientation="vertical" android:background="@drawable/play_white_with_highlight" android:paddingLeft="@dimen/jpkr_recommended_categories_item_xpadding" android:paddingTop="@dimen/jpkr_recommended_categories_item_top_padding" android:paddingRight="@dimen/jpkr_recommended_categories_item_xpadding" android:layout_width="@dimen/jpkr_recommended_categories_fixed_item_width" android:layout_height="wrap_content" android:paddingStart="@dimen/jpkr_recommended_categories_item_xpadding" android:paddingEnd="@dimen/jpkr_recommended_categories_item_xpadding"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/jpkr_recommended_categories_item_content" />
+</com.google.android.finsky.stream.controllers.jpkrrecommendedcategories.view.JpkrRecommendedCategoriesItem>

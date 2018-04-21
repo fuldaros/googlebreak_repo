@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.frameworkviews.MaxWidthLinearLayout android:orientation="vertical" style="@style/LightPurchaseModalDialog"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/dialog" android:paddingLeft="@dimen/light_purchase_dialog_footer_left_right_padding" android:paddingTop="@dimen/light_purchase_dialog_footer_top_bottom_padding" android:paddingRight="@dimen/light_purchase_dialog_footer_left_right_padding" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.google.android.play.layout.PlayTextView android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/CatchAbandonmentDialog_TitleText" />
+        <com.google.android.play.layout.PlayTextView android:id="@id/description" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/LightPurchase_SubtitleText" />
+        <com.google.android.play.image.FifeImageView android:layout_gravity="center" android:id="@id/illustration" android:visibility="gone" android:layout_width="300.0dip" android:layout_height="100.0dip" />
+    </LinearLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <include layout="@layout/light_purchase_button_bar" />
+</com.google.android.finsky.frameworkviews.MaxWidthLinearLayout>

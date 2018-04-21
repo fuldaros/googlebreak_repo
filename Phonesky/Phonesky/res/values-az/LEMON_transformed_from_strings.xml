@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play Market</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Təsdiq edilməsi tələb olunur</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Valideyn nəzarəti</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Rəylər</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Ani tətbiq</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Üzv ayarları</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Brauzerdə açılan tətbiqlər</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Ani Tətbiqlər seçimləri</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play Market</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Mənim tətbiqlərim</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Bildiriş ayarları</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Alış seçimləri</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Ödəniş üsulları</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">İstifadəçiyə bu tətbiqdən əlçatan olan tətbiqlərə baxmaq imkanı verir.</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Google Play Tətbiq Kəşfi Xidmətinə daxil olun</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">İstifadəçiyə bu tətbiq daxilində Google Play vasitəsilə elementləri almağa imkan verir.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Google Play billinq xidməti</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">"Bu tətbiq üçün Google Play'dən lisenziyanızın mövcudluğunu yoxlayın."</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Google Play lisenziya yoxlanışı</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">İstifadəçiyə Play tərəfindən təsdiqlənmiş P2P tətbiqlərini quraşdırmaq imkanı verir.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">Google Play Eyni Səviyyəli Tətbiq Quraşdırması API</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Tətbiq icazələri</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Eyniləşdirmə tələb edir</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Kodunuzu girovdan çıxarın</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Qiymətləndirin!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Hədiyyə göndərin</item>
+    <item type="LEMON_transformed_from_string" name="settings">Ayarlar</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Hesab quraşdırmasını tamamlayın</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Tətbiqlər quraşdırma tamamlandıqdan sonra quraşdırılacaq</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Əlavə tətbiqləri nəzərdən keçirin</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Google məhsulları üçün tez ödəmə imkanından faydalanın</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Ödəniş metodu əlavə edin</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Ödənişlə bağlı məlumatı qur</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Tətbiqləri cihazdan bərpa edin</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Hansı cihaz?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Ailə ödəniş metodunu seçin</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Məbləğ seçin</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Ödəmə metodunu yeniləyin</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Doğrulayın və quraşdırın</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Təhlükəsizlik problemləri skan edilir…</item>
+</resources>

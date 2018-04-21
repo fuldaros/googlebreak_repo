@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/play_highlight_overlay_light" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.google.android.play.image.FifeImageView android:id="@id/voucher_icon" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.google.android.finsky.layout.play.SingleLineContainer android:layout_width="fill_parent" android:layout_height="wrap_content" finsky:flexibleChildId="@id/voucher_title">
+            <com.google.android.play.layout.PlayTextView android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/voucher_title" android:paddingLeft="0.0dip" android:paddingRight="12.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:drawablePadding="8.0dip" android:drawableStart="@drawable/ic_purchase_check" android:paddingStart="0.0dip" android:paddingEnd="12.0dip" />
+            <com.google.android.play.layout.PlayTextView android:textStyle="bold" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/voucher_discount" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </com.google.android.finsky.layout.play.SingleLineContainer>
+    </LinearLayout>
+    <com.google.android.play.layout.PlayTextView android:id="@id/voucher_byline" android:paddingLeft="32.0dip" android:paddingRight="0.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="32.0dip" android:paddingEnd="0.0dip" />
+</LinearLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.stream.controllers.view.PlayCardMoviesMdpClusterView android:paddingTop="@dimen/play_cluster_vpadding" android:paddingBottom="@dimen/play_cluster_vpadding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/play_card_default_negative_inset" android:layout_marginRight="@dimen/play_card_default_negative_inset"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/play_card_cluster_header" />
+    <include android:id="@id/play_card" layout="@layout/play_card_movies_mdp" />
+</com.google.android.finsky.stream.controllers.view.PlayCardMoviesMdpClusterView>

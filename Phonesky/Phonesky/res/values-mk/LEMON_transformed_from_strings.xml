@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="LEMON_transformed_from_string" name="app_long_name">Google Play Store</item>
+    <item type="LEMON_transformed_from_string" name="app_name">Google Play</item>
+    <item type="LEMON_transformed_from_string" name="approval_title">Потребно е одобрување</item>
+    <item type="LEMON_transformed_from_string" name="content_filters3_title">Родителски надзор</item>
+    <item type="LEMON_transformed_from_string" name="details_reviews">Рецензии</item>
+    <item type="LEMON_transformed_from_string" name="ephemeral_installer_title">Инстант апликација</item>
+    <item type="LEMON_transformed_from_string" name="family_member_settings_title">Поставки за член</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_excluded_apps_title">Апликации што се отвораат во прелистувач</item>
+    <item type="LEMON_transformed_from_string" name="instant_apps_settings_title">Поставки за инстант апликации</item>
+    <item type="LEMON_transformed_from_string" name="launcher_name">Play Store</item>
+    <item type="LEMON_transformed_from_string" name="menu_play_protect">Play Protect</item>
+    <item type="LEMON_transformed_from_string" name="my_downloads_menu">Мои апликации</item>
+    <item type="LEMON_transformed_from_string" name="notification_settings_title">Поставки за известувања</item>
+    <item type="LEMON_transformed_from_string" name="offer_resolution_dialog_title">Опции за купување</item>
+    <item type="LEMON_transformed_from_string" name="payment_methods">Начини на плаќање</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_desc">Дозволува корисникот да прегледува достапни апликации од апликацијава</item>
+    <item type="LEMON_transformed_from_string" name="perm_access_app_discovery_service_label">Пристап. до услуг. за откр. аплик. на Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_desc">Дозволува корисникот да купува ставки преку Google Play од оваа апликација.</item>
+    <item type="LEMON_transformed_from_string" name="perm_billing_label">Услуга за наплата на Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_desc">Може да проверува дали имате лиценца за оваа апликација од Google Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_check_license_label">Проверка на лиценцата на Google Play</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_desc">Дозволува корисникот да инсталира потврдени апликации P2P на Play.</item>
+    <item type="LEMON_transformed_from_string" name="perm_p2p_app_install_label">API за инстал. аплик. Peer To Peer на Google Play</item>
+    <item type="LEMON_transformed_from_string" name="permissions_title">Дозволи за апликацијата</item>
+    <item type="LEMON_transformed_from_string" name="purchase_auth_dialog_label">Барање за проверка</item>
+    <item type="LEMON_transformed_from_string" name="redeem_screen_title">Активирајте го кодот</item>
+    <item type="LEMON_transformed_from_string" name="review_dialog_title">Оценете!</item>
+    <item type="LEMON_transformed_from_string" name="send_gift">Испрати подарок</item>
+    <item type="LEMON_transformed_from_string" name="settings">Поставки</item>
+    <item type="LEMON_transformed_from_string" name="setup_account_title">Завршете го поставувањето на сметка</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_summary">Апликациите ќе се инсталираат откако ќе заврши поставувањето</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_apps_step_title">Прегледајте ги дополнителните апликации</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_summary">Уживајте во брза наплата со производите на Google</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_optional_step_title">Додај начин на плаќање</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_play_add_fop_title">Постави информации за плаќање</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_apps_for_device_header">Обновување на апликациите од уредот</item>
+    <item type="LEMON_transformed_from_string" name="setup_wizard_select_device_header">Кој уред?</item>
+    <item type="LEMON_transformed_from_string" name="switch_family_instrument">Изберете семеен начин на плаќање</item>
+    <item type="LEMON_transformed_from_string" name="topup_choose_amount">Изберете сума</item>
+    <item type="LEMON_transformed_from_string" name="update_subscription_instrument">Ажурирајте го начинот на плаќање</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_chooser_label">Потврди и инсталирај</item>
+    <item type="LEMON_transformed_from_string" name="verify_app_install_scanning">Скенира за безбедносни проблеми…</item>
+</resources>

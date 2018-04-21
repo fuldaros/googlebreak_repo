@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="abc_action_bar_default_height_material">48.0dip</dimen>
+    <dimen name="abc_text_size_subtitle_material_toolbar">12.0dip</dimen>
+    <dimen name="abc_text_size_title_material_toolbar">14.0dip</dimen>
+    <dimen name="details_content_margin">16.0dip</dimen>
+    <dimen name="details_title_cover_padding">12.0dip</dimen>
+    <dimen name="finsky_fixed_tab_xpadding">24.0dip</dimen>
+    <dimen name="flat_cluster_edge_margin">12.0dip</dimen>
+    <dimen name="flat_cluster_edge_margin_v2">12.0dip</dimen>
+    <dimen name="flat_featured_card_thumbnail_margin">16.0dip</dimen>
+    <dimen name="flat_featured_card_thumbnail_size">56.0dip</dimen>
+    <dimen name="flat_grid_horizontal_margin">-4.0dip</dimen>
+    <dimen name="flat_top_charts_header_edge_padding">12.0dip</dimen>
+    <item type="dimen" name="floating_highlight_banner_single_banner_image_scale_factor">1.3</item>
+    <dimen name="floating_highlight_banner_title_button_vpadding">28.0dip</dimen>
+    <dimen name="floating_highlight_banner_title_subtitle_vpadding">34.0dip</dimen>
+    <dimen name="inline_app_dialog_fullscreen_loading_height">250.0dip</dimen>
+    <dimen name="inline_app_dialog_fullscreen_loading_width">300.0dip</dimen>
+    <dimen name="inline_app_dialog_fullscreen_minwidth">420.0dip</dimen>
+    <dimen name="inline_app_dialog_minwidth">400.0dip</dimen>
+    <dimen name="inline_details_screenshots_height">110.0dip</dimen>
+    <dimen name="inline_details_screenshots_module_height">140.0dip</dimen>
+    <dimen name="jpkr_editorial_header_text_panel_min_height">64.0dip</dimen>
+    <dimen name="listing_row_extra_margin">16.0dip</dimen>
+    <item type="dimen" name="mini_categories_base_width_multiplier">0.62</item>
+    <dimen name="mini_categories_card_horizontal_padding">8.0dip</dimen>
+    <dimen name="mini_categories_card_width">74.0dip</dimen>
+    <dimen name="myapps_empty_library_image_size">168.0dip</dimen>
+    <dimen name="myapps_empty_library_xpadding">72.0dip</dimen>
+    <dimen name="page_error_indicator_retry_button_top_margin">0.0dip</dimen>
+    <dimen name="play_collection_max_width">1120.0dip</dimen>
+    <dimen name="play_header_list_tab_floating_padding">48.0dip</dimen>
+    <dimen name="play_header_list_tab_padding_side">12.0dip</dimen>
+    <item type="dimen" name="retail_mode_end_guideline_percent">0.946</item>
+    <item type="dimen" name="retail_mode_end_image_margin_guideline_percent">0.698</item>
+    <item type="dimen" name="retail_mode_start_guideline_percent">0.054</item>
+    <item type="dimen" name="retail_mode_start_image_margin_guideline_percent">0.302</item>
+    <item type="dimen" name="retail_mode_top_guideline_percent">0.041</item>
+    <item type="dimen" name="retail_mode_vertical_bias_percent">0.39</item>
+    <dimen name="setup_wizard_im_form_start_end_margin">28.0dip</dimen>
+    <dimen name="setup_wizard_im_title_text_end_margin">28.0dip</dimen>
+    <dimen name="setup_wizard_im_title_text_start_margin">28.0dip</dimen>
+    <dimen name="setup_wizard_im_title_text_top_margin">8.0dip</dimen>
+    <dimen name="split_install_confirmation_dialog_minwidth">400.0dip</dimen>
+    <item type="dimen" name="stream_intro_card_radius">@dimen/play_card_default_radius</item>
+    <dimen name="structured_review_disclaimer_width">360.0dip</dimen>
+    <dimen name="subscription_center_empty_view_padding_top">88.0dip</dimen>
+    <dimen name="summary_thumbnail_app_size_three_lines">100.0dip</dimen>
+    <dimen name="suw_glif_card_height">560.0dip</dimen>
+    <dimen name="suw_glif_card_width">672.0dip</dimen>
+    <dimen name="testing_program_card_inset">0.0dip</dimen>
+    <dimen name="uninstall_wizard_selector_row_vpadding">14.0dip</dimen>
+    <dimen name="uninstall_wizard_vmargin">10.0dip</dimen>
+    <dimen name="wallet_external_display_auto_size_text_height">64.0dip</dimen>
+    <dimen name="myapps_empty_library_description_top_margin">8.0dip</dimen>
+    <dimen name="myapps_empty_library_image_end_margin">24.0dip</dimen>
+    <dimen name="myapps_empty_library_top_padding">32.0dip</dimen>
+    <dimen name="reconnect_notification_logo_top_padding">32.0dip</dimen>
+    <dimen name="reconnect_notification_message_panel_width">320.0dip</dimen>
+</resources>

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.finsky.detailsmodules.modules.warningmessage.view.WarningMessageModuleView android:orientation="vertical" android:paddingBottom="@dimen/d30_module_layout_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@drawable/details_page_warning_message_divider" android:showDividers="middle"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

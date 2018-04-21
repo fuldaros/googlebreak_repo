@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.libraries.play.entertainment.media.FixedAspectRatioRelativeLayout android:id="@id/item_content" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/pe__card_v2_margin_bottom" android:foreground="@drawable/play_highlight_round_overlay_dark" app:heightRatio="@integer/pe__card_height_ratio_v2" app:widthRatio="@integer/pe__card_width_ratio_v2"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.libraries.play.entertainment.bitmap.PEImageView android:id="@id/image" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <LinearLayout android:orientation="vertical" android:background="@drawable/pe__card_story_fg" android:paddingTop="@dimen/box_small_padding" android:paddingBottom="@dimen/box_small_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:id="@id/title" android:background="@drawable/pe__card_story_tag_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/PECardText.Title" />
+        <TextView android:id="@id/subtitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/pe__card_title_subtitle_margin" android:maxLines="2" style="@style/PECardText" />
+        <TextView android:id="@id/source" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/pe__card_subtitle_source_margin" style="@style/PECardText.Source" />
+    </LinearLayout>
+</com.google.android.libraries.play.entertainment.media.FixedAspectRatioRelativeLayout>
