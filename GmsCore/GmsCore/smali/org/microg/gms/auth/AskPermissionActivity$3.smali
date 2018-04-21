@@ -24,7 +24,9 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/auth/AskPermissionActivity;)V
     .locals 0
+    .param p1, "this$0"    # Lorg/microg/gms/auth/AskPermissionActivity;
 
+    .prologue
     .line 147
     iput-object p1, p0, Lorg/microg/gms/auth/AskPermissionActivity$3;->this$0:Lorg/microg/gms/auth/AskPermissionActivity;
 
@@ -36,12 +38,15 @@
 
 # virtual methods
 .method public onClick(Landroid/view/View;)V
-    .locals 0
+    .locals 1
+    .param p1, "v"    # Landroid/view/View;
 
+    .prologue
     .line 150
-    iget-object p1, p0, Lorg/microg/gms/auth/AskPermissionActivity$3;->this$0:Lorg/microg/gms/auth/AskPermissionActivity;
+    iget-object v0, p0, Lorg/microg/gms/auth/AskPermissionActivity$3;->this$0:Lorg/microg/gms/auth/AskPermissionActivity;
 
-    invoke-virtual {p1}, Lorg/microg/gms/auth/AskPermissionActivity;->onDeny()V
+    invoke-virtual {v0}, Lorg/microg/gms/auth/AskPermissionActivity;->onDeny()V
 
+    .line 151
     return-void
 .end method

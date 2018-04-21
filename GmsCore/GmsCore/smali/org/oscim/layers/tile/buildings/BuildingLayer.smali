@@ -6,41 +6,27 @@
 .implements Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;
 
 
-# annotations
-.annotation system Ldalvik/annotation/MemberClasses;
-    value = {
-        Lorg/oscim/layers/tile/buildings/BuildingLayer$BuildingElement;
-    }
-.end annotation
-
-
 # static fields
 .field private static final BUILDING_DATA:Ljava/lang/Object;
 
-.field public static POST_AA:Z = false
-
-.field public static TRANSLUCENT:Z = true
-
-
-# instance fields
-.field private mBuildings:Ljava/util/HashMap;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Ljava/util/HashMap<",
-            "Ljava/lang/Integer;",
-            "Ljava/util/List<",
-            "Lorg/oscim/layers/tile/buildings/BuildingLayer$BuildingElement;",
-            ">;>;"
-        }
-    .end annotation
-.end field
+.field static final log:Lorg/slf4j/Logger;
 
 
 # direct methods
 .method static constructor <clinit>()V
     .locals 1
 
-    .line 52
+    .prologue
+    .line 39
+    const-class v0, Lorg/oscim/layers/tile/buildings/BuildingLayer;
+
+    invoke-static {v0}, Lorg/slf4j/LoggerFactory;->getLogger(Ljava/lang/Class;)Lorg/slf4j/Logger;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/oscim/layers/tile/buildings/BuildingLayer;->log:Lorg/slf4j/Logger;
+
+    .line 47
     const-class v0, Lorg/oscim/layers/tile/buildings/BuildingLayer;
 
     invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
@@ -53,657 +39,317 @@
 .end method
 
 .method public constructor <init>(Lorg/oscim/map/Map;Lorg/oscim/layers/tile/vector/VectorTileLayer;)V
-    .locals 6
+    .locals 1
+    .param p1, "map"    # Lorg/oscim/map/Map;
+    .param p2, "tileLayer"    # Lorg/oscim/layers/tile/vector/VectorTileLayer;
 
-    const/16 v3, 0x11
+    .prologue
+    const/16 v0, 0x11
 
-    const/16 v4, 0x11
+    .line 50
+    invoke-direct {p0, p1, p2, v0, v0}, Lorg/oscim/layers/tile/buildings/BuildingLayer;-><init>(Lorg/oscim/map/Map;Lorg/oscim/layers/tile/vector/VectorTileLayer;II)V
 
-    const/4 v5, 0x0
-
-    move-object v0, p0
-
-    move-object v1, p1
-
-    move-object v2, p2
-
-    .line 70
-    invoke-direct/range {v0 .. v5}, Lorg/oscim/layers/tile/buildings/BuildingLayer;-><init>(Lorg/oscim/map/Map;Lorg/oscim/layers/tile/vector/VectorTileLayer;IIZ)V
-
+    .line 51
     return-void
 .end method
 
-.method public constructor <init>(Lorg/oscim/map/Map;Lorg/oscim/layers/tile/vector/VectorTileLayer;IIZ)V
+.method public constructor <init>(Lorg/oscim/map/Map;Lorg/oscim/layers/tile/vector/VectorTileLayer;II)V
     .locals 6
+    .param p1, "map"    # Lorg/oscim/map/Map;
+    .param p2, "tileLayer"    # Lorg/oscim/layers/tile/vector/VectorTileLayer;
+    .param p3, "zoomMin"    # I
+    .param p4, "zoomMax"    # I
 
-    .line 79
+    .prologue
+    .line 55
     invoke-direct {p0, p1}, Lorg/oscim/layers/Layer;-><init>(Lorg/oscim/map/Map;)V
 
-    .line 55
-    new-instance p1, Ljava/util/HashMap;
-
-    invoke-direct {p1}, Ljava/util/HashMap;-><init>()V
-
-    iput-object p1, p0, Lorg/oscim/layers/tile/buildings/BuildingLayer;->mBuildings:Ljava/util/HashMap;
-
-    .line 81
+    .line 57
     invoke-virtual {p2, p0}, Lorg/oscim/layers/tile/vector/VectorTileLayer;->addHook(Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;)V
 
-    .line 83
-    new-instance p1, Lorg/oscim/layers/tile/buildings/BuildingRenderer;
+    .line 59
+    new-instance v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;
 
     invoke-virtual {p2}, Lorg/oscim/layers/tile/vector/VectorTileLayer;->tileRenderer()Lorg/oscim/layers/tile/TileRenderer;
 
     move-result-object v1
 
-    if-nez p5, :cond_0
+    const/4 v4, 0x0
 
-    sget-boolean p2, Lorg/oscim/layers/tile/buildings/BuildingLayer;->TRANSLUCENT:Z
-
-    if-eqz p2, :cond_0
-
-    const/4 p2, 0x1
-
-    goto :goto_0
-
-    :cond_0
-    const/4 p2, 0x0
-
-    :goto_0
-    move v5, p2
-
-    move-object v0, p1
+    const/4 v5, 0x1
 
     move v2, p3
 
     move v3, p4
 
-    move v4, p5
-
     invoke-direct/range {v0 .. v5}, Lorg/oscim/layers/tile/buildings/BuildingRenderer;-><init>(Lorg/oscim/layers/tile/TileRenderer;IIZZ)V
 
-    iput-object p1, p0, Lorg/oscim/layers/tile/buildings/BuildingLayer;->mRenderer:Lorg/oscim/renderer/LayerRenderer;
+    iput-object v0, p0, Lorg/oscim/layers/tile/buildings/BuildingLayer;->mRenderer:Lorg/oscim/renderer/LayerRenderer;
 
-    .line 86
-    sget-boolean p1, Lorg/oscim/layers/tile/buildings/BuildingLayer;->POST_AA:Z
-
-    if-eqz p1, :cond_1
-
-    .line 87
-    new-instance p1, Lorg/oscim/renderer/OffscreenRenderer;
-
-    sget-object p2, Lorg/oscim/renderer/OffscreenRenderer$Mode;->SSAO_FXAA:Lorg/oscim/renderer/OffscreenRenderer$Mode;
-
-    iget-object p3, p0, Lorg/oscim/layers/tile/buildings/BuildingLayer;->mRenderer:Lorg/oscim/renderer/LayerRenderer;
-
-    invoke-direct {p1, p2, p3}, Lorg/oscim/renderer/OffscreenRenderer;-><init>(Lorg/oscim/renderer/OffscreenRenderer$Mode;Lorg/oscim/renderer/LayerRenderer;)V
-
-    iput-object p1, p0, Lorg/oscim/layers/tile/buildings/BuildingLayer;->mRenderer:Lorg/oscim/renderer/LayerRenderer;
-
-    :cond_1
+    .line 64
     return-void
 .end method
 
 .method public static get(Lorg/oscim/layers/tile/MapTile;)Lorg/oscim/renderer/bucket/ExtrusionBuckets;
     .locals 2
+    .param p0, "tile"    # Lorg/oscim/layers/tile/MapTile;
 
-    .line 204
-    sget-object v0, Lorg/oscim/layers/tile/buildings/BuildingLayer;->BUILDING_DATA:Ljava/lang/Object;
+    .prologue
+    .line 114
+    sget-object v1, Lorg/oscim/layers/tile/buildings/BuildingLayer;->BUILDING_DATA:Ljava/lang/Object;
 
-    invoke-virtual {p0, v0}, Lorg/oscim/layers/tile/MapTile;->getData(Ljava/lang/Object;)Lorg/oscim/layers/tile/MapTile$TileData;
+    invoke-virtual {p0, v1}, Lorg/oscim/layers/tile/MapTile;->getData(Ljava/lang/Object;)Lorg/oscim/layers/tile/MapTile$TileData;
 
     move-result-object v0
 
     check-cast v0, Lorg/oscim/renderer/bucket/ExtrusionBuckets;
 
+    .line 115
+    .local v0, "eb":Lorg/oscim/renderer/bucket/ExtrusionBuckets;
     if-nez v0, :cond_0
 
-    .line 206
+    .line 116
     new-instance v0, Lorg/oscim/renderer/bucket/ExtrusionBuckets;
 
+    .end local v0    # "eb":Lorg/oscim/renderer/bucket/ExtrusionBuckets;
     invoke-direct {v0, p0}, Lorg/oscim/renderer/bucket/ExtrusionBuckets;-><init>(Lorg/oscim/layers/tile/MapTile;)V
 
-    .line 207
+    .line 117
+    .restart local v0    # "eb":Lorg/oscim/renderer/bucket/ExtrusionBuckets;
     sget-object v1, Lorg/oscim/layers/tile/buildings/BuildingLayer;->BUILDING_DATA:Ljava/lang/Object;
 
     invoke-virtual {p0, v1, v0}, Lorg/oscim/layers/tile/MapTile;->addData(Ljava/lang/Object;Lorg/oscim/layers/tile/MapTile$TileData;)V
 
+    .line 119
     :cond_0
     return-object v0
-.end method
-
-.method private processElement(Lorg/oscim/core/MapElement;Lorg/oscim/theme/styles/ExtrusionStyle;Lorg/oscim/layers/tile/MapTile;)V
-    .locals 10
-
-    .line 135
-    iget-object v0, p1, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
-
-    const-string v1, "height"
-
-    invoke-virtual {v0, v1}, Lorg/oscim/core/TagSet;->getValue(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v0
-
-    const/high16 v1, 0x438c0000    # 280.0f
-
-    const/high16 v2, 0x42c80000    # 100.0f
-
-    const/4 v3, 0x0
-
-    if-eqz v0, :cond_0
-
-    .line 137
-    invoke-static {v0}, Ljava/lang/Float;->parseFloat(Ljava/lang/String;)F
-
-    move-result v0
-
-    mul-float/2addr v0, v2
-
-    float-to-int v0, v0
-
-    goto :goto_0
-
-    .line 140
-    :cond_0
-    iget-object v0, p1, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
-
-    const-string v4, "building:levels"
-
-    invoke-virtual {v0, v4}, Lorg/oscim/core/TagSet;->getValue(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v0
-
-    if-eqz v0, :cond_1
-
-    .line 141
-    invoke-static {v0}, Ljava/lang/Float;->parseFloat(Ljava/lang/String;)F
-
-    move-result v0
-
-    mul-float/2addr v0, v1
-
-    float-to-int v0, v0
-
-    goto :goto_0
-
-    :cond_1
-    move v0, v3
-
-    .line 144
-    :goto_0
-    iget-object v4, p1, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
-
-    const-string v5, "min_height"
-
-    invoke-virtual {v4, v5}, Lorg/oscim/core/TagSet;->getValue(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v4
-
-    if-eqz v4, :cond_3
-
-    .line 146
-    invoke-static {v4}, Ljava/lang/Float;->parseFloat(Ljava/lang/String;)F
-
-    move-result v1
-
-    mul-float/2addr v1, v2
-
-    float-to-int v3, v1
-
-    :cond_2
-    :goto_1
-    move v9, v3
-
-    goto :goto_2
-
-    .line 149
-    :cond_3
-    iget-object v2, p1, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
-
-    const-string v4, "building:min_level"
-
-    invoke-virtual {v2, v4}, Lorg/oscim/core/TagSet;->getValue(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v2
-
-    if-eqz v2, :cond_2
-
-    .line 150
-    invoke-static {v2}, Ljava/lang/Float;->parseFloat(Ljava/lang/String;)F
-
-    move-result v2
-
-    mul-float/2addr v2, v1
-
-    float-to-int v3, v2
-
-    goto :goto_1
-
-    :goto_2
-    if-nez v0, :cond_4
-
-    .line 154
-    iget v0, p2, Lorg/oscim/theme/styles/ExtrusionStyle;->defaultHeight:I
-
-    mul-int/lit8 v0, v0, 0x64
-
-    :cond_4
-    move v8, v0
-
-    .line 156
-    invoke-static {p3}, Lorg/oscim/layers/tile/buildings/BuildingLayer;->get(Lorg/oscim/layers/tile/MapTile;)Lorg/oscim/renderer/bucket/ExtrusionBuckets;
-
-    move-result-object v4
-
-    .line 157
-    invoke-virtual {p3}, Lorg/oscim/layers/tile/MapTile;->getGroundScale()F
-
-    move-result v6
-
-    iget-object v7, p2, Lorg/oscim/theme/styles/ExtrusionStyle;->colors:[F
-
-    move-object v5, p1
-
-    invoke-virtual/range {v4 .. v9}, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->addPolyElement(Lorg/oscim/core/GeometryBuffer;F[FII)V
-
-    return-void
-.end method
-
-.method private processElements(Lorg/oscim/layers/tile/MapTile;)V
-    .locals 8
-
-    .line 166
-    iget-object v0, p0, Lorg/oscim/layers/tile/buildings/BuildingLayer;->mBuildings:Ljava/util/HashMap;
-
-    invoke-virtual {p1}, Lorg/oscim/layers/tile/MapTile;->hashCode()I
-
-    move-result v1
-
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
-
-    move-result v0
-
-    if-nez v0, :cond_0
-
-    return-void
-
-    .line 169
-    :cond_0
-    iget-object v0, p0, Lorg/oscim/layers/tile/buildings/BuildingLayer;->mBuildings:Ljava/util/HashMap;
-
-    invoke-virtual {p1}, Lorg/oscim/layers/tile/MapTile;->hashCode()I
-
-    move-result v1
-
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Ljava/util/List;
-
-    .line 170
-    new-instance v1, Ljava/util/HashSet;
-
-    invoke-direct {v1}, Ljava/util/HashSet;-><init>()V
-
-    .line 171
-    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
-
-    move-result-object v2
-
-    :cond_1
-    :goto_0
-    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v3
-
-    if-eqz v3, :cond_7
-
-    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v3
-
-    check-cast v3, Lorg/oscim/layers/tile/buildings/BuildingLayer$BuildingElement;
-
-    .line 172
-    iget-boolean v4, v3, Lorg/oscim/layers/tile/buildings/BuildingLayer$BuildingElement;->isPart:Z
-
-    if-nez v4, :cond_2
-
-    goto :goto_0
-
-    .line 175
-    :cond_2
-    iget-object v4, v3, Lorg/oscim/layers/tile/buildings/BuildingLayer$BuildingElement;->element:Lorg/oscim/core/MapElement;
-
-    iget-object v4, v4, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
-
-    const-string v5, "ref"
-
-    invoke-virtual {v4, v5}, Lorg/oscim/core/TagSet;->getValue(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v4
-
-    if-nez v4, :cond_3
-
-    .line 176
-    iget-object v3, v3, Lorg/oscim/layers/tile/buildings/BuildingLayer$BuildingElement;->element:Lorg/oscim/core/MapElement;
-
-    iget-object v3, v3, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
-
-    const-string v4, "root_id"
-
-    invoke-virtual {v3, v4}, Lorg/oscim/core/TagSet;->getValue(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v4
-
-    :cond_3
-    if-nez v4, :cond_4
-
-    goto :goto_0
-
-    .line 181
-    :cond_4
-    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
-
-    move-result-object v3
-
-    :cond_5
-    :goto_1
-    invoke-interface {v3}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v5
-
-    if-eqz v5, :cond_1
-
-    invoke-interface {v3}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v5
-
-    check-cast v5, Lorg/oscim/layers/tile/buildings/BuildingLayer$BuildingElement;
-
-    .line 182
-    iget-boolean v6, v5, Lorg/oscim/layers/tile/buildings/BuildingLayer$BuildingElement;->isPart:Z
-
-    if-nez v6, :cond_5
-
-    iget-object v6, v5, Lorg/oscim/layers/tile/buildings/BuildingLayer$BuildingElement;->element:Lorg/oscim/core/MapElement;
-
-    iget-object v6, v6, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
-
-    const-string v7, "id"
-
-    .line 183
-    invoke-virtual {v6, v7}, Lorg/oscim/core/TagSet;->getValue(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v6
-
-    invoke-virtual {v4, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v6
-
-    if-nez v6, :cond_6
-
-    goto :goto_1
-
-    .line 186
-    :cond_6
-    invoke-interface {v1, v5}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
-
-    goto :goto_0
-
-    .line 191
-    :cond_7
-    invoke-interface {v0, v1}, Ljava/util/List;->removeAll(Ljava/util/Collection;)Z
-
-    .line 193
-    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
-
-    move-result-object v0
-
-    :goto_2
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v1
-
-    if-eqz v1, :cond_8
-
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Lorg/oscim/layers/tile/buildings/BuildingLayer$BuildingElement;
-
-    .line 194
-    iget-object v2, v1, Lorg/oscim/layers/tile/buildings/BuildingLayer$BuildingElement;->element:Lorg/oscim/core/MapElement;
-
-    iget-object v1, v1, Lorg/oscim/layers/tile/buildings/BuildingLayer$BuildingElement;->style:Lorg/oscim/theme/styles/ExtrusionStyle;
-
-    invoke-direct {p0, v2, v1, p1}, Lorg/oscim/layers/tile/buildings/BuildingLayer;->processElement(Lorg/oscim/core/MapElement;Lorg/oscim/theme/styles/ExtrusionStyle;Lorg/oscim/layers/tile/MapTile;)V
-
-    goto :goto_2
-
-    .line 196
-    :cond_8
-    iget-object v0, p0, Lorg/oscim/layers/tile/buildings/BuildingLayer;->mBuildings:Ljava/util/HashMap;
-
-    invoke-virtual {p1}, Lorg/oscim/layers/tile/MapTile;->hashCode()I
-
-    move-result p1
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object p1
-
-    invoke-virtual {v0, p1}, Ljava/util/HashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
-
-    return-void
 .end method
 
 
 # virtual methods
 .method public complete(Lorg/oscim/layers/tile/MapTile;Z)V
-    .locals 0
+    .locals 2
+    .param p1, "tile"    # Lorg/oscim/layers/tile/MapTile;
+    .param p2, "success"    # Z
 
+    .prologue
+    .line 124
     if-eqz p2, :cond_0
 
-    .line 215
-    invoke-direct {p0, p1}, Lorg/oscim/layers/tile/buildings/BuildingLayer;->processElements(Lorg/oscim/layers/tile/MapTile;)V
-
-    .line 216
+    .line 125
     invoke-static {p1}, Lorg/oscim/layers/tile/buildings/BuildingLayer;->get(Lorg/oscim/layers/tile/MapTile;)Lorg/oscim/renderer/bucket/ExtrusionBuckets;
 
-    move-result-object p1
+    move-result-object v0
 
-    invoke-virtual {p1}, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->prepare()V
+    invoke-virtual {v0}, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->prepare()V
 
-    goto :goto_0
+    .line 128
+    :goto_0
+    return-void
 
-    .line 218
+    .line 127
     :cond_0
     invoke-static {p1}, Lorg/oscim/layers/tile/buildings/BuildingLayer;->get(Lorg/oscim/layers/tile/MapTile;)Lorg/oscim/renderer/bucket/ExtrusionBuckets;
 
-    move-result-object p1
+    move-result-object v0
 
-    const/4 p2, 0x0
+    const/4 v1, 0x0
 
-    invoke-virtual {p1, p2}, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->resetBuckets(Lorg/oscim/renderer/bucket/ExtrusionBucket;)V
+    invoke-virtual {v0, v1}, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->setBuckets(Lorg/oscim/renderer/bucket/ExtrusionBucket;)V
 
-    :goto_0
-    return-void
+    goto :goto_0
 .end method
 
 .method public process(Lorg/oscim/layers/tile/MapTile;Lorg/oscim/renderer/bucket/RenderBuckets;Lorg/oscim/core/MapElement;Lorg/oscim/theme/styles/RenderStyle;I)Z
-    .locals 2
+    .locals 15
+    .param p1, "tile"    # Lorg/oscim/layers/tile/MapTile;
+    .param p2, "buckets"    # Lorg/oscim/renderer/bucket/RenderBuckets;
+    .param p3, "element"    # Lorg/oscim/core/MapElement;
+    .param p4, "style"    # Lorg/oscim/theme/styles/RenderStyle;
+    .param p5, "level"    # I
 
-    .line 97
-    instance-of p2, p4, Lorg/oscim/theme/styles/ExtrusionStyle;
+    .prologue
+    .line 71
+    move-object/from16 v0, p4
 
-    const/4 p5, 0x0
+    instance-of v11, v0, Lorg/oscim/theme/styles/ExtrusionStyle;
 
-    if-nez p2, :cond_0
+    if-nez v11, :cond_0
 
-    return p5
+    .line 72
+    const/4 v11, 0x0
 
-    .line 100
+    .line 110
+    :goto_0
+    return v11
+
     :cond_0
-    invoke-virtual {p4}, Lorg/oscim/theme/styles/RenderStyle;->current()Lorg/oscim/theme/styles/RenderStyle;
+    move-object/from16 v4, p4
 
-    move-result-object p2
+    .line 74
+    check-cast v4, Lorg/oscim/theme/styles/ExtrusionStyle;
 
-    check-cast p2, Lorg/oscim/theme/styles/ExtrusionStyle;
+    .line 76
+    .local v4, "extrusion":Lorg/oscim/theme/styles/ExtrusionStyle;
+    const/4 v6, 0x0
 
-    .line 104
-    iget-object p4, p3, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
+    .line 77
+    .local v6, "height":I
+    const/4 v7, 0x0
 
-    const-string v0, "building:part"
+    .line 79
+    .local v7, "minHeight":I
+    move-object/from16 v0, p3
 
-    invoke-virtual {p4, v0}, Lorg/oscim/core/TagSet;->containsKey(Ljava/lang/String;)Z
+    iget-object v11, v0, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
 
-    move-result p4
+    const-string v12, "height"
 
-    const/4 v0, 0x1
+    invoke-virtual {v11, v12}, Lorg/oscim/core/TagSet;->getValue(Ljava/lang/String;)Ljava/lang/String;
 
-    if-nez p4, :cond_1
+    move-result-object v10
 
-    iget-object p4, p3, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
+    .line 80
+    .local v10, "v":Ljava/lang/String;
+    if-eqz v10, :cond_1
 
-    const-string v1, "kind"
+    .line 81
+    invoke-static {v10}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
 
-    .line 105
-    invoke-virtual {p4, v1}, Lorg/oscim/core/TagSet;->containsKey(Ljava/lang/String;)Z
+    move-result v6
 
-    move-result p4
-
-    if-eqz p4, :cond_2
-
-    iget-object p4, p3, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
-
-    const-string v1, "kind"
-
-    invoke-virtual {p4, v1}, Lorg/oscim/core/TagSet;->getValue(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object p4
-
-    const-string v1, "building_part"
-
-    invoke-virtual {p4, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result p4
-
-    if-eqz p4, :cond_2
-
+    .line 83
     :cond_1
-    move p5, v0
+    move-object/from16 v0, p3
 
-    .line 106
+    iget-object v11, v0, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
+
+    const-string v12, "min_height"
+
+    invoke-virtual {v11, v12}, Lorg/oscim/core/TagSet;->getValue(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v10
+
+    .line 84
+    if-eqz v10, :cond_2
+
+    .line 85
+    invoke-static {v10}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+
+    move-result v7
+
+    .line 88
     :cond_2
-    iget-object p4, p3, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
+    if-nez v6, :cond_3
 
-    const-string v1, "building"
+    .line 89
+    const/16 v6, 0x4b0
 
-    invoke-virtual {p4, v1}, Lorg/oscim/core/TagSet;->containsKey(Ljava/lang/String;)Z
+    .line 91
+    :cond_3
+    invoke-static/range {p1 .. p1}, Lorg/oscim/layers/tile/buildings/BuildingLayer;->get(Lorg/oscim/layers/tile/MapTile;)Lorg/oscim/renderer/bucket/ExtrusionBuckets;
 
-    move-result p4
+    move-result-object v3
 
-    if-nez p4, :cond_4
+    .line 93
+    .local v3, "ebs":Lorg/oscim/renderer/bucket/ExtrusionBuckets;
+    iget-object v2, v3, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->buckets:Lorg/oscim/renderer/bucket/ExtrusionBucket;
 
-    if-nez p5, :cond_4
+    .local v2, "b":Lorg/oscim/renderer/bucket/ExtrusionBucket;
+    :goto_1
+    if-eqz v2, :cond_5
 
-    iget-object p4, p3, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
+    .line 94
+    iget-object v11, v2, Lorg/oscim/renderer/bucket/ExtrusionBucket;->colors:[F
 
-    const-string v1, "kind"
+    iget-object v12, v4, Lorg/oscim/theme/styles/ExtrusionStyle;->colors:[F
 
-    .line 107
-    invoke-virtual {p4, v1}, Lorg/oscim/core/TagSet;->containsKey(Ljava/lang/String;)Z
+    if-ne v11, v12, :cond_4
 
-    move-result p4
+    .line 95
+    int-to-float v11, v6
 
-    if-eqz p4, :cond_3
+    int-to-float v12, v7
 
-    iget-object p4, p3, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
+    move-object/from16 v0, p3
 
-    const-string v1, "kind"
+    invoke-virtual {v2, v0, v11, v12}, Lorg/oscim/renderer/bucket/ExtrusionBucket;->add(Lorg/oscim/core/MapElement;FF)V
 
-    invoke-virtual {p4, v1}, Lorg/oscim/core/TagSet;->getValue(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object p4
-
-    const-string v1, "building"
-
-    invoke-virtual {p4, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result p4
-
-    if-eqz p4, :cond_3
+    .line 96
+    const/4 v11, 0x1
 
     goto :goto_0
 
-    .line 119
-    :cond_3
-    invoke-direct {p0, p3, p2, p1}, Lorg/oscim/layers/tile/buildings/BuildingLayer;->processElement(Lorg/oscim/core/MapElement;Lorg/oscim/theme/styles/ExtrusionStyle;Lorg/oscim/layers/tile/MapTile;)V
+    .line 93
+    :cond_4
+    invoke-virtual {v2}, Lorg/oscim/renderer/bucket/ExtrusionBucket;->next()Lorg/oscim/renderer/bucket/ExtrusionBucket;
 
-    return v0
+    move-result-object v2
+
+    goto :goto_1
+
+    .line 100
+    :cond_5
+    move-object/from16 v0, p1
+
+    iget-wide v12, v0, Lorg/oscim/layers/tile/MapTile;->y:D
+
+    invoke-static {v12, v13}, Lorg/oscim/core/MercatorProjection;->toLatitude(D)D
+
+    move-result-wide v8
+
+    .line 101
+    .local v8, "lat":D
+    const/4 v11, 0x1
+
+    move-object/from16 v0, p1
+
+    iget-byte v12, v0, Lorg/oscim/layers/tile/MapTile;->zoomLevel:B
+
+    shl-int/2addr v11, v12
+
+    int-to-double v12, v11
+
+    .line 102
+    invoke-static {v8, v9, v12, v13}, Lorg/oscim/core/MercatorProjection;->groundResolution(DD)D
+
+    move-result-wide v12
+
+    double-to-float v5, v12
+
+    .line 104
+    .local v5, "groundScale":F
+    iget-object v11, v3, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->buckets:Lorg/oscim/renderer/bucket/ExtrusionBucket;
+
+    new-instance v12, Lorg/oscim/renderer/bucket/ExtrusionBucket;
+
+    const/4 v13, 0x0
+
+    iget-object v14, v4, Lorg/oscim/theme/styles/ExtrusionStyle;->colors:[F
+
+    invoke-direct {v12, v13, v5, v14}, Lorg/oscim/renderer/bucket/ExtrusionBucket;-><init>(IF[F)V
+
+    invoke-static {v11, v12}, Lorg/oscim/utils/pool/Inlist;->push(Lorg/oscim/utils/pool/Inlist;Lorg/oscim/utils/pool/Inlist;)Lorg/oscim/utils/pool/Inlist;
+
+    move-result-object v11
+
+    check-cast v11, Lorg/oscim/renderer/bucket/ExtrusionBucket;
+
+    iput-object v11, v3, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->buckets:Lorg/oscim/renderer/bucket/ExtrusionBucket;
 
     .line 108
-    :cond_4
-    :goto_0
-    iget-object p4, p0, Lorg/oscim/layers/tile/buildings/BuildingLayer;->mBuildings:Ljava/util/HashMap;
+    iget-object v11, v3, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->buckets:Lorg/oscim/renderer/bucket/ExtrusionBucket;
 
-    invoke-virtual {p1}, Lorg/oscim/layers/tile/MapTile;->hashCode()I
+    int-to-float v12, v6
 
-    move-result v1
+    int-to-float v13, v7
 
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    move-object/from16 v0, p3
 
-    move-result-object v1
-
-    invoke-virtual {p4, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object p4
-
-    check-cast p4, Ljava/util/List;
-
-    if-nez p4, :cond_5
+    invoke-virtual {v11, v0, v12, v13}, Lorg/oscim/renderer/bucket/ExtrusionBucket;->add(Lorg/oscim/core/MapElement;FF)V
 
     .line 110
-    new-instance p4, Ljava/util/ArrayList;
+    const/4 v11, 0x1
 
-    invoke-direct {p4}, Ljava/util/ArrayList;-><init>()V
-
-    .line 111
-    iget-object v1, p0, Lorg/oscim/layers/tile/buildings/BuildingLayer;->mBuildings:Ljava/util/HashMap;
-
-    invoke-virtual {p1}, Lorg/oscim/layers/tile/MapTile;->hashCode()I
-
-    move-result p1
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object p1
-
-    invoke-virtual {v1, p1, p4}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 113
-    :cond_5
-    new-instance p1, Lorg/oscim/core/MapElement;
-
-    invoke-direct {p1, p3}, Lorg/oscim/core/MapElement;-><init>(Lorg/oscim/core/MapElement;)V
-
-    .line 114
-    new-instance p3, Lorg/oscim/layers/tile/buildings/BuildingLayer$BuildingElement;
-
-    invoke-direct {p3, p0, p1, p2, p5}, Lorg/oscim/layers/tile/buildings/BuildingLayer$BuildingElement;-><init>(Lorg/oscim/layers/tile/buildings/BuildingLayer;Lorg/oscim/core/MapElement;Lorg/oscim/theme/styles/ExtrusionStyle;Z)V
-
-    invoke-interface {p4, p3}, Ljava/util/List;->add(Ljava/lang/Object;)Z
-
-    return v0
+    goto :goto_0
 .end method

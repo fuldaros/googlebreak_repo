@@ -7,7 +7,8 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 25
+    .prologue
+    .line 26
     invoke-direct {p0}, Landroid/app/Service;-><init>()V
 
     return-void
@@ -16,12 +17,14 @@
 
 # virtual methods
 .method public onBind(Landroid/content/Intent;)Landroid/os/IBinder;
-    .locals 0
+    .locals 1
+    .param p1, "intent"    # Landroid/content/Intent;
 
-    .line 28
-    new-instance p1, Lorg/microg/gms/auth/AuthManagerServiceImpl;
+    .prologue
+    .line 29
+    new-instance v0, Lorg/microg/gms/auth/AuthManagerServiceImpl;
 
-    invoke-direct {p1, p0}, Lorg/microg/gms/auth/AuthManagerServiceImpl;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lorg/microg/gms/auth/AuthManagerServiceImpl;-><init>(Landroid/content/Context;)V
 
-    return-object p1
+    return-object v0
 .end method

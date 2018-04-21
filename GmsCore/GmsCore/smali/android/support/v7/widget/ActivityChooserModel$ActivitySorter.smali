@@ -20,10 +20,12 @@
         value = {
             "(",
             "Landroid/content/Intent;",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Landroid/support/v7/widget/ActivityChooserModel$ActivityResolveInfo;",
             ">;",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Landroid/support/v7/widget/ActivityChooserModel$HistoricalRecord;",
             ">;)V"
         }

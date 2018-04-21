@@ -27,7 +27,8 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .line 36
+    .prologue
+    .line 33
     const-class v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;
 
     invoke-static {v0}, Lorg/slf4j/LoggerFactory;->getLogger(Ljava/lang/Class;)Lorg/slf4j/Logger;
@@ -39,1197 +40,1347 @@
     return-void
 .end method
 
-.method public constructor <init>()V
+.method constructor <init>()V
     .locals 3
 
-    .line 84
+    .prologue
+    const/16 v2, 0x64
+
+    .line 77
     invoke-direct {p0}, Lorg/oscim/tiling/source/PbfDecoder;-><init>()V
 
-    const/16 v0, 0x64
+    .line 62
+    new-array v0, v2, [I
 
-    .line 69
-    new-array v1, v0, [I
+    iput-object v0, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mSArray:[I
 
-    iput-object v1, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mSArray:[I
+    .line 75
+    const/high16 v0, 0x45800000    # 4096.0f
 
-    .line 82
     sget v1, Lorg/oscim/core/Tile;->SIZE:I
 
     int-to-float v1, v1
 
-    const/high16 v2, 0x45800000    # 4096.0f
+    div-float/2addr v0, v1
 
-    div-float/2addr v2, v1
+    iput v0, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mScaleFactor:F
 
-    iput v2, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mScaleFactor:F
+    .line 78
+    new-instance v0, Lorg/oscim/core/MapElement;
 
-    .line 85
-    new-instance v1, Lorg/oscim/core/MapElement;
+    invoke-direct {v0}, Lorg/oscim/core/MapElement;-><init>()V
 
-    invoke-direct {v1}, Lorg/oscim/core/MapElement;-><init>()V
+    iput-object v0, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
 
-    iput-object v1, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
+    .line 79
+    new-instance v0, Lorg/oscim/core/TagSet;
 
-    .line 86
-    new-instance v1, Lorg/oscim/core/TagSet;
+    invoke-direct {v0, v2}, Lorg/oscim/core/TagSet;-><init>(I)V
 
-    invoke-direct {v1, v0}, Lorg/oscim/core/TagSet;-><init>(I)V
+    iput-object v0, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTileTags:Lorg/oscim/core/TagSet;
 
-    iput-object v1, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTileTags:Lorg/oscim/core/TagSet;
-
+    .line 80
     return-void
 .end method
 
 .method private decodeElementTags(I)Z
-    .locals 8
+    .locals 10
+    .param p1, "numTags"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .line 384
-    iget-object v0, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mSArray:[I
+    .prologue
+    const/4 v5, 0x1
 
-    array-length v0, v0
+    const/4 v4, 0x0
 
-    if-ge v0, p1, :cond_0
+    .line 375
+    iget-object v6, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mSArray:[I
+
+    array-length v6, v6
+
+    if-ge v6, p1, :cond_0
+
+    .line 376
+    new-array v6, p1, [I
+
+    iput-object v6, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mSArray:[I
+
+    .line 377
+    :cond_0
+    iget-object v3, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mSArray:[I
+
+    .line 379
+    .local v3, "tagIds":[I
+    invoke-virtual {p0, p1, v3}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarintArray(I[I)V
+
+    .line 381
+    iget-object v6, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
+
+    iget-object v6, v6, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
+
+    invoke-virtual {v6}, Lorg/oscim/core/TagSet;->clear()V
+
+    .line 383
+    iget-object v6, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTileTags:Lorg/oscim/core/TagSet;
+
+    iget v6, v6, Lorg/oscim/core/TagSet;->numTags:I
+
+    add-int/lit8 v2, v6, -0x1
 
     .line 385
-    new-array v0, p1, [I
+    .local v2, "max":I
+    const/4 v0, 0x0
 
-    iput-object v0, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mSArray:[I
+    .local v0, "i":I
+    :goto_0
+    if-ge v0, p1, :cond_3
 
     .line 386
-    :cond_0
-    iget-object v0, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mSArray:[I
+    aget v1, v3, v0
 
     .line 388
-    invoke-virtual {p0, p1, v0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarintArray(I[I)V
+    .local v1, "idx":I
+    if-ltz v1, :cond_1
+
+    if-le v1, v2, :cond_2
+
+    .line 389
+    :cond_1
+    sget-object v6, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
+
+    const-string v7, "{} invalid tag:{}"
+
+    const/4 v8, 0x3
+
+    new-array v8, v8, [Ljava/lang/Object;
+
+    iget-object v9, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
+
+    aput-object v9, v8, v4
 
     .line 390
-    iget-object v1, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    iget-object v1, v1, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
+    move-result-object v9
 
-    invoke-virtual {v1}, Lorg/oscim/core/TagSet;->clear()V
+    aput-object v9, v8, v5
 
-    .line 392
-    iget-object v1, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTileTags:Lorg/oscim/core/TagSet;
+    const/4 v5, 0x2
 
-    invoke-virtual {v1}, Lorg/oscim/core/TagSet;->size()I
+    .line 391
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result v1
+    move-result-object v9
 
-    const/4 v2, 0x1
+    aput-object v9, v8, v5
 
-    sub-int/2addr v1, v2
+    .line 389
+    invoke-interface {v6, v7, v8}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;[Ljava/lang/Object;)V
 
-    const/4 v3, 0x0
+    .line 397
+    .end local v1    # "idx":I
+    :goto_1
+    return v4
 
-    move v4, v3
-
-    :goto_0
-    if-ge v4, p1, :cond_3
-
-    .line 395
-    aget v5, v0, v4
-
-    if-ltz v5, :cond_2
-
-    if-le v5, v1, :cond_1
-
-    goto :goto_1
-
-    .line 403
-    :cond_1
+    .line 394
+    .restart local v1    # "idx":I
+    :cond_2
     iget-object v6, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
 
     iget-object v6, v6, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
 
     iget-object v7, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTileTags:Lorg/oscim/core/TagSet;
 
-    invoke-virtual {v7, v5}, Lorg/oscim/core/TagSet;->get(I)Lorg/oscim/core/Tag;
+    iget-object v7, v7, Lorg/oscim/core/TagSet;->tags:[Lorg/oscim/core/Tag;
 
-    move-result-object v5
+    aget-object v7, v7, v1
 
-    invoke-virtual {v6, v5}, Lorg/oscim/core/TagSet;->add(Lorg/oscim/core/Tag;)V
+    invoke-virtual {v6, v7}, Lorg/oscim/core/TagSet;->add(Lorg/oscim/core/Tag;)V
 
-    add-int/lit8 v4, v4, 0x1
+    .line 385
+    add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 398
-    :cond_2
-    :goto_1
-    sget-object p1, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
-
-    const-string v0, "{} invalid tag:{}"
-
-    const/4 v1, 0x3
-
-    new-array v1, v1, [Ljava/lang/Object;
-
-    iget-object v6, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
-
-    aput-object v6, v1, v3
-
-    .line 399
-    invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v5
-
-    aput-object v5, v1, v2
-
-    const/4 v2, 0x2
-
-    .line 400
-    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v4
-
-    aput-object v4, v1, v2
-
-    .line 398
-    invoke-interface {p1, v0, v1}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;[Ljava/lang/Object;)V
-
-    return v3
-
+    .end local v1    # "idx":I
     :cond_3
-    return v2
+    move v4, v5
+
+    .line 397
+    goto :goto_1
 .end method
 
 .method private decodeTileElement(I)Z
-    .locals 17
+    .locals 14
+    .param p1, "type"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    move-object/from16 v0, p0
+    .prologue
+    .line 255
+    invoke-virtual {p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
 
-    move/from16 v1, p1
+    move-result v0
 
-    .line 264
-    invoke-virtual/range {p0 .. p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
+    .line 257
+    .local v0, "bytes":I
+    invoke-virtual {p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->position()I
 
-    move-result v2
+    move-result v9
 
-    .line 266
-    invoke-virtual/range {p0 .. p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->position()I
+    add-int v3, v9, v0
 
-    move-result v3
-
-    add-int/2addr v3, v2
-
-    const/4 v4, 0x2
-
+    .line 258
+    .local v3, "end":I
     const/4 v5, 0x1
 
-    const/4 v6, 0x0
+    .line 259
+    .local v5, "numIndices":I
+    const/4 v6, 0x1
 
-    const/16 v7, 0x17
+    .line 262
+    .local v6, "numTags":I
+    const/4 v4, 0x0
 
-    if-ne v1, v7, :cond_0
+    .line 264
+    .local v4, "fail":Z
+    const/4 v2, 0x0
 
-    .line 276
-    iget-object v7, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
+    .line 265
+    .local v2, "coordCnt":I
+    const/16 v9, 0x17
 
-    iget-object v7, v7, Lorg/oscim/core/MapElement;->index:[I
+    if-ne p1, v9, :cond_0
 
-    aput v4, v7, v6
+    .line 266
+    const/4 v2, 0x1
 
-    move v7, v5
+    .line 267
+    iget-object v9, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
 
-    goto :goto_0
+    iget-object v9, v9, Lorg/oscim/core/MapElement;->index:[I
 
+    const/4 v10, 0x0
+
+    const/4 v11, 0x2
+
+    aput v11, v9, v10
+
+    .line 270
     :cond_0
-    move v7, v6
+    iget-object v9, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
 
-    .line 279
-    :goto_0
-    iget-object v8, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
+    const/4 v10, 0x5
 
-    const/4 v9, 0x5
+    iput v10, v9, Lorg/oscim/core/MapElement;->layer:I
 
-    iput v9, v8, Lorg/oscim/core/MapElement;->layer:I
-
-    move v8, v5
-
-    move v11, v8
-
-    move v10, v7
-
-    move v7, v6
-
-    .line 281
-    :goto_1
-    invoke-virtual/range {p0 .. p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->position()I
-
-    move-result v12
-
-    const/4 v13, 0x3
-
-    if-ge v12, v3, :cond_8
-
-    .line 283
-    invoke-virtual/range {p0 .. p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
-
-    move-result v12
-
-    if-nez v12, :cond_1
-
-    goto/16 :goto_4
-
+    .line 272
     :cond_1
-    shr-int/lit8 v12, v12, 0x3
-
-    const/16 v14, 0x15
-
-    if-eq v12, v14, :cond_6
-
-    packed-switch v12, :pswitch_data_0
-
-    const/16 v14, 0x18
-
-    packed-switch v12, :pswitch_data_1
-
-    .line 350
-    sget-object v13, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
-
-    const-string v14, "{} invalid type for way: {}"
-
-    iget-object v15, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
-
-    invoke-static {v12}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v12
-
-    invoke-interface {v13, v14, v15, v12}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
-
-    goto/16 :goto_3
-
-    :pswitch_0
-    if-nez v10, :cond_2
-
-    .line 318
-    sget-object v12, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
-
-    const-string v15, "{} no coordinates"
-
-    iget-object v9, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
-
-    invoke-interface {v12, v15, v9}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;)V
-
-    :cond_2
-    if-ne v1, v14, :cond_4
-
-    .line 322
-    iget-object v9, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
-
-    mul-int/lit8 v12, v10, 0x3
-
-    div-int/lit8 v14, v12, 0x2
-
-    invoke-virtual {v9, v14, v6}, Lorg/oscim/core/MapElement;->ensurePointSize(IZ)[F
-
-    .line 323
-    iget-object v9, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
-
-    iget-object v9, v9, Lorg/oscim/core/MapElement;->points:[F
-
-    const/high16 v14, 0x3f800000    # 1.0f
-
-    invoke-virtual {v0, v9, v14}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeInterleavedPoints3D([FF)I
+    :goto_0
+    invoke-virtual {p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->position()I
 
     move-result v9
 
-    if-eq v9, v12, :cond_3
+    if-ge v9, v3, :cond_2
 
-    .line 326
-    sget-object v7, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
-
-    const-string v12, "{} wrong number of coordintes {}/{}"
-
-    new-array v13, v13, [Ljava/lang/Object;
-
-    iget-object v14, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
-
-    aput-object v14, v13, v6
-
-    .line 327
-    invoke-static {v10}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v14
-
-    aput-object v14, v13, v5
-
-    .line 328
-    invoke-static {v9}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v14
-
-    aput-object v14, v13, v4
-
-    .line 326
-    invoke-interface {v7, v12, v13}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;[Ljava/lang/Object;)V
-
-    move v7, v5
-
-    .line 331
-    :cond_3
-    iget-object v12, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
-
-    iput v9, v12, Lorg/oscim/core/MapElement;->pointNextPos:I
-
-    goto :goto_3
-
-    .line 333
-    :cond_4
-    iget-object v9, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
-
-    invoke-virtual {v9, v10, v6}, Lorg/oscim/core/MapElement;->ensurePointSize(IZ)[F
-
-    .line 334
-    iget-object v9, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
-
-    iget v12, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mScaleFactor:F
-
-    invoke-virtual {v0, v9, v12}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeInterleavedPoints(Lorg/oscim/core/GeometryBuffer;F)I
-
-    move-result v9
-
-    if-eq v9, v10, :cond_7
-
-    .line 337
-    sget-object v7, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
-
-    const-string v12, "{} wrong number of coordintes {}/{}"
-
-    new-array v13, v13, [Ljava/lang/Object;
-
-    iget-object v14, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
-
-    aput-object v14, v13, v6
-
-    .line 338
-    invoke-static {v10}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v14
-
-    aput-object v14, v13, v5
-
-    .line 339
-    invoke-static {v9}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v9
-
-    aput-object v9, v13, v4
-
-    .line 337
-    invoke-interface {v7, v12, v13}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;[Ljava/lang/Object;)V
-
-    move v7, v5
-
-    goto :goto_3
-
-    :pswitch_1
-    if-ne v1, v14, :cond_5
-
-    .line 309
-    invoke-direct {v0, v11, v6}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeWayIndices(IZ)I
-
-    goto :goto_3
-
-    .line 311
-    :cond_5
-    invoke-direct {v0, v11, v5}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeWayIndices(IZ)I
-
-    move-result v9
-
-    goto :goto_2
-
-    .line 291
-    :pswitch_2
-    invoke-direct {v0, v8}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeElementTags(I)Z
-
-    move-result v9
-
-    if-nez v9, :cond_7
-
-    return v6
-
-    .line 304
-    :pswitch_3
-    invoke-virtual/range {p0 .. p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
-
-    move-result v9
-
-    :goto_2
-    move v10, v9
-
-    goto :goto_3
-
-    .line 300
-    :pswitch_4
-    invoke-virtual/range {p0 .. p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
+    .line 274
+    invoke-virtual {p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
 
     move-result v8
 
-    goto :goto_3
+    .line 275
+    .local v8, "val":I
+    if-nez v8, :cond_4
 
-    .line 296
-    :pswitch_5
-    invoke-virtual/range {p0 .. p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
+    .line 345
+    .end local v8    # "val":I
+    :cond_2
+    if-nez v4, :cond_3
+
+    if-eqz v6, :cond_3
+
+    if-nez v5, :cond_9
+
+    .line 346
+    :cond_3
+    sget-object v9, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
+
+    const-string v10, "{} failed: bytes:{} tags:{} ({},{})"
+
+    const/4 v11, 0x5
+
+    new-array v11, v11, [Ljava/lang/Object;
+
+    const/4 v12, 0x0
+
+    iget-object v13, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
+
+    aput-object v13, v11, v12
+
+    const/4 v12, 0x1
+
+    .line 347
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v13
+
+    aput-object v13, v11, v12
+
+    const/4 v12, 0x2
+
+    iget-object v13, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
+
+    iget-object v13, v13, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
+
+    aput-object v13, v11, v12
+
+    const/4 v12, 0x3
+
+    .line 349
+    invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v13
+
+    aput-object v13, v11, v12
+
+    const/4 v12, 0x4
+
+    .line 350
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v13
+
+    aput-object v13, v11, v12
+
+    .line 346
+    invoke-interface {v9, v10, v11}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 351
+    const/4 v9, 0x0
+
+    .line 371
+    :goto_1
+    return v9
+
+    .line 278
+    .restart local v8    # "val":I
+    :cond_4
+    shr-int/lit8 v7, v8, 0x3
+
+    .line 280
+    .local v7, "tag":I
+    sparse-switch v7, :sswitch_data_0
+
+    .line 341
+    sget-object v9, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
+
+    const-string v10, "{} invalid type for way: {}"
+
+    iget-object v11, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
+
+    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v12
+
+    invoke-interface {v9, v10, v11, v12}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    goto :goto_0
+
+    .line 282
+    :sswitch_0
+    invoke-direct {p0, v6}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeElementTags(I)Z
 
     move-result v9
 
-    move v11, v9
+    if-nez v9, :cond_1
 
-    goto :goto_3
+    .line 283
+    const/4 v9, 0x0
 
-    .line 346
+    goto :goto_1
+
+    .line 287
+    :sswitch_1
+    invoke-virtual {p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
+
+    move-result v5
+
+    .line 288
+    goto :goto_0
+
+    .line 291
+    :sswitch_2
+    invoke-virtual {p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
+
+    move-result v6
+
+    .line 292
+    goto :goto_0
+
+    .line 295
+    :sswitch_3
+    invoke-virtual {p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
+
+    move-result v2
+
+    .line 296
+    goto :goto_0
+
+    .line 299
+    :sswitch_4
+    const/16 v9, 0x18
+
+    if-ne p1, v9, :cond_5
+
+    .line 300
+    const/4 v9, 0x0
+
+    invoke-direct {p0, v5, v9}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeWayIndices(IZ)I
+
+    goto :goto_0
+
+    .line 302
+    :cond_5
+    const/4 v9, 0x1
+
+    invoke-direct {p0, v5, v9}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeWayIndices(IZ)I
+
+    move-result v2
+
+    .line 305
+    goto :goto_0
+
+    .line 308
+    :sswitch_5
+    if-nez v2, :cond_6
+
+    .line 309
+    sget-object v9, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
+
+    const-string v10, "{} no coordinates"
+
+    iget-object v11, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
+
+    invoke-interface {v9, v10, v11}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 312
     :cond_6
-    iget-object v9, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
+    const/16 v9, 0x18
 
-    invoke-virtual/range {p0 .. p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
+    if-ne p1, v9, :cond_8
 
-    move-result v12
+    .line 313
+    iget-object v9, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
 
-    iput v12, v9, Lorg/oscim/core/MapElement;->layer:I
+    mul-int/lit8 v10, v2, 0x3
 
+    div-int/lit8 v10, v10, 0x2
+
+    const/4 v11, 0x0
+
+    invoke-virtual {v9, v10, v11}, Lorg/oscim/core/MapElement;->ensurePointSize(IZ)[F
+
+    .line 314
+    iget-object v9, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
+
+    iget-object v9, v9, Lorg/oscim/core/MapElement;->points:[F
+
+    const/high16 v10, 0x3f800000    # 1.0f
+
+    invoke-virtual {p0, v9, v10}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeInterleavedPoints3D([FF)I
+
+    move-result v1
+
+    .line 316
+    .local v1, "cnt":I
+    mul-int/lit8 v9, v2, 0x3
+
+    if-eq v1, v9, :cond_7
+
+    .line 317
+    sget-object v9, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
+
+    const-string v10, "{} wrong number of coordintes {}/{}"
+
+    const/4 v11, 0x3
+
+    new-array v11, v11, [Ljava/lang/Object;
+
+    const/4 v12, 0x0
+
+    iget-object v13, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
+
+    aput-object v13, v11, v12
+
+    const/4 v12, 0x1
+
+    .line 318
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v13
+
+    aput-object v13, v11, v12
+
+    const/4 v12, 0x2
+
+    .line 319
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v13
+
+    aput-object v13, v11, v12
+
+    .line 317
+    invoke-interface {v9, v10, v11}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 320
+    const/4 v4, 0x1
+
+    .line 322
     :cond_7
-    :goto_3
-    const/4 v9, 0x5
+    iget-object v9, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
+
+    iput v1, v9, Lorg/oscim/core/MapElement;->pointPos:I
+
+    goto/16 :goto_0
+
+    .line 324
+    .end local v1    # "cnt":I
+    :cond_8
+    iget-object v9, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
+
+    const/4 v10, 0x0
+
+    invoke-virtual {v9, v2, v10}, Lorg/oscim/core/MapElement;->ensurePointSize(IZ)[F
+
+    .line 325
+    iget-object v9, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
+
+    iget v10, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mScaleFactor:F
+
+    invoke-virtual {p0, v9, v10}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeInterleavedPoints(Lorg/oscim/core/GeometryBuffer;F)I
+
+    move-result v1
+
+    .line 327
+    .restart local v1    # "cnt":I
+    if-eq v1, v2, :cond_1
+
+    .line 328
+    sget-object v9, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
+
+    const-string v10, "{} wrong number of coordintes {}/{}"
+
+    const/4 v11, 0x3
+
+    new-array v11, v11, [Ljava/lang/Object;
+
+    const/4 v12, 0x0
+
+    iget-object v13, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
+
+    aput-object v13, v11, v12
+
+    const/4 v12, 0x1
+
+    .line 329
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v13
+
+    aput-object v13, v11, v12
+
+    const/4 v12, 0x2
+
+    .line 330
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v13
+
+    aput-object v13, v11, v12
+
+    .line 328
+    invoke-interface {v9, v10, v11}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 331
+    const/4 v4, 0x1
+
+    goto/16 :goto_0
+
+    .line 337
+    .end local v1    # "cnt":I
+    :sswitch_6
+    iget-object v9, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
+
+    invoke-virtual {p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
+
+    move-result v10
+
+    iput v10, v9, Lorg/oscim/core/MapElement;->layer:I
+
+    goto/16 :goto_0
+
+    .line 354
+    .end local v7    # "tag":I
+    .end local v8    # "val":I
+    :cond_9
+    packed-switch p1, :pswitch_data_0
+
+    .line 369
+    :goto_2
+    iget-object v9, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mMapDataSink:Lorg/oscim/tiling/ITileDataSink;
+
+    iget-object v10, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
+
+    invoke-interface {v9, v10}, Lorg/oscim/tiling/ITileDataSink;->process(Lorg/oscim/core/MapElement;)V
+
+    .line 371
+    const/4 v9, 0x1
 
     goto/16 :goto_1
 
-    :cond_8
-    :goto_4
-    if-nez v7, :cond_a
-
-    if-eqz v8, :cond_a
-
-    if-nez v11, :cond_9
-
-    goto :goto_6
-
-    :cond_9
-    packed-switch v1, :pswitch_data_2
-
-    goto :goto_5
-
-    .line 374
-    :pswitch_6
-    iget-object v1, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
-
-    sget-object v2, Lorg/oscim/core/GeometryBuffer$GeometryType;->TRIS:Lorg/oscim/core/GeometryBuffer$GeometryType;
-
-    iput-object v2, v1, Lorg/oscim/core/MapElement;->type:Lorg/oscim/core/GeometryBuffer$GeometryType;
-
-    goto :goto_5
-
-    .line 371
-    :pswitch_7
-    iget-object v1, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
-
-    sget-object v2, Lorg/oscim/core/GeometryBuffer$GeometryType;->POINT:Lorg/oscim/core/GeometryBuffer$GeometryType;
-
-    iput-object v2, v1, Lorg/oscim/core/MapElement;->type:Lorg/oscim/core/GeometryBuffer$GeometryType;
-
-    goto :goto_5
-
-    .line 368
-    :pswitch_8
-    iget-object v1, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
-
-    sget-object v2, Lorg/oscim/core/GeometryBuffer$GeometryType;->POLY:Lorg/oscim/core/GeometryBuffer$GeometryType;
-
-    iput-object v2, v1, Lorg/oscim/core/MapElement;->type:Lorg/oscim/core/GeometryBuffer$GeometryType;
-
-    goto :goto_5
-
-    .line 365
-    :pswitch_9
-    iget-object v1, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
-
-    sget-object v2, Lorg/oscim/core/GeometryBuffer$GeometryType;->LINE:Lorg/oscim/core/GeometryBuffer$GeometryType;
-
-    iput-object v2, v1, Lorg/oscim/core/MapElement;->type:Lorg/oscim/core/GeometryBuffer$GeometryType;
-
-    .line 378
-    :goto_5
-    iget-object v1, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mMapDataSink:Lorg/oscim/tiling/ITileDataSink;
-
-    iget-object v2, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
-
-    invoke-interface {v1, v2}, Lorg/oscim/tiling/ITileDataSink;->process(Lorg/oscim/core/MapElement;)V
-
-    return v5
-
-    .line 355
-    :cond_a
-    :goto_6
-    sget-object v1, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
-
-    const-string v3, "{} failed: bytes:{} tags:{} ({},{})"
-
-    const/4 v7, 0x5
-
-    new-array v7, v7, [Ljava/lang/Object;
-
-    iget-object v8, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
-
-    aput-object v8, v7, v6
-
     .line 356
-    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    :pswitch_0
+    iget-object v9, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
 
-    move-result-object v2
+    sget-object v10, Lorg/oscim/core/GeometryBuffer$GeometryType;->LINE:Lorg/oscim/core/GeometryBuffer$GeometryType;
 
-    aput-object v2, v7, v5
+    iput-object v10, v9, Lorg/oscim/core/MapElement;->type:Lorg/oscim/core/GeometryBuffer$GeometryType;
 
-    iget-object v2, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
-
-    iget-object v2, v2, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
-
-    aput-object v2, v7, v4
-
-    .line 358
-    invoke-static {v11}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v2
-
-    aput-object v2, v7, v13
-
-    const/4 v2, 0x4
+    goto :goto_2
 
     .line 359
-    invoke-static {v10}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    :pswitch_1
+    iget-object v9, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
 
-    move-result-object v4
+    sget-object v10, Lorg/oscim/core/GeometryBuffer$GeometryType;->POLY:Lorg/oscim/core/GeometryBuffer$GeometryType;
 
-    aput-object v4, v7, v2
+    iput-object v10, v9, Lorg/oscim/core/MapElement;->type:Lorg/oscim/core/GeometryBuffer$GeometryType;
 
-    .line 355
-    invoke-interface {v1, v3, v7}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;[Ljava/lang/Object;)V
+    goto :goto_2
 
-    return v6
+    .line 362
+    :pswitch_2
+    iget-object v9, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
 
-    nop
+    sget-object v10, Lorg/oscim/core/GeometryBuffer$GeometryType;->POINT:Lorg/oscim/core/GeometryBuffer$GeometryType;
 
+    iput-object v10, v9, Lorg/oscim/core/MapElement;->type:Lorg/oscim/core/GeometryBuffer$GeometryType;
+
+    goto :goto_2
+
+    .line 365
+    :pswitch_3
+    iget-object v9, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
+
+    sget-object v10, Lorg/oscim/core/GeometryBuffer$GeometryType;->TRIS:Lorg/oscim/core/GeometryBuffer$GeometryType;
+
+    iput-object v10, v9, Lorg/oscim/core/MapElement;->type:Lorg/oscim/core/GeometryBuffer$GeometryType;
+
+    goto :goto_2
+
+    .line 280
+    :sswitch_data_0
+    .sparse-switch
+        0x1 -> :sswitch_1
+        0x2 -> :sswitch_2
+        0x3 -> :sswitch_3
+        0xb -> :sswitch_0
+        0xc -> :sswitch_4
+        0xd -> :sswitch_5
+        0x15 -> :sswitch_6
+    .end sparse-switch
+
+    .line 354
     :pswitch_data_0
-    .packed-switch 0x1
-        :pswitch_5
-        :pswitch_4
-        :pswitch_3
-    .end packed-switch
-
-    :pswitch_data_1
-    .packed-switch 0xb
-        :pswitch_2
-        :pswitch_1
-        :pswitch_0
-    .end packed-switch
-
-    :pswitch_data_2
     .packed-switch 0x15
-        :pswitch_9
-        :pswitch_8
-        :pswitch_7
-        :pswitch_6
+        :pswitch_0
+        :pswitch_1
+        :pswitch_2
+        :pswitch_3
     .end packed-switch
 .end method
 
 .method private decodeTileTags(I[I[Ljava/lang/String;[Ljava/lang/String;)Z
-    .locals 7
+    .locals 11
+    .param p1, "numTags"    # I
+    .param p2, "tagIdx"    # [I
+    .param p3, "keys"    # [Ljava/lang/String;
+    .param p4, "vals"    # [Ljava/lang/String;
 
-    const/4 v0, 0x1
+    .prologue
+    const/16 v10, 0x100
 
-    shl-int/2addr p1, v0
+    const/4 v8, 0x1
 
-    const/4 v1, 0x0
+    const/4 v7, 0x0
 
-    move v2, v1
+    .line 188
+    const/4 v0, 0x0
 
+    .local v0, "i":I
+    shl-int/lit8 v3, p1, 0x1
+
+    .local v3, "n":I
     :goto_0
-    if-ge v2, p1, :cond_a
+    if-ge v0, v3, :cond_6
 
-    .line 196
-    aget v3, p2, v2
+    .line 189
+    aget v1, p2, v0
 
-    add-int/lit8 v4, v2, 0x1
+    .line 190
+    .local v1, "k":I
+    add-int/lit8 v9, v0, 0x1
 
-    .line 197
-    aget v4, p2, v4
+    aget v5, p2, v9
 
-    const/16 v5, 0x100
+    .line 193
+    .local v5, "v":I
+    if-ge v1, v10, :cond_3
 
-    if-ge v3, v5, :cond_1
+    .line 194
+    sget v9, Lorg/oscim/tiling/source/oscimap4/Tags;->MAX_KEY:I
 
-    .line 201
-    sget v6, Lorg/oscim/tiling/source/oscimap4/Tags;->MAX_KEY:I
-
-    if-le v3, v6, :cond_0
-
-    return v1
-
-    .line 203
-    :cond_0
-    sget-object v6, Lorg/oscim/tiling/source/oscimap4/Tags;->keys:[Ljava/lang/String;
-
-    aget-object v3, v6, v3
-
-    goto :goto_1
-
-    :cond_1
-    add-int/lit16 v3, v3, -0x100
-
-    .line 206
-    array-length v6, p3
-
-    if-lt v3, v6, :cond_2
-
-    return v1
-
-    .line 208
-    :cond_2
-    aget-object v3, p3, v3
-
-    :goto_1
-    if-ge v4, v5, :cond_4
-
-    .line 212
-    sget v5, Lorg/oscim/tiling/source/oscimap4/Tags;->MAX_VALUE:I
-
-    if-le v4, v5, :cond_3
-
-    return v1
-
-    .line 214
-    :cond_3
-    sget-object v5, Lorg/oscim/tiling/source/oscimap4/Tags;->values:[Ljava/lang/String;
-
-    aget-object v4, v5, v4
-
-    goto :goto_2
-
-    :cond_4
-    add-int/lit16 v4, v4, -0x100
-
-    .line 217
-    array-length v5, p4
-
-    if-lt v4, v5, :cond_5
-
-    return v1
-
-    .line 219
-    :cond_5
-    aget-object v4, p4, v4
-
-    :goto_2
-    const-string v5, "name"
-
-    .line 224
-    invoke-virtual {v5, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v5
-
-    if-nez v5, :cond_9
-
-    const-string v5, "addr:housenumber"
-
-    .line 225
-    invoke-virtual {v5, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v5
-
-    if-nez v5, :cond_9
-
-    const-string v5, "ref"
-
-    .line 226
-    invoke-virtual {v5, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v5
-
-    if-nez v5, :cond_9
-
-    const-string v5, "ele"
-
-    .line 227
-    invoke-virtual {v5, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v5
-
-    if-eqz v5, :cond_6
-
-    goto :goto_4
-
-    :cond_6
-    const-string v5, "height"
-
-    .line 229
-    invoke-virtual {v5, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v5
-
-    if-nez v5, :cond_8
-
-    const-string v5, "min_height"
+    if-le v1, v9, :cond_1
 
     .line 230
-    invoke-virtual {v5, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    .end local v1    # "k":I
+    .end local v5    # "v":I
+    :cond_0
+    :goto_1
+    return v7
 
-    move-result v5
+    .line 196
+    .restart local v1    # "k":I
+    .restart local v5    # "v":I
+    :cond_1
+    sget-object v9, Lorg/oscim/tiling/source/oscimap4/Tags;->keys:[Ljava/lang/String;
 
-    if-eqz v5, :cond_7
+    aget-object v2, v9, v1
 
+    .line 204
+    .local v2, "key":Ljava/lang/String;
+    :goto_2
+    if-ge v5, v10, :cond_4
+
+    .line 205
+    sget v9, Lorg/oscim/tiling/source/oscimap4/Tags;->MAX_VALUE:I
+
+    if-gt v5, v9, :cond_0
+
+    .line 207
+    sget-object v9, Lorg/oscim/tiling/source/oscimap4/Tags;->values:[Ljava/lang/String;
+
+    aget-object v6, v9, v5
+
+    .line 217
+    .local v6, "val":Ljava/lang/String;
+    :goto_3
+    const-string v9, "name"
+
+    if-eq v2, v9, :cond_2
+
+    const-string v9, "height"
+
+    if-eq v2, v9, :cond_2
+
+    const-string v9, "min_height"
+
+    if-eq v2, v9, :cond_2
+
+    const-string v9, "addr:housenumber"
+
+    if-eq v2, v9, :cond_2
+
+    const-string v9, "ref"
+
+    if-eq v2, v9, :cond_2
+
+    const-string v9, "ele"
+
+    if-ne v2, v9, :cond_5
+
+    .line 223
+    :cond_2
+    new-instance v4, Lorg/oscim/core/Tag;
+
+    invoke-direct {v4, v2, v6, v7}, Lorg/oscim/core/Tag;-><init>(Ljava/lang/String;Ljava/lang/String;Z)V
+
+    .line 227
+    .local v4, "tag":Lorg/oscim/core/Tag;
+    :goto_4
+    iget-object v9, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTileTags:Lorg/oscim/core/TagSet;
+
+    invoke-virtual {v9, v4}, Lorg/oscim/core/TagSet;->add(Lorg/oscim/core/Tag;)V
+
+    .line 188
+    add-int/lit8 v0, v0, 0x2
+
+    goto :goto_0
+
+    .line 198
+    .end local v2    # "key":Ljava/lang/String;
+    .end local v4    # "tag":Lorg/oscim/core/Tag;
+    .end local v6    # "val":Ljava/lang/String;
+    :cond_3
+    add-int/lit16 v1, v1, -0x100
+
+    .line 199
+    array-length v9, p3
+
+    if-ge v1, v9, :cond_0
+
+    .line 201
+    aget-object v2, p3, v1
+
+    .restart local v2    # "key":Ljava/lang/String;
+    goto :goto_2
+
+    .line 209
+    :cond_4
+    add-int/lit16 v5, v5, -0x100
+
+    .line 210
+    array-length v9, p4
+
+    if-ge v5, v9, :cond_0
+
+    .line 212
+    aget-object v6, p4, v5
+
+    .restart local v6    # "val":Ljava/lang/String;
     goto :goto_3
 
-    .line 234
-    :cond_7
-    new-instance v5, Lorg/oscim/core/Tag;
+    .line 225
+    :cond_5
+    new-instance v4, Lorg/oscim/core/Tag;
 
-    invoke-direct {v5, v3, v4, v1, v0}, Lorg/oscim/core/Tag;-><init>(Ljava/lang/String;Ljava/lang/String;ZZ)V
+    invoke-direct {v4, v2, v6, v7, v8}, Lorg/oscim/core/Tag;-><init>(Ljava/lang/String;Ljava/lang/String;ZZ)V
 
-    goto :goto_5
+    .restart local v4    # "tag":Lorg/oscim/core/Tag;
+    goto :goto_4
 
-    .line 232
-    :cond_8
-    :goto_3
-    new-instance v5, Lorg/oscim/core/Tag;
+    .end local v1    # "k":I
+    .end local v2    # "key":Ljava/lang/String;
+    .end local v4    # "tag":Lorg/oscim/core/Tag;
+    .end local v5    # "v":I
+    .end local v6    # "val":Ljava/lang/String;
+    :cond_6
+    move v7, v8
 
-    invoke-static {v4}, Ljava/lang/Float;->valueOf(Ljava/lang/String;)Ljava/lang/Float;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/Float;->floatValue()F
-
-    move-result v4
-
-    const/high16 v6, 0x42c80000    # 100.0f
-
-    div-float/2addr v4, v6
-
-    invoke-static {v4}, Lorg/oscim/utils/math/MathUtils;->round2(F)F
-
-    move-result v4
-
-    invoke-static {v4}, Ljava/lang/String;->valueOf(F)Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-direct {v5, v3, v4, v1}, Lorg/oscim/core/Tag;-><init>(Ljava/lang/String;Ljava/lang/String;Z)V
-
-    goto :goto_5
-
-    .line 228
-    :cond_9
-    :goto_4
-    new-instance v5, Lorg/oscim/core/Tag;
-
-    invoke-direct {v5, v3, v4, v1}, Lorg/oscim/core/Tag;-><init>(Ljava/lang/String;Ljava/lang/String;Z)V
-
-    .line 236
-    :goto_5
-    iget-object v3, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTileTags:Lorg/oscim/core/TagSet;
-
-    invoke-virtual {v3, v5}, Lorg/oscim/core/TagSet;->add(Lorg/oscim/core/Tag;)V
-
-    add-int/lit8 v2, v2, 0x2
-
-    goto/16 :goto_0
-
-    :cond_a
-    return v0
+    .line 230
+    goto :goto_1
 .end method
 
 .method private decodeWayIndices(IZ)I
-    .locals 3
+    .locals 5
+    .param p1, "indexCnt"    # I
+    .param p2, "shift"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .line 243
-    iget-object v0, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
+    .prologue
+    .line 234
+    iget-object v3, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
 
-    const/4 v1, 0x0
+    const/4 v4, 0x0
 
-    invoke-virtual {v0, p1, v1}, Lorg/oscim/core/MapElement;->ensureIndexSize(IZ)[I
+    invoke-virtual {v3, p1, v4}, Lorg/oscim/core/MapElement;->ensureIndexSize(IZ)[I
 
-    .line 244
-    iget-object v0, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
+    .line 235
+    iget-object v3, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
 
-    iget-object v0, v0, Lorg/oscim/core/MapElement;->index:[I
+    iget-object v3, v3, Lorg/oscim/core/MapElement;->index:[I
 
-    invoke-virtual {p0, p1, v0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarintArray(I[I)V
+    invoke-virtual {p0, p1, v3}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarintArray(I[I)V
 
-    .line 246
-    iget-object v0, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
+    .line 237
+    iget-object v3, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mElem:Lorg/oscim/core/MapElement;
 
-    iget-object v0, v0, Lorg/oscim/core/MapElement;->index:[I
+    iget-object v2, v3, Lorg/oscim/core/MapElement;->index:[I
 
+    .line 238
+    .local v2, "index":[I
+    const/4 v0, 0x0
+
+    .line 240
+    .local v0, "coordCnt":I
     if-eqz p2, :cond_0
 
-    move p2, v1
+    .line 241
+    const/4 v1, 0x0
 
+    .local v1, "i":I
     :goto_0
-    if-ge v1, p1, :cond_1
+    if-ge v1, p1, :cond_0
 
-    .line 251
-    aget v2, v0, v1
+    .line 242
+    aget v3, v2, v1
 
-    add-int/2addr p2, v2
+    add-int/2addr v0, v3
 
-    .line 252
-    aget v2, v0, v1
+    .line 243
+    aget v3, v2, v1
 
-    mul-int/lit8 v2, v2, 0x2
+    mul-int/lit8 v3, v3, 0x2
 
-    aput v2, v0, v1
+    aput v3, v2, v1
 
+    .line 241
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
+    .line 247
+    .end local v1    # "i":I
     :cond_0
-    move p2, v1
+    array-length v3, v2
 
-    .line 256
+    if-ge p1, v3, :cond_1
+
+    .line 248
+    const/4 v3, -0x1
+
+    aput v3, v2, p1
+
+    .line 250
     :cond_1
-    array-length v1, v0
-
-    if-ge p1, v1, :cond_2
-
-    const/4 v1, -0x1
-
-    .line 257
-    aput v1, v0, p1
-
-    :cond_2
-    return p2
+    return v0
 .end method
 
 
 # virtual methods
 .method public decode(Lorg/oscim/core/Tile;Lorg/oscim/tiling/ITileDataSink;Ljava/io/InputStream;)Z
-    .locals 9
+    .locals 19
+    .param p1, "tile"    # Lorg/oscim/core/Tile;
+    .param p2, "sink"    # Lorg/oscim/tiling/ITileDataSink;
+    .param p3, "is"    # Ljava/io/InputStream;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .line 93
-    iget-object v0, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->buffer:[B
+    .prologue
+    .line 86
+    move-object/from16 v0, p0
 
-    invoke-static {p3, v0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->readUnsignedInt(Ljava/io/InputStream;[B)I
+    iget-object v15, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->buffer:[B
 
-    .line 94
-    invoke-virtual {p0, p3}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->setInputStream(Ljava/io/InputStream;)V
+    move-object/from16 v0, p3
+
+    invoke-static {v0, v15}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->readUnsignedInt(Ljava/io/InputStream;[B)I
+
+    .line 87
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p3
+
+    invoke-virtual {v0, v1}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->setInputStream(Ljava/io/InputStream;)V
+
+    .line 89
+    move-object/from16 v0, p1
+
+    move-object/from16 v1, p0
+
+    iput-object v0, v1, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
+
+    .line 90
+    move-object/from16 v0, p2
+
+    move-object/from16 v1, p0
+
+    iput-object v0, v1, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mMapDataSink:Lorg/oscim/tiling/ITileDataSink;
+
+    .line 92
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTileTags:Lorg/oscim/core/TagSet;
+
+    invoke-virtual {v15}, Lorg/oscim/core/TagSet;->clearAndNullTags()V
+
+    .line 95
+    const/4 v9, 0x0
 
     .line 96
-    iput-object p1, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
+    .local v9, "numTags":I
+    const/4 v8, -0x1
 
     .line 97
-    iput-object p2, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mMapDataSink:Lorg/oscim/tiling/ITileDataSink;
+    .local v8, "numKeys":I
+    const/4 v10, -0x1
 
     .line 99
-    iget-object p1, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTileTags:Lorg/oscim/core/TagSet;
+    .local v10, "numValues":I
+    const/4 v2, 0x0
 
-    invoke-virtual {p1}, Lorg/oscim/core/TagSet;->clearAndNullTags()V
+    .line 100
+    .local v2, "curKey":I
+    const/4 v4, 0x0
 
-    const/4 p1, 0x0
+    .line 102
+    .local v4, "curValue":I
+    const/4 v6, 0x0
 
-    const/4 p2, -0x1
+    .line 103
+    .local v6, "keys":[Ljava/lang/String;
+    const/4 v13, 0x0
 
-    const/4 p3, 0x0
-
-    move v2, p2
-
-    move v4, v2
-
-    move v0, p3
-
-    move v1, v0
-
-    move v3, v1
-
-    move-object p2, p1
-
-    .line 112
+    .line 105
+    .local v13, "values":[Ljava/lang/String;
     :cond_0
     :goto_0
-    invoke-virtual {p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->hasData()Z
+    invoke-virtual/range {p0 .. p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->hasData()Z
 
-    move-result v5
+    move-result v15
 
-    const/4 v6, 0x1
+    if-eqz v15, :cond_7
 
-    if-eqz v5, :cond_8
+    invoke-virtual/range {p0 .. p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
 
-    invoke-virtual {p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
+    move-result v12
 
-    move-result v5
+    .local v12, "val":I
+    if-lez v12, :cond_7
 
-    if-lez v5, :cond_8
+    .line 107
+    shr-int/lit8 v11, v12, 0x3
 
-    shr-int/lit8 v5, v5, 0x3
+    .line 110
+    .local v11, "tag":I
+    packed-switch v11, :pswitch_data_0
 
-    if-eq v5, v6, :cond_6
-
-    packed-switch v5, :pswitch_data_0
-
-    packed-switch v5, :pswitch_data_1
-
-    .line 182
-    sget-object p1, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
-
-    const-string p2, "{} invalid type for tile:{}"
-
-    iget-object v0, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
-
-    .line 183
-    invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v1
-
-    .line 182
-    invoke-interface {p1, p2, v0, v1}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
-
-    return p3
-
-    .line 122
+    .line 175
     :pswitch_0
-    invoke-direct {p0, v5}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeTileElement(I)Z
+    sget-object v15, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
+
+    const-string v16, "{} invalid type for tile:{}"
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
+
+    move-object/from16 v17, v0
+
+    .line 176
+    invoke-static {v11}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v18
+
+    .line 175
+    invoke-interface/range {v15 .. v18}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 177
+    const/4 v15, 0x0
+
+    .line 181
+    .end local v11    # "tag":I
+    .end local v12    # "val":I
+    :goto_1
+    return v15
+
+    .line 115
+    .restart local v11    # "tag":I
+    .restart local v12    # "val":I
+    :pswitch_1
+    move-object/from16 v0, p0
+
+    invoke-direct {v0, v11}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeTileElement(I)Z
 
     goto :goto_0
 
-    :pswitch_1
-    mul-int/lit8 v5, v0, 0x2
-
-    .line 162
-    iget-object v6, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mSArray:[I
-
-    array-length v6, v6
-
-    if-ge v6, v5, :cond_1
-
-    .line 163
-    new-array v6, v5, [I
-
-    iput-object v6, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mSArray:[I
-
-    .line 165
-    :cond_1
-    iget-object v6, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mSArray:[I
-
-    invoke-virtual {p0, v5, v6}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarintArray(I[I)V
-
-    .line 166
-    iget-object v5, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mSArray:[I
-
-    invoke-direct {p0, v0, v5, p1, p2}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeTileTags(I[I[Ljava/lang/String;[Ljava/lang/String;)Z
-
-    move-result v5
-
-    if-nez v5, :cond_0
-
-    .line 167
-    sget-object p1, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
-
-    const-string p2, "{} invalid tags"
-
-    iget-object v0, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
-
-    invoke-interface {p1, p2, v0}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;)V
-
-    return p3
-
+    .line 119
     :pswitch_2
-    if-eqz p2, :cond_3
+    if-eqz v6, :cond_1
 
-    if-lt v3, v4, :cond_2
+    if-lt v2, v8, :cond_2
+
+    .line 120
+    :cond_1
+    sget-object v15, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
+
+    const-string v16, "{} wrong number of keys {}"
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
+
+    move-object/from16 v17, v0
+
+    .line 121
+    invoke-static {v8}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v18
+
+    .line 120
+    invoke-interface/range {v15 .. v18}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 122
+    const/4 v15, 0x0
 
     goto :goto_1
 
+    .line 124
     :cond_2
-    add-int/lit8 v5, v3, 0x1
+    add-int/lit8 v3, v2, 0x1
 
-    .line 140
-    invoke-virtual {p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeString()Ljava/lang/String;
+    .end local v2    # "curKey":I
+    .local v3, "curKey":I
+    invoke-virtual/range {p0 .. p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeString()Ljava/lang/String;
 
-    move-result-object v6
+    move-result-object v15
 
-    aput-object v6, p2, v3
+    invoke-virtual {v15}, Ljava/lang/String;->intern()Ljava/lang/String;
 
-    move v3, v5
+    move-result-object v15
 
+    aput-object v15, v6, v2
+
+    move v2, v3
+
+    .line 125
+    .end local v3    # "curKey":I
+    .restart local v2    # "curKey":I
     goto :goto_0
-
-    .line 136
-    :cond_3
-    :goto_1
-    sget-object p1, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
-
-    const-string p2, "{} wrong number of values {}"
-
-    iget-object v0, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
-
-    .line 137
-    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v1
-
-    .line 136
-    invoke-interface {p1, p2, v0, v1}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
-
-    return p3
-
-    :pswitch_3
-    if-eqz p1, :cond_5
-
-    if-lt v1, v2, :cond_4
-
-    goto :goto_2
-
-    :cond_4
-    add-int/lit8 v5, v1, 0x1
-
-    .line 131
-    invoke-virtual {p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeString()Ljava/lang/String;
-
-    move-result-object v6
-
-    invoke-virtual {v6}, Ljava/lang/String;->intern()Ljava/lang/String;
-
-    move-result-object v6
-
-    aput-object v6, p1, v1
-
-    move v1, v5
-
-    goto :goto_0
-
-    .line 127
-    :cond_5
-    :goto_2
-    sget-object p1, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
-
-    const-string p2, "{} wrong number of keys {}"
-
-    iget-object v0, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
 
     .line 128
-    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    :pswitch_3
+    if-eqz v13, :cond_3
 
-    move-result-object v1
+    if-lt v4, v10, :cond_4
 
-    .line 127
-    invoke-interface {p1, p2, v0, v1}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+    .line 129
+    :cond_3
+    sget-object v15, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
 
-    return p3
+    const-string v16, "{} wrong number of values {}"
 
-    .line 155
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
+
+    move-object/from16 v17, v0
+
+    .line 130
+    invoke-static {v10}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v18
+
+    .line 129
+    invoke-interface/range {v15 .. v18}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 131
+    const/4 v15, 0x0
+
+    goto :goto_1
+
+    .line 133
+    :cond_4
+    add-int/lit8 v5, v4, 0x1
+
+    .end local v4    # "curValue":I
+    .local v5, "curValue":I
+    invoke-virtual/range {p0 .. p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeString()Ljava/lang/String;
+
+    move-result-object v15
+
+    aput-object v15, v13, v4
+
+    move v4, v5
+
+    .line 134
+    .end local v5    # "curValue":I
+    .restart local v4    # "curValue":I
+    goto :goto_0
+
+    .line 137
     :pswitch_4
-    invoke-virtual {p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
+    invoke-virtual/range {p0 .. p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
 
-    move-result p2
+    move-result v9
 
-    .line 157
-    new-array v4, p2, [Ljava/lang/String;
+    .line 139
+    goto :goto_0
 
-    move-object v8, v4
-
-    move v4, p2
-
-    move-object p2, v8
-
-    goto/16 :goto_0
-
-    .line 149
+    .line 142
     :pswitch_5
-    invoke-virtual {p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
+    invoke-virtual/range {p0 .. p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
 
-    move-result p1
-
-    .line 151
-    new-array v2, p1, [Ljava/lang/String;
-
-    move-object v8, v2
-
-    move v2, p1
-
-    move-object p1, v8
-
-    goto/16 :goto_0
+    move-result v8
 
     .line 144
+    new-array v6, v8, [Ljava/lang/String;
+
+    .line 145
+    goto :goto_0
+
+    .line 148
     :pswitch_6
-    invoke-virtual {p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
+    invoke-virtual/range {p0 .. p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
 
-    move-result v0
+    move-result v10
 
+    .line 150
+    new-array v13, v10, [Ljava/lang/String;
+
+    .line 151
     goto/16 :goto_0
 
-    .line 173
+    .line 154
+    :pswitch_7
+    mul-int/lit8 v7, v9, 0x2
+
+    .line 155
+    .local v7, "len":I
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mSArray:[I
+
+    array-length v15, v15
+
+    if-ge v15, v7, :cond_5
+
+    .line 156
+    new-array v15, v7, [I
+
+    move-object/from16 v0, p0
+
+    iput-object v15, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mSArray:[I
+
+    .line 158
+    :cond_5
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mSArray:[I
+
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v7, v15}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarintArray(I[I)V
+
+    .line 159
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mSArray:[I
+
+    move-object/from16 v0, p0
+
+    invoke-direct {v0, v9, v15, v6, v13}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeTileTags(I[I[Ljava/lang/String;[Ljava/lang/String;)Z
+
+    move-result v15
+
+    if-nez v15, :cond_0
+
+    .line 160
+    sget-object v15, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
+
+    const-string v16, "{} invalid tags"
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
+
+    move-object/from16 v17, v0
+
+    invoke-interface/range {v15 .. v17}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 161
+    const/4 v15, 0x0
+
+    goto/16 :goto_1
+
+    .line 166
+    .end local v7    # "len":I
+    :pswitch_8
+    invoke-virtual/range {p0 .. p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
+
+    move-result v14
+
+    .line 167
+    .local v14, "version":I
+    const/4 v15, 0x4
+
+    if-lt v14, v15, :cond_6
+
+    move-object/from16 v0, p0
+
+    iget v15, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mVersion:I
+
+    const/16 v16, 0x5
+
+    move/from16 v0, v16
+
+    if-le v15, v0, :cond_0
+
+    .line 168
     :cond_6
-    invoke-virtual {p0}, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->decodeVarint32()I
+    sget-object v15, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
 
-    move-result v5
+    const-string v16, "{} invalid version:{}"
 
-    const/4 v6, 0x4
+    move-object/from16 v0, p0
 
-    if-lt v5, v6, :cond_7
+    iget-object v0, v0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
 
-    .line 174
-    iget v6, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mVersion:I
+    move-object/from16 v17, v0
 
-    const/4 v7, 0x5
+    .line 169
+    invoke-static {v14}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    if-le v6, v7, :cond_0
+    move-result-object v18
 
-    .line 175
+    .line 168
+    invoke-interface/range {v15 .. v18}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 170
+    const/4 v15, 0x0
+
+    goto/16 :goto_1
+
+    .line 181
+    .end local v11    # "tag":I
+    .end local v12    # "val":I
+    .end local v14    # "version":I
     :cond_7
-    sget-object p1, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->log:Lorg/slf4j/Logger;
+    const/4 v15, 0x1
 
-    const-string p2, "{} invalid version:{}"
+    goto/16 :goto_1
 
-    iget-object v0, p0, Lorg/oscim/tiling/source/oscimap4/TileDecoder;->mTile:Lorg/oscim/core/Tile;
-
-    .line 176
-    invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v1
-
-    .line 175
-    invoke-interface {p1, p2, v0, v1}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
-
-    return p3
-
-    :cond_8
-    return v6
-
+    .line 110
     :pswitch_data_0
-    .packed-switch 0xb
-        :pswitch_6
-        :pswitch_5
+    .packed-switch 0x1
+        :pswitch_8
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
         :pswitch_4
-        :pswitch_3
+        :pswitch_5
+        :pswitch_6
         :pswitch_2
+        :pswitch_3
+        :pswitch_7
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
         :pswitch_1
-    .end packed-switch
-
-    :pswitch_data_1
-    .packed-switch 0x15
-        :pswitch_0
-        :pswitch_0
-        :pswitch_0
-        :pswitch_0
+        :pswitch_1
+        :pswitch_1
+        :pswitch_1
     .end packed-switch
 .end method

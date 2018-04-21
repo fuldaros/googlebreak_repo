@@ -25,7 +25,8 @@
 .method constructor <init>(Landroid/support/v7/widget/Toolbar;)V
     .locals 0
 
-    .line 1379
+    .prologue
+    .line 1050
     iput-object p1, p0, Landroid/support/v7/widget/Toolbar$3;->this$0:Landroid/support/v7/widget/Toolbar;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -36,12 +37,15 @@
 
 # virtual methods
 .method public onClick(Landroid/view/View;)V
-    .locals 0
+    .locals 1
+    .param p1, "v"    # Landroid/view/View;
 
-    .line 1382
-    iget-object p1, p0, Landroid/support/v7/widget/Toolbar$3;->this$0:Landroid/support/v7/widget/Toolbar;
+    .prologue
+    .line 1053
+    iget-object v0, p0, Landroid/support/v7/widget/Toolbar$3;->this$0:Landroid/support/v7/widget/Toolbar;
 
-    invoke-virtual {p1}, Landroid/support/v7/widget/Toolbar;->collapseActionView()V
+    invoke-virtual {v0}, Landroid/support/v7/widget/Toolbar;->collapseActionView()V
 
+    .line 1054
     return-void
 .end method

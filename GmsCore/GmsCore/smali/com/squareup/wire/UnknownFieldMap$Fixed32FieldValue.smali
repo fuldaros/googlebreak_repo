@@ -21,7 +21,10 @@
 # direct methods
 .method public constructor <init>(ILjava/lang/Integer;)V
     .locals 1
+    .param p1, "tag"    # I
+    .param p2, "value"    # Ljava/lang/Integer;
 
+    .prologue
     .line 115
     sget-object v0, Lcom/squareup/wire/WireType;->FIXED32:Lcom/squareup/wire/WireType;
 
@@ -30,6 +33,7 @@
     .line 116
     iput-object p2, p0, Lcom/squareup/wire/UnknownFieldMap$Fixed32FieldValue;->value:Ljava/lang/Integer;
 
+    .line 117
     return-void
 .end method
 
@@ -38,6 +42,8 @@
 .method public getSerializedSize()I
     .locals 1
 
+    .prologue
+    .line 120
     const/4 v0, 0x4
 
     return v0
@@ -45,25 +51,29 @@
 
 .method public write(ILcom/squareup/wire/WireOutput;)V
     .locals 1
+    .param p1, "tag"    # I
+    .param p2, "output"    # Lcom/squareup/wire/WireOutput;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
+    .prologue
     .line 124
     sget-object v0, Lcom/squareup/wire/WireType;->FIXED32:Lcom/squareup/wire/WireType;
 
     invoke-virtual {p2, p1, v0}, Lcom/squareup/wire/WireOutput;->writeTag(ILcom/squareup/wire/WireType;)V
 
     .line 125
-    iget-object p1, p0, Lcom/squareup/wire/UnknownFieldMap$Fixed32FieldValue;->value:Ljava/lang/Integer;
+    iget-object v0, p0, Lcom/squareup/wire/UnknownFieldMap$Fixed32FieldValue;->value:Ljava/lang/Integer;
 
-    invoke-virtual {p1}, Ljava/lang/Integer;->intValue()I
+    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
 
-    move-result p1
+    move-result v0
 
-    invoke-virtual {p2, p1}, Lcom/squareup/wire/WireOutput;->writeFixed32(I)V
+    invoke-virtual {p2, v0}, Lcom/squareup/wire/WireOutput;->writeFixed32(I)V
 
+    .line 126
     return-void
 .end method

@@ -29,7 +29,8 @@
             "(",
             "Ljava/lang/String;",
             "Lcom/google/android/gms/playlog/internal/PlayLoggerContext;",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Lcom/google/android/gms/playlog/internal/LogEvent;",
             ">;)V"
         }

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:id="@id/app_bar" android:background="@drawable/switchbar_background" android:clickable="true" android:layout_width="fill_parent" android:layout_height="?actionBarSize"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:gravity="end" android:id="@id/app_icon" android:layout_width="72.0dip" android:layout_height="40.0dip" android:layout_centerVertical="true" />
-    <TextView android:theme="@style/TextAppearance.AppCompat.Title.Inverse" android:textColor="?android:textColorPrimaryInverse" android:gravity="start" android:id="@id/app_name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="72.0dip" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_alignWithParentIfMissing="true" />
-</RelativeLayout>

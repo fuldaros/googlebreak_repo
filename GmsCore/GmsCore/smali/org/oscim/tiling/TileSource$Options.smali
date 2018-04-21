@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/util/HashMap<",
+        "Ljava/util/HashMap",
+        "<",
         "Ljava/lang/String;",
         "Ljava/lang/String;",
         ">;"
@@ -27,7 +28,8 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 139
+    .prologue
+    .line 109
     invoke-direct {p0}, Ljava/util/HashMap;-><init>()V
 
     return-void
@@ -36,39 +38,45 @@
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 2
+    .locals 3
+    .param p1, "other"    # Ljava/lang/Object;
 
-    .line 145
-    instance-of v0, p1, Lorg/oscim/tiling/TileSource$Options;
+    .prologue
+    const/4 v0, 0x0
 
-    const/4 v1, 0x0
+    .line 115
+    instance-of v1, p1, Lorg/oscim/tiling/TileSource$Options;
 
-    if-nez v0, :cond_0
+    if-nez v1, :cond_1
 
-    return v1
-
-    .line 152
+    .line 125
+    .end local p1    # "other":Ljava/lang/Object;
     :cond_0
+    :goto_0
+    return v0
+
+    .line 122
+    .restart local p1    # "other":Ljava/lang/Object;
+    :cond_1
     invoke-virtual {p0}, Lorg/oscim/tiling/TileSource$Options;->entrySet()Ljava/util/Set;
 
-    move-result-object v0
+    move-result-object v1
 
     check-cast p1, Lorg/oscim/tiling/TileSource$Options;
 
+    .end local p1    # "other":Ljava/lang/Object;
     invoke-virtual {p1}, Lorg/oscim/tiling/TileSource$Options;->entrySet()Ljava/util/Set;
 
-    move-result-object p1
+    move-result-object v2
 
-    invoke-interface {v0, p1}, Ljava/util/Set;->equals(Ljava/lang/Object;)Z
+    invoke-interface {v1, v2}, Ljava/util/Set;->equals(Ljava/lang/Object;)Z
 
-    move-result p1
+    move-result v1
 
-    if-nez p1, :cond_1
+    if-eqz v1, :cond_0
 
-    return v1
+    .line 125
+    const/4 v0, 0x1
 
-    :cond_1
-    const/4 p1, 0x1
-
-    return p1
+    goto :goto_0
 .end method

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/account_manager_title">
+        <CheckBoxPreference android:title="@string/pref_auth_trust_google_title" android:key="@string/pref_auth_trust_google" android:summary="@string/pref_auth_trust_google_summary" android:defaultValue="true" />
+    </PreferenceCategory>
+</PreferenceScreen>

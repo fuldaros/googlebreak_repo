@@ -24,7 +24,9 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/auth/AskPermissionActivity;)V
     .locals 0
+    .param p1, "this$0"    # Lorg/microg/gms/auth/AskPermissionActivity;
 
+    .prologue
     .line 162
     iput-object p1, p0, Lorg/microg/gms/auth/AskPermissionActivity$4;->this$0:Lorg/microg/gms/auth/AskPermissionActivity;
 
@@ -36,104 +38,112 @@
 
 # virtual methods
 .method public run()V
-    .locals 3
+    .locals 5
 
+    .prologue
     .line 166
     :try_start_0
-    iget-object v0, p0, Lorg/microg/gms/auth/AskPermissionActivity$4;->this$0:Lorg/microg/gms/auth/AskPermissionActivity;
+    iget-object v3, p0, Lorg/microg/gms/auth/AskPermissionActivity$4;->this$0:Lorg/microg/gms/auth/AskPermissionActivity;
 
-    invoke-static {v0}, Lorg/microg/gms/auth/AskPermissionActivity;->access$300(Lorg/microg/gms/auth/AskPermissionActivity;)Lorg/microg/gms/auth/AuthManager;
+    invoke-static {v3}, Lorg/microg/gms/auth/AskPermissionActivity;->access$300(Lorg/microg/gms/auth/AskPermissionActivity;)Lorg/microg/gms/auth/AuthManager;
 
-    move-result-object v0
+    move-result-object v3
 
-    iget-object v1, p0, Lorg/microg/gms/auth/AskPermissionActivity$4;->this$0:Lorg/microg/gms/auth/AskPermissionActivity;
+    iget-object v4, p0, Lorg/microg/gms/auth/AskPermissionActivity$4;->this$0:Lorg/microg/gms/auth/AskPermissionActivity;
 
-    invoke-static {v1}, Lorg/microg/gms/auth/AskPermissionActivity;->access$200(Lorg/microg/gms/auth/AskPermissionActivity;)Z
+    invoke-static {v4}, Lorg/microg/gms/auth/AskPermissionActivity;->access$200(Lorg/microg/gms/auth/AskPermissionActivity;)Z
 
-    move-result v1
+    move-result v4
 
-    invoke-virtual {v0, v1}, Lorg/microg/gms/auth/AuthManager;->requestAuth(Z)Lorg/microg/gms/auth/AuthResponse;
+    invoke-virtual {v3, v4}, Lorg/microg/gms/auth/AuthManager;->requestAuth(Z)Lorg/microg/gms/auth/AuthResponse;
 
-    move-result-object v0
+    move-result-object v1
 
     .line 167
-    new-instance v1, Landroid/os/Bundle;
+    .local v1, "response":Lorg/microg/gms/auth/AuthResponse;
+    new-instance v2, Landroid/os/Bundle;
 
-    invoke-direct {v1}, Landroid/os/Bundle;-><init>()V
-
-    const-string v2, "authtoken"
+    invoke-direct {v2}, Landroid/os/Bundle;-><init>()V
 
     .line 168
-    iget-object v0, v0, Lorg/microg/gms/auth/AuthResponse;->auth:Ljava/lang/String;
+    .local v2, "result":Landroid/os/Bundle;
+    const-string v3, "authtoken"
 
-    invoke-virtual {v1, v2, v0}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+    iget-object v4, v1, Lorg/microg/gms/auth/AuthResponse;->auth:Ljava/lang/String;
 
-    const-string v0, "authAccount"
+    invoke-virtual {v2, v3, v4}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 169
-    iget-object v2, p0, Lorg/microg/gms/auth/AskPermissionActivity$4;->this$0:Lorg/microg/gms/auth/AskPermissionActivity;
+    const-string v3, "authAccount"
 
-    invoke-static {v2}, Lorg/microg/gms/auth/AskPermissionActivity;->access$000(Lorg/microg/gms/auth/AskPermissionActivity;)Landroid/accounts/Account;
+    iget-object v4, p0, Lorg/microg/gms/auth/AskPermissionActivity$4;->this$0:Lorg/microg/gms/auth/AskPermissionActivity;
 
-    move-result-object v2
+    invoke-static {v4}, Lorg/microg/gms/auth/AskPermissionActivity;->access$000(Lorg/microg/gms/auth/AskPermissionActivity;)Landroid/accounts/Account;
 
-    iget-object v2, v2, Landroid/accounts/Account;->name:Ljava/lang/String;
+    move-result-object v4
 
-    invoke-virtual {v1, v0, v2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+    iget-object v4, v4, Landroid/accounts/Account;->name:Ljava/lang/String;
 
-    const-string v0, "accountType"
+    invoke-virtual {v2, v3, v4}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 170
-    iget-object v2, p0, Lorg/microg/gms/auth/AskPermissionActivity$4;->this$0:Lorg/microg/gms/auth/AskPermissionActivity;
+    const-string v3, "accountType"
 
-    invoke-static {v2}, Lorg/microg/gms/auth/AskPermissionActivity;->access$000(Lorg/microg/gms/auth/AskPermissionActivity;)Landroid/accounts/Account;
+    iget-object v4, p0, Lorg/microg/gms/auth/AskPermissionActivity$4;->this$0:Lorg/microg/gms/auth/AskPermissionActivity;
 
-    move-result-object v2
+    invoke-static {v4}, Lorg/microg/gms/auth/AskPermissionActivity;->access$000(Lorg/microg/gms/auth/AskPermissionActivity;)Landroid/accounts/Account;
 
-    iget-object v2, v2, Landroid/accounts/Account;->type:Ljava/lang/String;
+    move-result-object v4
 
-    invoke-virtual {v1, v0, v2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+    iget-object v4, v4, Landroid/accounts/Account;->type:Ljava/lang/String;
 
-    const-string v0, "androidPackageName"
+    invoke-virtual {v2, v3, v4}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 171
-    iget-object v2, p0, Lorg/microg/gms/auth/AskPermissionActivity$4;->this$0:Lorg/microg/gms/auth/AskPermissionActivity;
+    const-string v3, "androidPackageName"
 
-    invoke-static {v2}, Lorg/microg/gms/auth/AskPermissionActivity;->access$400(Lorg/microg/gms/auth/AskPermissionActivity;)Ljava/lang/String;
+    iget-object v4, p0, Lorg/microg/gms/auth/AskPermissionActivity$4;->this$0:Lorg/microg/gms/auth/AskPermissionActivity;
 
-    move-result-object v2
+    invoke-static {v4}, Lorg/microg/gms/auth/AskPermissionActivity;->access$400(Lorg/microg/gms/auth/AskPermissionActivity;)Ljava/lang/String;
 
-    invoke-virtual {v1, v0, v2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+    move-result-object v4
 
-    const-string v0, "booleanResult"
-
-    const/4 v2, 0x1
+    invoke-virtual {v2, v3, v4}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 172
-    invoke-virtual {v1, v0, v2}, Landroid/os/Bundle;->putBoolean(Ljava/lang/String;Z)V
+    const-string v3, "booleanResult"
+
+    const/4 v4, 0x1
+
+    invoke-virtual {v2, v3, v4}, Landroid/os/Bundle;->putBoolean(Ljava/lang/String;Z)V
 
     .line 173
-    iget-object v0, p0, Lorg/microg/gms/auth/AskPermissionActivity$4;->this$0:Lorg/microg/gms/auth/AskPermissionActivity;
+    iget-object v3, p0, Lorg/microg/gms/auth/AskPermissionActivity$4;->this$0:Lorg/microg/gms/auth/AskPermissionActivity;
 
-    invoke-virtual {v0, v1}, Lorg/microg/gms/auth/AskPermissionActivity;->setAccountAuthenticatorResult(Landroid/os/Bundle;)V
+    invoke-virtual {v3, v2}, Lorg/microg/gms/auth/AskPermissionActivity;->setAccountAuthenticatorResult(Landroid/os/Bundle;)V
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
-    goto :goto_0
+    .line 177
+    .end local v1    # "response":Lorg/microg/gms/auth/AuthResponse;
+    .end local v2    # "result":Landroid/os/Bundle;
+    :goto_0
+    iget-object v3, p0, Lorg/microg/gms/auth/AskPermissionActivity$4;->this$0:Lorg/microg/gms/auth/AskPermissionActivity;
 
+    invoke-virtual {v3}, Lorg/microg/gms/auth/AskPermissionActivity;->finish()V
+
+    .line 179
+    return-void
+
+    .line 174
     :catch_0
     move-exception v0
 
-    const-string v1, "GmsAuthAskPermission"
-
     .line 175
-    invoke-static {v1, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
+    .local v0, "e":Ljava/io/IOException;
+    const-string v3, "GmsAuthAskPermission"
 
-    .line 177
-    :goto_0
-    iget-object v0, p0, Lorg/microg/gms/auth/AskPermissionActivity$4;->this$0:Lorg/microg/gms/auth/AskPermissionActivity;
+    invoke-static {v3, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    invoke-virtual {v0}, Lorg/microg/gms/auth/AskPermissionActivity;->finish()V
-
-    return-void
+    goto :goto_0
 .end method

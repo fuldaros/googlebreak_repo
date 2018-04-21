@@ -6,7 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lorg/oscim/utils/pool/Inlist<",
+        "Lorg/oscim/utils/pool/Inlist",
+        "<",
         "Lorg/oscim/renderer/bucket/RenderBucket;",
         ">;"
     }
@@ -30,7 +31,7 @@
 
 .field final quads:Z
 
-.field public final type:B
+.field public final type:I
 
 .field protected final vertexItems:Lorg/oscim/renderer/bucket/VertexData;
 
@@ -41,7 +42,8 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .line 56
+    .prologue
+    .line 48
     new-instance v0, Lorg/oscim/renderer/bucket/VertexData;
 
     invoke-direct {v0}, Lorg/oscim/renderer/bucket/VertexData;-><init>()V
@@ -51,94 +53,109 @@
     return-void
 .end method
 
-.method protected constructor <init>(BZZ)V
-    .locals 0
+.method protected constructor <init>(IZZ)V
+    .locals 1
+    .param p1, "type"    # I
+    .param p2, "indexed"    # Z
+    .param p3, "quads"    # Z
 
-    .line 59
+    .prologue
+    .line 51
     invoke-direct {p0}, Lorg/oscim/utils/pool/Inlist;-><init>()V
 
-    .line 60
-    iput-byte p1, p0, Lorg/oscim/renderer/bucket/RenderBucket;->type:B
+    .line 52
+    iput p1, p0, Lorg/oscim/renderer/bucket/RenderBucket;->type:I
 
-    .line 61
-    new-instance p1, Lorg/oscim/renderer/bucket/VertexData;
+    .line 53
+    new-instance v0, Lorg/oscim/renderer/bucket/VertexData;
 
-    invoke-direct {p1}, Lorg/oscim/renderer/bucket/VertexData;-><init>()V
+    invoke-direct {v0}, Lorg/oscim/renderer/bucket/VertexData;-><init>()V
 
-    iput-object p1, p0, Lorg/oscim/renderer/bucket/RenderBucket;->vertexItems:Lorg/oscim/renderer/bucket/VertexData;
+    iput-object v0, p0, Lorg/oscim/renderer/bucket/RenderBucket;->vertexItems:Lorg/oscim/renderer/bucket/VertexData;
 
+    .line 54
     if-eqz p2, :cond_0
 
-    .line 63
-    new-instance p1, Lorg/oscim/renderer/bucket/VertexData;
+    .line 55
+    new-instance v0, Lorg/oscim/renderer/bucket/VertexData;
 
-    invoke-direct {p1}, Lorg/oscim/renderer/bucket/VertexData;-><init>()V
+    invoke-direct {v0}, Lorg/oscim/renderer/bucket/VertexData;-><init>()V
 
-    iput-object p1, p0, Lorg/oscim/renderer/bucket/RenderBucket;->indiceItems:Lorg/oscim/renderer/bucket/VertexData;
+    iput-object v0, p0, Lorg/oscim/renderer/bucket/RenderBucket;->indiceItems:Lorg/oscim/renderer/bucket/VertexData;
 
-    goto :goto_0
-
-    .line 65
-    :cond_0
-    sget-object p1, Lorg/oscim/renderer/bucket/RenderBucket;->EMPTY:Lorg/oscim/renderer/bucket/VertexData;
-
-    iput-object p1, p0, Lorg/oscim/renderer/bucket/RenderBucket;->indiceItems:Lorg/oscim/renderer/bucket/VertexData;
-
-    .line 67
+    .line 59
     :goto_0
     iput-boolean p3, p0, Lorg/oscim/renderer/bucket/RenderBucket;->quads:Z
 
+    .line 60
     return-void
+
+    .line 57
+    :cond_0
+    sget-object v0, Lorg/oscim/renderer/bucket/RenderBucket;->EMPTY:Lorg/oscim/renderer/bucket/VertexData;
+
+    iput-object v0, p0, Lorg/oscim/renderer/bucket/RenderBucket;->indiceItems:Lorg/oscim/renderer/bucket/VertexData;
+
+    goto :goto_0
 .end method
 
 
 # virtual methods
 .method protected clear()V
-    .locals 1
+    .locals 2
 
-    .line 74
+    .prologue
+    const/4 v1, 0x0
+
+    .line 64
     iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBucket;->vertexItems:Lorg/oscim/renderer/bucket/VertexData;
 
     invoke-virtual {v0}, Lorg/oscim/renderer/bucket/VertexData;->dispose()V
 
-    .line 75
+    .line 65
     iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBucket;->indiceItems:Lorg/oscim/renderer/bucket/VertexData;
 
     invoke-virtual {v0}, Lorg/oscim/renderer/bucket/VertexData;->dispose()V
 
-    const/4 v0, 0x0
+    .line 66
+    iput v1, p0, Lorg/oscim/renderer/bucket/RenderBucket;->numVertices:I
 
-    .line 76
-    iput v0, p0, Lorg/oscim/renderer/bucket/RenderBucket;->numVertices:I
+    .line 67
+    iput v1, p0, Lorg/oscim/renderer/bucket/RenderBucket;->numIndices:I
 
-    .line 77
-    iput v0, p0, Lorg/oscim/renderer/bucket/RenderBucket;->numIndices:I
-
+    .line 68
     return-void
 .end method
 
 .method protected compile(Ljava/nio/ShortBuffer;Ljava/nio/ShortBuffer;)V
     .locals 0
+    .param p1, "vboData"    # Ljava/nio/ShortBuffer;
+    .param p2, "iboData"    # Ljava/nio/ShortBuffer;
 
-    .line 118
+    .prologue
+    .line 104
     invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/RenderBucket;->compileVertexItems(Ljava/nio/ShortBuffer;)V
 
+    .line 105
     if-eqz p2, :cond_0
 
-    .line 120
-    invoke-virtual {p0, p2}, Lorg/oscim/renderer/bucket/RenderBucket;->compileIndicesItems(Ljava/nio/ShortBuffer;)V
+    .line 106
+    invoke-virtual {p0, p2}, Lorg/oscim/renderer/bucket/RenderBucket;->compileIndiceItems(Ljava/nio/ShortBuffer;)V
 
+    .line 107
     :cond_0
     return-void
 .end method
 
-.method protected compileIndicesItems(Ljava/nio/ShortBuffer;)V
+.method protected compileIndiceItems(Ljava/nio/ShortBuffer;)V
     .locals 1
+    .param p1, "iboData"    # Ljava/nio/ShortBuffer;
 
-    .line 131
+    .prologue
+    .line 117
     iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBucket;->indiceItems:Lorg/oscim/renderer/bucket/VertexData;
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_0
 
     iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBucket;->indiceItems:Lorg/oscim/renderer/bucket/VertexData;
 
@@ -146,12 +163,15 @@
 
     move-result v0
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_1
 
-    goto :goto_0
-
-    .line 134
+    .line 122
     :cond_0
+    :goto_0
+    return-void
+
+    .line 120
+    :cond_1
     invoke-virtual {p1}, Ljava/nio/ShortBuffer;->position()I
 
     move-result v0
@@ -160,22 +180,20 @@
 
     iput v0, p0, Lorg/oscim/renderer/bucket/RenderBucket;->indiceOffset:I
 
-    .line 135
+    .line 121
     iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBucket;->indiceItems:Lorg/oscim/renderer/bucket/VertexData;
 
     invoke-virtual {v0, p1}, Lorg/oscim/renderer/bucket/VertexData;->compile(Ljava/nio/ShortBuffer;)I
 
-    return-void
-
-    :cond_1
-    :goto_0
-    return-void
+    goto :goto_0
 .end method
 
 .method protected compileVertexItems(Ljava/nio/ShortBuffer;)V
     .locals 1
+    .param p1, "vboData"    # Ljava/nio/ShortBuffer;
 
-    .line 125
+    .prologue
+    .line 111
     invoke-virtual {p1}, Ljava/nio/ShortBuffer;->position()I
 
     move-result v0
@@ -184,18 +202,20 @@
 
     iput v0, p0, Lorg/oscim/renderer/bucket/RenderBucket;->vertexOffset:I
 
-    .line 126
+    .line 112
     iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBucket;->vertexItems:Lorg/oscim/renderer/bucket/VertexData;
 
     invoke-virtual {v0, p1}, Lorg/oscim/renderer/bucket/VertexData;->compile(Ljava/nio/ShortBuffer;)I
 
+    .line 113
     return-void
 .end method
 
 .method public getVertexOffset()I
     .locals 1
 
-    .line 95
+    .prologue
+    .line 85
     iget v0, p0, Lorg/oscim/renderer/bucket/RenderBucket;->vertexOffset:I
 
     return v0
@@ -204,5 +224,7 @@
 .method protected prepare()V
     .locals 0
 
+    .prologue
+    .line 76
     return-void
 .end method

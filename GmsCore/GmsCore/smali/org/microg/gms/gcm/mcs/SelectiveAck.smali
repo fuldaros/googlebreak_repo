@@ -15,7 +15,8 @@
 .field public static final DEFAULT_ID:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -33,7 +34,8 @@
 
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -45,6 +47,7 @@
 .method static constructor <clinit>()V
     .locals 1
 
+    .prologue
     .line 18
     invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;
 
@@ -56,32 +59,38 @@
 .end method
 
 .method public constructor <init>(Ljava/util/List;)V
-    .locals 0
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;)V"
         }
     .end annotation
 
+    .prologue
     .line 23
+    .local p1, "id":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     invoke-direct {p0}, Lcom/squareup/wire/Message;-><init>()V
 
     .line 24
     invoke-static {p1}, Lorg/microg/gms/gcm/mcs/SelectiveAck;->immutableCopyOf(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object p1
+    move-result-object v0
 
-    iput-object p1, p0, Lorg/microg/gms/gcm/mcs/SelectiveAck;->id:Ljava/util/List;
+    iput-object v0, p0, Lorg/microg/gms/gcm/mcs/SelectiveAck;->id:Ljava/util/List;
 
+    .line 25
     return-void
 .end method
 
 .method private constructor <init>(Lorg/microg/gms/gcm/mcs/SelectiveAck$Builder;)V
     .locals 1
+    .param p1, "builder"    # Lorg/microg/gms/gcm/mcs/SelectiveAck$Builder;
 
+    .prologue
     .line 28
     iget-object v0, p1, Lorg/microg/gms/gcm/mcs/SelectiveAck$Builder;->id:Ljava/util/List;
 
@@ -90,12 +99,16 @@
     .line 29
     invoke-virtual {p0, p1}, Lorg/microg/gms/gcm/mcs/SelectiveAck;->setBuilder(Lcom/squareup/wire/Message$Builder;)V
 
+    .line 30
     return-void
 .end method
 
 .method synthetic constructor <init>(Lorg/microg/gms/gcm/mcs/SelectiveAck$Builder;Lorg/microg/gms/gcm/mcs/SelectiveAck$1;)V
     .locals 0
+    .param p1, "x0"    # Lorg/microg/gms/gcm/mcs/SelectiveAck$Builder;
+    .param p2, "x1"    # Lorg/microg/gms/gcm/mcs/SelectiveAck$1;
 
+    .prologue
     .line 16
     invoke-direct {p0, p1}, Lorg/microg/gms/gcm/mcs/SelectiveAck;-><init>(Lorg/microg/gms/gcm/mcs/SelectiveAck$Builder;)V
 
@@ -103,36 +116,45 @@
 .end method
 
 .method static synthetic access$000(Ljava/util/List;)Ljava/util/List;
-    .locals 0
+    .locals 1
+    .param p0, "x0"    # Ljava/util/List;
 
+    .prologue
     .line 16
     invoke-static {p0}, Lorg/microg/gms/gcm/mcs/SelectiveAck;->copyOf(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object p0
+    move-result-object v0
 
-    return-object p0
+    return-object v0
 .end method
 
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 1
+    .locals 2
+    .param p1, "other"    # Ljava/lang/Object;
 
+    .prologue
+    .line 34
     if-ne p1, p0, :cond_0
 
-    const/4 p1, 0x1
+    const/4 v0, 0x1
 
-    return p1
+    .line 36
+    .end local p1    # "other":Ljava/lang/Object;
+    :goto_0
+    return v0
 
     .line 35
+    .restart local p1    # "other":Ljava/lang/Object;
     :cond_0
     instance-of v0, p1, Lorg/microg/gms/gcm/mcs/SelectiveAck;
 
     if-nez v0, :cond_1
 
-    const/4 p1, 0x0
+    const/4 v0, 0x0
 
-    return p1
+    goto :goto_0
 
     .line 36
     :cond_1
@@ -140,45 +162,52 @@
 
     check-cast p1, Lorg/microg/gms/gcm/mcs/SelectiveAck;
 
-    iget-object p1, p1, Lorg/microg/gms/gcm/mcs/SelectiveAck;->id:Ljava/util/List;
+    .end local p1    # "other":Ljava/lang/Object;
+    iget-object v1, p1, Lorg/microg/gms/gcm/mcs/SelectiveAck;->id:Ljava/util/List;
 
-    invoke-virtual {p0, v0, p1}, Lorg/microg/gms/gcm/mcs/SelectiveAck;->equals(Ljava/util/List;Ljava/util/List;)Z
-
-    move-result p1
-
-    return p1
-.end method
-
-.method public hashCode()I
-    .locals 1
-
-    .line 41
-    iget v0, p0, Lorg/microg/gms/gcm/mcs/SelectiveAck;->hashCode:I
-
-    if-eqz v0, :cond_0
-
-    goto :goto_1
-
-    .line 42
-    :cond_0
-    iget-object v0, p0, Lorg/microg/gms/gcm/mcs/SelectiveAck;->id:Ljava/util/List;
-
-    if-eqz v0, :cond_1
-
-    iget-object v0, p0, Lorg/microg/gms/gcm/mcs/SelectiveAck;->id:Ljava/util/List;
-
-    invoke-interface {v0}, Ljava/util/List;->hashCode()I
+    invoke-virtual {p0, v0, v1}, Lorg/microg/gms/gcm/mcs/SelectiveAck;->equals(Ljava/util/List;Ljava/util/List;)Z
 
     move-result v0
 
     goto :goto_0
+.end method
 
-    :cond_1
-    const/4 v0, 0x1
+.method public hashCode()I
+    .locals 2
 
+    .prologue
+    .line 41
+    iget v0, p0, Lorg/microg/gms/gcm/mcs/SelectiveAck;->hashCode:I
+
+    .line 42
+    .local v0, "result":I
+    if-eqz v0, :cond_0
+
+    .end local v0    # "result":I
     :goto_0
-    iput v0, p0, Lorg/microg/gms/gcm/mcs/SelectiveAck;->hashCode:I
+    return v0
+
+    .restart local v0    # "result":I
+    :cond_0
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/SelectiveAck;->id:Ljava/util/List;
+
+    if-eqz v1, :cond_1
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/SelectiveAck;->id:Ljava/util/List;
+
+    invoke-interface {v1}, Ljava/util/List;->hashCode()I
+
+    move-result v1
 
     :goto_1
-    return v0
+    iput v1, p0, Lorg/microg/gms/gcm/mcs/SelectiveAck;->hashCode:I
+
+    move v0, v1
+
+    goto :goto_0
+
+    :cond_1
+    const/4 v1, 0x1
+
+    goto :goto_1
 .end method

@@ -21,78 +21,123 @@
 # direct methods
 .method public constructor <init>(Landroid/support/v7/app/ToolbarActionBar;Landroid/view/Window$Callback;)V
     .locals 0
+    .param p2, "wrapped"    # Landroid/view/Window$Callback;
 
-    .line 515
+    .prologue
+    .line 561
     iput-object p1, p0, Landroid/support/v7/app/ToolbarActionBar$ToolbarCallbackWrapper;->this$0:Landroid/support/v7/app/ToolbarActionBar;
 
-    .line 516
+    .line 562
     invoke-direct {p0, p2}, Landroid/support/v7/view/WindowCallbackWrapper;-><init>(Landroid/view/Window$Callback;)V
 
+    .line 563
     return-void
 .end method
 
 
 # virtual methods
 .method public onCreatePanelView(I)Landroid/view/View;
-    .locals 1
+    .locals 2
+    .param p1, "featureId"    # I
 
-    if-nez p1, :cond_0
+    .prologue
+    .line 577
+    packed-switch p1, :pswitch_data_0
 
-    .line 535
-    new-instance p1, Landroid/view/View;
-
-    iget-object v0, p0, Landroid/support/v7/app/ToolbarActionBar$ToolbarCallbackWrapper;->this$0:Landroid/support/v7/app/ToolbarActionBar;
-
-    iget-object v0, v0, Landroid/support/v7/app/ToolbarActionBar;->mDecorToolbar:Landroid/support/v7/widget/DecorToolbar;
-
-    invoke-interface {v0}, Landroid/support/v7/widget/DecorToolbar;->getContext()Landroid/content/Context;
-
-    move-result-object v0
-
-    invoke-direct {p1, v0}, Landroid/view/View;-><init>(Landroid/content/Context;)V
-
-    return-object p1
-
-    .line 537
+    .line 585
     :cond_0
     invoke-super {p0, p1}, Landroid/support/v7/view/WindowCallbackWrapper;->onCreatePanelView(I)Landroid/view/View;
 
-    move-result-object p1
+    move-result-object v1
 
-    return-object p1
+    :goto_0
+    return-object v1
+
+    .line 579
+    :pswitch_0
+    iget-object v1, p0, Landroid/support/v7/app/ToolbarActionBar$ToolbarCallbackWrapper;->this$0:Landroid/support/v7/app/ToolbarActionBar;
+
+    invoke-static {v1}, Landroid/support/v7/app/ToolbarActionBar;->access$300(Landroid/support/v7/app/ToolbarActionBar;)Landroid/support/v7/widget/DecorToolbar;
+
+    move-result-object v1
+
+    invoke-interface {v1}, Landroid/support/v7/widget/DecorToolbar;->getMenu()Landroid/view/Menu;
+
+    move-result-object v0
+
+    .line 580
+    .local v0, "menu":Landroid/view/Menu;
+    const/4 v1, 0x0
+
+    invoke-virtual {p0, p1, v1, v0}, Landroid/support/v7/app/ToolbarActionBar$ToolbarCallbackWrapper;->onPreparePanel(ILandroid/view/View;Landroid/view/Menu;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    invoke-virtual {p0, p1, v0}, Landroid/support/v7/app/ToolbarActionBar$ToolbarCallbackWrapper;->onMenuOpened(ILandroid/view/Menu;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    .line 581
+    iget-object v1, p0, Landroid/support/v7/app/ToolbarActionBar$ToolbarCallbackWrapper;->this$0:Landroid/support/v7/app/ToolbarActionBar;
+
+    invoke-static {v1, v0}, Landroid/support/v7/app/ToolbarActionBar;->access$400(Landroid/support/v7/app/ToolbarActionBar;Landroid/view/Menu;)Landroid/view/View;
+
+    move-result-object v1
+
+    goto :goto_0
+
+    .line 577
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
 .end method
 
 .method public onPreparePanel(ILandroid/view/View;Landroid/view/Menu;)Z
-    .locals 0
+    .locals 3
+    .param p1, "featureId"    # I
+    .param p2, "view"    # Landroid/view/View;
+    .param p3, "menu"    # Landroid/view/Menu;
 
-    .line 521
+    .prologue
+    .line 567
     invoke-super {p0, p1, p2, p3}, Landroid/support/v7/view/WindowCallbackWrapper;->onPreparePanel(ILandroid/view/View;Landroid/view/Menu;)Z
 
-    move-result p1
+    move-result v0
 
-    if-eqz p1, :cond_0
+    .line 568
+    .local v0, "result":Z
+    if-eqz v0, :cond_0
 
-    .line 522
-    iget-object p2, p0, Landroid/support/v7/app/ToolbarActionBar$ToolbarCallbackWrapper;->this$0:Landroid/support/v7/app/ToolbarActionBar;
+    iget-object v1, p0, Landroid/support/v7/app/ToolbarActionBar$ToolbarCallbackWrapper;->this$0:Landroid/support/v7/app/ToolbarActionBar;
 
-    iget-boolean p2, p2, Landroid/support/v7/app/ToolbarActionBar;->mToolbarMenuPrepared:Z
+    invoke-static {v1}, Landroid/support/v7/app/ToolbarActionBar;->access$200(Landroid/support/v7/app/ToolbarActionBar;)Z
 
-    if-nez p2, :cond_0
+    move-result v1
 
-    .line 523
-    iget-object p2, p0, Landroid/support/v7/app/ToolbarActionBar$ToolbarCallbackWrapper;->this$0:Landroid/support/v7/app/ToolbarActionBar;
+    if-nez v1, :cond_0
 
-    iget-object p2, p2, Landroid/support/v7/app/ToolbarActionBar;->mDecorToolbar:Landroid/support/v7/widget/DecorToolbar;
+    .line 569
+    iget-object v1, p0, Landroid/support/v7/app/ToolbarActionBar$ToolbarCallbackWrapper;->this$0:Landroid/support/v7/app/ToolbarActionBar;
 
-    invoke-interface {p2}, Landroid/support/v7/widget/DecorToolbar;->setMenuPrepared()V
+    invoke-static {v1}, Landroid/support/v7/app/ToolbarActionBar;->access$300(Landroid/support/v7/app/ToolbarActionBar;)Landroid/support/v7/widget/DecorToolbar;
 
-    .line 524
-    iget-object p2, p0, Landroid/support/v7/app/ToolbarActionBar$ToolbarCallbackWrapper;->this$0:Landroid/support/v7/app/ToolbarActionBar;
+    move-result-object v1
 
-    const/4 p3, 0x1
+    invoke-interface {v1}, Landroid/support/v7/widget/DecorToolbar;->setMenuPrepared()V
 
-    iput-boolean p3, p2, Landroid/support/v7/app/ToolbarActionBar;->mToolbarMenuPrepared:Z
+    .line 570
+    iget-object v1, p0, Landroid/support/v7/app/ToolbarActionBar$ToolbarCallbackWrapper;->this$0:Landroid/support/v7/app/ToolbarActionBar;
 
+    const/4 v2, 0x1
+
+    invoke-static {v1, v2}, Landroid/support/v7/app/ToolbarActionBar;->access$202(Landroid/support/v7/app/ToolbarActionBar;Z)Z
+
+    .line 572
     :cond_0
-    return p1
+    return v0
 .end method

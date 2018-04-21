@@ -24,7 +24,9 @@
 # direct methods
 .method constructor <init>(Lorg/microg/nlp/ui/AbstractBackendPreference;)V
     .locals 0
+    .param p1, "this$0"    # Lorg/microg/nlp/ui/AbstractBackendPreference;
 
+    .prologue
     .line 210
     iput-object p1, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$1;->this$0:Lorg/microg/nlp/ui/AbstractBackendPreference;
 
@@ -36,41 +38,50 @@
 
 # virtual methods
 .method public onServiceConnected(Landroid/content/ComponentName;Landroid/os/IBinder;)V
-    .locals 0
+    .locals 2
+    .param p1, "name"    # Landroid/content/ComponentName;
+    .param p2, "service"    # Landroid/os/IBinder;
 
+    .prologue
     .line 213
-    iget-object p1, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$1;->this$0:Lorg/microg/nlp/ui/AbstractBackendPreference;
+    iget-object v1, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$1;->this$0:Lorg/microg/nlp/ui/AbstractBackendPreference;
 
-    invoke-virtual {p1, p2}, Lorg/microg/nlp/ui/AbstractBackendPreference;->getBackendInitIntent(Landroid/os/IBinder;)Landroid/content/Intent;
+    invoke-virtual {v1, p2}, Lorg/microg/nlp/ui/AbstractBackendPreference;->getBackendInitIntent(Landroid/os/IBinder;)Landroid/content/Intent;
 
-    move-result-object p1
+    move-result-object v0
 
-    if-eqz p1, :cond_0
+    .line 214
+    .local v0, "i":Landroid/content/Intent;
+    if-eqz v0, :cond_0
 
     .line 215
-    iget-object p2, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$1;->this$0:Lorg/microg/nlp/ui/AbstractBackendPreference;
+    iget-object v1, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$1;->this$0:Lorg/microg/nlp/ui/AbstractBackendPreference;
 
-    invoke-virtual {p2}, Lorg/microg/nlp/ui/AbstractBackendPreference;->getContext()Landroid/content/Context;
+    invoke-virtual {v1}, Lorg/microg/nlp/ui/AbstractBackendPreference;->getContext()Landroid/content/Context;
 
-    move-result-object p2
+    move-result-object v1
 
-    invoke-virtual {p2, p1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+    invoke-virtual {v1, v0}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
 
     .line 217
     :cond_0
-    iget-object p1, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$1;->this$0:Lorg/microg/nlp/ui/AbstractBackendPreference;
+    iget-object v1, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$1;->this$0:Lorg/microg/nlp/ui/AbstractBackendPreference;
 
-    invoke-virtual {p1}, Lorg/microg/nlp/ui/AbstractBackendPreference;->getContext()Landroid/content/Context;
+    invoke-virtual {v1}, Lorg/microg/nlp/ui/AbstractBackendPreference;->getContext()Landroid/content/Context;
 
-    move-result-object p1
+    move-result-object v1
 
-    invoke-virtual {p1, p0}, Landroid/content/Context;->unbindService(Landroid/content/ServiceConnection;)V
+    invoke-virtual {v1, p0}, Landroid/content/Context;->unbindService(Landroid/content/ServiceConnection;)V
 
+    .line 218
     return-void
 .end method
 
 .method public onServiceDisconnected(Landroid/content/ComponentName;)V
     .locals 0
+    .param p1, "name"    # Landroid/content/ComponentName;
 
+    .prologue
+    .line 223
     return-void
 .end method

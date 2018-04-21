@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder<",
+        "Lcom/squareup/wire/Message$Builder",
+        "<",
         "Lorg/microg/wearable/proto/ChannelDataRequest;",
         ">;"
     }
@@ -34,20 +35,27 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 65
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
+    .line 66
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/wearable/proto/ChannelDataRequest;)V
     .locals 1
+    .param p1, "message"    # Lorg/microg/wearable/proto/ChannelDataRequest;
 
+    .prologue
     .line 69
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
+    .line 70
     if-nez p1, :cond_0
 
+    .line 74
+    :goto_0
     return-void
 
     .line 71
@@ -62,11 +70,11 @@
     iput-object v0, p0, Lorg/microg/wearable/proto/ChannelDataRequest$Builder;->payload:Lokio/ByteString;
 
     .line 73
-    iget-object p1, p1, Lorg/microg/wearable/proto/ChannelDataRequest;->finalMessage:Ljava/lang/Boolean;
+    iget-object v0, p1, Lorg/microg/wearable/proto/ChannelDataRequest;->finalMessage:Ljava/lang/Boolean;
 
-    iput-object p1, p0, Lorg/microg/wearable/proto/ChannelDataRequest$Builder;->finalMessage:Ljava/lang/Boolean;
+    iput-object v0, p0, Lorg/microg/wearable/proto/ChannelDataRequest$Builder;->finalMessage:Ljava/lang/Boolean;
 
-    return-void
+    goto :goto_0
 .end method
 
 
@@ -74,6 +82,7 @@
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
+    .prologue
     .line 59
     invoke-virtual {p0}, Lorg/microg/wearable/proto/ChannelDataRequest$Builder;->build()Lorg/microg/wearable/proto/ChannelDataRequest;
 
@@ -85,6 +94,7 @@
 .method public build()Lorg/microg/wearable/proto/ChannelDataRequest;
     .locals 2
 
+    .prologue
     .line 93
     new-instance v0, Lorg/microg/wearable/proto/ChannelDataRequest;
 

@@ -7,7 +7,8 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator<",
+            "Landroid/os/Parcelable$Creator",
+            "<",
             "Lcom/google/android/gms/wearable/internal/AddListenerRequest;",
             ">;"
         }
@@ -45,6 +46,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
+    .prologue
     .line 46
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -58,26 +60,28 @@
 .end method
 
 .method private constructor <init>()V
-    .locals 1
+    .locals 2
+
+    .prologue
+    const/4 v1, 0x0
 
     .line 34
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
+    .line 25
     const/4 v0, 0x1
 
-    .line 25
     iput v0, p0, Lcom/google/android/gms/wearable/internal/AddListenerRequest;->versionCode:I
 
-    const/4 v0, 0x0
-
     .line 35
-    iput-object v0, p0, Lcom/google/android/gms/wearable/internal/AddListenerRequest;->listener:Lcom/google/android/gms/wearable/internal/IWearableListener;
+    iput-object v1, p0, Lcom/google/android/gms/wearable/internal/AddListenerRequest;->listener:Lcom/google/android/gms/wearable/internal/IWearableListener;
 
     .line 36
-    iput-object v0, p0, Lcom/google/android/gms/wearable/internal/AddListenerRequest;->intentFilters:[Landroid/content/IntentFilter;
+    iput-object v1, p0, Lcom/google/android/gms/wearable/internal/AddListenerRequest;->intentFilters:[Landroid/content/IntentFilter;
 
     .line 37
-    iput-object v0, p0, Lcom/google/android/gms/wearable/internal/AddListenerRequest;->channelTokenString:Ljava/lang/String;
+    iput-object v1, p0, Lcom/google/android/gms/wearable/internal/AddListenerRequest;->channelTokenString:Ljava/lang/String;
 
+    .line 38
     return-void
 .end method

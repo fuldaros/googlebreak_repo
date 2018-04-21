@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder<",
+        "Lcom/squareup/wire/Message$Builder",
+        "<",
         "Lorg/microg/gms/gcm/mcs/LoginResponse;",
         ">;"
     }
@@ -38,7 +39,8 @@
 .field public setting:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Lorg/microg/gms/gcm/mcs/Setting;",
             ">;"
         }
@@ -52,20 +54,27 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 123
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
+    .line 124
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/gms/gcm/mcs/LoginResponse;)V
     .locals 1
+    .param p1, "message"    # Lorg/microg/gms/gcm/mcs/LoginResponse;
 
+    .prologue
     .line 127
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
+    .line 128
     if-nez p1, :cond_0
 
+    .line 137
+    :goto_0
     return-void
 
     .line 129
@@ -109,11 +118,11 @@
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginResponse$Builder;->heartbeat_config:Lorg/microg/gms/gcm/mcs/HeartbeatConfig;
 
     .line 136
-    iget-object p1, p1, Lorg/microg/gms/gcm/mcs/LoginResponse;->server_timestamp:Ljava/lang/Long;
+    iget-object v0, p1, Lorg/microg/gms/gcm/mcs/LoginResponse;->server_timestamp:Ljava/lang/Long;
 
-    iput-object p1, p0, Lorg/microg/gms/gcm/mcs/LoginResponse$Builder;->server_timestamp:Ljava/lang/Long;
+    iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginResponse$Builder;->server_timestamp:Ljava/lang/Long;
 
-    return-void
+    goto :goto_0
 .end method
 
 
@@ -121,6 +130,7 @@
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
+    .prologue
     .line 112
     invoke-virtual {p0}, Lorg/microg/gms/gcm/mcs/LoginResponse$Builder;->build()Lorg/microg/gms/gcm/mcs/LoginResponse;
 
@@ -132,6 +142,7 @@
 .method public build()Lorg/microg/gms/gcm/mcs/LoginResponse;
     .locals 2
 
+    .prologue
     .line 193
     invoke-virtual {p0}, Lorg/microg/gms/gcm/mcs/LoginResponse$Builder;->checkRequiredFields()V
 

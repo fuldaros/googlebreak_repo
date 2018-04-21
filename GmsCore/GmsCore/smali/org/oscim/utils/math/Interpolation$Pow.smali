@@ -21,13 +21,16 @@
 # direct methods
 .method public constructor <init>(I)V
     .locals 0
+    .param p1, "power"    # I
 
-    .line 142
+    .prologue
+    .line 138
     invoke-direct {p0}, Lorg/oscim/utils/math/Interpolation;-><init>()V
 
-    .line 143
+    .line 139
     iput p1, p0, Lorg/oscim/utils/math/Interpolation$Pow;->power:I
 
+    .line 140
     return-void
 .end method
 
@@ -35,70 +38,77 @@
 # virtual methods
 .method public apply(F)F
     .locals 6
+    .param p1, "a"    # F
 
+    .prologue
+    const/high16 v5, 0x3f800000    # 1.0f
+
+    const/high16 v4, 0x40000000    # 2.0f
+
+    .line 144
     const/high16 v0, 0x3f000000    # 0.5f
 
     cmpg-float v0, p1, v0
 
-    const/high16 v1, 0x40000000    # 2.0f
-
     if-gtz v0, :cond_0
 
-    mul-float/2addr p1, v1
+    .line 145
+    mul-float v0, p1, v4
 
-    float-to-double v2, p1
+    float-to-double v0, v0
 
-    .line 149
-    iget p1, p0, Lorg/oscim/utils/math/Interpolation$Pow;->power:I
+    iget v2, p0, Lorg/oscim/utils/math/Interpolation$Pow;->power:I
 
-    int-to-double v4, p1
+    int-to-double v2, v2
 
-    invoke-static {v2, v3, v4, v5}, Ljava/lang/Math;->pow(DD)D
+    invoke-static {v0, v1, v2, v3}, Ljava/lang/Math;->pow(DD)D
 
-    move-result-wide v2
+    move-result-wide v0
 
-    double-to-float p1, v2
+    double-to-float v0, v0
 
-    div-float/2addr p1, v1
+    div-float/2addr v0, v4
 
-    return p1
+    .line 146
+    :goto_0
+    return v0
 
     :cond_0
-    const/high16 v0, 0x3f800000    # 1.0f
+    sub-float v0, p1, v5
 
-    sub-float/2addr p1, v0
+    mul-float/2addr v0, v4
 
-    mul-float/2addr p1, v1
+    float-to-double v0, v0
 
-    float-to-double v1, p1
+    iget v2, p0, Lorg/oscim/utils/math/Interpolation$Pow;->power:I
 
-    .line 150
-    iget p1, p0, Lorg/oscim/utils/math/Interpolation$Pow;->power:I
+    int-to-double v2, v2
 
-    int-to-double v3, p1
+    invoke-static {v0, v1, v2, v3}, Ljava/lang/Math;->pow(DD)D
 
-    invoke-static {v1, v2, v3, v4}, Ljava/lang/Math;->pow(DD)D
+    move-result-wide v0
 
-    move-result-wide v1
+    double-to-float v1, v0
 
-    double-to-float p1, v1
+    iget v0, p0, Lorg/oscim/utils/math/Interpolation$Pow;->power:I
 
-    iget v1, p0, Lorg/oscim/utils/math/Interpolation$Pow;->power:I
+    rem-int/lit8 v0, v0, 0x2
 
-    const/4 v2, 0x2
+    if-nez v0, :cond_1
 
-    rem-int/2addr v1, v2
+    const/4 v0, -0x2
 
-    if-nez v1, :cond_1
+    :goto_1
+    int-to-float v0, v0
 
-    const/4 v2, -0x2
+    div-float v0, v1, v0
+
+    add-float/2addr v0, v5
+
+    goto :goto_0
 
     :cond_1
-    int-to-float v1, v2
+    const/4 v0, 0x2
 
-    div-float/2addr p1, v1
-
-    add-float/2addr p1, v0
-
-    return p1
+    goto :goto_1
 .end method

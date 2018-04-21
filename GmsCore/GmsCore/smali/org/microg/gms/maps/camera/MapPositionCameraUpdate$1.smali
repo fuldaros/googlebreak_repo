@@ -22,6 +22,7 @@
 .method constructor <init>(Lorg/oscim/core/MapPosition;)V
     .locals 0
 
+    .prologue
     .line 37
     iput-object p1, p0, Lorg/microg/gms/maps/camera/MapPositionCameraUpdate$1;->val$position:Lorg/oscim/core/MapPosition;
 
@@ -33,10 +34,12 @@
 
 # virtual methods
 .method getMapPosition(Lorg/oscim/map/Map;)Lorg/oscim/core/MapPosition;
-    .locals 0
+    .locals 1
+    .param p1, "map"    # Lorg/oscim/map/Map;
 
+    .prologue
     .line 40
-    iget-object p1, p0, Lorg/microg/gms/maps/camera/MapPositionCameraUpdate$1;->val$position:Lorg/oscim/core/MapPosition;
+    iget-object v0, p0, Lorg/microg/gms/maps/camera/MapPositionCameraUpdate$1;->val$position:Lorg/oscim/core/MapPosition;
 
-    return-object p1
+    return-object v0
 .end method

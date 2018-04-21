@@ -9,7 +9,7 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0xa
+    accessFlags = 0x8
     name = "OsmTileLoader"
 .end annotation
 
@@ -24,81 +24,85 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 3
+    .locals 4
 
+    .prologue
+    .line 37
     const/4 v0, 0x5
 
-    .line 59
     new-array v0, v0, [Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;
 
-    new-instance v1, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;
+    const/4 v1, 0x0
 
-    const-string v2, "name"
+    new-instance v2, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;
 
-    invoke-direct {v1, v2}, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;-><init>(Ljava/lang/String;)V
+    const-string v3, "name"
 
-    const/4 v2, 0x0
+    invoke-direct {v2, v3}, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;-><init>(Ljava/lang/String;)V
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    new-instance v1, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;
+    const/4 v1, 0x1
 
-    const-string v2, "addr:housenumber"
+    new-instance v2, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;
 
-    invoke-direct {v1, v2}, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;-><init>(Ljava/lang/String;)V
+    const-string v3, "addr:housenumber"
 
-    const/4 v2, 0x1
+    invoke-direct {v2, v3}, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;-><init>(Ljava/lang/String;)V
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    new-instance v1, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;
+    const/4 v1, 0x2
 
-    const-string v2, "ref"
+    new-instance v2, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;
 
-    invoke-direct {v1, v2}, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;-><init>(Ljava/lang/String;)V
+    const-string v3, "ref"
 
-    const/4 v2, 0x2
+    invoke-direct {v2, v3}, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;-><init>(Ljava/lang/String;)V
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    new-instance v1, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;
+    const/4 v1, 0x3
 
-    const-string v2, "height"
+    new-instance v2, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;
 
-    invoke-direct {v1, v2}, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;-><init>(Ljava/lang/String;)V
+    const-string v3, "height"
 
-    const/4 v2, 0x3
+    invoke-direct {v2, v3}, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;-><init>(Ljava/lang/String;)V
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    new-instance v1, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;
+    const/4 v1, 0x4
 
-    const-string v2, "min_height"
+    new-instance v2, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;
 
-    invoke-direct {v1, v2}, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;-><init>(Ljava/lang/String;)V
+    const-string v3, "min_height"
 
-    const/4 v2, 0x4
+    invoke-direct {v2, v3}, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;-><init>(Ljava/lang/String;)V
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
     sput-object v0, Lorg/oscim/layers/tile/vector/OsmTileLayer$OsmTileLoader;->mTagReplacement:[Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;
 
     return-void
 .end method
 
-.method constructor <init>(Lorg/oscim/layers/tile/vector/VectorTileLayer;)V
-    .locals 0
+.method public constructor <init>(Lorg/oscim/layers/tile/vector/VectorTileLayer;)V
+    .locals 1
+    .param p1, "tileLayer"    # Lorg/oscim/layers/tile/vector/VectorTileLayer;
 
-    .line 50
+    .prologue
+    .line 28
     invoke-direct {p0, p1}, Lorg/oscim/layers/tile/vector/VectorTileLoader;-><init>(Lorg/oscim/layers/tile/vector/VectorTileLayer;)V
 
-    .line 51
-    new-instance p1, Lorg/oscim/core/TagSet;
+    .line 29
+    new-instance v0, Lorg/oscim/core/TagSet;
 
-    invoke-direct {p1}, Lorg/oscim/core/TagSet;-><init>()V
+    invoke-direct {v0}, Lorg/oscim/core/TagSet;-><init>()V
 
-    iput-object p1, p0, Lorg/oscim/layers/tile/vector/OsmTileLayer$OsmTileLoader;->mFilteredTags:Lorg/oscim/core/TagSet;
+    iput-object v0, p0, Lorg/oscim/layers/tile/vector/OsmTileLayer$OsmTileLoader;->mFilteredTags:Lorg/oscim/core/TagSet;
 
+    .line 30
     return-void
 .end method
 
@@ -106,83 +110,86 @@
 # virtual methods
 .method protected filterTags(Lorg/oscim/core/TagSet;)Lorg/oscim/core/TagSet;
     .locals 10
+    .param p1, "tagSet"    # Lorg/oscim/core/TagSet;
 
-    .line 68
-    invoke-virtual {p1}, Lorg/oscim/core/TagSet;->getTags()[Lorg/oscim/core/Tag;
+    .prologue
+    .line 46
+    iget-object v4, p1, Lorg/oscim/core/TagSet;->tags:[Lorg/oscim/core/Tag;
 
-    move-result-object v0
+    .line 48
+    .local v4, "tags":[Lorg/oscim/core/Tag;
+    iget-object v5, p0, Lorg/oscim/layers/tile/vector/OsmTileLayer$OsmTileLoader;->mFilteredTags:Lorg/oscim/core/TagSet;
 
-    .line 70
-    iget-object v1, p0, Lorg/oscim/layers/tile/vector/OsmTileLayer$OsmTileLoader;->mFilteredTags:Lorg/oscim/core/TagSet;
+    invoke-virtual {v5}, Lorg/oscim/core/TagSet;->clear()V
 
-    invoke-virtual {v1}, Lorg/oscim/core/TagSet;->clear()V
+    .line 50
+    const/4 v0, 0x0
 
-    .line 73
-    invoke-virtual {p1}, Lorg/oscim/core/TagSet;->size()I
+    .local v0, "i":I
+    iget v1, p1, Lorg/oscim/core/TagSet;->numTags:I
 
-    move-result p1
-
-    const/4 v1, 0x0
-
-    move v2, v1
-
+    .local v1, "n":I
     :goto_0
-    if-ge v2, p1, :cond_2
+    if-ge v0, v1, :cond_2
 
-    .line 74
-    aget-object v3, v0, v2
+    .line 51
+    aget-object v3, v4, v0
 
-    .line 76
-    sget-object v4, Lorg/oscim/layers/tile/vector/OsmTileLayer$OsmTileLoader;->mTagReplacement:[Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;
+    .line 53
+    .local v3, "t":Lorg/oscim/core/Tag;
+    sget-object v6, Lorg/oscim/layers/tile/vector/OsmTileLayer$OsmTileLoader;->mTagReplacement:[Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;
 
-    array-length v5, v4
+    array-length v7, v6
 
-    move v6, v1
+    const/4 v5, 0x0
 
     :goto_1
-    if-ge v6, v5, :cond_1
+    if-ge v5, v7, :cond_1
 
-    aget-object v7, v4, v6
+    aget-object v2, v6, v5
 
-    .line 77
+    .line 54
+    .local v2, "replacement":Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;
     iget-object v8, v3, Lorg/oscim/core/Tag;->key:Ljava/lang/String;
 
-    iget-object v9, v7, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;->key:Ljava/lang/String;
+    iget-object v9, v2, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;->key:Ljava/lang/String;
 
-    invoke-static {v8, v9}, Lorg/oscim/utils/Utils;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+    if-ne v8, v9, :cond_0
 
-    move-result v8
+    .line 55
+    iget-object v5, p0, Lorg/oscim/layers/tile/vector/OsmTileLayer$OsmTileLoader;->mFilteredTags:Lorg/oscim/core/TagSet;
 
-    if-eqz v8, :cond_0
+    iget-object v6, v2, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;->tag:Lorg/oscim/core/Tag;
 
-    .line 78
-    iget-object v3, p0, Lorg/oscim/layers/tile/vector/OsmTileLayer$OsmTileLoader;->mFilteredTags:Lorg/oscim/core/TagSet;
+    invoke-virtual {v5, v6}, Lorg/oscim/core/TagSet;->add(Lorg/oscim/core/Tag;)V
 
-    iget-object v4, v7, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;->tag:Lorg/oscim/core/Tag;
-
-    invoke-virtual {v3, v4}, Lorg/oscim/core/TagSet;->add(Lorg/oscim/core/Tag;)V
-
-    goto :goto_2
-
-    :cond_0
-    add-int/lit8 v6, v6, 0x1
-
-    goto :goto_1
-
-    .line 83
-    :cond_1
-    iget-object v4, p0, Lorg/oscim/layers/tile/vector/OsmTileLayer$OsmTileLoader;->mFilteredTags:Lorg/oscim/core/TagSet;
-
-    invoke-virtual {v4, v3}, Lorg/oscim/core/TagSet;->add(Lorg/oscim/core/Tag;)V
-
+    .line 50
+    .end local v2    # "replacement":Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;
     :goto_2
-    add-int/lit8 v2, v2, 0x1
+    add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 86
-    :cond_2
-    iget-object p1, p0, Lorg/oscim/layers/tile/vector/OsmTileLayer$OsmTileLoader;->mFilteredTags:Lorg/oscim/core/TagSet;
+    .line 53
+    .restart local v2    # "replacement":Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;
+    :cond_0
+    add-int/lit8 v5, v5, 0x1
 
-    return-object p1
+    goto :goto_1
+
+    .line 60
+    .end local v2    # "replacement":Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;
+    :cond_1
+    iget-object v5, p0, Lorg/oscim/layers/tile/vector/OsmTileLayer$OsmTileLoader;->mFilteredTags:Lorg/oscim/core/TagSet;
+
+    invoke-virtual {v5, v3}, Lorg/oscim/core/TagSet;->add(Lorg/oscim/core/Tag;)V
+
+    goto :goto_2
+
+    .line 63
+    .end local v3    # "t":Lorg/oscim/core/Tag;
+    :cond_2
+    iget-object v5, p0, Lorg/oscim/layers/tile/vector/OsmTileLayer$OsmTileLoader;->mFilteredTags:Lorg/oscim/core/TagSet;
+
+    return-object v5
 .end method

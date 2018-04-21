@@ -23,7 +23,10 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;)V
     .locals 0
+    .param p1, "accountName"    # Ljava/lang/String;
+    .param p2, "authToken"    # Ljava/lang/String;
 
+    .prologue
     .line 166
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -33,5 +36,6 @@
     .line 168
     iput-object p2, p0, Lorg/microg/gms/checkin/CheckinClient$Account;->authToken:Ljava/lang/String;
 
+    .line 169
     return-void
 .end method

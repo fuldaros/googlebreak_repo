@@ -32,85 +32,89 @@
 
 # direct methods
 .method constructor <init>(Ljava/lang/String;)V
-    .locals 0
+    .locals 1
+    .param p1, "shaderFile"    # Ljava/lang/String;
 
-    .line 511
+    .prologue
+    .line 503
     invoke-direct {p0}, Lorg/oscim/renderer/GLShader;-><init>()V
 
-    .line 512
+    .line 504
     invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineBucket$Shader;->create(Ljava/lang/String;)Z
 
-    move-result p1
+    move-result v0
 
-    if-nez p1, :cond_0
+    if-nez v0, :cond_0
 
+    .line 513
+    :goto_0
     return-void
 
+    .line 506
     :cond_0
-    const-string p1, "u_mvp"
+    const-string v0, "u_mvp"
 
-    .line 514
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineBucket$Shader;->getUniform(Ljava/lang/String;)I
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/LineBucket$Shader;->getUniform(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uMVP:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uMVP:I
 
-    const-string p1, "u_fade"
+    .line 507
+    const-string v0, "u_fade"
 
-    .line 515
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineBucket$Shader;->getUniform(Ljava/lang/String;)I
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/LineBucket$Shader;->getUniform(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uFade:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uFade:I
 
-    const-string p1, "u_width"
+    .line 508
+    const-string v0, "u_width"
 
-    .line 516
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineBucket$Shader;->getUniform(Ljava/lang/String;)I
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/LineBucket$Shader;->getUniform(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uWidth:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uWidth:I
 
-    const-string p1, "u_color"
+    .line 509
+    const-string v0, "u_color"
 
-    .line 517
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineBucket$Shader;->getUniform(Ljava/lang/String;)I
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/LineBucket$Shader;->getUniform(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uColor:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uColor:I
 
-    const-string p1, "u_mode"
+    .line 510
+    const-string v0, "u_mode"
 
-    .line 518
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineBucket$Shader;->getUniform(Ljava/lang/String;)I
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/LineBucket$Shader;->getUniform(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uMode:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uMode:I
 
-    const-string p1, "u_height"
+    .line 511
+    const-string v0, "u_height"
 
-    .line 519
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineBucket$Shader;->getUniform(Ljava/lang/String;)I
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/LineBucket$Shader;->getUniform(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uHeight:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uHeight:I
 
-    const-string p1, "a_pos"
+    .line 512
+    const-string v0, "a_pos"
 
-    .line 520
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineBucket$Shader;->getAttrib(Ljava/lang/String;)I
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/LineBucket$Shader;->getAttrib(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->aPos:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->aPos:I
 
-    return-void
+    goto :goto_0
 .end method
 
 
@@ -118,26 +122,30 @@
 .method public useProgram()Z
     .locals 2
 
-    .line 525
+    .prologue
+    .line 517
     invoke-super {p0}, Lorg/oscim/renderer/GLShader;->useProgram()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 526
+    .line 518
     iget v0, p0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->aPos:I
 
     const/4 v1, -0x1
 
     invoke-static {v0, v1}, Lorg/oscim/renderer/GLState;->enableVertexArrays(II)V
 
+    .line 519
     const/4 v0, 0x1
 
+    .line 521
+    :goto_0
     return v0
 
     :cond_0
     const/4 v0, 0x0
 
-    return v0
+    goto :goto_0
 .end method

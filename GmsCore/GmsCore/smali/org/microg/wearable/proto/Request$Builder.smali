@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder<",
+        "Lcom/squareup/wire/Message$Builder",
+        "<",
         "Lorg/microg/wearable/proto/Request;",
         ">;"
     }
@@ -48,20 +49,27 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 122
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
+    .line 123
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/wearable/proto/Request;)V
     .locals 1
+    .param p1, "message"    # Lorg/microg/wearable/proto/Request;
 
+    .prologue
     .line 126
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
+    .line 127
     if-nez p1, :cond_0
 
+    .line 138
+    :goto_0
     return-void
 
     .line 128
@@ -111,11 +119,11 @@
     iput-object v0, p0, Lorg/microg/wearable/proto/Request$Builder;->request:Lorg/microg/wearable/proto/ChannelRequest;
 
     .line 137
-    iget-object p1, p1, Lorg/microg/wearable/proto/Request;->generation:Ljava/lang/Integer;
+    iget-object v0, p1, Lorg/microg/wearable/proto/Request;->generation:Ljava/lang/Integer;
 
-    iput-object p1, p0, Lorg/microg/wearable/proto/Request$Builder;->generation:Ljava/lang/Integer;
+    iput-object v0, p0, Lorg/microg/wearable/proto/Request$Builder;->generation:Ljava/lang/Integer;
 
-    return-void
+    goto :goto_0
 .end method
 
 
@@ -123,6 +131,7 @@
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
+    .prologue
     .line 109
     invoke-virtual {p0}, Lorg/microg/wearable/proto/Request$Builder;->build()Lorg/microg/wearable/proto/Request;
 
@@ -134,6 +143,7 @@
 .method public build()Lorg/microg/wearable/proto/Request;
     .locals 2
 
+    .prologue
     .line 192
     new-instance v0, Lorg/microg/wearable/proto/Request;
 
@@ -142,76 +152,4 @@
     invoke-direct {v0, p0, v1}, Lorg/microg/wearable/proto/Request;-><init>(Lorg/microg/wearable/proto/Request$Builder;Lorg/microg/wearable/proto/Request$1;)V
 
     return-object v0
-.end method
-
-.method public generation(Ljava/lang/Integer;)Lorg/microg/wearable/proto/Request$Builder;
-    .locals 0
-
-    .line 186
-    iput-object p1, p0, Lorg/microg/wearable/proto/Request$Builder;->generation:Ljava/lang/Integer;
-
-    return-object p0
-.end method
-
-.method public packageName(Ljava/lang/String;)Lorg/microg/wearable/proto/Request$Builder;
-    .locals 0
-
-    .line 146
-    iput-object p1, p0, Lorg/microg/wearable/proto/Request$Builder;->packageName:Ljava/lang/String;
-
-    return-object p0
-.end method
-
-.method public path(Ljava/lang/String;)Lorg/microg/wearable/proto/Request$Builder;
-    .locals 0
-
-    .line 166
-    iput-object p1, p0, Lorg/microg/wearable/proto/Request$Builder;->path:Ljava/lang/String;
-
-    return-object p0
-.end method
-
-.method public rawData(Lokio/ByteString;)Lorg/microg/wearable/proto/Request$Builder;
-    .locals 0
-
-    .line 171
-    iput-object p1, p0, Lorg/microg/wearable/proto/Request$Builder;->rawData:Lokio/ByteString;
-
-    return-object p0
-.end method
-
-.method public requestId(Ljava/lang/Integer;)Lorg/microg/wearable/proto/Request$Builder;
-    .locals 0
-
-    .line 141
-    iput-object p1, p0, Lorg/microg/wearable/proto/Request$Builder;->requestId:Ljava/lang/Integer;
-
-    return-object p0
-.end method
-
-.method public signatureDigest(Ljava/lang/String;)Lorg/microg/wearable/proto/Request$Builder;
-    .locals 0
-
-    .line 151
-    iput-object p1, p0, Lorg/microg/wearable/proto/Request$Builder;->signatureDigest:Ljava/lang/String;
-
-    return-object p0
-.end method
-
-.method public sourceNodeId(Ljava/lang/String;)Lorg/microg/wearable/proto/Request$Builder;
-    .locals 0
-
-    .line 176
-    iput-object p1, p0, Lorg/microg/wearable/proto/Request$Builder;->sourceNodeId:Ljava/lang/String;
-
-    return-object p0
-.end method
-
-.method public targetNodeId(Ljava/lang/String;)Lorg/microg/wearable/proto/Request$Builder;
-    .locals 0
-
-    .line 156
-    iput-object p1, p0, Lorg/microg/wearable/proto/Request$Builder;->targetNodeId:Ljava/lang/String;
-
-    return-object p0
 .end method

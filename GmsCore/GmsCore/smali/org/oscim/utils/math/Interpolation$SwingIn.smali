@@ -21,13 +21,16 @@
 # direct methods
 .method public constructor <init>(F)V
     .locals 0
+    .param p1, "scale"    # F
 
-    .line 415
+    .prologue
+    .line 411
     invoke-direct {p0}, Lorg/oscim/utils/math/Interpolation;-><init>()V
 
-    .line 416
+    .line 412
     iput p1, p0, Lorg/oscim/utils/math/Interpolation$SwingIn;->scale:F
 
+    .line 413
     return-void
 .end method
 
@@ -35,10 +38,12 @@
 # virtual methods
 .method public apply(F)F
     .locals 3
+    .param p1, "a"    # F
 
+    .prologue
+    .line 417
     mul-float v0, p1, p1
 
-    .line 421
     iget v1, p0, Lorg/oscim/utils/math/Interpolation$SwingIn;->scale:F
 
     const/high16 v2, 0x3f800000    # 1.0f
@@ -47,9 +52,9 @@
 
     mul-float/2addr v1, p1
 
-    iget p1, p0, Lorg/oscim/utils/math/Interpolation$SwingIn;->scale:F
+    iget v2, p0, Lorg/oscim/utils/math/Interpolation$SwingIn;->scale:F
 
-    sub-float/2addr v1, p1
+    sub-float/2addr v1, v2
 
     mul-float/2addr v0, v1
 

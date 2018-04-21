@@ -19,151 +19,131 @@
 
 # direct methods
 .method public constructor <init>()V
-    .locals 2
+    .locals 4
 
-    .line 57
+    .prologue
+    const-wide/high16 v2, 0x3fe0000000000000L    # 0.5
+
+    .line 48
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 49
     const-wide/high16 v0, 0x3ff0000000000000L    # 1.0
 
-    .line 58
     iput-wide v0, p0, Lorg/oscim/core/MapPosition;->scale:D
 
-    const-wide/high16 v0, 0x3fe0000000000000L    # 0.5
+    .line 50
+    iput-wide v2, p0, Lorg/oscim/core/MapPosition;->x:D
 
-    .line 59
-    iput-wide v0, p0, Lorg/oscim/core/MapPosition;->x:D
+    .line 51
+    iput-wide v2, p0, Lorg/oscim/core/MapPosition;->y:D
 
-    .line 60
-    iput-wide v0, p0, Lorg/oscim/core/MapPosition;->y:D
-
+    .line 52
     const/4 v0, 0x1
 
-    .line 61
     iput v0, p0, Lorg/oscim/core/MapPosition;->zoomLevel:I
 
+    .line 53
     const/4 v0, 0x0
 
-    .line 62
     iput v0, p0, Lorg/oscim/core/MapPosition;->bearing:F
 
+    .line 54
     return-void
 .end method
 
 .method public constructor <init>(DDD)V
-    .locals 0
+    .locals 1
+    .param p1, "latitude"    # D
+    .param p3, "longitude"    # D
+    .param p5, "scale"    # D
 
-    .line 65
+    .prologue
+    .line 56
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 66
+    .line 57
     invoke-virtual {p0, p1, p2, p3, p4}, Lorg/oscim/core/MapPosition;->setPosition(DD)V
 
-    .line 67
+    .line 58
     invoke-virtual {p0, p5, p6}, Lorg/oscim/core/MapPosition;->setScale(D)Lorg/oscim/core/MapPosition;
 
+    .line 59
     return-void
-.end method
-
-.method private static clampBearing(F)F
-    .locals 2
-
-    :goto_0
-    const/high16 v0, 0x43340000    # 180.0f
-
-    cmpl-float v0, p0, v0
-
-    const/high16 v1, 0x43b40000    # 360.0f
-
-    if-lez v0, :cond_0
-
-    sub-float/2addr p0, v1
-
-    goto :goto_0
-
-    :cond_0
-    :goto_1
-    const/high16 v0, -0x3ccc0000    # -180.0f
-
-    cmpg-float v0, p0, v0
-
-    if-gez v0, :cond_1
-
-    add-float/2addr p0, v1
-
-    goto :goto_1
-
-    :cond_1
-    return p0
 .end method
 
 
 # virtual methods
 .method public copy(Lorg/oscim/core/MapPosition;)V
     .locals 2
+    .param p1, "other"    # Lorg/oscim/core/MapPosition;
 
-    .line 138
+    .prologue
+    .line 129
     iget-wide v0, p1, Lorg/oscim/core/MapPosition;->x:D
 
     iput-wide v0, p0, Lorg/oscim/core/MapPosition;->x:D
 
-    .line 139
+    .line 130
     iget-wide v0, p1, Lorg/oscim/core/MapPosition;->y:D
 
     iput-wide v0, p0, Lorg/oscim/core/MapPosition;->y:D
 
-    .line 141
+    .line 132
     iget v0, p1, Lorg/oscim/core/MapPosition;->bearing:F
 
     iput v0, p0, Lorg/oscim/core/MapPosition;->bearing:F
 
-    .line 142
+    .line 133
     iget-wide v0, p1, Lorg/oscim/core/MapPosition;->scale:D
 
     iput-wide v0, p0, Lorg/oscim/core/MapPosition;->scale:D
 
-    .line 143
+    .line 134
     iget v0, p1, Lorg/oscim/core/MapPosition;->tilt:F
 
     iput v0, p0, Lorg/oscim/core/MapPosition;->tilt:F
 
-    .line 144
-    iget p1, p1, Lorg/oscim/core/MapPosition;->zoomLevel:I
+    .line 135
+    iget v0, p1, Lorg/oscim/core/MapPosition;->zoomLevel:I
 
-    iput p1, p0, Lorg/oscim/core/MapPosition;->zoomLevel:I
+    iput v0, p0, Lorg/oscim/core/MapPosition;->zoomLevel:I
 
+    .line 136
     return-void
 .end method
 
 .method public getBearing()F
     .locals 1
 
-    .line 89
+    .prologue
+    .line 80
     iget v0, p0, Lorg/oscim/core/MapPosition;->bearing:F
 
     return v0
 .end method
 
 .method public getGeoPoint()Lorg/oscim/core/GeoPoint;
-    .locals 5
+    .locals 6
 
-    .line 173
+    .prologue
+    .line 161
     new-instance v0, Lorg/oscim/core/GeoPoint;
 
-    iget-wide v1, p0, Lorg/oscim/core/MapPosition;->y:D
+    iget-wide v2, p0, Lorg/oscim/core/MapPosition;->y:D
 
-    invoke-static {v1, v2}, Lorg/oscim/core/MercatorProjection;->toLatitude(D)D
+    invoke-static {v2, v3}, Lorg/oscim/core/MercatorProjection;->toLatitude(D)D
 
-    move-result-wide v1
+    move-result-wide v2
 
-    iget-wide v3, p0, Lorg/oscim/core/MapPosition;->x:D
+    iget-wide v4, p0, Lorg/oscim/core/MapPosition;->x:D
 
-    .line 174
-    invoke-static {v3, v4}, Lorg/oscim/core/MercatorProjection;->toLongitude(D)D
+    .line 162
+    invoke-static {v4, v5}, Lorg/oscim/core/MercatorProjection;->toLongitude(D)D
 
-    move-result-wide v3
+    move-result-wide v4
 
-    invoke-direct {v0, v1, v2, v3, v4}, Lorg/oscim/core/GeoPoint;-><init>(DD)V
+    invoke-direct {v0, v2, v3, v4, v5}, Lorg/oscim/core/GeoPoint;-><init>(DD)V
 
     return-object v0
 .end method
@@ -171,7 +151,8 @@
 .method public getLatitude()D
     .locals 2
 
-    .line 178
+    .prologue
+    .line 166
     iget-wide v0, p0, Lorg/oscim/core/MapPosition;->y:D
 
     invoke-static {v0, v1}, Lorg/oscim/core/MercatorProjection;->toLatitude(D)D
@@ -184,7 +165,8 @@
 .method public getLongitude()D
     .locals 2
 
-    .line 182
+    .prologue
+    .line 170
     iget-wide v0, p0, Lorg/oscim/core/MapPosition;->x:D
 
     invoke-static {v0, v1}, Lorg/oscim/core/MercatorProjection;->toLongitude(D)D
@@ -197,7 +179,8 @@
 .method public getScale()D
     .locals 2
 
-    .line 107
+    .prologue
+    .line 98
     iget-wide v0, p0, Lorg/oscim/core/MapPosition;->scale:D
 
     return-wide v0
@@ -206,7 +189,8 @@
 .method public getTilt()F
     .locals 1
 
-    .line 98
+    .prologue
+    .line 89
     iget v0, p0, Lorg/oscim/core/MapPosition;->tilt:F
 
     return v0
@@ -215,14 +199,15 @@
 .method public getZoomScale()D
     .locals 4
 
-    .line 169
+    .prologue
+    .line 157
     iget-wide v0, p0, Lorg/oscim/core/MapPosition;->scale:D
 
-    iget v2, p0, Lorg/oscim/core/MapPosition;->zoomLevel:I
+    const/4 v2, 0x1
 
-    const/4 v3, 0x1
+    iget v3, p0, Lorg/oscim/core/MapPosition;->zoomLevel:I
 
-    shl-int v2, v3, v2
+    shl-int/2addr v2, v3
 
     int-to-double v2, v2
 
@@ -232,204 +217,268 @@
 .end method
 
 .method public set(DDDFF)V
-    .locals 0
+    .locals 3
+    .param p1, "x"    # D
+    .param p3, "y"    # D
+    .param p5, "scale"    # D
+    .param p7, "bearing"    # F
+    .param p8, "tilt"    # F
 
-    .line 148
+    .prologue
+    const/high16 v1, 0x43b40000    # 360.0f
+
+    .line 139
     iput-wide p1, p0, Lorg/oscim/core/MapPosition;->x:D
 
-    .line 149
+    .line 140
     iput-wide p3, p0, Lorg/oscim/core/MapPosition;->y:D
 
-    .line 150
+    .line 141
     iput-wide p5, p0, Lorg/oscim/core/MapPosition;->scale:D
 
-    .line 152
-    invoke-static {p7}, Lorg/oscim/core/MapPosition;->clampBearing(F)F
+    .line 143
+    :goto_0
+    const/high16 v0, 0x43340000    # 180.0f
 
-    move-result p1
+    cmpl-float v0, p7, v0
 
-    iput p1, p0, Lorg/oscim/core/MapPosition;->bearing:F
+    if-lez v0, :cond_0
 
-    .line 153
+    .line 144
+    sub-float/2addr p7, v1
+
+    goto :goto_0
+
+    .line 145
+    :cond_0
+    :goto_1
+    const/high16 v0, -0x3ccc0000    # -180.0f
+
+    cmpg-float v0, p7, v0
+
+    if-gez v0, :cond_1
+
+    .line 146
+    add-float/2addr p7, v1
+
+    goto :goto_1
+
+    .line 147
+    :cond_1
+    iput p7, p0, Lorg/oscim/core/MapPosition;->bearing:F
+
+    .line 149
     iput p8, p0, Lorg/oscim/core/MapPosition;->tilt:F
 
-    double-to-int p1, p5
+    .line 150
+    double-to-int v0, p5
 
-    .line 154
-    invoke-static {p1}, Lorg/oscim/utils/FastMath;->log2(I)I
+    invoke-static {v0}, Lorg/oscim/utils/FastMath;->log2(I)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/core/MapPosition;->zoomLevel:I
+    iput v0, p0, Lorg/oscim/core/MapPosition;->zoomLevel:I
 
+    .line 151
     return-void
 .end method
 
 .method public setBearing(F)Lorg/oscim/core/MapPosition;
     .locals 0
+    .param p1, "bearing"    # F
 
-    .line 93
-    invoke-static {p1}, Lorg/oscim/core/MapPosition;->clampBearing(F)F
-
-    move-result p1
-
+    .prologue
+    .line 84
     iput p1, p0, Lorg/oscim/core/MapPosition;->bearing:F
 
+    .line 85
     return-object p0
 .end method
 
 .method public setByBoundingBox(Lorg/oscim/core/BoundingBox;II)V
-    .locals 12
+    .locals 18
+    .param p1, "bbox"    # Lorg/oscim/core/BoundingBox;
+    .param p2, "viewWidth"    # I
+    .param p3, "viewHeight"    # I
+
+    .prologue
+    .line 174
+    invoke-virtual/range {p1 .. p1}, Lorg/oscim/core/BoundingBox;->getMinLongitude()D
+
+    move-result-wide v14
+
+    invoke-static {v14, v15}, Lorg/oscim/core/MercatorProjection;->longitudeToX(D)D
+
+    move-result-wide v6
+
+    .line 175
+    .local v6, "minx":D
+    invoke-virtual/range {p1 .. p1}, Lorg/oscim/core/BoundingBox;->getMaxLatitude()D
+
+    move-result-wide v14
+
+    invoke-static {v14, v15}, Lorg/oscim/core/MercatorProjection;->latitudeToY(D)D
+
+    move-result-wide v8
+
+    .line 177
+    .local v8, "miny":D
+    invoke-virtual/range {p1 .. p1}, Lorg/oscim/core/BoundingBox;->getMaxLongitude()D
+
+    move-result-wide v14
+
+    invoke-static {v14, v15}, Lorg/oscim/core/MercatorProjection;->longitudeToX(D)D
+
+    move-result-wide v14
+
+    sub-double/2addr v14, v6
+
+    invoke-static {v14, v15}, Ljava/lang/Math;->abs(D)D
+
+    move-result-wide v2
+
+    .line 178
+    .local v2, "dx":D
+    invoke-virtual/range {p1 .. p1}, Lorg/oscim/core/BoundingBox;->getMinLatitude()D
+
+    move-result-wide v14
+
+    invoke-static {v14, v15}, Lorg/oscim/core/MercatorProjection;->latitudeToY(D)D
+
+    move-result-wide v14
+
+    sub-double/2addr v14, v8
+
+    invoke-static {v14, v15}, Ljava/lang/Math;->abs(D)D
+
+    move-result-wide v4
+
+    .line 179
+    .local v4, "dy":D
+    move/from16 v0, p2
+
+    int-to-double v14, v0
+
+    sget v16, Lorg/oscim/core/Tile;->SIZE:I
+
+    move/from16 v0, v16
+
+    int-to-double v0, v0
+
+    move-wide/from16 v16, v0
+
+    mul-double v16, v16, v2
+
+    div-double v10, v14, v16
+
+    .line 180
+    .local v10, "zx":D
+    move/from16 v0, p3
+
+    int-to-double v14, v0
+
+    sget v16, Lorg/oscim/core/Tile;->SIZE:I
+
+    move/from16 v0, v16
+
+    int-to-double v0, v0
+
+    move-wide/from16 v16, v0
+
+    mul-double v16, v16, v4
+
+    div-double v12, v14, v16
+
+    .line 182
+    .local v12, "zy":D
+    invoke-static {v10, v11, v12, v13}, Ljava/lang/Math;->min(DD)D
+
+    move-result-wide v14
+
+    move-object/from16 v0, p0
+
+    iput-wide v14, v0, Lorg/oscim/core/MapPosition;->scale:D
+
+    .line 183
+    const-wide/high16 v14, 0x4000000000000000L    # 2.0
+
+    div-double v14, v2, v14
+
+    add-double/2addr v14, v6
+
+    move-object/from16 v0, p0
+
+    iput-wide v14, v0, Lorg/oscim/core/MapPosition;->x:D
+
+    .line 184
+    const-wide/high16 v14, 0x4000000000000000L    # 2.0
+
+    div-double v14, v4, v14
+
+    add-double/2addr v14, v8
+
+    move-object/from16 v0, p0
+
+    iput-wide v14, v0, Lorg/oscim/core/MapPosition;->y:D
+
+    .line 185
+    const/4 v14, 0x0
+
+    move-object/from16 v0, p0
+
+    iput v14, v0, Lorg/oscim/core/MapPosition;->bearing:F
 
     .line 186
-    invoke-virtual {p1}, Lorg/oscim/core/BoundingBox;->getMinLongitude()D
+    const/4 v14, 0x0
 
-    move-result-wide v0
+    move-object/from16 v0, p0
 
-    invoke-static {v0, v1}, Lorg/oscim/core/MercatorProjection;->longitudeToX(D)D
-
-    move-result-wide v0
+    iput v14, v0, Lorg/oscim/core/MapPosition;->tilt:F
 
     .line 187
-    invoke-virtual {p1}, Lorg/oscim/core/BoundingBox;->getMaxLatitude()D
-
-    move-result-wide v2
-
-    invoke-static {v2, v3}, Lorg/oscim/core/MercatorProjection;->latitudeToY(D)D
-
-    move-result-wide v2
-
-    .line 189
-    invoke-virtual {p1}, Lorg/oscim/core/BoundingBox;->getMaxLongitude()D
-
-    move-result-wide v4
-
-    invoke-static {v4, v5}, Lorg/oscim/core/MercatorProjection;->longitudeToX(D)D
-
-    move-result-wide v4
-
-    sub-double/2addr v4, v0
-
-    invoke-static {v4, v5}, Ljava/lang/Math;->abs(D)D
-
-    move-result-wide v4
-
-    .line 190
-    invoke-virtual {p1}, Lorg/oscim/core/BoundingBox;->getMinLatitude()D
-
-    move-result-wide v6
-
-    invoke-static {v6, v7}, Lorg/oscim/core/MercatorProjection;->latitudeToY(D)D
-
-    move-result-wide v6
-
-    sub-double/2addr v6, v2
-
-    invoke-static {v6, v7}, Ljava/lang/Math;->abs(D)D
-
-    move-result-wide v6
-
-    int-to-double p1, p2
-
-    .line 191
-    sget v8, Lorg/oscim/core/Tile;->SIZE:I
-
-    int-to-double v8, v8
-
-    mul-double/2addr v8, v4
-
-    div-double/2addr p1, v8
-
-    int-to-double v8, p3
-
-    .line 192
-    sget p3, Lorg/oscim/core/Tile;->SIZE:I
-
-    int-to-double v10, p3
-
-    mul-double/2addr v10, v6
-
-    div-double/2addr v8, v10
-
-    .line 194
-    invoke-static {p1, p2, v8, v9}, Ljava/lang/Math;->min(DD)D
-
-    move-result-wide p1
-
-    iput-wide p1, p0, Lorg/oscim/core/MapPosition;->scale:D
-
-    .line 195
-    iget-wide p1, p0, Lorg/oscim/core/MapPosition;->scale:D
-
-    double-to-int p1, p1
-
-    invoke-static {p1}, Lorg/oscim/utils/FastMath;->log2(I)I
-
-    move-result p1
-
-    iput p1, p0, Lorg/oscim/core/MapPosition;->zoomLevel:I
-
-    const-wide/high16 p1, 0x4000000000000000L    # 2.0
-
-    div-double/2addr v4, p1
-
-    add-double/2addr v0, v4
-
-    .line 196
-    iput-wide v0, p0, Lorg/oscim/core/MapPosition;->x:D
-
-    div-double/2addr v6, p1
-
-    add-double/2addr v2, v6
-
-    .line 197
-    iput-wide v2, p0, Lorg/oscim/core/MapPosition;->y:D
-
-    const/4 p1, 0x0
-
-    .line 198
-    iput p1, p0, Lorg/oscim/core/MapPosition;->bearing:F
-
-    .line 199
-    iput p1, p0, Lorg/oscim/core/MapPosition;->tilt:F
-
     return-void
 .end method
 
 .method public setPosition(DD)V
-    .locals 0
+    .locals 3
+    .param p1, "latitude"    # D
+    .param p3, "longitude"    # D
 
-    .line 131
+    .prologue
+    .line 122
     invoke-static {p1, p2}, Lorg/oscim/core/MercatorProjection;->limitLatitude(D)D
 
     move-result-wide p1
 
-    .line 132
+    .line 123
     invoke-static {p3, p4}, Lorg/oscim/core/MercatorProjection;->limitLongitude(D)D
 
     move-result-wide p3
 
-    .line 133
+    .line 124
     invoke-static {p3, p4}, Lorg/oscim/core/MercatorProjection;->longitudeToX(D)D
 
-    move-result-wide p3
+    move-result-wide v0
 
-    iput-wide p3, p0, Lorg/oscim/core/MapPosition;->x:D
+    iput-wide v0, p0, Lorg/oscim/core/MapPosition;->x:D
 
-    .line 134
+    .line 125
     invoke-static {p1, p2}, Lorg/oscim/core/MercatorProjection;->latitudeToY(D)D
 
-    move-result-wide p1
+    move-result-wide v0
 
-    iput-wide p1, p0, Lorg/oscim/core/MapPosition;->y:D
+    iput-wide v0, p0, Lorg/oscim/core/MapPosition;->y:D
 
+    .line 126
     return-void
 .end method
 
 .method public setPosition(Lorg/oscim/core/GeoPoint;)V
     .locals 4
+    .param p1, "geoPoint"    # Lorg/oscim/core/GeoPoint;
 
-    .line 127
+    .prologue
+    .line 118
     invoke-virtual {p1}, Lorg/oscim/core/GeoPoint;->getLatitude()D
 
     move-result-wide v0
@@ -440,100 +489,128 @@
 
     invoke-virtual {p0, v0, v1, v2, v3}, Lorg/oscim/core/MapPosition;->setPosition(DD)V
 
+    .line 119
     return-void
 .end method
 
 .method public setScale(D)Lorg/oscim/core/MapPosition;
     .locals 1
+    .param p1, "scale"    # D
 
+    .prologue
+    .line 112
     double-to-int v0, p1
 
-    .line 121
     invoke-static {v0}, Lorg/oscim/utils/FastMath;->log2(I)I
 
     move-result v0
 
     iput v0, p0, Lorg/oscim/core/MapPosition;->zoomLevel:I
 
-    .line 122
+    .line 113
     iput-wide p1, p0, Lorg/oscim/core/MapPosition;->scale:D
 
+    .line 114
     return-object p0
 .end method
 
 .method public setTilt(F)Lorg/oscim/core/MapPosition;
     .locals 0
+    .param p1, "tilt"    # F
 
-    .line 102
+    .prologue
+    .line 93
     iput p1, p0, Lorg/oscim/core/MapPosition;->tilt:F
 
+    .line 94
     return-object p0
 .end method
 
 .method public toString()Ljava/lang/String;
-    .locals 3
+    .locals 4
 
-    .line 204
+    .prologue
+    .line 191
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
     const-string v1, "[X:"
 
-    .line 205
+    .line 192
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-wide v1, p0, Lorg/oscim/core/MapPosition;->x:D
+    move-result-object v0
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+    iget-wide v2, p0, Lorg/oscim/core/MapPosition;->x:D
+
+    invoke-virtual {v0, v2, v3}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     const-string v1, ", Y:"
 
-    .line 206
+    .line 193
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-wide v1, p0, Lorg/oscim/core/MapPosition;->y:D
+    move-result-object v0
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+    iget-wide v2, p0, Lorg/oscim/core/MapPosition;->y:D
+
+    invoke-virtual {v0, v2, v3}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     const-string v1, ", Z:"
 
-    .line 207
+    .line 194
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     iget v1, p0, Lorg/oscim/core/MapPosition;->zoomLevel:I
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
+    move-result-object v0
+
     const-string v1, "] lat:"
 
-    .line 208
+    .line 195
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-wide v1, p0, Lorg/oscim/core/MapPosition;->y:D
+    move-result-object v0
 
-    .line 209
-    invoke-static {v1, v2}, Lorg/oscim/core/MercatorProjection;->toLatitude(D)D
+    iget-wide v2, p0, Lorg/oscim/core/MapPosition;->y:D
 
-    move-result-wide v1
+    .line 196
+    invoke-static {v2, v3}, Lorg/oscim/core/MercatorProjection;->toLatitude(D)D
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+    move-result-wide v2
+
+    invoke-virtual {v0, v2, v3}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     const-string v1, ", lon:"
 
-    .line 210
+    .line 197
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-wide v1, p0, Lorg/oscim/core/MapPosition;->x:D
+    move-result-object v0
 
-    .line 211
-    invoke-static {v1, v2}, Lorg/oscim/core/MercatorProjection;->toLongitude(D)D
+    iget-wide v2, p0, Lorg/oscim/core/MapPosition;->x:D
 
-    move-result-wide v1
+    .line 198
+    invoke-static {v2, v3}, Lorg/oscim/core/MercatorProjection;->toLongitude(D)D
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+    move-result-wide v2
 
-    .line 212
+    invoke-virtual {v0, v2, v3}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    .line 199
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0

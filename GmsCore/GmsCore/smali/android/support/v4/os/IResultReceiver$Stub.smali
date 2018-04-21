@@ -27,37 +27,46 @@
 .method public constructor <init>()V
     .locals 1
 
+    .prologue
     .line 15
     invoke-direct {p0}, Landroid/os/Binder;-><init>()V
 
+    .line 16
     const-string v0, "android.support.v4.os.IResultReceiver"
 
-    .line 16
     invoke-virtual {p0, p0, v0}, Landroid/support/v4/os/IResultReceiver$Stub;->attachInterface(Landroid/os/IInterface;Ljava/lang/String;)V
 
+    .line 17
     return-void
 .end method
 
 .method public static asInterface(Landroid/os/IBinder;)Landroid/support/v4/os/IResultReceiver;
     .locals 2
+    .param p0, "obj"    # Landroid/os/IBinder;
 
+    .prologue
+    .line 24
     if-nez p0, :cond_0
 
-    const/4 p0, 0x0
+    .line 25
+    const/4 v0, 0x0
 
-    return-object p0
-
-    :cond_0
-    const-string v0, "android.support.v4.os.IResultReceiver"
+    .line 31
+    :goto_0
+    return-object v0
 
     .line 27
-    invoke-interface {p0, v0}, Landroid/os/IBinder;->queryLocalInterface(Ljava/lang/String;)Landroid/os/IInterface;
+    :cond_0
+    const-string v1, "android.support.v4.os.IResultReceiver"
+
+    invoke-interface {p0, v1}, Landroid/os/IBinder;->queryLocalInterface(Ljava/lang/String;)Landroid/os/IInterface;
 
     move-result-object v0
 
+    .line 28
+    .local v0, "iin":Landroid/os/IInterface;
     if-eqz v0, :cond_1
 
-    .line 28
     instance-of v1, v0, Landroid/support/v4/os/IResultReceiver;
 
     if-eqz v1, :cond_1
@@ -65,15 +74,16 @@
     .line 29
     check-cast v0, Landroid/support/v4/os/IResultReceiver;
 
-    return-object v0
+    goto :goto_0
 
     .line 31
     :cond_1
     new-instance v0, Landroid/support/v4/os/IResultReceiver$Stub$Proxy;
 
+    .end local v0    # "iin":Landroid/os/IInterface;
     invoke-direct {v0, p0}, Landroid/support/v4/os/IResultReceiver$Stub$Proxy;-><init>(Landroid/os/IBinder;)V
 
-    return-object v0
+    goto :goto_0
 .end method
 
 
@@ -81,75 +91,92 @@
 .method public asBinder()Landroid/os/IBinder;
     .locals 0
 
+    .prologue
+    .line 35
     return-object p0
 .end method
 
 .method public onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-    .locals 2
+    .locals 4
+    .param p1, "code"    # I
+    .param p2, "data"    # Landroid/os/Parcel;
+    .param p3, "reply"    # Landroid/os/Parcel;
+    .param p4, "flags"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    const/4 v0, 0x1
+    .prologue
+    const/4 v2, 0x1
 
-    if-eq p1, v0, :cond_1
-
-    const v1, 0x5f4e5446
-
-    if-eq p1, v1, :cond_0
+    .line 39
+    sparse-switch p1, :sswitch_data_0
 
     .line 62
     invoke-super {p0, p1, p2, p3, p4}, Landroid/os/Binder;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    move-result p1
+    move-result v2
 
-    return p1
-
-    :cond_0
-    const-string p1, "android.support.v4.os.IResultReceiver"
+    :goto_0
+    return v2
 
     .line 43
-    invoke-virtual {p3, p1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+    :sswitch_0
+    const-string v3, "android.support.v4.os.IResultReceiver"
 
-    return v0
+    invoke-virtual {p3, v3}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    :cond_1
-    const-string p1, "android.support.v4.os.IResultReceiver"
+    goto :goto_0
 
     .line 48
-    invoke-virtual {p2, p1}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+    :sswitch_1
+    const-string v3, "android.support.v4.os.IResultReceiver"
+
+    invoke-virtual {p2, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
     .line 50
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
-    move-result p1
+    move-result v0
 
     .line 52
+    .local v0, "_arg0":I
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
-    move-result p3
+    move-result v3
 
-    if-eqz p3, :cond_2
+    if-eqz v3, :cond_0
 
     .line 53
-    sget-object p3, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
+    sget-object v3, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
 
-    invoke-interface {p3, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+    invoke-interface {v3, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
 
-    move-result-object p2
+    move-result-object v1
 
-    check-cast p2, Landroid/os/Bundle;
+    check-cast v1, Landroid/os/Bundle;
+
+    .line 58
+    .local v1, "_arg1":Landroid/os/Bundle;
+    :goto_1
+    invoke-virtual {p0, v0, v1}, Landroid/support/v4/os/IResultReceiver$Stub;->send(ILandroid/os/Bundle;)V
 
     goto :goto_0
 
-    :cond_2
-    const/4 p2, 0x0
+    .line 56
+    .end local v1    # "_arg1":Landroid/os/Bundle;
+    :cond_0
+    const/4 v1, 0x0
 
-    .line 58
-    :goto_0
-    invoke-virtual {p0, p1, p2}, Landroid/support/v4/os/IResultReceiver$Stub;->send(ILandroid/os/Bundle;)V
+    .restart local v1    # "_arg1":Landroid/os/Bundle;
+    goto :goto_1
 
-    return v0
+    .line 39
+    :sswitch_data_0
+    .sparse-switch
+        0x1 -> :sswitch_1
+        0x5f4e5446 -> :sswitch_0
+    .end sparse-switch
 .end method

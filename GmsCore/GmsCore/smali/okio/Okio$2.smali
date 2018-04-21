@@ -27,6 +27,7 @@
 .method constructor <init>(Lokio/Timeout;Ljava/io/InputStream;)V
     .locals 0
 
+    .prologue
     .line 130
     iput-object p1, p0, Lokio/Okio$2;->val$timeout:Lokio/Timeout;
 
@@ -47,117 +48,136 @@
         }
     .end annotation
 
+    .prologue
     .line 144
     iget-object v0, p0, Lokio/Okio$2;->val$in:Ljava/io/InputStream;
 
     invoke-virtual {v0}, Ljava/io/InputStream;->close()V
 
+    .line 145
     return-void
 .end method
 
 .method public read(Lokio/Buffer;J)J
-    .locals 4
+    .locals 8
+    .param p1, "sink"    # Lokio/Buffer;
+    .param p2, "byteCount"    # J
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    const-wide/16 v0, 0x0
-
-    cmp-long v2, p2, v0
-
-    if-gez v2, :cond_0
-
+    .prologue
     .line 132
-    new-instance p1, Ljava/lang/IllegalArgumentException;
+    const-wide/16 v4, 0x0
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    cmp-long v3, p2, v4
 
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+    if-gez v3, :cond_0
 
-    const-string v1, "byteCount < 0: "
+    new-instance v3, Ljava/lang/IllegalArgumentException;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, p2, p3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    const-string v5, "byteCount < 0: "
 
-    move-result-object p2
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    move-result-object v4
 
-    throw p1
+    invoke-virtual {v4, p2, p3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-direct {v3, v4}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v3
 
     .line 133
     :cond_0
-    iget-object v0, p0, Lokio/Okio$2;->val$timeout:Lokio/Timeout;
+    iget-object v3, p0, Lokio/Okio$2;->val$timeout:Lokio/Timeout;
 
-    invoke-virtual {v0}, Lokio/Timeout;->throwIfReached()V
-
-    const/4 v0, 0x1
+    invoke-virtual {v3}, Lokio/Timeout;->throwIfReached()V
 
     .line 134
-    invoke-virtual {p1, v0}, Lokio/Buffer;->writableSegment(I)Lokio/Segment;
+    const/4 v3, 0x1
 
-    move-result-object v0
+    invoke-virtual {p1, v3}, Lokio/Buffer;->writableSegment(I)Lokio/Segment;
+
+    move-result-object v2
 
     .line 135
-    iget v1, v0, Lokio/Segment;->limit:I
+    .local v2, "tail":Lokio/Segment;
+    iget v3, v2, Lokio/Segment;->limit:I
 
-    rsub-int v1, v1, 0x800
+    rsub-int v3, v3, 0x800
 
-    int-to-long v1, v1
+    int-to-long v4, v3
 
-    invoke-static {p2, p3, v1, v2}, Ljava/lang/Math;->min(JJ)J
+    invoke-static {p2, p3, v4, v5}, Ljava/lang/Math;->min(JJ)J
 
-    move-result-wide p2
+    move-result-wide v4
 
-    long-to-int p2, p2
+    long-to-int v1, v4
 
     .line 136
-    iget-object p3, p0, Lokio/Okio$2;->val$in:Ljava/io/InputStream;
+    .local v1, "maxToCopy":I
+    iget-object v3, p0, Lokio/Okio$2;->val$in:Ljava/io/InputStream;
 
-    iget-object v1, v0, Lokio/Segment;->data:[B
+    iget-object v4, v2, Lokio/Segment;->data:[B
 
-    iget v2, v0, Lokio/Segment;->limit:I
+    iget v5, v2, Lokio/Segment;->limit:I
 
-    invoke-virtual {p3, v1, v2, p2}, Ljava/io/InputStream;->read([BII)I
+    invoke-virtual {v3, v4, v5, v1}, Ljava/io/InputStream;->read([BII)I
 
-    move-result p2
+    move-result v0
 
-    const/4 p3, -0x1
+    .line 137
+    .local v0, "bytesRead":I
+    const/4 v3, -0x1
 
-    if-ne p2, p3, :cond_1
+    if-ne v0, v3, :cond_1
 
-    const-wide/16 p1, -0x1
+    const-wide/16 v4, -0x1
 
-    return-wide p1
+    .line 140
+    :goto_0
+    return-wide v4
 
     .line 138
     :cond_1
-    iget p3, v0, Lokio/Segment;->limit:I
+    iget v3, v2, Lokio/Segment;->limit:I
 
-    add-int/2addr p3, p2
+    add-int/2addr v3, v0
 
-    iput p3, v0, Lokio/Segment;->limit:I
+    iput v3, v2, Lokio/Segment;->limit:I
 
     .line 139
-    iget-wide v0, p1, Lokio/Buffer;->size:J
+    iget-wide v4, p1, Lokio/Buffer;->size:J
 
-    int-to-long p2, p2
+    int-to-long v6, v0
 
-    add-long v2, v0, p2
+    add-long/2addr v4, v6
 
-    iput-wide v2, p1, Lokio/Buffer;->size:J
+    iput-wide v4, p1, Lokio/Buffer;->size:J
 
-    return-wide p2
+    .line 140
+    int-to-long v4, v0
+
+    goto :goto_0
 .end method
 
 .method public toString()Ljava/lang/String;
     .locals 2
 
+    .prologue
     .line 152
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -167,13 +187,19 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    move-result-object v0
+
     iget-object v1, p0, Lokio/Okio$2;->val$in:Ljava/io/InputStream;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
+    move-result-object v0
+
     const-string v1, ")"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 

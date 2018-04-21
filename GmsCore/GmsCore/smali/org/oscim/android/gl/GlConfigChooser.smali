@@ -10,6 +10,7 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 9
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -19,172 +20,164 @@
 
 # virtual methods
 .method public chooseConfig(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;)Ljavax/microedition/khronos/egl/EGLConfig;
-    .locals 10
+    .locals 13
+    .param p1, "egl"    # Ljavax/microedition/khronos/egl/EGL10;
+    .param p2, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
 
-    const/4 v0, 0x1
+    .prologue
+    const/16 v6, 0xf
+
+    const/4 v3, 0x0
+
+    const/4 v4, 0x0
 
     .line 13
-    new-array v0, v0, [I
+    const/4 v0, 0x1
 
-    const/16 v7, 0xf
+    new-array v5, v0, [I
 
     .line 16
-    new-array v8, v7, [I
+    .local v5, "val":[I
+    new-array v2, v6, [I
 
-    fill-array-data v8, :array_0
+    fill-array-data v2, :array_0
 
-    const/4 v4, 0x0
+    .local v2, "configSpec":[I
+    move-object v0, p1
 
-    const/4 v5, 0x0
-
-    move-object v1, p1
-
-    move-object v2, p2
-
-    move-object v3, v8
-
-    move-object v6, v0
+    move-object v1, p2
 
     .line 27
-    invoke-interface/range {v1 .. v6}, Ljavax/microedition/khronos/egl/EGL10;->eglChooseConfig(Ljavax/microedition/khronos/egl/EGLDisplay;[I[Ljavax/microedition/khronos/egl/EGLConfig;I[I)Z
+    invoke-interface/range {v0 .. v5}, Ljavax/microedition/khronos/egl/EGL10;->eglChooseConfig(Ljavax/microedition/khronos/egl/EGLDisplay;[I[Ljavax/microedition/khronos/egl/EGLConfig;I[I)Z
 
-    move-result v1
+    move-result v0
 
-    if-nez v1, :cond_0
+    if-nez v0, :cond_0
 
     .line 28
-    new-instance p1, Ljava/lang/IllegalArgumentException;
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string p2, "eglChooseConfig failed"
+    const-string v1, "eglChooseConfig failed"
 
-    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw p1
-
-    :cond_0
-    const/4 v9, 0x0
+    throw v0
 
     .line 30
-    aget v1, v0, v9
+    :cond_0
+    aget v10, v5, v4
 
-    if-gtz v1, :cond_3
+    .line 32
+    .local v10, "numConfigs":I
+    if-gtz v10, :cond_2
 
     .line 34
-    new-array v7, v7, [I
+    new-array v2, v6, [I
 
-    fill-array-data v7, :array_1
+    .end local v2    # "configSpec":[I
+    fill-array-data v2, :array_1
 
-    const/4 v4, 0x0
+    .restart local v2    # "configSpec":[I
+    move-object v0, p1
 
-    const/4 v5, 0x0
-
-    move-object v1, p1
-
-    move-object v2, p2
-
-    move-object v3, v7
-
-    move-object v6, v0
+    move-object v1, p2
 
     .line 45
-    invoke-interface/range {v1 .. v6}, Ljavax/microedition/khronos/egl/EGL10;->eglChooseConfig(Ljavax/microedition/khronos/egl/EGLDisplay;[I[Ljavax/microedition/khronos/egl/EGLConfig;I[I)Z
+    invoke-interface/range {v0 .. v5}, Ljavax/microedition/khronos/egl/EGL10;->eglChooseConfig(Ljavax/microedition/khronos/egl/EGLDisplay;[I[Ljavax/microedition/khronos/egl/EGLConfig;I[I)Z
 
-    move-result v1
+    move-result v0
 
-    if-nez v1, :cond_1
+    if-nez v0, :cond_1
 
     .line 46
-    new-instance p1, Ljava/lang/IllegalArgumentException;
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string p2, "eglChooseConfig failed"
+    const-string v1, "eglChooseConfig failed"
 
-    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw p1
+    throw v0
 
     .line 48
     :cond_1
-    aget v1, v0, v9
+    aget v10, v5, v4
 
-    if-gtz v1, :cond_2
+    .line 50
+    if-gtz v10, :cond_2
 
     .line 51
-    new-instance p1, Ljava/lang/IllegalArgumentException;
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string p2, "No configs match configSpec"
+    const-string v1, "No configs match configSpec"
 
-    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw p1
-
-    :cond_2
-    move v5, v1
-
-    move-object v3, v7
-
-    goto :goto_0
-
-    :cond_3
-    move v5, v1
-
-    move-object v3, v8
+    throw v0
 
     .line 56
-    :goto_0
-    new-array v7, v5, [Ljavax/microedition/khronos/egl/EGLConfig;
+    :cond_2
+    new-array v9, v10, [Ljavax/microedition/khronos/egl/EGLConfig;
 
-    move-object v1, p1
+    .local v9, "configs":[Ljavax/microedition/khronos/egl/EGLConfig;
+    move-object v6, p1
 
-    move-object v2, p2
+    move-object v7, p2
 
-    move-object v4, v7
+    move-object v8, v2
 
-    move-object v6, v0
+    move-object v11, v5
 
     .line 57
-    invoke-interface/range {v1 .. v6}, Ljavax/microedition/khronos/egl/EGL10;->eglChooseConfig(Ljavax/microedition/khronos/egl/EGLDisplay;[I[Ljavax/microedition/khronos/egl/EGLConfig;I[I)Z
+    invoke-interface/range {v6 .. v11}, Ljavax/microedition/khronos/egl/EGL10;->eglChooseConfig(Ljavax/microedition/khronos/egl/EGLDisplay;[I[Ljavax/microedition/khronos/egl/EGLConfig;I[I)Z
 
-    move-result p1
+    move-result v0
 
-    if-nez p1, :cond_4
+    if-nez v0, :cond_3
 
     .line 58
-    new-instance p1, Ljava/lang/IllegalArgumentException;
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string p2, "data eglChooseConfig failed"
+    const-string v1, "data eglChooseConfig failed"
 
-    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw p1
+    throw v0
 
     .line 66
-    :cond_4
-    array-length p1, v7
+    :cond_3
+    array-length v0, v9
 
-    if-lez p1, :cond_5
+    if-lez v0, :cond_4
 
-    aget-object p1, v7, v9
+    aget-object v12, v9, v4
 
-    goto :goto_1
-
-    :cond_5
-    const/4 p1, 0x0
-
-    :goto_1
-    if-nez p1, :cond_6
+    .line 67
+    .local v12, "config":Ljavax/microedition/khronos/egl/EGLConfig;
+    :goto_0
+    if-nez v12, :cond_5
 
     .line 68
-    new-instance p1, Ljava/lang/IllegalArgumentException;
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string p2, "No config chosen"
+    const-string v1, "No config chosen"
 
-    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw p1
+    throw v0
 
-    :cond_6
-    return-object p1
+    .end local v12    # "config":Ljavax/microedition/khronos/egl/EGLConfig;
+    :cond_4
+    move-object v12, v3
 
+    .line 66
+    goto :goto_0
+
+    .line 70
+    .restart local v12    # "config":Ljavax/microedition/khronos/egl/EGLConfig;
+    :cond_5
+    return-object v12
+
+    .line 16
     nop
 
     :array_0
@@ -206,6 +199,7 @@
         0x3038
     .end array-data
 
+    .line 34
     :array_1
     .array-data 4
         0x3024

@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lorg/oscim/utils/pool/SyncPool<",
+        "Lorg/oscim/utils/pool/SyncPool",
+        "<",
         "Lorg/oscim/renderer/bucket/TextItem;",
         ">;"
     }
@@ -25,8 +26,10 @@
 # direct methods
 .method constructor <init>(I)V
     .locals 0
+    .param p1, "maxItemsInPool"    # I
 
-    .line 28
+    .prologue
+    .line 27
     invoke-direct {p0, p1}, Lorg/oscim/utils/pool/SyncPool;-><init>(I)V
 
     return-void
@@ -36,37 +39,42 @@
 # virtual methods
 .method protected clearItem(Lorg/oscim/renderer/bucket/TextItem;)Z
     .locals 1
+    .param p1, "ti"    # Lorg/oscim/renderer/bucket/TextItem;
 
+    .prologue
     const/4 v0, 0x0
 
-    .line 38
-    iput-object v0, p1, Lorg/oscim/renderer/bucket/TextItem;->label:Ljava/lang/String;
+    .line 37
+    iput-object v0, p1, Lorg/oscim/renderer/bucket/TextItem;->string:Ljava/lang/String;
 
-    .line 39
+    .line 38
     iput-object v0, p1, Lorg/oscim/renderer/bucket/TextItem;->text:Lorg/oscim/theme/styles/TextStyle;
 
-    const/4 p1, 0x1
+    .line 41
+    const/4 v0, 0x1
 
-    return p1
+    return v0
 .end method
 
 .method protected bridge synthetic clearItem(Lorg/oscim/utils/pool/Inlist;)Z
-    .locals 0
+    .locals 1
 
-    .line 28
+    .prologue
+    .line 27
     check-cast p1, Lorg/oscim/renderer/bucket/TextItem;
 
     invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/TextItem$1;->clearItem(Lorg/oscim/renderer/bucket/TextItem;)Z
 
-    move-result p1
+    move-result v0
 
-    return p1
+    return v0
 .end method
 
 .method protected createItem()Lorg/oscim/renderer/bucket/TextItem;
     .locals 1
 
-    .line 32
+    .prologue
+    .line 31
     new-instance v0, Lorg/oscim/renderer/bucket/TextItem;
 
     invoke-direct {v0}, Lorg/oscim/renderer/bucket/TextItem;-><init>()V
@@ -77,7 +85,8 @@
 .method protected bridge synthetic createItem()Lorg/oscim/utils/pool/Inlist;
     .locals 1
 
-    .line 28
+    .prologue
+    .line 27
     invoke-virtual {p0}, Lorg/oscim/renderer/bucket/TextItem$1;->createItem()Lorg/oscim/renderer/bucket/TextItem;
 
     move-result-object v0

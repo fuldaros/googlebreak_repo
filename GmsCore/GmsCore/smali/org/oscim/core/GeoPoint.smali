@@ -3,7 +3,6 @@
 .source "GeoPoint.java"
 
 # interfaces
-.implements Ljava/io/Serializable;
 .implements Ljava/lang/Comparable;
 
 
@@ -11,8 +10,8 @@
 .annotation system Ldalvik/annotation/Signature;
     value = {
         "Ljava/lang/Object;",
-        "Ljava/io/Serializable;",
-        "Ljava/lang/Comparable<",
+        "Ljava/lang/Comparable",
+        "<",
         "Lorg/oscim/core/GeoPoint;",
         ">;"
     }
@@ -29,218 +28,228 @@
 
 # direct methods
 .method public constructor <init>(DD)V
-    .locals 8
+    .locals 9
+    .param p1, "lat"    # D
+    .param p3, "lon"    # D
 
-    .line 79
+    .prologue
+    const-wide v6, 0x412e848000000000L    # 1000000.0
+
+    .line 55
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 45
     const/4 v0, 0x0
 
-    .line 61
     iput v0, p0, Lorg/oscim/core/GeoPoint;->hashCodeValue:I
 
-    const-wide v3, -0x3faabcba4e5ab62aL    # -85.05112877980659
+    .line 56
+    const-wide v2, -0x3faabcba4e5ab62aL    # -85.05112877980659
 
-    const-wide v5, 0x40554345b1a549d6L    # 85.05112877980659
+    const-wide v4, 0x40554345b1a549d6L    # 85.05112877980659
 
-    move-wide v1, p1
+    move-wide v0, p1
 
-    .line 80
-    invoke-static/range {v1 .. v6}, Lorg/oscim/utils/FastMath;->clamp(DDD)D
-
-    move-result-wide p1
-
-    const-wide v0, 0x412e848000000000L    # 1000000.0
-
-    mul-double/2addr p1, v0
-
-    double-to-int p1, p1
-
-    .line 81
-    iput p1, p0, Lorg/oscim/core/GeoPoint;->latitudeE6:I
-
-    const-wide v4, -0x3f99800000000000L    # -180.0
-
-    const-wide v6, 0x4066800000000000L    # 180.0
-
-    move-wide v2, p3
-
-    .line 82
-    invoke-static/range {v2 .. v7}, Lorg/oscim/utils/FastMath;->clamp(DDD)D
+    invoke-static/range {v0 .. v5}, Lorg/oscim/utils/FastMath;->clamp(DDD)D
 
     move-result-wide p1
 
-    mul-double/2addr p1, v0
+    .line 59
+    mul-double v0, p1, v6
 
-    double-to-int p1, p1
+    double-to-int v0, v0
 
-    .line 83
-    iput p1, p0, Lorg/oscim/core/GeoPoint;->longitudeE6:I
+    iput v0, p0, Lorg/oscim/core/GeoPoint;->latitudeE6:I
 
+    .line 60
+    const-wide v2, -0x3f99800000000000L    # -180.0
+
+    const-wide v4, 0x4066800000000000L    # 180.0
+
+    move-wide v0, p3
+
+    invoke-static/range {v0 .. v5}, Lorg/oscim/utils/FastMath;->clamp(DDD)D
+
+    move-result-wide p3
+
+    .line 63
+    mul-double v0, p3, v6
+
+    double-to-int v0, v0
+
+    iput v0, p0, Lorg/oscim/core/GeoPoint;->longitudeE6:I
+
+    .line 64
     return-void
 .end method
 
 .method private calculateHashCode()I
-    .locals 2
+    .locals 3
 
-    .line 113
-    iget v0, p0, Lorg/oscim/core/GeoPoint;->latitudeE6:I
+    .prologue
+    .line 150
+    const/4 v0, 0x7
 
-    const/16 v1, 0xd9
+    .line 151
+    .local v0, "result":I
+    iget v1, p0, Lorg/oscim/core/GeoPoint;->latitudeE6:I
 
-    add-int/2addr v1, v0
+    add-int/lit16 v0, v1, 0xd9
 
-    const/16 v0, 0x1f
+    .line 152
+    mul-int/lit8 v1, v0, 0x1f
 
-    mul-int/2addr v0, v1
+    iget v2, p0, Lorg/oscim/core/GeoPoint;->longitudeE6:I
 
-    .line 114
-    iget v1, p0, Lorg/oscim/core/GeoPoint;->longitudeE6:I
+    add-int v0, v1, v2
 
-    add-int/2addr v0, v1
-
+    .line 153
     return v0
 .end method
 
 
 # virtual methods
 .method public bridge synthetic compareTo(Ljava/lang/Object;)I
-    .locals 0
+    .locals 1
 
-    .line 31
+    .prologue
+    .line 26
     check-cast p1, Lorg/oscim/core/GeoPoint;
 
     invoke-virtual {p0, p1}, Lorg/oscim/core/GeoPoint;->compareTo(Lorg/oscim/core/GeoPoint;)I
 
-    move-result p1
+    move-result v0
 
-    return p1
+    return v0
 .end method
 
 .method public compareTo(Lorg/oscim/core/GeoPoint;)I
-    .locals 5
+    .locals 4
+    .param p1, "geoPoint"    # Lorg/oscim/core/GeoPoint;
 
-    .line 121
-    invoke-virtual {p0, p1}, Lorg/oscim/core/GeoPoint;->equals(Ljava/lang/Object;)Z
+    .prologue
+    const/4 v0, 0x1
 
-    move-result v0
+    const/4 v1, -0x1
 
-    const/4 v1, 0x0
+    .line 85
+    iget v2, p0, Lorg/oscim/core/GeoPoint;->longitudeE6:I
 
-    if-eqz v0, :cond_0
+    iget v3, p1, Lorg/oscim/core/GeoPoint;->longitudeE6:I
 
-    return v1
+    if-le v2, v3, :cond_1
 
-    .line 123
+    .line 94
     :cond_0
-    iget v0, p0, Lorg/oscim/core/GeoPoint;->longitudeE6:I
+    :goto_0
+    return v0
 
-    iget v2, p1, Lorg/oscim/core/GeoPoint;->longitudeE6:I
-
-    const/4 v3, 0x1
-
-    if-le v0, v2, :cond_1
-
-    return v3
-
-    .line 125
+    .line 87
     :cond_1
-    iget v0, p0, Lorg/oscim/core/GeoPoint;->longitudeE6:I
+    iget v2, p0, Lorg/oscim/core/GeoPoint;->longitudeE6:I
 
-    iget v2, p1, Lorg/oscim/core/GeoPoint;->longitudeE6:I
+    iget v3, p1, Lorg/oscim/core/GeoPoint;->longitudeE6:I
 
-    const/4 v4, -0x1
+    if-ge v2, v3, :cond_2
 
-    if-ge v0, v2, :cond_2
+    move v0, v1
 
-    return v4
+    .line 88
+    goto :goto_0
 
-    .line 127
+    .line 89
     :cond_2
+    iget v2, p0, Lorg/oscim/core/GeoPoint;->latitudeE6:I
+
+    iget v3, p1, Lorg/oscim/core/GeoPoint;->latitudeE6:I
+
+    if-gt v2, v3, :cond_0
+
+    .line 91
     iget v0, p0, Lorg/oscim/core/GeoPoint;->latitudeE6:I
 
     iget v2, p1, Lorg/oscim/core/GeoPoint;->latitudeE6:I
 
-    if-le v0, v2, :cond_3
+    if-ge v0, v2, :cond_3
 
-    return v3
+    move v0, v1
 
-    .line 129
+    .line 92
+    goto :goto_0
+
+    .line 94
     :cond_3
-    iget v0, p0, Lorg/oscim/core/GeoPoint;->latitudeE6:I
+    const/4 v0, 0x0
 
-    iget p1, p1, Lorg/oscim/core/GeoPoint;->latitudeE6:I
-
-    if-ge v0, p1, :cond_4
-
-    return v4
-
-    :cond_4
-    return v1
+    goto :goto_0
 .end method
 
 .method public equals(Ljava/lang/Object;)Z
-    .locals 4
+    .locals 5
+    .param p1, "obj"    # Ljava/lang/Object;
 
-    const/4 v0, 0x1
-
-    if-ne p0, p1, :cond_0
-
-    return v0
-
-    .line 173
-    :cond_0
-    instance-of v1, p1, Lorg/oscim/core/GeoPoint;
+    .prologue
+    const/4 v1, 0x1
 
     const/4 v2, 0x0
 
-    if-nez v1, :cond_1
+    .line 99
+    if-ne p0, p1, :cond_1
 
-    return v2
+    .line 110
+    :cond_0
+    :goto_0
+    return v1
 
-    .line 183
+    .line 101
     :cond_1
-    check-cast p1, Lorg/oscim/core/GeoPoint;
+    instance-of v3, p1, Lorg/oscim/core/GeoPoint;
 
-    .line 184
-    iget v1, p0, Lorg/oscim/core/GeoPoint;->latitudeE6:I
+    if-nez v3, :cond_2
 
-    iget v3, p1, Lorg/oscim/core/GeoPoint;->latitudeE6:I
+    move v1, v2
 
-    sub-int/2addr v1, v3
+    .line 102
+    goto :goto_0
 
-    invoke-static {v1}, Ljava/lang/Math;->abs(I)I
-
-    move-result v1
-
-    if-le v1, v0, :cond_2
-
-    return v2
-
-    .line 186
     :cond_2
-    iget v1, p0, Lorg/oscim/core/GeoPoint;->longitudeE6:I
+    move-object v0, p1
 
-    iget p1, p1, Lorg/oscim/core/GeoPoint;->longitudeE6:I
+    .line 104
+    check-cast v0, Lorg/oscim/core/GeoPoint;
 
-    sub-int/2addr v1, p1
+    .line 105
+    .local v0, "other":Lorg/oscim/core/GeoPoint;
+    iget v3, p0, Lorg/oscim/core/GeoPoint;->latitudeE6:I
 
-    invoke-static {v1}, Ljava/lang/Math;->abs(I)I
+    iget v4, v0, Lorg/oscim/core/GeoPoint;->latitudeE6:I
 
-    move-result p1
+    if-eq v3, v4, :cond_3
 
-    if-le p1, v0, :cond_3
+    move v1, v2
 
-    return v2
+    .line 106
+    goto :goto_0
 
+    .line 107
     :cond_3
-    return v0
+    iget v3, p0, Lorg/oscim/core/GeoPoint;->longitudeE6:I
+
+    iget v4, v0, Lorg/oscim/core/GeoPoint;->longitudeE6:I
+
+    if-eq v3, v4, :cond_0
+
+    move v1, v2
+
+    .line 108
+    goto :goto_0
 .end method
 
 .method public getLatitude()D
     .locals 4
 
-    .line 196
+    .prologue
+    .line 117
     iget v0, p0, Lorg/oscim/core/GeoPoint;->latitudeE6:I
 
     int-to-double v0, v0
@@ -255,7 +264,8 @@
 .method public getLongitude()D
     .locals 4
 
-    .line 203
+    .prologue
+    .line 124
     iget v0, p0, Lorg/oscim/core/GeoPoint;->longitudeE6:I
 
     int-to-double v0, v0
@@ -270,19 +280,20 @@
 .method public hashCode()I
     .locals 1
 
-    .line 208
+    .prologue
+    .line 129
     iget v0, p0, Lorg/oscim/core/GeoPoint;->hashCodeValue:I
 
     if-nez v0, :cond_0
 
-    .line 209
+    .line 130
     invoke-direct {p0}, Lorg/oscim/core/GeoPoint;->calculateHashCode()I
 
     move-result v0
 
     iput v0, p0, Lorg/oscim/core/GeoPoint;->hashCodeValue:I
 
-    .line 211
+    .line 132
     :cond_0
     iget v0, p0, Lorg/oscim/core/GeoPoint;->hashCodeValue:I
 
@@ -290,43 +301,54 @@
 .end method
 
 .method public toString()Ljava/lang/String;
-    .locals 3
+    .locals 4
 
-    .line 261
+    .prologue
+    .line 137
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
     const-string v1, "[lat="
 
-    .line 262
+    .line 138
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 263
+    move-result-object v0
+
+    .line 139
     invoke-virtual {p0}, Lorg/oscim/core/GeoPoint;->getLatitude()D
 
-    move-result-wide v1
+    move-result-wide v2
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2, v3}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     const-string v1, ",lon="
 
-    .line 264
+    .line 140
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 265
+    move-result-object v0
+
+    .line 141
     invoke-virtual {p0}, Lorg/oscim/core/GeoPoint;->getLongitude()D
 
-    move-result-wide v1
+    move-result-wide v2
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2, v3}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     const-string v1, "]"
 
-    .line 266
+    .line 142
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 267
+    move-result-object v0
+
+    .line 143
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0

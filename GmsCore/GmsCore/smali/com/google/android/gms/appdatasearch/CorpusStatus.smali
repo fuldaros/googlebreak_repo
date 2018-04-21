@@ -7,7 +7,8 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator<",
+            "Landroid/os/Parcelable$Creator",
+            "<",
             "Lcom/google/android/gms/appdatasearch/CorpusStatus;",
             ">;"
         }
@@ -63,6 +64,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
+    .prologue
     .line 45
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -78,13 +80,15 @@
 .method public constructor <init>()V
     .locals 1
 
+    .prologue
     .line 41
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
+    .line 42
     const/4 v0, 0x2
 
-    .line 42
     iput v0, p0, Lcom/google/android/gms/appdatasearch/CorpusStatus;->versionCode:I
 
+    .line 43
     return-void
 .end method

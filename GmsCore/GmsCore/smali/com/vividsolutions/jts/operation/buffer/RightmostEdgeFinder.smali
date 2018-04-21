@@ -15,45 +15,51 @@
 
 # direct methods
 .method public constructor <init>()V
-    .locals 1
+    .locals 2
+
+    .prologue
+    const/4 v1, 0x0
 
     .line 65
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 56
     const/4 v0, -0x1
 
-    .line 56
     iput v0, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
 
-    const/4 v0, 0x0
-
     .line 57
-    iput-object v0, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minCoord:Lcom/vividsolutions/jts/geom/Coordinate;
+    iput-object v1, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minCoord:Lcom/vividsolutions/jts/geom/Coordinate;
 
     .line 58
-    iput-object v0, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    iput-object v1, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
     .line 59
-    iput-object v0, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->orientedDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    iput-object v1, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->orientedDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
+    .line 66
     return-void
 .end method
 
 .method private checkForRightmostCoordinate(Lcom/vividsolutions/jts/geomgraph/DirectedEdge;)V
-    .locals 7
+    .locals 6
+    .param p1, "de"    # Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
+    .prologue
     .line 147
     invoke-virtual {p1}, Lcom/vividsolutions/jts/geomgraph/DirectedEdge;->getEdge()Lcom/vividsolutions/jts/geomgraph/Edge;
 
+    move-result-object v2
+
+    invoke-virtual {v2}, Lcom/vividsolutions/jts/geomgraph/Edge;->getCoordinates()[Lcom/vividsolutions/jts/geom/Coordinate;
+
     move-result-object v0
-
-    invoke-virtual {v0}, Lcom/vividsolutions/jts/geomgraph/Edge;->getCoordinates()[Lcom/vividsolutions/jts/geom/Coordinate;
-
-    move-result-object v0
-
-    const/4 v1, 0x0
 
     .line 148
+    .local v0, "coord":[Lcom/vividsolutions/jts/geom/Coordinate;
+    const/4 v1, 0x0
+
+    .local v1, "i":I
     :goto_0
     array-length v2, v0
 
@@ -74,9 +80,9 @@
 
     iget-wide v4, v4, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    cmpl-double v6, v2, v4
+    cmpl-double v2, v2, v4
 
-    if-lez v6, :cond_1
+    if-lez v2, :cond_1
 
     .line 152
     :cond_0
@@ -90,438 +96,479 @@
 
     iput-object v2, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minCoord:Lcom/vividsolutions/jts/geom/Coordinate;
 
+    .line 148
     :cond_1
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
+    .line 158
     :cond_2
     return-void
 .end method
 
 .method private findRightmostEdgeAtNode()V
-    .locals 1
+    .locals 3
 
+    .prologue
     .line 107
-    iget-object v0, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    iget-object v2, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
-    invoke-virtual {v0}, Lcom/vividsolutions/jts/geomgraph/DirectedEdge;->getNode()Lcom/vividsolutions/jts/geomgraph/Node;
+    invoke-virtual {v2}, Lcom/vividsolutions/jts/geomgraph/DirectedEdge;->getNode()Lcom/vividsolutions/jts/geomgraph/Node;
 
     move-result-object v0
 
     .line 108
+    .local v0, "node":Lcom/vividsolutions/jts/geomgraph/Node;
     invoke-virtual {v0}, Lcom/vividsolutions/jts/geomgraph/Node;->getEdges()Lcom/vividsolutions/jts/geomgraph/EdgeEndStar;
 
-    move-result-object v0
+    move-result-object v1
 
-    check-cast v0, Lcom/vividsolutions/jts/geomgraph/DirectedEdgeStar;
+    check-cast v1, Lcom/vividsolutions/jts/geomgraph/DirectedEdgeStar;
 
     .line 109
-    invoke-virtual {v0}, Lcom/vividsolutions/jts/geomgraph/DirectedEdgeStar;->getRightmostEdge()Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    .local v1, "star":Lcom/vividsolutions/jts/geomgraph/DirectedEdgeStar;
+    invoke-virtual {v1}, Lcom/vividsolutions/jts/geomgraph/DirectedEdgeStar;->getRightmostEdge()Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
-    move-result-object v0
+    move-result-object v2
 
-    iput-object v0, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    iput-object v2, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
     .line 112
-    iget-object v0, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    iget-object v2, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
-    invoke-virtual {v0}, Lcom/vividsolutions/jts/geomgraph/DirectedEdge;->isForward()Z
+    invoke-virtual {v2}, Lcom/vividsolutions/jts/geomgraph/DirectedEdge;->isForward()Z
 
-    move-result v0
+    move-result v2
 
-    if-nez v0, :cond_0
+    if-nez v2, :cond_0
 
     .line 113
-    iget-object v0, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    iget-object v2, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
-    invoke-virtual {v0}, Lcom/vividsolutions/jts/geomgraph/DirectedEdge;->getSym()Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    invoke-virtual {v2}, Lcom/vividsolutions/jts/geomgraph/DirectedEdge;->getSym()Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
-    move-result-object v0
+    move-result-object v2
 
-    iput-object v0, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    iput-object v2, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
     .line 114
-    iget-object v0, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    iget-object v2, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
-    invoke-virtual {v0}, Lcom/vividsolutions/jts/geomgraph/DirectedEdge;->getEdge()Lcom/vividsolutions/jts/geomgraph/Edge;
+    invoke-virtual {v2}, Lcom/vividsolutions/jts/geomgraph/DirectedEdge;->getEdge()Lcom/vividsolutions/jts/geomgraph/Edge;
 
-    move-result-object v0
+    move-result-object v2
 
-    invoke-virtual {v0}, Lcom/vividsolutions/jts/geomgraph/Edge;->getCoordinates()[Lcom/vividsolutions/jts/geom/Coordinate;
+    invoke-virtual {v2}, Lcom/vividsolutions/jts/geomgraph/Edge;->getCoordinates()[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    move-result-object v0
+    move-result-object v2
 
-    array-length v0, v0
+    array-length v2, v2
 
-    add-int/lit8 v0, v0, -0x1
+    add-int/lit8 v2, v2, -0x1
 
-    iput v0, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
+    iput v2, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
 
+    .line 116
     :cond_0
     return-void
 .end method
 
 .method private findRightmostEdgeAtVertex()V
-    .locals 10
+    .locals 12
+
+    .prologue
+    const/4 v6, 0x1
 
     .line 124
-    iget-object v0, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    iget-object v5, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
-    invoke-virtual {v0}, Lcom/vividsolutions/jts/geomgraph/DirectedEdge;->getEdge()Lcom/vividsolutions/jts/geomgraph/Edge;
+    invoke-virtual {v5}, Lcom/vividsolutions/jts/geomgraph/DirectedEdge;->getEdge()Lcom/vividsolutions/jts/geomgraph/Edge;
 
-    move-result-object v0
+    move-result-object v5
 
-    invoke-virtual {v0}, Lcom/vividsolutions/jts/geomgraph/Edge;->getCoordinates()[Lcom/vividsolutions/jts/geom/Coordinate;
+    invoke-virtual {v5}, Lcom/vividsolutions/jts/geomgraph/Edge;->getCoordinates()[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    move-result-object v0
+    move-result-object v3
 
     .line 125
-    iget v1, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
+    .local v3, "pts":[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget v5, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
 
-    const/4 v2, 0x0
+    if-lez v5, :cond_2
 
-    const/4 v3, 0x1
+    iget v5, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
 
-    if-lez v1, :cond_0
+    array-length v7, v3
 
-    iget v1, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
+    if-ge v5, v7, :cond_2
 
-    array-length v4, v0
-
-    if-ge v1, v4, :cond_0
-
-    move v1, v3
-
-    goto :goto_0
-
-    :cond_0
-    move v1, v2
+    move v5, v6
 
     :goto_0
-    const-string v4, "rightmost point expected to be interior vertex of edge"
+    const-string v7, "rightmost point expected to be interior vertex of edge"
 
-    invoke-static {v1, v4}, Lcom/vividsolutions/jts/util/Assert;->isTrue(ZLjava/lang/String;)V
+    invoke-static {v5, v7}, Lcom/vividsolutions/jts/util/Assert;->isTrue(ZLjava/lang/String;)V
 
     .line 126
-    iget v1, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
+    iget v5, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
 
-    sub-int/2addr v1, v3
+    add-int/lit8 v5, v5, -0x1
 
-    aget-object v1, v0, v1
+    aget-object v2, v3, v5
 
     .line 127
-    iget v4, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
+    .local v2, "pPrev":Lcom/vividsolutions/jts/geom/Coordinate;
+    iget v5, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
 
-    add-int/2addr v4, v3
+    add-int/lit8 v5, v5, 0x1
 
-    aget-object v0, v0, v4
+    aget-object v1, v3, v5
 
     .line 128
-    iget-object v4, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minCoord:Lcom/vividsolutions/jts/geom/Coordinate;
+    .local v1, "pNext":Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v5, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minCoord:Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-static {v4, v0, v1}, Lcom/vividsolutions/jts/algorithm/CGAlgorithms;->computeOrientation(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)I
+    invoke-static {v5, v1, v2}, Lcom/vividsolutions/jts/algorithm/CGAlgorithms;->computeOrientation(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)I
 
-    move-result v4
+    move-result v0
+
+    .line 129
+    .local v0, "orientation":I
+    const/4 v4, 0x0
 
     .line 131
-    iget-wide v5, v1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    iget-object v7, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minCoord:Lcom/vividsolutions/jts/geom/Coordinate;
-
-    iget-wide v7, v7, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    cmpg-double v9, v5, v7
-
-    if-gez v9, :cond_1
-
-    iget-wide v5, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    iget-object v7, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minCoord:Lcom/vividsolutions/jts/geom/Coordinate;
-
-    iget-wide v7, v7, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    cmpg-double v9, v5, v7
-
-    if-gez v9, :cond_1
-
-    if-ne v4, v3, :cond_1
-
-    :goto_1
-    move v2, v3
-
-    goto :goto_2
-
-    .line 135
-    :cond_1
-    iget-wide v5, v1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    iget-object v1, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minCoord:Lcom/vividsolutions/jts/geom/Coordinate;
-
-    iget-wide v7, v1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    cmpl-double v1, v5, v7
-
-    if-lez v1, :cond_2
-
-    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    .local v4, "usePrev":Z
+    iget-wide v8, v2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
     iget-object v5, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minCoord:Lcom/vividsolutions/jts/geom/Coordinate;
 
-    iget-wide v5, v5, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v10, v5, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    cmpl-double v7, v0, v5
+    cmpg-double v5, v8, v10
 
-    if-lez v7, :cond_2
+    if-gez v5, :cond_3
 
-    const/4 v0, -0x1
+    iget-wide v8, v1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    if-ne v4, v0, :cond_2
+    iget-object v5, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minCoord:Lcom/vividsolutions/jts/geom/Coordinate;
 
-    goto :goto_1
+    iget-wide v10, v5, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    :cond_2
-    :goto_2
-    if-eqz v2, :cond_3
+    cmpg-double v5, v8, v10
+
+    if-gez v5, :cond_3
+
+    if-ne v0, v6, :cond_3
+
+    .line 133
+    const/4 v4, 0x1
+
+    .line 141
+    :cond_0
+    :goto_1
+    if-eqz v4, :cond_1
 
     .line 142
-    iget v0, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
+    iget v5, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
 
-    sub-int/2addr v0, v3
+    add-int/lit8 v5, v5, -0x1
 
-    iput v0, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
+    iput v5, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
 
-    :cond_3
+    .line 144
+    :cond_1
     return-void
+
+    .line 125
+    .end local v0    # "orientation":I
+    .end local v1    # "pNext":Lcom/vividsolutions/jts/geom/Coordinate;
+    .end local v2    # "pPrev":Lcom/vividsolutions/jts/geom/Coordinate;
+    .end local v4    # "usePrev":Z
+    :cond_2
+    const/4 v5, 0x0
+
+    goto :goto_0
+
+    .line 135
+    .restart local v0    # "orientation":I
+    .restart local v1    # "pNext":Lcom/vividsolutions/jts/geom/Coordinate;
+    .restart local v2    # "pPrev":Lcom/vividsolutions/jts/geom/Coordinate;
+    .restart local v4    # "usePrev":Z
+    :cond_3
+    iget-wide v6, v2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    iget-object v5, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minCoord:Lcom/vividsolutions/jts/geom/Coordinate;
+
+    iget-wide v8, v5, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    cmpl-double v5, v6, v8
+
+    if-lez v5, :cond_0
+
+    iget-wide v6, v1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    iget-object v5, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minCoord:Lcom/vividsolutions/jts/geom/Coordinate;
+
+    iget-wide v8, v5, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    cmpl-double v5, v6, v8
+
+    if-lez v5, :cond_0
+
+    const/4 v5, -0x1
+
+    if-ne v0, v5, :cond_0
+
+    .line 137
+    const/4 v4, 0x1
+
+    goto :goto_1
 .end method
 
 .method private getRightmostSide(Lcom/vividsolutions/jts/geomgraph/DirectedEdge;I)I
-    .locals 1
+    .locals 2
+    .param p1, "de"    # Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    .param p2, "index"    # I
 
+    .prologue
     .line 162
     invoke-direct {p0, p1, p2}, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->getRightmostSideOfSegment(Lcom/vividsolutions/jts/geomgraph/DirectedEdge;I)I
 
     move-result v0
 
+    .line 163
+    .local v0, "side":I
     if-gez v0, :cond_0
 
-    add-int/lit8 p2, p2, -0x1
-
     .line 164
-    invoke-direct {p0, p1, p2}, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->getRightmostSideOfSegment(Lcom/vividsolutions/jts/geomgraph/DirectedEdge;I)I
+    add-int/lit8 v1, p2, -0x1
+
+    invoke-direct {p0, p1, v1}, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->getRightmostSideOfSegment(Lcom/vividsolutions/jts/geomgraph/DirectedEdge;I)I
 
     move-result v0
 
+    .line 165
     :cond_0
     if-gez v0, :cond_1
 
-    const/4 p2, 0x0
-
     .line 169
-    iput-object p2, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minCoord:Lcom/vividsolutions/jts/geom/Coordinate;
+    const/4 v1, 0x0
+
+    iput-object v1, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minCoord:Lcom/vividsolutions/jts/geom/Coordinate;
 
     .line 170
     invoke-direct {p0, p1}, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->checkForRightmostCoordinate(Lcom/vividsolutions/jts/geomgraph/DirectedEdge;)V
 
+    .line 172
     :cond_1
     return v0
 .end method
 
 .method private getRightmostSideOfSegment(Lcom/vividsolutions/jts/geomgraph/DirectedEdge;I)I
-    .locals 7
+    .locals 8
+    .param p1, "de"    # Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    .param p2, "i"    # I
+
+    .prologue
+    const/4 v2, -0x1
 
     .line 177
     invoke-virtual {p1}, Lcom/vividsolutions/jts/geomgraph/DirectedEdge;->getEdge()Lcom/vividsolutions/jts/geomgraph/Edge;
 
-    move-result-object p1
+    move-result-object v1
 
     .line 178
-    invoke-virtual {p1}, Lcom/vividsolutions/jts/geomgraph/Edge;->getCoordinates()[Lcom/vividsolutions/jts/geom/Coordinate;
+    .local v1, "e":Lcom/vividsolutions/jts/geomgraph/Edge;
+    invoke-virtual {v1}, Lcom/vividsolutions/jts/geomgraph/Edge;->getCoordinates()[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    move-result-object p1
-
-    const/4 v0, -0x1
-
-    if-ltz p2, :cond_3
-
-    add-int/lit8 v1, p2, 0x1
+    move-result-object v0
 
     .line 180
-    array-length v2, p1
+    .local v0, "coord":[Lcom/vividsolutions/jts/geom/Coordinate;
+    if-ltz p2, :cond_0
 
-    if-lt v1, v2, :cond_0
+    add-int/lit8 v3, p2, 0x1
 
-    goto :goto_1
+    array-length v4, v0
+
+    if-lt v3, v4, :cond_1
+
+    .line 185
+    :cond_0
+    :goto_0
+    return v2
 
     .line 181
-    :cond_0
-    aget-object v2, p1, p2
+    :cond_1
+    aget-object v3, v0, p2
 
-    iget-wide v2, v2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v4, v3, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    aget-object v4, p1, v1
+    add-int/lit8 v3, p2, 0x1
 
-    iget-wide v4, v4, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    aget-object v3, v0, v3
 
-    cmpl-double v6, v2, v4
+    iget-wide v6, v3, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    if-nez v6, :cond_1
+    cmpl-double v3, v4, v6
 
-    return v0
+    if-eqz v3, :cond_0
+
+    .line 183
+    const/4 v2, 0x1
 
     .line 184
-    :cond_1
-    aget-object p2, p1, p2
+    .local v2, "pos":I
+    aget-object v3, v0, p2
 
-    iget-wide v2, p2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v4, v3, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    aget-object p1, p1, v1
+    add-int/lit8 v3, p2, 0x1
 
-    iget-wide p1, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    aget-object v3, v0, v3
 
-    cmpg-double v0, v2, p1
+    iget-wide v6, v3, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    if-gez v0, :cond_2
+    cmpg-double v3, v4, v6
 
-    const/4 p1, 0x2
+    if-gez v3, :cond_0
+
+    const/4 v2, 0x2
 
     goto :goto_0
-
-    :cond_2
-    const/4 p1, 0x1
-
-    :goto_0
-    return p1
-
-    :cond_3
-    :goto_1
-    return v0
 .end method
 
 
 # virtual methods
 .method public findEdge(Ljava/util/List;)V
-    .locals 2
+    .locals 6
+    .param p1, "dirEdgeList"    # Ljava/util/List;
+
+    .prologue
+    const/4 v4, 0x1
 
     .line 77
     invoke-interface {p1}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
-    move-result-object p1
+    move-result-object v1
 
+    .local v1, "i":Ljava/util/Iterator;
+    :cond_0
     :goto_0
-    invoke-interface {p1}, Ljava/util/Iterator;->hasNext()Z
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
-    move-result v0
+    move-result v3
 
-    if-eqz v0, :cond_1
+    if-eqz v3, :cond_1
 
     .line 78
-    invoke-interface {p1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
     .line 79
+    .local v0, "de":Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
     invoke-virtual {v0}, Lcom/vividsolutions/jts/geomgraph/DirectedEdge;->isForward()Z
 
-    move-result v1
+    move-result v3
 
-    if-nez v1, :cond_0
-
-    goto :goto_0
+    if-eqz v3, :cond_0
 
     .line 81
-    :cond_0
     invoke-direct {p0, v0}, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->checkForRightmostCoordinate(Lcom/vividsolutions/jts/geomgraph/DirectedEdge;)V
 
     goto :goto_0
 
     .line 88
+    .end local v0    # "de":Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
     :cond_1
-    iget p1, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
+    iget v3, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
 
-    const/4 v0, 0x1
+    if-nez v3, :cond_2
 
-    if-nez p1, :cond_3
+    iget-object v3, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minCoord:Lcom/vividsolutions/jts/geom/Coordinate;
 
-    iget-object p1, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minCoord:Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v5, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
-    iget-object v1, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    invoke-virtual {v5}, Lcom/vividsolutions/jts/geomgraph/DirectedEdge;->getCoordinate()Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-virtual {v1}, Lcom/vividsolutions/jts/geomgraph/DirectedEdge;->getCoordinate()Lcom/vividsolutions/jts/geom/Coordinate;
+    move-result-object v5
 
-    move-result-object v1
+    invoke-virtual {v3, v5}, Lcom/vividsolutions/jts/geom/Coordinate;->equals(Ljava/lang/Object;)Z
 
-    invoke-virtual {p1, v1}, Lcom/vividsolutions/jts/geom/Coordinate;->equals(Ljava/lang/Object;)Z
+    move-result v3
 
-    move-result p1
-
-    if-eqz p1, :cond_2
-
-    goto :goto_1
+    if-eqz v3, :cond_4
 
     :cond_2
-    const/4 p1, 0x0
+    move v3, v4
 
-    goto :goto_2
-
-    :cond_3
     :goto_1
-    move p1, v0
+    const-string v5, "inconsistency in rightmost processing"
 
-    :goto_2
-    const-string v1, "inconsistency in rightmost processing"
-
-    invoke-static {p1, v1}, Lcom/vividsolutions/jts/util/Assert;->isTrue(ZLjava/lang/String;)V
+    invoke-static {v3, v5}, Lcom/vividsolutions/jts/util/Assert;->isTrue(ZLjava/lang/String;)V
 
     .line 89
-    iget p1, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
+    iget v3, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
 
-    if-nez p1, :cond_4
+    if-nez v3, :cond_5
 
     .line 90
     invoke-direct {p0}, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->findRightmostEdgeAtNode()V
 
-    goto :goto_3
-
-    .line 93
-    :cond_4
-    invoke-direct {p0}, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->findRightmostEdgeAtVertex()V
-
     .line 99
-    :goto_3
-    iget-object p1, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    :goto_2
+    iget-object v3, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
-    iput-object p1, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->orientedDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    iput-object v3, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->orientedDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
     .line 100
-    iget-object p1, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    iget-object v3, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
-    iget v1, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
+    iget v5, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minIndex:I
 
-    invoke-direct {p0, p1, v1}, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->getRightmostSide(Lcom/vividsolutions/jts/geomgraph/DirectedEdge;I)I
+    invoke-direct {p0, v3, v5}, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->getRightmostSide(Lcom/vividsolutions/jts/geomgraph/DirectedEdge;I)I
 
-    move-result p1
+    move-result v2
 
-    if-ne p1, v0, :cond_5
+    .line 101
+    .local v2, "rightmostSide":I
+    if-ne v2, v4, :cond_3
 
     .line 102
-    iget-object p1, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    iget-object v3, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
-    invoke-virtual {p1}, Lcom/vividsolutions/jts/geomgraph/DirectedEdge;->getSym()Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    invoke-virtual {v3}, Lcom/vividsolutions/jts/geomgraph/DirectedEdge;->getSym()Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
-    move-result-object p1
+    move-result-object v3
 
-    iput-object p1, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->orientedDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
+    iput-object v3, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->orientedDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 
-    :cond_5
+    .line 104
+    :cond_3
     return-void
+
+    .line 88
+    .end local v2    # "rightmostSide":I
+    :cond_4
+    const/4 v3, 0x0
+
+    goto :goto_1
+
+    .line 93
+    :cond_5
+    invoke-direct {p0}, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->findRightmostEdgeAtVertex()V
+
+    goto :goto_2
 .end method
 
 .method public getCoordinate()Lcom/vividsolutions/jts/geom/Coordinate;
     .locals 1
 
+    .prologue
     .line 69
     iget-object v0, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->minCoord:Lcom/vividsolutions/jts/geom/Coordinate;
 
@@ -531,6 +578,7 @@
 .method public getEdge()Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
     .locals 1
 
+    .prologue
     .line 68
     iget-object v0, p0, Lcom/vividsolutions/jts/operation/buffer/RightmostEdgeFinder;->orientedDe:Lcom/vividsolutions/jts/geomgraph/DirectedEdge;
 

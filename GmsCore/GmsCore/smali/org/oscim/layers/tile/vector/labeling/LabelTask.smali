@@ -17,6 +17,7 @@
 .method constructor <init>()V
     .locals 2
 
+    .prologue
     .line 16
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -53,5 +54,6 @@
 
     iput-object v1, v0, Lorg/oscim/renderer/bucket/SymbolBucket;->next:Lorg/oscim/utils/pool/Inlist;
 
+    .line 24
     return-void
 .end method

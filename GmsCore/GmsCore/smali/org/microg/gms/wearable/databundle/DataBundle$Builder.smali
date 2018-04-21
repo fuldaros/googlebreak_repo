@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder<",
+        "Lcom/squareup/wire/Message$Builder",
+        "<",
         "Lorg/microg/gms/wearable/databundle/DataBundle;",
         ">;"
     }
@@ -26,7 +27,8 @@
 .field public entries:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Lorg/microg/gms/wearable/databundle/DataBundleEntry;",
             ">;"
         }
@@ -38,33 +40,40 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 45
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
+    .line 46
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/gms/wearable/databundle/DataBundle;)V
-    .locals 0
+    .locals 1
+    .param p1, "message"    # Lorg/microg/gms/wearable/databundle/DataBundle;
 
+    .prologue
     .line 49
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
+    .line 50
     if-nez p1, :cond_0
 
+    .line 52
+    :goto_0
     return-void
 
     .line 51
     :cond_0
-    iget-object p1, p1, Lorg/microg/gms/wearable/databundle/DataBundle;->entries:Ljava/util/List;
+    iget-object v0, p1, Lorg/microg/gms/wearable/databundle/DataBundle;->entries:Ljava/util/List;
 
-    invoke-static {p1}, Lorg/microg/gms/wearable/databundle/DataBundle;->access$000(Ljava/util/List;)Ljava/util/List;
+    invoke-static {v0}, Lorg/microg/gms/wearable/databundle/DataBundle;->access$000(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object p1
+    move-result-object v0
 
-    iput-object p1, p0, Lorg/microg/gms/wearable/databundle/DataBundle$Builder;->entries:Ljava/util/List;
+    iput-object v0, p0, Lorg/microg/gms/wearable/databundle/DataBundle$Builder;->entries:Ljava/util/List;
 
-    return-void
+    goto :goto_0
 .end method
 
 
@@ -72,6 +81,7 @@
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
+    .prologue
     .line 41
     invoke-virtual {p0}, Lorg/microg/gms/wearable/databundle/DataBundle$Builder;->build()Lorg/microg/gms/wearable/databundle/DataBundle;
 
@@ -83,6 +93,7 @@
 .method public build()Lorg/microg/gms/wearable/databundle/DataBundle;
     .locals 2
 
+    .prologue
     .line 61
     new-instance v0, Lorg/microg/gms/wearable/databundle/DataBundle;
 

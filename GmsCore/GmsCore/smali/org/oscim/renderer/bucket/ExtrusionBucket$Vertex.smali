@@ -28,7 +28,8 @@
 .method constructor <init>()V
     .locals 0
 
-    .line 131
+    .prologue
+    .line 126
     invoke-direct {p0}, Lorg/oscim/utils/KeyMap$HashItem;-><init>()V
 
     return-void
@@ -37,51 +38,57 @@
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 2
+    .locals 3
+    .param p1, "obj"    # Ljava/lang/Object;
 
-    .line 137
-    check-cast p1, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;
+    .prologue
+    .line 132
+    move-object v0, p1
 
-    .line 138
-    iget-short v0, p0, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;->x:S
+    check-cast v0, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;
 
-    iget-short v1, p1, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;->x:S
+    .line 133
+    .local v0, "o":Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;
+    iget-short v1, p0, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;->x:S
 
-    if-ne v0, v1, :cond_0
+    iget-short v2, v0, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;->x:S
 
-    iget-short v0, p0, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;->y:S
+    if-ne v1, v2, :cond_0
 
-    iget-short v1, p1, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;->y:S
+    iget-short v1, p0, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;->y:S
 
-    if-ne v0, v1, :cond_0
+    iget-short v2, v0, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;->y:S
 
-    iget-short v0, p0, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;->z:S
+    if-ne v1, v2, :cond_0
 
-    iget-short v1, p1, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;->z:S
+    iget-short v1, p0, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;->z:S
 
-    if-ne v0, v1, :cond_0
+    iget-short v2, v0, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;->z:S
 
-    iget-short v0, p0, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;->n:S
+    if-ne v1, v2, :cond_0
 
-    iget-short p1, p1, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;->n:S
+    iget-short v1, p0, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;->n:S
 
-    if-ne v0, p1, :cond_0
+    iget-short v2, v0, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;->n:S
 
-    const/4 p1, 0x1
+    if-ne v1, v2, :cond_0
 
-    goto :goto_0
-
-    :cond_0
-    const/4 p1, 0x0
+    const/4 v1, 0x1
 
     :goto_0
-    return p1
+    return v1
+
+    :cond_0
+    const/4 v1, 0x0
+
+    goto :goto_0
 .end method
 
 .method public hashCode()I
     .locals 3
 
-    .line 143
+    .prologue
+    .line 138
     iget-short v0, p0, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;->x:S
 
     shl-int/lit8 v0, v0, 0x10
@@ -102,9 +109,7 @@
 
     mul-int/lit8 v0, v0, 0x1f
 
-    const/4 v1, 0x7
+    add-int/lit8 v0, v0, 0x7
 
-    add-int/2addr v1, v0
-
-    return v1
+    return v0
 .end method

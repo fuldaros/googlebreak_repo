@@ -29,39 +29,46 @@
 # direct methods
 .method public constructor <init>(Lorg/oscim/android/MapView;)V
     .locals 1
+    .param p1, "mapView"    # Lorg/oscim/android/MapView;
 
-    .line 169
+    .prologue
+    .line 153
     invoke-direct {p0}, Lorg/oscim/map/Map;-><init>()V
 
-    .line 183
+    .line 167
     new-instance v0, Lorg/oscim/android/MapView$AndroidMap$1;
 
     invoke-direct {v0, p0}, Lorg/oscim/android/MapView$AndroidMap$1;-><init>(Lorg/oscim/android/MapView$AndroidMap;)V
 
     iput-object v0, p0, Lorg/oscim/android/MapView$AndroidMap;->mRedrawCb:Ljava/lang/Runnable;
 
-    .line 170
+    .line 154
     iput-object p1, p0, Lorg/oscim/android/MapView$AndroidMap;->mMapView:Lorg/oscim/android/MapView;
 
+    .line 155
     return-void
 .end method
 
 .method static synthetic access$000(Lorg/oscim/android/MapView$AndroidMap;)V
     .locals 0
+    .param p0, "x0"    # Lorg/oscim/android/MapView$AndroidMap;
 
-    .line 160
+    .prologue
+    .line 144
     invoke-virtual {p0}, Lorg/oscim/android/MapView$AndroidMap;->prepareFrame()V
 
     return-void
 .end method
 
 .method static synthetic access$100(Lorg/oscim/android/MapView$AndroidMap;)Lorg/oscim/android/MapView;
-    .locals 0
+    .locals 1
+    .param p0, "x0"    # Lorg/oscim/android/MapView$AndroidMap;
 
-    .line 160
-    iget-object p0, p0, Lorg/oscim/android/MapView$AndroidMap;->mMapView:Lorg/oscim/android/MapView;
+    .prologue
+    .line 144
+    iget-object v0, p0, Lorg/oscim/android/MapView$AndroidMap;->mMapView:Lorg/oscim/android/MapView;
 
-    return-object p0
+    return-object v0
 .end method
 
 
@@ -69,57 +76,66 @@
 .method public beginFrame()V
     .locals 0
 
+    .prologue
+    .line 201
     return-void
 .end method
 
 .method public doneFrame(Z)V
     .locals 2
+    .param p1, "animate"    # Z
 
-    .line 221
-    iget-object v0, p0, Lorg/oscim/android/MapView$AndroidMap;->mRedrawCb:Ljava/lang/Runnable;
+    .prologue
+    .line 205
+    iget-object v1, p0, Lorg/oscim/android/MapView$AndroidMap;->mRedrawCb:Ljava/lang/Runnable;
 
-    monitor-enter v0
+    monitor-enter v1
 
-    const/4 v1, 0x0
+    .line 206
+    const/4 v0, 0x0
 
-    .line 222
     :try_start_0
-    iput-boolean v1, p0, Lorg/oscim/android/MapView$AndroidMap;->mRenderRequest:Z
+    iput-boolean v0, p0, Lorg/oscim/android/MapView$AndroidMap;->mRenderRequest:Z
 
+    .line 207
     if-nez p1, :cond_0
 
-    .line 223
-    iget-boolean p1, p0, Lorg/oscim/android/MapView$AndroidMap;->mRenderWait:Z
+    iget-boolean v0, p0, Lorg/oscim/android/MapView$AndroidMap;->mRenderWait:Z
 
-    if-eqz p1, :cond_1
+    if-eqz v0, :cond_1
 
-    .line 224
+    .line 208
     :cond_0
-    iput-boolean v1, p0, Lorg/oscim/android/MapView$AndroidMap;->mRenderWait:Z
+    const/4 v0, 0x0
 
-    .line 225
+    iput-boolean v0, p0, Lorg/oscim/android/MapView$AndroidMap;->mRenderWait:Z
+
+    .line 209
     invoke-virtual {p0}, Lorg/oscim/android/MapView$AndroidMap;->render()V
 
-    .line 227
+    .line 211
     :cond_1
-    monitor-exit v0
+    monitor-exit v1
 
+    .line 212
     return-void
 
+    .line 211
     :catchall_0
-    move-exception p1
+    move-exception v0
 
-    monitor-exit v0
+    monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    throw p1
+    throw v0
 .end method
 
 .method public getHeight()I
     .locals 1
 
-    .line 180
+    .prologue
+    .line 164
     iget-object v0, p0, Lorg/oscim/android/MapView$AndroidMap;->mMapView:Lorg/oscim/android/MapView;
 
     invoke-virtual {v0}, Lorg/oscim/android/MapView;->getHeight()I
@@ -132,7 +148,8 @@
 .method public getWidth()I
     .locals 1
 
-    .line 175
+    .prologue
+    .line 159
     iget-object v0, p0, Lorg/oscim/android/MapView$AndroidMap;->mMapView:Lorg/oscim/android/MapView;
 
     invoke-virtual {v0}, Lorg/oscim/android/MapView;->getWidth()I
@@ -144,8 +161,10 @@
 
 .method public pause(Z)V
     .locals 3
+    .param p1, "pause"    # Z
 
-    .line 241
+    .prologue
+    .line 225
     sget-object v0, Lorg/oscim/android/MapView;->log:Lorg/slf4j/Logger;
 
     const-string v1, "pause... {}"
@@ -156,112 +175,130 @@
 
     invoke-interface {v0, v1, v2}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;)V
 
-    .line 242
+    .line 226
     iput-boolean p1, p0, Lorg/oscim/android/MapView$AndroidMap;->mPausing:Z
 
+    .line 227
     return-void
 .end method
 
 .method public post(Ljava/lang/Runnable;)Z
     .locals 1
+    .param p1, "runnable"    # Ljava/lang/Runnable;
 
-    .line 232
+    .prologue
+    .line 216
     iget-object v0, p0, Lorg/oscim/android/MapView$AndroidMap;->mMapView:Lorg/oscim/android/MapView;
 
     invoke-virtual {v0, p1}, Lorg/oscim/android/MapView;->post(Ljava/lang/Runnable;)Z
 
-    move-result p1
+    move-result v0
 
-    return p1
+    return v0
 .end method
 
 .method public postDelayed(Ljava/lang/Runnable;J)Z
-    .locals 1
+    .locals 2
+    .param p1, "action"    # Ljava/lang/Runnable;
+    .param p2, "delay"    # J
 
-    .line 237
+    .prologue
+    .line 221
     iget-object v0, p0, Lorg/oscim/android/MapView$AndroidMap;->mMapView:Lorg/oscim/android/MapView;
 
     invoke-virtual {v0, p1, p2, p3}, Lorg/oscim/android/MapView;->postDelayed(Ljava/lang/Runnable;J)Z
 
-    move-result p1
+    move-result v0
 
-    return p1
+    return v0
 .end method
 
 .method public render()V
     .locals 1
 
-    .line 208
+    .prologue
+    .line 192
     iget-boolean v0, p0, Lorg/oscim/android/MapView$AndroidMap;->mPausing:Z
 
     if-eqz v0, :cond_0
 
+    .line 197
+    :goto_0
     return-void
 
+    .line 196
     :cond_0
     const/4 v0, 0x0
 
-    .line 212
     invoke-virtual {p0, v0}, Lorg/oscim/android/MapView$AndroidMap;->updateMap(Z)V
 
-    return-void
+    goto :goto_0
 .end method
 
 .method public updateMap(Z)V
-    .locals 2
+    .locals 3
+    .param p1, "redraw"    # Z
 
-    .line 193
-    iget-object p1, p0, Lorg/oscim/android/MapView$AndroidMap;->mRedrawCb:Ljava/lang/Runnable;
+    .prologue
+    .line 177
+    iget-object v1, p0, Lorg/oscim/android/MapView$AndroidMap;->mRedrawCb:Ljava/lang/Runnable;
 
-    monitor-enter p1
+    monitor-enter v1
 
-    .line 194
+    .line 178
     :try_start_0
     iget-boolean v0, p0, Lorg/oscim/android/MapView$AndroidMap;->mPausing:Z
 
     if-eqz v0, :cond_0
 
-    .line 195
-    monitor-exit p1
+    .line 179
+    monitor-exit v1
 
+    .line 188
+    :goto_0
     return-void
 
-    .line 197
+    .line 181
     :cond_0
     iget-boolean v0, p0, Lorg/oscim/android/MapView$AndroidMap;->mRenderRequest:Z
 
-    const/4 v1, 0x1
-
     if-nez v0, :cond_1
 
-    .line 198
-    iput-boolean v1, p0, Lorg/oscim/android/MapView$AndroidMap;->mRenderRequest:Z
+    .line 182
+    const/4 v0, 0x1
 
-    .line 199
+    iput-boolean v0, p0, Lorg/oscim/android/MapView$AndroidMap;->mRenderRequest:Z
+
+    .line 183
     iget-object v0, p0, Lorg/oscim/android/MapView$AndroidMap;->mMapView:Lorg/oscim/android/MapView;
 
-    iget-object v1, p0, Lorg/oscim/android/MapView$AndroidMap;->mRedrawCb:Ljava/lang/Runnable;
+    iget-object v2, p0, Lorg/oscim/android/MapView$AndroidMap;->mRedrawCb:Ljava/lang/Runnable;
 
-    invoke-virtual {v0, v1}, Lorg/oscim/android/MapView;->post(Ljava/lang/Runnable;)Z
+    invoke-virtual {v0, v2}, Lorg/oscim/android/MapView;->post(Ljava/lang/Runnable;)Z
+
+    .line 187
+    :goto_1
+    monitor-exit v1
 
     goto :goto_0
-
-    .line 201
-    :cond_1
-    iput-boolean v1, p0, Lorg/oscim/android/MapView$AndroidMap;->mRenderWait:Z
-
-    .line 203
-    :goto_0
-    monitor-exit p1
-
-    return-void
 
     :catchall_0
     move-exception v0
 
-    monitor-exit p1
+    monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
+
+    .line 185
+    :cond_1
+    const/4 v0, 0x1
+
+    :try_start_1
+    iput-boolean v0, p0, Lorg/oscim/android/MapView$AndroidMap;->mRenderWait:Z
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    goto :goto_1
 .end method

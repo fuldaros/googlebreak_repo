@@ -11,11 +11,13 @@
 .method public constructor <init>()V
     .locals 1
 
+    .prologue
+    .line 23
     const-string v0, "NlpLocationServiceV1"
 
-    .line 23
     invoke-direct {p0, v0}, Lorg/microg/nlp/location/AbstractLocationService;-><init>(Ljava/lang/String;)V
 
+    .line 24
     return-void
 .end method
 
@@ -24,22 +26,25 @@
 .method protected destroyProvider()V
     .locals 1
 
+    .prologue
     .line 36
     sget-object v0, Lorg/microg/nlp/location/LocationServiceV1;->THE_ONE:Lorg/microg/nlp/location/LocationProviderV1;
 
     invoke-virtual {v0}, Lorg/microg/nlp/location/LocationProviderV1;->destroy()V
 
+    .line 37
     const/4 v0, 0x0
 
-    .line 37
     sput-object v0, Lorg/microg/nlp/location/LocationServiceV1;->THE_ONE:Lorg/microg/nlp/location/LocationProviderV1;
 
+    .line 38
     return-void
 .end method
 
 .method protected bridge synthetic getProvider()Lorg/microg/nlp/Provider;
     .locals 1
 
+    .prologue
     .line 19
     invoke-virtual {p0}, Lorg/microg/nlp/location/LocationServiceV1;->getProvider()Lorg/microg/nlp/location/LocationProvider;
 
@@ -51,9 +56,10 @@
 .method protected declared-synchronized getProvider()Lorg/microg/nlp/location/LocationProvider;
     .locals 1
 
+    .prologue
+    .line 28
     monitor-enter p0
 
-    .line 28
     :try_start_0
     sget-object v0, Lorg/microg/nlp/location/LocationServiceV1;->THE_ONE:Lorg/microg/nlp/location/LocationProviderV1;
 
@@ -76,10 +82,10 @@
 
     return-object v0
 
+    .line 28
     :catchall_0
     move-exception v0
 
-    .line 27
     monitor-exit p0
 
     throw v0

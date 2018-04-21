@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder<",
+        "Lcom/squareup/wire/Message$Builder",
+        "<",
         "Lorg/microg/gms/gcm/mcs/IqStanza;",
         ">;"
     }
@@ -52,20 +53,27 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 147
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
+    .line 148
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/gms/gcm/mcs/IqStanza;)V
     .locals 1
+    .param p1, "message"    # Lorg/microg/gms/gcm/mcs/IqStanza;
 
+    .prologue
     .line 151
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
+    .line 152
     if-nez p1, :cond_0
 
+    .line 165
+    :goto_0
     return-void
 
     .line 153
@@ -125,11 +133,11 @@
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/IqStanza$Builder;->account_id:Ljava/lang/Long;
 
     .line 164
-    iget-object p1, p1, Lorg/microg/gms/gcm/mcs/IqStanza;->status:Ljava/lang/Long;
+    iget-object v0, p1, Lorg/microg/gms/gcm/mcs/IqStanza;->status:Ljava/lang/Long;
 
-    iput-object p1, p0, Lorg/microg/gms/gcm/mcs/IqStanza$Builder;->status:Ljava/lang/Long;
+    iput-object v0, p0, Lorg/microg/gms/gcm/mcs/IqStanza$Builder;->status:Ljava/lang/Long;
 
-    return-void
+    goto :goto_0
 .end method
 
 
@@ -137,6 +145,7 @@
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
+    .prologue
     .line 132
     invoke-virtual {p0}, Lorg/microg/gms/gcm/mcs/IqStanza$Builder;->build()Lorg/microg/gms/gcm/mcs/IqStanza;
 
@@ -148,6 +157,7 @@
 .method public build()Lorg/microg/gms/gcm/mcs/IqStanza;
     .locals 2
 
+    .prologue
     .line 232
     invoke-virtual {p0}, Lorg/microg/gms/gcm/mcs/IqStanza$Builder;->checkRequiredFields()V
 

@@ -11,95 +11,114 @@
 
 # direct methods
 .method public constructor <init>(ILorg/oscim/utils/async/TaskQueue;)V
-    .locals 0
+    .locals 1
+    .param p1, "maxConcurrent"    # I
+    .param p2, "mainloop"    # Lorg/oscim/utils/async/TaskQueue;
 
-    .line 46
+    .prologue
+    .line 47
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 47
+    .line 48
     iput-object p2, p0, Lorg/oscim/utils/async/AsyncExecutor;->mainloop:Lorg/oscim/utils/async/TaskQueue;
 
-    .line 48
-    new-instance p2, Lorg/oscim/utils/async/AsyncExecutor$1;
+    .line 49
+    new-instance v0, Lorg/oscim/utils/async/AsyncExecutor$1;
 
-    invoke-direct {p2, p0}, Lorg/oscim/utils/async/AsyncExecutor$1;-><init>(Lorg/oscim/utils/async/AsyncExecutor;)V
+    invoke-direct {v0, p0}, Lorg/oscim/utils/async/AsyncExecutor$1;-><init>(Lorg/oscim/utils/async/AsyncExecutor;)V
 
-    invoke-static {p1, p2}, Ljava/util/concurrent/Executors;->newFixedThreadPool(ILjava/util/concurrent/ThreadFactory;)Ljava/util/concurrent/ExecutorService;
+    invoke-static {p1, v0}, Ljava/util/concurrent/Executors;->newFixedThreadPool(ILjava/util/concurrent/ThreadFactory;)Ljava/util/concurrent/ExecutorService;
 
-    move-result-object p1
+    move-result-object v0
 
-    iput-object p1, p0, Lorg/oscim/utils/async/AsyncExecutor;->executor:Ljava/util/concurrent/ExecutorService;
+    iput-object v0, p0, Lorg/oscim/utils/async/AsyncExecutor;->executor:Ljava/util/concurrent/ExecutorService;
 
+    .line 58
     return-void
 .end method
 
 
 # virtual methods
 .method public dispose()V
-    .locals 4
+    .locals 5
 
-    .line 85
-    iget-object v0, p0, Lorg/oscim/utils/async/AsyncExecutor;->executor:Ljava/util/concurrent/ExecutorService;
+    .prologue
+    .line 86
+    iget-object v1, p0, Lorg/oscim/utils/async/AsyncExecutor;->executor:Ljava/util/concurrent/ExecutorService;
 
-    invoke-interface {v0}, Ljava/util/concurrent/ExecutorService;->shutdown()V
+    invoke-interface {v1}, Ljava/util/concurrent/ExecutorService;->shutdown()V
 
-    .line 87
+    .line 88
     :try_start_0
-    iget-object v0, p0, Lorg/oscim/utils/async/AsyncExecutor;->executor:Ljava/util/concurrent/ExecutorService;
+    iget-object v1, p0, Lorg/oscim/utils/async/AsyncExecutor;->executor:Ljava/util/concurrent/ExecutorService;
 
-    const-wide v1, 0x7fffffffffffffffL
+    const-wide v2, 0x7fffffffffffffffL
 
-    sget-object v3, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;
+    sget-object v4, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;
 
-    invoke-interface {v0, v1, v2, v3}, Ljava/util/concurrent/ExecutorService;->awaitTermination(JLjava/util/concurrent/TimeUnit;)Z
+    invoke-interface {v1, v2, v3, v4}, Ljava/util/concurrent/ExecutorService;->awaitTermination(JLjava/util/concurrent/TimeUnit;)Z
     :try_end_0
     .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
 
+    .line 92
     return-void
 
     .line 89
     :catch_0
-    new-instance v0, Ljava/lang/RuntimeException;
+    move-exception v0
 
-    const-string v1, "Couldn\'t shutdown loading thread"
+    .line 90
+    .local v0, "e":Ljava/lang/InterruptedException;
+    new-instance v1, Ljava/lang/RuntimeException;
 
-    invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+    const-string v2, "Couldn\'t shutdown loading thread"
 
-    throw v0
+    invoke-direct {v1, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+
+    throw v1
 .end method
 
 .method public post(Ljava/lang/Runnable;)Z
-    .locals 2
+    .locals 3
+    .param p1, "task"    # Ljava/lang/Runnable;
 
-    .line 67
-    instance-of v0, p1, Lorg/oscim/utils/async/AsyncTask;
-
-    if-eqz v0, :cond_0
-
+    .prologue
     .line 68
-    move-object v0, p1
+    instance-of v1, p1, Lorg/oscim/utils/async/AsyncTask;
 
-    check-cast v0, Lorg/oscim/utils/async/AsyncTask;
+    if-eqz v1, :cond_0
 
-    iget-object v1, p0, Lorg/oscim/utils/async/AsyncExecutor;->mainloop:Lorg/oscim/utils/async/TaskQueue;
+    move-object v1, p1
 
-    invoke-virtual {v0, v1}, Lorg/oscim/utils/async/AsyncTask;->setTaskQueue(Lorg/oscim/utils/async/TaskQueue;)V
+    .line 69
+    check-cast v1, Lorg/oscim/utils/async/AsyncTask;
 
-    .line 72
+    iget-object v2, p0, Lorg/oscim/utils/async/AsyncExecutor;->mainloop:Lorg/oscim/utils/async/TaskQueue;
+
+    invoke-virtual {v1, v2}, Lorg/oscim/utils/async/AsyncTask;->setTaskQueue(Lorg/oscim/utils/async/TaskQueue;)V
+
+    .line 73
     :cond_0
     :try_start_0
-    iget-object v0, p0, Lorg/oscim/utils/async/AsyncExecutor;->executor:Ljava/util/concurrent/ExecutorService;
+    iget-object v1, p0, Lorg/oscim/utils/async/AsyncExecutor;->executor:Ljava/util/concurrent/ExecutorService;
 
-    invoke-interface {v0, p1}, Ljava/util/concurrent/ExecutorService;->execute(Ljava/lang/Runnable;)V
+    invoke-interface {v1, p1}, Ljava/util/concurrent/ExecutorService;->execute(Ljava/lang/Runnable;)V
     :try_end_0
     .catch Ljava/util/concurrent/RejectedExecutionException; {:try_start_0 .. :try_end_0} :catch_0
 
-    const/4 p1, 0x1
+    .line 77
+    const/4 v1, 0x1
 
-    return p1
+    :goto_0
+    return v1
 
+    .line 74
     :catch_0
-    const/4 p1, 0x0
+    move-exception v0
 
-    return p1
+    .line 75
+    .local v0, "e":Ljava/util/concurrent/RejectedExecutionException;
+    const/4 v1, 0x0
+
+    goto :goto_0
 .end method

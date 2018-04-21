@@ -5,430 +5,693 @@
 
 # direct methods
 .method public static signOfDet2x2(DDDD)I
-    .locals 19
+    .locals 12
+    .param p0, "x1"    # D
+    .param p2, "y1"    # D
+    .param p4, "x2"    # D
+    .param p6, "y2"    # D
 
-    move-wide/from16 v0, p0
+    .prologue
+    .line 123
+    const-wide/16 v2, 0x0
 
-    move-wide/from16 v2, p2
+    .line 127
+    .local v2, "count":J
+    const/4 v6, 0x1
 
-    move-wide/from16 v4, p4
+    .line 132
+    .local v6, "sign":I
+    const-wide/16 v10, 0x0
 
-    move-wide/from16 v6, p6
+    cmpl-double v7, p0, v10
 
-    const-wide/16 v8, 0x0
+    if-eqz v7, :cond_0
 
-    cmpl-double v10, v0, v8
+    const-wide/16 v10, 0x0
 
-    const/4 v11, 0x0
+    cmpl-double v7, p6, v10
 
-    const/4 v12, -0x1
+    if-nez v7, :cond_6
 
-    const/4 v13, 0x1
-
-    if-eqz v10, :cond_22
-
-    cmpl-double v10, v6, v8
-
-    if-nez v10, :cond_0
-
-    goto/16 :goto_7
-
+    .line 133
     :cond_0
-    cmpl-double v10, v2, v8
+    const-wide/16 v10, 0x0
 
-    if-eqz v10, :cond_1e
+    cmpl-double v7, p2, v10
 
-    cmpl-double v10, v4, v8
+    if-eqz v7, :cond_1
 
-    if-nez v10, :cond_1
+    const-wide/16 v10, 0x0
 
-    goto/16 :goto_6
+    cmpl-double v7, p4, v10
 
+    if-nez v7, :cond_2
+
+    .line 134
     :cond_1
-    cmpg-double v10, v8, v2
+    const/4 v7, 0x0
 
-    if-gez v10, :cond_5
-
-    cmpg-double v10, v8, v6
-
-    if-gez v10, :cond_3
-
-    cmpg-double v10, v2, v6
-
-    if-gtz v10, :cond_2
-
+    .line 378
     :goto_0
-    move v12, v13
+    return v7
 
-    :goto_1
-    move-wide/from16 v17, v2
-
-    move-wide v2, v6
-
-    move-wide/from16 v6, v17
-
-    goto :goto_4
-
+    .line 136
     :cond_2
-    :goto_2
-    move-wide/from16 v17, v0
+    const-wide/16 v10, 0x0
 
-    move-wide v0, v4
+    cmpl-double v7, p2, v10
 
-    move-wide/from16 v4, v17
+    if-lez v7, :cond_4
 
-    goto :goto_4
+    .line 137
+    const-wide/16 v10, 0x0
 
-    :cond_3
-    neg-double v6, v6
+    cmpl-double v7, p4, v10
 
-    cmpg-double v10, v2, v6
+    if-lez v7, :cond_3
 
-    if-gtz v10, :cond_4
-
-    neg-double v4, v4
-
-    goto :goto_1
-
-    :cond_4
-    neg-double v4, v4
-
-    :goto_3
-    move v12, v13
-
-    goto :goto_2
-
-    :cond_5
-    cmpg-double v10, v8, v6
-
-    if-gez v10, :cond_7
-
-    neg-double v2, v2
-
-    cmpg-double v10, v2, v6
-
-    if-gtz v10, :cond_6
-
-    neg-double v0, v0
-
-    goto :goto_1
-
-    :cond_6
-    neg-double v0, v0
-
-    goto :goto_3
-
-    :cond_7
-    cmpl-double v10, v2, v6
-
-    if-ltz v10, :cond_8
-
-    neg-double v0, v0
-
-    neg-double v2, v2
-
-    neg-double v4, v4
-
-    neg-double v6, v6
+    .line 138
+    neg-int v7, v6
 
     goto :goto_0
 
+    :cond_3
+    move v7, v6
+
+    .line 141
+    goto :goto_0
+
+    .line 145
+    :cond_4
+    const-wide/16 v10, 0x0
+
+    cmpl-double v7, p4, v10
+
+    if-lez v7, :cond_5
+
+    move v7, v6
+
+    .line 146
+    goto :goto_0
+
+    .line 149
+    :cond_5
+    neg-int v7, v6
+
+    goto :goto_0
+
+    .line 153
+    :cond_6
+    const-wide/16 v10, 0x0
+
+    cmpl-double v7, p2, v10
+
+    if-eqz v7, :cond_7
+
+    const-wide/16 v10, 0x0
+
+    cmpl-double v7, p4, v10
+
+    if-nez v7, :cond_b
+
+    .line 154
+    :cond_7
+    const-wide/16 v10, 0x0
+
+    cmpl-double v7, p6, v10
+
+    if-lez v7, :cond_9
+
+    .line 155
+    const-wide/16 v10, 0x0
+
+    cmpl-double v7, p0, v10
+
+    if-lez v7, :cond_8
+
+    move v7, v6
+
+    .line 156
+    goto :goto_0
+
+    .line 159
     :cond_8
-    neg-double v0, v0
+    neg-int v7, v6
 
-    neg-double v4, v4
+    goto :goto_0
 
-    neg-double v2, v2
-
-    neg-double v6, v6
-
-    goto :goto_2
-
-    :goto_4
-    cmpg-double v10, v8, v0
-
-    if-gez v10, :cond_b
-
-    cmpg-double v10, v8, v4
-
-    if-gez v10, :cond_a
-
-    cmpg-double v10, v0, v4
-
-    if-gtz v10, :cond_9
-
-    goto :goto_5
-
+    .line 163
     :cond_9
-    return v12
+    const-wide/16 v10, 0x0
+
+    cmpl-double v7, p0, v10
+
+    if-lez v7, :cond_a
+
+    .line 164
+    neg-int v7, v6
+
+    goto :goto_0
 
     :cond_a
-    return v12
+    move v7, v6
 
+    .line 167
+    goto :goto_0
+
+    .line 178
     :cond_b
-    cmpg-double v10, v8, v4
+    const-wide/16 v10, 0x0
 
-    if-gez v10, :cond_c
+    cmpg-double v7, v10, p2
 
-    neg-int v0, v12
+    if-gez v7, :cond_10
 
-    return v0
+    .line 179
+    const-wide/16 v10, 0x0
 
+    cmpg-double v7, v10, p6
+
+    if-gez v7, :cond_e
+
+    .line 180
+    cmpg-double v7, p2, p6
+
+    if-gtz v7, :cond_d
+
+    .line 251
+    :goto_1
+    const-wide/16 v10, 0x0
+
+    cmpg-double v7, v10, p0
+
+    if-gez v7, :cond_16
+
+    .line 252
+    const-wide/16 v10, 0x0
+
+    cmpg-double v7, v10, p4
+
+    if-gez v7, :cond_15
+
+    .line 253
+    cmpg-double v7, p0, p4
+
+    if-gtz v7, :cond_14
+
+    .line 285
     :cond_c
-    cmpl-double v10, v0, v4
+    :goto_2
+    const-wide/16 v10, 0x1
 
-    if-ltz v10, :cond_1d
+    add-long/2addr v2, v10
 
-    neg-int v12, v12
+    .line 288
+    div-double v10, p4, p0
+
+    invoke-static {v10, v11}, Ljava/lang/Math;->floor(D)D
+
+    move-result-wide v4
+
+    .line 289
+    .local v4, "k":D
+    mul-double v10, v4, p0
+
+    sub-double p4, p4, v10
+
+    .line 290
+    mul-double v10, v4, p2
+
+    sub-double p6, p6, v10
+
+    .line 295
+    const-wide/16 v10, 0x0
+
+    cmpg-double v7, p6, v10
+
+    if-gez v7, :cond_19
+
+    .line 296
+    neg-int v7, v6
+
+    goto :goto_0
+
+    .line 184
+    .end local v4    # "k":D
+    :cond_d
+    neg-int v6, v6
+
+    .line 185
+    move-wide v8, p0
+
+    .line 186
+    .local v8, "swap":D
+    move-wide/from16 p0, p4
+
+    .line 187
+    move-wide/from16 p4, v8
+
+    .line 188
+    move-wide v8, p2
+
+    .line 189
+    move-wide/from16 p2, p6
+
+    .line 190
+    move-wide/from16 p6, v8
+
+    goto :goto_1
+
+    .line 194
+    .end local v8    # "swap":D
+    :cond_e
+    move-wide/from16 v0, p6
+
+    neg-double v10, v0
+
+    cmpg-double v7, p2, v10
+
+    if-gtz v7, :cond_f
+
+    .line 195
+    neg-int v6, v6
+
+    .line 196
+    move-wide/from16 v0, p4
 
     neg-double v0, v0
 
-    neg-double v4, v4
+    move-wide/from16 p4, v0
 
-    :cond_d
-    :goto_5
-    div-double v13, v4, v0
+    .line 197
+    move-wide/from16 v0, p6
 
-    .line 288
-    invoke-static {v13, v14}, Ljava/lang/Math;->floor(D)D
+    neg-double v0, v0
 
-    move-result-wide v13
+    move-wide/from16 p6, v0
 
-    mul-double v15, v13, v0
+    goto :goto_1
 
-    sub-double/2addr v4, v15
-
-    mul-double/2addr v13, v6
-
-    sub-double/2addr v2, v13
-
-    cmpg-double v10, v2, v8
-
-    if-gez v10, :cond_e
-
-    neg-int v0, v12
-
-    return v0
-
-    :cond_e
-    cmpl-double v10, v2, v6
-
-    if-lez v10, :cond_f
-
-    return v12
-
+    .line 200
     :cond_f
-    add-double v13, v4, v4
+    move-wide v8, p0
 
-    cmpl-double v10, v0, v13
+    .line 201
+    .restart local v8    # "swap":D
+    move-wide/from16 v0, p4
 
-    if-lez v10, :cond_10
+    neg-double p0, v0
 
-    add-double v13, v2, v2
+    .line 202
+    move-wide/from16 p4, v8
 
-    cmpg-double v10, v6, v13
+    .line 203
+    move-wide v8, p2
 
-    if-gez v10, :cond_12
+    .line 204
+    move-wide/from16 v0, p6
 
-    return v12
+    neg-double p2, v0
 
+    .line 205
+    move-wide/from16 p6, v8
+
+    goto :goto_1
+
+    .line 210
+    .end local v8    # "swap":D
     :cond_10
-    add-double v13, v2, v2
+    const-wide/16 v10, 0x0
 
-    cmpl-double v10, v6, v13
+    cmpg-double v7, v10, p6
 
-    if-lez v10, :cond_11
+    if-gez v7, :cond_12
 
-    neg-int v0, v12
+    .line 211
+    neg-double v10, p2
 
-    return v0
+    cmpg-double v7, v10, p6
 
+    if-gtz v7, :cond_11
+
+    .line 212
+    neg-int v6, v6
+
+    .line 213
+    neg-double p0, p0
+
+    .line 214
+    neg-double p2, p2
+
+    goto :goto_1
+
+    .line 217
     :cond_11
-    sub-double v4, v0, v4
+    neg-double v8, p0
 
-    sub-double v2, v6, v2
+    .line 218
+    .restart local v8    # "swap":D
+    move-wide/from16 p0, p4
 
-    neg-int v12, v12
+    .line 219
+    move-wide/from16 p4, v8
 
+    .line 220
+    neg-double v8, p2
+
+    .line 221
+    move-wide/from16 p2, p6
+
+    .line 222
+    move-wide/from16 p6, v8
+
+    goto :goto_1
+
+    .line 226
+    .end local v8    # "swap":D
     :cond_12
-    cmpl-double v10, v2, v8
+    cmpl-double v7, p2, p6
 
-    if-nez v10, :cond_14
+    if-ltz v7, :cond_13
 
-    cmpl-double v0, v4, v8
+    .line 227
+    neg-double p0, p0
 
-    if-nez v0, :cond_13
+    .line 228
+    neg-double p2, p2
 
-    return v11
+    .line 229
+    move-wide/from16 v0, p4
 
+    neg-double v0, v0
+
+    move-wide/from16 p4, v0
+
+    .line 230
+    move-wide/from16 v0, p6
+
+    neg-double v0, v0
+
+    move-wide/from16 p6, v0
+
+    goto :goto_1
+
+    .line 234
     :cond_13
-    neg-int v0, v12
+    neg-int v6, v6
 
-    return v0
+    .line 235
+    neg-double v8, p0
 
+    .line 236
+    .restart local v8    # "swap":D
+    move-wide/from16 v0, p4
+
+    neg-double p0, v0
+
+    .line 237
+    move-wide/from16 p4, v8
+
+    .line 238
+    neg-double v8, p2
+
+    .line 239
+    move-wide/from16 v0, p6
+
+    neg-double p2, v0
+
+    .line 240
+    move-wide/from16 p6, v8
+
+    goto/16 :goto_1
+
+    .end local v8    # "swap":D
     :cond_14
-    cmpl-double v10, v4, v8
+    move v7, v6
 
-    if-nez v10, :cond_15
-
-    return v12
+    .line 257
+    goto/16 :goto_0
 
     :cond_15
-    div-double v13, v0, v4
+    move v7, v6
+
+    .line 261
+    goto/16 :goto_0
+
+    .line 265
+    :cond_16
+    const-wide/16 v10, 0x0
+
+    cmpg-double v7, v10, p4
+
+    if-gez v7, :cond_17
+
+    .line 266
+    neg-int v7, v6
+
+    goto/16 :goto_0
+
+    .line 269
+    :cond_17
+    cmpl-double v7, p0, p4
+
+    if-ltz v7, :cond_18
+
+    .line 270
+    neg-int v6, v6
+
+    .line 271
+    neg-double p0, p0
+
+    .line 272
+    move-wide/from16 v0, p4
+
+    neg-double v0, v0
+
+    move-wide/from16 p4, v0
+
+    goto/16 :goto_2
+
+    .line 276
+    :cond_18
+    neg-int v7, v6
+
+    goto/16 :goto_0
+
+    .line 298
+    .restart local v4    # "k":D
+    :cond_19
+    cmpl-double v7, p6, p2
+
+    if-lez v7, :cond_1a
+
+    move v7, v6
+
+    .line 299
+    goto/16 :goto_0
+
+    .line 305
+    :cond_1a
+    add-double v10, p4, p4
+
+    cmpl-double v7, p0, v10
+
+    if-lez v7, :cond_1b
+
+    .line 306
+    add-double v10, p6, p6
+
+    cmpg-double v7, p2, v10
+
+    if-gez v7, :cond_1d
+
+    move v7, v6
+
+    .line 307
+    goto/16 :goto_0
+
+    .line 311
+    :cond_1b
+    add-double v10, p6, p6
+
+    cmpl-double v7, p2, v10
+
+    if-lez v7, :cond_1c
+
+    .line 312
+    neg-int v7, v6
+
+    goto/16 :goto_0
+
+    .line 315
+    :cond_1c
+    sub-double p4, p0, p4
+
+    .line 316
+    sub-double p6, p2, p6
+
+    .line 317
+    neg-int v6, v6
+
+    .line 320
+    :cond_1d
+    const-wide/16 v10, 0x0
+
+    cmpl-double v7, p6, v10
+
+    if-nez v7, :cond_1f
+
+    .line 321
+    const-wide/16 v10, 0x0
+
+    cmpl-double v7, p4, v10
+
+    if-nez v7, :cond_1e
+
+    .line 322
+    const/4 v7, 0x0
+
+    goto/16 :goto_0
+
+    .line 325
+    :cond_1e
+    neg-int v7, v6
+
+    goto/16 :goto_0
+
+    .line 328
+    :cond_1f
+    const-wide/16 v10, 0x0
+
+    cmpl-double v7, p4, v10
+
+    if-nez v7, :cond_20
+
+    move v7, v6
+
+    .line 329
+    goto/16 :goto_0
 
     .line 337
-    invoke-static {v13, v14}, Ljava/lang/Math;->floor(D)D
-
-    move-result-wide v13
-
-    mul-double v15, v13, v4
-
-    sub-double/2addr v0, v15
-
-    mul-double/2addr v13, v2
-
-    sub-double/2addr v6, v13
-
-    cmpg-double v10, v6, v8
-
-    if-gez v10, :cond_16
-
-    return v12
-
-    :cond_16
-    cmpl-double v10, v6, v2
-
-    if-lez v10, :cond_17
-
-    neg-int v0, v12
-
-    return v0
-
-    :cond_17
-    add-double v13, v0, v0
-
-    cmpl-double v10, v4, v13
-
-    if-lez v10, :cond_18
-
-    add-double v13, v6, v6
-
-    cmpg-double v10, v2, v13
-
-    if-gez v10, :cond_1a
-
-    neg-int v0, v12
-
-    return v0
-
-    :cond_18
-    add-double v13, v6, v6
-
-    cmpl-double v10, v2, v13
-
-    if-lez v10, :cond_19
-
-    return v12
-
-    :cond_19
-    sub-double v0, v4, v0
-
-    sub-double v6, v2, v6
-
-    neg-int v10, v12
-
-    move v12, v10
-
-    :cond_1a
-    cmpl-double v10, v6, v8
-
-    if-nez v10, :cond_1c
-
-    cmpl-double v2, v0, v8
-
-    if-nez v2, :cond_1b
-
-    return v11
-
-    :cond_1b
-    return v12
-
-    :cond_1c
-    cmpl-double v10, v0, v8
-
-    if-nez v10, :cond_d
-
-    neg-int v0, v12
-
-    return v0
-
-    :cond_1d
-    neg-int v0, v12
-
-    return v0
-
-    :cond_1e
-    :goto_6
-    cmpl-double v2, v6, v8
-
-    if-lez v2, :cond_20
-
-    cmpl-double v2, v0, v8
-
-    if-lez v2, :cond_1f
-
-    return v13
-
-    :cond_1f
-    return v12
-
     :cond_20
-    cmpl-double v2, v0, v8
+    div-double v10, p0, p4
 
-    if-lez v2, :cond_21
+    invoke-static {v10, v11}, Ljava/lang/Math;->floor(D)D
 
-    return v12
+    move-result-wide v4
 
+    .line 338
+    mul-double v10, v4, p4
+
+    sub-double/2addr p0, v10
+
+    .line 339
+    mul-double v10, v4, p6
+
+    sub-double/2addr p2, v10
+
+    .line 344
+    const-wide/16 v10, 0x0
+
+    cmpg-double v7, p2, v10
+
+    if-gez v7, :cond_21
+
+    move v7, v6
+
+    .line 345
+    goto/16 :goto_0
+
+    .line 347
     :cond_21
-    return v13
+    cmpl-double v7, p2, p6
 
+    if-lez v7, :cond_22
+
+    .line 348
+    neg-int v7, v6
+
+    goto/16 :goto_0
+
+    .line 354
     :cond_22
-    :goto_7
-    cmpl-double v0, v2, v8
+    add-double v10, p0, p0
 
-    if-eqz v0, :cond_27
+    cmpl-double v7, p4, v10
 
-    cmpl-double v0, v4, v8
+    if-lez v7, :cond_23
 
-    if-nez v0, :cond_23
+    .line 355
+    add-double v10, p2, p2
 
-    goto :goto_8
+    cmpg-double v7, p6, v10
 
+    if-gez v7, :cond_25
+
+    .line 356
+    neg-int v7, v6
+
+    goto/16 :goto_0
+
+    .line 360
     :cond_23
-    cmpl-double v0, v2, v8
+    add-double v10, p2, p2
 
-    if-lez v0, :cond_25
+    cmpl-double v7, p6, v10
 
-    cmpl-double v0, v4, v8
+    if-lez v7, :cond_24
 
-    if-lez v0, :cond_24
+    move v7, v6
 
-    return v12
+    .line 361
+    goto/16 :goto_0
 
+    .line 364
     :cond_24
-    return v13
+    sub-double p0, p4, p0
 
+    .line 365
+    sub-double p2, p6, p2
+
+    .line 366
+    neg-int v6, v6
+
+    .line 369
     :cond_25
-    cmpl-double v0, v4, v8
+    const-wide/16 v10, 0x0
 
-    if-lez v0, :cond_26
+    cmpl-double v7, p2, v10
 
-    return v13
+    if-nez v7, :cond_27
+
+    .line 370
+    const-wide/16 v10, 0x0
+
+    cmpl-double v7, p0, v10
+
+    if-nez v7, :cond_26
+
+    .line 371
+    const/4 v7, 0x0
+
+    goto/16 :goto_0
 
     :cond_26
-    return v12
+    move v7, v6
 
+    .line 374
+    goto/16 :goto_0
+
+    .line 377
     :cond_27
-    :goto_8
-    return v11
+    const-wide/16 v10, 0x0
+
+    cmpl-double v7, p0, v10
+
+    if-nez v7, :cond_c
+
+    .line 378
+    neg-int v7, v6
+
+    goto/16 :goto_0
 .end method

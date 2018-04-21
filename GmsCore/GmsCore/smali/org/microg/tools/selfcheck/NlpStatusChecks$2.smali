@@ -26,8 +26,10 @@
 # direct methods
 .method constructor <init>(Lorg/microg/tools/selfcheck/NlpStatusChecks;Ljava/util/concurrent/atomic/AtomicBoolean;)V
     .locals 0
+    .param p1, "this$0"    # Lorg/microg/tools/selfcheck/NlpStatusChecks;
 
-    .line 120
+    .prologue
+    .line 102
     iput-object p1, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$2;->this$0:Lorg/microg/tools/selfcheck/NlpStatusChecks;
 
     iput-object p2, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$2;->val$result:Ljava/util/concurrent/atomic/AtomicBoolean;
@@ -41,87 +43,98 @@
 # virtual methods
 .method public onLocationChanged(Landroid/location/Location;)V
     .locals 4
+    .param p1, "location"    # Landroid/location/Location;
 
-    .line 123
-    iget-object v0, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$2;->val$result:Ljava/util/concurrent/atomic/AtomicBoolean;
-
-    monitor-enter v0
-
-    .line 124
-    :try_start_0
+    .prologue
+    .line 105
     iget-object v1, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$2;->val$result:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    monitor-enter v1
+
+    .line 106
+    :try_start_0
+    iget-object v2, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$2;->val$result:Ljava/util/concurrent/atomic/AtomicBoolean;
 
     if-eqz p1, :cond_0
 
     invoke-virtual {p1}, Landroid/location/Location;->getExtras()Landroid/os/Bundle;
 
-    move-result-object v2
+    move-result-object v0
 
-    if-eqz v2, :cond_0
+    if-eqz v0, :cond_0
 
-    .line 125
+    .line 107
     invoke-virtual {p1}, Landroid/location/Location;->getExtras()Landroid/os/Bundle;
 
-    move-result-object v2
+    move-result-object v0
 
     const-string v3, "SERVICE_BACKEND_COMPONENT"
 
-    invoke-virtual {v2, v3}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z
+    invoke-virtual {v0, v3}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z
 
-    move-result v2
+    move-result v0
 
-    if-eqz v2, :cond_0
+    if-eqz v0, :cond_0
 
-    const/4 v2, 0x1
+    const/4 v0, 0x1
+
+    .line 106
+    :goto_0
+    invoke-virtual {v2, v0}, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
+
+    .line 108
+    iget-object v0, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$2;->val$result:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    invoke-virtual {v0}, Ljava/lang/Object;->notifyAll()V
+
+    .line 109
+    monitor-exit v1
+
+    .line 110
+    return-void
+
+    .line 107
+    :cond_0
+    const/4 v0, 0x0
 
     goto :goto_0
 
-    :cond_0
-    const/4 v2, 0x0
-
-    .line 124
-    :goto_0
-    invoke-virtual {v1, v2}, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
-
-    .line 126
-    iget-object v1, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$2;->val$result:Ljava/util/concurrent/atomic/AtomicBoolean;
-
-    invoke-virtual {v1}, Ljava/lang/Object;->notifyAll()V
-
-    .line 127
-    iget-object v1, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$2;->this$0:Lorg/microg/tools/selfcheck/NlpStatusChecks;
-
-    invoke-static {v1, p1}, Lorg/microg/tools/selfcheck/NlpStatusChecks;->access$002(Lorg/microg/tools/selfcheck/NlpStatusChecks;Landroid/location/Location;)Landroid/location/Location;
-
-    .line 128
-    monitor-exit v0
-
-    return-void
-
+    .line 109
     :catchall_0
-    move-exception p1
+    move-exception v0
 
-    monitor-exit v0
+    monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    throw p1
+    throw v0
 .end method
 
 .method public onProviderDisabled(Ljava/lang/String;)V
     .locals 0
+    .param p1, "provider"    # Ljava/lang/String;
 
+    .prologue
+    .line 122
     return-void
 .end method
 
 .method public onProviderEnabled(Ljava/lang/String;)V
     .locals 0
+    .param p1, "provider"    # Ljava/lang/String;
 
+    .prologue
+    .line 118
     return-void
 .end method
 
 .method public onStatusChanged(Ljava/lang/String;ILandroid/os/Bundle;)V
     .locals 0
+    .param p1, "provider"    # Ljava/lang/String;
+    .param p2, "status"    # I
+    .param p3, "extras"    # Landroid/os/Bundle;
 
+    .prologue
+    .line 114
     return-void
 .end method

@@ -24,8 +24,10 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/auth/login/LoginActivity;)V
     .locals 0
+    .param p1, "this$0"    # Lorg/microg/gms/auth/login/LoginActivity;
 
-    .line 218
+    .prologue
+    .line 175
     iput-object p1, p0, Lorg/microg/gms/auth/login/LoginActivity$3;->this$0:Lorg/microg/gms/auth/login/LoginActivity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -36,35 +38,40 @@
 
 # virtual methods
 .method public run()V
-    .locals 2
+    .locals 3
 
-    .line 222
-    iget-object v0, p0, Lorg/microg/gms/auth/login/LoginActivity$3;->this$0:Lorg/microg/gms/auth/login/LoginActivity;
+    .prologue
+    .line 179
+    iget-object v1, p0, Lorg/microg/gms/auth/login/LoginActivity$3;->this$0:Lorg/microg/gms/auth/login/LoginActivity;
 
-    const/4 v1, 0x0
+    const/4 v2, 0x0
 
-    invoke-static {v0, v1}, Lorg/microg/gms/auth/login/LoginActivity;->access$400(Lorg/microg/gms/auth/login/LoginActivity;Z)Z
+    invoke-static {v1, v2}, Lorg/microg/gms/auth/login/LoginActivity;->access$400(Lorg/microg/gms/auth/login/LoginActivity;Z)Z
 
-    move-result v0
+    move-result v1
 
-    if-eqz v0, :cond_0
+    if-eqz v1, :cond_0
 
     new-instance v0, Lorg/microg/gms/auth/login/LoginActivity$3$1;
 
     invoke-direct {v0, p0}, Lorg/microg/gms/auth/login/LoginActivity$3$1;-><init>(Lorg/microg/gms/auth/login/LoginActivity$3;)V
 
-    goto :goto_0
-
-    :cond_0
-    new-instance v0, Lorg/microg/gms/auth/login/LoginActivity$3$2;
-
-    invoke-direct {v0, p0}, Lorg/microg/gms/auth/login/LoginActivity$3$2;-><init>(Lorg/microg/gms/auth/login/LoginActivity$3;)V
-
-    .line 233
+    .line 190
+    .local v0, "next":Ljava/lang/Runnable;
     :goto_0
     iget-object v1, p0, Lorg/microg/gms/auth/login/LoginActivity$3;->this$0:Lorg/microg/gms/auth/login/LoginActivity;
 
     invoke-virtual {v1, v0}, Lorg/microg/gms/auth/login/LoginActivity;->runOnUiThread(Ljava/lang/Runnable;)V
 
+    .line 191
     return-void
+
+    .line 179
+    .end local v0    # "next":Ljava/lang/Runnable;
+    :cond_0
+    new-instance v0, Lorg/microg/gms/auth/login/LoginActivity$3$2;
+
+    invoke-direct {v0, p0}, Lorg/microg/gms/auth/login/LoginActivity$3$2;-><init>(Lorg/microg/gms/auth/login/LoginActivity$3;)V
+
+    goto :goto_0
 .end method

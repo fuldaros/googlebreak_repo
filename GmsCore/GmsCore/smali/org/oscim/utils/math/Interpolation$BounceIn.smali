@@ -17,28 +17,33 @@
 # direct methods
 .method public constructor <init>(I)V
     .locals 0
+    .param p1, "bounces"    # I
 
-    .line 368
+    .prologue
+    .line 364
     invoke-direct {p0, p1}, Lorg/oscim/utils/math/Interpolation$BounceOut;-><init>(I)V
 
+    .line 365
     return-void
 .end method
 
 
 # virtual methods
 .method public apply(F)F
-    .locals 1
+    .locals 2
+    .param p1, "a"    # F
 
-    const/high16 v0, 0x3f800000    # 1.0f
+    .prologue
+    const/high16 v1, 0x3f800000    # 1.0f
 
-    sub-float p1, v0, p1
+    .line 369
+    sub-float v0, v1, p1
 
-    .line 373
-    invoke-super {p0, p1}, Lorg/oscim/utils/math/Interpolation$BounceOut;->apply(F)F
+    invoke-super {p0, v0}, Lorg/oscim/utils/math/Interpolation$BounceOut;->apply(F)F
 
-    move-result p1
+    move-result v0
 
-    sub-float/2addr v0, p1
+    sub-float v0, v1, v0
 
     return v0
 .end method

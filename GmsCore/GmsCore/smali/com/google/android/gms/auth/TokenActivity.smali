@@ -7,6 +7,7 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 23
     invoke-direct {p0}, Landroid/app/Activity;-><init>()V
 
@@ -16,33 +17,37 @@
 
 # virtual methods
 .method protected onCreate(Landroid/os/Bundle;)V
-    .locals 1
+    .locals 3
+    .param p1, "savedInstanceState"    # Landroid/os/Bundle;
 
+    .prologue
     .line 28
     invoke-super {p0, p1}, Landroid/app/Activity;->onCreate(Landroid/os/Bundle;)V
 
     .line 29
     invoke-virtual {p0}, Lcom/google/android/gms/auth/TokenActivity;->getIntent()Landroid/content/Intent;
 
-    move-result-object p1
+    move-result-object v1
 
-    invoke-virtual {p1}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+    invoke-virtual {v1}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
 
-    move-result-object p1
-
-    const-string v0, "KEY"
+    move-result-object v0
 
     .line 30
-    invoke-virtual {p1, v0}, Landroid/os/Bundle;->get(Ljava/lang/String;)Ljava/lang/Object;
+    .local v0, "extras":Landroid/os/Bundle;
+    const-string v1, "KEY"
 
-    const-string v0, "GmsAuthTokenActivity"
+    invoke-virtual {v0, v1}, Landroid/os/Bundle;->get(Ljava/lang/String;)Ljava/lang/Object;
 
     .line 31
-    invoke-virtual {p1}, Landroid/os/Bundle;->toString()Ljava/lang/String;
+    const-string v1, "GmsAuthTokenActivity"
 
-    move-result-object p1
+    invoke-virtual {v0}, Landroid/os/Bundle;->toString()Ljava/lang/String;
 
-    invoke-static {v0, p1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    move-result-object v2
 
+    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 53
     return-void
 .end method

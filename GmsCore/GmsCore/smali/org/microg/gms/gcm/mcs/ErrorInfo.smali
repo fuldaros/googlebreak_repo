@@ -49,9 +49,10 @@
 .method static constructor <clinit>()V
     .locals 1
 
+    .prologue
+    .line 14
     const/4 v0, 0x0
 
-    .line 14
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v0
@@ -63,7 +64,12 @@
 
 .method public constructor <init>(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lorg/microg/gms/gcm/mcs/Extension;)V
     .locals 0
+    .param p1, "code"    # Ljava/lang/Integer;
+    .param p2, "message"    # Ljava/lang/String;
+    .param p3, "type"    # Ljava/lang/String;
+    .param p4, "extension"    # Lorg/microg/gms/gcm/mcs/Extension;
 
+    .prologue
     .line 30
     invoke-direct {p0}, Lcom/squareup/wire/Message;-><init>()V
 
@@ -79,12 +85,15 @@
     .line 34
     iput-object p4, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->extension:Lorg/microg/gms/gcm/mcs/Extension;
 
+    .line 35
     return-void
 .end method
 
 .method private constructor <init>(Lorg/microg/gms/gcm/mcs/ErrorInfo$Builder;)V
     .locals 4
+    .param p1, "builder"    # Lorg/microg/gms/gcm/mcs/ErrorInfo$Builder;
 
+    .prologue
     .line 38
     iget-object v0, p1, Lorg/microg/gms/gcm/mcs/ErrorInfo$Builder;->code:Ljava/lang/Integer;
 
@@ -99,12 +108,16 @@
     .line 39
     invoke-virtual {p0, p1}, Lorg/microg/gms/gcm/mcs/ErrorInfo;->setBuilder(Lcom/squareup/wire/Message$Builder;)V
 
+    .line 40
     return-void
 .end method
 
 .method synthetic constructor <init>(Lorg/microg/gms/gcm/mcs/ErrorInfo$Builder;Lorg/microg/gms/gcm/mcs/ErrorInfo$1;)V
     .locals 0
+    .param p1, "x0"    # Lorg/microg/gms/gcm/mcs/ErrorInfo$Builder;
+    .param p2, "x1"    # Lorg/microg/gms/gcm/mcs/ErrorInfo$1;
 
+    .prologue
     .line 12
     invoke-direct {p0, p1}, Lorg/microg/gms/gcm/mcs/ErrorInfo;-><init>(Lorg/microg/gms/gcm/mcs/ErrorInfo$Builder;)V
 
@@ -114,156 +127,152 @@
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 4
+    .locals 5
+    .param p1, "other"    # Ljava/lang/Object;
 
-    const/4 v0, 0x1
-
-    if-ne p1, p0, :cond_0
-
-    return v0
-
-    .line 45
-    :cond_0
-    instance-of v1, p1, Lorg/microg/gms/gcm/mcs/ErrorInfo;
+    .prologue
+    const/4 v1, 0x1
 
     const/4 v2, 0x0
 
-    if-nez v1, :cond_1
-
-    return v2
-
-    .line 46
-    :cond_1
-    check-cast p1, Lorg/microg/gms/gcm/mcs/ErrorInfo;
+    .line 44
+    if-ne p1, p0, :cond_1
 
     .line 47
-    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->code:Ljava/lang/Integer;
+    :cond_0
+    :goto_0
+    return v1
 
-    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/ErrorInfo;->code:Ljava/lang/Integer;
+    .line 45
+    :cond_1
+    instance-of v3, p1, Lorg/microg/gms/gcm/mcs/ErrorInfo;
 
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/ErrorInfo;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+    if-nez v3, :cond_2
 
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->message:Ljava/lang/String;
-
-    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/ErrorInfo;->message:Ljava/lang/String;
-
-    .line 48
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/ErrorInfo;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->type:Ljava/lang/String;
-
-    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/ErrorInfo;->type:Ljava/lang/String;
-
-    .line 49
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/ErrorInfo;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->extension:Lorg/microg/gms/gcm/mcs/Extension;
-
-    iget-object p1, p1, Lorg/microg/gms/gcm/mcs/ErrorInfo;->extension:Lorg/microg/gms/gcm/mcs/Extension;
-
-    .line 50
-    invoke-virtual {p0, v1, p1}, Lorg/microg/gms/gcm/mcs/ErrorInfo;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result p1
-
-    if-eqz p1, :cond_2
+    move v1, v2
 
     goto :goto_0
 
     :cond_2
-    move v0, v2
+    move-object v0, p1
 
-    :goto_0
-    return v0
+    .line 46
+    check-cast v0, Lorg/microg/gms/gcm/mcs/ErrorInfo;
+
+    .line 47
+    .local v0, "o":Lorg/microg/gms/gcm/mcs/ErrorInfo;
+    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->code:Ljava/lang/Integer;
+
+    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->code:Ljava/lang/Integer;
+
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/ErrorInfo;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->message:Ljava/lang/String;
+
+    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->message:Ljava/lang/String;
+
+    .line 48
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/ErrorInfo;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->type:Ljava/lang/String;
+
+    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->type:Ljava/lang/String;
+
+    .line 49
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/ErrorInfo;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->extension:Lorg/microg/gms/gcm/mcs/Extension;
+
+    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->extension:Lorg/microg/gms/gcm/mcs/Extension;
+
+    .line 50
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/ErrorInfo;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_0
+
+    :cond_3
+    move v1, v2
+
+    goto :goto_0
 .end method
 
 .method public hashCode()I
-    .locals 3
+    .locals 4
+
+    .prologue
+    const/4 v1, 0x0
 
     .line 55
     iget v0, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->hashCode:I
 
-    if-nez v0, :cond_4
+    .line 56
+    .local v0, "result":I
+    if-nez v0, :cond_1
 
     .line 57
-    iget-object v0, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->code:Ljava/lang/Integer;
-
-    const/4 v1, 0x0
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->code:Ljava/lang/Integer;
-
-    invoke-virtual {v0}, Ljava/lang/Integer;->hashCode()I
-
-    move-result v0
-
-    goto :goto_0
-
-    :cond_0
-    move v0, v1
-
-    :goto_0
-    mul-int/lit8 v0, v0, 0x25
-
-    .line 58
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->message:Ljava/lang/String;
-
-    if-eqz v2, :cond_1
-
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->message:Ljava/lang/String;
-
-    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
-
-    move-result v2
-
-    goto :goto_1
-
-    :cond_1
-    move v2, v1
-
-    :goto_1
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
-
-    .line 59
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->type:Ljava/lang/String;
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->code:Ljava/lang/Integer;
 
     if-eqz v2, :cond_2
 
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->code:Ljava/lang/Integer;
+
+    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
+
+    move-result v0
+
+    .line 58
+    :goto_0
+    mul-int/lit8 v3, v0, 0x25
+
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->message:Ljava/lang/String;
+
+    if-eqz v2, :cond_3
+
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->message:Ljava/lang/String;
+
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
+
+    move-result v2
+
+    :goto_1
+    add-int v0, v3, v2
+
+    .line 59
+    mul-int/lit8 v3, v0, 0x25
+
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->type:Ljava/lang/String;
+
+    if-eqz v2, :cond_4
+
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->type:Ljava/lang/String;
 
     invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
 
     move-result v2
 
-    goto :goto_2
-
-    :cond_2
-    move v2, v1
-
     :goto_2
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
+    add-int v0, v3, v2
 
     .line 60
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->extension:Lorg/microg/gms/gcm/mcs/Extension;
+    mul-int/lit8 v2, v0, 0x25
 
-    if-eqz v2, :cond_3
+    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->extension:Lorg/microg/gms/gcm/mcs/Extension;
+
+    if-eqz v3, :cond_0
 
     iget-object v1, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->extension:Lorg/microg/gms/gcm/mcs/Extension;
 
@@ -271,12 +280,31 @@
 
     move-result v1
 
-    :cond_3
-    add-int/2addr v0, v1
+    :cond_0
+    add-int v0, v2, v1
 
     .line 61
     iput v0, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo;->hashCode:I
 
-    :cond_4
+    .line 63
+    :cond_1
     return v0
+
+    :cond_2
+    move v0, v1
+
+    .line 57
+    goto :goto_0
+
+    :cond_3
+    move v2, v1
+
+    .line 58
+    goto :goto_1
+
+    :cond_4
+    move v2, v1
+
+    .line 59
+    goto :goto_2
 .end method

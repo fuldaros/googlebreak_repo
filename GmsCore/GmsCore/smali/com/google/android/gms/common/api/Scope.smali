@@ -7,7 +7,8 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator<",
+            "Landroid/os/Parcelable$Creator",
+            "<",
             "Lcom/google/android/gms/common/api/Scope;",
             ">;"
         }
@@ -33,6 +34,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
+    .prologue
     .line 64
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -48,81 +50,87 @@
 .method private constructor <init>()V
     .locals 1
 
+    .prologue
     .line 34
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
+    .line 29
     const/4 v0, 0x1
 
-    .line 29
     iput v0, p0, Lcom/google/android/gms/common/api/Scope;->versionCode:I
 
+    .line 35
     const/4 v0, 0x0
 
-    .line 35
     iput-object v0, p0, Lcom/google/android/gms/common/api/Scope;->scopeUri:Ljava/lang/String;
 
+    .line 36
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 1
+    .param p1, "scopeUri"    # Ljava/lang/String;
 
+    .prologue
     .line 41
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
+    .line 29
     const/4 v0, 0x1
 
-    .line 29
     iput v0, p0, Lcom/google/android/gms/common/api/Scope;->versionCode:I
 
     .line 42
     iput-object p1, p0, Lcom/google/android/gms/common/api/Scope;->scopeUri:Ljava/lang/String;
 
+    .line 43
     return-void
 .end method
 
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 1
+    .locals 2
+    .param p1, "o"    # Ljava/lang/Object;
 
-    if-eq p0, p1, :cond_1
-
+    .prologue
     .line 47
+    if-eq p0, p1, :cond_0
+
     instance-of v0, p1, Lcom/google/android/gms/common/api/Scope;
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_1
 
     iget-object v0, p0, Lcom/google/android/gms/common/api/Scope;->scopeUri:Ljava/lang/String;
 
     check-cast p1, Lcom/google/android/gms/common/api/Scope;
 
-    iget-object p1, p1, Lcom/google/android/gms/common/api/Scope;->scopeUri:Ljava/lang/String;
+    .end local p1    # "o":Ljava/lang/Object;
+    iget-object v1, p1, Lcom/google/android/gms/common/api/Scope;->scopeUri:Ljava/lang/String;
 
-    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result p1
+    move-result v0
 
-    if-eqz p1, :cond_0
-
-    goto :goto_0
+    if-eqz v0, :cond_1
 
     :cond_0
-    const/4 p1, 0x0
+    const/4 v0, 0x1
 
-    goto :goto_1
+    :goto_0
+    return v0
 
     :cond_1
-    :goto_0
-    const/4 p1, 0x1
+    const/4 v0, 0x0
 
-    :goto_1
-    return p1
+    goto :goto_0
 .end method
 
 .method public hashCode()I
     .locals 1
 
+    .prologue
     .line 56
     iget-object v0, p0, Lcom/google/android/gms/common/api/Scope;->scopeUri:Ljava/lang/String;
 
@@ -136,6 +144,7 @@
 .method public toString()Ljava/lang/String;
     .locals 1
 
+    .prologue
     .line 61
     iget-object v0, p0, Lcom/google/android/gms/common/api/Scope;->scopeUri:Ljava/lang/String;
 

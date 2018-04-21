@@ -7,7 +7,8 @@
 .field public final labels:Lorg/oscim/utils/pool/Inlist$List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Lorg/oscim/utils/pool/Inlist$List<",
+            "Lorg/oscim/utils/pool/Inlist$List",
+            "<",
             "Lorg/oscim/renderer/bucket/TextItem;",
             ">;"
         }
@@ -17,7 +18,8 @@
 .field public final symbols:Lorg/oscim/utils/pool/Inlist$List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Lorg/oscim/utils/pool/Inlist$List<",
+            "Lorg/oscim/utils/pool/Inlist$List",
+            "<",
             "Lorg/oscim/renderer/bucket/SymbolItem;",
             ">;"
         }
@@ -29,6 +31,7 @@
 .method public constructor <init>()V
     .locals 1
 
+    .prologue
     .line 7
     invoke-direct {p0}, Lorg/oscim/layers/tile/MapTile$TileData;-><init>()V
 
@@ -54,6 +57,7 @@
 .method protected dispose()V
     .locals 2
 
+    .prologue
     .line 13
     sget-object v0, Lorg/oscim/renderer/bucket/TextItem;->pool:Lorg/oscim/utils/pool/SyncPool;
 
@@ -76,5 +80,6 @@
 
     invoke-virtual {v0, v1}, Lorg/oscim/utils/pool/SyncPool;->releaseAll(Lorg/oscim/utils/pool/Inlist;)Lorg/oscim/utils/pool/Inlist;
 
+    .line 15
     return-void
 .end method

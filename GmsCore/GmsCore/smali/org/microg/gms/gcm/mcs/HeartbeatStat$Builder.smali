@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder<",
+        "Lcom/squareup/wire/Message$Builder",
+        "<",
         "Lorg/microg/gms/gcm/mcs/HeartbeatStat;",
         ">;"
     }
@@ -34,20 +35,27 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 67
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
+    .line 68
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/gms/gcm/mcs/HeartbeatStat;)V
     .locals 1
+    .param p1, "message"    # Lorg/microg/gms/gcm/mcs/HeartbeatStat;
 
+    .prologue
     .line 71
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
+    .line 72
     if-nez p1, :cond_0
 
+    .line 76
+    :goto_0
     return-void
 
     .line 73
@@ -62,11 +70,11 @@
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/HeartbeatStat$Builder;->timeout:Ljava/lang/Boolean;
 
     .line 75
-    iget-object p1, p1, Lorg/microg/gms/gcm/mcs/HeartbeatStat;->interval_ms:Ljava/lang/Integer;
+    iget-object v0, p1, Lorg/microg/gms/gcm/mcs/HeartbeatStat;->interval_ms:Ljava/lang/Integer;
 
-    iput-object p1, p0, Lorg/microg/gms/gcm/mcs/HeartbeatStat$Builder;->interval_ms:Ljava/lang/Integer;
+    iput-object v0, p0, Lorg/microg/gms/gcm/mcs/HeartbeatStat$Builder;->interval_ms:Ljava/lang/Integer;
 
-    return-void
+    goto :goto_0
 .end method
 
 
@@ -74,6 +82,7 @@
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
+    .prologue
     .line 61
     invoke-virtual {p0}, Lorg/microg/gms/gcm/mcs/HeartbeatStat$Builder;->build()Lorg/microg/gms/gcm/mcs/HeartbeatStat;
 
@@ -85,6 +94,7 @@
 .method public build()Lorg/microg/gms/gcm/mcs/HeartbeatStat;
     .locals 2
 
+    .prologue
     .line 95
     invoke-virtual {p0}, Lorg/microg/gms/gcm/mcs/HeartbeatStat$Builder;->checkRequiredFields()V
 

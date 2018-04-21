@@ -14,23 +14,26 @@
 # direct methods
 .method public constructor <init>(Lorg/microg/gms/location/LocationChangeListener;)V
     .locals 1
+    .param p1, "changeListener"    # Lorg/microg/gms/location/LocationChangeListener;
 
+    .prologue
     .line 29
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 25
     const/4 v0, 0x0
 
-    .line 25
     iput-boolean v0, p0, Lorg/microg/gms/location/MockLocationProvider;->mockEnabled:Z
 
+    .line 26
     const/4 v0, 0x0
 
-    .line 26
     iput-object v0, p0, Lorg/microg/gms/location/MockLocationProvider;->mockLocation:Landroid/location/Location;
 
     .line 30
     iput-object p1, p0, Lorg/microg/gms/location/MockLocationProvider;->changeListener:Lorg/microg/gms/location/LocationChangeListener;
 
+    .line 31
     return-void
 .end method
 
@@ -39,6 +42,7 @@
 .method public getLocation()Landroid/location/Location;
     .locals 1
 
+    .prologue
     .line 38
     iget-boolean v0, p0, Lorg/microg/gms/location/MockLocationProvider;->mockEnabled:Z
 
@@ -46,18 +50,20 @@
 
     iget-object v0, p0, Lorg/microg/gms/location/MockLocationProvider;->mockLocation:Landroid/location/Location;
 
-    goto :goto_0
+    :goto_0
+    return-object v0
 
     :cond_0
     const/4 v0, 0x0
 
-    :goto_0
-    return-object v0
+    goto :goto_0
 .end method
 
 .method public setLocation(Landroid/location/Location;)V
     .locals 3
+    .param p1, "mockLocation"    # Landroid/location/Location;
 
+    .prologue
     .line 42
     invoke-virtual {p1}, Landroid/location/Location;->getExtras()Landroid/os/Bundle;
 
@@ -88,18 +94,22 @@
     iput-object p1, p0, Lorg/microg/gms/location/MockLocationProvider;->mockLocation:Landroid/location/Location;
 
     .line 47
-    iget-object p1, p0, Lorg/microg/gms/location/MockLocationProvider;->changeListener:Lorg/microg/gms/location/LocationChangeListener;
+    iget-object v0, p0, Lorg/microg/gms/location/MockLocationProvider;->changeListener:Lorg/microg/gms/location/LocationChangeListener;
 
-    invoke-interface {p1}, Lorg/microg/gms/location/LocationChangeListener;->onLocationChanged()V
+    invoke-interface {v0}, Lorg/microg/gms/location/LocationChangeListener;->onLocationChanged()V
 
+    .line 48
     return-void
 .end method
 
 .method public setMockEnabled(Z)V
     .locals 0
+    .param p1, "mockEnabled"    # Z
 
+    .prologue
     .line 34
     iput-boolean p1, p0, Lorg/microg/gms/location/MockLocationProvider;->mockEnabled:Z
 
+    .line 35
     return-void
 .end method

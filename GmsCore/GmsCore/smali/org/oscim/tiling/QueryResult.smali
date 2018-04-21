@@ -6,7 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/lang/Enum<",
+        "Ljava/lang/Enum",
+        "<",
         "Lorg/oscim/tiling/QueryResult;",
         ">;"
     }
@@ -29,12 +30,19 @@
 .method static constructor <clinit>()V
     .locals 6
 
+    .prologue
+    const/4 v5, 0x3
+
+    const/4 v4, 0x2
+
+    const/4 v3, 0x1
+
+    const/4 v2, 0x0
+
     .line 4
     new-instance v0, Lorg/oscim/tiling/QueryResult;
 
     const-string v1, "SUCCESS"
-
-    const/4 v2, 0x0
 
     invoke-direct {v0, v1, v2}, Lorg/oscim/tiling/QueryResult;-><init>(Ljava/lang/String;I)V
 
@@ -45,8 +53,6 @@
 
     const-string v1, "FAILED"
 
-    const/4 v3, 0x1
-
     invoke-direct {v0, v1, v3}, Lorg/oscim/tiling/QueryResult;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lorg/oscim/tiling/QueryResult;->FAILED:Lorg/oscim/tiling/QueryResult;
@@ -55,8 +61,6 @@
     new-instance v0, Lorg/oscim/tiling/QueryResult;
 
     const-string v1, "TILE_NOT_FOUND"
-
-    const/4 v4, 0x2
 
     invoke-direct {v0, v1, v4}, Lorg/oscim/tiling/QueryResult;-><init>(Ljava/lang/String;I)V
 
@@ -67,15 +71,13 @@
 
     const-string v1, "DELAYED"
 
-    const/4 v5, 0x3
-
     invoke-direct {v0, v1, v5}, Lorg/oscim/tiling/QueryResult;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lorg/oscim/tiling/QueryResult;->DELAYED:Lorg/oscim/tiling/QueryResult;
 
+    .line 3
     const/4 v0, 0x4
 
-    .line 3
     new-array v0, v0, [Lorg/oscim/tiling/QueryResult;
 
     sget-object v1, Lorg/oscim/tiling/QueryResult;->SUCCESS:Lorg/oscim/tiling/QueryResult;
@@ -107,6 +109,7 @@
         }
     .end annotation
 
+    .prologue
     .line 3
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
@@ -115,22 +118,25 @@
 
 .method public static valueOf(Ljava/lang/String;)Lorg/oscim/tiling/QueryResult;
     .locals 1
+    .param p0, "name"    # Ljava/lang/String;
 
+    .prologue
     .line 3
     const-class v0, Lorg/oscim/tiling/QueryResult;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
 
-    move-result-object p0
+    move-result-object v0
 
-    check-cast p0, Lorg/oscim/tiling/QueryResult;
+    check-cast v0, Lorg/oscim/tiling/QueryResult;
 
-    return-object p0
+    return-object v0
 .end method
 
 .method public static values()[Lorg/oscim/tiling/QueryResult;
     .locals 1
 
+    .prologue
     .line 3
     sget-object v0, Lorg/oscim/tiling/QueryResult;->$VALUES:[Lorg/oscim/tiling/QueryResult;
 

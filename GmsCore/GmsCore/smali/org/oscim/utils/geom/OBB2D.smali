@@ -23,189 +23,227 @@
 .method public constructor <init>()V
     .locals 1
 
+    .prologue
     .line 190
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 92
     const/16 v0, 0xc
 
-    .line 92
     new-array v0, v0, [F
 
     iput-object v0, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
+    .line 192
     return-void
 .end method
 
 .method public constructor <init>(FFFFFF)V
-    .locals 5
+    .locals 10
+    .param p1, "cx"    # F
+    .param p2, "cy"    # F
+    .param p3, "dx"    # F
+    .param p4, "dy"    # F
+    .param p5, "width"    # F
+    .param p6, "height"    # F
 
+    .prologue
     .line 283
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    const/16 v0, 0xc
-
     .line 92
-    new-array v0, v0, [F
+    const/16 v7, 0xc
 
-    iput-object v0, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    new-array v7, v7, [F
 
-    sub-float p3, p1, p3
+    iput-object v7, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    sub-float p4, p2, p4
+    .line 285
+    sub-float v5, p1, p3
 
-    mul-float v0, p3, p3
-
-    mul-float v1, p4, p4
-
-    add-float/2addr v0, v1
-
-    float-to-double v0, v0
+    .line 286
+    .local v5, "vx":F
+    sub-float v6, p2, p4
 
     .line 288
-    invoke-static {v0, v1}, Ljava/lang/Math;->sqrt(D)D
+    .local v6, "vy":F
+    mul-float v7, v5, v5
 
-    move-result-wide v0
+    mul-float v8, v6, v6
 
-    double-to-float v0, v0
+    add-float/2addr v7, v8
 
-    div-float/2addr p3, v0
+    float-to-double v8, v7
 
-    div-float/2addr p4, v0
+    invoke-static {v8, v9}, Ljava/lang/Math;->sqrt(D)D
 
-    const/high16 v0, 0x40000000    # 2.0f
+    move-result-wide v8
 
-    div-float/2addr p5, v0
+    double-to-float v0, v8
 
-    div-float/2addr p6, v0
+    .line 289
+    .local v0, "a":F
+    div-float/2addr v5, v0
 
-    mul-float v0, p4, p6
+    .line 290
+    div-float/2addr v6, v0
 
-    neg-float v1, p3
+    .line 292
+    const/high16 v7, 0x40000000    # 2.0f
 
-    mul-float/2addr v1, p6
+    div-float v2, p5, v7
 
-    mul-float/2addr p3, p5
+    .line 293
+    .local v2, "hw":F
+    const/high16 v7, 0x40000000    # 2.0f
 
-    mul-float/2addr p4, p5
+    div-float v1, p6, v7
+
+    .line 295
+    .local v1, "hh":F
+    mul-float v3, v6, v1
+
+    .line 296
+    .local v3, "ux":F
+    neg-float v7, v5
+
+    mul-float v4, v7, v1
+
+    .line 298
+    .local v4, "uy":F
+    mul-float/2addr v5, v2
+
+    .line 299
+    mul-float/2addr v6, v2
 
     .line 301
-    iget-object p5, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v7, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    sub-float p6, p1, p3
+    const/4 v8, 0x0
 
-    sub-float v2, p6, v0
+    sub-float v9, p1, v5
 
-    const/4 v3, 0x0
+    sub-float/2addr v9, v3
 
-    aput v2, p5, v3
+    aput v9, v7, v8
 
     .line 302
-    iget-object p5, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v7, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    sub-float v2, p2, p4
+    const/4 v8, 0x1
 
-    sub-float v3, v2, v1
+    sub-float v9, p2, v6
 
-    const/4 v4, 0x1
+    sub-float/2addr v9, v4
 
-    aput v3, p5, v4
+    aput v9, v7, v8
 
     .line 304
-    iget-object p5, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v7, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    add-float/2addr p1, p3
+    const/4 v8, 0x2
 
-    sub-float p3, p1, v0
+    add-float v9, p1, v5
 
-    const/4 v3, 0x2
+    sub-float/2addr v9, v3
 
-    aput p3, p5, v3
+    aput v9, v7, v8
 
     .line 305
-    iget-object p3, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v7, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    add-float/2addr p2, p4
+    const/4 v8, 0x3
 
-    sub-float p4, p2, v1
+    add-float v9, p2, v6
 
-    const/4 p5, 0x3
+    sub-float/2addr v9, v4
 
-    aput p4, p3, p5
+    aput v9, v7, v8
 
     .line 307
-    iget-object p3, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v7, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    add-float/2addr p1, v0
+    const/4 v8, 0x4
 
-    const/4 p4, 0x4
+    add-float v9, p1, v5
 
-    aput p1, p3, p4
+    add-float/2addr v9, v3
+
+    aput v9, v7, v8
 
     .line 308
-    iget-object p1, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v7, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    add-float/2addr p2, v1
+    const/4 v8, 0x5
 
-    const/4 p3, 0x5
+    add-float v9, p2, v6
 
-    aput p2, p1, p3
+    add-float/2addr v9, v4
+
+    aput v9, v7, v8
 
     .line 310
-    iget-object p1, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v7, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    add-float/2addr p6, v0
+    const/4 v8, 0x6
 
-    const/4 p2, 0x6
+    sub-float v9, p1, v5
 
-    aput p6, p1, p2
+    add-float/2addr v9, v3
+
+    aput v9, v7, v8
 
     .line 311
-    iget-object p1, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v7, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    add-float/2addr v2, v1
+    const/4 v8, 0x7
 
-    const/4 p2, 0x7
+    sub-float v9, p2, v6
 
-    aput v2, p1, p2
+    add-float/2addr v9, v4
+
+    aput v9, v7, v8
 
     .line 313
     invoke-direct {p0}, Lorg/oscim/utils/geom/OBB2D;->computeAxes()V
 
+    .line 314
     return-void
 .end method
 
 .method private computeAxes()V
     .locals 5
 
-    .line 154
-    iget-object v0, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    .prologue
+    const/16 v4, 0xa
 
-    const/16 v1, 0x8
+    const/16 v3, 0x8
 
     const/4 v2, 0x0
 
-    const/4 v3, 0x2
+    .line 154
+    iget-object v0, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    invoke-static {v0, v1, v3, v2}, Lorg/oscim/utils/geom/OBB2D$Vec2;->sub([FIII)V
+    const/4 v1, 0x2
+
+    invoke-static {v0, v3, v1, v2}, Lorg/oscim/utils/geom/OBB2D$Vec2;->sub([FIII)V
 
     .line 155
     iget-object v0, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    const/16 v3, 0xa
+    const/4 v1, 0x6
 
-    const/4 v4, 0x6
-
-    invoke-static {v0, v3, v4, v2}, Lorg/oscim/utils/geom/OBB2D$Vec2;->sub([FIII)V
+    invoke-static {v0, v4, v1, v2}, Lorg/oscim/utils/geom/OBB2D$Vec2;->sub([FIII)V
 
     .line 159
     iget-object v0, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    invoke-static {v0, v1}, Lorg/oscim/utils/geom/OBB2D$Vec2;->normalizeSquared([FI)V
+    invoke-static {v0, v3}, Lorg/oscim/utils/geom/OBB2D$Vec2;->normalizeSquared([FI)V
 
     .line 160
     iget-object v0, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    invoke-static {v0, v2, v1}, Lorg/oscim/utils/geom/OBB2D$Vec2;->dot([FII)F
+    invoke-static {v0, v2, v3}, Lorg/oscim/utils/geom/OBB2D$Vec2;->dot([FII)F
 
     move-result v0
 
@@ -214,169 +252,211 @@
     .line 162
     iget-object v0, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    invoke-static {v0, v3}, Lorg/oscim/utils/geom/OBB2D$Vec2;->normalizeSquared([FI)V
+    invoke-static {v0, v4}, Lorg/oscim/utils/geom/OBB2D$Vec2;->normalizeSquared([FI)V
 
     .line 163
     iget-object v0, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    invoke-static {v0, v2, v3}, Lorg/oscim/utils/geom/OBB2D$Vec2;->dot([FII)F
+    invoke-static {v0, v2, v4}, Lorg/oscim/utils/geom/OBB2D$Vec2;->dot([FII)F
 
     move-result v0
 
     iput v0, p0, Lorg/oscim/utils/geom/OBB2D;->originY:F
 
+    .line 164
     return-void
 .end method
 
 .method private overlaps1Way(Lorg/oscim/utils/geom/OBB2D;)Z
-    .locals 11
+    .locals 13
+    .param p1, "other"    # Lorg/oscim/utils/geom/OBB2D;
 
+    .prologue
+    const/4 v8, 0x1
+
+    const/high16 v12, 0x3f800000    # 1.0f
+
+    const/4 v7, 0x0
+
+    .line 113
     const/4 v0, 0x0
 
-    move v1, v0
-
+    .local v0, "a":I
     :goto_0
-    const/4 v2, 0x1
+    const/4 v9, 0x2
 
-    const/4 v3, 0x2
-
-    if-gt v1, v3, :cond_7
+    if-gt v0, v9, :cond_6
 
     .line 114
-    iget-object v4, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v9, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    const/16 v5, 0x8
+    add-int/lit8 v10, v0, 0x8
 
-    add-int v6, v5, v1
-
-    aget v4, v4, v6
+    aget v1, v9, v10
 
     .line 115
-    iget-object v6, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    .local v1, "ax":F
+    iget-object v9, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    const/16 v7, 0x9
+    add-int/lit8 v10, v0, 0x9
 
-    add-int/2addr v7, v1
-
-    aget v6, v6, v7
+    aget v2, v9, v10
 
     .line 118
-    iget-object v7, p1, Lorg/oscim/utils/geom/OBB2D;->vec:[F
-
-    aget v7, v7, v0
-
-    mul-float/2addr v7, v4
-
-    iget-object v8, p1, Lorg/oscim/utils/geom/OBB2D;->vec:[F
-
-    aget v2, v8, v2
-
-    mul-float/2addr v2, v6
-
-    add-float/2addr v7, v2
-
-    move v2, v7
-
-    :goto_1
-    if-ge v3, v5, :cond_2
-
-    .line 125
-    iget-object v8, p1, Lorg/oscim/utils/geom/OBB2D;->vec:[F
-
-    aget v8, v8, v3
-
-    mul-float/2addr v8, v4
-
+    .local v2, "ay":F
     iget-object v9, p1, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    add-int/lit8 v10, v3, 0x1
+    aget v9, v9, v7
 
-    aget v9, v9, v10
+    mul-float/2addr v9, v1
 
-    mul-float/2addr v9, v6
+    iget-object v10, p1, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    add-float/2addr v8, v9
+    aget v10, v10, v8
 
-    cmpg-float v9, v8, v7
+    mul-float/2addr v10, v2
 
-    if-gez v9, :cond_0
+    add-float v4, v9, v10
 
-    move v7, v8
+    .line 121
+    .local v4, "t":F
+    move v6, v4
 
-    goto :goto_2
+    .line 122
+    .local v6, "tMin":F
+    move v5, v4
 
+    .line 124
+    .local v5, "tMax":F
+    const/4 v3, 0x2
+
+    .local v3, "c":I
+    :goto_1
+    const/16 v9, 0x8
+
+    if-ge v3, v9, :cond_2
+
+    .line 125
+    iget-object v9, p1, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+
+    aget v9, v9, v3
+
+    mul-float/2addr v9, v1
+
+    iget-object v10, p1, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+
+    add-int/lit8 v11, v3, 0x1
+
+    aget v10, v10, v11
+
+    mul-float/2addr v10, v2
+
+    add-float v4, v9, v10
+
+    .line 127
+    cmpg-float v9, v4, v6
+
+    if-gez v9, :cond_1
+
+    .line 128
+    move v6, v4
+
+    .line 124
     :cond_0
-    cmpl-float v9, v8, v2
-
-    if-lez v9, :cond_1
-
-    move v2, v8
-
-    :cond_1
     :goto_2
     add-int/lit8 v3, v3, 0x2
 
     goto :goto_1
 
-    :cond_2
-    const/high16 v3, 0x3f800000    # 1.0f
+    .line 129
+    :cond_1
+    cmpl-float v9, v4, v5
 
-    if-nez v1, :cond_4
+    if-lez v9, :cond_0
+
+    .line 130
+    move v5, v4
+
+    goto :goto_2
+
+    .line 135
+    :cond_2
+    if-nez v0, :cond_4
 
     .line 136
-    iget v4, p0, Lorg/oscim/utils/geom/OBB2D;->originX:F
+    iget v9, p0, Lorg/oscim/utils/geom/OBB2D;->originX:F
 
-    add-float/2addr v3, v4
+    add-float/2addr v9, v12
 
-    cmpl-float v3, v7, v3
+    cmpl-float v9, v6, v9
 
-    if-gtz v3, :cond_3
+    if-gtz v9, :cond_3
 
-    iget v3, p0, Lorg/oscim/utils/geom/OBB2D;->originX:F
+    iget v9, p0, Lorg/oscim/utils/geom/OBB2D;->originX:F
 
-    cmpg-float v2, v2, v3
+    cmpg-float v9, v5, v9
 
-    if-gez v2, :cond_5
+    if-gez v9, :cond_5
 
+    .line 148
+    .end local v1    # "ax":F
+    .end local v2    # "ay":F
+    .end local v3    # "c":I
+    .end local v4    # "t":F
+    .end local v5    # "tMax":F
+    .end local v6    # "tMin":F
     :cond_3
-    return v0
+    :goto_3
+    return v7
 
     .line 141
+    .restart local v1    # "ax":F
+    .restart local v2    # "ay":F
+    .restart local v3    # "c":I
+    .restart local v4    # "t":F
+    .restart local v5    # "tMax":F
+    .restart local v6    # "tMin":F
     :cond_4
-    iget v4, p0, Lorg/oscim/utils/geom/OBB2D;->originY:F
+    iget v9, p0, Lorg/oscim/utils/geom/OBB2D;->originY:F
 
-    add-float/2addr v3, v4
+    add-float/2addr v9, v12
 
-    cmpl-float v3, v7, v3
+    cmpl-float v9, v6, v9
 
-    if-gtz v3, :cond_6
+    if-gtz v9, :cond_3
 
-    iget v3, p0, Lorg/oscim/utils/geom/OBB2D;->originY:F
+    iget v9, p0, Lorg/oscim/utils/geom/OBB2D;->originY:F
 
-    cmpg-float v2, v2, v3
+    cmpg-float v9, v5, v9
 
-    if-gez v2, :cond_5
+    if-ltz v9, :cond_3
 
-    goto :goto_3
-
+    .line 113
     :cond_5
-    add-int/lit8 v1, v1, 0x2
+    add-int/lit8 v0, v0, 0x2
 
     goto :goto_0
 
+    .end local v1    # "ax":F
+    .end local v2    # "ay":F
+    .end local v3    # "c":I
+    .end local v4    # "t":F
+    .end local v5    # "tMax":F
+    .end local v6    # "tMin":F
     :cond_6
-    :goto_3
-    return v0
+    move v7, v8
 
-    :cond_7
-    return v2
+    .line 148
+    goto :goto_3
 .end method
 
 
 # virtual methods
 .method public overlaps(Lorg/oscim/utils/geom/OBB2D;)Z
     .locals 1
+    .param p1, "other"    # Lorg/oscim/utils/geom/OBB2D;
 
+    .prologue
     .line 346
     invoke-direct {p0, p1}, Lorg/oscim/utils/geom/OBB2D;->overlaps1Way(Lorg/oscim/utils/geom/OBB2D;)Z
 
@@ -386,271 +466,344 @@
 
     invoke-direct {p1, p0}, Lorg/oscim/utils/geom/OBB2D;->overlaps1Way(Lorg/oscim/utils/geom/OBB2D;)Z
 
-    move-result p1
+    move-result v0
 
-    if-eqz p1, :cond_0
+    if-eqz v0, :cond_0
 
-    const/4 p1, 0x1
-
-    goto :goto_0
-
-    :cond_0
-    const/4 p1, 0x0
+    const/4 v0, 0x1
 
     :goto_0
-    return p1
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
 .end method
 
 .method public set(FFFFFF)V
-    .locals 5
+    .locals 10
+    .param p1, "cx"    # F
+    .param p2, "cy"    # F
+    .param p3, "dx"    # F
+    .param p4, "dy"    # F
+    .param p5, "width"    # F
+    .param p6, "height"    # F
 
-    sub-float p3, p1, p3
+    .prologue
+    .line 252
+    sub-float v5, p1, p3
 
-    sub-float p4, p2, p4
-
-    mul-float v0, p3, p3
-
-    mul-float v1, p4, p4
-
-    add-float/2addr v0, v1
-
-    float-to-double v0, v0
+    .line 253
+    .local v5, "vx":F
+    sub-float v6, p2, p4
 
     .line 255
-    invoke-static {v0, v1}, Ljava/lang/Math;->sqrt(D)D
+    .local v6, "vy":F
+    mul-float v7, v5, v5
 
-    move-result-wide v0
+    mul-float v8, v6, v6
 
-    double-to-float v0, v0
+    add-float/2addr v7, v8
 
-    div-float/2addr p3, v0
+    float-to-double v8, v7
 
-    div-float/2addr p4, v0
+    invoke-static {v8, v9}, Ljava/lang/Math;->sqrt(D)D
 
-    const/high16 v0, 0x40000000    # 2.0f
+    move-result-wide v8
 
-    div-float/2addr p5, v0
+    double-to-float v0, v8
 
-    div-float/2addr p6, v0
+    .line 256
+    .local v0, "a":F
+    div-float/2addr v5, v0
 
-    mul-float v0, p4, p6
+    .line 257
+    div-float/2addr v6, v0
 
-    neg-float v1, p3
+    .line 259
+    const/high16 v7, 0x40000000    # 2.0f
 
-    mul-float/2addr v1, p6
+    div-float v2, p5, v7
 
-    mul-float/2addr p3, p5
+    .line 260
+    .local v2, "hw":F
+    const/high16 v7, 0x40000000    # 2.0f
 
-    mul-float/2addr p4, p5
+    div-float v1, p6, v7
+
+    .line 262
+    .local v1, "hh":F
+    mul-float v3, v6, v1
+
+    .line 263
+    .local v3, "ux":F
+    neg-float v7, v5
+
+    mul-float v4, v7, v1
+
+    .line 265
+    .local v4, "uy":F
+    mul-float/2addr v5, v2
+
+    .line 266
+    mul-float/2addr v6, v2
 
     .line 268
-    iget-object p5, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v7, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    sub-float p6, p1, p3
+    const/4 v8, 0x0
 
-    sub-float v2, p6, v0
+    sub-float v9, p1, v5
 
-    const/4 v3, 0x0
+    sub-float/2addr v9, v3
 
-    aput v2, p5, v3
+    aput v9, v7, v8
 
     .line 269
-    iget-object p5, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v7, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    sub-float v2, p2, p4
+    const/4 v8, 0x1
 
-    sub-float v3, v2, v1
+    sub-float v9, p2, v6
 
-    const/4 v4, 0x1
+    sub-float/2addr v9, v4
 
-    aput v3, p5, v4
+    aput v9, v7, v8
 
     .line 271
-    iget-object p5, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v7, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    add-float/2addr p1, p3
+    const/4 v8, 0x2
 
-    sub-float p3, p1, v0
+    add-float v9, p1, v5
 
-    const/4 v3, 0x2
+    sub-float/2addr v9, v3
 
-    aput p3, p5, v3
+    aput v9, v7, v8
 
     .line 272
-    iget-object p3, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v7, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    add-float/2addr p2, p4
+    const/4 v8, 0x3
 
-    sub-float p4, p2, v1
+    add-float v9, p2, v6
 
-    const/4 p5, 0x3
+    sub-float/2addr v9, v4
 
-    aput p4, p3, p5
+    aput v9, v7, v8
 
     .line 274
-    iget-object p3, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v7, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    add-float/2addr p1, v0
+    const/4 v8, 0x4
 
-    const/4 p4, 0x4
+    add-float v9, p1, v5
 
-    aput p1, p3, p4
+    add-float/2addr v9, v3
+
+    aput v9, v7, v8
 
     .line 275
-    iget-object p1, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v7, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    add-float/2addr p2, v1
+    const/4 v8, 0x5
 
-    const/4 p3, 0x5
+    add-float v9, p2, v6
 
-    aput p2, p1, p3
+    add-float/2addr v9, v4
+
+    aput v9, v7, v8
 
     .line 277
-    iget-object p1, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v7, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    add-float/2addr p6, v0
+    const/4 v8, 0x6
 
-    const/4 p2, 0x6
+    sub-float v9, p1, v5
 
-    aput p6, p1, p2
+    add-float/2addr v9, v3
+
+    aput v9, v7, v8
 
     .line 278
-    iget-object p1, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v7, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    add-float/2addr v2, v1
+    const/4 v8, 0x7
 
-    const/4 p2, 0x7
+    sub-float v9, p2, v6
 
-    aput v2, p1, p2
+    add-float/2addr v9, v4
+
+    aput v9, v7, v8
 
     .line 280
     invoke-direct {p0}, Lorg/oscim/utils/geom/OBB2D;->computeAxes()V
 
+    .line 281
     return-void
 .end method
 
 .method public setNormalized(FFFFFFF)V
-    .locals 4
+    .locals 7
+    .param p1, "cx"    # F
+    .param p2, "cy"    # F
+    .param p3, "vx"    # F
+    .param p4, "vy"    # F
+    .param p5, "width"    # F
+    .param p6, "height"    # F
+    .param p7, "dy"    # F
 
-    neg-float v0, p4
+    .prologue
+    const/high16 v4, 0x40000000    # 2.0f
 
-    const/high16 v1, 0x40000000    # 2.0f
+    .line 219
+    neg-float v2, p4
 
-    div-float/2addr p5, v1
+    .line 220
+    .local v2, "ux":F
+    move v3, p3
 
-    div-float/2addr p6, v1
+    .line 222
+    .local v3, "uy":F
+    div-float v1, p5, v4
 
-    const/4 v1, 0x0
+    .line 223
+    .local v1, "hw":F
+    div-float v0, p6, v4
 
-    cmpl-float v1, p7, v1
+    .line 225
+    .local v0, "hh":F
+    const/4 v4, 0x0
 
-    if-eqz v1, :cond_0
+    cmpl-float v4, p7, v4
 
-    mul-float v1, p3, p7
+    if-eqz v4, :cond_0
 
-    mul-float v2, p4, p7
+    .line 226
+    mul-float v4, p3, p7
 
-    add-float/2addr v2, v1
+    mul-float v5, p4, p7
 
-    add-float/2addr p1, v2
+    add-float/2addr v4, v5
 
-    mul-float/2addr p7, v0
+    add-float/2addr p1, v4
 
-    add-float/2addr p7, v1
+    .line 227
+    neg-float v4, p4
 
-    add-float/2addr p2, p7
+    mul-float/2addr v4, p7
 
+    mul-float v5, p3, p7
+
+    add-float/2addr v4, v5
+
+    add-float/2addr p2, v4
+
+    .line 230
     :cond_0
-    mul-float p7, p3, p5
+    mul-float/2addr p3, v1
 
-    mul-float/2addr p4, p5
+    .line 231
+    mul-float/2addr p4, v1
 
-    mul-float/2addr v0, p6
+    .line 233
+    mul-float/2addr v2, v0
 
-    mul-float/2addr p3, p6
+    .line 234
+    mul-float/2addr v3, v0
 
     .line 236
-    iget-object p5, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v4, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    const/4 p6, 0x0
+    const/4 v5, 0x0
 
-    sub-float v1, p7, v0
+    sub-float v6, p3, v2
 
-    sub-float v2, p1, v1
+    sub-float v6, p1, v6
 
-    aput v2, p5, p6
+    aput v6, v4, v5
 
     .line 237
-    iget-object p5, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v4, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    const/4 p6, 0x1
+    const/4 v5, 0x1
 
-    sub-float v2, p4, p3
+    sub-float v6, p4, v3
 
-    sub-float v3, p2, v2
+    sub-float v6, p2, v6
 
-    aput v3, p5, p6
+    aput v6, v4, v5
 
     .line 239
-    iget-object p5, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v4, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    const/4 p6, 0x2
+    const/4 v5, 0x2
 
-    add-float/2addr v1, p1
+    sub-float v6, p3, v2
 
-    aput v1, p5, p6
+    add-float/2addr v6, p1
+
+    aput v6, v4, v5
 
     .line 240
-    iget-object p5, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v4, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    const/4 p6, 0x3
+    const/4 v5, 0x3
 
-    add-float/2addr v2, p2
+    sub-float v6, p4, v3
 
-    aput v2, p5, p6
+    add-float/2addr v6, p2
+
+    aput v6, v4, v5
 
     .line 242
-    iget-object p5, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v4, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    const/4 p6, 0x4
+    const/4 v5, 0x4
 
-    add-float/2addr p7, v0
+    add-float v6, p3, v2
 
-    add-float v0, p1, p7
+    add-float/2addr v6, p1
 
-    aput v0, p5, p6
+    aput v6, v4, v5
 
     .line 243
-    iget-object p5, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v4, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    const/4 p6, 0x5
+    const/4 v5, 0x5
 
-    add-float/2addr p4, p3
+    add-float v6, p4, v3
 
-    add-float p3, p2, p4
+    add-float/2addr v6, p2
 
-    aput p3, p5, p6
+    aput v6, v4, v5
 
     .line 245
-    iget-object p3, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v4, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    const/4 p5, 0x6
+    const/4 v5, 0x6
 
-    sub-float/2addr p1, p7
+    add-float v6, p3, v2
 
-    aput p1, p3, p5
+    sub-float v6, p1, v6
+
+    aput v6, v4, v5
 
     .line 246
-    iget-object p1, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
+    iget-object v4, p0, Lorg/oscim/utils/geom/OBB2D;->vec:[F
 
-    const/4 p3, 0x7
+    const/4 v5, 0x7
 
-    sub-float/2addr p2, p4
+    add-float v6, p4, v3
 
-    aput p2, p1, p3
+    sub-float v6, p2, v6
+
+    aput v6, v4, v5
 
     .line 248
     invoke-direct {p0}, Lorg/oscim/utils/geom/OBB2D;->computeAxes()V
 
+    .line 249
     return-void
 .end method

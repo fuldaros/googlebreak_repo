@@ -7,14 +7,27 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 54
     invoke-direct {p0}, Lcom/vividsolutions/jts/algorithm/LineIntersector;-><init>()V
 
+    .line 55
     return-void
 .end method
 
 .method private computeCollinearIntersection(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)I
-    .locals 7
+    .locals 8
+    .param p1, "p1"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p2, "p2"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p3, "q1"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p4, "q2"    # Lcom/vividsolutions/jts/geom/Coordinate;
+
+    .prologue
+    const/4 v5, 0x2
+
+    const/4 v6, 0x0
+
+    const/4 v4, 0x1
 
     .line 174
     invoke-static {p1, p2, p3}, Lcom/vividsolutions/jts/geom/Envelope;->intersects(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Z
@@ -22,196 +35,217 @@
     move-result v0
 
     .line 175
+    .local v0, "p1q1p2":Z
     invoke-static {p1, p2, p4}, Lcom/vividsolutions/jts/geom/Envelope;->intersects(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
     move-result v1
 
     .line 176
+    .local v1, "p1q2p2":Z
     invoke-static {p3, p4, p1}, Lcom/vividsolutions/jts/geom/Envelope;->intersects(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
     move-result v2
 
     .line 177
+    .local v2, "q1p1q2":Z
     invoke-static {p3, p4, p2}, Lcom/vividsolutions/jts/geom/Envelope;->intersects(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
     move-result v3
 
-    const/4 v4, 0x2
+    .line 179
+    .local v3, "q1p2q2":Z
+    if-eqz v0, :cond_1
 
-    const/4 v5, 0x0
-
-    const/4 v6, 0x1
-
-    if-eqz v0, :cond_0
-
-    if-eqz v1, :cond_0
+    if-eqz v1, :cond_1
 
     .line 180
-    iget-object p1, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v7, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    aput-object p3, p1, v5
+    aput-object p3, v7, v6
 
     .line 181
-    iget-object p1, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v6, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    aput-object p4, p1, v6
+    aput-object p4, v6, v4
 
+    move v4, v5
+
+    .line 209
+    :cond_0
+    :goto_0
     return v4
 
-    :cond_0
-    if-eqz v2, :cond_1
+    .line 184
+    :cond_1
+    if-eqz v2, :cond_2
 
-    if-eqz v3, :cond_1
+    if-eqz v3, :cond_2
 
     .line 185
-    iget-object p3, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v7, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    aput-object p1, p3, v5
+    aput-object p1, v7, v6
 
     .line 186
-    iget-object p1, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v6, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    aput-object p2, p1, v6
+    aput-object p2, v6, v4
 
-    return v4
+    move v4, v5
 
-    :cond_1
-    if-eqz v0, :cond_3
+    .line 187
+    goto :goto_0
 
-    if-eqz v2, :cond_3
+    .line 189
+    :cond_2
+    if-eqz v0, :cond_4
+
+    if-eqz v2, :cond_4
 
     .line 190
-    iget-object p2, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v7, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    aput-object p3, p2, v5
+    aput-object p3, v7, v6
 
     .line 191
-    iget-object p2, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v6, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    aput-object p1, p2, v6
+    aput-object p1, v6, v4
 
     .line 192
     invoke-virtual {p3, p1}, Lcom/vividsolutions/jts/geom/Coordinate;->equals(Ljava/lang/Object;)Z
 
-    move-result p1
+    move-result v6
 
-    if-eqz p1, :cond_2
+    if-eqz v6, :cond_3
 
-    if-nez v1, :cond_2
+    if-nez v1, :cond_3
 
-    if-nez v3, :cond_2
-
-    move v4, v6
-
-    :cond_2
-    return v4
+    if-eqz v3, :cond_0
 
     :cond_3
-    if-eqz v0, :cond_5
+    move v4, v5
 
-    if-eqz v3, :cond_5
+    goto :goto_0
+
+    .line 194
+    :cond_4
+    if-eqz v0, :cond_6
+
+    if-eqz v3, :cond_6
 
     .line 195
-    iget-object p1, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v7, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    aput-object p3, p1, v5
+    aput-object p3, v7, v6
 
     .line 196
-    iget-object p1, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v6, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    aput-object p2, p1, v6
+    aput-object p2, v6, v4
 
     .line 197
     invoke-virtual {p3, p2}, Lcom/vividsolutions/jts/geom/Coordinate;->equals(Ljava/lang/Object;)Z
 
-    move-result p1
+    move-result v6
 
-    if-eqz p1, :cond_4
+    if-eqz v6, :cond_5
 
-    if-nez v1, :cond_4
+    if-nez v1, :cond_5
 
-    if-nez v2, :cond_4
-
-    move v4, v6
-
-    :cond_4
-    return v4
+    if-eqz v2, :cond_0
 
     :cond_5
-    if-eqz v1, :cond_7
+    move v4, v5
 
-    if-eqz v2, :cond_7
+    goto :goto_0
+
+    .line 199
+    :cond_6
+    if-eqz v1, :cond_8
+
+    if-eqz v2, :cond_8
 
     .line 200
-    iget-object p2, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v7, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    aput-object p4, p2, v5
+    aput-object p4, v7, v6
 
     .line 201
-    iget-object p2, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v6, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    aput-object p1, p2, v6
+    aput-object p1, v6, v4
 
     .line 202
     invoke-virtual {p4, p1}, Lcom/vividsolutions/jts/geom/Coordinate;->equals(Ljava/lang/Object;)Z
 
-    move-result p1
+    move-result v6
 
-    if-eqz p1, :cond_6
+    if-eqz v6, :cond_7
 
-    if-nez v0, :cond_6
+    if-nez v0, :cond_7
 
-    if-nez v3, :cond_6
-
-    move v4, v6
-
-    :cond_6
-    return v4
+    if-eqz v3, :cond_0
 
     :cond_7
-    if-eqz v1, :cond_9
+    move v4, v5
 
-    if-eqz v3, :cond_9
+    goto :goto_0
+
+    .line 204
+    :cond_8
+    if-eqz v1, :cond_a
+
+    if-eqz v3, :cond_a
 
     .line 205
-    iget-object p1, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v7, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    aput-object p4, p1, v5
+    aput-object p4, v7, v6
 
     .line 206
-    iget-object p1, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v6, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    aput-object p2, p1, v6
+    aput-object p2, v6, v4
 
     .line 207
     invoke-virtual {p4, p2}, Lcom/vividsolutions/jts/geom/Coordinate;->equals(Ljava/lang/Object;)Z
 
-    move-result p1
+    move-result v6
 
-    if-eqz p1, :cond_8
+    if-eqz v6, :cond_9
 
-    if-nez v0, :cond_8
+    if-nez v0, :cond_9
 
-    if-nez v2, :cond_8
-
-    move v4, v6
-
-    :cond_8
-    return v4
+    if-eqz v2, :cond_0
 
     :cond_9
-    return v5
+    move v4, v5
+
+    goto :goto_0
+
+    :cond_a
+    move v4, v6
+
+    .line 209
+    goto :goto_0
 .end method
 
 .method private intersection(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Lcom/vividsolutions/jts/geom/Coordinate;
     .locals 2
+    .param p1, "p1"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p2, "p2"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p3, "q1"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p4, "q2"    # Lcom/vividsolutions/jts/geom/Coordinate;
 
+    .prologue
     .line 223
     invoke-direct {p0, p1, p2, p3, p4}, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intersectionWithNormalization(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Lcom/vividsolutions/jts/geom/Coordinate;
 
     move-result-object v0
 
     .line 247
+    .local v0, "intPt":Lcom/vividsolutions/jts/geom/Coordinate;
     invoke-direct {p0, v0}, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->isInSegmentEnvelopes(Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
     move-result v1
@@ -225,679 +259,1010 @@
 
     .line 255
     :cond_0
-    iget-object p1, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->precisionModel:Lcom/vividsolutions/jts/geom/PrecisionModel;
+    iget-object v1, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->precisionModel:Lcom/vividsolutions/jts/geom/PrecisionModel;
 
-    if-eqz p1, :cond_1
+    if-eqz v1, :cond_1
 
     .line 256
-    iget-object p1, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->precisionModel:Lcom/vividsolutions/jts/geom/PrecisionModel;
+    iget-object v1, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->precisionModel:Lcom/vividsolutions/jts/geom/PrecisionModel;
 
-    invoke-virtual {p1, v0}, Lcom/vividsolutions/jts/geom/PrecisionModel;->makePrecise(Lcom/vividsolutions/jts/geom/Coordinate;)V
+    invoke-virtual {v1, v0}, Lcom/vividsolutions/jts/geom/PrecisionModel;->makePrecise(Lcom/vividsolutions/jts/geom/Coordinate;)V
 
+    .line 259
     :cond_1
     return-object v0
 .end method
 
 .method private intersectionWithNormalization(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Lcom/vividsolutions/jts/geom/Coordinate;
-    .locals 7
+    .locals 14
+    .param p1, "p1"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p2, "p2"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p3, "q1"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p4, "q2"    # Lcom/vividsolutions/jts/geom/Coordinate;
 
+    .prologue
     .line 265
-    new-instance v6, Lcom/vividsolutions/jts/geom/Coordinate;
+    new-instance v3, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-direct {v6, p1}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;)V
+    invoke-direct {v3, p1}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;)V
 
     .line 266
-    new-instance p1, Lcom/vividsolutions/jts/geom/Coordinate;
+    .local v3, "n1":Lcom/vividsolutions/jts/geom/Coordinate;
+    new-instance v4, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-direct {p1, p2}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;)V
+    move-object/from16 v0, p2
+
+    invoke-direct {v4, v0}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;)V
 
     .line 267
-    new-instance p2, Lcom/vividsolutions/jts/geom/Coordinate;
+    .local v4, "n2":Lcom/vividsolutions/jts/geom/Coordinate;
+    new-instance v5, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-direct {p2, p3}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;)V
+    move-object/from16 v0, p3
+
+    invoke-direct {v5, v0}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;)V
 
     .line 268
-    new-instance p3, Lcom/vividsolutions/jts/geom/Coordinate;
+    .local v5, "n3":Lcom/vividsolutions/jts/geom/Coordinate;
+    new-instance v6, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-direct {p3, p4}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;)V
+    move-object/from16 v0, p4
+
+    invoke-direct {v6, v0}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;)V
 
     .line 269
-    new-instance p4, Lcom/vividsolutions/jts/geom/Coordinate;
+    .local v6, "n4":Lcom/vividsolutions/jts/geom/Coordinate;
+    new-instance v7, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-direct {p4}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>()V
+    invoke-direct {v7}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>()V
 
-    move-object v0, p0
-
-    move-object v1, v6
-
-    move-object v2, p1
-
-    move-object v3, p2
-
-    move-object v4, p3
-
-    move-object v5, p4
+    .local v7, "normPt":Lcom/vividsolutions/jts/geom/Coordinate;
+    move-object v2, p0
 
     .line 270
-    invoke-direct/range {v0 .. v5}, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->normalizeToEnvCentre(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
+    invoke-direct/range {v2 .. v7}, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->normalizeToEnvCentre(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
 
     .line 272
-    invoke-direct {p0, v6, p1, p2, p3}, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->safeHCoordinateIntersection(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Lcom/vividsolutions/jts/geom/Coordinate;
+    invoke-direct {p0, v3, v4, v5, v6}, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->safeHCoordinateIntersection(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Lcom/vividsolutions/jts/geom/Coordinate;
 
-    move-result-object p1
+    move-result-object v8
 
     .line 274
-    iget-wide p2, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    .local v8, "intPt":Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-wide v10, v8, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    iget-wide v0, p4, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v12, v7, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    add-double/2addr p2, v0
+    add-double/2addr v10, v12
 
-    iput-wide p2, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iput-wide v10, v8, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
     .line 275
-    iget-wide p2, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v10, v8, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    iget-wide v0, p4, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v12, v7, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    add-double/2addr p2, v0
+    add-double/2addr v10, v12
 
-    iput-wide p2, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iput-wide v10, v8, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    return-object p1
+    .line 277
+    return-object v8
 .end method
 
 .method private isInSegmentEnvelopes(Lcom/vividsolutions/jts/geom/Coordinate;)Z
     .locals 6
+    .param p1, "intPt"    # Lcom/vividsolutions/jts/geom/Coordinate;
+
+    .prologue
+    const/4 v2, 0x1
+
+    const/4 v3, 0x0
 
     .line 418
     new-instance v0, Lcom/vividsolutions/jts/geom/Envelope;
 
-    iget-object v1, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->inputLines:[[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v4, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->inputLines:[[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    const/4 v2, 0x0
+    aget-object v4, v4, v3
 
-    aget-object v1, v1, v2
-
-    aget-object v1, v1, v2
-
-    iget-object v3, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->inputLines:[[Lcom/vividsolutions/jts/geom/Coordinate;
-
-    aget-object v3, v3, v2
-
-    const/4 v4, 0x1
-
-    aget-object v3, v3, v4
-
-    invoke-direct {v0, v1, v3}, Lcom/vividsolutions/jts/geom/Envelope;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
-
-    .line 419
-    new-instance v1, Lcom/vividsolutions/jts/geom/Envelope;
-
-    iget-object v3, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->inputLines:[[Lcom/vividsolutions/jts/geom/Coordinate;
-
-    aget-object v3, v3, v4
-
-    aget-object v3, v3, v2
+    aget-object v4, v4, v3
 
     iget-object v5, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->inputLines:[[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    aget-object v5, v5, v4
+    aget-object v5, v5, v3
 
-    aget-object v5, v5, v4
+    aget-object v5, v5, v2
 
-    invoke-direct {v1, v3, v5}, Lcom/vividsolutions/jts/geom/Envelope;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
+    invoke-direct {v0, v4, v5}, Lcom/vividsolutions/jts/geom/Envelope;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
+
+    .line 419
+    .local v0, "env0":Lcom/vividsolutions/jts/geom/Envelope;
+    new-instance v1, Lcom/vividsolutions/jts/geom/Envelope;
+
+    iget-object v4, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->inputLines:[[Lcom/vividsolutions/jts/geom/Coordinate;
+
+    aget-object v4, v4, v2
+
+    aget-object v4, v4, v3
+
+    iget-object v5, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->inputLines:[[Lcom/vividsolutions/jts/geom/Coordinate;
+
+    aget-object v5, v5, v2
+
+    aget-object v5, v5, v2
+
+    invoke-direct {v1, v4, v5}, Lcom/vividsolutions/jts/geom/Envelope;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
 
     .line 420
+    .local v1, "env1":Lcom/vividsolutions/jts/geom/Envelope;
     invoke-virtual {v0, p1}, Lcom/vividsolutions/jts/geom/Envelope;->contains(Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
-    move-result v0
+    move-result v4
 
-    if-eqz v0, :cond_0
+    if-eqz v4, :cond_0
 
     invoke-virtual {v1, p1}, Lcom/vividsolutions/jts/geom/Envelope;->contains(Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
-    move-result p1
+    move-result v4
 
-    if-eqz p1, :cond_0
+    if-eqz v4, :cond_0
 
-    move v2, v4
+    :goto_0
+    return v2
 
     :cond_0
-    return v2
+    move v2, v3
+
+    goto :goto_0
 .end method
 
 .method private normalizeToEnvCentre(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
-    .locals 22
+    .locals 36
+    .param p1, "n00"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p2, "n01"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p3, "n10"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p4, "n11"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p5, "normPt"    # Lcom/vividsolutions/jts/geom/Coordinate;
 
-    move-object/from16 v0, p1
-
-    move-object/from16 v1, p2
-
-    move-object/from16 v2, p3
-
-    move-object/from16 v3, p4
-
-    move-object/from16 v4, p5
-
+    .prologue
     .line 352
-    iget-wide v5, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    iget-wide v7, v1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    cmpg-double v9, v5, v7
-
-    if-gez v9, :cond_0
-
-    iget-wide v5, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    goto :goto_0
-
-    :cond_0
-    iget-wide v5, v1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    .line 353
-    :goto_0
-    iget-wide v7, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    iget-wide v9, v1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    cmpg-double v11, v7, v9
-
-    if-gez v11, :cond_1
-
-    iget-wide v7, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    goto :goto_1
-
-    :cond_1
-    iget-wide v7, v1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    .line 354
-    :goto_1
-    iget-wide v9, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    iget-wide v11, v1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    cmpl-double v13, v9, v11
-
-    if-lez v13, :cond_2
-
-    iget-wide v9, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    goto :goto_2
-
-    :cond_2
-    iget-wide v9, v1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    .line 355
-    :goto_2
-    iget-wide v11, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    iget-wide v13, v1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    cmpl-double v15, v11, v13
-
-    if-lez v15, :cond_3
-
-    iget-wide v11, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    goto :goto_3
-
-    :cond_3
-    iget-wide v11, v1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    .line 357
-    :goto_3
-    iget-wide v13, v2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    iget-wide v0, v3, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    cmpg-double v15, v13, v0
-
-    if-gez v15, :cond_4
-
-    iget-wide v0, v2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    goto :goto_4
-
-    :cond_4
-    iget-wide v0, v3, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    .line 358
-    :goto_4
-    iget-wide v13, v2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    move-wide/from16 v16, v11
-
-    iget-wide v11, v3, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    cmpg-double v15, v13, v11
-
-    if-gez v15, :cond_5
-
-    iget-wide v11, v2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    goto :goto_5
-
-    :cond_5
-    iget-wide v11, v3, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    .line 359
-    :goto_5
-    iget-wide v13, v2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    move-wide/from16 v18, v7
-
-    iget-wide v7, v3, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    cmpl-double v15, v13, v7
-
-    if-lez v15, :cond_6
-
-    iget-wide v7, v2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    goto :goto_6
-
-    :cond_6
-    iget-wide v7, v3, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    .line 360
-    :goto_6
-    iget-wide v13, v2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    move-wide/from16 v20, v11
-
-    iget-wide v11, v3, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    cmpl-double v15, v13, v11
-
-    if-lez v15, :cond_7
-
-    iget-wide v11, v2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    goto :goto_7
-
-    :cond_7
-    iget-wide v11, v3, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    :goto_7
-    cmpl-double v13, v5, v0
-
-    if-lez v13, :cond_8
-
-    move-wide v0, v5
-
-    :cond_8
-    cmpg-double v5, v9, v7
-
-    if-gez v5, :cond_9
-
-    goto :goto_8
-
-    :cond_9
-    move-wide v9, v7
-
-    :goto_8
-    cmpl-double v5, v18, v20
-
-    if-lez v5, :cond_a
-
-    goto :goto_9
-
-    :cond_a
-    move-wide/from16 v18, v20
-
-    :goto_9
-    cmpg-double v5, v16, v11
-
-    if-gez v5, :cond_b
-
-    move-wide/from16 v11, v16
-
-    :cond_b
-    add-double/2addr v0, v9
-
-    const-wide/high16 v5, 0x4000000000000000L    # 2.0
-
-    div-double/2addr v0, v5
-
-    add-double v18, v18, v11
-
-    div-double v5, v18, v5
-
-    .line 369
-    iput-wide v0, v4, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    .line 370
-    iput-wide v5, v4, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
     move-object/from16 v0, p1
 
-    .line 383
-    iget-wide v5, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    iget-wide v7, v4, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    sub-double/2addr v5, v7
-
-    iput-wide v5, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    iget-wide v5, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    iget-wide v7, v4, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    sub-double/2addr v5, v7
-
-    iput-wide v5, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    move-wide/from16 v32, v0
 
     move-object/from16 v0, p2
 
-    .line 384
-    iget-wide v5, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    iget-wide v7, v4, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    move-wide/from16 v34, v0
 
-    sub-double/2addr v5, v7
+    cmpg-double v32, v32, v34
 
-    iput-wide v5, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    if-gez v32, :cond_0
 
-    iget-wide v5, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    move-object/from16 v0, p1
 
-    iget-wide v7, v4, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    sub-double/2addr v5, v7
+    move-wide/from16 v24, v0
 
-    iput-wide v5, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    .line 353
+    .local v24, "minX0":D
+    :goto_0
+    move-object/from16 v0, p1
 
-    .line 385
-    iget-wide v0, v2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    iget-wide v5, v4, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    move-wide/from16 v32, v0
 
-    sub-double/2addr v0, v5
+    move-object/from16 v0, p2
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v34, v0
+
+    cmpg-double v32, v32, v34
+
+    if-gez v32, :cond_1
+
+    move-object/from16 v0, p1
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v28, v0
+
+    .line 354
+    .local v28, "minY0":D
+    :goto_1
+    move-object/from16 v0, p1
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-wide/from16 v32, v0
+
+    move-object/from16 v0, p2
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-wide/from16 v34, v0
+
+    cmpl-double v32, v32, v34
+
+    if-lez v32, :cond_2
+
+    move-object/from16 v0, p1
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-wide/from16 v16, v0
+
+    .line 355
+    .local v16, "maxX0":D
+    :goto_2
+    move-object/from16 v0, p1
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v32, v0
+
+    move-object/from16 v0, p2
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v34, v0
+
+    cmpl-double v32, v32, v34
+
+    if-lez v32, :cond_3
+
+    move-object/from16 v0, p1
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v20, v0
+
+    .line 357
+    .local v20, "maxY0":D
+    :goto_3
+    move-object/from16 v0, p3
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-wide/from16 v32, v0
+
+    move-object/from16 v0, p4
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-wide/from16 v34, v0
+
+    cmpg-double v32, v32, v34
+
+    if-gez v32, :cond_4
+
+    move-object/from16 v0, p3
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-wide/from16 v26, v0
+
+    .line 358
+    .local v26, "minX1":D
+    :goto_4
+    move-object/from16 v0, p3
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v32, v0
+
+    move-object/from16 v0, p4
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v34, v0
+
+    cmpg-double v32, v32, v34
+
+    if-gez v32, :cond_5
+
+    move-object/from16 v0, p3
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v30, v0
+
+    .line 359
+    .local v30, "minY1":D
+    :goto_5
+    move-object/from16 v0, p3
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-wide/from16 v32, v0
+
+    move-object/from16 v0, p4
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-wide/from16 v34, v0
+
+    cmpl-double v32, v32, v34
+
+    if-lez v32, :cond_6
+
+    move-object/from16 v0, p3
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-wide/from16 v18, v0
+
+    .line 360
+    .local v18, "maxX1":D
+    :goto_6
+    move-object/from16 v0, p3
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v32, v0
+
+    move-object/from16 v0, p4
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v34, v0
+
+    cmpl-double v32, v32, v34
+
+    if-lez v32, :cond_7
+
+    move-object/from16 v0, p3
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v22, v0
+
+    .line 362
+    .local v22, "maxY1":D
+    :goto_7
+    cmpl-double v32, v24, v26
+
+    if-lez v32, :cond_8
+
+    move-wide/from16 v12, v24
+
+    .line 363
+    .local v12, "intMinX":D
+    :goto_8
+    cmpg-double v32, v16, v18
+
+    if-gez v32, :cond_9
+
+    move-wide/from16 v4, v16
+
+    .line 364
+    .local v4, "intMaxX":D
+    :goto_9
+    cmpl-double v32, v28, v30
+
+    if-lez v32, :cond_a
+
+    move-wide/from16 v14, v28
+
+    .line 365
+    .local v14, "intMinY":D
+    :goto_a
+    cmpg-double v32, v20, v22
+
+    if-gez v32, :cond_b
+
+    move-wide/from16 v6, v20
+
+    .line 367
+    .local v6, "intMaxY":D
+    :goto_b
+    add-double v32, v12, v4
+
+    const-wide/high16 v34, 0x4000000000000000L    # 2.0
+
+    div-double v8, v32, v34
+
+    .line 368
+    .local v8, "intMidX":D
+    add-double v32, v14, v6
+
+    const-wide/high16 v34, 0x4000000000000000L    # 2.0
+
+    div-double v10, v32, v34
+
+    .line 369
+    .local v10, "intMidY":D
+    move-object/from16 v0, p5
+
+    iput-wide v8, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    .line 370
+    move-object/from16 v0, p5
+
+    iput-wide v10, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    .line 383
+    move-object/from16 v0, p1
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-wide/from16 v32, v0
+
+    move-object/from16 v0, p5
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-wide/from16 v34, v0
+
+    sub-double v32, v32, v34
+
+    move-wide/from16 v0, v32
+
+    move-object/from16 v2, p1
 
     iput-wide v0, v2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    iget-wide v0, v2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    move-object/from16 v0, p1
 
-    iget-wide v5, v4, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    sub-double/2addr v0, v5
+    move-wide/from16 v32, v0
+
+    move-object/from16 v0, p5
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v34, v0
+
+    sub-double v32, v32, v34
+
+    move-wide/from16 v0, v32
+
+    move-object/from16 v2, p1
+
+    iput-wide v0, v2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    .line 384
+    move-object/from16 v0, p2
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-wide/from16 v32, v0
+
+    move-object/from16 v0, p5
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-wide/from16 v34, v0
+
+    sub-double v32, v32, v34
+
+    move-wide/from16 v0, v32
+
+    move-object/from16 v2, p2
+
+    iput-wide v0, v2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-object/from16 v0, p2
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v32, v0
+
+    move-object/from16 v0, p5
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v34, v0
+
+    sub-double v32, v32, v34
+
+    move-wide/from16 v0, v32
+
+    move-object/from16 v2, p2
+
+    iput-wide v0, v2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    .line 385
+    move-object/from16 v0, p3
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-wide/from16 v32, v0
+
+    move-object/from16 v0, p5
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-wide/from16 v34, v0
+
+    sub-double v32, v32, v34
+
+    move-wide/from16 v0, v32
+
+    move-object/from16 v2, p3
+
+    iput-wide v0, v2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-object/from16 v0, p3
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v32, v0
+
+    move-object/from16 v0, p5
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v34, v0
+
+    sub-double v32, v32, v34
+
+    move-wide/from16 v0, v32
+
+    move-object/from16 v2, p3
 
     iput-wide v0, v2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
     .line 386
-    iget-wide v0, v3, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    move-object/from16 v0, p4
 
-    iget-wide v5, v4, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    sub-double/2addr v0, v5
+    move-wide/from16 v32, v0
 
-    iput-wide v0, v3, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    move-object/from16 v0, p5
 
-    iget-wide v0, v3, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    iget-wide v4, v4, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    move-wide/from16 v34, v0
 
-    sub-double/2addr v0, v4
+    sub-double v32, v32, v34
 
-    iput-wide v0, v3, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    move-wide/from16 v0, v32
 
+    move-object/from16 v2, p4
+
+    iput-wide v0, v2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-object/from16 v0, p4
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v32, v0
+
+    move-object/from16 v0, p5
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v34, v0
+
+    sub-double v32, v32, v34
+
+    move-wide/from16 v0, v32
+
+    move-object/from16 v2, p4
+
+    iput-wide v0, v2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    .line 387
     return-void
+
+    .line 352
+    .end local v4    # "intMaxX":D
+    .end local v6    # "intMaxY":D
+    .end local v8    # "intMidX":D
+    .end local v10    # "intMidY":D
+    .end local v12    # "intMinX":D
+    .end local v14    # "intMinY":D
+    .end local v16    # "maxX0":D
+    .end local v18    # "maxX1":D
+    .end local v20    # "maxY0":D
+    .end local v22    # "maxY1":D
+    .end local v24    # "minX0":D
+    .end local v26    # "minX1":D
+    .end local v28    # "minY0":D
+    .end local v30    # "minY1":D
+    :cond_0
+    move-object/from16 v0, p2
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-wide/from16 v24, v0
+
+    goto/16 :goto_0
+
+    .line 353
+    .restart local v24    # "minX0":D
+    :cond_1
+    move-object/from16 v0, p2
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v28, v0
+
+    goto/16 :goto_1
+
+    .line 354
+    .restart local v28    # "minY0":D
+    :cond_2
+    move-object/from16 v0, p2
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-wide/from16 v16, v0
+
+    goto/16 :goto_2
+
+    .line 355
+    .restart local v16    # "maxX0":D
+    :cond_3
+    move-object/from16 v0, p2
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v20, v0
+
+    goto/16 :goto_3
+
+    .line 357
+    .restart local v20    # "maxY0":D
+    :cond_4
+    move-object/from16 v0, p4
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-wide/from16 v26, v0
+
+    goto/16 :goto_4
+
+    .line 358
+    .restart local v26    # "minX1":D
+    :cond_5
+    move-object/from16 v0, p4
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v30, v0
+
+    goto/16 :goto_5
+
+    .line 359
+    .restart local v30    # "minY1":D
+    :cond_6
+    move-object/from16 v0, p4
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+
+    move-wide/from16 v18, v0
+
+    goto/16 :goto_6
+
+    .line 360
+    .restart local v18    # "maxX1":D
+    :cond_7
+    move-object/from16 v0, p4
+
+    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-wide/from16 v22, v0
+
+    goto/16 :goto_7
+
+    .restart local v22    # "maxY1":D
+    :cond_8
+    move-wide/from16 v12, v26
+
+    .line 362
+    goto/16 :goto_8
+
+    .restart local v12    # "intMinX":D
+    :cond_9
+    move-wide/from16 v4, v18
+
+    .line 363
+    goto/16 :goto_9
+
+    .restart local v4    # "intMaxX":D
+    :cond_a
+    move-wide/from16 v14, v30
+
+    .line 364
+    goto/16 :goto_a
+
+    .restart local v14    # "intMinY":D
+    :cond_b
+    move-wide/from16 v6, v22
+
+    .line 365
+    goto/16 :goto_b
 .end method
 
 .method private safeHCoordinateIntersection(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Lcom/vividsolutions/jts/geom/Coordinate;
-    .locals 1
+    .locals 2
+    .param p1, "p1"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p2, "p2"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p3, "q1"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p4, "q2"    # Lcom/vividsolutions/jts/geom/Coordinate;
+
+    .prologue
+    .line 294
+    const/4 v1, 0x0
 
     .line 296
+    .local v1, "intPt":Lcom/vividsolutions/jts/geom/Coordinate;
     :try_start_0
     invoke-static {p1, p2, p3, p4}, Lcom/vividsolutions/jts/algorithm/HCoordinate;->intersection(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Lcom/vividsolutions/jts/geom/Coordinate;
-
-    move-result-object v0
     :try_end_0
     .catch Lcom/vividsolutions/jts/algorithm/NotRepresentableException; {:try_start_0 .. :try_end_0} :catch_0
 
-    goto :goto_0
+    move-result-object v1
+
+    .line 304
+    :goto_0
+    return-object v1
+
+    .line 298
+    :catch_0
+    move-exception v0
 
     .line 301
-    :catch_0
+    .local v0, "e":Lcom/vividsolutions/jts/algorithm/NotRepresentableException;
     invoke-static {p1, p2, p3, p4}, Lcom/vividsolutions/jts/algorithm/CentralEndpointIntersector;->getIntersection(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Lcom/vividsolutions/jts/geom/Coordinate;
 
-    move-result-object v0
+    move-result-object v1
 
-    :goto_0
-    return-object v0
+    goto :goto_0
 .end method
 
 
 # virtual methods
 .method protected computeIntersect(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)I
-    .locals 7
+    .locals 9
+    .param p1, "p1"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p2, "p2"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p3, "q1"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p4, "q2"    # Lcom/vividsolutions/jts/geom/Coordinate;
 
-    const/4 v0, 0x0
+    .prologue
+    const/4 v6, 0x1
+
+    const/4 v5, 0x0
 
     .line 77
-    iput-boolean v0, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->isProper:Z
+    iput-boolean v5, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->isProper:Z
 
     .line 80
     invoke-static {p1, p2, p3, p4}, Lcom/vividsolutions/jts/geom/Envelope;->intersects(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
-    move-result v1
+    move-result v7
 
-    if-nez v1, :cond_0
+    if-nez v7, :cond_1
 
-    return v0
+    .line 169
+    :cond_0
+    :goto_0
+    return v5
 
     .line 86
-    :cond_0
+    :cond_1
     invoke-static {p1, p2, p3}, Lcom/vividsolutions/jts/algorithm/CGAlgorithms;->orientationIndex(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)I
+
+    move-result v0
+
+    .line 87
+    .local v0, "Pq1":I
+    invoke-static {p1, p2, p4}, Lcom/vividsolutions/jts/algorithm/CGAlgorithms;->orientationIndex(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)I
 
     move-result v1
 
-    .line 87
-    invoke-static {p1, p2, p4}, Lcom/vividsolutions/jts/algorithm/CGAlgorithms;->orientationIndex(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)I
+    .line 89
+    .local v1, "Pq2":I
+    if-lez v0, :cond_2
 
-    move-result v2
-
-    if-lez v1, :cond_1
-
-    if-gtz v2, :cond_2
-
-    :cond_1
-    if-gez v1, :cond_3
-
-    if-gez v2, :cond_3
+    if-gtz v1, :cond_0
 
     :cond_2
-    return v0
+    if-gez v0, :cond_3
+
+    if-ltz v1, :cond_0
 
     .line 93
     :cond_3
     invoke-static {p3, p4, p1}, Lcom/vividsolutions/jts/algorithm/CGAlgorithms;->orientationIndex(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)I
 
-    move-result v3
+    move-result v2
 
     .line 94
+    .local v2, "Qp1":I
     invoke-static {p3, p4, p2}, Lcom/vividsolutions/jts/algorithm/CGAlgorithms;->orientationIndex(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)I
 
-    move-result v4
+    move-result v3
 
-    if-lez v3, :cond_4
+    .line 96
+    .local v3, "Qp2":I
+    if-lez v2, :cond_4
 
-    if-gtz v4, :cond_5
+    if-gtz v3, :cond_0
 
     :cond_4
-    if-gez v3, :cond_6
+    if-gez v2, :cond_5
 
-    if-gez v4, :cond_6
+    if-ltz v3, :cond_0
 
+    .line 100
     :cond_5
-    return v0
+    if-nez v0, :cond_6
 
-    :cond_6
-    const/4 v5, 0x1
+    if-nez v1, :cond_6
 
-    if-nez v1, :cond_7
+    if-nez v2, :cond_6
 
-    if-nez v2, :cond_7
+    if-nez v3, :cond_6
 
-    if-nez v3, :cond_7
+    move v4, v6
 
-    if-nez v4, :cond_7
-
-    move v6, v5
-
-    goto :goto_0
-
-    :cond_7
-    move v6, v0
-
-    :goto_0
-    if-eqz v6, :cond_8
+    .line 104
+    .local v4, "collinear":Z
+    :goto_1
+    if-eqz v4, :cond_7
 
     .line 105
     invoke-direct {p0, p1, p2, p3, p4}, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->computeCollinearIntersection(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)I
 
-    move-result p1
+    move-result v5
 
-    return p1
+    goto :goto_0
 
-    :cond_8
-    if-eqz v1, :cond_a
+    .end local v4    # "collinear":Z
+    :cond_6
+    move v4, v5
 
-    if-eqz v2, :cond_a
-
-    if-eqz v3, :cond_a
-
-    if-nez v4, :cond_9
-
+    .line 100
     goto :goto_1
 
-    .line 166
-    :cond_9
-    iput-boolean v5, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->isProper:Z
+    .line 121
+    .restart local v4    # "collinear":Z
+    :cond_7
+    if-eqz v0, :cond_8
 
-    .line 167
-    iget-object v1, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+    if-eqz v1, :cond_8
 
-    invoke-direct {p0, p1, p2, p3, p4}, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intersection(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Lcom/vividsolutions/jts/geom/Coordinate;
+    if-eqz v2, :cond_8
 
-    move-result-object p1
-
-    aput-object p1, v1, v0
-
-    goto :goto_4
+    if-nez v3, :cond_11
 
     .line 122
-    :cond_a
-    :goto_1
-    iput-boolean v0, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->isProper:Z
+    :cond_8
+    iput-boolean v5, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->isProper:Z
 
     .line 140
     invoke-virtual {p1, p3}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
-    move-result v6
+    move-result v7
 
-    if-nez v6, :cond_11
+    if-nez v7, :cond_9
 
     invoke-virtual {p1, p4}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
-    move-result v6
+    move-result v7
 
-    if-eqz v6, :cond_b
+    if-eqz v7, :cond_b
 
-    goto :goto_3
+    .line 142
+    :cond_9
+    iget-object v7, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+
+    aput-object p1, v7, v5
+
+    :cond_a
+    :goto_2
+    move v5, v6
+
+    .line 169
+    goto :goto_0
 
     .line 144
     :cond_b
     invoke-virtual {p2, p3}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
-    move-result v6
+    move-result v7
 
-    if-nez v6, :cond_10
+    if-nez v7, :cond_c
 
     invoke-virtual {p2, p4}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
-    move-result v6
+    move-result v7
 
-    if-eqz v6, :cond_c
+    if-eqz v7, :cond_d
+
+    .line 146
+    :cond_c
+    iget-object v7, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+
+    aput-object p2, v7, v5
 
     goto :goto_2
 
-    :cond_c
-    if-nez v1, :cond_d
+    .line 152
+    :cond_d
+    if-nez v0, :cond_e
 
     .line 153
-    iget-object p1, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v7, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    new-instance p2, Lcom/vividsolutions/jts/geom/Coordinate;
+    new-instance v8, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-direct {p2, p3}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;)V
+    invoke-direct {v8, p3}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;)V
 
-    aput-object p2, p1, v0
+    aput-object v8, v7, v5
 
-    goto :goto_4
+    goto :goto_2
 
-    :cond_d
-    if-nez v2, :cond_e
+    .line 155
+    :cond_e
+    if-nez v1, :cond_f
 
     .line 156
-    iget-object p1, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v7, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    new-instance p2, Lcom/vividsolutions/jts/geom/Coordinate;
+    new-instance v8, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-direct {p2, p4}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;)V
+    invoke-direct {v8, p4}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;)V
 
-    aput-object p2, p1, v0
+    aput-object v8, v7, v5
 
-    goto :goto_4
+    goto :goto_2
 
-    :cond_e
-    if-nez v3, :cond_f
+    .line 158
+    :cond_f
+    if-nez v2, :cond_10
 
     .line 159
-    iget-object p2, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v7, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    new-instance p3, Lcom/vividsolutions/jts/geom/Coordinate;
+    new-instance v8, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-direct {p3, p1}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;)V
+    invoke-direct {v8, p1}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;)V
 
-    aput-object p3, p2, v0
+    aput-object v8, v7, v5
 
-    goto :goto_4
+    goto :goto_2
 
-    :cond_f
-    if-nez v4, :cond_12
+    .line 161
+    :cond_10
+    if-nez v3, :cond_a
 
     .line 162
-    iget-object p1, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v7, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    new-instance p3, Lcom/vividsolutions/jts/geom/Coordinate;
+    new-instance v8, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-direct {p3, p2}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;)V
+    invoke-direct {v8, p2}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;)V
 
-    aput-object p3, p1, v0
+    aput-object v8, v7, v5
 
-    goto :goto_4
+    goto :goto_2
 
-    .line 146
-    :cond_10
-    :goto_2
-    iget-object p1, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
-
-    aput-object p2, p1, v0
-
-    goto :goto_4
-
-    .line 142
+    .line 166
     :cond_11
-    :goto_3
-    iget-object p2, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iput-boolean v6, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->isProper:Z
 
-    aput-object p1, p2, v0
+    .line 167
+    iget-object v7, p0, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intPt:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    :cond_12
-    :goto_4
-    return v5
+    invoke-direct {p0, p1, p2, p3, p4}, Lcom/vividsolutions/jts/algorithm/RobustLineIntersector;->intersection(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Lcom/vividsolutions/jts/geom/Coordinate;
+
+    move-result-object v8
+
+    aput-object v8, v7, v5
+
+    goto :goto_2
 .end method

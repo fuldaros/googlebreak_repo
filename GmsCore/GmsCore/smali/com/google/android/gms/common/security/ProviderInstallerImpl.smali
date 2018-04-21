@@ -7,6 +7,7 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 22
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -14,14 +15,17 @@
 .end method
 
 .method public static insertProvider(Landroid/content/Context;)V
-    .locals 1
+    .locals 2
+    .param p0, "context"    # Landroid/content/Context;
 
-    const-string p0, "ProviderInstallerImpl"
-
-    const-string v0, "yep, i should do something with Security here..."
-
+    .prologue
     .line 24
-    invoke-static {p0, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    const-string v0, "ProviderInstallerImpl"
 
+    const-string v1, "yep, i should do something with Security here..."
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 25
     return-void
 .end method

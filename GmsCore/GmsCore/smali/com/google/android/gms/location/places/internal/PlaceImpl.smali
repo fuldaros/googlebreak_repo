@@ -7,7 +7,8 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator<",
+            "Landroid/os/Parcelable$Creator",
+            "<",
             "Lcom/google/android/gms/location/places/internal/PlaceImpl;",
             ">;"
         }
@@ -31,7 +32,8 @@
 .field public attributions:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -82,7 +84,8 @@
 .field public placeTypes:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/Integer;",
             ">;"
         }
@@ -127,7 +130,8 @@
 .field public typesDeprecated:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/Integer;",
             ">;"
         }
@@ -162,6 +166,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
+    .prologue
     .line 144
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -177,12 +182,13 @@
 .method public constructor <init>()V
     .locals 1
 
+    .prologue
     .line 34
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
+    .line 35
     const/4 v0, 0x2
 
-    .line 35
     iput v0, p0, Lcom/google/android/gms/location/places/internal/PlaceImpl;->versionCode:I
 
     .line 59

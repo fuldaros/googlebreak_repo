@@ -20,23 +20,27 @@
 
 # direct methods
 .method public constructor <init>([DI)V
-    .locals 1
+    .locals 2
+    .param p1, "coords"    # [D
+    .param p2, "dimensions"    # I
 
+    .prologue
     .line 224
     invoke-direct {p0}, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence;-><init>()V
 
+    .line 225
     const/4 v0, 0x2
 
     if-ge p2, v0, :cond_0
 
     .line 226
-    new-instance p1, Ljava/lang/IllegalArgumentException;
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string p2, "Must have at least 2 dimensions"
+    const-string v1, "Must have at least 2 dimensions"
 
-    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw p1
+    throw v0
 
     .line 228
     :cond_0
@@ -47,13 +51,13 @@
     if-eqz v0, :cond_1
 
     .line 229
-    new-instance p1, Ljava/lang/IllegalArgumentException;
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string p2, "Packed array does not contain an integral number of coordinates"
+    const-string v1, "Packed array does not contain an integral number of coordinates"
 
-    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw p1
+    throw v0
 
     .line 232
     :cond_1
@@ -62,65 +66,73 @@
     .line 233
     iput-object p1, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
 
+    .line 234
     return-void
 .end method
 
 .method public constructor <init>([Lcom/vividsolutions/jts/geom/Coordinate;I)V
-    .locals 5
+    .locals 6
+    .param p1, "coordinates"    # [Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p2, "dimension"    # I
 
+    .prologue
     .line 254
     invoke-direct {p0}, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence;-><init>()V
 
-    const/4 v0, 0x0
-
+    .line 255
     if-nez p1, :cond_0
 
     .line 256
-    new-array p1, v0, [Lcom/vividsolutions/jts/geom/Coordinate;
+    const/4 v1, 0x0
+
+    new-array p1, v1, [Lcom/vividsolutions/jts/geom/Coordinate;
 
     .line 257
     :cond_0
     iput p2, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->dimension:I
 
     .line 259
-    array-length p2, p1
+    array-length v1, p1
 
-    iget v1, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->dimension:I
+    iget v2, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->dimension:I
 
-    mul-int/2addr p2, v1
+    mul-int/2addr v1, v2
 
-    new-array p2, p2, [D
+    new-array v1, v1, [D
 
-    iput-object p2, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
+    iput-object v1, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
 
     .line 260
-    :goto_0
-    array-length p2, p1
+    const/4 v0, 0x0
 
-    if-ge v0, p2, :cond_3
+    .local v0, "i":I
+    :goto_0
+    array-length v1, p1
+
+    if-ge v0, v1, :cond_3
 
     .line 261
-    iget-object p2, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
+    iget-object v1, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
 
-    iget v1, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->dimension:I
+    iget v2, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->dimension:I
 
-    mul-int/2addr v1, v0
+    mul-int/2addr v2, v0
 
-    aget-object v2, p1, v0
+    aget-object v3, p1, v0
 
-    iget-wide v2, v2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v4, v3, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    aput-wide v2, p2, v1
+    aput-wide v4, v1, v2
 
     .line 262
-    iget p2, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->dimension:I
+    iget v1, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->dimension:I
 
-    const/4 v1, 0x2
+    const/4 v2, 0x2
 
-    if-lt p2, v1, :cond_1
+    if-lt v1, v2, :cond_1
 
     .line 263
-    iget-object p2, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
+    iget-object v1, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
 
     iget v2, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->dimension:I
 
@@ -130,38 +142,40 @@
 
     aget-object v3, p1, v0
 
-    iget-wide v3, v3, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v4, v3, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    aput-wide v3, p2, v2
+    aput-wide v4, v1, v2
 
     .line 264
     :cond_1
-    iget p2, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->dimension:I
+    iget v1, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->dimension:I
 
     const/4 v2, 0x3
 
-    if-lt p2, v2, :cond_2
+    if-lt v1, v2, :cond_2
 
     .line 265
-    iget-object p2, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
+    iget-object v1, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
 
     iget v2, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->dimension:I
 
     mul-int/2addr v2, v0
 
-    add-int/2addr v2, v1
+    add-int/lit8 v2, v2, 0x2
 
-    aget-object v1, p1, v0
+    aget-object v3, p1, v0
 
-    iget-wide v3, v1, Lcom/vividsolutions/jts/geom/Coordinate;->z:D
+    iget-wide v4, v3, Lcom/vividsolutions/jts/geom/Coordinate;->z:D
 
-    aput-wide v3, p2, v2
+    aput-wide v4, v1, v2
 
+    .line 260
     :cond_2
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
+    .line 267
     :cond_3
     return-void
 .end method
@@ -171,23 +185,25 @@
 .method public clone()Ljava/lang/Object;
     .locals 4
 
+    .prologue
+    const/4 v3, 0x0
+
     .line 318
-    iget-object v0, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
+    iget-object v1, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
 
-    const/4 v1, 0x0
+    array-length v1, v1
 
-    array-length v0, v0
-
-    new-array v0, v0, [D
+    new-array v0, v1, [D
 
     .line 319
+    .local v0, "clone":[D
+    iget-object v1, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
+
     iget-object v2, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
 
-    iget-object v3, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
+    array-length v2, v2
 
-    array-length v3, v3
-
-    invoke-static {v2, v1, v0, v1, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v1, v3, v0, v3, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 320
     new-instance v1, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;
@@ -201,10 +217,13 @@
 
 .method public expandEnvelope(Lcom/vividsolutions/jts/geom/Envelope;)Lcom/vividsolutions/jts/geom/Envelope;
     .locals 6
+    .param p1, "env"    # Lcom/vividsolutions/jts/geom/Envelope;
 
+    .prologue
+    .line 344
     const/4 v0, 0x0
 
-    .line 344
+    .local v0, "i":I
     :goto_0
     iget-object v1, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
 
@@ -232,13 +251,16 @@
 
     goto :goto_0
 
+    .line 347
     :cond_0
     return-object p1
 .end method
 
 .method public getCoordinateInternal(I)Lcom/vividsolutions/jts/geom/Coordinate;
-    .locals 9
+    .locals 8
+    .param p1, "i"    # I
 
+    .prologue
     .line 291
     iget-object v0, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
 
@@ -246,9 +268,10 @@
 
     mul-int/2addr v1, p1
 
-    aget-wide v3, v0, v1
+    aget-wide v2, v0, v1
 
     .line 292
+    .local v2, "x":D
     iget-object v0, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
 
     iget v1, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->dimension:I
@@ -257,65 +280,67 @@
 
     add-int/lit8 v1, v1, 0x1
 
-    aget-wide v5, v0, v1
+    aget-wide v4, v0, v1
 
     .line 293
+    .local v4, "y":D
     iget v0, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->dimension:I
 
     const/4 v1, 0x2
 
     if-ne v0, v1, :cond_0
 
-    const-wide/high16 v0, 0x7ff8000000000000L    # NaN
+    const-wide/high16 v6, 0x7ff8000000000000L    # NaN
 
-    move-wide v7, v0
+    .line 294
+    .local v6, "z":D
+    :goto_0
+    new-instance v1, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    goto :goto_0
+    invoke-direct/range {v1 .. v7}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(DDD)V
 
+    return-object v1
+
+    .line 293
+    .end local v6    # "z":D
     :cond_0
     iget-object v0, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
 
-    iget v2, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->dimension:I
+    iget v1, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->dimension:I
 
-    mul-int/2addr p1, v2
+    mul-int/2addr v1, p1
 
-    add-int/2addr p1, v1
+    add-int/lit8 v1, v1, 0x2
 
-    aget-wide v1, v0, p1
+    aget-wide v6, v0, v1
 
-    move-wide v7, v1
-
-    .line 294
-    :goto_0
-    new-instance p1, Lcom/vividsolutions/jts/geom/Coordinate;
-
-    move-object v2, p1
-
-    invoke-direct/range {v2 .. v8}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(DDD)V
-
-    return-object p1
+    goto :goto_0
 .end method
 
 .method public getOrdinate(II)D
     .locals 2
+    .param p1, "index"    # I
+    .param p2, "ordinate"    # I
 
+    .prologue
     .line 330
     iget-object v0, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
 
     iget v1, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->dimension:I
 
-    mul-int/2addr p1, v1
+    mul-int/2addr v1, p1
 
-    add-int/2addr p1, p2
+    add-int/2addr v1, p2
 
-    aget-wide p1, v0, p1
+    aget-wide v0, v0, v1
 
-    return-wide p1
+    return-wide v0
 .end method
 
 .method public size()I
     .locals 2
 
+    .prologue
     .line 311
     iget-object v0, p0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequence$Double;->coords:[D
 

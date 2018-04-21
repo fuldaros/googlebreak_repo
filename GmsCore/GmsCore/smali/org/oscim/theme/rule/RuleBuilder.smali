@@ -14,10 +14,10 @@
 # static fields
 .field private static final EMPTY_KV:[Ljava/lang/String;
 
+.field static final log:Lorg/slf4j/Logger;
+
 
 # instance fields
-.field public cat:Ljava/lang/String;
-
 .field element:I
 
 .field keys:[Ljava/lang/String;
@@ -25,7 +25,8 @@
 .field renderStyles:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/ArrayList<",
+            "Ljava/util/ArrayList",
+            "<",
             "Lorg/oscim/theme/styles/RenderStyle;",
             ">;"
         }
@@ -38,8 +39,8 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "[",
-            "Lorg/oscim/theme/styles/RenderStyle$StyleBuilder<",
-            "*>;"
+            "Lorg/oscim/theme/styles/RenderStyle$StyleBuilder",
+            "<*>;"
         }
     .end annotation
 .end field
@@ -47,7 +48,8 @@
 .field subRules:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/ArrayList<",
+            "Ljava/util/ArrayList",
+            "<",
             "Lorg/oscim/theme/rule/RuleBuilder;",
             ">;"
         }
@@ -65,9 +67,19 @@
 .method static constructor <clinit>()V
     .locals 1
 
+    .prologue
+    .line 34
+    const-class v0, Lorg/oscim/theme/rule/RuleBuilder;
+
+    invoke-static {v0}, Lorg/slf4j/LoggerFactory;->getLogger(Ljava/lang/Class;)Lorg/slf4j/Logger;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/oscim/theme/rule/RuleBuilder;->log:Lorg/slf4j/Logger;
+
+    .line 36
     const/4 v0, 0x0
 
-    .line 37
     new-array v0, v0, [Ljava/lang/String;
 
     sput-object v0, Lorg/oscim/theme/rule/RuleBuilder;->EMPTY_KV:[Ljava/lang/String;
@@ -78,720 +90,830 @@
 .method public constructor <init>()V
     .locals 2
 
-    .line 82
+    .prologue
+    const/4 v1, 0x4
+
+    .line 80
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 54
+    .line 52
     new-instance v0, Ljava/util/ArrayList;
-
-    const/4 v1, 0x4
 
     invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(I)V
 
     iput-object v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->renderStyles:Ljava/util/ArrayList;
 
-    .line 55
+    .line 53
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(I)V
 
     iput-object v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->subRules:Ljava/util/ArrayList;
 
-    .line 83
+    .line 81
     sget-object v0, Lorg/oscim/theme/rule/RuleBuilder$RuleType;->POSITIVE:Lorg/oscim/theme/rule/RuleBuilder$RuleType;
 
     iput-object v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->type:Lorg/oscim/theme/rule/RuleBuilder$RuleType;
 
+    .line 82
     const/4 v0, 0x7
 
-    .line 84
     iput v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->element:I
 
+    .line 83
     const/4 v0, -0x1
 
-    .line 85
     iput v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
 
-    .line 86
+    .line 84
     sget-object v0, Lorg/oscim/theme/rule/RuleBuilder;->EMPTY_KV:[Ljava/lang/String;
 
     iput-object v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->keys:[Ljava/lang/String;
 
-    .line 87
+    .line 85
     sget-object v0, Lorg/oscim/theme/rule/RuleBuilder;->EMPTY_KV:[Ljava/lang/String;
 
     iput-object v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->values:[Ljava/lang/String;
 
+    .line 86
     return-void
 .end method
 
 .method public constructor <init>(Lorg/oscim/theme/rule/RuleBuilder$RuleType;[Ljava/lang/String;[Ljava/lang/String;)V
     .locals 2
+    .param p1, "type"    # Lorg/oscim/theme/rule/RuleBuilder$RuleType;
+    .param p2, "keys"    # [Ljava/lang/String;
+    .param p3, "values"    # [Ljava/lang/String;
 
-    .line 74
+    .prologue
+    const/4 v1, 0x4
+
+    .line 72
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 54
+    .line 52
     new-instance v0, Ljava/util/ArrayList;
-
-    const/4 v1, 0x4
 
     invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(I)V
 
     iput-object v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->renderStyles:Ljava/util/ArrayList;
 
-    .line 55
+    .line 53
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(I)V
 
     iput-object v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->subRules:Ljava/util/ArrayList;
 
+    .line 73
     const/4 v0, 0x7
 
-    .line 75
     iput v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->element:I
 
+    .line 74
     const/4 v0, -0x1
 
-    .line 76
     iput v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
 
-    .line 77
+    .line 75
     iput-object p1, p0, Lorg/oscim/theme/rule/RuleBuilder;->type:Lorg/oscim/theme/rule/RuleBuilder$RuleType;
 
-    .line 78
+    .line 76
     iput-object p2, p0, Lorg/oscim/theme/rule/RuleBuilder;->keys:[Ljava/lang/String;
 
-    .line 79
+    .line 77
     iput-object p3, p0, Lorg/oscim/theme/rule/RuleBuilder;->values:[Ljava/lang/String;
 
+    .line 78
     return-void
 .end method
 
 .method public static create(Ljava/lang/String;Ljava/lang/String;)Lorg/oscim/theme/rule/RuleBuilder;
-    .locals 4
+    .locals 5
+    .param p0, "keys"    # Ljava/lang/String;
+    .param p1, "values"    # Ljava/lang/String;
 
-    .line 91
+    .prologue
+    const/4 v4, 0x2
+
+    .line 90
     sget-object v0, Lorg/oscim/theme/rule/RuleBuilder;->EMPTY_KV:[Ljava/lang/String;
 
+    .line 91
+    .local v0, "keyList":[Ljava/lang/String;
+    sget-object v2, Lorg/oscim/theme/rule/RuleBuilder;->EMPTY_KV:[Ljava/lang/String;
+
     .line 92
-    sget-object v1, Lorg/oscim/theme/rule/RuleBuilder;->EMPTY_KV:[Ljava/lang/String;
+    .local v2, "valueList":[Ljava/lang/String;
+    sget-object v1, Lorg/oscim/theme/rule/RuleBuilder$RuleType;->POSITIVE:Lorg/oscim/theme/rule/RuleBuilder$RuleType;
 
-    .line 93
-    sget-object v2, Lorg/oscim/theme/rule/RuleBuilder$RuleType;->POSITIVE:Lorg/oscim/theme/rule/RuleBuilder$RuleType;
+    .line 94
+    .local v1, "type":Lorg/oscim/theme/rule/RuleBuilder$RuleType;
+    if-eqz p1, :cond_0
 
-    if-eqz p1, :cond_1
+    .line 95
+    const-string v3, "~"
 
-    const-string v1, "\\|"
+    invoke-virtual {p1, v3}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
 
     .line 96
-    invoke-virtual {p1, v1}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
-
-    move-result-object v1
+    sget-object v1, Lorg/oscim/theme/rule/RuleBuilder$RuleType;->NEGATIVE:Lorg/oscim/theme/rule/RuleBuilder$RuleType;
 
     .line 97
-    new-instance p1, Ljava/util/ArrayList;
+    invoke-virtual {p1}, Ljava/lang/String;->length()I
 
-    invoke-static {v1}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
+    move-result v3
+
+    if-le v3, v4, :cond_0
+
+    .line 98
+    invoke-virtual {p1, v4}, Ljava/lang/String;->substring(I)Ljava/lang/String;
 
     move-result-object v3
 
-    invoke-direct {p1, v3}, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
-
-    const-string v3, "~"
-
-    .line 98
-    invoke-interface {p1, v3}, Ljava/util/List;->remove(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_0
+    const-string v4, "\\|"
 
     .line 99
-    sget-object v2, Lorg/oscim/theme/rule/RuleBuilder$RuleType;->NEGATIVE:Lorg/oscim/theme/rule/RuleBuilder$RuleType;
+    invoke-virtual {v3, v4}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
 
-    .line 100
-    invoke-interface {p1}, Ljava/util/List;->size()I
-
-    move-result v1
-
-    new-array v1, v1, [Ljava/lang/String;
-
-    invoke-interface {p1, v1}, Ljava/util/List;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
-
-    move-result-object p1
-
-    move-object v1, p1
-
-    check-cast v1, [Ljava/lang/String;
-
-    goto :goto_0
-
-    :cond_0
-    const-string v3, "-"
-
-    .line 101
-    invoke-interface {p1, v3}, Ljava/util/List;->remove(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_1
-
-    .line 102
-    sget-object v2, Lorg/oscim/theme/rule/RuleBuilder$RuleType;->EXCLUDE:Lorg/oscim/theme/rule/RuleBuilder$RuleType;
-
-    .line 103
-    invoke-interface {p1}, Ljava/util/List;->size()I
-
-    move-result v1
-
-    new-array v1, v1, [Ljava/lang/String;
-
-    invoke-interface {p1, v1}, Ljava/util/List;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
-
-    move-result-object p1
-
-    move-object v1, p1
-
-    check-cast v1, [Ljava/lang/String;
-
-    :cond_1
-    :goto_0
-    if-eqz p0, :cond_2
-
-    const-string p1, "\\|"
+    move-result-object v2
 
     .line 110
-    invoke-virtual {p0, p1}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
+    :cond_0
+    :goto_0
+    if-eqz p0, :cond_1
+
+    .line 111
+    const-string v3, "\\|"
+
+    invoke-virtual {p0, v3}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
 
     move-result-object v0
 
-    .line 113
-    :cond_2
-    sget-object p0, Lorg/oscim/theme/rule/RuleBuilder$RuleType;->POSITIVE:Lorg/oscim/theme/rule/RuleBuilder$RuleType;
-
-    if-eq v2, p0, :cond_4
-
-    if-eqz v0, :cond_3
-
     .line 114
-    array-length p0, v0
+    :cond_1
+    sget-object v3, Lorg/oscim/theme/rule/RuleBuilder$RuleType;->POSITIVE:Lorg/oscim/theme/rule/RuleBuilder$RuleType;
 
-    if-nez p0, :cond_4
+    if-eq v1, v3, :cond_5
 
     .line 115
+    if-eqz v0, :cond_2
+
+    array-length v3, v0
+
+    if-nez v3, :cond_5
+
+    .line 116
+    :cond_2
+    new-instance v3, Lorg/oscim/theme/IRenderTheme$ThemeException;
+
+    const-string v4, "negative rule requires key"
+
+    invoke-direct {v3, v4}, Lorg/oscim/theme/IRenderTheme$ThemeException;-><init>(Ljava/lang/String;)V
+
+    throw v3
+
+    .line 100
     :cond_3
-    new-instance p0, Lorg/oscim/theme/IRenderTheme$ThemeException;
+    const-string v3, "-"
 
-    const-string p1, "negative rule requires key"
+    invoke-virtual {p1, v3}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
-    invoke-direct {p0, p1}, Lorg/oscim/theme/IRenderTheme$ThemeException;-><init>(Ljava/lang/String;)V
+    move-result v3
 
-    throw p0
+    if-eqz v3, :cond_4
 
-    .line 118
+    .line 101
+    sget-object v1, Lorg/oscim/theme/rule/RuleBuilder$RuleType;->EXCLUDE:Lorg/oscim/theme/rule/RuleBuilder$RuleType;
+
+    .line 102
+    invoke-virtual {p1}, Ljava/lang/String;->length()I
+
+    move-result v3
+
+    if-le v3, v4, :cond_0
+
+    .line 103
+    invoke-virtual {p1, v4}, Ljava/lang/String;->substring(I)Ljava/lang/String;
+
+    move-result-object v3
+
+    const-string v4, "\\|"
+
+    .line 104
+    invoke-virtual {v3, v4}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
+
+    move-result-object v2
+
+    goto :goto_0
+
+    .line 106
     :cond_4
-    new-instance p0, Lorg/oscim/theme/rule/RuleBuilder;
+    const-string v3, "\\|"
 
-    invoke-direct {p0, v2, v0, v1}, Lorg/oscim/theme/rule/RuleBuilder;-><init>(Lorg/oscim/theme/rule/RuleBuilder$RuleType;[Ljava/lang/String;[Ljava/lang/String;)V
+    invoke-virtual {p1, v3}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
 
-    return-object p0
+    move-result-object v2
+
+    goto :goto_0
+
+    .line 119
+    :cond_5
+    new-instance v3, Lorg/oscim/theme/rule/RuleBuilder;
+
+    invoke-direct {v3, v1, v0, v2}, Lorg/oscim/theme/rule/RuleBuilder;-><init>(Lorg/oscim/theme/rule/RuleBuilder$RuleType;[Ljava/lang/String;[Ljava/lang/String;)V
+
+    return-object v3
 .end method
 
 
 # virtual methods
 .method public addStyle(Lorg/oscim/theme/styles/RenderStyle;)Lorg/oscim/theme/rule/RuleBuilder;
     .locals 1
+    .param p1, "style"    # Lorg/oscim/theme/styles/RenderStyle;
 
-    .line 186
+    .prologue
+    .line 187
     iget-object v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->renderStyles:Ljava/util/ArrayList;
 
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
+    .line 188
     return-object p0
 .end method
 
 .method public addSubRule(Lorg/oscim/theme/rule/RuleBuilder;)Lorg/oscim/theme/rule/RuleBuilder;
     .locals 1
+    .param p1, "rule"    # Lorg/oscim/theme/rule/RuleBuilder;
 
-    .line 191
+    .prologue
+    .line 192
     iget-object v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->subRules:Ljava/util/ArrayList;
 
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    return-object p0
-.end method
-
-.method public cat(Ljava/lang/String;)Lorg/oscim/theme/rule/RuleBuilder;
-    .locals 0
-
-    .line 221
-    iput-object p1, p0, Lorg/oscim/theme/rule/RuleBuilder;->cat:Ljava/lang/String;
-
+    .line 193
     return-object p0
 .end method
 
 .method public element(I)Lorg/oscim/theme/rule/RuleBuilder;
     .locals 0
+    .param p1, "element"    # I
 
-    .line 216
+    .prologue
+    .line 218
     iput p1, p0, Lorg/oscim/theme/rule/RuleBuilder;->element:I
 
+    .line 219
     return-object p0
 .end method
 
 .method public onComplete([I)Lorg/oscim/theme/rule/Rule;
-    .locals 13
+    .locals 21
+    .param p1, "level"    # [I
 
-    .line 135
-    iget-object v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->styleBuilder:[Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+    .prologue
+    .line 133
+    const/4 v7, 0x0
 
-    const/4 v1, 0x0
-
-    if-eqz v0, :cond_0
+    .line 134
+    .local v7, "styles":[Lorg/oscim/theme/styles/RenderStyle;
+    const/4 v6, 0x0
 
     .line 136
-    iget-object v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->styleBuilder:[Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+    .local v6, "rules":[Lorg/oscim/theme/rule/Rule;
+    move-object/from16 v0, p0
 
-    array-length v2, v0
+    iget-object v2, v0, Lorg/oscim/theme/rule/RuleBuilder;->styleBuilder:[Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
 
-    move v3, v1
-
-    :goto_0
-    if-ge v3, v2, :cond_0
-
-    aget-object v4, v0, v3
+    if-eqz v2, :cond_0
 
     .line 137
-    iget-object v5, p0, Lorg/oscim/theme/rule/RuleBuilder;->renderStyles:Ljava/util/ArrayList;
+    move-object/from16 v0, p0
 
-    aget v6, p1, v1
+    iget-object v3, v0, Lorg/oscim/theme/rule/RuleBuilder;->styleBuilder:[Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
 
-    invoke-virtual {v4, v6}, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->level(I)Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->build()Lorg/oscim/theme/styles/RenderStyle;
-
-    move-result-object v4
-
-    invoke-virtual {v5, v4}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    .line 138
-    aget v4, p1, v1
-
-    add-int/lit8 v4, v4, 0x2
-
-    aput v4, p1, v1
-
-    add-int/lit8 v3, v3, 0x1
-
-    goto :goto_0
-
-    .line 141
-    :cond_0
-    iget-object v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->renderStyles:Ljava/util/ArrayList;
-
-    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
-
-    move-result v0
+    array-length v4, v3
 
     const/4 v2, 0x0
 
-    if-lez v0, :cond_1
+    :goto_0
+    if-ge v2, v4, :cond_0
+
+    aget-object v20, v3, v2
+
+    .line 138
+    .local v20, "style":Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;, "Lorg/oscim/theme/styles/RenderStyle$StyleBuilder<*>;"
+    move-object/from16 v0, p0
+
+    iget-object v5, v0, Lorg/oscim/theme/rule/RuleBuilder;->renderStyles:Ljava/util/ArrayList;
+
+    const/4 v8, 0x0
+
+    aget v8, p1, v8
+
+    move-object/from16 v0, v20
+
+    invoke-virtual {v0, v8}, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->level(I)Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+
+    move-result-object v8
+
+    invoke-virtual {v8}, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->build()Lorg/oscim/theme/styles/RenderStyle;
+
+    move-result-object v8
+
+    invoke-virtual {v5, v8}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 139
+    const/4 v5, 0x0
+
+    aget v8, p1, v5
+
+    add-int/lit8 v8, v8, 0x2
+
+    aput v8, p1, v5
+
+    .line 137
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_0
 
     .line 142
-    iget-object v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->renderStyles:Ljava/util/ArrayList;
+    .end local v20    # "style":Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;, "Lorg/oscim/theme/styles/RenderStyle$StyleBuilder<*>;"
+    :cond_0
+    move-object/from16 v0, p0
 
-    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
-
-    move-result v0
-
-    new-array v0, v0, [Lorg/oscim/theme/styles/RenderStyle;
-
-    .line 143
-    iget-object v3, p0, Lorg/oscim/theme/rule/RuleBuilder;->renderStyles:Ljava/util/ArrayList;
-
-    invoke-virtual {v3, v0}, Ljava/util/ArrayList;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
-
-    goto :goto_1
-
-    :cond_1
-    move-object v0, v2
-
-    .line 146
-    :goto_1
-    iget-object v3, p0, Lorg/oscim/theme/rule/RuleBuilder;->subRules:Ljava/util/ArrayList;
-
-    invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
-
-    move-result v3
-
-    if-lez v3, :cond_2
-
-    .line 147
-    iget-object v2, p0, Lorg/oscim/theme/rule/RuleBuilder;->subRules:Ljava/util/ArrayList;
+    iget-object v2, v0, Lorg/oscim/theme/rule/RuleBuilder;->renderStyles:Ljava/util/ArrayList;
 
     invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
 
     move-result v2
 
-    new-array v2, v2, [Lorg/oscim/theme/rule/Rule;
+    if-lez v2, :cond_1
 
-    move v3, v1
+    .line 143
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lorg/oscim/theme/rule/RuleBuilder;->renderStyles:Ljava/util/ArrayList;
+
+    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
+
+    move-result v2
+
+    new-array v7, v2, [Lorg/oscim/theme/styles/RenderStyle;
+
+    .line 144
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lorg/oscim/theme/rule/RuleBuilder;->renderStyles:Ljava/util/ArrayList;
+
+    invoke-virtual {v2, v7}, Ljava/util/ArrayList;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+
+    .line 147
+    :cond_1
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lorg/oscim/theme/rule/RuleBuilder;->subRules:Ljava/util/ArrayList;
+
+    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
+
+    move-result v2
+
+    if-lez v2, :cond_2
 
     .line 148
-    :goto_2
-    array-length v4, v2
+    move-object/from16 v0, p0
 
-    if-ge v3, v4, :cond_2
+    iget-object v2, v0, Lorg/oscim/theme/rule/RuleBuilder;->subRules:Ljava/util/ArrayList;
+
+    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
+
+    move-result v2
+
+    new-array v6, v2, [Lorg/oscim/theme/rule/Rule;
 
     .line 149
-    iget-object v4, p0, Lorg/oscim/theme/rule/RuleBuilder;->subRules:Ljava/util/ArrayList;
+    const/16 v17, 0x0
 
-    invoke-virtual {v4, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    .local v17, "i":I
+    :goto_1
+    array-length v2, v6
 
-    move-result-object v4
+    move/from16 v0, v17
 
-    check-cast v4, Lorg/oscim/theme/rule/RuleBuilder;
+    if-ge v0, v2, :cond_2
 
-    invoke-virtual {v4, p1}, Lorg/oscim/theme/rule/RuleBuilder;->onComplete([I)Lorg/oscim/theme/rule/Rule;
+    .line 150
+    move-object/from16 v0, p0
 
-    move-result-object v4
+    iget-object v2, v0, Lorg/oscim/theme/rule/RuleBuilder;->subRules:Ljava/util/ArrayList;
 
-    aput-object v4, v2, v3
+    move/from16 v0, v17
 
-    add-int/lit8 v3, v3, 0x1
+    invoke-virtual {v2, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
-    goto :goto_2
+    move-result-object v2
 
-    .line 152
-    :cond_2
-    iget-object p1, p0, Lorg/oscim/theme/rule/RuleBuilder;->keys:[Ljava/lang/String;
+    check-cast v2, Lorg/oscim/theme/rule/RuleBuilder;
 
-    array-length p1, p1
+    move-object/from16 v0, p1
+
+    invoke-virtual {v2, v0}, Lorg/oscim/theme/rule/RuleBuilder;->onComplete([I)Lorg/oscim/theme/rule/Rule;
+
+    move-result-object v2
+
+    aput-object v2, v6, v17
+
+    .line 149
+    add-int/lit8 v17, v17, 0x1
+
+    goto :goto_1
 
     .line 153
-    iget-object v3, p0, Lorg/oscim/theme/rule/RuleBuilder;->values:[Ljava/lang/String;
+    .end local v17    # "i":I
+    :cond_2
+    move-object/from16 v0, p0
 
-    array-length v3, v3
+    iget-object v2, v0, Lorg/oscim/theme/rule/RuleBuilder;->keys:[Ljava/lang/String;
 
-    if-nez p1, :cond_3
+    array-length v0, v2
 
-    if-nez v3, :cond_3
+    move/from16 v18, v0
+
+    .line 154
+    .local v18, "numKeys":I
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lorg/oscim/theme/rule/RuleBuilder;->values:[Ljava/lang/String;
+
+    array-length v0, v2
+
+    move/from16 v19, v0
 
     .line 156
-    new-instance p1, Lorg/oscim/theme/rule/Rule;
+    .local v19, "numVals":I
+    if-nez v18, :cond_3
 
-    iget v5, p0, Lorg/oscim/theme/rule/RuleBuilder;->element:I
+    if-nez v19, :cond_3
 
-    iget v6, p0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
+    .line 157
+    new-instance v2, Lorg/oscim/theme/rule/Rule;
 
-    iget v7, p0, Lorg/oscim/theme/rule/RuleBuilder;->selector:I
+    move-object/from16 v0, p0
 
-    move-object v4, p1
+    iget v3, v0, Lorg/oscim/theme/rule/RuleBuilder;->element:I
+
+    move-object/from16 v0, p0
+
+    iget v4, v0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
+
+    move-object/from16 v0, p0
+
+    iget v5, v0, Lorg/oscim/theme/rule/RuleBuilder;->selector:I
+
+    invoke-direct/range {v2 .. v7}, Lorg/oscim/theme/rule/Rule;-><init>(III[Lorg/oscim/theme/rule/Rule;[Lorg/oscim/theme/styles/RenderStyle;)V
 
     move-object v8, v2
 
-    move-object v9, v0
+    .line 181
+    :goto_2
+    return-object v8
 
-    invoke-direct/range {v4 .. v9}, Lorg/oscim/theme/rule/Rule;-><init>(III[Lorg/oscim/theme/rule/Rule;[Lorg/oscim/theme/styles/RenderStyle;)V
-
-    iget-object v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->cat:Ljava/lang/String;
-
-    .line 157
-    invoke-virtual {p1, v0}, Lorg/oscim/theme/rule/Rule;->setCat(Ljava/lang/String;)Lorg/oscim/theme/rule/Rule;
-
-    move-result-object p1
-
-    return-object p1
-
+    .line 159
     :cond_3
-    move v4, v1
+    const/16 v17, 0x0
 
+    .restart local v17    # "i":I
     :goto_3
-    if-ge v4, v3, :cond_4
+    move/from16 v0, v17
+
+    move/from16 v1, v19
+
+    if-ge v0, v1, :cond_4
 
     .line 160
-    iget-object v5, p0, Lorg/oscim/theme/rule/RuleBuilder;->values:[Ljava/lang/String;
+    move-object/from16 v0, p0
 
-    iget-object v6, p0, Lorg/oscim/theme/rule/RuleBuilder;->values:[Ljava/lang/String;
+    iget-object v2, v0, Lorg/oscim/theme/rule/RuleBuilder;->values:[Ljava/lang/String;
 
-    aget-object v6, v6, v4
+    move-object/from16 v0, p0
 
-    invoke-virtual {v6}, Ljava/lang/String;->intern()Ljava/lang/String;
+    iget-object v3, v0, Lorg/oscim/theme/rule/RuleBuilder;->values:[Ljava/lang/String;
 
-    move-result-object v6
+    aget-object v3, v3, v17
 
-    aput-object v6, v5, v4
+    invoke-virtual {v3}, Ljava/lang/String;->intern()Ljava/lang/String;
 
-    add-int/lit8 v4, v4, 0x1
+    move-result-object v3
+
+    aput-object v3, v2, v17
+
+    .line 159
+    add-int/lit8 v17, v17, 0x1
 
     goto :goto_3
 
+    .line 162
     :cond_4
-    move v4, v1
+    const/16 v17, 0x0
 
     :goto_4
-    if-ge v4, p1, :cond_5
+    move/from16 v0, v17
+
+    move/from16 v1, v18
+
+    if-ge v0, v1, :cond_5
 
     .line 163
-    iget-object v5, p0, Lorg/oscim/theme/rule/RuleBuilder;->keys:[Ljava/lang/String;
+    move-object/from16 v0, p0
 
-    iget-object v6, p0, Lorg/oscim/theme/rule/RuleBuilder;->keys:[Ljava/lang/String;
+    iget-object v2, v0, Lorg/oscim/theme/rule/RuleBuilder;->keys:[Ljava/lang/String;
 
-    aget-object v6, v6, v4
+    move-object/from16 v0, p0
 
-    invoke-virtual {v6}, Ljava/lang/String;->intern()Ljava/lang/String;
+    iget-object v3, v0, Lorg/oscim/theme/rule/RuleBuilder;->keys:[Ljava/lang/String;
 
-    move-result-object v6
+    aget-object v3, v3, v17
 
-    aput-object v6, v5, v4
+    invoke-virtual {v3}, Ljava/lang/String;->intern()Ljava/lang/String;
 
-    add-int/lit8 v4, v4, 0x1
+    move-result-object v3
+
+    aput-object v3, v2, v17
+
+    .line 162
+    add-int/lit8 v17, v17, 0x1
 
     goto :goto_4
 
     .line 165
     :cond_5
-    iget-object v4, p0, Lorg/oscim/theme/rule/RuleBuilder;->type:Lorg/oscim/theme/rule/RuleBuilder$RuleType;
+    move-object/from16 v0, p0
 
-    sget-object v5, Lorg/oscim/theme/rule/RuleBuilder$RuleType;->POSITIVE:Lorg/oscim/theme/rule/RuleBuilder$RuleType;
+    iget-object v2, v0, Lorg/oscim/theme/rule/RuleBuilder;->type:Lorg/oscim/theme/rule/RuleBuilder$RuleType;
 
-    if-eq v4, v5, :cond_6
+    sget-object v3, Lorg/oscim/theme/rule/RuleBuilder$RuleType;->POSITIVE:Lorg/oscim/theme/rule/RuleBuilder$RuleType;
+
+    if-eq v2, v3, :cond_6
 
     .line 166
-    new-instance p1, Lorg/oscim/theme/rule/Rule$NegativeRule;
+    new-instance v8, Lorg/oscim/theme/rule/Rule$NegativeRule;
 
-    iget-object v5, p0, Lorg/oscim/theme/rule/RuleBuilder;->type:Lorg/oscim/theme/rule/RuleBuilder$RuleType;
+    move-object/from16 v0, p0
 
-    iget v6, p0, Lorg/oscim/theme/rule/RuleBuilder;->element:I
+    iget-object v9, v0, Lorg/oscim/theme/rule/RuleBuilder;->type:Lorg/oscim/theme/rule/RuleBuilder$RuleType;
 
-    iget v7, p0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
+    move-object/from16 v0, p0
 
-    iget v8, p0, Lorg/oscim/theme/rule/RuleBuilder;->selector:I
+    iget v10, v0, Lorg/oscim/theme/rule/RuleBuilder;->element:I
 
-    iget-object v9, p0, Lorg/oscim/theme/rule/RuleBuilder;->keys:[Ljava/lang/String;
+    move-object/from16 v0, p0
 
-    iget-object v10, p0, Lorg/oscim/theme/rule/RuleBuilder;->values:[Ljava/lang/String;
+    iget v11, v0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
 
-    move-object v4, p1
+    move-object/from16 v0, p0
 
-    move-object v11, v2
+    iget v12, v0, Lorg/oscim/theme/rule/RuleBuilder;->selector:I
 
-    move-object v12, v0
+    move-object/from16 v0, p0
 
-    invoke-direct/range {v4 .. v12}, Lorg/oscim/theme/rule/Rule$NegativeRule;-><init>(Lorg/oscim/theme/rule/RuleBuilder$RuleType;III[Ljava/lang/String;[Ljava/lang/String;[Lorg/oscim/theme/rule/Rule;[Lorg/oscim/theme/styles/RenderStyle;)V
+    iget-object v13, v0, Lorg/oscim/theme/rule/RuleBuilder;->keys:[Ljava/lang/String;
 
-    iget-object v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->cat:Ljava/lang/String;
+    move-object/from16 v0, p0
 
-    .line 167
-    invoke-virtual {p1, v0}, Lorg/oscim/theme/rule/Rule$NegativeRule;->setCat(Ljava/lang/String;)Lorg/oscim/theme/rule/Rule;
+    iget-object v14, v0, Lorg/oscim/theme/rule/RuleBuilder;->values:[Ljava/lang/String;
 
-    move-result-object p1
+    move-object v15, v6
 
-    return-object p1
+    move-object/from16 v16, v7
 
+    invoke-direct/range {v8 .. v16}, Lorg/oscim/theme/rule/Rule$NegativeRule;-><init>(Lorg/oscim/theme/rule/RuleBuilder$RuleType;III[Ljava/lang/String;[Ljava/lang/String;[Lorg/oscim/theme/rule/Rule;[Lorg/oscim/theme/styles/RenderStyle;)V
+
+    goto :goto_2
+
+    .line 169
     :cond_6
-    const/4 v4, 0x1
+    const/4 v2, 0x1
 
-    if-ne p1, v4, :cond_7
+    move/from16 v0, v18
 
-    if-nez v3, :cond_7
+    if-ne v0, v2, :cond_7
+
+    if-nez v18, :cond_7
 
     .line 170
-    new-instance p1, Lorg/oscim/theme/rule/Rule$PositiveRuleK;
+    new-instance v8, Lorg/oscim/theme/rule/Rule$PositiveRuleK;
 
-    iget v5, p0, Lorg/oscim/theme/rule/RuleBuilder;->element:I
+    move-object/from16 v0, p0
 
-    iget v6, p0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
+    iget v9, v0, Lorg/oscim/theme/rule/RuleBuilder;->element:I
 
-    iget v7, p0, Lorg/oscim/theme/rule/RuleBuilder;->selector:I
+    move-object/from16 v0, p0
 
-    iget-object v3, p0, Lorg/oscim/theme/rule/RuleBuilder;->keys:[Ljava/lang/String;
+    iget v10, v0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
 
-    aget-object v8, v3, v1
+    move-object/from16 v0, p0
 
-    move-object v4, p1
+    iget v11, v0, Lorg/oscim/theme/rule/RuleBuilder;->selector:I
 
-    move-object v9, v2
+    move-object/from16 v0, p0
 
-    move-object v10, v0
+    iget-object v2, v0, Lorg/oscim/theme/rule/RuleBuilder;->keys:[Ljava/lang/String;
 
-    invoke-direct/range {v4 .. v10}, Lorg/oscim/theme/rule/Rule$PositiveRuleK;-><init>(IIILjava/lang/String;[Lorg/oscim/theme/rule/Rule;[Lorg/oscim/theme/styles/RenderStyle;)V
+    const/4 v3, 0x0
 
-    iget-object v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->cat:Ljava/lang/String;
+    aget-object v12, v2, v3
 
-    .line 171
-    invoke-virtual {p1, v0}, Lorg/oscim/theme/rule/Rule$PositiveRuleK;->setCat(Ljava/lang/String;)Lorg/oscim/theme/rule/Rule;
+    move-object v13, v6
 
-    move-result-object p1
+    move-object v14, v7
 
-    return-object p1
+    invoke-direct/range {v8 .. v14}, Lorg/oscim/theme/rule/Rule$PositiveRuleK;-><init>(IIILjava/lang/String;[Lorg/oscim/theme/rule/Rule;[Lorg/oscim/theme/styles/RenderStyle;)V
 
+    goto/16 :goto_2
+
+    .line 173
     :cond_7
-    if-nez p1, :cond_8
+    if-nez v18, :cond_8
 
-    if-ne v3, v4, :cond_8
+    const/4 v2, 0x1
+
+    move/from16 v0, v19
+
+    if-ne v0, v2, :cond_8
 
     .line 174
-    new-instance p1, Lorg/oscim/theme/rule/Rule$PositiveRuleV;
+    new-instance v8, Lorg/oscim/theme/rule/Rule$PositiveRuleV;
 
-    iget v5, p0, Lorg/oscim/theme/rule/RuleBuilder;->element:I
+    move-object/from16 v0, p0
 
-    iget v6, p0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
+    iget v9, v0, Lorg/oscim/theme/rule/RuleBuilder;->element:I
 
-    iget v7, p0, Lorg/oscim/theme/rule/RuleBuilder;->selector:I
+    move-object/from16 v0, p0
 
-    iget-object v3, p0, Lorg/oscim/theme/rule/RuleBuilder;->values:[Ljava/lang/String;
+    iget v10, v0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
 
-    aget-object v8, v3, v1
+    move-object/from16 v0, p0
 
-    move-object v4, p1
+    iget v11, v0, Lorg/oscim/theme/rule/RuleBuilder;->selector:I
 
-    move-object v9, v2
+    move-object/from16 v0, p0
 
-    move-object v10, v0
+    iget-object v2, v0, Lorg/oscim/theme/rule/RuleBuilder;->values:[Ljava/lang/String;
 
-    invoke-direct/range {v4 .. v10}, Lorg/oscim/theme/rule/Rule$PositiveRuleV;-><init>(IIILjava/lang/String;[Lorg/oscim/theme/rule/Rule;[Lorg/oscim/theme/styles/RenderStyle;)V
+    const/4 v3, 0x0
 
-    iget-object v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->cat:Ljava/lang/String;
+    aget-object v12, v2, v3
 
-    .line 175
-    invoke-virtual {p1, v0}, Lorg/oscim/theme/rule/Rule$PositiveRuleV;->setCat(Ljava/lang/String;)Lorg/oscim/theme/rule/Rule;
+    move-object v13, v6
 
-    move-result-object p1
+    move-object v14, v7
 
-    return-object p1
+    invoke-direct/range {v8 .. v14}, Lorg/oscim/theme/rule/Rule$PositiveRuleV;-><init>(IIILjava/lang/String;[Lorg/oscim/theme/rule/Rule;[Lorg/oscim/theme/styles/RenderStyle;)V
 
+    goto/16 :goto_2
+
+    .line 177
     :cond_8
-    if-ne p1, v4, :cond_9
+    const/4 v2, 0x1
 
-    if-ne v3, v4, :cond_9
+    move/from16 v0, v18
+
+    if-ne v0, v2, :cond_9
+
+    const/4 v2, 0x1
+
+    move/from16 v0, v19
+
+    if-ne v0, v2, :cond_9
 
     .line 178
-    new-instance p1, Lorg/oscim/theme/rule/Rule$PositiveRuleKV;
+    new-instance v8, Lorg/oscim/theme/rule/Rule$PositiveRuleKV;
 
-    iget v5, p0, Lorg/oscim/theme/rule/RuleBuilder;->element:I
+    move-object/from16 v0, p0
 
-    iget v6, p0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
+    iget v9, v0, Lorg/oscim/theme/rule/RuleBuilder;->element:I
 
-    iget v7, p0, Lorg/oscim/theme/rule/RuleBuilder;->selector:I
+    move-object/from16 v0, p0
 
-    iget-object v3, p0, Lorg/oscim/theme/rule/RuleBuilder;->keys:[Ljava/lang/String;
+    iget v10, v0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
 
-    aget-object v8, v3, v1
+    move-object/from16 v0, p0
 
-    iget-object v3, p0, Lorg/oscim/theme/rule/RuleBuilder;->values:[Ljava/lang/String;
+    iget v11, v0, Lorg/oscim/theme/rule/RuleBuilder;->selector:I
 
-    aget-object v9, v3, v1
+    move-object/from16 v0, p0
 
-    move-object v4, p1
+    iget-object v2, v0, Lorg/oscim/theme/rule/RuleBuilder;->keys:[Ljava/lang/String;
 
-    move-object v10, v2
+    const/4 v3, 0x0
 
-    move-object v11, v0
+    aget-object v12, v2, v3
 
-    invoke-direct/range {v4 .. v11}, Lorg/oscim/theme/rule/Rule$PositiveRuleKV;-><init>(IIILjava/lang/String;Ljava/lang/String;[Lorg/oscim/theme/rule/Rule;[Lorg/oscim/theme/styles/RenderStyle;)V
+    move-object/from16 v0, p0
 
-    iget-object v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->cat:Ljava/lang/String;
+    iget-object v2, v0, Lorg/oscim/theme/rule/RuleBuilder;->values:[Ljava/lang/String;
 
-    .line 179
-    invoke-virtual {p1, v0}, Lorg/oscim/theme/rule/Rule$PositiveRuleKV;->setCat(Ljava/lang/String;)Lorg/oscim/theme/rule/Rule;
+    const/4 v3, 0x0
 
-    move-result-object p1
+    aget-object v13, v2, v3
 
-    return-object p1
+    move-object v14, v6
+
+    move-object v15, v7
+
+    invoke-direct/range {v8 .. v15}, Lorg/oscim/theme/rule/Rule$PositiveRuleKV;-><init>(IIILjava/lang/String;Ljava/lang/String;[Lorg/oscim/theme/rule/Rule;[Lorg/oscim/theme/styles/RenderStyle;)V
+
+    goto/16 :goto_2
 
     .line 181
     :cond_9
-    new-instance p1, Lorg/oscim/theme/rule/Rule$PositiveRuleMultiKV;
+    new-instance v8, Lorg/oscim/theme/rule/Rule$PositiveRuleMultiKV;
 
-    iget v5, p0, Lorg/oscim/theme/rule/RuleBuilder;->element:I
+    move-object/from16 v0, p0
 
-    iget v6, p0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
+    iget v9, v0, Lorg/oscim/theme/rule/RuleBuilder;->element:I
 
-    iget v7, p0, Lorg/oscim/theme/rule/RuleBuilder;->selector:I
+    move-object/from16 v0, p0
 
-    iget-object v8, p0, Lorg/oscim/theme/rule/RuleBuilder;->keys:[Ljava/lang/String;
+    iget v10, v0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
 
-    iget-object v9, p0, Lorg/oscim/theme/rule/RuleBuilder;->values:[Ljava/lang/String;
+    move-object/from16 v0, p0
 
-    move-object v4, p1
+    iget v11, v0, Lorg/oscim/theme/rule/RuleBuilder;->selector:I
 
-    move-object v10, v2
+    move-object/from16 v0, p0
 
-    move-object v11, v0
+    iget-object v12, v0, Lorg/oscim/theme/rule/RuleBuilder;->keys:[Ljava/lang/String;
 
-    invoke-direct/range {v4 .. v11}, Lorg/oscim/theme/rule/Rule$PositiveRuleMultiKV;-><init>(III[Ljava/lang/String;[Ljava/lang/String;[Lorg/oscim/theme/rule/Rule;[Lorg/oscim/theme/styles/RenderStyle;)V
+    move-object/from16 v0, p0
 
-    iget-object v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->cat:Ljava/lang/String;
+    iget-object v13, v0, Lorg/oscim/theme/rule/RuleBuilder;->values:[Ljava/lang/String;
 
-    .line 182
-    invoke-virtual {p1, v0}, Lorg/oscim/theme/rule/Rule$PositiveRuleMultiKV;->setCat(Ljava/lang/String;)Lorg/oscim/theme/rule/Rule;
+    move-object v14, v6
 
-    move-result-object p1
+    move-object v15, v7
 
-    return-object p1
+    invoke-direct/range {v8 .. v15}, Lorg/oscim/theme/rule/Rule$PositiveRuleMultiKV;-><init>(III[Ljava/lang/String;[Ljava/lang/String;[Lorg/oscim/theme/rule/Rule;[Lorg/oscim/theme/styles/RenderStyle;)V
+
+    goto/16 :goto_2
 .end method
 
 .method public select(I)Lorg/oscim/theme/rule/RuleBuilder;
     .locals 0
+    .param p1, "selector"    # I
 
-    .line 206
+    .prologue
+    .line 208
     iput p1, p0, Lorg/oscim/theme/rule/RuleBuilder;->selector:I
 
+    .line 209
     return-object p0
 .end method
 
-.method public varargs style([Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;)Lorg/oscim/theme/rule/RuleBuilder;
-    .locals 0
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "([",
-            "Lorg/oscim/theme/styles/RenderStyle$StyleBuilder<",
-            "*>;)",
-            "Lorg/oscim/theme/rule/RuleBuilder;"
-        }
-    .end annotation
+.method public setZoom(BB)Lorg/oscim/theme/rule/RuleBuilder;
+    .locals 3
+    .param p1, "zoomMin"    # B
+    .param p2, "zoomMax"    # B
 
-    .line 196
-    iput-object p1, p0, Lorg/oscim/theme/rule/RuleBuilder;->styleBuilder:[Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+    .prologue
+    .line 124
+    const/4 v1, 0x0
 
-    return-object p0
-.end method
-
-.method public zoom(BB)Lorg/oscim/theme/rule/RuleBuilder;
-    .locals 2
-
-    const/4 v0, 0x0
-
-    .line 123
-    iput v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
-
-    :goto_0
-    if-gt p1, p2, :cond_0
-
-    const/16 v0, 0x20
-
-    if-ge p1, v0, :cond_0
+    iput v1, p0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
 
     .line 125
-    iget v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
+    move v0, p1
 
-    const/4 v1, 0x1
+    .local v0, "z":I
+    :goto_0
+    if-gt v0, p2, :cond_0
 
-    shl-int/2addr v1, p1
+    const/16 v1, 0x20
 
-    or-int/2addr v0, v1
+    if-ge v0, v1, :cond_0
 
-    iput v0, p0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
+    .line 126
+    iget v1, p0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
 
-    add-int/lit8 p1, p1, 0x1
+    const/4 v2, 0x1
+
+    shl-int/2addr v2, v0
+
+    or-int/2addr v1, v2
+
+    iput v1, p0, Lorg/oscim/theme/rule/RuleBuilder;->zoom:I
+
+    .line 125
+    add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
+    .line 128
     :cond_0
     return-object p0
 .end method

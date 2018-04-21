@@ -54,18 +54,19 @@
 .method static constructor <clinit>()V
     .locals 1
 
+    .prologue
+    .line 1176
     const/4 v0, 0x0
 
-    .line 1176
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v0
 
     sput-object v0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->DEFAULT_COUNT:Ljava/lang/Integer;
 
+    .line 1177
     const/4 v0, 0x0
 
-    .line 1177
     invoke-static {v0}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
 
     move-result-object v0
@@ -77,7 +78,11 @@
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Float;)V
     .locals 0
+    .param p1, "tag"    # Ljava/lang/String;
+    .param p2, "count"    # Ljava/lang/Integer;
+    .param p3, "sum"    # Ljava/lang/Float;
 
+    .prologue
     .line 1188
     invoke-direct {p0}, Lcom/squareup/wire/Message;-><init>()V
 
@@ -90,12 +95,15 @@
     .line 1191
     iput-object p3, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->sum:Ljava/lang/Float;
 
+    .line 1192
     return-void
 .end method
 
 .method private constructor <init>(Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic$Builder;)V
     .locals 3
+    .param p1, "builder"    # Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic$Builder;
 
+    .prologue
     .line 1195
     iget-object v0, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic$Builder;->tag:Ljava/lang/String;
 
@@ -108,12 +116,16 @@
     .line 1196
     invoke-virtual {p0, p1}, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->setBuilder(Lcom/squareup/wire/Message$Builder;)V
 
+    .line 1197
     return-void
 .end method
 
 .method synthetic constructor <init>(Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic$Builder;Lorg/microg/gms/checkin/CheckinRequest$1;)V
     .locals 0
+    .param p1, "x0"    # Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic$Builder;
+    .param p2, "x1"    # Lorg/microg/gms/checkin/CheckinRequest$1;
 
+    .prologue
     .line 1173
     invoke-direct {p0, p1}, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;-><init>(Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic$Builder;)V
 
@@ -123,103 +135,109 @@
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 4
+    .locals 5
+    .param p1, "other"    # Ljava/lang/Object;
 
-    const/4 v0, 0x1
-
-    if-ne p1, p0, :cond_0
-
-    return v0
-
-    .line 1202
-    :cond_0
-    instance-of v1, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;
+    .prologue
+    const/4 v1, 0x1
 
     const/4 v2, 0x0
 
-    if-nez v1, :cond_1
-
-    return v2
-
-    .line 1203
-    :cond_1
-    check-cast p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;
+    .line 1201
+    if-ne p1, p0, :cond_1
 
     .line 1204
-    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->tag:Ljava/lang/String;
+    :cond_0
+    :goto_0
+    return v1
 
-    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->tag:Ljava/lang/String;
+    .line 1202
+    :cond_1
+    instance-of v3, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;
 
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+    if-nez v3, :cond_2
 
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->count:Ljava/lang/Integer;
-
-    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->count:Ljava/lang/Integer;
-
-    .line 1205
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->sum:Ljava/lang/Float;
-
-    iget-object p1, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->sum:Ljava/lang/Float;
-
-    .line 1206
-    invoke-virtual {p0, v1, p1}, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result p1
-
-    if-eqz p1, :cond_2
+    move v1, v2
 
     goto :goto_0
 
     :cond_2
-    move v0, v2
+    move-object v0, p1
 
-    :goto_0
-    return v0
+    .line 1203
+    check-cast v0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;
+
+    .line 1204
+    .local v0, "o":Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;
+    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->tag:Ljava/lang/String;
+
+    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->tag:Ljava/lang/String;
+
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->count:Ljava/lang/Integer;
+
+    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->count:Ljava/lang/Integer;
+
+    .line 1205
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->sum:Ljava/lang/Float;
+
+    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->sum:Ljava/lang/Float;
+
+    .line 1206
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_0
+
+    :cond_3
+    move v1, v2
+
+    goto :goto_0
 .end method
 
 .method public hashCode()I
-    .locals 3
+    .locals 4
+
+    .prologue
+    const/4 v1, 0x0
 
     .line 1211
     iget v0, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->hashCode:I
 
-    if-nez v0, :cond_3
+    .line 1212
+    .local v0, "result":I
+    if-nez v0, :cond_1
 
     .line 1213
-    iget-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->tag:Ljava/lang/String;
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->tag:Ljava/lang/String;
 
-    const/4 v1, 0x0
+    if-eqz v2, :cond_2
 
-    if-eqz v0, :cond_0
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->tag:Ljava/lang/String;
 
-    iget-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->tag:Ljava/lang/String;
-
-    invoke-virtual {v0}, Ljava/lang/String;->hashCode()I
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
 
     move-result v0
 
-    goto :goto_0
-
-    :cond_0
-    move v0, v1
-
-    :goto_0
-    mul-int/lit8 v0, v0, 0x25
-
     .line 1214
+    :goto_0
+    mul-int/lit8 v3, v0, 0x25
+
     iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->count:Ljava/lang/Integer;
 
-    if-eqz v2, :cond_1
+    if-eqz v2, :cond_3
 
     iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->count:Ljava/lang/Integer;
 
@@ -227,20 +245,15 @@
 
     move-result v2
 
-    goto :goto_1
-
-    :cond_1
-    move v2, v1
-
     :goto_1
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
+    add-int v0, v3, v2
 
     .line 1215
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->sum:Ljava/lang/Float;
+    mul-int/lit8 v2, v0, 0x25
 
-    if-eqz v2, :cond_2
+    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->sum:Ljava/lang/Float;
+
+    if-eqz v3, :cond_0
 
     iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->sum:Ljava/lang/Float;
 
@@ -248,12 +261,25 @@
 
     move-result v1
 
-    :cond_2
-    add-int/2addr v0, v1
+    :cond_0
+    add-int v0, v2, v1
 
     .line 1216
     iput v0, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->hashCode:I
 
-    :cond_3
+    .line 1218
+    :cond_1
     return v0
+
+    :cond_2
+    move v0, v1
+
+    .line 1213
+    goto :goto_0
+
+    :cond_3
+    move v2, v1
+
+    .line 1214
+    goto :goto_1
 .end method

@@ -18,7 +18,8 @@
 .annotation system Ldalvik/annotation/Signature;
     value = {
         "Ljava/lang/Object;",
-        "Lorg/oscim/layers/marker/ItemizedLayer$OnItemGestureListener<",
+        "Lorg/oscim/layers/marker/ItemizedLayer$OnItemGestureListener",
+        "<",
         "Lorg/oscim/layers/marker/MarkerItem;",
         ">;",
         "Lorg/oscim/map/Map$InputListener;",
@@ -29,8 +30,6 @@
 
 # instance fields
 .field private final cameraUpdateListener:Lorg/microg/gms/maps/BackendMap$CameraUpdateListener;
-
-.field private final container:Lorg/microg/gms/maps/ContainerLayout;
 
 .field private final context:Landroid/content/Context;
 
@@ -43,7 +42,8 @@
 .field private final drawableMarkups:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Lorg/microg/gms/maps/markup/DrawableMarkup;",
             ">;"
         }
@@ -55,7 +55,8 @@
 .field private final markupMap:Ljava/util/Map;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/Map<",
+            "Ljava/util/Map",
+            "<",
             "Ljava/lang/String;",
             "Lorg/microg/gms/maps/markup/Markup;",
             ">;"
@@ -66,232 +67,257 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Lorg/microg/gms/maps/BackendMap$CameraUpdateListener;)V
-    .locals 1
+    .locals 2
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "cameraUpdateListener"    # Lorg/microg/gms/maps/BackendMap$CameraUpdateListener;
 
-    .line 68
+    .prologue
+    const/high16 v1, -0x40800000    # -1.0f
+
+    .line 67
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 62
+    .line 61
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
     iput-object v0, p0, Lorg/microg/gms/maps/BackendMap;->markupMap:Ljava/util/Map;
 
-    .line 63
+    .line 62
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lorg/microg/gms/maps/BackendMap;->drawableMarkups:Ljava/util/List;
 
-    const/high16 v0, -0x40800000    # -1.0f
+    .line 64
+    iput v1, p0, Lorg/microg/gms/maps/BackendMap;->dragLastX:F
 
     .line 65
-    iput v0, p0, Lorg/microg/gms/maps/BackendMap;->dragLastX:F
+    iput v1, p0, Lorg/microg/gms/maps/BackendMap;->dragLastY:F
 
-    .line 66
-    iput v0, p0, Lorg/microg/gms/maps/BackendMap;->dragLastY:F
-
-    .line 69
+    .line 68
     iput-object p1, p0, Lorg/microg/gms/maps/BackendMap;->context:Landroid/content/Context;
 
-    .line 70
+    .line 69
     iput-object p2, p0, Lorg/microg/gms/maps/BackendMap;->cameraUpdateListener:Lorg/microg/gms/maps/BackendMap$CameraUpdateListener;
 
+    .line 70
+    new-instance v0, Lorg/microg/gms/maps/BackendMapView;
+
+    invoke-direct {v0, p1}, Lorg/microg/gms/maps/BackendMapView;-><init>(Landroid/content/Context;)V
+
+    iput-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
+
     .line 71
-    new-instance p2, Lorg/microg/gms/maps/BackendMapView;
+    iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
-    invoke-direct {p2, p1}, Lorg/microg/gms/maps/BackendMapView;-><init>(Landroid/content/Context;)V
+    invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->items()Lorg/oscim/layers/marker/ItemizedLayer;
 
-    iput-object p2, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
+    move-result-object v0
+
+    invoke-virtual {v0, p0}, Lorg/oscim/layers/marker/ItemizedLayer;->setOnItemGestureListener(Lorg/oscim/layers/marker/ItemizedLayer$OnItemGestureListener;)V
 
     .line 72
-    iget-object p2, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
+    iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
-    invoke-virtual {p2}, Lorg/microg/gms/maps/BackendMapView;->items()Lorg/oscim/layers/marker/ItemizedLayer;
+    invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
 
-    move-result-object p2
+    move-result-object v0
 
-    invoke-virtual {p2, p0}, Lorg/oscim/layers/marker/ItemizedLayer;->setOnItemGestureListener(Lorg/oscim/layers/marker/ItemizedLayer$OnItemGestureListener;)V
+    iget-object v0, v0, Lorg/oscim/map/Map;->input:Lorg/oscim/event/EventDispatcher;
+
+    invoke-virtual {v0, p0}, Lorg/oscim/event/EventDispatcher;->bind(Lorg/oscim/event/EventListener;)V
 
     .line 73
-    iget-object p2, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
+    iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
-    invoke-virtual {p2}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
+    invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
 
-    move-result-object p2
+    move-result-object v0
 
-    iget-object p2, p2, Lorg/oscim/map/Map;->input:Lorg/oscim/event/EventDispatcher;
+    iget-object v0, v0, Lorg/oscim/map/Map;->events:Lorg/oscim/event/EventDispatcher;
 
-    invoke-virtual {p2, p0}, Lorg/oscim/event/EventDispatcher;->bind(Lorg/oscim/event/EventListener;)V
+    invoke-virtual {v0, p0}, Lorg/oscim/event/EventDispatcher;->bind(Lorg/oscim/event/EventListener;)V
 
     .line 74
-    iget-object p2, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
-
-    invoke-virtual {p2}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
-
-    move-result-object p2
-
-    iget-object p2, p2, Lorg/oscim/map/Map;->events:Lorg/oscim/event/EventDispatcher;
-
-    invoke-virtual {p2, p0}, Lorg/oscim/event/EventDispatcher;->bind(Lorg/oscim/event/EventListener;)V
-
-    .line 75
-    new-instance p2, Lorg/microg/gms/maps/ContainerLayout;
-
-    invoke-direct {p2, p1}, Lorg/microg/gms/maps/ContainerLayout;-><init>(Landroid/content/Context;)V
-
-    iput-object p2, p0, Lorg/microg/gms/maps/BackendMap;->container:Lorg/microg/gms/maps/ContainerLayout;
-
-    .line 76
-    iget-object p1, p0, Lorg/microg/gms/maps/BackendMap;->container:Lorg/microg/gms/maps/ContainerLayout;
-
-    iget-object p2, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
-
-    invoke-virtual {p1, p2}, Lorg/microg/gms/maps/ContainerLayout;->addView(Landroid/view/View;)V
-
     return-void
 .end method
 
 .method static synthetic access$000(Lorg/microg/gms/maps/BackendMap;)Lorg/microg/gms/maps/BackendMapView;
-    .locals 0
+    .locals 1
+    .param p0, "x0"    # Lorg/microg/gms/maps/BackendMap;
 
+    .prologue
     .line 55
-    iget-object p0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
+    iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
-    return-object p0
+    return-object v0
 .end method
 
 .method static synthetic access$100(Lorg/microg/gms/maps/BackendMap;IIIILorg/oscim/backend/GL;)Landroid/graphics/Bitmap;
-    .locals 0
+    .locals 1
+    .param p0, "x0"    # Lorg/microg/gms/maps/BackendMap;
+    .param p1, "x1"    # I
+    .param p2, "x2"    # I
+    .param p3, "x3"    # I
+    .param p4, "x4"    # I
+    .param p5, "x5"    # Lorg/oscim/backend/GL;
 
+    .prologue
     .line 55
     invoke-direct/range {p0 .. p5}, Lorg/microg/gms/maps/BackendMap;->createBitmapFromGLSurface(IIIILorg/oscim/backend/GL;)Landroid/graphics/Bitmap;
 
-    move-result-object p0
+    move-result-object v0
 
-    return-object p0
+    return-object v0
 .end method
 
 .method private createBitmapFromGLSurface(IIIILorg/oscim/backend/GL;)Landroid/graphics/Bitmap;
-    .locals 14
+    .locals 21
+    .param p1, "x"    # I
+    .param p2, "y"    # I
+    .param p3, "w"    # I
+    .param p4, "h"    # I
+    .param p5, "gl"    # Lorg/oscim/backend/GL;
 
-    move/from16 v9, p3
+    .prologue
+    .line 275
+    mul-int v2, p3, p4
 
-    move/from16 v10, p4
+    new-array v10, v2, [I
 
-    mul-int v1, v9, v10
+    .line 276
+    .local v10, "bitmapBuffer":[I
+    mul-int v2, p3, p4
+
+    new-array v11, v2, [I
+
+    .line 277
+    .local v11, "bitmapSource":[I
+    invoke-static {v10}, Ljava/nio/IntBuffer;->wrap([I)Ljava/nio/IntBuffer;
+
+    move-result-object v9
+
+    .line 278
+    .local v9, "intBuffer":Ljava/nio/IntBuffer;
+    const/4 v2, 0x0
+
+    invoke-virtual {v9, v2}, Ljava/nio/IntBuffer;->position(I)Ljava/nio/Buffer;
+
+    .line 281
+    const/16 v7, 0x1908
+
+    const/16 v8, 0x1401
+
+    move-object/from16 v2, p5
+
+    move/from16 v3, p1
+
+    move/from16 v4, p2
+
+    move/from16 v5, p3
+
+    move/from16 v6, p4
+
+    :try_start_0
+    invoke-interface/range {v2 .. v9}, Lorg/oscim/backend/GL;->readPixels(IIIIIILjava/nio/Buffer;)V
+
+    .line 283
+    const/4 v14, 0x0
+
+    .local v14, "i":I
+    :goto_0
+    move/from16 v0, p4
+
+    if-ge v14, v0, :cond_1
+
+    .line 284
+    mul-int v16, v14, p3
+
+    .line 285
+    .local v16, "offset1":I
+    sub-int v2, p4, v14
+
+    add-int/lit8 v2, v2, -0x1
+
+    mul-int v17, v2, p3
+
+    .line 286
+    .local v17, "offset2":I
+    const/4 v15, 0x0
+
+    .local v15, "j":I
+    :goto_1
+    move/from16 v0, p3
+
+    if-ge v15, v0, :cond_0
+
+    .line 287
+    add-int v2, v16, v15
+
+    aget v20, v10, v2
 
     .line 288
-    new-array v11, v1, [I
+    .local v20, "texturePixel":I
+    shr-int/lit8 v2, v20, 0x10
+
+    and-int/lit16 v12, v2, 0xff
 
     .line 289
-    new-array v12, v1, [I
+    .local v12, "blue":I
+    shl-int/lit8 v2, v20, 0x10
+
+    const/high16 v3, 0xff0000
+
+    and-int v19, v2, v3
 
     .line 290
-    invoke-static {v11}, Ljava/nio/IntBuffer;->wrap([I)Ljava/nio/IntBuffer;
+    .local v19, "red":I
+    const v2, -0xff0100
 
-    move-result-object v8
+    and-int v2, v2, v20
 
-    const/4 v13, 0x0
+    or-int v2, v2, v19
+
+    or-int v18, v2, v12
 
     .line 291
-    invoke-virtual {v8, v13}, Ljava/nio/IntBuffer;->position(I)Ljava/nio/Buffer;
+    .local v18, "pixel":I
+    add-int v2, v17, v15
 
-    const/16 v6, 0x1908
-
-    const/16 v7, 0x1401
-
-    move-object/from16 v1, p5
-
-    move v2, p1
-
-    move/from16 v3, p2
-
-    move v4, v9
-
-    move v5, v10
-
-    .line 294
-    :try_start_0
-    invoke-interface/range {v1 .. v8}, Lorg/oscim/backend/GL;->readPixels(IIIIIILjava/nio/Buffer;)V
-
-    move v1, v13
-
-    :goto_0
-    if-ge v1, v10, :cond_1
-
-    mul-int v2, v1, v9
-
-    sub-int v3, v10, v1
-
-    add-int/lit8 v3, v3, -0x1
-
-    mul-int/2addr v3, v9
-
-    move v4, v13
-
-    :goto_1
-    if-ge v4, v9, :cond_0
-
-    add-int v5, v2, v4
-
-    .line 300
-    aget v5, v11, v5
-
-    shr-int/lit8 v6, v5, 0x10
-
-    and-int/lit16 v6, v6, 0xff
-
-    shl-int/lit8 v7, v5, 0x10
-
-    const/high16 v8, 0xff0000
-
-    and-int/2addr v7, v8
-
-    const v8, -0xff0100
-
-    and-int/2addr v5, v8
-
-    or-int/2addr v5, v7
-
-    or-int/2addr v5, v6
-
-    add-int v6, v3, v4
-
-    .line 304
-    aput v5, v12, v6
+    aput v18, v11, v2
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    add-int/lit8 v4, v4, 0x1
+    .line 286
+    add-int/lit8 v15, v15, 0x1
 
     goto :goto_1
 
+    .line 283
+    .end local v12    # "blue":I
+    .end local v18    # "pixel":I
+    .end local v19    # "red":I
+    .end local v20    # "texturePixel":I
     :cond_0
-    add-int/lit8 v1, v1, 0x1
+    add-int/lit8 v14, v14, 0x1
 
     goto :goto_0
 
-    .line 312
-    :cond_1
-    sget-object v1, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
-
-    invoke-static {v12, v9, v10, v1}, Landroid/graphics/Bitmap;->createBitmap([IIILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-
-    move-result-object v1
-
-    return-object v1
-
+    .line 294
+    .end local v14    # "i":I
+    .end local v15    # "j":I
+    .end local v16    # "offset1":I
+    .end local v17    # "offset2":I
     :catch_0
-    move-exception v0
+    move-exception v13
 
-    move-object v1, v0
-
+    .line 295
+    .local v13, "e":Ljava/lang/Exception;
     const-string v2, "GmsMapBackend"
 
-    .line 308
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
@@ -300,148 +326,126 @@
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+    move-result-object v3
+
+    invoke-virtual {v13}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
 
     move-result-object v4
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    move-result-object v3
+
     invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v3
 
-    invoke-static {v2, v3, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-static {v2, v3, v13}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    const/4 v1, 0x0
+    .line 296
+    const/4 v2, 0x0
 
-    return-object v1
-.end method
+    .line 299
+    .end local v13    # "e":Ljava/lang/Exception;
+    :goto_2
+    return-object v2
 
-.method private getByUid(Ljava/lang/String;)Lorg/oscim/layers/marker/MarkerItem;
-    .locals 3
+    .restart local v14    # "i":I
+    :cond_1
+    sget-object v2, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
 
-    .line 187
-    iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
+    move/from16 v0, p3
 
-    invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->items()Lorg/oscim/layers/marker/ItemizedLayer;
+    move/from16 v1, p4
 
-    move-result-object v0
-
-    invoke-virtual {v0}, Lorg/oscim/layers/marker/ItemizedLayer;->getItemList()Ljava/util/List;
-
-    move-result-object v0
-
-    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
-
-    move-result-object v0
-
-    :cond_0
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v1
-
-    if-eqz v1, :cond_1
-
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Lorg/oscim/layers/marker/MarkerItem;
-
-    .line 188
-    invoke-virtual {v1}, Lorg/oscim/layers/marker/MarkerItem;->getUid()Ljava/lang/Object;
+    invoke-static {v11, v0, v1, v2}, Landroid/graphics/Bitmap;->createBitmap([IIILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
 
     move-result-object v2
 
-    invoke-virtual {v2, p1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_0
-
-    return-object v1
-
-    :cond_1
-    const/4 p1, 0x0
-
-    return-object p1
+    goto :goto_2
 .end method
 
 .method private declared-synchronized updateDrawableLayer()V
-    .locals 3
+    .locals 4
 
+    .prologue
+    .line 144
     monitor-enter p0
 
-    .line 147
     :try_start_0
-    iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
-
-    invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->drawables()Lorg/microg/gms/maps/markup/ClearableVectorLayer;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Lorg/microg/gms/maps/markup/ClearableVectorLayer;->clear()V
-
-    .line 148
-    iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->drawableMarkups:Ljava/util/List;
-
-    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
-
-    move-result-object v0
-
-    :cond_0
-    :goto_0
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v1
-
-    if-eqz v1, :cond_1
-
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Lorg/microg/gms/maps/markup/DrawableMarkup;
-
-    .line 149
-    iget-object v2, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
-
-    invoke-virtual {v2}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
-
-    move-result-object v2
-
-    invoke-interface {v1, v2}, Lorg/microg/gms/maps/markup/DrawableMarkup;->getDrawable(Lorg/oscim/map/Map;)Lorg/oscim/layers/vector/geometries/Drawable;
-
-    move-result-object v1
-
-    if-eqz v1, :cond_0
-
-    .line 151
     iget-object v2, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v2}, Lorg/microg/gms/maps/BackendMapView;->drawables()Lorg/microg/gms/maps/markup/ClearableVectorLayer;
 
     move-result-object v2
 
-    invoke-virtual {v2, v1}, Lorg/microg/gms/maps/markup/ClearableVectorLayer;->add(Lorg/oscim/layers/vector/geometries/Drawable;)V
+    invoke-virtual {v2}, Lorg/microg/gms/maps/markup/ClearableVectorLayer;->clear()V
+
+    .line 145
+    iget-object v2, p0, Lorg/microg/gms/maps/BackendMap;->drawableMarkups:Ljava/util/List;
+
+    invoke-interface {v2}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    move-result-object v2
+
+    :cond_0
+    :goto_0
+    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v3
+
+    if-eqz v3, :cond_1
+
+    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lorg/microg/gms/maps/markup/DrawableMarkup;
+
+    .line 146
+    .local v1, "markup":Lorg/microg/gms/maps/markup/DrawableMarkup;
+    iget-object v3, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
+
+    invoke-virtual {v3}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
+
+    move-result-object v3
+
+    invoke-interface {v1, v3}, Lorg/microg/gms/maps/markup/DrawableMarkup;->getDrawable(Lorg/oscim/map/Map;)Lorg/oscim/layers/vector/geometries/Drawable;
+
+    move-result-object v0
+
+    .line 147
+    .local v0, "drawable":Lorg/oscim/layers/vector/geometries/Drawable;
+    if-eqz v0, :cond_0
+
+    .line 148
+    iget-object v3, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
+
+    invoke-virtual {v3}, Lorg/microg/gms/maps/BackendMapView;->drawables()Lorg/microg/gms/maps/markup/ClearableVectorLayer;
+
+    move-result-object v3
+
+    invoke-virtual {v3, v0}, Lorg/microg/gms/maps/markup/ClearableVectorLayer;->add(Lorg/oscim/layers/vector/geometries/Drawable;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     goto :goto_0
 
-    .line 154
+    .line 144
+    .end local v0    # "drawable":Lorg/oscim/layers/vector/geometries/Drawable;
+    .end local v1    # "markup":Lorg/microg/gms/maps/markup/DrawableMarkup;
+    :catchall_0
+    move-exception v2
+
+    monitor-exit p0
+
+    throw v2
+
+    .line 151
     :cond_1
     monitor-exit p0
 
     return-void
-
-    :catchall_0
-    move-exception v0
-
-    .line 146
-    monitor-exit p0
-
-    throw v0
 .end method
 
 
@@ -456,25 +460,31 @@
         }
     .end annotation
 
+    .prologue
+    .line 130
+    .local p1, "markup":Lorg/microg/gms/maps/markup/DrawableMarkup;, "TT;"
     monitor-enter p0
 
     if-nez p1, :cond_0
 
     const/4 p1, 0x0
 
-    .line 133
+    .line 140
+    .end local p1    # "markup":Lorg/microg/gms/maps/markup/DrawableMarkup;, "TT;"
+    :goto_0
     monitor-exit p0
 
     return-object p1
 
-    .line 134
+    .line 131
+    .restart local p1    # "markup":Lorg/microg/gms/maps/markup/DrawableMarkup;, "TT;"
     :cond_0
     :try_start_0
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->drawableMarkups:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 135
+    .line 132
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->drawableMarkups:Ljava/util/List;
 
     new-instance v1, Lorg/microg/gms/maps/BackendMap$1;
@@ -483,30 +493,27 @@
 
     invoke-static {v0, v1}, Ljava/util/Collections;->sort(Ljava/util/List;Ljava/util/Comparator;)V
 
-    .line 141
+    .line 138
     invoke-direct {p0}, Lorg/microg/gms/maps/BackendMap;->updateDrawableLayer()V
 
-    .line 142
+    .line 139
     invoke-virtual {p0}, Lorg/microg/gms/maps/BackendMap;->redraw()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 143
-    monitor-exit p0
+    goto :goto_0
 
-    return-object p1
-
+    .line 130
     :catchall_0
-    move-exception p1
+    move-exception v0
 
-    .line 132
     monitor-exit p0
 
-    throw p1
+    throw v0
 .end method
 
 .method public declared-synchronized add(Lorg/microg/gms/maps/markup/MarkerItemMarkup;)Lorg/microg/gms/maps/markup/MarkerItemMarkup;
-    .locals 2
+    .locals 3
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "<T::",
@@ -515,67 +522,74 @@
         }
     .end annotation
 
+    .prologue
+    .line 154
+    .local p1, "markup":Lorg/microg/gms/maps/markup/MarkerItemMarkup;, "TT;"
     monitor-enter p0
 
     if-nez p1, :cond_0
 
     const/4 p1, 0x0
 
-    .line 157
+    .line 159
+    .end local p1    # "markup":Lorg/microg/gms/maps/markup/MarkerItemMarkup;, "TT;"
+    :goto_0
     monitor-exit p0
 
     return-object p1
 
-    .line 158
+    .line 155
+    .restart local p1    # "markup":Lorg/microg/gms/maps/markup/MarkerItemMarkup;, "TT;"
     :cond_0
     :try_start_0
-    iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->markupMap:Ljava/util/Map;
+    iget-object v1, p0, Lorg/microg/gms/maps/BackendMap;->markupMap:Ljava/util/Map;
 
     invoke-interface {p1}, Lorg/microg/gms/maps/markup/MarkerItemMarkup;->getId()Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v2
 
-    invoke-interface {v0, v1, p1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {v1, v2, p1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 159
-    iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->context:Landroid/content/Context;
+    .line 156
+    iget-object v1, p0, Lorg/microg/gms/maps/BackendMap;->context:Landroid/content/Context;
 
-    invoke-interface {p1, v0}, Lorg/microg/gms/maps/markup/MarkerItemMarkup;->getMarkerItem(Landroid/content/Context;)Lorg/oscim/layers/marker/MarkerItem;
+    invoke-interface {p1, v1}, Lorg/microg/gms/maps/markup/MarkerItemMarkup;->getMarkerItem(Landroid/content/Context;)Lorg/oscim/layers/marker/MarkerItem;
 
     move-result-object v0
 
-    .line 160
+    .line 157
+    .local v0, "item":Lorg/oscim/layers/marker/MarkerItem;
     iget-object v1, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v1}, Lorg/microg/gms/maps/BackendMapView;->items()Lorg/oscim/layers/marker/ItemizedLayer;
 
     move-result-object v1
 
-    invoke-virtual {v1, v0}, Lorg/oscim/layers/marker/ItemizedLayer;->addItem(Lorg/oscim/layers/marker/MarkerInterface;)Z
+    invoke-virtual {v1, v0}, Lorg/oscim/layers/marker/ItemizedLayer;->addItem(Lorg/oscim/layers/marker/MarkerItem;)Z
 
-    .line 161
+    .line 158
     invoke-virtual {p0}, Lorg/microg/gms/maps/BackendMap;->redraw()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 162
-    monitor-exit p0
+    goto :goto_0
 
-    return-object p1
-
+    .line 154
+    .end local v0    # "item":Lorg/oscim/layers/marker/MarkerItem;
     :catchall_0
-    move-exception p1
+    move-exception v1
 
-    .line 156
     monitor-exit p0
 
-    throw p1
+    throw v1
 .end method
 
 .method public applyCameraUpdate(Lorg/microg/gms/maps/camera/CameraUpdate;)V
     .locals 1
+    .param p1, "cameraUpdate"    # Lorg/microg/gms/maps/camera/CameraUpdate;
 
-    .line 121
+    .prologue
+    .line 118
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
@@ -584,13 +598,17 @@
 
     invoke-interface {p1, v0}, Lorg/microg/gms/maps/camera/CameraUpdate;->apply(Lorg/oscim/map/Map;)V
 
+    .line 119
     return-void
 .end method
 
 .method public applyCameraUpdateAnimated(Lorg/microg/gms/maps/camera/CameraUpdate;I)V
     .locals 1
+    .param p1, "cameraUpdate"    # Lorg/microg/gms/maps/camera/CameraUpdate;
+    .param p2, "durationMs"    # I
 
-    .line 125
+    .prologue
+    .line 122
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
@@ -599,21 +617,23 @@
 
     invoke-interface {p1, v0, p2}, Lorg/microg/gms/maps/camera/CameraUpdate;->applyAnimated(Lorg/oscim/map/Map;I)V
 
+    .line 123
     return-void
 .end method
 
 .method public declared-synchronized clear()V
     .locals 1
 
+    .prologue
+    .line 163
     monitor-enter p0
 
-    .line 166
     :try_start_0
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->markupMap:Ljava/util/Map;
 
     invoke-interface {v0}, Ljava/util/Map;->clear()V
 
-    .line 167
+    .line 164
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->items()Lorg/oscim/layers/marker/ItemizedLayer;
@@ -622,12 +642,12 @@
 
     invoke-virtual {v0}, Lorg/oscim/layers/marker/ItemizedLayer;->removeAllItems()V
 
-    .line 168
+    .line 165
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->drawableMarkups:Ljava/util/List;
 
     invoke-interface {v0}, Ljava/util/List;->clear()V
 
-    .line 169
+    .line 166
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->drawables()Lorg/microg/gms/maps/markup/ClearableVectorLayer;
@@ -636,20 +656,20 @@
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/markup/ClearableVectorLayer;->clear()V
 
-    .line 170
+    .line 167
     invoke-virtual {p0}, Lorg/microg/gms/maps/BackendMap;->redraw()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 171
+    .line 168
     monitor-exit p0
 
     return-void
 
+    .line 163
     :catchall_0
     move-exception v0
 
-    .line 165
     monitor-exit p0
 
     throw v0
@@ -658,7 +678,8 @@
 .method public destroy()V
     .locals 1
 
-    .line 84
+    .prologue
+    .line 81
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
@@ -667,13 +688,15 @@
 
     invoke-virtual {v0}, Lorg/oscim/map/Map;->destroy()V
 
+    .line 82
     return-void
 .end method
 
 .method public getMapPosition()Lorg/oscim/core/MapPosition;
     .locals 1
 
-    .line 96
+    .prologue
+    .line 93
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
@@ -690,8 +713,9 @@
 .method public getView()Landroid/view/View;
     .locals 1
 
-    .line 100
-    iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->container:Lorg/microg/gms/maps/ContainerLayout;
+    .prologue
+    .line 97
+    iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     return-object v0
 .end method
@@ -699,7 +723,8 @@
 .method public getViewport()Lorg/oscim/map/Viewport;
     .locals 1
 
-    .line 80
+    .prologue
+    .line 77
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
@@ -716,7 +741,8 @@
 .method public hasBuilding()Z
     .locals 2
 
-    .line 104
+    .prologue
+    .line 101
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
@@ -741,106 +767,110 @@
 .end method
 
 .method public onInputEvent(Lorg/oscim/event/Event;Lorg/oscim/event/MotionEvent;)V
-    .locals 6
+    .locals 8
+    .param p1, "event"    # Lorg/oscim/event/Event;
+    .param p2, "motionEvent"    # Lorg/oscim/event/MotionEvent;
 
-    .line 237
+    .prologue
+    .line 224
     invoke-virtual {p2}, Lorg/oscim/event/MotionEvent;->getAction()I
 
-    move-result p1
+    move-result v3
 
-    const/4 v0, 0x3
+    const/4 v4, 0x3
 
-    if-eq p1, v0, :cond_0
+    if-eq v3, v4, :cond_0
 
     invoke-virtual {p2}, Lorg/oscim/event/MotionEvent;->getAction()I
 
-    move-result p1
+    move-result v3
 
-    const/4 v0, 0x1
+    const/4 v4, 0x1
 
-    if-ne p1, v0, :cond_1
+    if-ne v3, v4, :cond_1
 
     :cond_0
-    iget-object p1, p0, Lorg/microg/gms/maps/BackendMap;->currentlyDraggedItem:Lorg/microg/gms/maps/markup/MarkerItemMarkup;
+    iget-object v3, p0, Lorg/microg/gms/maps/BackendMap;->currentlyDraggedItem:Lorg/microg/gms/maps/markup/MarkerItemMarkup;
 
-    if-eqz p1, :cond_1
+    if-eqz v3, :cond_1
 
-    .line 238
-    iget-object p1, p0, Lorg/microg/gms/maps/BackendMap;->currentlyDraggedItem:Lorg/microg/gms/maps/markup/MarkerItemMarkup;
+    .line 225
+    iget-object v3, p0, Lorg/microg/gms/maps/BackendMap;->currentlyDraggedItem:Lorg/microg/gms/maps/markup/MarkerItemMarkup;
 
-    invoke-interface {p1}, Lorg/microg/gms/maps/markup/MarkerItemMarkup;->onDragStop()V
+    invoke-interface {v3}, Lorg/microg/gms/maps/markup/MarkerItemMarkup;->onDragStop()V
 
-    const/4 p1, 0x0
+    .line 226
+    const/4 v3, 0x0
 
-    .line 239
-    iput-object p1, p0, Lorg/microg/gms/maps/BackendMap;->currentlyDraggedItem:Lorg/microg/gms/maps/markup/MarkerItemMarkup;
+    iput-object v3, p0, Lorg/microg/gms/maps/BackendMap;->currentlyDraggedItem:Lorg/microg/gms/maps/markup/MarkerItemMarkup;
 
-    .line 241
+    .line 228
     :cond_1
     invoke-virtual {p2}, Lorg/oscim/event/MotionEvent;->getAction()I
 
-    move-result p1
+    move-result v3
 
-    if-nez p1, :cond_2
+    if-nez v3, :cond_2
 
-    .line 242
+    .line 229
     invoke-virtual {p2}, Lorg/oscim/event/MotionEvent;->getX()F
 
-    move-result p1
+    move-result v3
 
-    iput p1, p0, Lorg/microg/gms/maps/BackendMap;->dragLastX:F
+    iput v3, p0, Lorg/microg/gms/maps/BackendMap;->dragLastX:F
 
-    .line 243
+    .line 230
     invoke-virtual {p2}, Lorg/oscim/event/MotionEvent;->getY()F
 
-    move-result p1
+    move-result v3
 
-    iput p1, p0, Lorg/microg/gms/maps/BackendMap;->dragLastY:F
+    iput v3, p0, Lorg/microg/gms/maps/BackendMap;->dragLastY:F
 
-    .line 245
+    .line 232
     :cond_2
     invoke-virtual {p2}, Lorg/oscim/event/MotionEvent;->getAction()I
 
-    move-result p1
+    move-result v3
 
-    const/4 v0, 0x2
+    const/4 v4, 0x2
 
-    if-ne p1, v0, :cond_3
+    if-ne v3, v4, :cond_3
 
-    iget-object p1, p0, Lorg/microg/gms/maps/BackendMap;->currentlyDraggedItem:Lorg/microg/gms/maps/markup/MarkerItemMarkup;
+    iget-object v3, p0, Lorg/microg/gms/maps/BackendMap;->currentlyDraggedItem:Lorg/microg/gms/maps/markup/MarkerItemMarkup;
 
-    if-eqz p1, :cond_3
+    if-eqz v3, :cond_3
 
-    .line 246
-    new-instance p1, Lorg/oscim/core/Point;
+    .line 233
+    new-instance v2, Lorg/oscim/core/Point;
 
-    invoke-direct {p1}, Lorg/oscim/core/Point;-><init>()V
+    invoke-direct {v2}, Lorg/oscim/core/Point;-><init>()V
 
-    .line 247
-    iget-object v1, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
+    .line 234
+    .local v2, "out":Lorg/oscim/core/Point;
+    iget-object v3, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
-    invoke-virtual {v1}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
+    invoke-virtual {v3}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
 
-    move-result-object v1
+    move-result-object v3
 
-    invoke-virtual {v1}, Lorg/oscim/map/Map;->viewport()Lorg/oscim/map/ViewController;
+    invoke-virtual {v3}, Lorg/oscim/map/Map;->viewport()Lorg/oscim/map/ViewController;
 
-    move-result-object v1
+    move-result-object v3
 
-    iget-object v2, p0, Lorg/microg/gms/maps/BackendMap;->currentlyDraggedItem:Lorg/microg/gms/maps/markup/MarkerItemMarkup;
+    iget-object v4, p0, Lorg/microg/gms/maps/BackendMap;->currentlyDraggedItem:Lorg/microg/gms/maps/markup/MarkerItemMarkup;
 
-    invoke-interface {v2}, Lorg/microg/gms/maps/markup/MarkerItemMarkup;->getPosition()Lcom/google/android/gms/maps/model/LatLng;
+    invoke-interface {v4}, Lorg/microg/gms/maps/markup/MarkerItemMarkup;->getPosition()Lcom/google/android/gms/maps/model/LatLng;
 
-    move-result-object v2
+    move-result-object v4
 
-    invoke-static {v2}, Lorg/microg/gms/maps/GmsMapsTypeHelper;->fromLatLng(Lcom/google/android/gms/maps/model/LatLng;)Lorg/oscim/core/GeoPoint;
+    invoke-static {v4}, Lorg/microg/gms/maps/GmsMapsTypeHelper;->fromLatLng(Lcom/google/android/gms/maps/model/LatLng;)Lorg/oscim/core/GeoPoint;
 
-    move-result-object v2
+    move-result-object v4
 
-    invoke-virtual {v1, v2, p1}, Lorg/oscim/map/ViewController;->toScreenPoint(Lorg/oscim/core/GeoPoint;Lorg/oscim/core/Point;)V
+    invoke-virtual {v3, v4, v2}, Lorg/oscim/map/ViewController;->toScreenPoint(Lorg/oscim/core/GeoPoint;Lorg/oscim/core/Point;)V
 
-    .line 248
-    iget-wide v1, p1, Lorg/oscim/core/Point;->x:D
+    .line 235
+    iget-wide v4, v2, Lorg/oscim/core/Point;->x:D
 
     iget-object v3, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
@@ -848,16 +878,16 @@
 
     move-result v3
 
-    div-int/2addr v3, v0
+    div-int/lit8 v3, v3, 0x2
 
-    int-to-double v3, v3
+    int-to-double v6, v3
 
-    add-double/2addr v1, v3
+    add-double/2addr v4, v6
 
-    iput-wide v1, p1, Lorg/oscim/core/Point;->x:D
+    iput-wide v4, v2, Lorg/oscim/core/Point;->x:D
 
-    .line 249
-    iget-wide v1, p1, Lorg/oscim/core/Point;->y:D
+    .line 236
+    iget-wide v4, v2, Lorg/oscim/core/Point;->y:D
 
     iget-object v3, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
@@ -865,273 +895,296 @@
 
     move-result v3
 
-    div-int/2addr v3, v0
+    div-int/lit8 v3, v3, 0x2
 
-    int-to-double v3, v3
+    int-to-double v6, v3
 
-    add-double/2addr v1, v3
+    add-double/2addr v4, v6
 
-    iput-wide v1, p1, Lorg/oscim/core/Point;->y:D
+    iput-wide v4, v2, Lorg/oscim/core/Point;->y:D
 
-    .line 250
+    .line 237
     invoke-virtual {p2}, Lorg/oscim/event/MotionEvent;->getX()F
 
-    move-result v0
+    move-result v3
 
-    iget v1, p0, Lorg/microg/gms/maps/BackendMap;->dragLastX:F
+    iget v4, p0, Lorg/microg/gms/maps/BackendMap;->dragLastX:F
 
-    sub-float/2addr v0, v1
+    sub-float v0, v3, v4
 
-    .line 251
+    .line 238
+    .local v0, "mx":F
     invoke-virtual {p2}, Lorg/oscim/event/MotionEvent;->getY()F
 
-    move-result p2
+    move-result v3
 
-    iget v1, p0, Lorg/microg/gms/maps/BackendMap;->dragLastY:F
+    iget v4, p0, Lorg/microg/gms/maps/BackendMap;->dragLastY:F
 
-    sub-float/2addr p2, v1
+    sub-float v1, v3, v4
 
-    .line 252
-    iget-object v1, p0, Lorg/microg/gms/maps/BackendMap;->currentlyDraggedItem:Lorg/microg/gms/maps/markup/MarkerItemMarkup;
+    .line 239
+    .local v1, "my":F
+    iget-object v3, p0, Lorg/microg/gms/maps/BackendMap;->currentlyDraggedItem:Lorg/microg/gms/maps/markup/MarkerItemMarkup;
 
-    iget-object v2, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
+    iget-object v4, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
-    invoke-virtual {v2}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
+    invoke-virtual {v4}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
 
-    move-result-object v2
+    move-result-object v4
 
-    invoke-virtual {v2}, Lorg/oscim/map/Map;->viewport()Lorg/oscim/map/ViewController;
+    invoke-virtual {v4}, Lorg/oscim/map/Map;->viewport()Lorg/oscim/map/ViewController;
 
-    move-result-object v2
+    move-result-object v4
 
-    invoke-virtual {p1}, Lorg/oscim/core/Point;->getX()D
+    invoke-virtual {v2}, Lorg/oscim/core/Point;->getX()D
 
-    move-result-wide v3
+    move-result-wide v6
 
-    double-to-float v3, v3
+    double-to-float v5, v6
+
+    add-float/2addr v5, v0
+
+    invoke-virtual {v2}, Lorg/oscim/core/Point;->getY()D
+
+    move-result-wide v6
+
+    double-to-float v6, v6
+
+    add-float/2addr v6, v1
+
+    invoke-virtual {v4, v5, v6}, Lorg/oscim/map/ViewController;->fromScreenPoint(FF)Lorg/oscim/core/GeoPoint;
+
+    move-result-object v4
+
+    invoke-static {v4}, Lorg/microg/gms/maps/GmsMapsTypeHelper;->toLatLng(Lorg/oscim/core/GeoPoint;)Lcom/google/android/gms/maps/model/LatLng;
+
+    move-result-object v4
+
+    invoke-interface {v3, v4}, Lorg/microg/gms/maps/markup/MarkerItemMarkup;->setPosition(Lcom/google/android/gms/maps/model/LatLng;)V
+
+    .line 240
+    iget-object v3, p0, Lorg/microg/gms/maps/BackendMap;->currentlyDraggedItem:Lorg/microg/gms/maps/markup/MarkerItemMarkup;
+
+    invoke-interface {v3}, Lorg/microg/gms/maps/markup/MarkerItemMarkup;->onDragProgress()V
+
+    .line 241
+    iget v3, p0, Lorg/microg/gms/maps/BackendMap;->dragLastX:F
 
     add-float/2addr v3, v0
 
-    invoke-virtual {p1}, Lorg/oscim/core/Point;->getY()D
+    iput v3, p0, Lorg/microg/gms/maps/BackendMap;->dragLastX:F
 
-    move-result-wide v4
+    .line 242
+    iget v3, p0, Lorg/microg/gms/maps/BackendMap;->dragLastY:F
 
-    double-to-float p1, v4
+    add-float/2addr v3, v1
 
-    add-float/2addr p1, p2
+    iput v3, p0, Lorg/microg/gms/maps/BackendMap;->dragLastY:F
 
-    invoke-virtual {v2, v3, p1}, Lorg/oscim/map/ViewController;->fromScreenPoint(FF)Lorg/oscim/core/GeoPoint;
-
-    move-result-object p1
-
-    invoke-static {p1}, Lorg/microg/gms/maps/GmsMapsTypeHelper;->toLatLng(Lorg/oscim/core/GeoPoint;)Lcom/google/android/gms/maps/model/LatLng;
-
-    move-result-object p1
-
-    invoke-interface {v1, p1}, Lorg/microg/gms/maps/markup/MarkerItemMarkup;->setPosition(Lcom/google/android/gms/maps/model/LatLng;)V
-
-    .line 253
-    iget-object p1, p0, Lorg/microg/gms/maps/BackendMap;->currentlyDraggedItem:Lorg/microg/gms/maps/markup/MarkerItemMarkup;
-
-    invoke-interface {p1}, Lorg/microg/gms/maps/markup/MarkerItemMarkup;->onDragProgress()V
-
-    .line 254
-    iget p1, p0, Lorg/microg/gms/maps/BackendMap;->dragLastX:F
-
-    add-float/2addr p1, v0
-
-    iput p1, p0, Lorg/microg/gms/maps/BackendMap;->dragLastX:F
-
-    .line 255
-    iget p1, p0, Lorg/microg/gms/maps/BackendMap;->dragLastY:F
-
-    add-float/2addr p1, p2
-
-    iput p1, p0, Lorg/microg/gms/maps/BackendMap;->dragLastY:F
-
+    .line 244
+    .end local v0    # "mx":F
+    .end local v1    # "my":F
+    .end local v2    # "out":Lorg/oscim/core/Point;
     :cond_3
     return-void
 .end method
 
 .method public bridge synthetic onItemLongPress(ILjava/lang/Object;)Z
-    .locals 0
+    .locals 1
 
+    .prologue
     .line 55
     check-cast p2, Lorg/oscim/layers/marker/MarkerItem;
 
     invoke-virtual {p0, p1, p2}, Lorg/microg/gms/maps/BackendMap;->onItemLongPress(ILorg/oscim/layers/marker/MarkerItem;)Z
 
-    move-result p1
+    move-result v0
 
-    return p1
+    return v0
 .end method
 
 .method public onItemLongPress(ILorg/oscim/layers/marker/MarkerItem;)Z
-    .locals 3
+    .locals 5
+    .param p1, "index"    # I
+    .param p2, "item"    # Lorg/oscim/layers/marker/MarkerItem;
 
-    .line 224
-    iget-object p1, p0, Lorg/microg/gms/maps/BackendMap;->markupMap:Ljava/util/Map;
+    .prologue
+    const/4 v4, 0x0
+
+    .line 211
+    iget-object v1, p0, Lorg/microg/gms/maps/BackendMap;->markupMap:Ljava/util/Map;
 
     invoke-virtual {p2}, Lorg/oscim/layers/marker/MarkerItem;->getUid()Ljava/lang/Object;
 
-    move-result-object p2
+    move-result-object v2
 
-    invoke-interface {p1, p2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {v1, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object p1
+    move-result-object v0
 
-    check-cast p1, Lorg/microg/gms/maps/markup/Markup;
+    check-cast v0, Lorg/microg/gms/maps/markup/Markup;
 
-    .line 225
-    move-object p2, p1
+    .local v0, "markup":Lorg/microg/gms/maps/markup/Markup;
+    move-object v1, v0
 
-    check-cast p2, Lorg/microg/gms/maps/markup/MarkerItemMarkup;
+    .line 212
+    check-cast v1, Lorg/microg/gms/maps/markup/MarkerItemMarkup;
 
-    invoke-interface {p2}, Lorg/microg/gms/maps/markup/MarkerItemMarkup;->isDraggable()Z
+    invoke-interface {v1}, Lorg/microg/gms/maps/markup/MarkerItemMarkup;->isDraggable()Z
 
-    move-result v0
+    move-result v1
 
-    const/4 v1, 0x0
+    if-eqz v1, :cond_0
 
-    if-eqz v0, :cond_0
+    .line 213
+    check-cast v0, Lorg/microg/gms/maps/markup/MarkerItemMarkup;
 
-    .line 226
-    iput-object p2, p0, Lorg/microg/gms/maps/BackendMap;->currentlyDraggedItem:Lorg/microg/gms/maps/markup/MarkerItemMarkup;
+    .end local v0    # "markup":Lorg/microg/gms/maps/markup/Markup;
+    iput-object v0, p0, Lorg/microg/gms/maps/BackendMap;->currentlyDraggedItem:Lorg/microg/gms/maps/markup/MarkerItemMarkup;
 
-    .line 227
-    iget-object p1, p0, Lorg/microg/gms/maps/BackendMap;->currentlyDraggedItem:Lorg/microg/gms/maps/markup/MarkerItemMarkup;
+    .line 214
+    iget-object v1, p0, Lorg/microg/gms/maps/BackendMap;->currentlyDraggedItem:Lorg/microg/gms/maps/markup/MarkerItemMarkup;
 
-    invoke-interface {p1}, Lorg/microg/gms/maps/markup/MarkerItemMarkup;->onDragStart()V
+    invoke-interface {v1}, Lorg/microg/gms/maps/markup/MarkerItemMarkup;->onDragStart()V
 
-    return v1
+    .line 218
+    :goto_0
+    return v4
 
+    .line 217
+    .restart local v0    # "markup":Lorg/microg/gms/maps/markup/Markup;
     :cond_0
-    const-string p2, "GmsMapBackend"
+    const-string v1, "GmsMapBackend"
 
-    .line 230
-    new-instance v0, Ljava/lang/StringBuilder;
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "onItemLongPress: "
+    const-string v3, "onItemLongPress: "
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    move-result-object v2
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v2
 
-    invoke-static {p2, p1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    return v1
+    move-result-object v2
+
+    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto :goto_0
 .end method
 
 .method public bridge synthetic onItemSingleTapUp(ILjava/lang/Object;)Z
-    .locals 0
+    .locals 1
 
+    .prologue
     .line 55
     check-cast p2, Lorg/oscim/layers/marker/MarkerItem;
 
     invoke-virtual {p0, p1, p2}, Lorg/microg/gms/maps/BackendMap;->onItemSingleTapUp(ILorg/oscim/layers/marker/MarkerItem;)Z
 
-    move-result p1
+    move-result v0
 
-    return p1
+    return v0
 .end method
 
 .method public onItemSingleTapUp(ILorg/oscim/layers/marker/MarkerItem;)Z
-    .locals 0
+    .locals 3
+    .param p1, "index"    # I
+    .param p2, "item"    # Lorg/oscim/layers/marker/MarkerItem;
 
-    .line 215
-    iget-object p1, p0, Lorg/microg/gms/maps/BackendMap;->markupMap:Ljava/util/Map;
+    .prologue
+    .line 202
+    iget-object v1, p0, Lorg/microg/gms/maps/BackendMap;->markupMap:Ljava/util/Map;
 
     invoke-virtual {p2}, Lorg/oscim/layers/marker/MarkerItem;->getUid()Ljava/lang/Object;
 
-    move-result-object p2
+    move-result-object v2
 
-    invoke-interface {p1, p2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {v1, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object p1
+    move-result-object v0
 
-    check-cast p1, Lorg/microg/gms/maps/markup/Markup;
+    check-cast v0, Lorg/microg/gms/maps/markup/Markup;
 
-    if-eqz p1, :cond_0
+    .line 203
+    .local v0, "markup":Lorg/microg/gms/maps/markup/Markup;
+    if-eqz v0, :cond_0
 
-    .line 217
-    invoke-interface {p1}, Lorg/microg/gms/maps/markup/Markup;->onClick()Z
+    .line 204
+    invoke-interface {v0}, Lorg/microg/gms/maps/markup/Markup;->onClick()Z
 
-    move-result p1
+    move-result v1
 
-    if-eqz p1, :cond_0
+    if-eqz v1, :cond_0
 
-    const/4 p1, 0x1
+    const/4 v1, 0x1
 
-    return p1
+    .line 206
+    :goto_0
+    return v1
 
     :cond_0
-    const/4 p1, 0x0
+    const/4 v1, 0x0
 
-    return p1
+    goto :goto_0
 .end method
 
 .method public onMapEvent(Lorg/oscim/event/Event;Lorg/oscim/core/MapPosition;)V
-    .locals 1
+    .locals 2
+    .param p1, "event"    # Lorg/oscim/event/Event;
+    .param p2, "mapPosition"    # Lorg/oscim/core/MapPosition;
 
-    .line 333
-    sget-object v0, Lorg/oscim/map/Map;->ANIM_END:Lorg/oscim/event/Event;
-
-    if-eq p1, v0, :cond_0
-
-    sget-object v0, Lorg/oscim/map/Map;->POSITION_EVENT:Lorg/oscim/event/Event;
-
-    if-eq p1, v0, :cond_0
-
-    sget-object v0, Lorg/oscim/map/Map;->MOVE_EVENT:Lorg/oscim/event/Event;
-
-    if-ne p1, v0, :cond_1
-
-    .line 334
-    :cond_0
-    iget-object p1, p0, Lorg/microg/gms/maps/BackendMap;->cameraUpdateListener:Lorg/microg/gms/maps/BackendMap$CameraUpdateListener;
+    .prologue
+    .line 320
+    iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->cameraUpdateListener:Lorg/microg/gms/maps/BackendMap$CameraUpdateListener;
 
     invoke-static {p2}, Lorg/microg/gms/maps/GmsMapsTypeHelper;->toCameraPosition(Lorg/oscim/core/MapPosition;)Lcom/google/android/gms/maps/model/CameraPosition;
 
-    move-result-object p2
+    move-result-object v1
 
-    invoke-interface {p1, p2}, Lorg/microg/gms/maps/BackendMap$CameraUpdateListener;->onCameraUpdate(Lcom/google/android/gms/maps/model/CameraPosition;)V
+    invoke-interface {v0, v1}, Lorg/microg/gms/maps/BackendMap$CameraUpdateListener;->onCameraUpdate(Lcom/google/android/gms/maps/model/CameraPosition;)V
 
-    :cond_1
+    .line 321
     return-void
 .end method
 
 .method public onPause()V
     .locals 1
 
-    .line 92
+    .prologue
+    .line 89
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->onPause()V
 
+    .line 90
     return-void
 .end method
 
 .method public onResume()V
     .locals 1
 
-    .line 88
+    .prologue
+    .line 85
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->onResume()V
 
+    .line 86
     return-void
 .end method
 
 .method public redraw()V
     .locals 2
 
-    .line 117
+    .prologue
+    .line 114
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
@@ -1142,21 +1195,24 @@
 
     invoke-virtual {v0, v1}, Lorg/oscim/map/Map;->updateMap(Z)V
 
+    .line 115
     return-void
 .end method
 
 .method public declared-synchronized remove(Lorg/microg/gms/maps/markup/Markup;)V
-    .locals 2
+    .locals 3
+    .param p1, "markup"    # Lorg/microg/gms/maps/markup/Markup;
 
+    .prologue
+    .line 171
     monitor-enter p0
 
-    .line 174
     :try_start_0
     instance-of v0, p1, Lorg/microg/gms/maps/markup/MarkerItemMarkup;
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_1
 
-    .line 175
+    .line 172
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->markupMap:Ljava/util/Map;
 
     invoke-interface {p1}, Lorg/microg/gms/maps/markup/Markup;->getId()Ljava/lang/String;
@@ -1165,222 +1221,246 @@
 
     invoke-interface {v0, v1}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 176
-    invoke-interface {p1}, Lorg/microg/gms/maps/markup/Markup;->getId()Ljava/lang/String;
-
-    move-result-object p1
-
-    invoke-direct {p0, p1}, Lorg/microg/gms/maps/BackendMap;->getByUid(Ljava/lang/String;)Lorg/oscim/layers/marker/MarkerItem;
-
-    move-result-object p1
-
-    if-eqz p1, :cond_1
-
-    .line 177
+    .line 173
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->items()Lorg/oscim/layers/marker/ItemizedLayer;
 
     move-result-object v0
 
-    invoke-virtual {v0, p1}, Lorg/oscim/layers/marker/ItemizedLayer;->removeItem(Lorg/oscim/layers/marker/MarkerInterface;)Z
+    iget-object v1, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
-    goto :goto_0
+    invoke-virtual {v1}, Lorg/microg/gms/maps/BackendMapView;->items()Lorg/oscim/layers/marker/ItemizedLayer;
 
-    .line 178
-    :cond_0
-    instance-of v0, p1, Lorg/microg/gms/maps/markup/DrawableMarkup;
+    move-result-object v1
 
-    if-eqz v0, :cond_1
+    invoke-interface {p1}, Lorg/microg/gms/maps/markup/Markup;->getId()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Lorg/oscim/layers/marker/ItemizedLayer;->getByUid(Ljava/lang/Object;)Lorg/oscim/layers/marker/MarkerItem;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Lorg/oscim/layers/marker/ItemizedLayer;->removeItem(Lorg/oscim/layers/marker/MarkerItem;)Z
 
     .line 179
-    iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->drawableMarkups:Ljava/util/List;
-
-    invoke-interface {v0, p1}, Ljava/util/List;->remove(Ljava/lang/Object;)Z
-
-    .line 180
-    invoke-direct {p0}, Lorg/microg/gms/maps/BackendMap;->updateDrawableLayer()V
-
-    .line 181
-    iget-object p1, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
-
-    invoke-virtual {p1}, Lorg/microg/gms/maps/BackendMapView;->drawables()Lorg/microg/gms/maps/markup/ClearableVectorLayer;
-
-    move-result-object p1
-
-    invoke-virtual {p1}, Lorg/microg/gms/maps/markup/ClearableVectorLayer;->update()V
-
-    .line 183
-    :cond_1
+    :cond_0
     :goto_0
     invoke-virtual {p0}, Lorg/microg/gms/maps/BackendMap;->redraw()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 184
+    .line 180
     monitor-exit p0
 
     return-void
 
-    :catchall_0
-    move-exception p1
+    .line 174
+    :cond_1
+    :try_start_1
+    instance-of v0, p1, Lorg/microg/gms/maps/markup/DrawableMarkup;
 
-    .line 173
-    monitor-exit p0
+    if-eqz v0, :cond_0
 
-    throw p1
-.end method
+    .line 175
+    iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->drawableMarkups:Ljava/util/List;
 
-.method public setBuildings(Z)V
-    .locals 1
+    invoke-interface {v0, p1}, Ljava/util/List;->remove(Ljava/lang/Object;)Z
 
-    .line 108
-    invoke-virtual {p0}, Lorg/microg/gms/maps/BackendMap;->hasBuilding()Z
+    .line 176
+    invoke-direct {p0}, Lorg/microg/gms/maps/BackendMap;->updateDrawableLayer()V
 
-    move-result v0
-
-    if-nez v0, :cond_0
-
-    if-eqz p1, :cond_0
-
-    .line 109
-    iget-object p1, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
-
-    invoke-virtual {p1}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
-
-    move-result-object p1
-
-    invoke-virtual {p1}, Lorg/oscim/map/Map;->layers()Lorg/oscim/map/Layers;
-
-    move-result-object p1
-
+    .line 177
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
-    invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->buildings()Lorg/oscim/layers/tile/buildings/BuildingLayer;
+    invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->drawables()Lorg/microg/gms/maps/markup/ClearableVectorLayer;
 
     move-result-object v0
 
-    invoke-virtual {p1, v0}, Lorg/oscim/map/Layers;->add(Ljava/lang/Object;)Z
+    invoke-virtual {v0}, Lorg/microg/gms/maps/markup/ClearableVectorLayer;->update()V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     goto :goto_0
 
-    .line 110
-    :cond_0
+    .line 171
+    :catchall_0
+    move-exception v0
+
+    monitor-exit p0
+
+    throw v0
+.end method
+
+.method public setBuildings(Z)V
+    .locals 2
+    .param p1, "buildingsEnabled"    # Z
+
+    .prologue
+    .line 105
     invoke-virtual {p0}, Lorg/microg/gms/maps/BackendMap;->hasBuilding()Z
 
     move-result v0
 
-    if-eqz v0, :cond_1
+    if-nez v0, :cond_1
 
-    if-nez p1, :cond_1
+    if-eqz p1, :cond_1
 
-    .line 111
-    iget-object p1, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
-
-    invoke-virtual {p1}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
-
-    move-result-object p1
-
-    invoke-virtual {p1}, Lorg/oscim/map/Map;->layers()Lorg/oscim/map/Layers;
-
-    move-result-object p1
-
-    iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
-
-    invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->buildings()Lorg/oscim/layers/tile/buildings/BuildingLayer;
-
-    move-result-object v0
-
-    invoke-virtual {p1, v0}, Lorg/oscim/map/Layers;->remove(Ljava/lang/Object;)Z
-
-    .line 113
-    :cond_1
-    :goto_0
-    invoke-virtual {p0}, Lorg/microg/gms/maps/BackendMap;->redraw()V
-
-    return-void
-.end method
-
-.method public setRotateGesturesEnabled(Z)V
-    .locals 1
-
-    .line 324
+    .line 106
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
 
     move-result-object v0
 
-    invoke-virtual {v0}, Lorg/oscim/map/Map;->getEventLayer()Lorg/oscim/layers/AbstractMapEventLayer;
+    invoke-virtual {v0}, Lorg/oscim/map/Map;->layers()Lorg/oscim/map/Layers;
 
     move-result-object v0
 
-    invoke-virtual {v0, p1}, Lorg/oscim/layers/AbstractMapEventLayer;->enableRotation(Z)V
+    iget-object v1, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
+    invoke-virtual {v1}, Lorg/microg/gms/maps/BackendMapView;->buildings()Lorg/oscim/layers/tile/buildings/BuildingLayer;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Lorg/oscim/map/Layers;->add(Ljava/lang/Object;)Z
+
+    .line 110
+    :cond_0
+    :goto_0
+    invoke-virtual {p0}, Lorg/microg/gms/maps/BackendMap;->redraw()V
+
+    .line 111
+    return-void
+
+    .line 107
+    :cond_1
+    invoke-virtual {p0}, Lorg/microg/gms/maps/BackendMap;->hasBuilding()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    if-nez p1, :cond_0
+
+    .line 108
+    iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
+
+    invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lorg/oscim/map/Map;->layers()Lorg/oscim/map/Layers;
+
+    move-result-object v0
+
+    iget-object v1, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
+
+    invoke-virtual {v1}, Lorg/microg/gms/maps/BackendMapView;->buildings()Lorg/oscim/layers/tile/buildings/BuildingLayer;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Lorg/oscim/map/Layers;->remove(Ljava/lang/Object;)Z
+
+    goto :goto_0
+.end method
+
+.method public setRotateGesturesEnabled(Z)V
+    .locals 1
+    .param p1, "enabled"    # Z
+
+    .prologue
+    .line 311
+    iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
+
+    invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lorg/oscim/map/Map;->getEventLayer()Lorg/oscim/layers/MapEventLayer;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p1}, Lorg/oscim/layers/MapEventLayer;->enableRotation(Z)V
+
+    .line 312
     return-void
 .end method
 
 .method public setScrollGesturesEnabled(Z)V
     .locals 1
+    .param p1, "enabled"    # Z
 
-    .line 320
+    .prologue
+    .line 307
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
 
     move-result-object v0
 
-    invoke-virtual {v0}, Lorg/oscim/map/Map;->getEventLayer()Lorg/oscim/layers/AbstractMapEventLayer;
+    invoke-virtual {v0}, Lorg/oscim/map/Map;->getEventLayer()Lorg/oscim/layers/MapEventLayer;
 
     move-result-object v0
 
-    invoke-virtual {v0, p1}, Lorg/oscim/layers/AbstractMapEventLayer;->enableMove(Z)V
+    invoke-virtual {v0, p1}, Lorg/oscim/layers/MapEventLayer;->enableMove(Z)V
 
+    .line 308
     return-void
 .end method
 
 .method public setTiltGesturesEnabled(Z)V
     .locals 1
+    .param p1, "enabled"    # Z
 
-    .line 328
+    .prologue
+    .line 315
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
 
     move-result-object v0
 
-    invoke-virtual {v0}, Lorg/oscim/map/Map;->getEventLayer()Lorg/oscim/layers/AbstractMapEventLayer;
+    invoke-virtual {v0}, Lorg/oscim/map/Map;->getEventLayer()Lorg/oscim/layers/MapEventLayer;
 
     move-result-object v0
 
-    invoke-virtual {v0, p1}, Lorg/oscim/layers/AbstractMapEventLayer;->enableTilt(Z)V
+    invoke-virtual {v0, p1}, Lorg/oscim/layers/MapEventLayer;->enableTilt(Z)V
 
+    .line 316
     return-void
 .end method
 
 .method public setZoomGesturesEnabled(Z)V
     .locals 1
+    .param p1, "enabled"    # Z
 
-    .line 316
+    .prologue
+    .line 303
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
 
     move-result-object v0
 
-    invoke-virtual {v0}, Lorg/oscim/map/Map;->getEventLayer()Lorg/oscim/layers/AbstractMapEventLayer;
+    invoke-virtual {v0}, Lorg/oscim/map/Map;->getEventLayer()Lorg/oscim/layers/MapEventLayer;
 
     move-result-object v0
 
-    invoke-virtual {v0, p1}, Lorg/oscim/layers/AbstractMapEventLayer;->enableZoom(Z)V
+    invoke-virtual {v0, p1}, Lorg/oscim/layers/MapEventLayer;->enableZoom(Z)V
 
+    .line 304
     return-void
 .end method
 
 .method public snapshot(Landroid/graphics/Bitmap;Lcom/google/android/gms/maps/internal/ISnapshotReadyCallback;)V
     .locals 2
+    .param p1, "bitmap"    # Landroid/graphics/Bitmap;
+    .param p2, "callback"    # Lcom/google/android/gms/maps/internal/ISnapshotReadyCallback;
 
-    .line 260
+    .prologue
+    .line 247
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     new-instance v1, Lorg/microg/gms/maps/BackendMap$2;
@@ -1389,13 +1469,15 @@
 
     invoke-virtual {v0, v1}, Lorg/microg/gms/maps/BackendMapView;->queueEvent(Ljava/lang/Runnable;)V
 
+    .line 272
     return-void
 .end method
 
 .method public stopAnimation()V
     .locals 1
 
-    .line 129
+    .prologue
+    .line 126
     iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->map()Lorg/oscim/map/Map;
@@ -1408,106 +1490,125 @@
 
     invoke-virtual {v0}, Lorg/oscim/map/Animator;->cancel()V
 
+    .line 127
     return-void
 .end method
 
 .method public declared-synchronized update(Lorg/microg/gms/maps/markup/Markup;)V
-    .locals 2
+    .locals 3
+    .param p1, "markup"    # Lorg/microg/gms/maps/markup/Markup;
 
+    .prologue
+    .line 183
     monitor-enter p0
 
     if-nez p1, :cond_0
 
-    .line 196
+    .line 198
+    .end local p1    # "markup":Lorg/microg/gms/maps/markup/Markup;
+    :goto_0
     monitor-exit p0
 
     return-void
 
-    .line 197
+    .line 184
+    .restart local p1    # "markup":Lorg/microg/gms/maps/markup/Markup;
     :cond_0
     :try_start_0
-    instance-of v0, p1, Lorg/microg/gms/maps/markup/MarkerItemMarkup;
+    instance-of v1, p1, Lorg/microg/gms/maps/markup/MarkerItemMarkup;
 
-    if-eqz v0, :cond_2
+    if-eqz v1, :cond_3
 
-    .line 198
-    invoke-interface {p1}, Lorg/microg/gms/maps/markup/Markup;->getId()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-direct {p0, v0}, Lorg/microg/gms/maps/BackendMap;->getByUid(Ljava/lang/String;)Lorg/oscim/layers/marker/MarkerItem;
-
-    move-result-object v0
-
-    if-eqz v0, :cond_1
-
-    .line 200
+    .line 185
     iget-object v1, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
     invoke-virtual {v1}, Lorg/microg/gms/maps/BackendMapView;->items()Lorg/oscim/layers/marker/ItemizedLayer;
 
     move-result-object v1
 
-    invoke-virtual {v1, v0}, Lorg/oscim/layers/marker/ItemizedLayer;->removeItem(Lorg/oscim/layers/marker/MarkerInterface;)Z
+    invoke-interface {p1}, Lorg/microg/gms/maps/markup/Markup;->getId()Ljava/lang/String;
 
-    .line 202
-    :cond_1
-    check-cast p1, Lorg/microg/gms/maps/markup/MarkerItemMarkup;
+    move-result-object v2
 
-    iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->context:Landroid/content/Context;
-
-    invoke-interface {p1, v0}, Lorg/microg/gms/maps/markup/MarkerItemMarkup;->getMarkerItem(Landroid/content/Context;)Lorg/oscim/layers/marker/MarkerItem;
-
-    move-result-object p1
-
-    if-eqz p1, :cond_3
-
-    .line 204
-    iget-object v0, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
-
-    invoke-virtual {v0}, Lorg/microg/gms/maps/BackendMapView;->items()Lorg/oscim/layers/marker/ItemizedLayer;
+    invoke-virtual {v1, v2}, Lorg/oscim/layers/marker/ItemizedLayer;->getByUid(Ljava/lang/Object;)Lorg/oscim/layers/marker/MarkerItem;
 
     move-result-object v0
 
-    invoke-virtual {v0, p1}, Lorg/oscim/layers/marker/ItemizedLayer;->addItem(Lorg/oscim/layers/marker/MarkerInterface;)Z
+    .line 186
+    .local v0, "item":Lorg/oscim/layers/marker/MarkerItem;
+    if-eqz v0, :cond_1
 
-    goto :goto_0
+    .line 187
+    iget-object v1, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
-    .line 206
+    invoke-virtual {v1}, Lorg/microg/gms/maps/BackendMapView;->items()Lorg/oscim/layers/marker/ItemizedLayer;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v0}, Lorg/oscim/layers/marker/ItemizedLayer;->removeItem(Lorg/oscim/layers/marker/MarkerItem;)Z
+
+    .line 189
+    :cond_1
+    check-cast p1, Lorg/microg/gms/maps/markup/MarkerItemMarkup;
+
+    .end local p1    # "markup":Lorg/microg/gms/maps/markup/Markup;
+    iget-object v1, p0, Lorg/microg/gms/maps/BackendMap;->context:Landroid/content/Context;
+
+    invoke-interface {p1, v1}, Lorg/microg/gms/maps/markup/MarkerItemMarkup;->getMarkerItem(Landroid/content/Context;)Lorg/oscim/layers/marker/MarkerItem;
+
+    move-result-object v0
+
+    .line 190
+    if-eqz v0, :cond_2
+
+    .line 191
+    iget-object v1, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
+
+    invoke-virtual {v1}, Lorg/microg/gms/maps/BackendMapView;->items()Lorg/oscim/layers/marker/ItemizedLayer;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v0}, Lorg/oscim/layers/marker/ItemizedLayer;->addItem(Lorg/oscim/layers/marker/MarkerItem;)Z
+
+    .line 197
+    .end local v0    # "item":Lorg/oscim/layers/marker/MarkerItem;
     :cond_2
-    instance-of p1, p1, Lorg/microg/gms/maps/markup/DrawableMarkup;
-
-    if-eqz p1, :cond_3
-
-    .line 207
-    invoke-direct {p0}, Lorg/microg/gms/maps/BackendMap;->updateDrawableLayer()V
-
-    .line 208
-    iget-object p1, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
-
-    invoke-virtual {p1}, Lorg/microg/gms/maps/BackendMapView;->drawables()Lorg/microg/gms/maps/markup/ClearableVectorLayer;
-
-    move-result-object p1
-
-    invoke-virtual {p1}, Lorg/microg/gms/maps/markup/ClearableVectorLayer;->update()V
-
-    .line 210
-    :cond_3
-    :goto_0
+    :goto_1
     invoke-virtual {p0}, Lorg/microg/gms/maps/BackendMap;->redraw()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 211
+    goto :goto_0
+
+    .line 183
+    :catchall_0
+    move-exception v1
+
     monitor-exit p0
 
-    return-void
+    throw v1
 
-    :catchall_0
-    move-exception p1
+    .line 193
+    .restart local p1    # "markup":Lorg/microg/gms/maps/markup/Markup;
+    :cond_3
+    :try_start_1
+    instance-of v1, p1, Lorg/microg/gms/maps/markup/DrawableMarkup;
+
+    if-eqz v1, :cond_2
+
+    .line 194
+    invoke-direct {p0}, Lorg/microg/gms/maps/BackendMap;->updateDrawableLayer()V
 
     .line 195
-    monitor-exit p0
+    iget-object v1, p0, Lorg/microg/gms/maps/BackendMap;->mapView:Lorg/microg/gms/maps/BackendMapView;
 
-    throw p1
+    invoke-virtual {v1}, Lorg/microg/gms/maps/BackendMapView;->drawables()Lorg/microg/gms/maps/markup/ClearableVectorLayer;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Lorg/microg/gms/maps/markup/ClearableVectorLayer;->update()V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    goto :goto_1
 .end method

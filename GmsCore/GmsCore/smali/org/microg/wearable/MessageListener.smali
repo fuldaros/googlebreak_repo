@@ -14,6 +14,7 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 30
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -25,6 +26,7 @@
 .method public getConnection()Lorg/microg/wearable/WearableConnection;
     .locals 1
 
+    .prologue
     .line 44
     iget-object v0, p0, Lorg/microg/wearable/MessageListener;->connection:Lorg/microg/wearable/WearableConnection;
 
@@ -42,21 +44,26 @@
 
 .method public onConnected(Lorg/microg/wearable/WearableConnection;)V
     .locals 0
+    .param p1, "connection"    # Lorg/microg/wearable/WearableConnection;
 
+    .prologue
     .line 35
     iput-object p1, p0, Lorg/microg/wearable/MessageListener;->connection:Lorg/microg/wearable/WearableConnection;
 
+    .line 36
     return-void
 .end method
 
 .method public onDisconnected()V
     .locals 1
 
+    .prologue
+    .line 40
     const/4 v0, 0x0
 
-    .line 40
     iput-object v0, p0, Lorg/microg/wearable/MessageListener;->connection:Lorg/microg/wearable/WearableConnection;
 
+    .line 41
     return-void
 .end method
 
@@ -70,159 +77,142 @@
 .end method
 
 .method public onMessage(Lorg/microg/wearable/WearableConnection;Lorg/microg/wearable/proto/RootMessage;)V
-    .locals 2
+    .locals 1
+    .param p1, "connection"    # Lorg/microg/wearable/WearableConnection;
+    .param p2, "message"    # Lorg/microg/wearable/proto/RootMessage;
 
+    .prologue
     .line 49
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->setAsset:Lorg/microg/wearable/proto/SetAsset;
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->setAsset:Lorg/microg/wearable/proto/SetAsset;
 
-    if-eqz p1, :cond_0
+    if-eqz v0, :cond_1
 
     .line 50
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->setAsset:Lorg/microg/wearable/proto/SetAsset;
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->setAsset:Lorg/microg/wearable/proto/SetAsset;
 
-    invoke-virtual {p0, p1}, Lorg/microg/wearable/MessageListener;->onSetAsset(Lorg/microg/wearable/proto/SetAsset;)V
+    invoke-virtual {p0, v0}, Lorg/microg/wearable/MessageListener;->onSetAsset(Lorg/microg/wearable/proto/SetAsset;)V
 
-    goto/16 :goto_0
+    .line 70
+    :cond_0
+    :goto_0
+    return-void
 
     .line 51
-    :cond_0
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->ackAsset:Lorg/microg/wearable/proto/AckAsset;
+    :cond_1
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->ackAsset:Lorg/microg/wearable/proto/AckAsset;
 
-    if-eqz p1, :cond_1
+    if-eqz v0, :cond_2
 
     .line 52
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->ackAsset:Lorg/microg/wearable/proto/AckAsset;
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->ackAsset:Lorg/microg/wearable/proto/AckAsset;
 
-    invoke-virtual {p0, p1}, Lorg/microg/wearable/MessageListener;->onAckAsset(Lorg/microg/wearable/proto/AckAsset;)V
+    invoke-virtual {p0, v0}, Lorg/microg/wearable/MessageListener;->onAckAsset(Lorg/microg/wearable/proto/AckAsset;)V
 
-    goto/16 :goto_0
+    goto :goto_0
 
     .line 53
-    :cond_1
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->fetchAsset:Lorg/microg/wearable/proto/FetchAsset;
+    :cond_2
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->fetchAsset:Lorg/microg/wearable/proto/FetchAsset;
 
-    if-eqz p1, :cond_2
+    if-eqz v0, :cond_3
 
     .line 54
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->fetchAsset:Lorg/microg/wearable/proto/FetchAsset;
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->fetchAsset:Lorg/microg/wearable/proto/FetchAsset;
 
-    invoke-virtual {p0, p1}, Lorg/microg/wearable/MessageListener;->onFetchAsset(Lorg/microg/wearable/proto/FetchAsset;)V
+    invoke-virtual {p0, v0}, Lorg/microg/wearable/MessageListener;->onFetchAsset(Lorg/microg/wearable/proto/FetchAsset;)V
 
     goto :goto_0
 
     .line 55
-    :cond_2
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->connect:Lorg/microg/wearable/proto/Connect;
+    :cond_3
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->connect:Lorg/microg/wearable/proto/Connect;
 
-    if-eqz p1, :cond_3
+    if-eqz v0, :cond_4
 
     .line 56
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->connect:Lorg/microg/wearable/proto/Connect;
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->connect:Lorg/microg/wearable/proto/Connect;
 
-    invoke-virtual {p0, p1}, Lorg/microg/wearable/MessageListener;->onConnect(Lorg/microg/wearable/proto/Connect;)V
+    invoke-virtual {p0, v0}, Lorg/microg/wearable/MessageListener;->onConnect(Lorg/microg/wearable/proto/Connect;)V
 
     goto :goto_0
 
     .line 57
-    :cond_3
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->syncStart:Lorg/microg/wearable/proto/SyncStart;
+    :cond_4
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->syncStart:Lorg/microg/wearable/proto/SyncStart;
 
-    if-eqz p1, :cond_4
+    if-eqz v0, :cond_5
 
     .line 58
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->syncStart:Lorg/microg/wearable/proto/SyncStart;
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->syncStart:Lorg/microg/wearable/proto/SyncStart;
 
-    invoke-virtual {p0, p1}, Lorg/microg/wearable/MessageListener;->onSyncStart(Lorg/microg/wearable/proto/SyncStart;)V
+    invoke-virtual {p0, v0}, Lorg/microg/wearable/MessageListener;->onSyncStart(Lorg/microg/wearable/proto/SyncStart;)V
 
     goto :goto_0
 
     .line 59
-    :cond_4
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->setDataItem:Lorg/microg/wearable/proto/SetDataItem;
+    :cond_5
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->setDataItem:Lorg/microg/wearable/proto/SetDataItem;
 
-    if-eqz p1, :cond_5
+    if-eqz v0, :cond_6
 
     .line 60
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->setDataItem:Lorg/microg/wearable/proto/SetDataItem;
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->setDataItem:Lorg/microg/wearable/proto/SetDataItem;
 
-    invoke-virtual {p0, p1}, Lorg/microg/wearable/MessageListener;->onSetDataItem(Lorg/microg/wearable/proto/SetDataItem;)V
+    invoke-virtual {p0, v0}, Lorg/microg/wearable/MessageListener;->onSetDataItem(Lorg/microg/wearable/proto/SetDataItem;)V
 
     goto :goto_0
 
     .line 61
-    :cond_5
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->rpcRequest:Lorg/microg/wearable/proto/Request;
+    :cond_6
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->rpcRequest:Lorg/microg/wearable/proto/Request;
 
-    if-eqz p1, :cond_6
+    if-eqz v0, :cond_7
 
     .line 62
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->rpcRequest:Lorg/microg/wearable/proto/Request;
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->rpcRequest:Lorg/microg/wearable/proto/Request;
 
-    invoke-virtual {p0, p1}, Lorg/microg/wearable/MessageListener;->onRpcRequest(Lorg/microg/wearable/proto/Request;)V
+    invoke-virtual {p0, v0}, Lorg/microg/wearable/MessageListener;->onRpcRequest(Lorg/microg/wearable/proto/Request;)V
 
     goto :goto_0
 
     .line 63
-    :cond_6
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->heartbeat:Lorg/microg/wearable/proto/Heartbeat;
+    :cond_7
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->heartbeat:Lorg/microg/wearable/proto/Heartbeat;
 
-    if-eqz p1, :cond_7
+    if-eqz v0, :cond_8
 
     .line 64
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->heartbeat:Lorg/microg/wearable/proto/Heartbeat;
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->heartbeat:Lorg/microg/wearable/proto/Heartbeat;
 
-    invoke-virtual {p0, p1}, Lorg/microg/wearable/MessageListener;->onHeartbeat(Lorg/microg/wearable/proto/Heartbeat;)V
+    invoke-virtual {p0, v0}, Lorg/microg/wearable/MessageListener;->onHeartbeat(Lorg/microg/wearable/proto/Heartbeat;)V
 
     goto :goto_0
 
     .line 65
-    :cond_7
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->filePiece:Lorg/microg/wearable/proto/FilePiece;
+    :cond_8
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->filePiece:Lorg/microg/wearable/proto/FilePiece;
 
-    if-eqz p1, :cond_8
+    if-eqz v0, :cond_9
 
     .line 66
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->filePiece:Lorg/microg/wearable/proto/FilePiece;
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->filePiece:Lorg/microg/wearable/proto/FilePiece;
 
-    invoke-virtual {p0, p1}, Lorg/microg/wearable/MessageListener;->onFilePiece(Lorg/microg/wearable/proto/FilePiece;)V
+    invoke-virtual {p0, v0}, Lorg/microg/wearable/MessageListener;->onFilePiece(Lorg/microg/wearable/proto/FilePiece;)V
 
     goto :goto_0
 
     .line 67
-    :cond_8
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->channelRequest:Lorg/microg/wearable/proto/Request;
+    :cond_9
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->channelRequest:Lorg/microg/wearable/proto/Request;
 
-    if-eqz p1, :cond_9
+    if-eqz v0, :cond_0
 
     .line 68
-    iget-object p1, p2, Lorg/microg/wearable/proto/RootMessage;->channelRequest:Lorg/microg/wearable/proto/Request;
+    iget-object v0, p2, Lorg/microg/wearable/proto/RootMessage;->channelRequest:Lorg/microg/wearable/proto/Request;
 
-    invoke-virtual {p0, p1}, Lorg/microg/wearable/MessageListener;->onChannelRequest(Lorg/microg/wearable/proto/Request;)V
+    invoke-virtual {p0, v0}, Lorg/microg/wearable/MessageListener;->onChannelRequest(Lorg/microg/wearable/proto/Request;)V
 
     goto :goto_0
-
-    .line 70
-    :cond_9
-    sget-object p1, Ljava/lang/System;->err:Ljava/io/PrintStream;
-
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v1, "Unknown message: "
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object p2
-
-    invoke-virtual {p1, p2}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
-
-    :goto_0
-    return-void
 .end method
 
 .method public abstract onRpcRequest(Lorg/microg/wearable/proto/Request;)V

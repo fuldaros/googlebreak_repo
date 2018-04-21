@@ -7,6 +7,7 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 21
     invoke-direct {p0}, Lcom/google/android/gms/maps/model/internal/ITileOverlayDelegate$Stub;-><init>()V
 

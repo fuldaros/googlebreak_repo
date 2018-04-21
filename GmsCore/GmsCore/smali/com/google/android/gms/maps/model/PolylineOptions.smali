@@ -7,7 +7,8 @@
 .field public static CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator<",
+            "Landroid/os/Parcelable$Creator",
+            "<",
             "Lcom/google/android/gms/maps/model/PolylineOptions;",
             ">;"
         }
@@ -31,7 +32,8 @@
 .field private points:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Lcom/google/android/gms/maps/model/LatLng;",
             ">;"
         }
@@ -72,6 +74,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
+    .prologue
     .line 120
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -87,44 +90,46 @@
 .method public constructor <init>()V
     .locals 2
 
+    .prologue
+    const/4 v1, 0x1
+
     .line 49
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    const/4 v0, 0x1
-
     .line 34
-    iput v0, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->versionCode:I
+    iput v1, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->versionCode:I
 
     .line 36
-    new-instance v1, Ljava/util/ArrayList;
+    new-instance v0, Ljava/util/ArrayList;
 
-    invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
-    iput-object v1, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->points:Ljava/util/List;
-
-    const/high16 v1, 0x41200000    # 10.0f
+    iput-object v0, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->points:Ljava/util/List;
 
     .line 38
-    iput v1, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->width:F
+    const/high16 v0, 0x41200000    # 10.0f
 
-    const/high16 v1, -0x1000000
+    iput v0, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->width:F
 
     .line 40
-    iput v1, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->color:I
+    const/high16 v0, -0x1000000
 
-    const/4 v1, 0x0
+    iput v0, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->color:I
 
     .line 42
-    iput v1, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->zIndex:F
-
-    .line 44
-    iput-boolean v0, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->visible:Z
-
     const/4 v0, 0x0
 
+    iput v0, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->zIndex:F
+
+    .line 44
+    iput-boolean v1, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->visible:Z
+
     .line 46
+    const/4 v0, 0x0
+
     iput-boolean v0, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->geodesic:Z
 
+    .line 50
     return-void
 .end method
 
@@ -132,25 +137,32 @@
 # virtual methods
 .method public color(I)Lcom/google/android/gms/maps/model/PolylineOptions;
     .locals 0
+    .param p1, "color"    # I
 
+    .prologue
     .line 72
     iput p1, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->color:I
 
+    .line 73
     return-object p0
 .end method
 
 .method public geodesic(Z)Lcom/google/android/gms/maps/model/PolylineOptions;
     .locals 0
+    .param p1, "geodesic"    # Z
 
+    .prologue
     .line 77
     iput-boolean p1, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->geodesic:Z
 
+    .line 78
     return-object p0
 .end method
 
 .method public getColor()I
     .locals 1
 
+    .prologue
     .line 82
     iget v0, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->color:I
 
@@ -162,12 +174,14 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Lcom/google/android/gms/maps/model/LatLng;",
             ">;"
         }
     .end annotation
 
+    .prologue
     .line 86
     iget-object v0, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->points:Ljava/util/List;
 
@@ -177,6 +191,7 @@
 .method public getWidth()F
     .locals 1
 
+    .prologue
     .line 90
     iget v0, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->width:F
 
@@ -186,6 +201,7 @@
 .method public getZIndex()F
     .locals 1
 
+    .prologue
     .line 94
     iget v0, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->zIndex:F
 
@@ -195,6 +211,7 @@
 .method public isGeodesic()Z
     .locals 1
 
+    .prologue
     .line 98
     iget-boolean v0, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->geodesic:Z
 
@@ -204,6 +221,7 @@
 .method public isVisible()Z
     .locals 1
 
+    .prologue
     .line 102
     iget-boolean v0, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->visible:Z
 
@@ -212,27 +230,36 @@
 
 .method public visible(Z)Lcom/google/android/gms/maps/model/PolylineOptions;
     .locals 0
+    .param p1, "visible"    # Z
 
+    .prologue
     .line 106
     iput-boolean p1, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->visible:Z
 
+    .line 107
     return-object p0
 .end method
 
 .method public width(F)Lcom/google/android/gms/maps/model/PolylineOptions;
     .locals 0
+    .param p1, "width"    # F
 
+    .prologue
     .line 111
     iput p1, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->width:F
 
+    .line 112
     return-object p0
 .end method
 
 .method public zIndex(F)Lcom/google/android/gms/maps/model/PolylineOptions;
     .locals 0
+    .param p1, "zIndex"    # F
 
+    .prologue
     .line 116
     iput p1, p0, Lcom/google/android/gms/maps/model/PolylineOptions;->zIndex:F
 
+    .line 117
     return-object p0
 .end method

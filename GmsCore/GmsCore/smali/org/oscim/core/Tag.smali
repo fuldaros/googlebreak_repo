@@ -15,288 +15,328 @@
 
 # direct methods
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;)V
-    .locals 1
+    .locals 2
+    .param p1, "key"    # Ljava/lang/String;
+    .param p2, "value"    # Ljava/lang/String;
 
-    .line 120
+    .prologue
+    const/4 v1, 0x0
+
+    .line 70
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 62
     const/4 v0, 0x0
 
-    .line 114
     iput v0, p0, Lorg/oscim/core/Tag;->hashCodeValue:I
 
-    const/4 v0, 0x0
-
+    .line 71
     if-nez p1, :cond_0
 
-    move-object p1, v0
+    move-object v0, v1
 
-    goto :goto_0
+    :goto_0
+    iput-object v0, p0, Lorg/oscim/core/Tag;->key:Ljava/lang/String;
 
-    .line 121
+    .line 72
+    if-nez p2, :cond_1
+
+    :goto_1
+    iput-object v1, p0, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
+
+    .line 73
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lorg/oscim/core/Tag;->intern:Z
+
+    .line 74
+    return-void
+
+    .line 71
     :cond_0
     invoke-virtual {p1}, Ljava/lang/String;->intern()Ljava/lang/String;
 
-    move-result-object p1
+    move-result-object v0
 
-    :goto_0
-    iput-object p1, p0, Lorg/oscim/core/Tag;->key:Ljava/lang/String;
+    goto :goto_0
 
-    if-nez p2, :cond_1
-
-    goto :goto_1
-
-    .line 122
+    .line 72
     :cond_1
     invoke-virtual {p2}, Ljava/lang/String;->intern()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v1
 
-    :goto_1
-    iput-object v0, p0, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
-
-    const/4 p1, 0x1
-
-    .line 123
-    iput-boolean p1, p0, Lorg/oscim/core/Tag;->intern:Z
-
-    return-void
+    goto :goto_1
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;Z)V
     .locals 1
+    .param p1, "key"    # Ljava/lang/String;
+    .param p2, "value"    # Ljava/lang/String;
+    .param p3, "internValue"    # Z
 
-    .line 133
+    .prologue
+    .line 86
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 62
     const/4 v0, 0x0
 
-    .line 114
     iput v0, p0, Lorg/oscim/core/Tag;->hashCodeValue:I
 
-    .line 134
+    .line 87
     iput-object p1, p0, Lorg/oscim/core/Tag;->key:Ljava/lang/String;
 
-    if-eqz p2, :cond_1
+    .line 88
+    if-eqz p2, :cond_0
 
-    if-nez p3, :cond_0
+    if-nez p3, :cond_1
 
-    goto :goto_0
-
-    .line 135
+    .end local p2    # "value":Ljava/lang/String;
     :cond_0
+    :goto_0
+    iput-object p2, p0, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
+
+    .line 89
+    iput-boolean p3, p0, Lorg/oscim/core/Tag;->intern:Z
+
+    .line 90
+    return-void
+
+    .line 88
+    .restart local p2    # "value":Ljava/lang/String;
+    :cond_1
     invoke-virtual {p2}, Ljava/lang/String;->intern()Ljava/lang/String;
 
     move-result-object p2
 
-    :cond_1
-    :goto_0
-    iput-object p2, p0, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
-
-    .line 136
-    iput-boolean p3, p0, Lorg/oscim/core/Tag;->intern:Z
-
-    return-void
+    goto :goto_0
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;ZZ)V
     .locals 1
+    .param p1, "key"    # Ljava/lang/String;
+    .param p2, "value"    # Ljava/lang/String;
+    .param p3, "internKey"    # Z
+    .param p4, "internValue"    # Z
 
-    .line 139
+    .prologue
+    .line 92
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 62
     const/4 v0, 0x0
 
-    .line 114
     iput v0, p0, Lorg/oscim/core/Tag;->hashCodeValue:I
 
-    if-eqz p1, :cond_1
+    .line 93
+    if-eqz p1, :cond_0
 
-    if-nez p3, :cond_0
+    if-nez p3, :cond_2
 
-    goto :goto_0
-
-    .line 140
+    .end local p1    # "key":Ljava/lang/String;
     :cond_0
+    :goto_0
+    iput-object p1, p0, Lorg/oscim/core/Tag;->key:Ljava/lang/String;
+
+    .line 94
+    if-eqz p2, :cond_1
+
+    if-nez p4, :cond_3
+
+    .end local p2    # "value":Ljava/lang/String;
+    :cond_1
+    :goto_1
+    iput-object p2, p0, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
+
+    .line 95
+    iput-boolean p4, p0, Lorg/oscim/core/Tag;->intern:Z
+
+    .line 96
+    return-void
+
+    .line 93
+    .restart local p1    # "key":Ljava/lang/String;
+    .restart local p2    # "value":Ljava/lang/String;
+    :cond_2
     invoke-virtual {p1}, Ljava/lang/String;->intern()Ljava/lang/String;
 
     move-result-object p1
 
-    :cond_1
-    :goto_0
-    iput-object p1, p0, Lorg/oscim/core/Tag;->key:Ljava/lang/String;
+    goto :goto_0
 
-    if-eqz p2, :cond_3
-
-    if-nez p4, :cond_2
-
-    goto :goto_1
-
-    .line 141
-    :cond_2
+    .line 94
+    .end local p1    # "key":Ljava/lang/String;
+    :cond_3
     invoke-virtual {p2}, Ljava/lang/String;->intern()Ljava/lang/String;
 
     move-result-object p2
 
-    :cond_3
-    :goto_1
-    iput-object p2, p0, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
-
-    .line 142
-    iput-boolean p4, p0, Lorg/oscim/core/Tag;->intern:Z
-
-    return-void
+    goto :goto_1
 .end method
 
 .method private calculateHashCode()I
-    .locals 3
+    .locals 4
 
-    .line 191
-    iget-object v0, p0, Lorg/oscim/core/Tag;->key:Ljava/lang/String;
+    .prologue
+    const/4 v2, 0x0
 
-    const/4 v1, 0x0
+    .line 143
+    const/4 v0, 0x7
 
-    if-nez v0, :cond_0
+    .line 144
+    .local v0, "result":I
+    iget-object v1, p0, Lorg/oscim/core/Tag;->key:Ljava/lang/String;
 
-    move v0, v1
+    if-nez v1, :cond_0
 
-    goto :goto_0
-
-    :cond_0
-    iget-object v0, p0, Lorg/oscim/core/Tag;->key:Ljava/lang/String;
-
-    invoke-virtual {v0}, Ljava/lang/String;->hashCode()I
-
-    move-result v0
+    move v1, v2
 
     :goto_0
-    const/16 v2, 0xd9
+    add-int/lit16 v0, v1, 0xd9
 
-    add-int/2addr v2, v0
+    .line 145
+    mul-int/lit8 v1, v0, 0x1f
 
-    const/16 v0, 0x1f
+    iget-object v3, p0, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
 
-    mul-int/2addr v0, v2
+    if-nez v3, :cond_1
 
-    .line 192
-    iget-object v2, p0, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
+    :goto_1
+    add-int v0, v1, v2
 
-    if-nez v2, :cond_1
+    .line 146
+    return v0
 
-    goto :goto_1
-
-    :cond_1
-    iget-object v1, p0, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
+    .line 144
+    :cond_0
+    iget-object v1, p0, Lorg/oscim/core/Tag;->key:Ljava/lang/String;
 
     invoke-virtual {v1}, Ljava/lang/String;->hashCode()I
 
     move-result v1
 
-    :goto_1
-    add-int/2addr v0, v1
+    goto :goto_0
 
-    return v0
+    .line 145
+    :cond_1
+    iget-object v2, p0, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
+
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
+
+    move-result v2
+
+    goto :goto_1
 .end method
 
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 4
+    .locals 5
+    .param p1, "obj"    # Ljava/lang/Object;
 
-    const/4 v0, 0x1
-
-    if-ne p0, p1, :cond_0
-
-    return v0
-
-    .line 149
-    :cond_0
-    instance-of v1, p1, Lorg/oscim/core/Tag;
+    .prologue
+    const/4 v1, 0x1
 
     const/4 v2, 0x0
 
-    if-nez v1, :cond_1
+    .line 100
+    if-ne p0, p1, :cond_1
 
-    return v2
+    .line 117
+    :cond_0
+    :goto_0
+    return v1
 
-    .line 152
+    .line 102
     :cond_1
-    check-cast p1, Lorg/oscim/core/Tag;
+    instance-of v3, p1, Lorg/oscim/core/Tag;
 
-    .line 154
-    iget-object v1, p0, Lorg/oscim/core/Tag;->key:Ljava/lang/String;
+    if-nez v3, :cond_2
 
-    iget-object v3, p1, Lorg/oscim/core/Tag;->key:Ljava/lang/String;
+    move v1, v2
 
-    invoke-static {v1, v3}, Lorg/oscim/utils/Utils;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+    .line 103
+    goto :goto_0
 
-    move-result v1
-
-    if-nez v1, :cond_2
-
-    return v2
-
-    .line 157
     :cond_2
-    iget-boolean v1, p0, Lorg/oscim/core/Tag;->intern:Z
+    move-object v0, p1
 
-    if-eqz v1, :cond_3
+    .line 105
+    check-cast v0, Lorg/oscim/core/Tag;
 
-    iget-boolean v1, p1, Lorg/oscim/core/Tag;->intern:Z
+    .line 107
+    .local v0, "other":Lorg/oscim/core/Tag;
+    iget-object v3, p0, Lorg/oscim/core/Tag;->key:Ljava/lang/String;
 
-    if-eqz v1, :cond_3
+    iget-object v4, v0, Lorg/oscim/core/Tag;->key:Ljava/lang/String;
 
-    .line 158
-    iget-object v1, p0, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
+    if-eq v3, v4, :cond_3
 
-    iget-object p1, p1, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
+    move v1, v2
 
-    invoke-static {v1, p1}, Lorg/oscim/utils/Utils;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+    .line 108
+    goto :goto_0
 
-    move-result p1
-
-    if-eqz p1, :cond_4
-
-    return v0
-
-    .line 161
+    .line 110
     :cond_3
-    iget-boolean v1, p0, Lorg/oscim/core/Tag;->intern:Z
+    iget-boolean v3, p0, Lorg/oscim/core/Tag;->intern:Z
 
-    if-nez v1, :cond_4
+    if-eqz v3, :cond_5
 
-    iget-object v1, p0, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
+    iget-boolean v3, v0, Lorg/oscim/core/Tag;->intern:Z
 
-    iget-object p1, p1, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
+    if-eqz v3, :cond_5
 
-    invoke-virtual {v1, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    .line 111
+    iget-object v3, p0, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
 
-    move-result p1
+    iget-object v4, v0, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
 
-    if-eqz p1, :cond_4
-
-    return v0
+    if-eq v3, v4, :cond_0
 
     :cond_4
-    return v2
+    move v1, v2
+
+    .line 117
+    goto :goto_0
+
+    .line 114
+    :cond_5
+    iget-boolean v3, p0, Lorg/oscim/core/Tag;->intern:Z
+
+    if-nez v3, :cond_4
+
+    iget-object v3, p0, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
+
+    iget-object v4, v0, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
+
+    invoke-virtual {v3, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_4
+
+    goto :goto_0
 .end method
 
 .method public hashCode()I
     .locals 1
 
-    .line 169
+    .prologue
+    .line 122
     iget v0, p0, Lorg/oscim/core/Tag;->hashCodeValue:I
 
     if-nez v0, :cond_0
 
-    .line 170
+    .line 123
     invoke-direct {p0}, Lorg/oscim/core/Tag;->calculateHashCode()I
 
     move-result v0
 
     iput v0, p0, Lorg/oscim/core/Tag;->hashCodeValue:I
 
-    .line 172
+    .line 125
     :cond_0
     iget v0, p0, Lorg/oscim/core/Tag;->hashCodeValue:I
 
@@ -306,37 +346,48 @@
 .method public toString()Ljava/lang/String;
     .locals 2
 
-    .line 177
+    .prologue
+    .line 130
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
     const-string v1, "Tag["
 
-    .line 178
+    .line 131
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     iget-object v1, p0, Lorg/oscim/core/Tag;->key:Ljava/lang/String;
 
-    .line 179
+    .line 132
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     const/16 v1, 0x2c
 
-    .line 180
+    .line 133
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     iget-object v1, p0, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
 
-    .line 181
+    .line 134
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     const/16 v1, 0x5d
 
-    .line 182
+    .line 135
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 183
+    move-result-object v0
+
+    .line 136
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0

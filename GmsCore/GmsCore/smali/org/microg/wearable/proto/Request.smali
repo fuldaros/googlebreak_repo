@@ -96,29 +96,30 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    const/4 v0, 0x0
+    .prologue
+    const/4 v1, 0x0
 
     .line 15
-    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v1
+    move-result-object v0
 
-    sput-object v1, Lorg/microg/wearable/proto/Request;->DEFAULT_REQUESTID:Ljava/lang/Integer;
+    sput-object v0, Lorg/microg/wearable/proto/Request;->DEFAULT_REQUESTID:Ljava/lang/Integer;
 
     .line 19
-    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v1
+    move-result-object v0
 
-    sput-object v1, Lorg/microg/wearable/proto/Request;->DEFAULT_UNKNOWN5:Ljava/lang/Integer;
+    sput-object v0, Lorg/microg/wearable/proto/Request;->DEFAULT_UNKNOWN5:Ljava/lang/Integer;
 
     .line 21
-    sget-object v1, Lokio/ByteString;->EMPTY:Lokio/ByteString;
+    sget-object v0, Lokio/ByteString;->EMPTY:Lokio/ByteString;
 
-    sput-object v1, Lorg/microg/wearable/proto/Request;->DEFAULT_RAWDATA:Lokio/ByteString;
+    sput-object v0, Lorg/microg/wearable/proto/Request;->DEFAULT_RAWDATA:Lokio/ByteString;
 
     .line 23
-    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v0
 
@@ -129,7 +130,18 @@
 
 .method public constructor <init>(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Lokio/ByteString;Ljava/lang/String;Lorg/microg/wearable/proto/ChannelRequest;Ljava/lang/Integer;)V
     .locals 0
+    .param p1, "requestId"    # Ljava/lang/Integer;
+    .param p2, "packageName"    # Ljava/lang/String;
+    .param p3, "signatureDigest"    # Ljava/lang/String;
+    .param p4, "targetNodeId"    # Ljava/lang/String;
+    .param p5, "unknown5"    # Ljava/lang/Integer;
+    .param p6, "path"    # Ljava/lang/String;
+    .param p7, "rawData"    # Lokio/ByteString;
+    .param p8, "sourceNodeId"    # Ljava/lang/String;
+    .param p9, "request"    # Lorg/microg/wearable/proto/ChannelRequest;
+    .param p10, "generation"    # Ljava/lang/Integer;
 
+    .prologue
     .line 55
     invoke-direct {p0}, Lcom/squareup/wire/Message;-><init>()V
 
@@ -163,12 +175,15 @@
     .line 65
     iput-object p10, p0, Lorg/microg/wearable/proto/Request;->generation:Ljava/lang/Integer;
 
+    .line 66
     return-void
 .end method
 
 .method private constructor <init>(Lorg/microg/wearable/proto/Request$Builder;)V
     .locals 11
+    .param p1, "builder"    # Lorg/microg/wearable/proto/Request$Builder;
 
+    .prologue
     .line 69
     iget-object v1, p1, Lorg/microg/wearable/proto/Request$Builder;->requestId:Ljava/lang/Integer;
 
@@ -197,12 +212,16 @@
     .line 70
     invoke-virtual {p0, p1}, Lorg/microg/wearable/proto/Request;->setBuilder(Lcom/squareup/wire/Message$Builder;)V
 
+    .line 71
     return-void
 .end method
 
 .method synthetic constructor <init>(Lorg/microg/wearable/proto/Request$Builder;Lorg/microg/wearable/proto/Request$1;)V
     .locals 0
+    .param p1, "x0"    # Lorg/microg/wearable/proto/Request$Builder;
+    .param p2, "x1"    # Lorg/microg/wearable/proto/Request$1;
 
+    .prologue
     .line 13
     invoke-direct {p0, p1}, Lorg/microg/wearable/proto/Request;-><init>(Lorg/microg/wearable/proto/Request$Builder;)V
 
@@ -212,222 +231,218 @@
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 4
+    .locals 5
+    .param p1, "other"    # Ljava/lang/Object;
 
-    const/4 v0, 0x1
-
-    if-ne p1, p0, :cond_0
-
-    return v0
-
-    .line 76
-    :cond_0
-    instance-of v1, p1, Lorg/microg/wearable/proto/Request;
+    .prologue
+    const/4 v1, 0x1
 
     const/4 v2, 0x0
 
-    if-nez v1, :cond_1
-
-    return v2
-
-    .line 77
-    :cond_1
-    check-cast p1, Lorg/microg/wearable/proto/Request;
-
-    .line 78
-    iget-object v1, p0, Lorg/microg/wearable/proto/Request;->requestId:Ljava/lang/Integer;
-
-    iget-object v3, p1, Lorg/microg/wearable/proto/Request;->requestId:Ljava/lang/Integer;
-
-    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/wearable/proto/Request;->packageName:Ljava/lang/String;
-
-    iget-object v3, p1, Lorg/microg/wearable/proto/Request;->packageName:Ljava/lang/String;
-
-    .line 79
-    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/wearable/proto/Request;->signatureDigest:Ljava/lang/String;
-
-    iget-object v3, p1, Lorg/microg/wearable/proto/Request;->signatureDigest:Ljava/lang/String;
-
-    .line 80
-    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/wearable/proto/Request;->targetNodeId:Ljava/lang/String;
-
-    iget-object v3, p1, Lorg/microg/wearable/proto/Request;->targetNodeId:Ljava/lang/String;
-
-    .line 81
-    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/wearable/proto/Request;->unknown5:Ljava/lang/Integer;
-
-    iget-object v3, p1, Lorg/microg/wearable/proto/Request;->unknown5:Ljava/lang/Integer;
-
-    .line 82
-    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/wearable/proto/Request;->path:Ljava/lang/String;
-
-    iget-object v3, p1, Lorg/microg/wearable/proto/Request;->path:Ljava/lang/String;
-
-    .line 83
-    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/wearable/proto/Request;->rawData:Lokio/ByteString;
-
-    iget-object v3, p1, Lorg/microg/wearable/proto/Request;->rawData:Lokio/ByteString;
-
-    .line 84
-    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/wearable/proto/Request;->sourceNodeId:Ljava/lang/String;
-
-    iget-object v3, p1, Lorg/microg/wearable/proto/Request;->sourceNodeId:Ljava/lang/String;
-
-    .line 85
-    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/wearable/proto/Request;->request:Lorg/microg/wearable/proto/ChannelRequest;
-
-    iget-object v3, p1, Lorg/microg/wearable/proto/Request;->request:Lorg/microg/wearable/proto/ChannelRequest;
-
-    .line 86
-    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/wearable/proto/Request;->generation:Ljava/lang/Integer;
-
-    iget-object p1, p1, Lorg/microg/wearable/proto/Request;->generation:Ljava/lang/Integer;
+    .line 75
+    if-ne p1, p0, :cond_1
 
     .line 87
-    invoke-virtual {p0, v1, p1}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+    :cond_0
+    :goto_0
+    return v1
 
-    move-result p1
+    .line 76
+    :cond_1
+    instance-of v3, p1, Lorg/microg/wearable/proto/Request;
 
-    if-eqz p1, :cond_2
+    if-nez v3, :cond_2
+
+    move v1, v2
 
     goto :goto_0
 
     :cond_2
-    move v0, v2
+    move-object v0, p1
 
-    :goto_0
-    return v0
+    .line 77
+    check-cast v0, Lorg/microg/wearable/proto/Request;
+
+    .line 78
+    .local v0, "o":Lorg/microg/wearable/proto/Request;
+    iget-object v3, p0, Lorg/microg/wearable/proto/Request;->requestId:Ljava/lang/Integer;
+
+    iget-object v4, v0, Lorg/microg/wearable/proto/Request;->requestId:Ljava/lang/Integer;
+
+    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/wearable/proto/Request;->packageName:Ljava/lang/String;
+
+    iget-object v4, v0, Lorg/microg/wearable/proto/Request;->packageName:Ljava/lang/String;
+
+    .line 79
+    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/wearable/proto/Request;->signatureDigest:Ljava/lang/String;
+
+    iget-object v4, v0, Lorg/microg/wearable/proto/Request;->signatureDigest:Ljava/lang/String;
+
+    .line 80
+    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/wearable/proto/Request;->targetNodeId:Ljava/lang/String;
+
+    iget-object v4, v0, Lorg/microg/wearable/proto/Request;->targetNodeId:Ljava/lang/String;
+
+    .line 81
+    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/wearable/proto/Request;->unknown5:Ljava/lang/Integer;
+
+    iget-object v4, v0, Lorg/microg/wearable/proto/Request;->unknown5:Ljava/lang/Integer;
+
+    .line 82
+    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/wearable/proto/Request;->path:Ljava/lang/String;
+
+    iget-object v4, v0, Lorg/microg/wearable/proto/Request;->path:Ljava/lang/String;
+
+    .line 83
+    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/wearable/proto/Request;->rawData:Lokio/ByteString;
+
+    iget-object v4, v0, Lorg/microg/wearable/proto/Request;->rawData:Lokio/ByteString;
+
+    .line 84
+    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/wearable/proto/Request;->sourceNodeId:Ljava/lang/String;
+
+    iget-object v4, v0, Lorg/microg/wearable/proto/Request;->sourceNodeId:Ljava/lang/String;
+
+    .line 85
+    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/wearable/proto/Request;->request:Lorg/microg/wearable/proto/ChannelRequest;
+
+    iget-object v4, v0, Lorg/microg/wearable/proto/Request;->request:Lorg/microg/wearable/proto/ChannelRequest;
+
+    .line 86
+    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/wearable/proto/Request;->generation:Ljava/lang/Integer;
+
+    iget-object v4, v0, Lorg/microg/wearable/proto/Request;->generation:Ljava/lang/Integer;
+
+    .line 87
+    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/Request;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_0
+
+    :cond_3
+    move v1, v2
+
+    goto :goto_0
 .end method
 
 .method public hashCode()I
-    .locals 3
+    .locals 4
+
+    .prologue
+    const/4 v1, 0x0
 
     .line 92
     iget v0, p0, Lorg/microg/wearable/proto/Request;->hashCode:I
 
-    if-nez v0, :cond_a
+    .line 93
+    .local v0, "result":I
+    if-nez v0, :cond_1
 
     .line 94
-    iget-object v0, p0, Lorg/microg/wearable/proto/Request;->requestId:Ljava/lang/Integer;
-
-    const/4 v1, 0x0
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Lorg/microg/wearable/proto/Request;->requestId:Ljava/lang/Integer;
-
-    invoke-virtual {v0}, Ljava/lang/Integer;->hashCode()I
-
-    move-result v0
-
-    goto :goto_0
-
-    :cond_0
-    move v0, v1
-
-    :goto_0
-    mul-int/lit8 v0, v0, 0x25
-
-    .line 95
-    iget-object v2, p0, Lorg/microg/wearable/proto/Request;->packageName:Ljava/lang/String;
-
-    if-eqz v2, :cond_1
-
-    iget-object v2, p0, Lorg/microg/wearable/proto/Request;->packageName:Ljava/lang/String;
-
-    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
-
-    move-result v2
-
-    goto :goto_1
-
-    :cond_1
-    move v2, v1
-
-    :goto_1
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
-
-    .line 96
-    iget-object v2, p0, Lorg/microg/wearable/proto/Request;->signatureDigest:Ljava/lang/String;
+    iget-object v2, p0, Lorg/microg/wearable/proto/Request;->requestId:Ljava/lang/Integer;
 
     if-eqz v2, :cond_2
 
+    iget-object v2, p0, Lorg/microg/wearable/proto/Request;->requestId:Ljava/lang/Integer;
+
+    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
+
+    move-result v0
+
+    .line 95
+    :goto_0
+    mul-int/lit8 v3, v0, 0x25
+
+    iget-object v2, p0, Lorg/microg/wearable/proto/Request;->packageName:Ljava/lang/String;
+
+    if-eqz v2, :cond_3
+
+    iget-object v2, p0, Lorg/microg/wearable/proto/Request;->packageName:Ljava/lang/String;
+
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
+
+    move-result v2
+
+    :goto_1
+    add-int v0, v3, v2
+
+    .line 96
+    mul-int/lit8 v3, v0, 0x25
+
+    iget-object v2, p0, Lorg/microg/wearable/proto/Request;->signatureDigest:Ljava/lang/String;
+
+    if-eqz v2, :cond_4
+
     iget-object v2, p0, Lorg/microg/wearable/proto/Request;->signatureDigest:Ljava/lang/String;
 
     invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
 
     move-result v2
 
-    goto :goto_2
-
-    :cond_2
-    move v2, v1
-
     :goto_2
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
+    add-int v0, v3, v2
 
     .line 97
+    mul-int/lit8 v3, v0, 0x25
+
     iget-object v2, p0, Lorg/microg/wearable/proto/Request;->targetNodeId:Ljava/lang/String;
 
-    if-eqz v2, :cond_3
+    if-eqz v2, :cond_5
 
     iget-object v2, p0, Lorg/microg/wearable/proto/Request;->targetNodeId:Ljava/lang/String;
 
@@ -435,20 +450,15 @@
 
     move-result v2
 
-    goto :goto_3
-
-    :cond_3
-    move v2, v1
-
     :goto_3
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
+    add-int v0, v3, v2
 
     .line 98
+    mul-int/lit8 v3, v0, 0x25
+
     iget-object v2, p0, Lorg/microg/wearable/proto/Request;->unknown5:Ljava/lang/Integer;
 
-    if-eqz v2, :cond_4
+    if-eqz v2, :cond_6
 
     iget-object v2, p0, Lorg/microg/wearable/proto/Request;->unknown5:Ljava/lang/Integer;
 
@@ -456,20 +466,15 @@
 
     move-result v2
 
-    goto :goto_4
-
-    :cond_4
-    move v2, v1
-
     :goto_4
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
+    add-int v0, v3, v2
 
     .line 99
+    mul-int/lit8 v3, v0, 0x25
+
     iget-object v2, p0, Lorg/microg/wearable/proto/Request;->path:Ljava/lang/String;
 
-    if-eqz v2, :cond_5
+    if-eqz v2, :cond_7
 
     iget-object v2, p0, Lorg/microg/wearable/proto/Request;->path:Ljava/lang/String;
 
@@ -477,20 +482,15 @@
 
     move-result v2
 
-    goto :goto_5
-
-    :cond_5
-    move v2, v1
-
     :goto_5
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
+    add-int v0, v3, v2
 
     .line 100
+    mul-int/lit8 v3, v0, 0x25
+
     iget-object v2, p0, Lorg/microg/wearable/proto/Request;->rawData:Lokio/ByteString;
 
-    if-eqz v2, :cond_6
+    if-eqz v2, :cond_8
 
     iget-object v2, p0, Lorg/microg/wearable/proto/Request;->rawData:Lokio/ByteString;
 
@@ -498,20 +498,15 @@
 
     move-result v2
 
-    goto :goto_6
-
-    :cond_6
-    move v2, v1
-
     :goto_6
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
+    add-int v0, v3, v2
 
     .line 101
+    mul-int/lit8 v3, v0, 0x25
+
     iget-object v2, p0, Lorg/microg/wearable/proto/Request;->sourceNodeId:Ljava/lang/String;
 
-    if-eqz v2, :cond_7
+    if-eqz v2, :cond_9
 
     iget-object v2, p0, Lorg/microg/wearable/proto/Request;->sourceNodeId:Ljava/lang/String;
 
@@ -519,20 +514,15 @@
 
     move-result v2
 
-    goto :goto_7
-
-    :cond_7
-    move v2, v1
-
     :goto_7
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
+    add-int v0, v3, v2
 
     .line 102
+    mul-int/lit8 v3, v0, 0x25
+
     iget-object v2, p0, Lorg/microg/wearable/proto/Request;->request:Lorg/microg/wearable/proto/ChannelRequest;
 
-    if-eqz v2, :cond_8
+    if-eqz v2, :cond_a
 
     iget-object v2, p0, Lorg/microg/wearable/proto/Request;->request:Lorg/microg/wearable/proto/ChannelRequest;
 
@@ -540,20 +530,15 @@
 
     move-result v2
 
-    goto :goto_8
-
-    :cond_8
-    move v2, v1
-
     :goto_8
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
+    add-int v0, v3, v2
 
     .line 103
-    iget-object v2, p0, Lorg/microg/wearable/proto/Request;->generation:Ljava/lang/Integer;
+    mul-int/lit8 v2, v0, 0x25
 
-    if-eqz v2, :cond_9
+    iget-object v3, p0, Lorg/microg/wearable/proto/Request;->generation:Ljava/lang/Integer;
+
+    if-eqz v3, :cond_0
 
     iget-object v1, p0, Lorg/microg/wearable/proto/Request;->generation:Ljava/lang/Integer;
 
@@ -561,12 +546,67 @@
 
     move-result v1
 
-    :cond_9
-    add-int/2addr v0, v1
+    :cond_0
+    add-int v0, v2, v1
 
     .line 104
     iput v0, p0, Lorg/microg/wearable/proto/Request;->hashCode:I
 
-    :cond_a
+    .line 106
+    :cond_1
     return v0
+
+    :cond_2
+    move v0, v1
+
+    .line 94
+    goto/16 :goto_0
+
+    :cond_3
+    move v2, v1
+
+    .line 95
+    goto :goto_1
+
+    :cond_4
+    move v2, v1
+
+    .line 96
+    goto :goto_2
+
+    :cond_5
+    move v2, v1
+
+    .line 97
+    goto :goto_3
+
+    :cond_6
+    move v2, v1
+
+    .line 98
+    goto :goto_4
+
+    :cond_7
+    move v2, v1
+
+    .line 99
+    goto :goto_5
+
+    :cond_8
+    move v2, v1
+
+    .line 100
+    goto :goto_6
+
+    :cond_9
+    move v2, v1
+
+    .line 101
+    goto :goto_7
+
+    :cond_a
+    move v2, v1
+
+    .line 102
+    goto :goto_8
 .end method

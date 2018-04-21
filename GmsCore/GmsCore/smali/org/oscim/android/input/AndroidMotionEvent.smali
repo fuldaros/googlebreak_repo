@@ -4,14 +4,15 @@
 
 
 # instance fields
-.field private mEvent:Landroid/view/MotionEvent;
+.field mEvent:Landroid/view/MotionEvent;
 
 
 # direct methods
 .method public constructor <init>()V
     .locals 0
 
-    .line 22
+    .prologue
+    .line 21
     invoke-direct {p0}, Lorg/oscim/event/MotionEvent;-><init>()V
 
     return-void
@@ -19,27 +20,11 @@
 
 
 # virtual methods
-.method public copy()Lorg/oscim/event/MotionEvent;
-    .locals 2
-
-    .line 63
-    new-instance v0, Lorg/oscim/android/input/AndroidMotionEvent;
-
-    invoke-direct {v0}, Lorg/oscim/android/input/AndroidMotionEvent;-><init>()V
-
-    iget-object v1, p0, Lorg/oscim/android/input/AndroidMotionEvent;->mEvent:Landroid/view/MotionEvent;
-
-    invoke-virtual {v0, v1}, Lorg/oscim/android/input/AndroidMotionEvent;->wrap(Landroid/view/MotionEvent;)Lorg/oscim/event/MotionEvent;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
 .method public getAction()I
     .locals 1
 
-    .line 33
+    .prologue
+    .line 32
     iget-object v0, p0, Lorg/oscim/android/input/AndroidMotionEvent;->mEvent:Landroid/view/MotionEvent;
 
     invoke-virtual {v0}, Landroid/view/MotionEvent;->getAction()I
@@ -52,7 +37,8 @@
 .method public getPointerCount()I
     .locals 1
 
-    .line 58
+    .prologue
+    .line 57
     iget-object v0, p0, Lorg/oscim/android/input/AndroidMotionEvent;->mEvent:Landroid/view/MotionEvent;
 
     invoke-virtual {v0}, Landroid/view/MotionEvent;->getPointerCount()I
@@ -65,7 +51,8 @@
 .method public getTime()J
     .locals 2
 
-    .line 73
+    .prologue
+    .line 62
     iget-object v0, p0, Lorg/oscim/android/input/AndroidMotionEvent;->mEvent:Landroid/view/MotionEvent;
 
     invoke-virtual {v0}, Landroid/view/MotionEvent;->getEventTime()J
@@ -78,7 +65,8 @@
 .method public getX()F
     .locals 1
 
-    .line 38
+    .prologue
+    .line 37
     iget-object v0, p0, Lorg/oscim/android/input/AndroidMotionEvent;->mEvent:Landroid/view/MotionEvent;
 
     invoke-virtual {v0}, Landroid/view/MotionEvent;->getX()F
@@ -90,21 +78,24 @@
 
 .method public getX(I)F
     .locals 1
+    .param p1, "pointer"    # I
 
-    .line 48
+    .prologue
+    .line 47
     iget-object v0, p0, Lorg/oscim/android/input/AndroidMotionEvent;->mEvent:Landroid/view/MotionEvent;
 
     invoke-virtual {v0, p1}, Landroid/view/MotionEvent;->getX(I)F
 
-    move-result p1
+    move-result v0
 
-    return p1
+    return v0
 .end method
 
 .method public getY()F
     .locals 1
 
-    .line 43
+    .prologue
+    .line 42
     iget-object v0, p0, Lorg/oscim/android/input/AndroidMotionEvent;->mEvent:Landroid/view/MotionEvent;
 
     invoke-virtual {v0}, Landroid/view/MotionEvent;->getY()F
@@ -116,37 +107,27 @@
 
 .method public getY(I)F
     .locals 1
+    .param p1, "pointer"    # I
 
-    .line 53
+    .prologue
+    .line 52
     iget-object v0, p0, Lorg/oscim/android/input/AndroidMotionEvent;->mEvent:Landroid/view/MotionEvent;
 
     invoke-virtual {v0, p1}, Landroid/view/MotionEvent;->getY(I)F
 
-    move-result p1
+    move-result v0
 
-    return p1
-.end method
-
-.method public recycle()V
-    .locals 1
-
-    .line 68
-    iget-object v0, p0, Lorg/oscim/android/input/AndroidMotionEvent;->mEvent:Landroid/view/MotionEvent;
-
-    invoke-virtual {v0}, Landroid/view/MotionEvent;->recycle()V
-
-    return-void
+    return v0
 .end method
 
 .method public wrap(Landroid/view/MotionEvent;)Lorg/oscim/event/MotionEvent;
     .locals 0
+    .param p1, "e"    # Landroid/view/MotionEvent;
 
-    .line 27
-    invoke-static {p1}, Landroid/view/MotionEvent;->obtain(Landroid/view/MotionEvent;)Landroid/view/MotionEvent;
-
-    move-result-object p1
-
+    .prologue
+    .line 26
     iput-object p1, p0, Lorg/oscim/android/input/AndroidMotionEvent;->mEvent:Landroid/view/MotionEvent;
 
+    .line 27
     return-object p0
 .end method

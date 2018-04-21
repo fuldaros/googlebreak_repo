@@ -26,7 +26,9 @@
 # direct methods
 .method constructor <init>(Lorg/microg/tools/selfcheck/PermissionCheckGroup;Ljava/lang/String;)V
     .locals 0
+    .param p1, "this$0"    # Lorg/microg/tools/selfcheck/PermissionCheckGroup;
 
+    .prologue
     .line 65
     iput-object p1, p0, Lorg/microg/tools/selfcheck/PermissionCheckGroup$1;->this$0:Lorg/microg/tools/selfcheck/PermissionCheckGroup;
 
@@ -41,19 +43,22 @@
 # virtual methods
 .method public tryResolve(Landroid/support/v4/app/Fragment;)V
     .locals 3
+    .param p1, "fragment"    # Landroid/support/v4/app/Fragment;
 
-    const/4 v0, 0x1
+    .prologue
+    const/4 v2, 0x0
 
     .line 69
+    const/4 v0, 0x1
+
     new-array v0, v0, [Ljava/lang/String;
 
     iget-object v1, p0, Lorg/microg/tools/selfcheck/PermissionCheckGroup$1;->val$permission:Ljava/lang/String;
-
-    const/4 v2, 0x0
 
     aput-object v1, v0, v2
 
     invoke-virtual {p1, v0, v2}, Landroid/support/v4/app/Fragment;->requestPermissions([Ljava/lang/String;I)V
 
+    .line 70
     return-void
 .end method

@@ -7,6 +7,7 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 23
     invoke-direct {p0}, Landroid/app/Service;-><init>()V
 
@@ -16,16 +17,18 @@
 
 # virtual methods
 .method public onBind(Landroid/content/Intent;)Landroid/os/IBinder;
-    .locals 0
+    .locals 1
+    .param p1, "intent"    # Landroid/content/Intent;
 
+    .prologue
     .line 26
-    new-instance p1, Lorg/microg/gms/ads/AdvertisingIdServiceImpl;
+    new-instance v0, Lorg/microg/gms/ads/AdvertisingIdServiceImpl;
 
-    invoke-direct {p1}, Lorg/microg/gms/ads/AdvertisingIdServiceImpl;-><init>()V
+    invoke-direct {v0}, Lorg/microg/gms/ads/AdvertisingIdServiceImpl;-><init>()V
 
-    invoke-virtual {p1}, Lorg/microg/gms/ads/AdvertisingIdServiceImpl;->asBinder()Landroid/os/IBinder;
+    invoke-virtual {v0}, Lorg/microg/gms/ads/AdvertisingIdServiceImpl;->asBinder()Landroid/os/IBinder;
 
-    move-result-object p1
+    move-result-object v0
 
-    return-object p1
+    return-object v0
 .end method

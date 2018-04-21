@@ -6,7 +6,10 @@
 # direct methods
 .method public static toLocationSymbol(I)C
     .locals 3
+    .param p0, "locationValue"    # I
 
+    .prologue
+    .line 78
     packed-switch p0, :pswitch_data_0
 
     .line 88
@@ -20,36 +23,47 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    move-result-object v1
+
     invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object p0
+    move-result-object v1
 
-    invoke-direct {v0, p0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
+    .line 80
     :pswitch_0
-    const/16 p0, 0x65
+    const/16 v0, 0x65
 
-    return p0
+    .line 86
+    :goto_0
+    return v0
 
+    .line 82
     :pswitch_1
-    const/16 p0, 0x62
+    const/16 v0, 0x62
 
-    return p0
+    goto :goto_0
 
+    .line 84
     :pswitch_2
-    const/16 p0, 0x69
+    const/16 v0, 0x69
 
-    return p0
+    goto :goto_0
 
+    .line 86
     :pswitch_3
-    const/16 p0, 0x2d
+    const/16 v0, 0x2d
 
-    return p0
+    goto :goto_0
 
+    .line 78
     :pswitch_data_0
     .packed-switch -0x1
         :pswitch_3

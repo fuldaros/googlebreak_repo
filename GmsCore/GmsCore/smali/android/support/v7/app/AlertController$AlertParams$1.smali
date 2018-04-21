@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Landroid/widget/ArrayAdapter<",
+        "Landroid/widget/ArrayAdapter",
+        "<",
         "Ljava/lang/CharSequence;",
         ">;"
     }
@@ -25,17 +26,22 @@
 # instance fields
 .field final synthetic this$0:Landroid/support/v7/app/AlertController$AlertParams;
 
-.field final synthetic val$listView:Landroid/support/v7/app/AlertController$RecycleListView;
+.field final synthetic val$listView:Landroid/widget/ListView;
 
 
 # direct methods
-.method constructor <init>(Landroid/support/v7/app/AlertController$AlertParams;Landroid/content/Context;II[Ljava/lang/CharSequence;Landroid/support/v7/app/AlertController$RecycleListView;)V
+.method constructor <init>(Landroid/support/v7/app/AlertController$AlertParams;Landroid/content/Context;II[Ljava/lang/CharSequence;Landroid/widget/ListView;)V
     .locals 0
+    .param p2, "x0"    # Landroid/content/Context;
+    .param p3, "x1"    # I
+    .param p4, "x2"    # I
+    .param p5, "x3"    # [Ljava/lang/CharSequence;
 
-    .line 994
+    .prologue
+    .line 886
     iput-object p1, p0, Landroid/support/v7/app/AlertController$AlertParams$1;->this$0:Landroid/support/v7/app/AlertController$AlertParams;
 
-    iput-object p6, p0, Landroid/support/v7/app/AlertController$AlertParams$1;->val$listView:Landroid/support/v7/app/AlertController$RecycleListView;
+    iput-object p6, p0, Landroid/support/v7/app/AlertController$AlertParams$1;->val$listView:Landroid/widget/ListView;
 
     invoke-direct {p0, p2, p3, p4, p5}, Landroid/widget/ArrayAdapter;-><init>(Landroid/content/Context;II[Ljava/lang/Object;)V
 
@@ -45,36 +51,45 @@
 
 # virtual methods
 .method public getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
-    .locals 1
+    .locals 4
+    .param p1, "position"    # I
+    .param p2, "convertView"    # Landroid/view/View;
+    .param p3, "parent"    # Landroid/view/ViewGroup;
 
-    .line 997
+    .prologue
+    .line 889
     invoke-super {p0, p1, p2, p3}, Landroid/widget/ArrayAdapter;->getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
 
-    move-result-object p2
+    move-result-object v1
 
-    .line 998
-    iget-object p3, p0, Landroid/support/v7/app/AlertController$AlertParams$1;->this$0:Landroid/support/v7/app/AlertController$AlertParams;
+    .line 890
+    .local v1, "view":Landroid/view/View;
+    iget-object v2, p0, Landroid/support/v7/app/AlertController$AlertParams$1;->this$0:Landroid/support/v7/app/AlertController$AlertParams;
 
-    iget-object p3, p3, Landroid/support/v7/app/AlertController$AlertParams;->mCheckedItems:[Z
+    iget-object v2, v2, Landroid/support/v7/app/AlertController$AlertParams;->mCheckedItems:[Z
 
-    if-eqz p3, :cond_0
+    if-eqz v2, :cond_0
 
-    .line 999
-    iget-object p3, p0, Landroid/support/v7/app/AlertController$AlertParams$1;->this$0:Landroid/support/v7/app/AlertController$AlertParams;
+    .line 891
+    iget-object v2, p0, Landroid/support/v7/app/AlertController$AlertParams$1;->this$0:Landroid/support/v7/app/AlertController$AlertParams;
 
-    iget-object p3, p3, Landroid/support/v7/app/AlertController$AlertParams;->mCheckedItems:[Z
+    iget-object v2, v2, Landroid/support/v7/app/AlertController$AlertParams;->mCheckedItems:[Z
 
-    aget-boolean p3, p3, p1
+    aget-boolean v0, v2, p1
 
-    if-eqz p3, :cond_0
+    .line 892
+    .local v0, "isItemChecked":Z
+    if-eqz v0, :cond_0
 
-    .line 1001
-    iget-object p3, p0, Landroid/support/v7/app/AlertController$AlertParams$1;->val$listView:Landroid/support/v7/app/AlertController$RecycleListView;
+    .line 893
+    iget-object v2, p0, Landroid/support/v7/app/AlertController$AlertParams$1;->val$listView:Landroid/widget/ListView;
 
-    const/4 v0, 0x1
+    const/4 v3, 0x1
 
-    invoke-virtual {p3, p1, v0}, Landroid/support/v7/app/AlertController$RecycleListView;->setItemChecked(IZ)V
+    invoke-virtual {v2, p1, v3}, Landroid/widget/ListView;->setItemChecked(IZ)V
 
+    .line 896
+    .end local v0    # "isItemChecked":Z
     :cond_0
-    return-object p2
+    return-object v1
 .end method

@@ -31,6 +31,9 @@
 .method public abstract getViewGroup()Landroid/view/ViewGroup;
 .end method
 
+.method public abstract getVisibility()I
+.end method
+
 .method public abstract hasExpandedActionView()Z
 .end method
 
@@ -77,9 +80,6 @@
 .end method
 
 .method public abstract setMenuPrepared()V
-.end method
-
-.method public abstract setVisibility(I)V
 .end method
 
 .method public abstract setWindowCallback(Landroid/view/Window$Callback;)V

@@ -26,8 +26,8 @@
 .field private c:Ljava/util/Comparator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/Comparator<",
-            "-TT;>;"
+            "Ljava/util/Comparator",
+            "<-TT;>;"
         }
     .end annotation
 .end field
@@ -55,140 +55,169 @@
 .method public constructor <init>()V
     .locals 2
 
-    .line 133
+    .prologue
+    .local p0, "this":Lorg/oscim/utils/TimSort;, "Lorg/oscim/utils/TimSort<TT;>;"
+    const/16 v1, 0x28
+
+    .line 127
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 88
     const/4 v0, 0x7
 
-    .line 92
     iput v0, p0, Lorg/oscim/utils/TimSort;->minGallop:I
 
+    .line 114
     const/4 v0, 0x0
 
-    .line 120
     iput v0, p0, Lorg/oscim/utils/TimSort;->stackSize:I
 
+    .line 128
     const/16 v0, 0x100
 
-    .line 134
     new-array v0, v0, [Ljava/lang/Object;
 
     check-cast v0, [Ljava/lang/Object;
 
     iput-object v0, p0, Lorg/oscim/utils/TimSort;->tmp:[Ljava/lang/Object;
 
-    const/16 v0, 0x28
+    .line 129
+    new-array v0, v1, [I
 
-    .line 135
-    new-array v1, v0, [I
+    iput-object v0, p0, Lorg/oscim/utils/TimSort;->runBase:[I
 
-    iput-object v1, p0, Lorg/oscim/utils/TimSort;->runBase:[I
-
-    .line 136
-    new-array v0, v0, [I
+    .line 130
+    new-array v0, v1, [I
 
     iput-object v0, p0, Lorg/oscim/utils/TimSort;->runLen:[I
 
+    .line 131
     return-void
 .end method
 
 .method private static binarySort([Ljava/lang/Object;IIILjava/util/Comparator;)V
-    .locals 5
+    .locals 7
+    .param p1, "lo"    # I
+    .param p2, "hi"    # I
+    .param p3, "start"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "<T:",
             "Ljava/lang/Object;",
             ">([TT;III",
-            "Ljava/util/Comparator<",
-            "-TT;>;)V"
+            "Ljava/util/Comparator",
+            "<-TT;>;)V"
         }
     .end annotation
 
+    .prologue
+    .line 311
+    .local p0, "a":[Ljava/lang/Object;, "[TT;"
+    .local p4, "c":Ljava/util/Comparator;, "Ljava/util/Comparator<-TT;>;"
     if-ne p3, p1, :cond_0
 
+    .line 312
     add-int/lit8 p3, p3, 0x1
 
+    .line 313
     :cond_0
     :goto_0
     if-ge p3, p2, :cond_3
 
-    .line 320
-    aget-object v0, p0, p3
+    .line 314
+    aget-object v3, p0, p3
 
-    move v1, p1
+    .line 317
+    .local v3, "pivot":Ljava/lang/Object;, "TT;"
+    move v0, p1
 
-    move v2, p3
+    .line 318
+    .local v0, "left":I
+    move v4, p3
 
+    .line 325
+    .local v4, "right":I
     :goto_1
-    if-ge v1, v2, :cond_2
+    if-ge v0, v4, :cond_2
 
-    add-int v3, v1, v2
+    .line 326
+    add-int v5, v0, v4
 
-    ushr-int/lit8 v3, v3, 0x1
+    ushr-int/lit8 v1, v5, 0x1
 
-    .line 333
-    aget-object v4, p0, v3
+    .line 327
+    .local v1, "mid":I
+    aget-object v5, p0, v1
 
-    invoke-interface {p4, v0, v4}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
+    invoke-interface {p4, v3, v5}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
 
-    move-result v4
+    move-result v5
 
-    if-gez v4, :cond_1
+    if-gez v5, :cond_1
 
-    move v2, v3
+    .line 328
+    move v4, v1
 
     goto :goto_1
 
+    .line 330
     :cond_1
-    add-int/lit8 v3, v3, 0x1
-
-    move v1, v3
+    add-int/lit8 v0, v1, 0x1
 
     goto :goto_1
 
+    .line 342
+    .end local v1    # "mid":I
     :cond_2
-    sub-int v2, p3, v1
+    sub-int v2, p3, v0
 
+    .line 344
+    .local v2, "n":I
     packed-switch v2, :pswitch_data_0
 
-    add-int/lit8 v3, v1, 0x1
+    .line 351
+    add-int/lit8 v5, v0, 0x1
 
-    .line 357
-    invoke-static {p0, v1, p0, v3, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {p0, v0, p0, v5, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    goto :goto_2
-
-    :pswitch_0
-    add-int/lit8 v2, v1, 0x2
-
-    add-int/lit8 v3, v1, 0x1
-
-    .line 352
-    aget-object v3, p0, v3
-
-    aput-object v3, p0, v2
-
-    :pswitch_1
-    add-int/lit8 v2, v1, 0x1
-
-    .line 354
-    aget-object v3, p0, v1
-
-    aput-object v3, p0, v2
-
-    .line 359
+    .line 353
     :goto_2
-    aput-object v0, p0, v1
+    aput-object v3, p0, v0
 
+    .line 313
     add-int/lit8 p3, p3, 0x1
 
     goto :goto_0
 
+    .line 346
+    :pswitch_0
+    add-int/lit8 v5, v0, 0x2
+
+    add-int/lit8 v6, v0, 0x1
+
+    aget-object v6, p0, v6
+
+    aput-object v6, p0, v5
+
+    .line 348
+    :pswitch_1
+    add-int/lit8 v5, v0, 0x1
+
+    aget-object v6, p0, v0
+
+    aput-object v6, p0, v5
+
+    goto :goto_2
+
+    .line 355
+    .end local v0    # "left":I
+    .end local v2    # "n":I
+    .end local v3    # "pivot":Ljava/lang/Object;, "TT;"
+    .end local v4    # "right":I
     :cond_3
     return-void
 
-    nop
-
+    .line 344
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_1
@@ -197,732 +226,824 @@
 .end method
 
 .method private static countRunAndMakeAscending([Ljava/lang/Object;IILjava/util/Comparator;)I
-    .locals 3
+    .locals 4
+    .param p1, "lo"    # I
+    .param p2, "hi"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "<T:",
             "Ljava/lang/Object;",
             ">([TT;II",
-            "Ljava/util/Comparator<",
-            "-TT;>;)I"
+            "Ljava/util/Comparator",
+            "<-TT;>;)I"
         }
     .end annotation
 
+    .prologue
+    .line 386
+    .local p0, "a":[Ljava/lang/Object;, "[TT;"
+    .local p3, "c":Ljava/util/Comparator;, "Ljava/util/Comparator<-TT;>;"
     add-int/lit8 v0, p1, 0x1
 
+    .line 387
+    .local v0, "runHi":I
     if-ne v0, p2, :cond_0
 
-    const/4 p0, 0x1
+    .line 388
+    const/4 v2, 0x1
 
-    return p0
+    .line 400
+    :goto_0
+    return v2
 
+    .line 391
     :cond_0
     add-int/lit8 v1, v0, 0x1
 
-    .line 397
-    aget-object v0, p0, v0
+    .end local v0    # "runHi":I
+    .local v1, "runHi":I
+    aget-object v2, p0, v0
 
-    aget-object v2, p0, p1
+    aget-object v3, p0, p1
 
-    invoke-interface {p3, v0, v2}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
+    invoke-interface {p3, v2, v3}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
 
-    move-result v0
+    move-result v2
 
-    if-gez v0, :cond_2
+    if-gez v2, :cond_3
 
-    :goto_0
-    if-ge v1, p2, :cond_1
+    move v0, v1
 
-    .line 398
-    aget-object v0, p0, v1
-
-    add-int/lit8 v2, v1, -0x1
-
-    aget-object v2, p0, v2
-
-    invoke-interface {p3, v0, v2}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
-
-    move-result v0
-
-    if-gez v0, :cond_1
-
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_0
-
-    .line 400
-    :cond_1
-    invoke-static {p0, p1, v1}, Lorg/oscim/utils/TimSort;->reverseRange([Ljava/lang/Object;II)V
-
-    goto :goto_2
-
-    :cond_2
+    .line 392
+    .end local v1    # "runHi":I
+    .restart local v0    # "runHi":I
     :goto_1
-    if-ge v1, p2, :cond_3
+    if-ge v0, p2, :cond_1
 
-    .line 402
-    aget-object v0, p0, v1
+    aget-object v2, p0, v0
 
-    add-int/lit8 v2, v1, -0x1
+    add-int/lit8 v3, v0, -0x1
 
-    aget-object v2, p0, v2
+    aget-object v3, p0, v3
 
-    invoke-interface {p3, v0, v2}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
+    invoke-interface {p3, v2, v3}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
 
-    move-result v0
+    move-result v2
 
-    if-ltz v0, :cond_3
+    if-gez v2, :cond_1
 
-    add-int/lit8 v1, v1, 0x1
+    .line 393
+    add-int/lit8 v0, v0, 0x1
 
     goto :goto_1
 
-    :cond_3
-    :goto_2
-    sub-int/2addr v1, p1
+    .line 394
+    :cond_1
+    invoke-static {p0, p1, v0}, Lorg/oscim/utils/TimSort;->reverseRange([Ljava/lang/Object;II)V
 
-    return v1
+    .line 400
+    :cond_2
+    sub-int v2, v0, p1
+
+    goto :goto_0
+
+    .line 396
+    :goto_2
+    if-ge v0, p2, :cond_2
+
+    aget-object v2, p0, v0
+
+    add-int/lit8 v3, v0, -0x1
+
+    aget-object v3, p0, v3
+
+    invoke-interface {p3, v2, v3}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
+
+    move-result v2
+
+    if-ltz v2, :cond_2
+
+    .line 397
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_2
+
+    .end local v0    # "runHi":I
+    .restart local v1    # "runHi":I
+    :cond_3
+    move v0, v1
+
+    .end local v1    # "runHi":I
+    .restart local v0    # "runHi":I
+    goto :goto_2
 .end method
 
 .method private ensureCapacity(I)[Ljava/lang/Object;
-    .locals 2
+    .locals 3
+    .param p1, "minCapacity"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I)[TT;"
         }
     .end annotation
 
+    .prologue
+    .line 984
+    .local p0, "this":Lorg/oscim/utils/TimSort;, "Lorg/oscim/utils/TimSort<TT;>;"
+    iget v2, p0, Lorg/oscim/utils/TimSort;->tmpCount:I
+
+    invoke-static {v2, p1}, Ljava/lang/Math;->max(II)I
+
+    move-result v2
+
+    iput v2, p0, Lorg/oscim/utils/TimSort;->tmpCount:I
+
+    .line 985
+    iget-object v2, p0, Lorg/oscim/utils/TimSort;->tmp:[Ljava/lang/Object;
+
+    array-length v2, v2
+
+    if-ge v2, p1, :cond_0
+
+    .line 987
+    move v1, p1
+
+    .line 988
+    .local v1, "newSize":I
+    shr-int/lit8 v2, v1, 0x1
+
+    or-int/2addr v1, v2
+
+    .line 989
+    shr-int/lit8 v2, v1, 0x2
+
+    or-int/2addr v1, v2
+
+    .line 990
+    shr-int/lit8 v2, v1, 0x4
+
+    or-int/2addr v1, v2
+
+    .line 991
+    shr-int/lit8 v2, v1, 0x8
+
+    or-int/2addr v1, v2
+
     .line 992
-    iget v0, p0, Lorg/oscim/utils/TimSort;->tmpCount:I
+    shr-int/lit8 v2, v1, 0x10
 
-    invoke-static {v0, p1}, Ljava/lang/Math;->max(II)I
-
-    move-result v0
-
-    iput v0, p0, Lorg/oscim/utils/TimSort;->tmpCount:I
+    or-int/2addr v1, v2
 
     .line 993
-    iget-object v0, p0, Lorg/oscim/utils/TimSort;->tmp:[Ljava/lang/Object;
+    add-int/lit8 v1, v1, 0x1
 
-    array-length v0, v0
+    .line 995
+    if-gez v1, :cond_1
 
-    if-ge v0, p1, :cond_1
+    .line 996
+    move v1, p1
 
-    shr-int/lit8 v0, p1, 0x1
+    .line 1001
+    :goto_0
+    new-array v0, v1, [Ljava/lang/Object;
 
-    or-int/2addr v0, p1
+    check-cast v0, [Ljava/lang/Object;
 
-    shr-int/lit8 v1, v0, 0x2
+    .line 1002
+    .local v0, "newArray":[Ljava/lang/Object;, "[TT;"
+    iput-object v0, p0, Lorg/oscim/utils/TimSort;->tmp:[Ljava/lang/Object;
 
-    or-int/2addr v0, v1
+    .line 1004
+    .end local v0    # "newArray":[Ljava/lang/Object;, "[TT;"
+    .end local v1    # "newSize":I
+    :cond_0
+    iget-object v2, p0, Lorg/oscim/utils/TimSort;->tmp:[Ljava/lang/Object;
 
-    shr-int/lit8 v1, v0, 0x4
+    return-object v2
 
-    or-int/2addr v0, v1
+    .line 998
+    .restart local v1    # "newSize":I
+    :cond_1
+    iget-object v2, p0, Lorg/oscim/utils/TimSort;->a:[Ljava/lang/Object;
 
-    shr-int/lit8 v1, v0, 0x8
+    array-length v2, v2
 
-    or-int/2addr v0, v1
+    ushr-int/lit8 v2, v2, 0x1
 
-    shr-int/lit8 v1, v0, 0x10
+    invoke-static {v1, v2}, Ljava/lang/Math;->min(II)I
 
-    or-int/2addr v0, v1
-
-    add-int/lit8 v0, v0, 0x1
-
-    if-gez v0, :cond_0
+    move-result v1
 
     goto :goto_0
-
-    .line 1006
-    :cond_0
-    iget-object p1, p0, Lorg/oscim/utils/TimSort;->a:[Ljava/lang/Object;
-
-    array-length p1, p1
-
-    ushr-int/lit8 p1, p1, 0x1
-
-    invoke-static {v0, p1}, Ljava/lang/Math;->min(II)I
-
-    move-result p1
-
-    .line 1009
-    :goto_0
-    new-array p1, p1, [Ljava/lang/Object;
-
-    check-cast p1, [Ljava/lang/Object;
-
-    .line 1010
-    iput-object p1, p0, Lorg/oscim/utils/TimSort;->tmp:[Ljava/lang/Object;
-
-    .line 1012
-    :cond_1
-    iget-object p1, p0, Lorg/oscim/utils/TimSort;->tmp:[Ljava/lang/Object;
-
-    return-object p1
 .end method
 
 .method private static gallopLeft(Ljava/lang/Object;[Ljava/lang/Object;IIILjava/util/Comparator;)I
     .locals 6
+    .param p2, "base"    # I
+    .param p3, "len"    # I
+    .param p4, "hint"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "<T:",
             "Ljava/lang/Object;",
             ">(TT;[TT;III",
-            "Ljava/util/Comparator<",
-            "-TT;>;)I"
+            "Ljava/util/Comparator",
+            "<-TT;>;)I"
         }
     .end annotation
 
-    add-int v0, p2, p4
+    .prologue
+    .line 589
+    .local p0, "key":Ljava/lang/Object;, "TT;"
+    .local p1, "a":[Ljava/lang/Object;, "[TT;"
+    .local p5, "c":Ljava/util/Comparator;, "Ljava/util/Comparator<-TT;>;"
+    const/4 v0, 0x0
+
+    .line 590
+    .local v0, "lastOfs":I
+    const/4 v3, 0x1
+
+    .line 591
+    .local v3, "ofs":I
+    add-int v5, p2, p4
+
+    aget-object v5, p1, v5
+
+    invoke-interface {p5, p0, v5}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
+
+    move-result v5
+
+    if-lez v5, :cond_3
+
+    .line 593
+    sub-int v2, p3, p4
+
+    .line 594
+    .local v2, "maxOfs":I
+    :cond_0
+    :goto_0
+    if-ge v3, v2, :cond_1
+
+    add-int v5, p2, p4
+
+    add-int/2addr v5, v3
+
+    aget-object v5, p1, v5
+
+    invoke-interface {p5, p0, v5}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
+
+    move-result v5
+
+    if-lez v5, :cond_1
+
+    .line 595
+    move v0, v3
+
+    .line 596
+    shl-int/lit8 v5, v3, 0x1
+
+    add-int/lit8 v3, v5, 0x1
 
     .line 597
-    aget-object v1, p1, v0
+    if-gtz v3, :cond_0
 
-    invoke-interface {p5, p0, v1}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
-
-    move-result v1
-
-    const/4 v2, 0x1
-
-    const/4 v3, 0x0
-
-    if-lez v1, :cond_3
-
-    sub-int/2addr p3, p4
-
-    move v1, v3
-
+    .line 598
     move v3, v2
 
-    :goto_0
-    if-ge v3, p3, :cond_1
-
-    add-int v4, v0, v3
+    goto :goto_0
 
     .line 600
-    aget-object v4, p1, v4
-
-    invoke-interface {p5, p0, v4}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
-
-    move-result v4
-
-    if-lez v4, :cond_1
-
-    shl-int/lit8 v1, v3, 0x1
-
-    add-int/2addr v1, v2
-
-    if-gtz v1, :cond_0
-
-    move v1, v3
-
-    move v3, p3
-
-    goto :goto_0
-
-    :cond_0
-    move v5, v3
-
-    move v3, v1
-
-    move v1, v5
-
-    goto :goto_0
-
     :cond_1
-    if-le v3, p3, :cond_2
+    if-le v3, v2, :cond_2
 
-    goto :goto_1
-
-    :cond_2
-    move p3, v3
-
-    :goto_1
-    add-int/2addr v1, p4
-
-    add-int/2addr p3, p4
-
-    move p4, p3
-
-    move p3, v1
-
-    goto :goto_4
-
-    :cond_3
-    add-int/lit8 p3, p4, 0x1
-
-    move v1, v3
-
+    .line 601
     move v3, v2
 
+    .line 604
+    :cond_2
+    add-int/2addr v0, p4
+
+    .line 605
+    add-int/2addr v3, p4
+
+    .line 632
+    :goto_1
+    add-int/lit8 v0, v0, 0x1
+
+    .line 633
     :goto_2
-    if-ge v3, p3, :cond_5
+    if-ge v0, v3, :cond_8
 
-    sub-int v4, v0, v3
+    .line 634
+    sub-int v5, v3, v0
 
-    .line 615
-    aget-object v4, p1, v4
+    ushr-int/lit8 v5, v5, 0x1
 
-    invoke-interface {p5, p0, v4}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
+    add-int v1, v0, v5
 
-    move-result v4
+    .line 636
+    .local v1, "m":I
+    add-int v5, p2, v1
 
-    if-gtz v4, :cond_5
+    aget-object v5, p1, v5
 
-    shl-int/lit8 v1, v3, 0x1
+    invoke-interface {p5, p0, v5}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
 
-    add-int/2addr v1, v2
+    move-result v5
 
-    if-gtz v1, :cond_4
+    if-lez v5, :cond_7
 
-    move v1, v3
-
-    move v3, p3
+    .line 637
+    add-int/lit8 v0, v1, 0x1
 
     goto :goto_2
 
+    .line 608
+    .end local v1    # "m":I
+    .end local v2    # "maxOfs":I
+    :cond_3
+    add-int/lit8 v2, p4, 0x1
+
+    .line 609
+    .restart local v2    # "maxOfs":I
     :cond_4
-    move v5, v3
+    :goto_3
+    if-ge v3, v2, :cond_5
 
-    move v3, v1
+    add-int v5, p2, p4
 
-    move v1, v5
+    sub-int/2addr v5, v3
 
-    goto :goto_2
+    aget-object v5, p1, v5
 
-    :cond_5
-    if-le v3, p3, :cond_6
+    invoke-interface {p5, p0, v5}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
+
+    move-result v5
+
+    if-gtz v5, :cond_5
+
+    .line 610
+    move v0, v3
+
+    .line 611
+    shl-int/lit8 v5, v3, 0x1
+
+    add-int/lit8 v3, v5, 0x1
+
+    .line 612
+    if-gtz v3, :cond_4
+
+    .line 613
+    move v3, v2
 
     goto :goto_3
 
+    .line 615
+    :cond_5
+    if-le v3, v2, :cond_6
+
+    .line 616
+    move v3, v2
+
+    .line 619
     :cond_6
-    move p3, v3
+    move v4, v0
 
-    :goto_3
-    sub-int p3, p4, p3
+    .line 620
+    .local v4, "tmp":I
+    sub-int v0, p4, v3
 
-    sub-int/2addr p4, v1
+    .line 621
+    sub-int v3, p4, v4
 
-    :goto_4
-    add-int/2addr p3, v2
+    goto :goto_1
 
-    :goto_5
-    if-ge p3, p4, :cond_8
-
-    sub-int v0, p4, p3
-
-    ushr-int/2addr v0, v2
-
-    add-int/2addr v0, p3
-
-    add-int v1, p2, v0
-
-    .line 642
-    aget-object v1, p1, v1
-
-    invoke-interface {p5, p0, v1}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
-
-    move-result v1
-
-    if-lez v1, :cond_7
-
-    add-int/lit8 v0, v0, 0x1
-
-    move p3, v0
-
-    goto :goto_5
-
+    .line 639
+    .end local v4    # "tmp":I
+    .restart local v1    # "m":I
     :cond_7
-    move p4, v0
+    move v3, v1
 
-    goto :goto_5
+    goto :goto_2
 
+    .line 643
+    .end local v1    # "m":I
     :cond_8
-    return p4
+    return v3
 .end method
 
 .method private static gallopRight(Ljava/lang/Object;[Ljava/lang/Object;IIILjava/util/Comparator;)I
     .locals 6
+    .param p2, "base"    # I
+    .param p3, "len"    # I
+    .param p4, "hint"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "<T:",
             "Ljava/lang/Object;",
             ">(TT;[TT;III",
-            "Ljava/util/Comparator<",
-            "-TT;>;)I"
+            "Ljava/util/Comparator",
+            "<-TT;>;)I"
         }
     .end annotation
 
-    add-int v0, p2, p4
+    .prologue
+    .line 666
+    .local p0, "key":Ljava/lang/Object;, "TT;"
+    .local p1, "a":[Ljava/lang/Object;, "[TT;"
+    .local p5, "c":Ljava/util/Comparator;, "Ljava/util/Comparator<-TT;>;"
+    const/4 v3, 0x1
+
+    .line 667
+    .local v3, "ofs":I
+    const/4 v0, 0x0
+
+    .line 668
+    .local v0, "lastOfs":I
+    add-int v5, p2, p4
+
+    aget-object v5, p1, v5
+
+    invoke-interface {p5, p0, v5}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
+
+    move-result v5
+
+    if-gez v5, :cond_3
+
+    .line 670
+    add-int/lit8 v2, p4, 0x1
+
+    .line 671
+    .local v2, "maxOfs":I
+    :cond_0
+    :goto_0
+    if-ge v3, v2, :cond_1
+
+    add-int v5, p2, p4
+
+    sub-int/2addr v5, v3
+
+    aget-object v5, p1, v5
+
+    invoke-interface {p5, p0, v5}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
+
+    move-result v5
+
+    if-gez v5, :cond_1
+
+    .line 672
+    move v0, v3
+
+    .line 673
+    shl-int/lit8 v5, v3, 0x1
+
+    add-int/lit8 v3, v5, 0x1
 
     .line 674
-    aget-object v1, p1, v0
+    if-gtz v3, :cond_0
 
-    invoke-interface {p5, p0, v1}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
-
-    move-result v1
-
-    const/4 v2, 0x1
-
-    const/4 v3, 0x0
-
-    if-gez v1, :cond_3
-
-    add-int/lit8 p3, p4, 0x1
-
-    move v1, v3
-
+    .line 675
     move v3, v2
 
-    :goto_0
-    if-ge v3, p3, :cond_1
-
-    sub-int v4, v0, v3
+    goto :goto_0
 
     .line 677
-    aget-object v4, p1, v4
-
-    invoke-interface {p5, p0, v4}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
-
-    move-result v4
-
-    if-gez v4, :cond_1
-
-    shl-int/lit8 v1, v3, 0x1
-
-    add-int/2addr v1, v2
-
-    if-gtz v1, :cond_0
-
-    move v1, v3
-
-    move v3, p3
-
-    goto :goto_0
-
-    :cond_0
-    move v5, v3
-
-    move v3, v1
-
-    move v1, v5
-
-    goto :goto_0
-
     :cond_1
-    if-le v3, p3, :cond_2
+    if-le v3, v2, :cond_2
 
-    goto :goto_1
-
-    :cond_2
-    move p3, v3
-
-    :goto_1
-    sub-int p3, p4, p3
-
-    sub-int/2addr p4, v1
-
-    goto :goto_4
-
-    :cond_3
-    sub-int/2addr p3, p4
-
-    move v1, v3
-
+    .line 678
     move v3, v2
 
+    .line 681
+    :cond_2
+    move v4, v0
+
+    .line 682
+    .local v4, "tmp":I
+    sub-int v0, p4, v3
+
+    .line 683
+    sub-int v3, p4, v4
+
+    .line 709
+    .end local v4    # "tmp":I
+    :goto_1
+    add-int/lit8 v0, v0, 0x1
+
+    .line 710
     :goto_2
-    if-ge v3, p3, :cond_5
+    if-ge v0, v3, :cond_8
 
-    add-int v4, v0, v3
+    .line 711
+    sub-int v5, v3, v0
 
-    .line 693
-    aget-object v4, p1, v4
+    ushr-int/lit8 v5, v5, 0x1
 
-    invoke-interface {p5, p0, v4}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
+    add-int v1, v0, v5
 
-    move-result v4
+    .line 713
+    .local v1, "m":I
+    add-int v5, p2, v1
 
-    if-ltz v4, :cond_5
+    aget-object v5, p1, v5
 
-    shl-int/lit8 v1, v3, 0x1
+    invoke-interface {p5, p0, v5}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
 
-    add-int/2addr v1, v2
+    move-result v5
 
-    if-gtz v1, :cond_4
+    if-gez v5, :cond_7
 
-    move v1, v3
-
-    move v3, p3
-
-    goto :goto_2
-
-    :cond_4
-    move v5, v3
-
+    .line 714
     move v3, v1
 
-    move v1, v5
-
     goto :goto_2
 
-    :cond_5
-    if-le v3, p3, :cond_6
+    .line 686
+    .end local v1    # "m":I
+    .end local v2    # "maxOfs":I
+    :cond_3
+    sub-int v2, p3, p4
+
+    .line 687
+    .restart local v2    # "maxOfs":I
+    :cond_4
+    :goto_3
+    if-ge v3, v2, :cond_5
+
+    add-int v5, p2, p4
+
+    add-int/2addr v5, v3
+
+    aget-object v5, p1, v5
+
+    invoke-interface {p5, p0, v5}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
+
+    move-result v5
+
+    if-ltz v5, :cond_5
+
+    .line 688
+    move v0, v3
+
+    .line 689
+    shl-int/lit8 v5, v3, 0x1
+
+    add-int/lit8 v3, v5, 0x1
+
+    .line 690
+    if-gtz v3, :cond_4
+
+    .line 691
+    move v3, v2
 
     goto :goto_3
 
+    .line 693
+    :cond_5
+    if-le v3, v2, :cond_6
+
+    .line 694
+    move v3, v2
+
+    .line 697
     :cond_6
-    move p3, v3
+    add-int/2addr v0, p4
 
-    :goto_3
-    add-int v0, v1, p4
+    .line 698
+    add-int/2addr v3, p4
 
-    add-int/2addr p4, p3
+    goto :goto_1
 
-    move p3, v0
-
-    :goto_4
-    add-int/2addr p3, v2
-
-    :goto_5
-    if-ge p3, p4, :cond_8
-
-    sub-int v0, p4, p3
-
-    ushr-int/2addr v0, v2
-
-    add-int/2addr v0, p3
-
-    add-int v1, p2, v0
-
-    .line 719
-    aget-object v1, p1, v1
-
-    invoke-interface {p5, p0, v1}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
-
-    move-result v1
-
-    if-gez v1, :cond_7
-
-    move p4, v0
-
-    goto :goto_5
-
+    .line 716
+    .restart local v1    # "m":I
     :cond_7
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v0, v1, 0x1
 
-    move p3, v0
+    goto :goto_2
 
-    goto :goto_5
-
+    .line 720
+    .end local v1    # "m":I
     :cond_8
-    return p4
+    return v3
 .end method
 
 .method private mergeAt(I)V
-    .locals 16
+    .locals 11
+    .param p1, "i"    # I
 
-    move-object/from16 v0, p0
+    .prologue
+    .line 514
+    .local p0, "this":Lorg/oscim/utils/TimSort;, "Lorg/oscim/utils/TimSort<TT;>;"
+    iget-object v0, p0, Lorg/oscim/utils/TimSort;->runBase:[I
 
-    move/from16 v1, p1
+    aget v2, v0, p1
 
-    .line 520
-    iget-object v2, v0, Lorg/oscim/utils/TimSort;->runBase:[I
+    .line 515
+    .local v2, "base1":I
+    iget-object v0, p0, Lorg/oscim/utils/TimSort;->runLen:[I
 
-    aget v2, v2, v1
+    aget v3, v0, p1
 
-    .line 521
-    iget-object v3, v0, Lorg/oscim/utils/TimSort;->runLen:[I
+    .line 516
+    .local v3, "len1":I
+    iget-object v0, p0, Lorg/oscim/utils/TimSort;->runBase:[I
 
-    aget v9, v3, v1
+    add-int/lit8 v1, p1, 0x1
 
-    .line 522
-    iget-object v3, v0, Lorg/oscim/utils/TimSort;->runBase:[I
+    aget v6, v0, v1
 
-    add-int/lit8 v4, v1, 0x1
+    .line 517
+    .local v6, "base2":I
+    iget-object v0, p0, Lorg/oscim/utils/TimSort;->runLen:[I
 
-    aget v15, v3, v4
+    add-int/lit8 v1, p1, 0x1
 
-    .line 523
-    iget-object v3, v0, Lorg/oscim/utils/TimSort;->runLen:[I
+    aget v7, v0, v1
 
-    aget v13, v3, v4
+    .line 528
+    .local v7, "len2":I
+    iget-object v0, p0, Lorg/oscim/utils/TimSort;->runLen:[I
 
-    .line 534
-    iget-object v3, v0, Lorg/oscim/utils/TimSort;->runLen:[I
+    add-int v1, v3, v7
 
-    add-int v5, v9, v13
+    aput v1, v0, p1
 
-    aput v5, v3, v1
+    .line 529
+    iget v0, p0, Lorg/oscim/utils/TimSort;->stackSize:I
 
-    .line 535
-    iget v3, v0, Lorg/oscim/utils/TimSort;->stackSize:I
+    add-int/lit8 v0, v0, -0x3
 
-    add-int/lit8 v3, v3, -0x3
+    if-ne p1, v0, :cond_0
 
-    if-ne v1, v3, :cond_0
+    .line 530
+    iget-object v0, p0, Lorg/oscim/utils/TimSort;->runBase:[I
 
-    .line 536
-    iget-object v3, v0, Lorg/oscim/utils/TimSort;->runBase:[I
+    add-int/lit8 v1, p1, 0x1
 
-    iget-object v5, v0, Lorg/oscim/utils/TimSort;->runBase:[I
+    iget-object v4, p0, Lorg/oscim/utils/TimSort;->runBase:[I
 
-    add-int/lit8 v1, v1, 0x2
+    add-int/lit8 v5, p1, 0x2
 
-    aget v5, v5, v1
+    aget v4, v4, v5
 
-    aput v5, v3, v4
+    aput v4, v0, v1
 
-    .line 537
-    iget-object v3, v0, Lorg/oscim/utils/TimSort;->runLen:[I
+    .line 531
+    iget-object v0, p0, Lorg/oscim/utils/TimSort;->runLen:[I
 
-    iget-object v5, v0, Lorg/oscim/utils/TimSort;->runLen:[I
+    add-int/lit8 v1, p1, 0x1
 
-    aget v1, v5, v1
+    iget-object v4, p0, Lorg/oscim/utils/TimSort;->runLen:[I
 
-    aput v1, v3, v4
+    add-int/lit8 v5, p1, 0x2
 
-    .line 539
+    aget v4, v4, v5
+
+    aput v4, v0, v1
+
+    .line 533
     :cond_0
-    iget v1, v0, Lorg/oscim/utils/TimSort;->stackSize:I
+    iget v0, p0, Lorg/oscim/utils/TimSort;->stackSize:I
+
+    add-int/lit8 v0, v0, -0x1
+
+    iput v0, p0, Lorg/oscim/utils/TimSort;->stackSize:I
+
+    .line 540
+    iget-object v0, p0, Lorg/oscim/utils/TimSort;->a:[Ljava/lang/Object;
+
+    aget-object v0, v0, v6
+
+    iget-object v1, p0, Lorg/oscim/utils/TimSort;->a:[Ljava/lang/Object;
+
+    const/4 v4, 0x0
+
+    iget-object v5, p0, Lorg/oscim/utils/TimSort;->c:Ljava/util/Comparator;
+
+    invoke-static/range {v0 .. v5}, Lorg/oscim/utils/TimSort;->gallopRight(Ljava/lang/Object;[Ljava/lang/Object;IIILjava/util/Comparator;)I
+
+    move-result v10
+
+    .line 543
+    .local v10, "k":I
+    add-int/2addr v2, v10
+
+    .line 544
+    sub-int/2addr v3, v10
+
+    .line 545
+    if-nez v3, :cond_2
+
+    .line 564
+    :cond_1
+    :goto_0
+    return-void
+
+    .line 553
+    :cond_2
+    iget-object v0, p0, Lorg/oscim/utils/TimSort;->a:[Ljava/lang/Object;
+
+    add-int v1, v2, v3
 
     add-int/lit8 v1, v1, -0x1
 
-    iput v1, v0, Lorg/oscim/utils/TimSort;->stackSize:I
+    aget-object v4, v0, v1
 
-    .line 546
-    iget-object v1, v0, Lorg/oscim/utils/TimSort;->a:[Ljava/lang/Object;
+    iget-object v5, p0, Lorg/oscim/utils/TimSort;->a:[Ljava/lang/Object;
 
-    aget-object v3, v1, v15
+    add-int/lit8 v8, v7, -0x1
 
-    iget-object v4, v0, Lorg/oscim/utils/TimSort;->a:[Ljava/lang/Object;
+    iget-object v9, p0, Lorg/oscim/utils/TimSort;->c:Ljava/util/Comparator;
 
-    const/4 v7, 0x0
+    invoke-static/range {v4 .. v9}, Lorg/oscim/utils/TimSort;->gallopLeft(Ljava/lang/Object;[Ljava/lang/Object;IIILjava/util/Comparator;)I
 
-    iget-object v8, v0, Lorg/oscim/utils/TimSort;->c:Ljava/util/Comparator;
+    move-result v7
 
-    move v5, v2
+    .line 556
+    if-eqz v7, :cond_1
 
-    move v6, v9
+    .line 560
+    if-gt v3, v7, :cond_3
 
-    invoke-static/range {v3 .. v8}, Lorg/oscim/utils/TimSort;->gallopRight(Ljava/lang/Object;[Ljava/lang/Object;IIILjava/util/Comparator;)I
-
-    move-result v1
-
-    add-int/2addr v2, v1
-
-    sub-int/2addr v9, v1
-
-    if-nez v9, :cond_1
-
-    return-void
-
-    .line 559
-    :cond_1
-    iget-object v1, v0, Lorg/oscim/utils/TimSort;->a:[Ljava/lang/Object;
-
-    add-int v3, v2, v9
-
-    add-int/lit8 v3, v3, -0x1
-
-    aget-object v10, v1, v3
-
-    iget-object v11, v0, Lorg/oscim/utils/TimSort;->a:[Ljava/lang/Object;
-
-    add-int/lit8 v14, v13, -0x1
-
-    iget-object v1, v0, Lorg/oscim/utils/TimSort;->c:Ljava/util/Comparator;
-
-    move v12, v15
-
-    move v3, v15
-
-    move-object v15, v1
-
-    invoke-static/range {v10 .. v15}, Lorg/oscim/utils/TimSort;->gallopLeft(Ljava/lang/Object;[Ljava/lang/Object;IIILjava/util/Comparator;)I
-
-    move-result v1
-
-    if-nez v1, :cond_2
-
-    return-void
-
-    :cond_2
-    if-gt v9, v1, :cond_3
-
-    .line 567
-    invoke-direct {v0, v2, v9, v3, v1}, Lorg/oscim/utils/TimSort;->mergeLo(IIII)V
+    .line 561
+    invoke-direct {p0, v2, v3, v6, v7}, Lorg/oscim/utils/TimSort;->mergeLo(IIII)V
 
     goto :goto_0
 
-    .line 569
+    .line 563
     :cond_3
-    invoke-direct {v0, v2, v9, v3, v1}, Lorg/oscim/utils/TimSort;->mergeHi(IIII)V
+    invoke-direct {p0, v2, v3, v6, v7}, Lorg/oscim/utils/TimSort;->mergeHi(IIII)V
 
-    :goto_0
-    return-void
+    goto :goto_0
 .end method
 
 .method private mergeCollapse()V
-    .locals 6
+    .locals 5
 
-    .line 478
+    .prologue
+    .line 472
+    .local p0, "this":Lorg/oscim/utils/TimSort;, "Lorg/oscim/utils/TimSort<TT;>;"
     :goto_0
-    iget v0, p0, Lorg/oscim/utils/TimSort;->stackSize:I
+    iget v1, p0, Lorg/oscim/utils/TimSort;->stackSize:I
 
-    const/4 v1, 0x1
+    const/4 v2, 0x1
 
-    if-le v0, v1, :cond_2
+    if-le v1, v2, :cond_2
 
-    .line 479
-    iget v0, p0, Lorg/oscim/utils/TimSort;->stackSize:I
+    .line 473
+    iget v1, p0, Lorg/oscim/utils/TimSort;->stackSize:I
 
-    add-int/lit8 v0, v0, -0x2
+    add-int/lit8 v0, v1, -0x2
 
+    .line 474
+    .local v0, "n":I
     if-lez v0, :cond_1
 
-    .line 480
     iget-object v1, p0, Lorg/oscim/utils/TimSort;->runLen:[I
 
     add-int/lit8 v2, v0, -0x1
 
     aget v1, v1, v2
 
+    iget-object v2, p0, Lorg/oscim/utils/TimSort;->runLen:[I
+
+    aget v2, v2, v0
+
     iget-object v3, p0, Lorg/oscim/utils/TimSort;->runLen:[I
 
-    aget v3, v3, v0
+    add-int/lit8 v4, v0, 0x1
 
-    iget-object v4, p0, Lorg/oscim/utils/TimSort;->runLen:[I
+    aget v3, v3, v4
 
-    add-int/lit8 v5, v0, 0x1
+    add-int/2addr v2, v3
 
-    aget v4, v4, v5
+    if-gt v1, v2, :cond_1
 
-    add-int/2addr v3, v4
-
-    if-gt v1, v3, :cond_1
-
-    .line 481
+    .line 475
     iget-object v1, p0, Lorg/oscim/utils/TimSort;->runLen:[I
+
+    add-int/lit8 v2, v0, -0x1
 
     aget v1, v1, v2
 
     iget-object v2, p0, Lorg/oscim/utils/TimSort;->runLen:[I
 
-    aget v2, v2, v5
+    add-int/lit8 v3, v0, 0x1
+
+    aget v2, v2, v3
 
     if-ge v1, v2, :cond_0
 
+    .line 476
     add-int/lit8 v0, v0, -0x1
 
-    .line 483
+    .line 477
     :cond_0
     invoke-direct {p0, v0}, Lorg/oscim/utils/TimSort;->mergeAt(I)V
 
     goto :goto_0
 
-    .line 484
+    .line 478
     :cond_1
     iget-object v1, p0, Lorg/oscim/utils/TimSort;->runLen:[I
 
@@ -936,11 +1057,13 @@
 
     if-gt v1, v2, :cond_2
 
-    .line 485
+    .line 479
     invoke-direct {p0, v0}, Lorg/oscim/utils/TimSort;->mergeAt(I)V
 
     goto :goto_0
 
+    .line 484
+    .end local v0    # "n":I
     :cond_2
     return-void
 .end method
@@ -948,22 +1071,25 @@
 .method private mergeForceCollapse()V
     .locals 4
 
-    .line 497
+    .prologue
+    .line 491
+    .local p0, "this":Lorg/oscim/utils/TimSort;, "Lorg/oscim/utils/TimSort<TT;>;"
     :goto_0
-    iget v0, p0, Lorg/oscim/utils/TimSort;->stackSize:I
+    iget v1, p0, Lorg/oscim/utils/TimSort;->stackSize:I
 
-    const/4 v1, 0x1
+    const/4 v2, 0x1
 
-    if-le v0, v1, :cond_1
+    if-le v1, v2, :cond_1
 
-    .line 498
-    iget v0, p0, Lorg/oscim/utils/TimSort;->stackSize:I
+    .line 492
+    iget v1, p0, Lorg/oscim/utils/TimSort;->stackSize:I
 
-    add-int/lit8 v0, v0, -0x2
+    add-int/lit8 v0, v1, -0x2
 
+    .line 493
+    .local v0, "n":I
     if-lez v0, :cond_0
 
-    .line 499
     iget-object v1, p0, Lorg/oscim/utils/TimSort;->runLen:[I
 
     add-int/lit8 v2, v0, -0x1
@@ -978,1066 +1104,1436 @@
 
     if-ge v1, v2, :cond_0
 
+    .line 494
     add-int/lit8 v0, v0, -0x1
 
-    .line 501
+    .line 495
     :cond_0
     invoke-direct {p0, v0}, Lorg/oscim/utils/TimSort;->mergeAt(I)V
 
     goto :goto_0
 
+    .line 497
+    .end local v0    # "n":I
     :cond_1
     return-void
 .end method
 
 .method private mergeHi(IIII)V
-    .locals 19
+    .locals 23
+    .param p1, "base1"    # I
+    .param p2, "len1"    # I
+    .param p3, "base2"    # I
+    .param p4, "len2"    # I
 
+    .prologue
+    .line 866
+    .local p0, "this":Lorg/oscim/utils/TimSort;, "Lorg/oscim/utils/TimSort<TT;>;"
     move-object/from16 v0, p0
 
-    move/from16 v2, p3
+    iget-object v3, v0, Lorg/oscim/utils/TimSort;->a:[Ljava/lang/Object;
 
-    move/from16 v3, p4
+    .line 867
+    .local v3, "a":[Ljava/lang/Object;, "[TT;"
+    move-object/from16 v0, p0
 
-    .line 873
-    iget-object v7, v0, Lorg/oscim/utils/TimSort;->a:[Ljava/lang/Object;
+    move/from16 v1, p4
 
-    .line 874
-    invoke-direct {v0, v3}, Lorg/oscim/utils/TimSort;->ensureCapacity(I)[Ljava/lang/Object;
+    invoke-direct {v0, v1}, Lorg/oscim/utils/TimSort;->ensureCapacity(I)[Ljava/lang/Object;
 
-    move-result-object v8
+    move-result-object v9
 
-    const/4 v9, 0x0
+    .line 868
+    .local v9, "tmp":[Ljava/lang/Object;, "[TT;"
+    const/4 v2, 0x0
+
+    move/from16 v0, p3
+
+    move/from16 v1, p4
+
+    invoke-static {v3, v0, v9, v2, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 870
+    add-int v2, p1, p2
+
+    add-int/lit8 v16, v2, -0x1
+
+    .line 871
+    .local v16, "cursor1":I
+    add-int/lit8 v18, p4, -0x1
+
+    .line 872
+    .local v18, "cursor2":I
+    add-int v2, p3, p4
+
+    add-int/lit8 v20, v2, -0x1
 
     .line 875
-    invoke-static {v7, v2, v8, v9, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    .local v20, "dest":I
+    add-int/lit8 v21, v20, -0x1
 
-    add-int v4, p1, p2
+    .end local v20    # "dest":I
+    .local v21, "dest":I
+    add-int/lit8 v17, v16, -0x1
 
-    const/4 v10, 0x1
+    .end local v16    # "cursor1":I
+    .local v17, "cursor1":I
+    aget-object v2, v3, v16
 
-    sub-int/2addr v4, v10
+    aput-object v2, v3, v20
 
-    add-int/lit8 v5, v3, -0x1
+    .line 876
+    add-int/lit8 p2, p2, -0x1
 
-    add-int/2addr v2, v3
+    if-nez p2, :cond_0
 
-    sub-int/2addr v2, v10
+    .line 877
+    const/4 v2, 0x0
 
-    add-int/lit8 v6, v2, -0x1
+    add-int/lit8 v4, p4, -0x1
 
-    add-int/lit8 v11, v4, -0x1
+    sub-int v4, v21, v4
+
+    move/from16 v0, p4
+
+    invoke-static {v9, v2, v3, v4, v0}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    move/from16 v20, v21
+
+    .end local v21    # "dest":I
+    .restart local v20    # "dest":I
+    move/from16 v16, v17
+
+    .line 973
+    .end local v17    # "cursor1":I
+    .restart local v16    # "cursor1":I
+    :goto_0
+    return-void
+
+    .line 880
+    .end local v16    # "cursor1":I
+    .end local v20    # "dest":I
+    .restart local v17    # "cursor1":I
+    .restart local v21    # "dest":I
+    :cond_0
+    const/4 v2, 0x1
+
+    move/from16 v0, p4
+
+    if-ne v0, v2, :cond_1
+
+    .line 881
+    sub-int v20, v21, p2
 
     .line 882
-    aget-object v4, v7, v4
+    .end local v21    # "dest":I
+    .restart local v20    # "dest":I
+    sub-int v16, v17, p2
 
-    aput-object v4, v7, v2
+    .line 883
+    .end local v17    # "cursor1":I
+    .restart local v16    # "cursor1":I
+    add-int/lit8 v2, v16, 0x1
 
-    add-int/lit8 v1, p2, -0x1
+    add-int/lit8 v4, v20, 0x1
 
-    if-nez v1, :cond_0
+    move/from16 v0, p2
 
-    sub-int/2addr v6, v5
+    invoke-static {v3, v2, v3, v4, v0}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 884
-    invoke-static {v8, v9, v7, v6, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    aget-object v2, v9, v18
 
-    return-void
+    aput-object v2, v3, v20
 
-    :cond_0
-    if-ne v3, v10, :cond_1
+    goto :goto_0
 
-    sub-int/2addr v6, v1
+    .line 888
+    .end local v16    # "cursor1":I
+    .end local v20    # "dest":I
+    .restart local v17    # "cursor1":I
+    .restart local v21    # "dest":I
+    :cond_1
+    move-object/from16 v0, p0
 
-    sub-int/2addr v11, v1
+    iget-object v7, v0, Lorg/oscim/utils/TimSort;->c:Ljava/util/Comparator;
 
-    add-int/2addr v11, v10
+    .line 889
+    .local v7, "c":Ljava/util/Comparator;, "Ljava/util/Comparator<-TT;>;"
+    move-object/from16 v0, p0
 
-    add-int/lit8 v2, v6, 0x1
+    iget v0, v0, Lorg/oscim/utils/TimSort;->minGallop:I
 
-    .line 890
-    invoke-static {v7, v11, v7, v2, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    move/from16 v22, v0
+
+    .local v22, "minGallop":I
+    move/from16 v20, v21
+
+    .end local v21    # "dest":I
+    .restart local v20    # "dest":I
+    move/from16 v16, v17
 
     .line 891
-    aget-object v1, v8, v5
+    .end local v17    # "cursor1":I
+    .restart local v16    # "cursor1":I
+    :goto_1
+    const/4 v14, 0x0
 
-    aput-object v1, v7, v6
+    .line 892
+    .local v14, "count1":I
+    const/4 v15, 0x0
 
-    return-void
+    .line 901
+    .local v15, "count2":I
+    :cond_2
+    aget-object v2, v9, v18
 
-    .line 895
-    :cond_1
-    iget-object v12, v0, Lorg/oscim/utils/TimSort;->c:Ljava/util/Comparator;
+    aget-object v4, v3, v16
 
-    .line 896
-    iget v2, v0, Lorg/oscim/utils/TimSort;->minGallop:I
+    invoke-interface {v7, v2, v4}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
 
-    :goto_0
-    move v13, v3
+    move-result v2
 
-    move v4, v9
+    if-gez v2, :cond_5
 
-    move v3, v1
+    .line 902
+    add-int/lit8 v21, v20, -0x1
 
-    move v1, v4
+    .end local v20    # "dest":I
+    .restart local v21    # "dest":I
+    add-int/lit8 v17, v16, -0x1
+
+    .end local v16    # "cursor1":I
+    .restart local v17    # "cursor1":I
+    aget-object v2, v3, v16
+
+    aput-object v2, v3, v20
+
+    .line 903
+    add-int/lit8 v14, v14, 0x1
+
+    .line 904
+    const/4 v15, 0x0
+
+    .line 905
+    add-int/lit8 p2, p2, -0x1
+
+    if-nez p2, :cond_11
+
+    move/from16 v20, v21
+
+    .end local v21    # "dest":I
+    .restart local v20    # "dest":I
+    move/from16 v16, v17
+
+    .line 955
+    .end local v17    # "cursor1":I
+    .restart local v16    # "cursor1":I
+    :cond_3
+    :goto_2
+    const/4 v2, 0x1
+
+    move/from16 v0, v22
+
+    if-ge v0, v2, :cond_4
+
+    const/16 v22, 0x1
+
+    .end local v22    # "minGallop":I
+    :cond_4
+    move/from16 v0, v22
+
+    move-object/from16 v1, p0
+
+    iput v0, v1, Lorg/oscim/utils/TimSort;->minGallop:I
+
+    .line 957
+    const/4 v2, 0x1
+
+    move/from16 v0, p4
+
+    if-ne v0, v2, :cond_d
+
+    .line 960
+    sub-int v20, v20, p2
+
+    .line 961
+    sub-int v16, v16, p2
+
+    .line 962
+    add-int/lit8 v2, v16, 0x1
+
+    add-int/lit8 v4, v20, 0x1
+
+    move/from16 v0, p2
+
+    invoke-static {v3, v2, v3, v4, v0}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 963
+    aget-object v2, v9, v18
+
+    aput-object v2, v3, v20
+
+    goto :goto_0
+
+    .line 908
+    .restart local v22    # "minGallop":I
+    :cond_5
+    add-int/lit8 v21, v20, -0x1
+
+    .end local v20    # "dest":I
+    .restart local v21    # "dest":I
+    add-int/lit8 v19, v18, -0x1
+
+    .end local v18    # "cursor2":I
+    .local v19, "cursor2":I
+    aget-object v2, v9, v18
+
+    aput-object v2, v3, v20
 
     .line 909
-    :goto_1
-    aget-object v14, v8, v5
-
-    aget-object v9, v7, v11
-
-    invoke-interface {v12, v14, v9}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
-
-    move-result v9
-
-    if-gez v9, :cond_3
-
-    add-int/lit8 v4, v6, -0x1
-
-    add-int/lit8 v9, v11, -0x1
+    add-int/lit8 v15, v15, 0x1
 
     .line 910
-    aget-object v11, v7, v11
+    const/4 v14, 0x0
 
-    aput-object v11, v7, v6
+    .line 911
+    add-int/lit8 p4, p4, -0x1
 
-    add-int/2addr v1, v10
+    const/4 v2, 0x1
 
-    add-int/lit8 v3, v3, -0x1
+    move/from16 v0, p4
 
-    if-nez v3, :cond_2
+    if-ne v0, v2, :cond_6
 
-    move v11, v5
+    move/from16 v20, v21
 
-    move v14, v9
+    .end local v21    # "dest":I
+    .restart local v20    # "dest":I
+    move/from16 v18, v19
 
-    :goto_2
-    move v9, v3
-
-    goto/16 :goto_8
-
-    :cond_2
-    move v6, v4
-
-    move v11, v9
-
-    const/4 v4, 0x0
-
-    goto :goto_3
-
-    :cond_3
-    add-int/lit8 v1, v6, -0x1
-
-    add-int/lit8 v9, v5, -0x1
-
-    .line 916
-    aget-object v5, v8, v5
-
-    aput-object v5, v7, v6
-
-    add-int/2addr v4, v10
-
-    add-int/lit8 v13, v13, -0x1
-
-    if-ne v13, v10, :cond_4
-
-    move v4, v1
-
-    move v14, v11
-
-    move v11, v9
-
+    .line 912
+    .end local v19    # "cursor2":I
+    .restart local v18    # "cursor2":I
     goto :goto_2
 
-    :cond_4
-    move v6, v1
+    .end local v18    # "cursor2":I
+    .end local v20    # "dest":I
+    .restart local v19    # "cursor2":I
+    .restart local v21    # "dest":I
+    :cond_6
+    move/from16 v20, v21
 
-    move v5, v9
+    .end local v21    # "dest":I
+    .restart local v20    # "dest":I
+    move/from16 v18, v19
 
-    const/4 v1, 0x0
-
+    .line 914
+    .end local v19    # "cursor2":I
+    .restart local v18    # "cursor2":I
     :goto_3
-    or-int v9, v1, v4
+    or-int v2, v14, v15
 
-    if-lt v9, v2, :cond_12
+    move/from16 v0, v22
 
-    move/from16 v16, v2
+    if-lt v2, v0, :cond_2
 
-    move v9, v3
-
-    move v14, v11
-
-    move v15, v13
-
-    move v11, v5
-
-    move v13, v6
-
-    .line 932
+    .line 924
     :goto_4
-    aget-object v1, v8, v11
+    aget-object v2, v9, v18
 
-    add-int/lit8 v5, v9, -0x1
+    add-int/lit8 v6, p2, -0x1
 
-    move-object v2, v7
+    move/from16 v4, p1
 
-    move/from16 v3, p1
+    move/from16 v5, p2
 
-    move v4, v9
+    invoke-static/range {v2 .. v7}, Lorg/oscim/utils/TimSort;->gallopRight(Ljava/lang/Object;[Ljava/lang/Object;IIILjava/util/Comparator;)I
 
-    move-object v6, v12
+    move-result v2
 
-    invoke-static/range {v1 .. v6}, Lorg/oscim/utils/TimSort;->gallopRight(Ljava/lang/Object;[Ljava/lang/Object;IIILjava/util/Comparator;)I
+    sub-int v14, p2, v2
 
-    move-result v1
+    .line 925
+    if-eqz v14, :cond_7
 
-    sub-int v6, v9, v1
+    .line 926
+    sub-int v20, v20, v14
 
-    if-eqz v6, :cond_6
+    .line 927
+    sub-int v16, v16, v14
 
-    sub-int v4, v13, v6
+    .line 928
+    sub-int p2, p2, v14
 
-    sub-int v1, v14, v6
+    .line 929
+    add-int/lit8 v2, v16, 0x1
 
-    sub-int v3, v9, v6
+    add-int/lit8 v4, v20, 0x1
 
-    add-int/lit8 v2, v1, 0x1
+    invoke-static {v3, v2, v3, v4, v14}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    add-int/lit8 v5, v4, 0x1
+    .line 930
+    if-eqz p2, :cond_3
+
+    .line 933
+    :cond_7
+    add-int/lit8 v21, v20, -0x1
+
+    .end local v20    # "dest":I
+    .restart local v21    # "dest":I
+    add-int/lit8 v19, v18, -0x1
+
+    .end local v18    # "cursor2":I
+    .restart local v19    # "cursor2":I
+    aget-object v2, v9, v18
+
+    aput-object v2, v3, v20
+
+    .line 934
+    add-int/lit8 p4, p4, -0x1
+
+    const/4 v2, 0x1
+
+    move/from16 v0, p4
+
+    if-ne v0, v2, :cond_8
+
+    move/from16 v20, v21
+
+    .end local v21    # "dest":I
+    .restart local v20    # "dest":I
+    move/from16 v18, v19
+
+    .line 935
+    .end local v19    # "cursor2":I
+    .restart local v18    # "cursor2":I
+    goto :goto_2
 
     .line 937
-    invoke-static {v7, v2, v7, v5, v6}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    .end local v18    # "cursor2":I
+    .end local v20    # "dest":I
+    .restart local v19    # "cursor2":I
+    .restart local v21    # "dest":I
+    :cond_8
+    aget-object v8, v3, v16
 
-    if-nez v3, :cond_5
+    const/4 v10, 0x0
 
-    move v14, v1
+    add-int/lit8 v12, p4, -0x1
 
-    move v9, v3
+    move/from16 v11, p4
 
-    :goto_5
-    move v13, v15
+    move-object v13, v7
 
-    :goto_6
-    move/from16 v2, v16
+    invoke-static/range {v8 .. v13}, Lorg/oscim/utils/TimSort;->gallopLeft(Ljava/lang/Object;[Ljava/lang/Object;IIILjava/util/Comparator;)I
 
-    goto/16 :goto_8
+    move-result v2
 
-    :cond_5
-    move v14, v1
+    sub-int v15, p4, v2
 
-    move v9, v3
+    .line 938
+    if-eqz v15, :cond_10
 
-    move v13, v4
+    .line 939
+    sub-int v20, v21, v15
 
-    :cond_6
-    add-int/lit8 v17, v13, -0x1
-
-    add-int/lit8 v18, v11, -0x1
+    .line 940
+    .end local v21    # "dest":I
+    .restart local v20    # "dest":I
+    sub-int v18, v19, v15
 
     .line 941
-    aget-object v1, v8, v11
+    .end local v19    # "cursor2":I
+    .restart local v18    # "cursor2":I
+    sub-int p4, p4, v15
 
-    aput-object v1, v7, v13
+    .line 942
+    add-int/lit8 v2, v18, 0x1
 
-    add-int/lit8 v11, v15, -0x1
+    add-int/lit8 v4, v20, 0x1
 
-    if-ne v11, v10, :cond_7
+    invoke-static {v9, v2, v3, v4, v15}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    move v13, v11
+    .line 943
+    const/4 v2, 0x1
 
-    move/from16 v2, v16
+    move/from16 v0, p4
 
-    move/from16 v4, v17
+    if-le v0, v2, :cond_3
 
-    move/from16 v11, v18
+    .line 946
+    :goto_5
+    add-int/lit8 v21, v20, -0x1
 
-    goto :goto_8
+    .end local v20    # "dest":I
+    .restart local v21    # "dest":I
+    add-int/lit8 v17, v16, -0x1
 
-    .line 945
-    :cond_7
-    aget-object v1, v7, v14
+    .end local v16    # "cursor1":I
+    .restart local v17    # "cursor1":I
+    aget-object v2, v3, v16
 
-    const/4 v3, 0x0
+    aput-object v2, v3, v20
 
-    add-int/lit8 v5, v11, -0x1
+    .line 947
+    add-int/lit8 p2, p2, -0x1
 
-    move-object v2, v8
+    if-nez p2, :cond_9
 
-    move v4, v11
+    move/from16 v20, v21
 
-    move v13, v6
+    .end local v21    # "dest":I
+    .restart local v20    # "dest":I
+    move/from16 v16, v17
 
-    move-object v6, v12
+    .line 948
+    .end local v17    # "cursor1":I
+    .restart local v16    # "cursor1":I
+    goto/16 :goto_2
 
-    invoke-static/range {v1 .. v6}, Lorg/oscim/utils/TimSort;->gallopLeft(Ljava/lang/Object;[Ljava/lang/Object;IIILjava/util/Comparator;)I
-
-    move-result v1
-
-    sub-int v1, v11, v1
-
-    if-eqz v1, :cond_9
-
-    sub-int v4, v17, v1
-
-    sub-int v5, v18, v1
-
-    sub-int v2, v11, v1
-
-    add-int/lit8 v3, v5, 0x1
-
-    add-int/lit8 v6, v4, 0x1
+    .line 949
+    .end local v16    # "cursor1":I
+    .end local v20    # "dest":I
+    .restart local v17    # "cursor1":I
+    .restart local v21    # "dest":I
+    :cond_9
+    add-int/lit8 v22, v22, -0x1
 
     .line 950
-    invoke-static {v8, v3, v7, v6, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    const/4 v2, 0x7
 
-    if-gt v2, v10, :cond_8
+    if-lt v14, v2, :cond_b
 
-    move v13, v2
-
-    move v11, v5
-
-    goto :goto_6
-
-    :cond_8
-    move v15, v2
-
-    move/from16 v17, v4
-
-    move v11, v5
-
-    goto :goto_7
-
-    :cond_9
-    move v15, v11
-
-    move/from16 v11, v18
-
-    :goto_7
-    add-int/lit8 v2, v17, -0x1
-
-    add-int/lit8 v3, v14, -0x1
-
-    .line 954
-    aget-object v4, v7, v14
-
-    aput-object v4, v7, v17
-
-    add-int/lit8 v9, v9, -0x1
-
-    if-nez v9, :cond_d
+    const/4 v2, 0x1
 
     move v4, v2
 
-    move v14, v3
+    :goto_6
+    const/4 v2, 0x7
 
-    goto :goto_5
+    if-lt v15, v2, :cond_c
 
-    :goto_8
-    if-ge v2, v10, :cond_a
+    const/4 v2, 0x1
 
-    move v2, v10
+    :goto_7
+    or-int/2addr v2, v4
 
-    .line 963
+    if-nez v2, :cond_f
+
+    .line 951
+    if-gez v22, :cond_a
+
+    .line 952
+    const/16 v22, 0x0
+
+    .line 953
     :cond_a
-    iput v2, v0, Lorg/oscim/utils/TimSort;->minGallop:I
+    add-int/lit8 v22, v22, 0x2
 
-    if-ne v13, v10, :cond_b
+    move/from16 v20, v21
 
-    sub-int/2addr v4, v9
+    .end local v21    # "dest":I
+    .restart local v20    # "dest":I
+    move/from16 v16, v17
 
-    sub-int/2addr v14, v9
+    .line 954
+    .end local v17    # "cursor1":I
+    .restart local v16    # "cursor1":I
+    goto/16 :goto_1
 
-    add-int/2addr v14, v10
-
-    add-int/lit8 v1, v4, 0x1
-
-    .line 970
-    invoke-static {v7, v14, v7, v1, v9}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    .line 971
-    aget-object v1, v8, v11
-
-    aput-object v1, v7, v4
-
-    goto :goto_9
-
+    .line 950
+    .end local v16    # "cursor1":I
+    .end local v20    # "dest":I
+    .restart local v17    # "cursor1":I
+    .restart local v21    # "dest":I
     :cond_b
-    if-nez v13, :cond_c
+    const/4 v2, 0x0
 
-    .line 973
-    new-instance v1, Ljava/lang/IllegalArgumentException;
+    move v4, v2
 
-    const-string v2, "Comparison method violates its general contract!"
-
-    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    throw v1
+    goto :goto_6
 
     :cond_c
-    add-int/lit8 v1, v13, -0x1
+    const/4 v2, 0x0
 
-    sub-int/2addr v4, v1
+    goto :goto_7
 
-    const/4 v14, 0x0
-
-    .line 979
-    invoke-static {v8, v14, v7, v4, v13}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    :goto_9
-    return-void
-
+    .line 964
+    .end local v17    # "cursor1":I
+    .end local v21    # "dest":I
+    .end local v22    # "minGallop":I
+    .restart local v16    # "cursor1":I
+    .restart local v20    # "dest":I
     :cond_d
-    const/4 v14, 0x0
+    if-nez p4, :cond_e
 
-    add-int/lit8 v16, v16, -0x1
+    .line 965
+    new-instance v2, Ljava/lang/IllegalArgumentException;
 
-    const/4 v4, 0x7
+    const-string v4, "Comparison method violates its general contract!"
 
-    if-lt v13, v4, :cond_e
+    invoke-direct {v2, v4}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    move v5, v10
+    throw v2
 
-    goto :goto_a
-
+    .line 971
     :cond_e
-    move v5, v14
+    const/4 v2, 0x0
 
-    :goto_a
-    if-lt v1, v4, :cond_f
+    add-int/lit8 v4, p4, -0x1
 
-    move v1, v10
+    sub-int v4, v20, v4
 
-    goto :goto_b
+    move/from16 v0, p4
 
-    :cond_f
-    move v1, v14
-
-    :goto_b
-    or-int/2addr v1, v5
-
-    if-nez v1, :cond_11
-
-    if-gez v16, :cond_10
-
-    move/from16 v16, v14
-
-    :cond_10
-    add-int/lit8 v1, v16, 0x2
-
-    move v6, v2
-
-    move v5, v11
-
-    move v2, v1
-
-    move v11, v3
-
-    move v1, v9
-
-    move v9, v14
-
-    move v3, v15
+    invoke-static {v9, v2, v3, v4, v0}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     goto/16 :goto_0
 
-    :cond_11
-    move v13, v2
+    .end local v16    # "cursor1":I
+    .end local v20    # "dest":I
+    .restart local v17    # "cursor1":I
+    .restart local v21    # "dest":I
+    .restart local v22    # "minGallop":I
+    :cond_f
+    move/from16 v20, v21
 
-    move v14, v3
+    .end local v21    # "dest":I
+    .restart local v20    # "dest":I
+    move/from16 v16, v17
 
+    .end local v17    # "cursor1":I
+    .restart local v16    # "cursor1":I
     goto/16 :goto_4
 
-    :cond_12
-    const/4 v9, 0x0
+    .end local v18    # "cursor2":I
+    .end local v20    # "dest":I
+    .restart local v19    # "cursor2":I
+    .restart local v21    # "dest":I
+    :cond_10
+    move/from16 v20, v21
 
-    goto/16 :goto_1
+    .end local v21    # "dest":I
+    .restart local v20    # "dest":I
+    move/from16 v18, v19
+
+    .end local v19    # "cursor2":I
+    .restart local v18    # "cursor2":I
+    goto :goto_5
+
+    .end local v16    # "cursor1":I
+    .end local v20    # "dest":I
+    .restart local v17    # "cursor1":I
+    .restart local v21    # "dest":I
+    :cond_11
+    move/from16 v20, v21
+
+    .end local v21    # "dest":I
+    .restart local v20    # "dest":I
+    move/from16 v16, v17
+
+    .end local v17    # "cursor1":I
+    .restart local v16    # "cursor1":I
+    goto/16 :goto_3
 .end method
 
 .method private mergeLo(IIII)V
-    .locals 19
+    .locals 22
+    .param p1, "base1"    # I
+    .param p2, "len1"    # I
+    .param p3, "base2"    # I
+    .param p4, "len2"    # I
 
+    .prologue
+    .line 745
+    .local p0, "this":Lorg/oscim/utils/TimSort;, "Lorg/oscim/utils/TimSort<TT;>;"
     move-object/from16 v0, p0
 
-    move/from16 v1, p1
+    iget-object v10, v0, Lorg/oscim/utils/TimSort;->a:[Ljava/lang/Object;
 
-    move/from16 v2, p2
+    .line 746
+    .local v10, "a":[Ljava/lang/Object;, "[TT;"
+    move-object/from16 v0, p0
+
+    move/from16 v1, p2
+
+    invoke-direct {v0, v1}, Lorg/oscim/utils/TimSort;->ensureCapacity(I)[Ljava/lang/Object;
+
+    move-result-object v4
+
+    .line 747
+    .local v4, "tmp":[Ljava/lang/Object;, "[TT;"
+    const/4 v3, 0x0
+
+    move/from16 v0, p1
+
+    move/from16 v1, p2
+
+    invoke-static {v10, v0, v4, v3, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 749
+    const/4 v5, 0x0
+
+    .line 750
+    .local v5, "cursor1":I
+    move/from16 v11, p3
 
     .line 751
-    iget-object v7, v0, Lorg/oscim/utils/TimSort;->a:[Ljava/lang/Object;
+    .local v11, "cursor2":I
+    move/from16 v19, p1
 
-    .line 752
-    invoke-direct {v0, v2}, Lorg/oscim/utils/TimSort;->ensureCapacity(I)[Ljava/lang/Object;
+    .line 754
+    .local v19, "dest":I
+    add-int/lit8 v20, v19, 0x1
 
-    move-result-object v8
+    .end local v19    # "dest":I
+    .local v20, "dest":I
+    add-int/lit8 v18, v11, 0x1
 
-    const/4 v9, 0x0
+    .end local v11    # "cursor2":I
+    .local v18, "cursor2":I
+    aget-object v3, v10, v11
 
-    .line 753
-    invoke-static {v7, v1, v8, v9, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    aput-object v3, v10, v19
 
-    add-int/lit8 v4, v1, 0x1
+    .line 755
+    add-int/lit8 p4, p4, -0x1
 
-    add-int/lit8 v5, p3, 0x1
+    if-nez p4, :cond_0
+
+    .line 756
+    move/from16 v0, v20
+
+    move/from16 v1, p2
+
+    invoke-static {v4, v5, v10, v0, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    move/from16 v19, v20
+
+    .end local v20    # "dest":I
+    .restart local v19    # "dest":I
+    move/from16 v11, v18
+
+    .line 848
+    .end local v18    # "cursor2":I
+    .restart local v11    # "cursor2":I
+    :goto_0
+    return-void
+
+    .line 759
+    .end local v11    # "cursor2":I
+    .end local v19    # "dest":I
+    .restart local v18    # "cursor2":I
+    .restart local v20    # "dest":I
+    :cond_0
+    const/4 v3, 0x1
+
+    move/from16 v0, p2
+
+    if-ne v0, v3, :cond_1
 
     .line 760
-    aget-object v3, v7, p3
+    move/from16 v0, v18
 
-    aput-object v3, v7, v1
+    move/from16 v1, v20
 
-    add-int/lit8 v1, p4, -0x1
+    move/from16 v2, p4
 
-    if-nez v1, :cond_0
+    invoke-static {v10, v0, v10, v1, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 761
+    add-int v3, v20, p4
+
+    aget-object v6, v4, v5
+
+    aput-object v6, v10, v3
+
+    move/from16 v19, v20
+
+    .end local v20    # "dest":I
+    .restart local v19    # "dest":I
+    move/from16 v11, v18
 
     .line 762
-    invoke-static {v8, v9, v7, v4, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    .end local v18    # "cursor2":I
+    .restart local v11    # "cursor2":I
+    goto :goto_0
 
-    return-void
+    .line 765
+    .end local v11    # "cursor2":I
+    .end local v19    # "dest":I
+    .restart local v18    # "cursor2":I
+    .restart local v20    # "dest":I
+    :cond_1
+    move-object/from16 v0, p0
 
-    :cond_0
-    const/4 v10, 0x1
-
-    if-ne v2, v10, :cond_1
+    iget-object v8, v0, Lorg/oscim/utils/TimSort;->c:Ljava/util/Comparator;
 
     .line 766
-    invoke-static {v7, v5, v7, v4, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    .local v8, "c":Ljava/util/Comparator;, "Ljava/util/Comparator<-TT;>;"
+    move-object/from16 v0, p0
 
-    add-int/2addr v4, v1
+    iget v0, v0, Lorg/oscim/utils/TimSort;->minGallop:I
 
-    .line 767
-    aget-object v1, v8, v9
+    move/from16 v21, v0
 
-    aput-object v1, v7, v4
+    .local v21, "minGallop":I
+    move/from16 v19, v20
 
-    return-void
+    .end local v20    # "dest":I
+    .restart local v19    # "dest":I
+    move/from16 v11, v18
 
-    .line 771
-    :cond_1
-    iget-object v11, v0, Lorg/oscim/utils/TimSort;->c:Ljava/util/Comparator;
-
-    .line 772
-    iget v3, v0, Lorg/oscim/utils/TimSort;->minGallop:I
-
-    move v6, v3
-
-    move v3, v9
-
-    :goto_0
-    move v13, v2
-
-    move v12, v9
-
-    move v2, v1
-
-    move v1, v12
-
-    .line 785
-    :cond_2
-    aget-object v14, v7, v5
-
-    aget-object v15, v8, v3
-
-    invoke-interface {v11, v14, v15}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
-
-    move-result v14
-
-    if-gez v14, :cond_4
-
-    add-int/lit8 v12, v4, 0x1
-
-    add-int/lit8 v14, v5, 0x1
-
-    .line 786
-    aget-object v5, v7, v5
-
-    aput-object v5, v7, v4
-
-    add-int/2addr v1, v10
-
-    add-int/lit8 v2, v2, -0x1
-
-    if-nez v2, :cond_3
-
-    move v9, v10
-
-    move v1, v12
-
-    move v12, v14
-
+    .line 768
+    .end local v18    # "cursor2":I
+    .restart local v11    # "cursor2":I
     :goto_1
-    move v10, v6
-
-    goto/16 :goto_6
-
-    :cond_3
-    move v4, v12
-
-    move v5, v14
-
-    move v12, v9
-
-    goto :goto_2
-
-    :cond_4
-    add-int/lit8 v1, v4, 0x1
-
-    add-int/lit8 v14, v3, 0x1
-
-    .line 792
-    aget-object v3, v8, v3
-
-    aput-object v3, v7, v4
-
-    add-int/2addr v12, v10
-
-    add-int/lit8 v13, v13, -0x1
-
-    if-ne v13, v10, :cond_5
-
-    move v12, v5
-
-    move v9, v10
-
-    move v3, v14
-
-    goto :goto_1
-
-    :cond_5
-    move v4, v1
-
-    move v1, v9
-
-    move v3, v14
-
-    :goto_2
-    or-int v14, v12, v1
-
-    if-lt v14, v6, :cond_2
-
-    move/from16 v16, v2
-
-    move v15, v4
-
-    move v12, v5
-
-    move/from16 v17, v6
-
-    move v14, v13
-
-    move v13, v3
-
-    .line 808
-    :goto_3
-    aget-object v1, v7, v12
-
-    const/4 v5, 0x0
-
-    move-object v2, v8
-
-    move v3, v13
-
-    move v4, v14
-
-    move-object v6, v11
-
-    invoke-static/range {v1 .. v6}, Lorg/oscim/utils/TimSort;->gallopRight(Ljava/lang/Object;[Ljava/lang/Object;IIILjava/util/Comparator;)I
-
-    move-result v6
-
-    if-eqz v6, :cond_7
-
-    .line 810
-    invoke-static {v8, v13, v7, v15, v6}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    add-int v1, v15, v6
-
-    add-int v3, v13, v6
-
-    sub-int v13, v14, v6
-
-    if-gt v13, v10, :cond_6
-
-    move v9, v10
-
-    :goto_4
-    move/from16 v2, v16
-
-    move/from16 v10, v17
-
-    goto/16 :goto_6
-
-    :cond_6
-    move v15, v1
-
-    move v14, v13
-
-    move v13, v3
-
-    :cond_7
-    add-int/lit8 v5, v15, 0x1
-
-    add-int/lit8 v4, v12, 0x1
-
-    .line 817
-    aget-object v1, v7, v12
-
-    aput-object v1, v7, v15
-
-    add-int/lit8 v12, v16, -0x1
-
-    if-nez v12, :cond_8
-
-    move v1, v5
-
-    move v9, v10
-
-    move v2, v12
-
-    move v3, v13
-
-    move v13, v14
-
-    move/from16 v10, v17
-
-    move v12, v4
-
-    goto :goto_6
-
-    .line 821
-    :cond_8
-    aget-object v1, v8, v13
-
     const/4 v15, 0x0
 
-    move-object v2, v7
+    .line 769
+    .local v15, "count1":I
+    const/16 v16, 0x0
 
-    move v3, v4
+    .line 778
+    .local v16, "count2":I
+    :cond_2
+    aget-object v3, v10, v11
 
-    move v9, v4
+    aget-object v6, v4, v5
 
-    move v4, v12
+    invoke-interface {v8, v3, v6}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
 
-    move v10, v5
+    move-result v3
 
-    move v5, v15
+    if-gez v3, :cond_5
 
-    move v15, v6
+    .line 779
+    add-int/lit8 v20, v19, 0x1
 
-    move-object v6, v11
+    .end local v19    # "dest":I
+    .restart local v20    # "dest":I
+    add-int/lit8 v18, v11, 0x1
 
-    invoke-static/range {v1 .. v6}, Lorg/oscim/utils/TimSort;->gallopLeft(Ljava/lang/Object;[Ljava/lang/Object;IIILjava/util/Comparator;)I
+    .end local v11    # "cursor2":I
+    .restart local v18    # "cursor2":I
+    aget-object v3, v10, v11
 
-    move-result v1
+    aput-object v3, v10, v19
 
-    if-eqz v1, :cond_a
+    .line 780
+    add-int/lit8 v16, v16, 0x1
 
-    .line 823
-    invoke-static {v7, v9, v7, v10, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    .line 781
+    const/4 v15, 0x0
 
-    add-int v2, v10, v1
+    .line 782
+    add-int/lit8 p4, p4, -0x1
 
-    add-int v5, v9, v1
+    if-nez p4, :cond_11
 
-    sub-int v3, v12, v1
+    move/from16 v19, v20
 
-    if-nez v3, :cond_9
+    .end local v20    # "dest":I
+    .restart local v19    # "dest":I
+    move/from16 v11, v18
 
-    move v1, v2
+    .line 832
+    .end local v18    # "cursor2":I
+    .restart local v11    # "cursor2":I
+    :cond_3
+    :goto_2
+    const/4 v3, 0x1
 
-    move v2, v3
+    move/from16 v0, v21
 
-    move v12, v5
+    if-ge v0, v3, :cond_4
 
-    move v3, v13
+    const/16 v21, 0x1
 
-    move v13, v14
+    .end local v21    # "minGallop":I
+    :cond_4
+    move/from16 v0, v21
 
-    move/from16 v10, v17
+    move-object/from16 v1, p0
 
-    const/4 v9, 0x1
+    iput v0, v1, Lorg/oscim/utils/TimSort;->minGallop:I
 
-    goto :goto_6
+    .line 834
+    const/4 v3, 0x1
 
-    :cond_9
-    move v10, v2
+    move/from16 v0, p2
 
-    move/from16 v16, v3
+    if-ne v0, v3, :cond_d
 
-    move v12, v5
+    .line 837
+    move/from16 v0, v19
 
-    goto :goto_5
+    move/from16 v1, p4
 
-    :cond_a
-    move/from16 v16, v12
+    invoke-static {v10, v11, v10, v0, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    move v12, v9
+    .line 838
+    add-int v3, v19, p4
 
-    :goto_5
-    add-int/lit8 v2, v10, 0x1
+    aget-object v6, v4, v5
 
-    add-int/lit8 v3, v13, 0x1
+    aput-object v6, v10, v3
 
-    .line 830
-    aget-object v4, v8, v13
+    goto :goto_0
 
-    aput-object v4, v7, v10
+    .line 785
+    .restart local v21    # "minGallop":I
+    :cond_5
+    add-int/lit8 v20, v19, 0x1
 
-    add-int/lit8 v14, v14, -0x1
+    .end local v19    # "dest":I
+    .restart local v20    # "dest":I
+    add-int/lit8 v17, v5, 0x1
 
-    const/4 v9, 0x1
+    .end local v5    # "cursor1":I
+    .local v17, "cursor1":I
+    aget-object v3, v4, v5
 
-    if-ne v14, v9, :cond_e
+    aput-object v3, v10, v19
 
-    move v1, v2
+    .line 786
+    add-int/lit8 v15, v15, 0x1
 
-    move v13, v14
+    .line 787
+    const/16 v16, 0x0
 
-    goto :goto_4
+    .line 788
+    add-int/lit8 p2, p2, -0x1
 
-    :goto_6
-    if-ge v10, v9, :cond_b
+    const/4 v3, 0x1
 
-    move v10, v9
+    move/from16 v0, p2
 
-    .line 839
-    :cond_b
-    iput v10, v0, Lorg/oscim/utils/TimSort;->minGallop:I
+    if-ne v0, v3, :cond_6
 
-    if-ne v13, v9, :cond_c
+    move/from16 v19, v20
 
-    .line 844
-    invoke-static {v7, v12, v7, v1, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    .end local v20    # "dest":I
+    .restart local v19    # "dest":I
+    move/from16 v5, v17
 
-    add-int/2addr v1, v2
+    .line 789
+    .end local v17    # "cursor1":I
+    .restart local v5    # "cursor1":I
+    goto :goto_2
 
-    .line 845
-    aget-object v2, v8, v3
+    .end local v5    # "cursor1":I
+    .end local v19    # "dest":I
+    .restart local v17    # "cursor1":I
+    .restart local v20    # "dest":I
+    :cond_6
+    move/from16 v19, v20
 
-    aput-object v2, v7, v1
+    .end local v20    # "dest":I
+    .restart local v19    # "dest":I
+    move/from16 v5, v17
 
-    goto :goto_7
+    .line 791
+    .end local v17    # "cursor1":I
+    .restart local v5    # "cursor1":I
+    :goto_3
+    or-int v3, v15, v16
 
-    :cond_c
-    if-nez v13, :cond_d
+    move/from16 v0, v21
 
-    .line 847
-    new-instance v1, Ljava/lang/IllegalArgumentException;
+    if-lt v3, v0, :cond_2
 
-    const-string v2, "Comparison method violates its general contract!"
+    move/from16 v18, v11
 
-    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    .line 801
+    .end local v11    # "cursor2":I
+    .restart local v18    # "cursor2":I
+    :goto_4
+    aget-object v3, v10, v18
 
-    throw v1
+    const/4 v7, 0x0
 
-    .line 853
-    :cond_d
-    invoke-static {v8, v3, v7, v1, v13}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    move/from16 v6, p2
 
-    :goto_7
-    return-void
+    invoke-static/range {v3 .. v8}, Lorg/oscim/utils/TimSort;->gallopRight(Ljava/lang/Object;[Ljava/lang/Object;IIILjava/util/Comparator;)I
 
-    :cond_e
-    add-int/lit8 v17, v17, -0x1
+    move-result v15
 
-    const/4 v4, 0x7
+    .line 802
+    if-eqz v15, :cond_7
 
-    if-lt v15, v4, :cond_f
+    .line 803
+    move/from16 v0, v19
 
-    move v5, v9
+    invoke-static {v4, v5, v10, v0, v15}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    goto :goto_8
+    .line 804
+    add-int v19, v19, v15
 
-    :cond_f
-    const/4 v5, 0x0
+    .line 805
+    add-int/2addr v5, v15
 
-    :goto_8
-    if-lt v1, v4, :cond_10
+    .line 806
+    sub-int p2, p2, v15
 
-    move v1, v9
+    .line 807
+    const/4 v3, 0x1
 
-    goto :goto_9
+    move/from16 v0, p2
 
-    :cond_10
-    const/4 v1, 0x0
+    if-gt v0, v3, :cond_7
 
-    :goto_9
-    or-int/2addr v1, v5
+    move/from16 v11, v18
 
-    if-nez v1, :cond_12
+    .line 808
+    .end local v18    # "cursor2":I
+    .restart local v11    # "cursor2":I
+    goto :goto_2
 
-    if-gez v17, :cond_11
+    .line 810
+    .end local v11    # "cursor2":I
+    .restart local v18    # "cursor2":I
+    :cond_7
+    add-int/lit8 v20, v19, 0x1
 
-    const/16 v17, 0x0
+    .end local v19    # "dest":I
+    .restart local v20    # "dest":I
+    add-int/lit8 v11, v18, 0x1
 
-    :cond_11
-    add-int/lit8 v6, v17, 0x2
+    .end local v18    # "cursor2":I
+    .restart local v11    # "cursor2":I
+    aget-object v3, v10, v18
 
-    move v4, v2
+    aput-object v3, v10, v19
 
-    move v10, v9
+    .line 811
+    add-int/lit8 p4, p4, -0x1
 
-    move v5, v12
+    if-nez p4, :cond_8
 
-    move v2, v14
+    move/from16 v19, v20
+
+    .line 812
+    .end local v20    # "dest":I
+    .restart local v19    # "dest":I
+    goto :goto_2
+
+    .line 814
+    .end local v19    # "dest":I
+    .restart local v20    # "dest":I
+    :cond_8
+    aget-object v9, v4, v5
+
+    const/4 v13, 0x0
+
+    move/from16 v12, p4
+
+    move-object v14, v8
+
+    invoke-static/range {v9 .. v14}, Lorg/oscim/utils/TimSort;->gallopLeft(Ljava/lang/Object;[Ljava/lang/Object;IIILjava/util/Comparator;)I
+
+    move-result v16
+
+    .line 815
+    if-eqz v16, :cond_10
+
+    .line 816
+    move/from16 v0, v20
 
     move/from16 v1, v16
 
-    const/4 v9, 0x0
+    invoke-static {v10, v11, v10, v0, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 817
+    add-int v19, v20, v16
+
+    .line 818
+    .end local v20    # "dest":I
+    .restart local v19    # "dest":I
+    add-int v11, v11, v16
+
+    .line 819
+    sub-int p4, p4, v16
+
+    .line 820
+    if-eqz p4, :cond_3
+
+    .line 823
+    :goto_5
+    add-int/lit8 v20, v19, 0x1
+
+    .end local v19    # "dest":I
+    .restart local v20    # "dest":I
+    add-int/lit8 v17, v5, 0x1
+
+    .end local v5    # "cursor1":I
+    .restart local v17    # "cursor1":I
+    aget-object v3, v4, v5
+
+    aput-object v3, v10, v19
+
+    .line 824
+    add-int/lit8 p2, p2, -0x1
+
+    const/4 v3, 0x1
+
+    move/from16 v0, p2
+
+    if-ne v0, v3, :cond_9
+
+    move/from16 v19, v20
+
+    .end local v20    # "dest":I
+    .restart local v19    # "dest":I
+    move/from16 v5, v17
+
+    .line 825
+    .end local v17    # "cursor1":I
+    .restart local v5    # "cursor1":I
+    goto/16 :goto_2
+
+    .line 826
+    .end local v5    # "cursor1":I
+    .end local v19    # "dest":I
+    .restart local v17    # "cursor1":I
+    .restart local v20    # "dest":I
+    :cond_9
+    add-int/lit8 v21, v21, -0x1
+
+    .line 827
+    const/4 v3, 0x7
+
+    if-lt v15, v3, :cond_b
+
+    const/4 v3, 0x1
+
+    move v6, v3
+
+    :goto_6
+    const/4 v3, 0x7
+
+    move/from16 v0, v16
+
+    if-lt v0, v3, :cond_c
+
+    const/4 v3, 0x1
+
+    :goto_7
+    or-int/2addr v3, v6
+
+    if-nez v3, :cond_f
+
+    .line 828
+    if-gez v21, :cond_a
+
+    .line 829
+    const/16 v21, 0x0
+
+    .line 830
+    :cond_a
+    add-int/lit8 v21, v21, 0x2
+
+    move/from16 v19, v20
+
+    .end local v20    # "dest":I
+    .restart local v19    # "dest":I
+    move/from16 v5, v17
+
+    .line 831
+    .end local v17    # "cursor1":I
+    .restart local v5    # "cursor1":I
+    goto/16 :goto_1
+
+    .line 827
+    .end local v5    # "cursor1":I
+    .end local v19    # "dest":I
+    .restart local v17    # "cursor1":I
+    .restart local v20    # "dest":I
+    :cond_b
+    const/4 v3, 0x0
+
+    move v6, v3
+
+    goto :goto_6
+
+    :cond_c
+    const/4 v3, 0x0
+
+    goto :goto_7
+
+    .line 839
+    .end local v17    # "cursor1":I
+    .end local v20    # "dest":I
+    .end local v21    # "minGallop":I
+    .restart local v5    # "cursor1":I
+    .restart local v19    # "dest":I
+    :cond_d
+    if-nez p2, :cond_e
+
+    .line 840
+    new-instance v3, Ljava/lang/IllegalArgumentException;
+
+    const-string v6, "Comparison method violates its general contract!"
+
+    invoke-direct {v3, v6}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v3
+
+    .line 846
+    :cond_e
+    move/from16 v0, v19
+
+    move/from16 v1, p2
+
+    invoke-static {v4, v5, v10, v0, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     goto/16 :goto_0
 
-    :cond_12
-    move v15, v2
+    .end local v5    # "cursor1":I
+    .end local v19    # "dest":I
+    .restart local v17    # "cursor1":I
+    .restart local v20    # "dest":I
+    .restart local v21    # "minGallop":I
+    :cond_f
+    move/from16 v19, v20
 
-    move v13, v3
+    .end local v20    # "dest":I
+    .restart local v19    # "dest":I
+    move/from16 v18, v11
 
-    move v10, v9
+    .end local v11    # "cursor2":I
+    .restart local v18    # "cursor2":I
+    move/from16 v5, v17
 
-    const/4 v9, 0x0
+    .end local v17    # "cursor1":I
+    .restart local v5    # "cursor1":I
+    goto/16 :goto_4
 
+    .end local v18    # "cursor2":I
+    .end local v19    # "dest":I
+    .restart local v11    # "cursor2":I
+    .restart local v20    # "dest":I
+    :cond_10
+    move/from16 v19, v20
+
+    .end local v20    # "dest":I
+    .restart local v19    # "dest":I
+    goto :goto_5
+
+    .end local v11    # "cursor2":I
+    .end local v19    # "dest":I
+    .restart local v18    # "cursor2":I
+    .restart local v20    # "dest":I
+    :cond_11
+    move/from16 v19, v20
+
+    .end local v20    # "dest":I
+    .restart local v19    # "dest":I
+    move/from16 v11, v18
+
+    .end local v18    # "cursor2":I
+    .restart local v11    # "cursor2":I
     goto/16 :goto_3
 .end method
 
 .method private static minRunLength(I)I
     .locals 2
+    .param p0, "n"    # I
 
+    .prologue
+    .line 440
     const/4 v0, 0x0
 
+    .line 441
+    .local v0, "r":I
     :goto_0
     const/16 v1, 0x20
 
     if-lt p0, v1, :cond_0
 
+    .line 442
     and-int/lit8 v1, p0, 0x1
 
     or-int/2addr v0, v1
 
+    .line 443
     shr-int/lit8 p0, p0, 0x1
 
     goto :goto_0
 
+    .line 445
     :cond_0
-    add-int/2addr p0, v0
+    add-int v1, p0, v0
 
-    return p0
+    return v1
 .end method
 
 .method private pushRun(II)V
     .locals 2
+    .param p1, "runBase"    # I
+    .param p2, "runLen"    # I
 
-    .line 461
+    .prologue
+    .line 455
+    .local p0, "this":Lorg/oscim/utils/TimSort;, "Lorg/oscim/utils/TimSort<TT;>;"
     iget-object v0, p0, Lorg/oscim/utils/TimSort;->runBase:[I
 
     iget v1, p0, Lorg/oscim/utils/TimSort;->stackSize:I
 
     aput p1, v0, v1
 
-    .line 462
-    iget-object p1, p0, Lorg/oscim/utils/TimSort;->runLen:[I
+    .line 456
+    iget-object v0, p0, Lorg/oscim/utils/TimSort;->runLen:[I
 
+    iget v1, p0, Lorg/oscim/utils/TimSort;->stackSize:I
+
+    aput p2, v0, v1
+
+    .line 457
     iget v0, p0, Lorg/oscim/utils/TimSort;->stackSize:I
 
-    aput p2, p1, v0
+    add-int/lit8 v0, v0, 0x1
 
-    .line 463
-    iget p1, p0, Lorg/oscim/utils/TimSort;->stackSize:I
+    iput v0, p0, Lorg/oscim/utils/TimSort;->stackSize:I
 
-    add-int/lit8 p1, p1, 0x1
-
-    iput p1, p0, Lorg/oscim/utils/TimSort;->stackSize:I
-
+    .line 458
     return-void
 .end method
 
 .method private static rangeCheck(III)V
-    .locals 2
+    .locals 3
+    .param p0, "arrayLen"    # I
+    .param p1, "fromIndex"    # I
+    .param p2, "toIndex"    # I
 
+    .prologue
+    .line 1019
     if-le p1, p2, :cond_0
 
-    .line 1028
-    new-instance p0, Ljava/lang/IllegalArgumentException;
+    .line 1020
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "fromIndex("
+    const-string v2, "fromIndex("
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    move-result-object v1
 
-    const-string p1, ") > toIndex("
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v1
 
-    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    const-string v2, ") > toIndex("
 
-    const-string p1, ")"
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v1
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v1
 
-    invoke-direct {p0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    const-string v2, ")"
 
-    throw p0
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 1022
     :cond_0
     if-gez p1, :cond_1
 
-    .line 1031
-    new-instance p0, Ljava/lang/ArrayIndexOutOfBoundsException;
+    .line 1023
+    new-instance v0, Ljava/lang/ArrayIndexOutOfBoundsException;
 
-    invoke-direct {p0, p1}, Ljava/lang/ArrayIndexOutOfBoundsException;-><init>(I)V
+    invoke-direct {v0, p1}, Ljava/lang/ArrayIndexOutOfBoundsException;-><init>(I)V
 
-    throw p0
+    throw v0
 
+    .line 1024
     :cond_1
     if-le p2, p0, :cond_2
 
-    .line 1033
-    new-instance p0, Ljava/lang/ArrayIndexOutOfBoundsException;
+    .line 1025
+    new-instance v0, Ljava/lang/ArrayIndexOutOfBoundsException;
 
-    invoke-direct {p0, p2}, Ljava/lang/ArrayIndexOutOfBoundsException;-><init>(I)V
+    invoke-direct {v0, p2}, Ljava/lang/ArrayIndexOutOfBoundsException;-><init>(I)V
 
-    throw p0
+    throw v0
 
+    .line 1026
     :cond_2
     return-void
 .end method
 
 .method private static reverseRange([Ljava/lang/Object;II)V
-    .locals 3
+    .locals 4
+    .param p0, "a"    # [Ljava/lang/Object;
+    .param p1, "lo"    # I
+    .param p2, "hi"    # I
 
+    .prologue
+    .line 411
     add-int/lit8 p2, p2, -0x1
 
+    move v0, p2
+
+    .end local p2    # "hi":I
+    .local v0, "hi":I
+    move v1, p1
+
+    .line 412
+    .end local p1    # "lo":I
+    .local v1, "lo":I
     :goto_0
-    if-ge p1, p2, :cond_0
+    if-ge v1, v0, :cond_0
 
-    .line 419
-    aget-object v0, p0, p1
+    .line 413
+    aget-object v2, p0, v1
 
-    add-int/lit8 v1, p1, 0x1
+    .line 414
+    .local v2, "t":Ljava/lang/Object;
+    add-int/lit8 p1, v1, 0x1
 
-    .line 420
-    aget-object v2, p0, p2
+    .end local v1    # "lo":I
+    .restart local p1    # "lo":I
+    aget-object v3, p0, v0
 
-    aput-object v2, p0, p1
+    aput-object v3, p0, v1
 
-    add-int/lit8 p1, p2, -0x1
+    .line 415
+    add-int/lit8 p2, v0, -0x1
 
-    .line 421
-    aput-object v0, p0, p2
+    .end local v0    # "hi":I
+    .restart local p2    # "hi":I
+    aput-object v2, p0, v0
 
-    move p2, p1
+    move v0, p2
 
-    move p1, v1
+    .end local p2    # "hi":I
+    .restart local v0    # "hi":I
+    move v1, p1
 
+    .line 416
+    .end local p1    # "lo":I
+    .restart local v1    # "lo":I
     goto :goto_0
 
+    .line 417
+    .end local v2    # "t":Ljava/lang/Object;
     :cond_0
     return-void
 .end method
@@ -2045,132 +2541,164 @@
 
 # virtual methods
 .method public doSort([Ljava/lang/Object;Ljava/util/Comparator;II)V
-    .locals 6
+    .locals 11
+    .param p3, "lo"    # I
+    .param p4, "hi"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "([TT;",
-            "Ljava/util/Comparator<",
-            "TT;>;II)V"
+            "Ljava/util/Comparator",
+            "<TT;>;II)V"
         }
     .end annotation
 
-    const/4 v0, 0x0
+    .prologue
+    .local p0, "this":Lorg/oscim/utils/TimSort;, "Lorg/oscim/utils/TimSort<TT;>;"
+    .local p1, "a":[Ljava/lang/Object;, "[TT;"
+    .local p2, "c":Ljava/util/Comparator;, "Ljava/util/Comparator<TT;>;"
+    const/4 v9, 0x0
 
-    .line 140
-    iput v0, p0, Lorg/oscim/utils/TimSort;->stackSize:I
+    const/4 v10, 0x0
 
-    const/4 v1, 0x2
+    .line 134
+    iput v9, p0, Lorg/oscim/utils/TimSort;->stackSize:I
+
+    .line 135
+    array-length v8, p1
+
+    invoke-static {v8, p3, p4}, Lorg/oscim/utils/TimSort;->rangeCheck(III)V
+
+    .line 136
+    sub-int v5, p4, p3
+
+    .line 137
+    .local v5, "nRemaining":I
+    const/4 v8, 0x2
+
+    if-ge v5, v8, :cond_1
+
+    .line 189
+    :cond_0
+    :goto_0
+    return-void
 
     .line 141
-    array-length v2, p1
-
-    invoke-static {v2, p3, p4}, Lorg/oscim/utils/TimSort;->rangeCheck(III)V
-
-    sub-int v2, p4, p3
-
-    if-ge v2, v1, :cond_0
-
-    return-void
-
-    :cond_0
-    const/16 v1, 0x20
-
-    if-ge v2, v1, :cond_1
-
-    .line 148
-    invoke-static {p1, p3, p4, p2}, Lorg/oscim/utils/TimSort;->countRunAndMakeAscending([Ljava/lang/Object;IILjava/util/Comparator;)I
-
-    move-result v0
-
-    add-int/2addr v0, p3
-
-    .line 149
-    invoke-static {p1, p3, p4, v0, p2}, Lorg/oscim/utils/TimSort;->binarySort([Ljava/lang/Object;IIILjava/util/Comparator;)V
-
-    return-void
-
-    .line 153
     :cond_1
-    iput-object p1, p0, Lorg/oscim/utils/TimSort;->a:[Ljava/lang/Object;
+    const/16 v8, 0x20
 
-    .line 154
-    iput-object p2, p0, Lorg/oscim/utils/TimSort;->c:Ljava/util/Comparator;
+    if-ge v5, v8, :cond_2
 
-    .line 155
-    iput v0, p0, Lorg/oscim/utils/TimSort;->tmpCount:I
-
-    .line 162
-    invoke-static {v2}, Lorg/oscim/utils/TimSort;->minRunLength(I)I
-
-    move-result v1
-
-    .line 165
-    :cond_2
+    .line 142
     invoke-static {p1, p3, p4, p2}, Lorg/oscim/utils/TimSort;->countRunAndMakeAscending([Ljava/lang/Object;IILjava/util/Comparator;)I
 
-    move-result v3
+    move-result v2
 
-    if-ge v3, v1, :cond_4
+    .line 143
+    .local v2, "initRunLen":I
+    add-int v8, p3, v2
 
-    if-gt v2, v1, :cond_3
-
-    move v4, v2
+    invoke-static {p1, p3, p4, v8, p2}, Lorg/oscim/utils/TimSort;->binarySort([Ljava/lang/Object;IIILjava/util/Comparator;)V
 
     goto :goto_0
 
-    :cond_3
-    move v4, v1
-
-    :goto_0
-    add-int v5, p3, v4
-
-    add-int/2addr v3, p3
-
-    .line 170
-    invoke-static {p1, p3, v5, v3, p2}, Lorg/oscim/utils/TimSort;->binarySort([Ljava/lang/Object;IIILjava/util/Comparator;)V
-
-    move v3, v4
-
-    .line 175
-    :cond_4
-    invoke-direct {p0, p3, v3}, Lorg/oscim/utils/TimSort;->pushRun(II)V
-
-    .line 176
-    invoke-direct {p0}, Lorg/oscim/utils/TimSort;->mergeCollapse()V
-
-    add-int/2addr p3, v3
-
-    sub-int/2addr v2, v3
-
-    if-nez v2, :cond_2
-
-    .line 186
-    invoke-direct {p0}, Lorg/oscim/utils/TimSort;->mergeForceCollapse()V
-
-    const/4 p1, 0x0
-
-    .line 190
+    .line 147
+    .end local v2    # "initRunLen":I
+    :cond_2
     iput-object p1, p0, Lorg/oscim/utils/TimSort;->a:[Ljava/lang/Object;
 
-    .line 191
-    iput-object p1, p0, Lorg/oscim/utils/TimSort;->c:Ljava/util/Comparator;
+    .line 148
+    iput-object p2, p0, Lorg/oscim/utils/TimSort;->c:Ljava/util/Comparator;
 
-    .line 192
-    iget-object p2, p0, Lorg/oscim/utils/TimSort;->tmp:[Ljava/lang/Object;
+    .line 149
+    iput v9, p0, Lorg/oscim/utils/TimSort;->tmpCount:I
 
-    .line 193
-    iget p3, p0, Lorg/oscim/utils/TimSort;->tmpCount:I
+    .line 156
+    invoke-static {v5}, Lorg/oscim/utils/TimSort;->minRunLength(I)I
 
+    move-result v3
+
+    .line 159
+    .local v3, "minRun":I
+    :cond_3
+    invoke-static {p1, p3, p4, p2}, Lorg/oscim/utils/TimSort;->countRunAndMakeAscending([Ljava/lang/Object;IILjava/util/Comparator;)I
+
+    move-result v6
+
+    .line 162
+    .local v6, "runLen":I
+    if-ge v6, v3, :cond_4
+
+    .line 163
+    if-gt v5, v3, :cond_5
+
+    move v0, v5
+
+    .line 164
+    .local v0, "force":I
     :goto_1
-    if-ge v0, p3, :cond_5
+    add-int v8, p3, v0
 
-    .line 194
-    aput-object p1, p2, v0
+    add-int v9, p3, v6
 
-    add-int/lit8 v0, v0, 0x1
+    invoke-static {p1, p3, v8, v9, p2}, Lorg/oscim/utils/TimSort;->binarySort([Ljava/lang/Object;IIILjava/util/Comparator;)V
 
-    goto :goto_1
+    .line 165
+    move v6, v0
 
+    .line 169
+    .end local v0    # "force":I
+    :cond_4
+    invoke-direct {p0, p3, v6}, Lorg/oscim/utils/TimSort;->pushRun(II)V
+
+    .line 170
+    invoke-direct {p0}, Lorg/oscim/utils/TimSort;->mergeCollapse()V
+
+    .line 173
+    add-int/2addr p3, v6
+
+    .line 174
+    sub-int/2addr v5, v6
+
+    .line 175
+    if-nez v5, :cond_3
+
+    .line 180
+    invoke-direct {p0}, Lorg/oscim/utils/TimSort;->mergeForceCollapse()V
+
+    .line 184
+    iput-object v10, p0, Lorg/oscim/utils/TimSort;->a:[Ljava/lang/Object;
+
+    .line 185
+    iput-object v10, p0, Lorg/oscim/utils/TimSort;->c:Ljava/util/Comparator;
+
+    .line 186
+    iget-object v7, p0, Lorg/oscim/utils/TimSort;->tmp:[Ljava/lang/Object;
+
+    .line 187
+    .local v7, "tmp":[Ljava/lang/Object;, "[TT;"
+    const/4 v1, 0x0
+
+    .local v1, "i":I
+    iget v4, p0, Lorg/oscim/utils/TimSort;->tmpCount:I
+
+    .local v4, "n":I
+    :goto_2
+    if-ge v1, v4, :cond_0
+
+    .line 188
+    aput-object v10, v7, v1
+
+    .line 187
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_2
+
+    .end local v1    # "i":I
+    .end local v4    # "n":I
+    .end local v7    # "tmp":[Ljava/lang/Object;, "[TT;"
     :cond_5
-    return-void
+    move v0, v3
+
+    .line 163
+    goto :goto_1
 .end method

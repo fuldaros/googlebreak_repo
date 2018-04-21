@@ -6,103 +6,67 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/support/v4/app/ActivityCompat$RequestPermissionsRequestCodeValidator;,
-        Landroid/support/v4/app/ActivityCompat$PermissionCompatDelegate;,
         Landroid/support/v4/app/ActivityCompat$OnRequestPermissionsResultCallback;
     }
 .end annotation
 
 
-# static fields
-.field private static sDelegate:Landroid/support/v4/app/ActivityCompat$PermissionCompatDelegate;
-
-
 # direct methods
 .method public static finishAffinity(Landroid/app/Activity;)V
     .locals 2
+    .param p0, "activity"    # Landroid/app/Activity;
 
-    .line 286
+    .prologue
+    .line 176
     sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
 
     const/16 v1, 0x10
 
     if-lt v0, v1, :cond_0
 
-    .line 287
-    invoke-virtual {p0}, Landroid/app/Activity;->finishAffinity()V
+    .line 177
+    invoke-static {p0}, Landroid/support/v4/app/ActivityCompatJB;->finishAffinity(Landroid/app/Activity;)V
 
-    goto :goto_0
+    .line 181
+    :goto_0
+    return-void
 
-    .line 289
+    .line 179
     :cond_0
     invoke-virtual {p0}, Landroid/app/Activity;->finish()V
 
-    :goto_0
-    return-void
-.end method
-
-.method public static getPermissionCompatDelegate()Landroid/support/v4/app/ActivityCompat$PermissionCompatDelegate;
-    .locals 1
-
-    .line 168
-    sget-object v0, Landroid/support/v4/app/ActivityCompat;->sDelegate:Landroid/support/v4/app/ActivityCompat$PermissionCompatDelegate;
-
-    return-object v0
+    goto :goto_0
 .end method
 
 .method public static requestPermissions(Landroid/app/Activity;[Ljava/lang/String;I)V
-    .locals 2
+    .locals 3
+    .param p0, "activity"    # Landroid/app/Activity;
+    .param p1, "permissions"    # [Ljava/lang/String;
+    .param p2, "requestCode"    # I
 
-    .line 496
-    sget-object v0, Landroid/support/v4/app/ActivityCompat;->sDelegate:Landroid/support/v4/app/ActivityCompat$PermissionCompatDelegate;
+    .prologue
+    .line 315
+    sget v1, Landroid/os/Build$VERSION;->SDK_INT:I
 
-    if-eqz v0, :cond_0
+    const/16 v2, 0x17
 
-    sget-object v0, Landroid/support/v4/app/ActivityCompat;->sDelegate:Landroid/support/v4/app/ActivityCompat$PermissionCompatDelegate;
+    if-lt v1, v2, :cond_1
 
-    .line 497
-    invoke-interface {v0, p0, p1, p2}, Landroid/support/v4/app/ActivityCompat$PermissionCompatDelegate;->requestPermissions(Landroid/app/Activity;[Ljava/lang/String;I)Z
+    .line 316
+    invoke-static {p0, p1, p2}, Landroid/support/v4/app/ActivityCompatApi23;->requestPermissions(Landroid/app/Activity;[Ljava/lang/String;I)V
 
-    move-result v0
-
-    if-eqz v0, :cond_0
-
+    .line 338
+    :cond_0
+    :goto_0
     return-void
 
-    .line 502
-    :cond_0
-    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
-
-    const/16 v1, 0x17
-
-    if-lt v0, v1, :cond_2
-
-    .line 503
-    instance-of v0, p0, Landroid/support/v4/app/ActivityCompat$RequestPermissionsRequestCodeValidator;
-
-    if-eqz v0, :cond_1
-
-    .line 504
-    move-object v0, p0
-
-    check-cast v0, Landroid/support/v4/app/ActivityCompat$RequestPermissionsRequestCodeValidator;
-
-    .line 505
-    invoke-interface {v0, p2}, Landroid/support/v4/app/ActivityCompat$RequestPermissionsRequestCodeValidator;->validateRequestPermissionsRequestCode(I)V
-
-    .line 507
+    .line 317
     :cond_1
-    invoke-virtual {p0, p1, p2}, Landroid/app/Activity;->requestPermissions([Ljava/lang/String;I)V
+    instance-of v1, p0, Landroid/support/v4/app/ActivityCompat$OnRequestPermissionsResultCallback;
 
-    goto :goto_0
+    if-eqz v1, :cond_0
 
-    .line 508
-    :cond_2
-    instance-of v0, p0, Landroid/support/v4/app/ActivityCompat$OnRequestPermissionsResultCallback;
-
-    if-eqz v0, :cond_3
-
-    .line 509
+    .line 318
     new-instance v0, Landroid/os/Handler;
 
     invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
@@ -111,37 +75,13 @@
 
     invoke-direct {v0, v1}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
 
-    .line 510
+    .line 319
+    .local v0, "handler":Landroid/os/Handler;
     new-instance v1, Landroid/support/v4/app/ActivityCompat$1;
 
     invoke-direct {v1, p1, p0, p2}, Landroid/support/v4/app/ActivityCompat$1;-><init>([Ljava/lang/String;Landroid/app/Activity;I)V
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    :cond_3
-    :goto_0
-    return-void
-.end method
-
-.method public static startActivityForResult(Landroid/app/Activity;Landroid/content/Intent;ILandroid/os/Bundle;)V
-    .locals 2
-
-    .line 232
-    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
-
-    const/16 v1, 0x10
-
-    if-lt v0, v1, :cond_0
-
-    .line 233
-    invoke-virtual {p0, p1, p2, p3}, Landroid/app/Activity;->startActivityForResult(Landroid/content/Intent;ILandroid/os/Bundle;)V
-
     goto :goto_0
-
-    .line 235
-    :cond_0
-    invoke-virtual {p0, p1, p2}, Landroid/app/Activity;->startActivityForResult(Landroid/content/Intent;I)V
-
-    :goto_0
-    return-void
 .end method

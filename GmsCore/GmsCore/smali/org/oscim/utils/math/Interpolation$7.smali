@@ -18,7 +18,8 @@
 .method constructor <init>()V
     .locals 0
 
-    .line 110
+    .prologue
+    .line 106
     invoke-direct {p0}, Lorg/oscim/utils/math/Interpolation;-><init>()V
 
     return-void
@@ -28,23 +29,25 @@
 # virtual methods
 .method public apply(F)F
     .locals 3
+    .param p1, "a"    # F
 
-    mul-float/2addr p1, p1
+    .prologue
+    const/high16 v2, 0x3f800000    # 1.0f
 
-    const/high16 v0, 0x3f800000    # 1.0f
+    .line 109
+    mul-float v0, p1, p1
 
-    sub-float p1, v0, p1
+    sub-float v0, v2, v0
 
-    float-to-double v1, p1
+    float-to-double v0, v0
 
-    .line 113
-    invoke-static {v1, v2}, Ljava/lang/Math;->sqrt(D)D
+    invoke-static {v0, v1}, Ljava/lang/Math;->sqrt(D)D
 
-    move-result-wide v1
+    move-result-wide v0
 
-    double-to-float p1, v1
+    double-to-float v0, v0
 
-    sub-float/2addr v0, p1
+    sub-float v0, v2, v0
 
     return v0
 .end method

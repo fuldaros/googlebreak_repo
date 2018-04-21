@@ -11,6 +11,7 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 19
     invoke-direct {p0}, Lorg/oscim/utils/async/Task;-><init>()V
 
@@ -21,9 +22,12 @@
 # virtual methods
 .method setTaskQueue(Lorg/oscim/utils/async/TaskQueue;)V
     .locals 0
+    .param p1, "mainloop"    # Lorg/oscim/utils/async/TaskQueue;
 
+    .prologue
     .line 23
     iput-object p1, p0, Lorg/oscim/utils/async/AsyncTask;->mainloop:Lorg/oscim/utils/async/TaskQueue;
 
+    .line 24
     return-void
 .end method

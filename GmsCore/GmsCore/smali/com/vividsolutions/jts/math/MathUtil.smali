@@ -11,9 +11,10 @@
 .method static constructor <clinit>()V
     .locals 2
 
+    .prologue
+    .line 71
     const-wide/high16 v0, 0x4024000000000000L    # 10.0
 
-    .line 71
     invoke-static {v0, v1}, Ljava/lang/Math;->log(D)D
 
     move-result-wide v0
@@ -24,28 +25,41 @@
 .end method
 
 .method public static max(DDDD)D
-    .locals 1
+    .locals 4
+    .param p0, "v1"    # D
+    .param p2, "v2"    # D
+    .param p4, "v3"    # D
+    .param p6, "v4"    # D
 
-    cmpl-double v0, p2, p0
+    .prologue
+    .line 131
+    move-wide v0, p0
 
-    if-lez v0, :cond_0
+    .line 132
+    .local v0, "max":D
+    cmpl-double v2, p2, v0
 
-    move-wide p0, p2
+    if-lez v2, :cond_0
 
+    move-wide v0, p2
+
+    .line 133
     :cond_0
-    cmpl-double p2, p4, p0
+    cmpl-double v2, p4, v0
 
-    if-lez p2, :cond_1
+    if-lez v2, :cond_1
 
-    move-wide p0, p4
+    move-wide v0, p4
 
+    .line 134
     :cond_1
-    cmpl-double p2, p6, p0
+    cmpl-double v2, p6, v0
 
-    if-lez p2, :cond_2
+    if-lez v2, :cond_2
 
-    move-wide p0, p6
+    move-wide v0, p6
 
+    .line 135
     :cond_2
-    return-wide p0
+    return-wide v0
 .end method

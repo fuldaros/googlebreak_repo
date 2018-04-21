@@ -25,6 +25,7 @@
 .method constructor <init>(Landroid/support/v7/app/WindowDecorActionBar;)V
     .locals 0
 
+    .prologue
     .line 160
     iput-object p1, p0, Landroid/support/v7/app/WindowDecorActionBar$3;->this$0:Landroid/support/v7/app/WindowDecorActionBar;
 
@@ -36,21 +37,28 @@
 
 # virtual methods
 .method public onAnimationUpdate(Landroid/view/View;)V
-    .locals 0
+    .locals 2
+    .param p1, "view"    # Landroid/view/View;
 
+    .prologue
     .line 163
-    iget-object p1, p0, Landroid/support/v7/app/WindowDecorActionBar$3;->this$0:Landroid/support/v7/app/WindowDecorActionBar;
+    iget-object v1, p0, Landroid/support/v7/app/WindowDecorActionBar$3;->this$0:Landroid/support/v7/app/WindowDecorActionBar;
 
-    iget-object p1, p1, Landroid/support/v7/app/WindowDecorActionBar;->mContainerView:Landroid/support/v7/widget/ActionBarContainer;
+    invoke-static {v1}, Landroid/support/v7/app/WindowDecorActionBar;->access$200(Landroid/support/v7/app/WindowDecorActionBar;)Landroid/support/v7/widget/ActionBarContainer;
 
-    invoke-virtual {p1}, Landroid/support/v7/widget/ActionBarContainer;->getParent()Landroid/view/ViewParent;
+    move-result-object v1
 
-    move-result-object p1
+    invoke-virtual {v1}, Landroid/support/v7/widget/ActionBarContainer;->getParent()Landroid/view/ViewParent;
+
+    move-result-object v0
 
     .line 164
-    check-cast p1, Landroid/view/View;
+    .local v0, "parent":Landroid/view/ViewParent;
+    check-cast v0, Landroid/view/View;
 
-    invoke-virtual {p1}, Landroid/view/View;->invalidate()V
+    .end local v0    # "parent":Landroid/view/ViewParent;
+    invoke-virtual {v0}, Landroid/view/View;->invalidate()V
 
+    .line 165
     return-void
 .end method

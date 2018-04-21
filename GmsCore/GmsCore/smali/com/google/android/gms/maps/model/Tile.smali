@@ -7,7 +7,8 @@
 .field public static CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator<",
+            "Landroid/os/Parcelable$Creator",
+            "<",
             "Lcom/google/android/gms/maps/model/Tile;",
             ">;"
         }
@@ -45,6 +46,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
+    .prologue
     .line 68
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -60,25 +62,27 @@
 .method private constructor <init>()V
     .locals 1
 
+    .prologue
     .line 48
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
+    .line 29
     const/4 v0, 0x1
 
-    .line 29
     iput v0, p0, Lcom/google/android/gms/maps/model/Tile;->versionCode:I
 
+    .line 49
     const/4 v0, 0x0
 
-    .line 49
     iput v0, p0, Lcom/google/android/gms/maps/model/Tile;->height:I
 
     iput v0, p0, Lcom/google/android/gms/maps/model/Tile;->width:I
 
+    .line 50
     const/4 v0, 0x0
 
-    .line 50
     iput-object v0, p0, Lcom/google/android/gms/maps/model/Tile;->data:[B
 
+    .line 51
     return-void
 .end method

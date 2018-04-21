@@ -22,8 +22,8 @@
         "Ljava/lang/Object;",
         ">",
         "Ljava/lang/Object;",
-        "Ljava/util/Collection<",
-        "TT;>;"
+        "Ljava/util/Collection",
+        "<TT;>;"
     }
 .end annotation
 
@@ -32,7 +32,9 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 61
+    .local p0, "this":Lorg/microg/gms/common/MultiListenerProxy$ListenerPool;, "Lorg/microg/gms/common/MultiListenerProxy$ListenerPool<TT;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -41,139 +43,168 @@
 
 # virtual methods
 .method public add(Ljava/lang/Object;)Z
-    .locals 0
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(TT;)Z"
         }
     .end annotation
 
-    const/4 p1, 0x0
+    .prologue
+    .line 69
+    .local p0, "this":Lorg/microg/gms/common/MultiListenerProxy$ListenerPool;, "Lorg/microg/gms/common/MultiListenerProxy$ListenerPool<TT;>;"
+    .local p1, "object":Ljava/lang/Object;, "TT;"
+    const/4 v0, 0x0
 
-    return p1
+    return v0
 .end method
 
 .method public addAll(Ljava/util/Collection;)Z
-    .locals 0
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(",
-            "Ljava/util/Collection<",
-            "+TT;>;)Z"
-        }
-    .end annotation
-
-    const/4 p1, 0x0
-
-    return p1
-.end method
-
-.method public containsAll(Ljava/util/Collection;)Z
     .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Collection<",
-            "*>;)Z"
+            "Ljava/util/Collection",
+            "<+TT;>;)Z"
         }
     .end annotation
 
+    .prologue
+    .line 64
+    .local p0, "this":Lorg/microg/gms/common/MultiListenerProxy$ListenerPool;, "Lorg/microg/gms/common/MultiListenerProxy$ListenerPool<TT;>;"
+    .local p1, "collection":Ljava/util/Collection;, "Ljava/util/Collection<+TT;>;"
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method public containsAll(Ljava/util/Collection;)Z
+    .locals 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/Collection",
+            "<*>;)Z"
+        }
+    .end annotation
+
+    .prologue
     .line 74
+    .local p0, "this":Lorg/microg/gms/common/MultiListenerProxy$ListenerPool;, "Lorg/microg/gms/common/MultiListenerProxy$ListenerPool<TT;>;"
+    .local p1, "collection":Ljava/util/Collection;, "Ljava/util/Collection<*>;"
     invoke-interface {p1}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
 
-    move-result-object p1
+    move-result-object v1
 
     :cond_0
-    invoke-interface {p1}, Ljava/util/Iterator;->hasNext()Z
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
-    move-result v0
+    move-result v2
 
-    if-eqz v0, :cond_1
+    if-eqz v2, :cond_1
 
-    invoke-interface {p1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v0
 
     .line 75
+    .local v0, "o":Ljava/lang/Object;
     invoke-virtual {p0, v0}, Lorg/microg/gms/common/MultiListenerProxy$ListenerPool;->contains(Ljava/lang/Object;)Z
 
-    move-result v0
+    move-result v2
 
-    if-nez v0, :cond_0
+    if-nez v2, :cond_0
 
-    const/4 p1, 0x0
+    const/4 v1, 0x0
 
-    return p1
+    .line 77
+    .end local v0    # "o":Ljava/lang/Object;
+    :goto_0
+    return v1
 
     :cond_1
-    const/4 p1, 0x1
+    const/4 v1, 0x1
 
-    return p1
+    goto :goto_0
 .end method
 
 .method public removeAll(Ljava/util/Collection;)Z
-    .locals 2
+    .locals 4
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Collection<",
-            "*>;)Z"
+            "Ljava/util/Collection",
+            "<*>;)Z"
         }
     .end annotation
 
+    .prologue
+    .line 82
+    .local p0, "this":Lorg/microg/gms/common/MultiListenerProxy$ListenerPool;, "Lorg/microg/gms/common/MultiListenerProxy$ListenerPool<TT;>;"
+    .local p1, "collection":Ljava/util/Collection;, "Ljava/util/Collection<*>;"
+    const/4 v1, 0x1
+
     .line 83
+    .local v1, "x":Z
     invoke-interface {p1}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
 
-    move-result-object p1
-
-    const/4 v0, 0x1
+    move-result-object v2
 
     :cond_0
     :goto_0
-    invoke-interface {p1}, Ljava/util/Iterator;->hasNext()Z
+    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
 
-    move-result v1
+    move-result v3
 
-    if-eqz v1, :cond_1
+    if-eqz v3, :cond_1
 
-    invoke-interface {p1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    move-result-object v1
+    move-result-object v0
 
     .line 84
-    invoke-virtual {p0, v1}, Lorg/microg/gms/common/MultiListenerProxy$ListenerPool;->remove(Ljava/lang/Object;)Z
+    .local v0, "o":Ljava/lang/Object;
+    invoke-virtual {p0, v0}, Lorg/microg/gms/common/MultiListenerProxy$ListenerPool;->remove(Ljava/lang/Object;)Z
 
-    move-result v1
+    move-result v3
 
-    if-nez v1, :cond_0
+    if-nez v3, :cond_0
 
-    const/4 v0, 0x0
+    const/4 v1, 0x0
 
     goto :goto_0
 
+    .line 86
+    .end local v0    # "o":Ljava/lang/Object;
     :cond_1
-    return v0
+    return v1
 .end method
 
 .method public retainAll(Ljava/util/Collection;)Z
-    .locals 0
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/Collection<",
-            "*>;)Z"
+            "Ljava/util/Collection",
+            "<*>;)Z"
         }
     .end annotation
 
-    const/4 p1, 0x0
+    .prologue
+    .line 91
+    .local p0, "this":Lorg/microg/gms/common/MultiListenerProxy$ListenerPool;, "Lorg/microg/gms/common/MultiListenerProxy$ListenerPool<TT;>;"
+    .local p1, "collection":Ljava/util/Collection;, "Ljava/util/Collection<*>;"
+    const/4 v0, 0x0
 
-    return p1
+    return v0
 .end method
 
 .method public toArray()[Ljava/lang/Object;
     .locals 1
 
+    .prologue
     .line 97
+    .local p0, "this":Lorg/microg/gms/common/MultiListenerProxy$ListenerPool;, "Lorg/microg/gms/common/MultiListenerProxy$ListenerPool<TT;>;"
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     invoke-direct {v0}, Ljava/lang/IllegalArgumentException;-><init>()V
@@ -182,7 +213,7 @@
 .end method
 
 .method public toArray([Ljava/lang/Object;)[Ljava/lang/Object;
-    .locals 0
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "<T1:",
@@ -191,10 +222,13 @@
         }
     .end annotation
 
+    .prologue
     .line 103
-    new-instance p1, Ljava/lang/IllegalArgumentException;
+    .local p0, "this":Lorg/microg/gms/common/MultiListenerProxy$ListenerPool;, "Lorg/microg/gms/common/MultiListenerProxy$ListenerPool<TT;>;"
+    .local p1, "array":[Ljava/lang/Object;, "[TT1;"
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    invoke-direct {p1}, Ljava/lang/IllegalArgumentException;-><init>()V
+    invoke-direct {v0}, Ljava/lang/IllegalArgumentException;-><init>()V
 
-    throw p1
+    throw v0
 .end method

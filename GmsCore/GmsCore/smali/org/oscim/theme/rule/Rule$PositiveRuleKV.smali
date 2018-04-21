@@ -23,7 +23,16 @@
 # direct methods
 .method constructor <init>(IIILjava/lang/String;Ljava/lang/String;[Lorg/oscim/theme/rule/Rule;[Lorg/oscim/theme/styles/RenderStyle;)V
     .locals 6
+    .param p1, "element"    # I
+    .param p2, "zoom"    # I
+    .param p3, "selector"    # I
+    .param p4, "key"    # Ljava/lang/String;
+    .param p5, "value"    # Ljava/lang/String;
+    .param p6, "subRules"    # [Lorg/oscim/theme/rule/Rule;
+    .param p7, "styles"    # [Lorg/oscim/theme/styles/RenderStyle;
 
+    .prologue
+    .line 219
     move-object v0, p0
 
     move v1, p1
@@ -36,15 +45,15 @@
 
     move-object v5, p7
 
-    .line 227
     invoke-direct/range {v0 .. v5}, Lorg/oscim/theme/rule/Rule;-><init>(III[Lorg/oscim/theme/rule/Rule;[Lorg/oscim/theme/styles/RenderStyle;)V
 
-    .line 228
+    .line 220
     iput-object p4, p0, Lorg/oscim/theme/rule/Rule$PositiveRuleKV;->mKey:Ljava/lang/String;
 
-    .line 229
+    .line 221
     iput-object p5, p0, Lorg/oscim/theme/rule/Rule$PositiveRuleKV;->mValue:Ljava/lang/String;
 
+    .line 222
     return-void
 .end method
 
@@ -52,46 +61,47 @@
 # virtual methods
 .method public matchesTags([Lorg/oscim/core/Tag;)Z
     .locals 6
+    .param p1, "tags"    # [Lorg/oscim/core/Tag;
 
-    const/4 v0, 0x0
+    .prologue
+    const/4 v1, 0x0
 
-    .line 234
-    array-length v1, p1
+    .line 226
+    array-length v3, p1
 
-    move v2, v0
+    move v2, v1
 
     :goto_0
-    if-ge v2, v1, :cond_1
+    if-ge v2, v3, :cond_0
 
-    aget-object v3, p1, v2
+    aget-object v0, p1, v2
 
-    .line 235
+    .line 227
+    .local v0, "tag":Lorg/oscim/core/Tag;
     iget-object v4, p0, Lorg/oscim/theme/rule/Rule$PositiveRuleKV;->mKey:Ljava/lang/String;
 
-    iget-object v5, v3, Lorg/oscim/core/Tag;->key:Ljava/lang/String;
+    iget-object v5, v0, Lorg/oscim/core/Tag;->key:Ljava/lang/String;
 
-    invoke-static {v4, v5}, Lorg/oscim/utils/Utils;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+    if-ne v4, v5, :cond_1
 
-    move-result v4
+    .line 228
+    iget-object v2, p0, Lorg/oscim/theme/rule/Rule$PositiveRuleKV;->mValue:Ljava/lang/String;
 
-    if-eqz v4, :cond_0
+    iget-object v3, v0, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
 
-    .line 236
-    iget-object p1, p0, Lorg/oscim/theme/rule/Rule$PositiveRuleKV;->mValue:Ljava/lang/String;
+    if-ne v2, v3, :cond_0
 
-    iget-object v0, v3, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
+    const/4 v1, 0x1
 
-    invoke-static {p1, v0}, Lorg/oscim/utils/Utils;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result p1
-
-    return p1
-
+    .line 230
+    .end local v0    # "tag":Lorg/oscim/core/Tag;
     :cond_0
+    return v1
+
+    .line 226
+    .restart local v0    # "tag":Lorg/oscim/core/Tag;
+    :cond_1
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
-
-    :cond_1
-    return v0
 .end method

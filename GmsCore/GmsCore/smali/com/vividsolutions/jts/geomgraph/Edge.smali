@@ -20,7 +20,10 @@
 # direct methods
 .method public constructor <init>([Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geomgraph/Label;)V
     .locals 1
+    .param p1, "pts"    # [Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p2, "label"    # Lcom/vividsolutions/jts/geomgraph/Label;
 
+    .prologue
     .line 77
     invoke-direct {p0}, Lcom/vividsolutions/jts/geomgraph/GraphComponent;-><init>()V
 
@@ -31,9 +34,9 @@
 
     iput-object v0, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->eiList:Lcom/vividsolutions/jts/geomgraph/EdgeIntersectionList;
 
+    .line 72
     const/4 v0, 0x1
 
-    .line 72
     iput-boolean v0, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->isIsolated:Z
 
     .line 73
@@ -43,9 +46,9 @@
 
     iput-object v0, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->depth:Lcom/vividsolutions/jts/geomgraph/Depth;
 
+    .line 74
     const/4 v0, 0x0
 
-    .line 74
     iput v0, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->depthDelta:I
 
     .line 78
@@ -54,6 +57,7 @@
     .line 79
     iput-object p2, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->label:Lcom/vividsolutions/jts/geomgraph/Label;
 
+    .line 80
     return-void
 .end method
 
@@ -61,65 +65,72 @@
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
     .locals 8
+    .param p1, "o"    # Ljava/lang/Object;
+
+    .prologue
+    const/4 v5, 0x0
 
     .line 225
-    instance-of v0, p1, Lcom/vividsolutions/jts/geomgraph/Edge;
+    instance-of v6, p1, Lcom/vividsolutions/jts/geomgraph/Edge;
 
-    const/4 v1, 0x0
+    if-nez v6, :cond_1
 
-    if-nez v0, :cond_0
+    .line 242
+    :cond_0
+    :goto_0
+    return v5
 
-    return v1
+    :cond_1
+    move-object v0, p1
 
     .line 226
-    :cond_0
-    check-cast p1, Lcom/vividsolutions/jts/geomgraph/Edge;
+    check-cast v0, Lcom/vividsolutions/jts/geomgraph/Edge;
 
     .line 228
-    iget-object v0, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
-
-    array-length v0, v0
-
-    iget-object v2, p1, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
-
-    array-length v2, v2
-
-    if-eq v0, v2, :cond_1
-
-    return v1
-
-    .line 232
-    :cond_1
-    iget-object v0, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
-
-    const/4 v2, 0x1
-
-    array-length v0, v0
-
-    move v3, v0
-
-    move v0, v1
-
-    move v4, v2
-
-    move v5, v4
-
-    .line 233
-    :goto_0
+    .local v0, "e":Lcom/vividsolutions/jts/geomgraph/Edge;
     iget-object v6, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
 
     array-length v6, v6
 
-    if-ge v0, v6, :cond_5
+    iget-object v7, v0, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
+
+    array-length v7, v7
+
+    if-ne v6, v7, :cond_0
+
+    .line 230
+    const/4 v3, 0x1
+
+    .line 231
+    .local v3, "isEqualForward":Z
+    const/4 v4, 0x1
+
+    .line 232
+    .local v4, "isEqualReverse":Z
+    iget-object v6, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
+
+    array-length v2, v6
+
+    .line 233
+    .local v2, "iRev":I
+    const/4 v1, 0x0
+
+    .local v1, "i":I
+    :goto_1
+    iget-object v6, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
+
+    array-length v6, v6
+
+    if-ge v1, v6, :cond_5
 
     .line 234
     iget-object v6, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    aget-object v6, v6, v0
+    aget-object v6, v6, v1
 
-    iget-object v7, p1, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v7, v0, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    aget-object v7, v7, v0
+    aget-object v7, v7, v1
 
     invoke-virtual {v6, v7}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
@@ -127,19 +138,20 @@
 
     if-nez v6, :cond_2
 
-    move v4, v1
+    .line 235
+    const/4 v3, 0x0
 
     .line 237
     :cond_2
     iget-object v6, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    aget-object v6, v6, v0
+    aget-object v6, v6, v1
 
-    iget-object v7, p1, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v7, v0, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    add-int/lit8 v3, v3, -0x1
+    add-int/lit8 v2, v2, -0x1
 
-    aget-object v7, v7, v3
+    aget-object v7, v7, v2
 
     invoke-virtual {v6, v7}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
@@ -147,38 +159,45 @@
 
     if-nez v6, :cond_3
 
-    move v5, v1
+    .line 238
+    const/4 v4, 0x0
 
+    .line 240
     :cond_3
-    if-nez v4, :cond_4
+    if-nez v3, :cond_4
 
-    if-nez v5, :cond_4
+    if-eqz v4, :cond_0
 
-    return v1
-
+    .line 233
     :cond_4
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_1
+
+    .line 242
+    :cond_5
+    const/4 v5, 0x1
 
     goto :goto_0
-
-    :cond_5
-    return v2
 .end method
 
 .method public getCoordinate(I)Lcom/vividsolutions/jts/geom/Coordinate;
     .locals 1
+    .param p1, "i"    # I
 
+    .prologue
     .line 91
     iget-object v0, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    aget-object p1, v0, p1
+    aget-object v0, v0, p1
 
-    return-object p1
+    return-object v0
 .end method
 
 .method public getCoordinates()[Lcom/vividsolutions/jts/geom/Coordinate;
     .locals 1
 
+    .prologue
     .line 88
     iget-object v0, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
 
@@ -188,6 +207,7 @@
 .method public getDepthDelta()I
     .locals 1
 
+    .prologue
     .line 116
     iget v0, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->depthDelta:I
 
@@ -197,6 +217,7 @@
 .method public getNumPoints()I
     .locals 1
 
+    .prologue
     .line 86
     iget-object v0, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
 
@@ -207,27 +228,33 @@
 
 .method public isPointwiseEqual(Lcom/vividsolutions/jts/geomgraph/Edge;)Z
     .locals 4
+    .param p1, "e"    # Lcom/vividsolutions/jts/geomgraph/Edge;
 
-    .line 250
-    iget-object v0, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
-
+    .prologue
     const/4 v1, 0x0
 
-    array-length v0, v0
-
-    iget-object v2, p1, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
+    .line 250
+    iget-object v2, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
 
     array-length v2, v2
 
-    if-eq v0, v2, :cond_0
+    iget-object v3, p1, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
 
+    array-length v3, v3
+
+    if-eq v2, v3, :cond_1
+
+    .line 257
+    :cond_0
+    :goto_0
     return v1
 
-    :cond_0
-    move v0, v1
-
     .line 252
-    :goto_0
+    :cond_1
+    const/4 v0, 0x0
+
+    .local v0, "i":I
+    :goto_1
     iget-object v2, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
 
     array-length v2, v2
@@ -247,24 +274,25 @@
 
     move-result v2
 
-    if-nez v2, :cond_1
+    if-eqz v2, :cond_0
 
-    return v1
-
-    :cond_1
+    .line 252
     add-int/lit8 v0, v0, 0x1
 
-    goto :goto_0
+    goto :goto_1
 
+    .line 257
     :cond_2
-    const/4 p1, 0x1
+    const/4 v1, 0x1
 
-    return p1
+    goto :goto_0
 .end method
 
 .method public setDepthDelta(I)V
     .locals 0
+    .param p1, "depthDelta"    # I
 
+    .prologue
     .line 117
     iput p1, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->depthDelta:I
 
@@ -272,44 +300,53 @@
 .end method
 
 .method public toString()Ljava/lang/String;
-    .locals 5
+    .locals 6
 
+    .prologue
     .line 262
     new-instance v0, Ljava/lang/StringBuffer;
 
     invoke-direct {v0}, Ljava/lang/StringBuffer;-><init>()V
 
     .line 263
-    new-instance v1, Ljava/lang/StringBuilder;
+    .local v0, "buf":Ljava/lang/StringBuffer;
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "edge "
+    const-string v3, "edge "
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-object v2, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->name:Ljava/lang/String;
+    move-result-object v2
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    iget-object v3, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->name:Ljava/lang/String;
 
-    const-string v2, ": "
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v2
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    const-string v3, ": "
 
-    move-result-object v1
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    move-result-object v2
 
-    const-string v1, "LINESTRING ("
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     .line 264
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    const-string v2, "LINESTRING ("
 
-    const/4 v1, 0x0
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     .line 265
+    const/4 v1, 0x0
+
+    .local v1, "i":I
     :goto_0
     iget-object v2, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
 
@@ -317,11 +354,11 @@
 
     if-ge v1, v2, :cond_1
 
+    .line 266
     if-lez v1, :cond_0
 
     const-string v2, ","
 
-    .line 266
     invoke-virtual {v0, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     .line 267
@@ -334,21 +371,27 @@
 
     aget-object v3, v3, v1
 
-    iget-wide v3, v3, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v4, v3, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    invoke-virtual {v2, v3, v4}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v4, v5}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+
+    move-result-object v2
 
     const-string v3, " "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    move-result-object v2
+
     iget-object v3, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->pts:[Lcom/vividsolutions/jts/geom/Coordinate;
 
     aget-object v3, v3, v1
 
-    iget-wide v3, v3, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v4, v3, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    invoke-virtual {v2, v3, v4}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v4, v5}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+
+    move-result-object v2
 
     invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -356,42 +399,51 @@
 
     invoke-virtual {v0, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
+    .line 265
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
     .line 269
     :cond_1
-    new-instance v1, Ljava/lang/StringBuilder;
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, ")  "
+    const-string v3, ")  "
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-object v2, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->label:Lcom/vividsolutions/jts/geomgraph/Label;
+    move-result-object v2
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    iget-object v3, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->label:Lcom/vividsolutions/jts/geomgraph/Label;
 
-    const-string v2, " "
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v2
 
-    iget v2, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->depthDelta:I
+    const-string v3, " "
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v2
 
-    move-result-object v1
+    iget v3, p0, Lcom/vividsolutions/jts/geomgraph/Edge;->depthDelta:I
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     .line 270
     invoke-virtual {v0}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v2
 
-    return-object v0
+    return-object v2
 .end method

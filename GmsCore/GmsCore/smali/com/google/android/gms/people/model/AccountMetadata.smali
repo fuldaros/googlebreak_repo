@@ -7,7 +7,8 @@
 .field public static CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator<",
+            "Landroid/os/Parcelable$Creator",
+            "<",
             "Lcom/google/android/gms/people/model/AccountMetadata;",
             ">;"
         }
@@ -51,6 +52,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
+    .prologue
     .line 39
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -64,29 +66,30 @@
 .end method
 
 .method public constructor <init>()V
-    .locals 1
+    .locals 2
+
+    .prologue
+    const/4 v1, 0x1
 
     .line 22
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
+    .line 24
     const/4 v0, 0x2
 
-    .line 24
     iput v0, p0, Lcom/google/android/gms/people/model/AccountMetadata;->versionCode:I
 
-    const/4 v0, 0x1
-
     .line 27
-    iput-boolean v0, p0, Lcom/google/android/gms/people/model/AccountMetadata;->hasGooglePlus:Z
+    iput-boolean v1, p0, Lcom/google/android/gms/people/model/AccountMetadata;->hasGooglePlus:Z
 
     .line 30
-    iput-boolean v0, p0, Lcom/google/android/gms/people/model/AccountMetadata;->hasFeature2:Z
+    iput-boolean v1, p0, Lcom/google/android/gms/people/model/AccountMetadata;->hasFeature2:Z
 
     .line 33
-    iput-boolean v0, p0, Lcom/google/android/gms/people/model/AccountMetadata;->hasFeature3:Z
+    iput-boolean v1, p0, Lcom/google/android/gms/people/model/AccountMetadata;->hasFeature3:Z
 
     .line 36
-    iput-boolean v0, p0, Lcom/google/android/gms/people/model/AccountMetadata;->hasFeature4:Z
+    iput-boolean v1, p0, Lcom/google/android/gms/people/model/AccountMetadata;->hasFeature4:Z
 
     return-void
 .end method

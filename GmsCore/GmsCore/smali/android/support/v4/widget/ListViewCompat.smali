@@ -6,7 +6,10 @@
 # direct methods
 .method public static scrollListBy(Landroid/widget/ListView;I)V
     .locals 2
+    .param p0, "listView"    # Landroid/widget/ListView;
+    .param p1, "y"    # I
 
+    .prologue
     .line 36
     sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
 
@@ -14,46 +17,16 @@
 
     if-lt v0, v1, :cond_0
 
-    .line 38
-    invoke-virtual {p0, p1}, Landroid/widget/ListView;->scrollListBy(I)V
-
-    goto :goto_0
+    .line 37
+    invoke-static {p0, p1}, Landroid/support/v4/widget/ListViewCompatKitKat;->scrollListBy(Landroid/widget/ListView;I)V
 
     .line 41
-    :cond_0
-    invoke-virtual {p0}, Landroid/widget/ListView;->getFirstVisiblePosition()I
-
-    move-result v0
-
-    const/4 v1, -0x1
-
-    if-ne v0, v1, :cond_1
-
-    return-void
-
-    :cond_1
-    const/4 v1, 0x0
-
-    .line 46
-    invoke-virtual {p0, v1}, Landroid/widget/ListView;->getChildAt(I)Landroid/view/View;
-
-    move-result-object v1
-
-    if-nez v1, :cond_2
-
-    return-void
-
-    .line 51
-    :cond_2
-    invoke-virtual {v1}, Landroid/view/View;->getTop()I
-
-    move-result v1
-
-    sub-int/2addr v1, p1
-
-    .line 52
-    invoke-virtual {p0, v0, v1}, Landroid/widget/ListView;->setSelectionFromTop(II)V
-
     :goto_0
     return-void
+
+    .line 39
+    :cond_0
+    invoke-static {p0, p1}, Landroid/support/v4/widget/ListViewCompatDonut;->scrollListBy(Landroid/widget/ListView;I)V
+
+    goto :goto_0
 .end method

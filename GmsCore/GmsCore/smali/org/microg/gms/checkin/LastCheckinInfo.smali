@@ -21,6 +21,7 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 22
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -29,160 +30,168 @@
 
 .method public static read(Landroid/content/Context;)Lorg/microg/gms/checkin/LastCheckinInfo;
     .locals 6
+    .param p0, "context"    # Landroid/content/Context;
+
+    .prologue
+    const-wide/16 v4, 0x0
 
     .line 39
     new-instance v0, Lorg/microg/gms/checkin/LastCheckinInfo;
 
     invoke-direct {v0}, Lorg/microg/gms/checkin/LastCheckinInfo;-><init>()V
 
-    const-string v1, "checkin"
-
-    const/4 v2, 0x0
-
     .line 40
-    invoke-virtual {p0, v1, v2}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    .local v0, "info":Lorg/microg/gms/checkin/LastCheckinInfo;
+    const-string v2, "checkin"
 
-    move-result-object p0
+    const/4 v3, 0x0
 
-    const-string v1, "androidId"
+    invoke-virtual {p0, v2, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
 
-    const-wide/16 v2, 0x0
+    move-result-object v1
 
     .line 41
-    invoke-interface {p0, v1, v2, v3}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J
+    .local v1, "preferences":Landroid/content/SharedPreferences;
+    const-string v2, "androidId"
 
-    move-result-wide v4
+    invoke-interface {v1, v2, v4, v5}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J
 
-    iput-wide v4, v0, Lorg/microg/gms/checkin/LastCheckinInfo;->androidId:J
+    move-result-wide v2
 
-    const-string v1, "digest"
-
-    const-string v4, "1-929a0dca0eee55513280171a8585da7dcd3700f8"
+    iput-wide v2, v0, Lorg/microg/gms/checkin/LastCheckinInfo;->androidId:J
 
     .line 42
-    invoke-interface {p0, v1, v4}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    const-string v2, "digest"
 
-    move-result-object v1
+    const-string v3, "1-929a0dca0eee55513280171a8585da7dcd3700f8"
 
-    iput-object v1, v0, Lorg/microg/gms/checkin/LastCheckinInfo;->digest:Ljava/lang/String;
+    invoke-interface {v1, v2, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
-    const-string v1, "lastCheckin"
+    move-result-object v2
+
+    iput-object v2, v0, Lorg/microg/gms/checkin/LastCheckinInfo;->digest:Ljava/lang/String;
 
     .line 43
-    invoke-interface {p0, v1, v2, v3}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J
+    const-string v2, "lastCheckin"
 
-    move-result-wide v4
+    invoke-interface {v1, v2, v4, v5}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J
 
-    iput-wide v4, v0, Lorg/microg/gms/checkin/LastCheckinInfo;->lastCheckin:J
+    move-result-wide v2
 
-    const-string v1, "securityToken"
+    iput-wide v2, v0, Lorg/microg/gms/checkin/LastCheckinInfo;->lastCheckin:J
 
     .line 44
-    invoke-interface {p0, v1, v2, v3}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J
+    const-string v2, "securityToken"
 
-    move-result-wide v1
+    invoke-interface {v1, v2, v4, v5}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J
 
-    iput-wide v1, v0, Lorg/microg/gms/checkin/LastCheckinInfo;->securityToken:J
+    move-result-wide v2
 
-    const-string v1, "versionInfo"
-
-    const-string v2, ""
+    iput-wide v2, v0, Lorg/microg/gms/checkin/LastCheckinInfo;->securityToken:J
 
     .line 45
-    invoke-interface {p0, v1, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    const-string v2, "versionInfo"
 
-    move-result-object v1
+    const-string v3, ""
 
-    iput-object v1, v0, Lorg/microg/gms/checkin/LastCheckinInfo;->versionInfo:Ljava/lang/String;
+    invoke-interface {v1, v2, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
-    const-string v1, "deviceDataVersionInfo"
+    move-result-object v2
 
-    const-string v2, ""
+    iput-object v2, v0, Lorg/microg/gms/checkin/LastCheckinInfo;->versionInfo:Ljava/lang/String;
 
     .line 46
-    invoke-interface {p0, v1, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    const-string v2, "deviceDataVersionInfo"
 
-    move-result-object p0
+    const-string v3, ""
 
-    iput-object p0, v0, Lorg/microg/gms/checkin/LastCheckinInfo;->deviceDataVersionInfo:Ljava/lang/String;
+    invoke-interface {v1, v2, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
+    move-result-object v2
+
+    iput-object v2, v0, Lorg/microg/gms/checkin/LastCheckinInfo;->deviceDataVersionInfo:Ljava/lang/String;
+
+    .line 47
     return-object v0
 .end method
 
 
 # virtual methods
 .method public write(Landroid/content/Context;)V
-    .locals 3
+    .locals 4
+    .param p1, "context"    # Landroid/content/Context;
 
+    .prologue
+    .line 51
     const-string v0, "checkin"
 
     const/4 v1, 0x0
 
-    .line 51
     invoke-virtual {p1, v0, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
 
-    move-result-object p1
+    move-result-object v0
 
-    invoke-interface {p1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
-    move-result-object p1
+    move-result-object v0
 
-    const-string v0, "androidId"
+    const-string v1, "androidId"
 
-    iget-wide v1, p0, Lorg/microg/gms/checkin/LastCheckinInfo;->androidId:J
+    iget-wide v2, p0, Lorg/microg/gms/checkin/LastCheckinInfo;->androidId:J
 
     .line 52
-    invoke-interface {p1, v0, v1, v2}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;
+    invoke-interface {v0, v1, v2, v3}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;
 
-    move-result-object p1
+    move-result-object v0
 
-    const-string v0, "digest"
+    const-string v1, "digest"
 
-    iget-object v1, p0, Lorg/microg/gms/checkin/LastCheckinInfo;->digest:Ljava/lang/String;
+    iget-object v2, p0, Lorg/microg/gms/checkin/LastCheckinInfo;->digest:Ljava/lang/String;
 
     .line 53
-    invoke-interface {p1, v0, v1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
-    move-result-object p1
+    move-result-object v0
 
-    const-string v0, "lastCheckin"
+    const-string v1, "lastCheckin"
 
-    iget-wide v1, p0, Lorg/microg/gms/checkin/LastCheckinInfo;->lastCheckin:J
+    iget-wide v2, p0, Lorg/microg/gms/checkin/LastCheckinInfo;->lastCheckin:J
 
     .line 54
-    invoke-interface {p1, v0, v1, v2}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;
+    invoke-interface {v0, v1, v2, v3}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;
 
-    move-result-object p1
+    move-result-object v0
 
-    const-string v0, "securityToken"
+    const-string v1, "securityToken"
 
-    iget-wide v1, p0, Lorg/microg/gms/checkin/LastCheckinInfo;->securityToken:J
+    iget-wide v2, p0, Lorg/microg/gms/checkin/LastCheckinInfo;->securityToken:J
 
     .line 55
-    invoke-interface {p1, v0, v1, v2}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;
+    invoke-interface {v0, v1, v2, v3}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;
 
-    move-result-object p1
+    move-result-object v0
 
-    const-string v0, "versionInfo"
+    const-string v1, "versionInfo"
 
-    iget-object v1, p0, Lorg/microg/gms/checkin/LastCheckinInfo;->versionInfo:Ljava/lang/String;
+    iget-object v2, p0, Lorg/microg/gms/checkin/LastCheckinInfo;->versionInfo:Ljava/lang/String;
 
     .line 56
-    invoke-interface {p1, v0, v1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
-    move-result-object p1
+    move-result-object v0
 
-    const-string v0, "deviceDataVersionInfo"
+    const-string v1, "deviceDataVersionInfo"
 
-    iget-object v1, p0, Lorg/microg/gms/checkin/LastCheckinInfo;->deviceDataVersionInfo:Ljava/lang/String;
+    iget-object v2, p0, Lorg/microg/gms/checkin/LastCheckinInfo;->deviceDataVersionInfo:Ljava/lang/String;
 
     .line 57
-    invoke-interface {p1, v0, v1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
-    move-result-object p1
+    move-result-object v0
 
     .line 58
-    invoke-interface {p1}, Landroid/content/SharedPreferences$Editor;->apply()V
+    invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
+    .line 59
     return-void
 .end method

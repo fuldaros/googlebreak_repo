@@ -10,19 +10,23 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 40
+    .prologue
+    .line 41
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 43
     return-void
 .end method
 
 
 # virtual methods
 .method public getLogger(Ljava/lang/String;)Lorg/slf4j/Logger;
-    .locals 0
+    .locals 1
+    .param p1, "name"    # Ljava/lang/String;
 
-    .line 45
-    sget-object p1, Lorg/slf4j/helpers/NOPLogger;->NOP_LOGGER:Lorg/slf4j/helpers/NOPLogger;
+    .prologue
+    .line 46
+    sget-object v0, Lorg/slf4j/helpers/NOPLogger;->NOP_LOGGER:Lorg/slf4j/helpers/NOPLogger;
 
-    return-object p1
+    return-object v0
 .end method

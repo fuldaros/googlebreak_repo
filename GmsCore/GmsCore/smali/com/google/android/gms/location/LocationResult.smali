@@ -7,7 +7,8 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator<",
+            "Landroid/os/Parcelable$Creator",
+            "<",
             "Lcom/google/android/gms/location/LocationResult;",
             ">;"
         }
@@ -19,7 +20,8 @@
 .field public final locations:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Landroid/location/Location;",
             ">;"
         }
@@ -42,6 +44,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
+    .prologue
     .line 44
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -59,23 +62,27 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Landroid/location/Location;",
             ">;)V"
         }
     .end annotation
 
+    .prologue
     .line 36
+    .local p1, "locations":Ljava/util/List;, "Ljava/util/List<Landroid/location/Location;>;"
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
+    .line 30
     const/4 v0, 0x2
 
-    .line 30
     iput v0, p0, Lcom/google/android/gms/location/LocationResult;->versionCode:I
 
     .line 37
     iput-object p1, p0, Lcom/google/android/gms/location/LocationResult;->locations:Ljava/util/List;
 
+    .line 38
     return-void
 .end method
 
@@ -84,14 +91,17 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Landroid/location/Location;",
             ">;)",
             "Lcom/google/android/gms/location/LocationResult;"
         }
     .end annotation
 
+    .prologue
     .line 41
+    .local p0, "locations":Ljava/util/List;, "Ljava/util/List<Landroid/location/Location;>;"
     new-instance v0, Lcom/google/android/gms/location/LocationResult;
 
     invoke-direct {v0, p0}, Lcom/google/android/gms/location/LocationResult;-><init>(Ljava/util/List;)V

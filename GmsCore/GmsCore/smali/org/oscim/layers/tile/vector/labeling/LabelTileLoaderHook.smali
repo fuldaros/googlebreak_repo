@@ -10,7 +10,8 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 40
+    .prologue
+    .line 19
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -18,28 +19,35 @@
 
 .method private get(Lorg/oscim/layers/tile/MapTile;)Lorg/oscim/layers/tile/vector/labeling/LabelTileData;
     .locals 2
+    .param p1, "tile"    # Lorg/oscim/layers/tile/MapTile;
 
-    .line 46
-    sget-object v0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->LABEL_DATA:Ljava/lang/String;
+    .prologue
+    .line 25
+    sget-object v1, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->LABEL_DATA:Ljava/lang/String;
 
-    invoke-virtual {p1, v0}, Lorg/oscim/layers/tile/MapTile;->getData(Ljava/lang/Object;)Lorg/oscim/layers/tile/MapTile$TileData;
+    invoke-virtual {p1, v1}, Lorg/oscim/layers/tile/MapTile;->getData(Ljava/lang/Object;)Lorg/oscim/layers/tile/MapTile$TileData;
 
     move-result-object v0
 
     check-cast v0, Lorg/oscim/layers/tile/vector/labeling/LabelTileData;
 
+    .line 26
+    .local v0, "ld":Lorg/oscim/layers/tile/vector/labeling/LabelTileData;
     if-nez v0, :cond_0
 
-    .line 48
+    .line 27
     new-instance v0, Lorg/oscim/layers/tile/vector/labeling/LabelTileData;
 
+    .end local v0    # "ld":Lorg/oscim/layers/tile/vector/labeling/LabelTileData;
     invoke-direct {v0}, Lorg/oscim/layers/tile/vector/labeling/LabelTileData;-><init>()V
 
-    .line 49
+    .line 28
+    .restart local v0    # "ld":Lorg/oscim/layers/tile/vector/labeling/LabelTileData;
     sget-object v1, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->LABEL_DATA:Ljava/lang/String;
 
     invoke-virtual {p1, v1, v0}, Lorg/oscim/layers/tile/MapTile;->addData(Ljava/lang/Object;Lorg/oscim/layers/tile/MapTile$TileData;)V
 
+    .line 30
     :cond_0
     return-object v0
 .end method
@@ -48,616 +56,489 @@
 # virtual methods
 .method public complete(Lorg/oscim/layers/tile/MapTile;Z)V
     .locals 0
+    .param p1, "tile"    # Lorg/oscim/layers/tile/MapTile;
+    .param p2, "success"    # Z
 
+    .prologue
+    .line 108
     return-void
 .end method
 
 .method public process(Lorg/oscim/layers/tile/MapTile;Lorg/oscim/renderer/bucket/RenderBuckets;Lorg/oscim/core/MapElement;Lorg/oscim/theme/styles/RenderStyle;I)Z
-    .locals 16
+    .locals 19
+    .param p1, "tile"    # Lorg/oscim/layers/tile/MapTile;
+    .param p2, "buckets"    # Lorg/oscim/renderer/bucket/RenderBuckets;
+    .param p3, "element"    # Lorg/oscim/core/MapElement;
+    .param p4, "style"    # Lorg/oscim/theme/styles/RenderStyle;
+    .param p5, "level"    # I
 
-    move-object/from16 v0, p3
+    .prologue
+    .line 37
+    move-object/from16 v0, p4
 
-    move-object/from16 v1, p4
-
-    .line 58
-    instance-of v2, v1, Lorg/oscim/theme/styles/TextStyle;
-
-    const/4 v3, 0x0
-
-    const/4 v4, 0x0
+    instance-of v2, v0, Lorg/oscim/theme/styles/TextStyle;
 
     if-eqz v2, :cond_b
 
-    .line 59
-    invoke-virtual/range {p4 .. p4}, Lorg/oscim/theme/styles/RenderStyle;->current()Lorg/oscim/theme/styles/RenderStyle;
-
-    move-result-object v1
-
-    check-cast v1, Lorg/oscim/theme/styles/TextStyle;
-
-    .line 61
-    iget-object v2, v0, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
-
-    iget-object v5, v1, Lorg/oscim/theme/styles/TextStyle;->textKey:Ljava/lang/String;
-
-    invoke-virtual {v2, v5}, Lorg/oscim/core/TagSet;->getValue(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v2
-
-    if-eqz v2, :cond_a
-
-    .line 62
-    invoke-virtual {v2}, Ljava/lang/String;->length()I
-
-    move-result v5
-
-    if-nez v5, :cond_0
-
-    goto/16 :goto_4
-
-    .line 65
-    :cond_0
+    .line 38
     invoke-direct/range {p0 .. p1}, Lorg/oscim/layers/tile/vector/labeling/LabelTileLoaderHook;->get(Lorg/oscim/layers/tile/MapTile;)Lorg/oscim/layers/tile/vector/labeling/LabelTileData;
 
-    move-result-object v12
+    move-result-object v8
 
-    .line 66
-    iget-object v5, v0, Lorg/oscim/core/MapElement;->type:Lorg/oscim/core/GeometryBuffer$GeometryType;
+    .local v8, "ld":Lorg/oscim/layers/tile/vector/labeling/LabelTileData;
+    move-object/from16 v5, p4
 
-    sget-object v6, Lorg/oscim/core/GeometryBuffer$GeometryType;->LINE:Lorg/oscim/core/GeometryBuffer$GeometryType;
+    .line 40
+    check-cast v5, Lorg/oscim/theme/styles/TextStyle;
 
-    if-ne v5, v6, :cond_2
+    .line 41
+    .local v5, "text":Lorg/oscim/theme/styles/TextStyle;
+    move-object/from16 v0, p3
 
-    .line 68
-    iget-object v3, v0, Lorg/oscim/core/MapElement;->index:[I
+    iget-object v2, v0, Lorg/oscim/core/MapElement;->type:Lorg/oscim/core/GeometryBuffer$GeometryType;
 
-    array-length v3, v3
+    sget-object v3, Lorg/oscim/core/GeometryBuffer$GeometryType;->LINE:Lorg/oscim/core/GeometryBuffer$GeometryType;
 
-    move v13, v4
+    if-ne v2, v3, :cond_4
 
-    move v14, v13
+    .line 42
+    move-object/from16 v0, p3
 
+    iget-object v2, v0, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
+
+    iget-object v3, v5, Lorg/oscim/theme/styles/TextStyle;->textKey:Ljava/lang/String;
+
+    invoke-virtual {v2, v3}, Lorg/oscim/core/TagSet;->getValue(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 43
+    .local v4, "value":Ljava/lang/String;
+    if-eqz v4, :cond_0
+
+    invoke-virtual {v4}, Ljava/lang/String;->length()I
+
+    move-result v2
+
+    if-nez v2, :cond_1
+
+    .line 44
+    :cond_0
+    const/4 v2, 0x0
+
+    .line 103
+    .end local v4    # "value":Ljava/lang/String;
+    .end local v5    # "text":Lorg/oscim/theme/styles/TextStyle;
+    .end local v8    # "ld":Lorg/oscim/layers/tile/vector/labeling/LabelTileData;
     :goto_0
-    if-ge v13, v3, :cond_16
+    return v2
 
-    .line 69
-    iget-object v5, v0, Lorg/oscim/core/MapElement;->index:[I
-
-    aget v15, v5, v13
-
-    const/4 v5, 0x4
-
-    if-ge v15, v5, :cond_1
-
-    goto/16 :goto_a
-
+    .line 46
+    .restart local v4    # "value":Ljava/lang/String;
+    .restart local v5    # "text":Lorg/oscim/theme/styles/TextStyle;
+    .restart local v8    # "ld":Lorg/oscim/layers/tile/vector/labeling/LabelTileData;
     :cond_1
-    const/4 v5, 0x0
+    const/4 v6, 0x0
 
-    .line 73
-    iget-object v6, v0, Lorg/oscim/core/MapElement;->points:[F
+    .line 47
+    .local v6, "offset":I
+    const/4 v9, 0x0
 
-    move-object v7, v2
+    .local v9, "i":I
+    move-object/from16 v0, p3
 
-    move-object v8, v1
+    iget-object v2, v0, Lorg/oscim/core/MapElement;->index:[I
 
-    move v9, v14
+    array-length v12, v2
 
-    move v10, v15
+    .local v12, "n":I
+    :goto_1
+    if-ge v9, v12, :cond_2
 
-    move-object v11, v12
+    .line 48
+    move-object/from16 v0, p3
 
-    invoke-static/range {v5 .. v11}, Lorg/oscim/layers/tile/vector/labeling/WayDecorator;->renderText(Lorg/oscim/utils/geom/LineClipper;[FLjava/lang/String;Lorg/oscim/theme/styles/TextStyle;IILorg/oscim/layers/tile/vector/labeling/LabelTileData;)V
+    iget-object v2, v0, Lorg/oscim/core/MapElement;->index:[I
 
-    add-int/2addr v14, v15
+    aget v7, v2, v9
 
-    add-int/lit8 v13, v13, 0x1
+    .line 49
+    .local v7, "length":I
+    const/4 v2, 0x4
+
+    if-ge v7, v2, :cond_3
+
+    .line 103
+    .end local v4    # "value":Ljava/lang/String;
+    .end local v5    # "text":Lorg/oscim/theme/styles/TextStyle;
+    .end local v6    # "offset":I
+    .end local v7    # "length":I
+    .end local v8    # "ld":Lorg/oscim/layers/tile/vector/labeling/LabelTileData;
+    .end local v9    # "i":I
+    .end local v12    # "n":I
+    :cond_2
+    :goto_2
+    const/4 v2, 0x0
 
     goto :goto_0
 
-    .line 77
-    :cond_2
-    iget-object v5, v0, Lorg/oscim/core/MapElement;->type:Lorg/oscim/core/GeometryBuffer$GeometryType;
-
-    sget-object v6, Lorg/oscim/core/GeometryBuffer$GeometryType;->POLY:Lorg/oscim/core/GeometryBuffer$GeometryType;
-
-    if-ne v5, v6, :cond_9
-
-    .line 78
-    iget-object v5, v0, Lorg/oscim/core/MapElement;->labelPosition:Lorg/oscim/core/PointF;
-
-    if-eqz v5, :cond_4
-
-    .line 80
-    iget v6, v5, Lorg/oscim/core/PointF;->x:F
-
-    cmpg-float v6, v6, v3
-
-    if-ltz v6, :cond_3
-
-    iget v6, v5, Lorg/oscim/core/PointF;->x:F
-
-    sget v7, Lorg/oscim/core/Tile;->SIZE:I
-
-    int-to-float v7, v7
-
-    cmpl-float v6, v6, v7
-
-    if-gtz v6, :cond_3
-
-    iget v6, v5, Lorg/oscim/core/PointF;->y:F
-
-    cmpg-float v6, v6, v3
-
-    if-ltz v6, :cond_3
-
-    iget v6, v5, Lorg/oscim/core/PointF;->y:F
-
-    sget v7, Lorg/oscim/core/Tile;->SIZE:I
-
-    int-to-float v7, v7
-
-    cmpl-float v6, v6, v7
-
-    if-lez v6, :cond_4
-
+    .line 52
+    .restart local v4    # "value":Ljava/lang/String;
+    .restart local v5    # "text":Lorg/oscim/theme/styles/TextStyle;
+    .restart local v6    # "offset":I
+    .restart local v7    # "length":I
+    .restart local v8    # "ld":Lorg/oscim/layers/tile/vector/labeling/LabelTileData;
+    .restart local v9    # "i":I
+    .restart local v12    # "n":I
     :cond_3
-    return v4
+    const/4 v2, 0x0
 
-    .line 83
-    :cond_4
-    iget v6, v1, Lorg/oscim/theme/styles/TextStyle;->areaSize:F
+    move-object/from16 v0, p3
 
-    cmpl-float v6, v6, v3
-
-    if-lez v6, :cond_5
-
-    .line 84
-    invoke-virtual/range {p3 .. p3}, Lorg/oscim/core/MapElement;->area()F
-
-    move-result v6
-
-    .line 85
-    sget v7, Lorg/oscim/core/Tile;->SIZE:I
-
-    sget v8, Lorg/oscim/core/Tile;->SIZE:I
-
-    mul-int/2addr v7, v8
-
-    int-to-float v7, v7
-
-    div-float/2addr v6, v7
-
-    .line 86
-    iget v7, v1, Lorg/oscim/theme/styles/TextStyle;->areaSize:F
-
-    cmpg-float v6, v6, v7
-
-    if-gez v6, :cond_5
-
-    return v4
-
-    :cond_5
-    if-nez v5, :cond_8
-
-    .line 93
-    sget-boolean v5, Lorg/oscim/utils/Parameters;->POLY_LABEL:Z
-
-    if-eqz v5, :cond_6
-
-    .line 94
-    invoke-static/range {p3 .. p3}, Lorg/oscim/utils/geom/PolyLabel;->get(Lorg/oscim/core/GeometryBuffer;)Lorg/oscim/core/PointF;
-
-    move-result-object v0
-
-    .line 95
-    iget v3, v0, Lorg/oscim/core/PointF;->x:F
-
-    .line 96
-    iget v0, v0, Lorg/oscim/core/PointF;->y:F
-
-    goto :goto_2
-
-    .line 98
-    :cond_6
-    iget-object v5, v0, Lorg/oscim/core/MapElement;->index:[I
-
-    aget v5, v5, v4
-
-    move v6, v3
-
-    move v7, v6
-
-    move v3, v4
-
-    :goto_1
-    if-ge v3, v5, :cond_7
-
-    .line 100
-    iget-object v8, v0, Lorg/oscim/core/MapElement;->points:[F
-
-    add-int/lit8 v9, v3, 0x1
-
-    aget v3, v8, v3
-
-    add-float/2addr v6, v3
-
-    .line 101
     iget-object v3, v0, Lorg/oscim/core/MapElement;->points:[F
 
-    add-int/lit8 v8, v9, 0x1
+    invoke-static/range {v2 .. v8}, Lorg/oscim/layers/tile/vector/labeling/WayDecorator;->renderText(Lorg/oscim/utils/geom/LineClipper;[FLjava/lang/String;Lorg/oscim/theme/styles/TextStyle;IILorg/oscim/layers/tile/vector/labeling/LabelTileData;)V
 
-    aget v3, v3, v9
+    .line 54
+    add-int/2addr v6, v7
 
-    add-float/2addr v7, v3
-
-    move v3, v8
+    .line 47
+    add-int/lit8 v9, v9, 0x1
 
     goto :goto_1
 
-    .line 103
-    :cond_7
-    div-int/lit8 v5, v5, 0x2
+    .line 57
+    .end local v4    # "value":Ljava/lang/String;
+    .end local v6    # "offset":I
+    .end local v7    # "length":I
+    .end local v9    # "i":I
+    .end local v12    # "n":I
+    :cond_4
+    move-object/from16 v0, p3
 
-    int-to-float v0, v5
+    iget-object v2, v0, Lorg/oscim/core/MapElement;->type:Lorg/oscim/core/GeometryBuffer$GeometryType;
 
-    div-float v3, v6, v0
+    sget-object v3, Lorg/oscim/core/GeometryBuffer$GeometryType;->POLY:Lorg/oscim/core/GeometryBuffer$GeometryType;
 
-    div-float v0, v7, v0
+    if-ne v2, v3, :cond_8
 
-    goto :goto_2
+    .line 59
+    move-object/from16 v0, p3
 
-    .line 107
-    :cond_8
-    iget v3, v5, Lorg/oscim/core/PointF;->x:F
+    iget-object v2, v0, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
 
-    .line 108
-    iget v0, v5, Lorg/oscim/core/PointF;->y:F
+    iget-object v3, v5, Lorg/oscim/theme/styles/TextStyle;->textKey:Ljava/lang/String;
 
-    .line 111
-    :goto_2
-    iget-object v5, v12, Lorg/oscim/layers/tile/vector/labeling/LabelTileData;->labels:Lorg/oscim/utils/pool/Inlist$List;
+    invoke-virtual {v2, v3}, Lorg/oscim/core/TagSet;->getValue(Ljava/lang/String;)Ljava/lang/String;
 
-    sget-object v6, Lorg/oscim/renderer/bucket/TextItem;->pool:Lorg/oscim/utils/pool/SyncPool;
+    move-result-object v4
 
-    invoke-virtual {v6}, Lorg/oscim/utils/pool/SyncPool;->get()Lorg/oscim/utils/pool/Inlist;
+    .line 60
+    .restart local v4    # "value":Ljava/lang/String;
+    if-eqz v4, :cond_5
 
-    move-result-object v6
+    invoke-virtual {v4}, Ljava/lang/String;->length()I
 
-    check-cast v6, Lorg/oscim/renderer/bucket/TextItem;
+    move-result v2
 
-    invoke-virtual {v6, v3, v0, v2, v1}, Lorg/oscim/renderer/bucket/TextItem;->set(FFLjava/lang/String;Lorg/oscim/theme/styles/TextStyle;)Lorg/oscim/renderer/bucket/TextItem;
+    if-nez v2, :cond_6
 
-    move-result-object v0
+    .line 61
+    :cond_5
+    const/4 v2, 0x0
 
-    invoke-virtual {v5, v0}, Lorg/oscim/utils/pool/Inlist$List;->push(Lorg/oscim/utils/pool/Inlist;)V
+    goto :goto_0
 
-    goto/16 :goto_a
+    .line 63
+    :cond_6
+    const/4 v15, 0x0
 
-    .line 112
-    :cond_9
-    iget-object v3, v0, Lorg/oscim/core/MapElement;->type:Lorg/oscim/core/GeometryBuffer$GeometryType;
+    .line 64
+    .local v15, "x":F
+    const/16 v16, 0x0
 
-    sget-object v5, Lorg/oscim/core/GeometryBuffer$GeometryType;->POINT:Lorg/oscim/core/GeometryBuffer$GeometryType;
+    .line 65
+    .local v16, "y":F
+    move-object/from16 v0, p3
 
-    if-ne v3, v5, :cond_16
+    iget-object v2, v0, Lorg/oscim/core/MapElement;->index:[I
 
-    .line 113
-    invoke-virtual/range {p3 .. p3}, Lorg/oscim/core/MapElement;->getNumPoints()I
+    const/4 v3, 0x0
 
-    move-result v3
+    aget v12, v2, v3
 
-    move v5, v4
+    .line 67
+    .restart local v12    # "n":I
+    const/4 v9, 0x0
 
+    .restart local v9    # "i":I
+    move v10, v9
+
+    .end local v9    # "i":I
+    .local v10, "i":I
     :goto_3
-    if-ge v5, v3, :cond_16
+    if-ge v10, v12, :cond_7
 
-    .line 114
-    invoke-virtual {v0, v5}, Lorg/oscim/core/MapElement;->getPoint(I)Lorg/oscim/core/PointF;
+    .line 68
+    move-object/from16 v0, p3
 
-    move-result-object v6
-
-    .line 115
-    iget-object v7, v12, Lorg/oscim/layers/tile/vector/labeling/LabelTileData;->labels:Lorg/oscim/utils/pool/Inlist$List;
-
-    sget-object v8, Lorg/oscim/renderer/bucket/TextItem;->pool:Lorg/oscim/utils/pool/SyncPool;
-
-    invoke-virtual {v8}, Lorg/oscim/utils/pool/SyncPool;->get()Lorg/oscim/utils/pool/Inlist;
-
-    move-result-object v8
-
-    check-cast v8, Lorg/oscim/renderer/bucket/TextItem;
-
-    iget v9, v6, Lorg/oscim/core/PointF;->x:F
-
-    iget v6, v6, Lorg/oscim/core/PointF;->y:F
-
-    invoke-virtual {v8, v9, v6, v2, v1}, Lorg/oscim/renderer/bucket/TextItem;->set(FFLjava/lang/String;Lorg/oscim/theme/styles/TextStyle;)Lorg/oscim/renderer/bucket/TextItem;
-
-    move-result-object v6
-
-    invoke-virtual {v7, v6}, Lorg/oscim/utils/pool/Inlist$List;->push(Lorg/oscim/utils/pool/Inlist;)V
-
-    add-int/lit8 v5, v5, 0x1
-
-    goto :goto_3
-
-    :cond_a
-    :goto_4
-    return v4
-
-    .line 118
-    :cond_b
-    instance-of v2, v1, Lorg/oscim/theme/styles/SymbolStyle;
-
-    if-eqz v2, :cond_16
-
-    .line 119
-    invoke-virtual/range {p4 .. p4}, Lorg/oscim/theme/styles/RenderStyle;->current()Lorg/oscim/theme/styles/RenderStyle;
-
-    move-result-object v1
-
-    check-cast v1, Lorg/oscim/theme/styles/SymbolStyle;
-
-    .line 121
-    iget-object v2, v1, Lorg/oscim/theme/styles/SymbolStyle;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
-
-    if-nez v2, :cond_c
-
-    iget-object v2, v1, Lorg/oscim/theme/styles/SymbolStyle;->texture:Lorg/oscim/renderer/atlas/TextureRegion;
-
-    if-nez v2, :cond_c
-
-    return v4
-
-    .line 124
-    :cond_c
-    invoke-direct/range {p0 .. p1}, Lorg/oscim/layers/tile/vector/labeling/LabelTileLoaderHook;->get(Lorg/oscim/layers/tile/MapTile;)Lorg/oscim/layers/tile/vector/labeling/LabelTileData;
-
-    move-result-object v2
-
-    .line 125
-    iget-object v5, v0, Lorg/oscim/core/MapElement;->type:Lorg/oscim/core/GeometryBuffer$GeometryType;
-
-    sget-object v6, Lorg/oscim/core/GeometryBuffer$GeometryType;->LINE:Lorg/oscim/core/GeometryBuffer$GeometryType;
-
-    if-ne v5, v6, :cond_d
-
-    goto/16 :goto_a
-
-    .line 127
-    :cond_d
-    iget-object v5, v0, Lorg/oscim/core/MapElement;->type:Lorg/oscim/core/GeometryBuffer$GeometryType;
-
-    sget-object v6, Lorg/oscim/core/GeometryBuffer$GeometryType;->POLY:Lorg/oscim/core/GeometryBuffer$GeometryType;
-
-    const/4 v7, 0x1
-
-    if-ne v5, v6, :cond_14
-
-    .line 128
-    iget-object v5, v0, Lorg/oscim/core/MapElement;->labelPosition:Lorg/oscim/core/PointF;
-
-    if-eqz v5, :cond_f
-
-    .line 130
-    iget v6, v5, Lorg/oscim/core/PointF;->x:F
-
-    cmpg-float v6, v6, v3
-
-    if-ltz v6, :cond_e
-
-    iget v6, v5, Lorg/oscim/core/PointF;->x:F
-
-    sget v8, Lorg/oscim/core/Tile;->SIZE:I
-
-    int-to-float v8, v8
-
-    cmpl-float v6, v6, v8
-
-    if-gtz v6, :cond_e
-
-    iget v6, v5, Lorg/oscim/core/PointF;->y:F
-
-    cmpg-float v6, v6, v3
-
-    if-ltz v6, :cond_e
-
-    iget v6, v5, Lorg/oscim/core/PointF;->y:F
-
-    sget v8, Lorg/oscim/core/Tile;->SIZE:I
-
-    int-to-float v8, v8
-
-    cmpl-float v6, v6, v8
-
-    if-lez v6, :cond_f
-
-    :cond_e
-    return v4
-
-    :cond_f
-    if-nez v5, :cond_12
-
-    .line 136
-    sget-boolean v5, Lorg/oscim/utils/Parameters;->POLY_LABEL:Z
-
-    if-eqz v5, :cond_10
-
-    .line 137
-    invoke-static/range {p3 .. p3}, Lorg/oscim/utils/geom/PolyLabel;->get(Lorg/oscim/core/GeometryBuffer;)Lorg/oscim/core/PointF;
-
-    move-result-object v0
-
-    .line 138
-    iget v3, v0, Lorg/oscim/core/PointF;->x:F
-
-    .line 139
-    iget v0, v0, Lorg/oscim/core/PointF;->y:F
-
-    goto :goto_6
-
-    .line 141
-    :cond_10
-    iget-object v5, v0, Lorg/oscim/core/MapElement;->index:[I
-
-    aget v5, v5, v4
-
-    move v6, v3
-
-    move v8, v6
-
-    move v3, v4
-
-    :goto_5
-    if-ge v3, v5, :cond_11
-
-    .line 143
-    iget-object v9, v0, Lorg/oscim/core/MapElement;->points:[F
-
-    add-int/lit8 v10, v3, 0x1
-
-    aget v3, v9, v3
-
-    add-float/2addr v6, v3
-
-    .line 144
-    iget-object v3, v0, Lorg/oscim/core/MapElement;->points:[F
+    iget-object v2, v0, Lorg/oscim/core/MapElement;->points:[F
 
     add-int/lit8 v9, v10, 0x1
 
-    aget v3, v3, v10
+    .end local v10    # "i":I
+    .restart local v9    # "i":I
+    aget v2, v2, v10
 
-    add-float/2addr v8, v3
+    add-float/2addr v15, v2
 
-    move v3, v9
+    .line 69
+    move-object/from16 v0, p3
 
-    goto :goto_5
+    iget-object v2, v0, Lorg/oscim/core/MapElement;->points:[F
 
-    .line 146
-    :cond_11
-    div-int/lit8 v5, v5, 0x2
+    add-int/lit8 v10, v9, 0x1
 
-    int-to-float v0, v5
+    .end local v9    # "i":I
+    .restart local v10    # "i":I
+    aget v2, v2, v9
 
-    div-float v3, v6, v0
+    add-float v16, v16, v2
 
-    div-float v0, v8, v0
+    goto :goto_3
 
-    goto :goto_6
+    .line 71
+    :cond_7
+    div-int/lit8 v2, v12, 0x2
 
-    .line 150
-    :cond_12
-    iget v3, v5, Lorg/oscim/core/PointF;->x:F
+    int-to-float v2, v2
 
-    .line 151
-    iget v0, v5, Lorg/oscim/core/PointF;->y:F
+    div-float/2addr v15, v2
 
-    .line 154
-    :goto_6
-    sget-object v5, Lorg/oscim/renderer/bucket/SymbolItem;->pool:Lorg/oscim/utils/pool/SyncPool;
+    .line 72
+    div-int/lit8 v2, v12, 0x2
 
-    invoke-virtual {v5}, Lorg/oscim/utils/pool/SyncPool;->get()Lorg/oscim/utils/pool/Inlist;
+    int-to-float v2, v2
 
-    move-result-object v5
+    div-float v16, v16, v2
 
-    check-cast v5, Lorg/oscim/renderer/bucket/SymbolItem;
+    .line 74
+    iget-object v3, v8, Lorg/oscim/layers/tile/vector/labeling/LabelTileData;->labels:Lorg/oscim/utils/pool/Inlist$List;
 
-    .line 155
-    iget-object v6, v1, Lorg/oscim/theme/styles/SymbolStyle;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
+    sget-object v2, Lorg/oscim/renderer/bucket/TextItem;->pool:Lorg/oscim/utils/pool/SyncPool;
 
-    if-eqz v6, :cond_13
+    invoke-virtual {v2}, Lorg/oscim/utils/pool/SyncPool;->get()Lorg/oscim/utils/pool/Inlist;
 
-    .line 156
-    iget-object v1, v1, Lorg/oscim/theme/styles/SymbolStyle;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
+    move-result-object v2
 
-    invoke-virtual {v5, v3, v0, v1, v7}, Lorg/oscim/renderer/bucket/SymbolItem;->set(FFLorg/oscim/backend/canvas/Bitmap;Z)V
+    check-cast v2, Lorg/oscim/renderer/bucket/TextItem;
 
-    goto :goto_7
+    move/from16 v0, v16
 
-    .line 158
-    :cond_13
-    iget-object v1, v1, Lorg/oscim/theme/styles/SymbolStyle;->texture:Lorg/oscim/renderer/atlas/TextureRegion;
+    invoke-virtual {v2, v15, v0, v4, v5}, Lorg/oscim/renderer/bucket/TextItem;->set(FFLjava/lang/String;Lorg/oscim/theme/styles/TextStyle;)Lorg/oscim/renderer/bucket/TextItem;
 
-    invoke-virtual {v5, v3, v0, v1, v7}, Lorg/oscim/renderer/bucket/SymbolItem;->set(FFLorg/oscim/renderer/atlas/TextureRegion;Z)V
+    move-result-object v2
 
-    .line 159
-    :goto_7
-    iget-object v0, v2, Lorg/oscim/layers/tile/vector/labeling/LabelTileData;->symbols:Lorg/oscim/utils/pool/Inlist$List;
+    invoke-virtual {v3, v2}, Lorg/oscim/utils/pool/Inlist$List;->push(Lorg/oscim/utils/pool/Inlist;)V
 
-    invoke-virtual {v0, v5}, Lorg/oscim/utils/pool/Inlist$List;->push(Lorg/oscim/utils/pool/Inlist;)V
+    goto :goto_2
 
-    goto :goto_a
+    .line 76
+    .end local v4    # "value":Ljava/lang/String;
+    .end local v10    # "i":I
+    .end local v12    # "n":I
+    .end local v15    # "x":F
+    .end local v16    # "y":F
+    :cond_8
+    move-object/from16 v0, p3
 
-    .line 160
-    :cond_14
-    iget-object v3, v0, Lorg/oscim/core/MapElement;->type:Lorg/oscim/core/GeometryBuffer$GeometryType;
+    iget-object v2, v0, Lorg/oscim/core/MapElement;->type:Lorg/oscim/core/GeometryBuffer$GeometryType;
 
-    sget-object v5, Lorg/oscim/core/GeometryBuffer$GeometryType;->POINT:Lorg/oscim/core/GeometryBuffer$GeometryType;
+    sget-object v3, Lorg/oscim/core/GeometryBuffer$GeometryType;->POINT:Lorg/oscim/core/GeometryBuffer$GeometryType;
 
-    if-ne v3, v5, :cond_16
+    if-ne v2, v3, :cond_2
 
-    .line 161
+    .line 77
+    move-object/from16 v0, p3
+
+    iget-object v2, v0, Lorg/oscim/core/MapElement;->tags:Lorg/oscim/core/TagSet;
+
+    iget-object v3, v5, Lorg/oscim/theme/styles/TextStyle;->textKey:Ljava/lang/String;
+
+    invoke-virtual {v2, v3}, Lorg/oscim/core/TagSet;->getValue(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 78
+    .restart local v4    # "value":Ljava/lang/String;
+    if-eqz v4, :cond_9
+
+    invoke-virtual {v4}, Ljava/lang/String;->length()I
+
+    move-result v2
+
+    if-nez v2, :cond_a
+
+    .line 79
+    :cond_9
+    const/4 v2, 0x0
+
+    goto/16 :goto_0
+
+    .line 81
+    :cond_a
+    const/4 v9, 0x0
+
+    .restart local v9    # "i":I
     invoke-virtual/range {p3 .. p3}, Lorg/oscim/core/MapElement;->getNumPoints()I
 
-    move-result v3
+    move-result v12
 
-    move v5, v4
+    .restart local v12    # "n":I
+    :goto_4
+    if-ge v9, v12, :cond_2
 
-    :goto_8
-    if-ge v5, v3, :cond_16
+    .line 82
+    move-object/from16 v0, p3
 
-    .line 162
-    invoke-virtual {v0, v5}, Lorg/oscim/core/MapElement;->getPoint(I)Lorg/oscim/core/PointF;
+    invoke-virtual {v0, v9}, Lorg/oscim/core/MapElement;->getPoint(I)Lorg/oscim/core/PointF;
 
-    move-result-object v6
+    move-result-object v13
 
-    .line 164
-    sget-object v8, Lorg/oscim/renderer/bucket/SymbolItem;->pool:Lorg/oscim/utils/pool/SyncPool;
+    .line 83
+    .local v13, "p":Lorg/oscim/core/PointF;
+    iget-object v3, v8, Lorg/oscim/layers/tile/vector/labeling/LabelTileData;->labels:Lorg/oscim/utils/pool/Inlist$List;
 
-    invoke-virtual {v8}, Lorg/oscim/utils/pool/SyncPool;->get()Lorg/oscim/utils/pool/Inlist;
+    sget-object v2, Lorg/oscim/renderer/bucket/TextItem;->pool:Lorg/oscim/utils/pool/SyncPool;
+
+    invoke-virtual {v2}, Lorg/oscim/utils/pool/SyncPool;->get()Lorg/oscim/utils/pool/Inlist;
+
+    move-result-object v2
+
+    check-cast v2, Lorg/oscim/renderer/bucket/TextItem;
+
+    iget v0, v13, Lorg/oscim/core/PointF;->x:F
+
+    move/from16 v17, v0
+
+    iget v0, v13, Lorg/oscim/core/PointF;->y:F
+
+    move/from16 v18, v0
+
+    move/from16 v0, v17
+
+    move/from16 v1, v18
+
+    invoke-virtual {v2, v0, v1, v4, v5}, Lorg/oscim/renderer/bucket/TextItem;->set(FFLjava/lang/String;Lorg/oscim/theme/styles/TextStyle;)Lorg/oscim/renderer/bucket/TextItem;
+
+    move-result-object v2
+
+    invoke-virtual {v3, v2}, Lorg/oscim/utils/pool/Inlist$List;->push(Lorg/oscim/utils/pool/Inlist;)V
+
+    .line 81
+    add-int/lit8 v9, v9, 0x1
+
+    goto :goto_4
+
+    .line 87
+    .end local v4    # "value":Ljava/lang/String;
+    .end local v5    # "text":Lorg/oscim/theme/styles/TextStyle;
+    .end local v8    # "ld":Lorg/oscim/layers/tile/vector/labeling/LabelTileData;
+    .end local v9    # "i":I
+    .end local v12    # "n":I
+    .end local v13    # "p":Lorg/oscim/core/PointF;
+    :cond_b
+    move-object/from16 v0, p3
+
+    iget-object v2, v0, Lorg/oscim/core/MapElement;->type:Lorg/oscim/core/GeometryBuffer$GeometryType;
+
+    sget-object v3, Lorg/oscim/core/GeometryBuffer$GeometryType;->POINT:Lorg/oscim/core/GeometryBuffer$GeometryType;
+
+    if-ne v2, v3, :cond_2
+
+    move-object/from16 v0, p4
+
+    instance-of v2, v0, Lorg/oscim/theme/styles/SymbolStyle;
+
+    if-eqz v2, :cond_2
+
+    move-object/from16 v14, p4
+
+    .line 88
+    check-cast v14, Lorg/oscim/theme/styles/SymbolStyle;
+
+    .line 90
+    .local v14, "symbol":Lorg/oscim/theme/styles/SymbolStyle;
+    iget-object v2, v14, Lorg/oscim/theme/styles/SymbolStyle;->texture:Lorg/oscim/renderer/atlas/TextureRegion;
+
+    if-nez v2, :cond_c
+
+    .line 91
+    const/4 v2, 0x0
+
+    goto/16 :goto_0
+
+    .line 93
+    :cond_c
+    invoke-direct/range {p0 .. p1}, Lorg/oscim/layers/tile/vector/labeling/LabelTileLoaderHook;->get(Lorg/oscim/layers/tile/MapTile;)Lorg/oscim/layers/tile/vector/labeling/LabelTileData;
 
     move-result-object v8
 
-    check-cast v8, Lorg/oscim/renderer/bucket/SymbolItem;
+    .line 95
+    .restart local v8    # "ld":Lorg/oscim/layers/tile/vector/labeling/LabelTileData;
+    const/4 v9, 0x0
 
-    .line 165
-    iget-object v9, v1, Lorg/oscim/theme/styles/SymbolStyle;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
+    .restart local v9    # "i":I
+    invoke-virtual/range {p3 .. p3}, Lorg/oscim/core/MapElement;->getNumPoints()I
 
-    if-eqz v9, :cond_15
+    move-result v12
 
-    .line 166
-    iget v9, v6, Lorg/oscim/core/PointF;->x:F
+    .restart local v12    # "n":I
+    :goto_5
+    if-ge v9, v12, :cond_2
 
-    iget v6, v6, Lorg/oscim/core/PointF;->y:F
+    .line 96
+    move-object/from16 v0, p3
 
-    iget-object v10, v1, Lorg/oscim/theme/styles/SymbolStyle;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
+    invoke-virtual {v0, v9}, Lorg/oscim/core/MapElement;->getPoint(I)Lorg/oscim/core/PointF;
 
-    invoke-virtual {v8, v9, v6, v10, v7}, Lorg/oscim/renderer/bucket/SymbolItem;->set(FFLorg/oscim/backend/canvas/Bitmap;Z)V
+    move-result-object v13
 
-    goto :goto_9
+    .line 98
+    .restart local v13    # "p":Lorg/oscim/core/PointF;
+    sget-object v2, Lorg/oscim/renderer/bucket/SymbolItem;->pool:Lorg/oscim/utils/pool/SyncPool;
 
-    .line 168
-    :cond_15
-    iget v9, v6, Lorg/oscim/core/PointF;->x:F
+    invoke-virtual {v2}, Lorg/oscim/utils/pool/SyncPool;->get()Lorg/oscim/utils/pool/Inlist;
 
-    iget v6, v6, Lorg/oscim/core/PointF;->y:F
+    move-result-object v11
 
-    iget-object v10, v1, Lorg/oscim/theme/styles/SymbolStyle;->texture:Lorg/oscim/renderer/atlas/TextureRegion;
+    check-cast v11, Lorg/oscim/renderer/bucket/SymbolItem;
 
-    invoke-virtual {v8, v9, v6, v10, v7}, Lorg/oscim/renderer/bucket/SymbolItem;->set(FFLorg/oscim/renderer/atlas/TextureRegion;Z)V
+    .line 99
+    .local v11, "it":Lorg/oscim/renderer/bucket/SymbolItem;
+    iget v2, v13, Lorg/oscim/core/PointF;->x:F
 
-    .line 169
-    :goto_9
-    iget-object v6, v2, Lorg/oscim/layers/tile/vector/labeling/LabelTileData;->symbols:Lorg/oscim/utils/pool/Inlist$List;
+    iget v3, v13, Lorg/oscim/core/PointF;->y:F
 
-    invoke-virtual {v6, v8}, Lorg/oscim/utils/pool/Inlist$List;->push(Lorg/oscim/utils/pool/Inlist;)V
+    iget-object v0, v14, Lorg/oscim/theme/styles/SymbolStyle;->texture:Lorg/oscim/renderer/atlas/TextureRegion;
 
-    add-int/lit8 v5, v5, 0x1
+    move-object/from16 v17, v0
 
-    goto :goto_8
+    const/16 v18, 0x1
 
-    :cond_16
-    :goto_a
-    return v4
+    move-object/from16 v0, v17
+
+    move/from16 v1, v18
+
+    invoke-virtual {v11, v2, v3, v0, v1}, Lorg/oscim/renderer/bucket/SymbolItem;->set(FFLorg/oscim/renderer/atlas/TextureRegion;Z)V
+
+    .line 100
+    iget-object v2, v8, Lorg/oscim/layers/tile/vector/labeling/LabelTileData;->symbols:Lorg/oscim/utils/pool/Inlist$List;
+
+    invoke-virtual {v2, v11}, Lorg/oscim/utils/pool/Inlist$List;->push(Lorg/oscim/utils/pool/Inlist;)V
+
+    .line 95
+    add-int/lit8 v9, v9, 0x1
+
+    goto :goto_5
 .end method

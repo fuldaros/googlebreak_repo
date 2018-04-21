@@ -11,6 +11,7 @@
 .method public static assertMainThread()V
     .locals 2
 
+    .prologue
     .line 8
     sget-object v0, Lorg/oscim/utils/ThreadUtils;->MAIN_THREAD:Ljava/lang/Thread;
 
@@ -29,6 +30,7 @@
 
     throw v0
 
+    .line 10
     :cond_0
     return-void
 .end method
@@ -36,6 +38,7 @@
 .method public static init()V
     .locals 1
 
+    .prologue
     .line 17
     invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
 
@@ -43,12 +46,14 @@
 
     sput-object v0, Lorg/oscim/utils/ThreadUtils;->MAIN_THREAD:Ljava/lang/Thread;
 
+    .line 18
     return-void
 .end method
 
 .method public static isMainThread()Z
     .locals 2
 
+    .prologue
     .line 13
     sget-object v0, Lorg/oscim/utils/ThreadUtils;->MAIN_THREAD:Ljava/lang/Thread;
 
@@ -60,11 +65,11 @@
 
     const/4 v0, 0x1
 
-    goto :goto_0
+    :goto_0
+    return v0
 
     :cond_0
     const/4 v0, 0x0
 
-    :goto_0
-    return v0
+    goto :goto_0
 .end method

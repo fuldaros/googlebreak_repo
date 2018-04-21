@@ -7,27 +7,26 @@
 .method private constructor <init>()V
     .locals 0
 
-    .line 52
+    .prologue
+    .line 44
     invoke-direct {p0}, Lorg/oscim/backend/CanvasAdapter;-><init>()V
 
+    .line 46
     return-void
 .end method
 
 .method public static init()V
     .locals 1
 
-    .line 40
+    .prologue
+    .line 37
     new-instance v0, Lorg/oscim/android/canvas/AndroidGraphics;
 
     invoke-direct {v0}, Lorg/oscim/android/canvas/AndroidGraphics;-><init>()V
 
     invoke-static {v0}, Lorg/oscim/backend/CanvasAdapter;->init(Lorg/oscim/backend/CanvasAdapter;)V
 
-    .line 41
-    sget-object v0, Lorg/oscim/backend/Platform;->ANDROID:Lorg/oscim/backend/Platform;
-
-    sput-object v0, Lorg/oscim/backend/CanvasAdapter;->platform:Lorg/oscim/backend/Platform;
-
+    .line 38
     return-void
 .end method
 
@@ -35,8 +34,10 @@
 # virtual methods
 .method public decodeBitmapImpl(Ljava/io/InputStream;)Lorg/oscim/backend/canvas/Bitmap;
     .locals 1
+    .param p1, "inputStream"    # Ljava/io/InputStream;
 
-    .line 58
+    .prologue
+    .line 50
     new-instance v0, Lorg/oscim/android/canvas/AndroidBitmap;
 
     invoke-direct {v0, p1}, Lorg/oscim/android/canvas/AndroidBitmap;-><init>(Ljava/io/InputStream;)V
@@ -44,42 +45,45 @@
     return-object v0
 .end method
 
-.method public decodeSvgBitmapImpl(Ljava/io/InputStream;III)Lorg/oscim/backend/canvas/Bitmap;
-    .locals 1
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/io/IOException;
-        }
-    .end annotation
+.method public loadBitmapAssetImpl(Ljava/lang/String;)Lorg/oscim/backend/canvas/Bitmap;
+    .locals 2
+    .param p1, "fileName"    # Ljava/lang/String;
 
-    .line 63
-    new-instance v0, Lorg/oscim/android/canvas/AndroidSvgBitmap;
+    .prologue
+    .line 56
+    :try_start_0
+    invoke-static {p1}, Lorg/oscim/android/canvas/AndroidGraphics;->createBitmap(Ljava/lang/String;)Lorg/oscim/backend/canvas/Bitmap;
+    :try_end_0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
-    invoke-direct {v0, p1, p2, p3, p4}, Lorg/oscim/android/canvas/AndroidSvgBitmap;-><init>(Ljava/io/InputStream;III)V
+    move-result-object v1
 
-    return-object v0
-.end method
+    .line 60
+    :goto_0
+    return-object v1
 
-.method public loadBitmapAssetImpl(Ljava/lang/String;Ljava/lang/String;III)Lorg/oscim/backend/canvas/Bitmap;
-    .locals 0
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/io/IOException;
-        }
-    .end annotation
+    .line 57
+    :catch_0
+    move-exception v0
 
-    .line 68
-    invoke-static {p1, p2, p3, p4, p5}, Lorg/oscim/android/canvas/AndroidGraphics;->createBitmap(Ljava/lang/String;Ljava/lang/String;III)Lorg/oscim/backend/canvas/Bitmap;
+    .line 58
+    .local v0, "e":Ljava/io/IOException;
+    invoke-virtual {v0}, Ljava/io/IOException;->printStackTrace()V
 
-    move-result-object p1
+    .line 60
+    const/4 v1, 0x0
 
-    return-object p1
+    goto :goto_0
 .end method
 
 .method public newBitmapImpl(III)Lorg/oscim/backend/canvas/Bitmap;
     .locals 1
+    .param p1, "width"    # I
+    .param p2, "height"    # I
+    .param p3, "format"    # I
 
-    .line 78
+    .prologue
+    .line 70
     new-instance v0, Lorg/oscim/android/canvas/AndroidBitmap;
 
     invoke-direct {v0, p1, p2, p3}, Lorg/oscim/android/canvas/AndroidBitmap;-><init>(III)V
@@ -90,7 +94,8 @@
 .method public newCanvasImpl()Lorg/oscim/backend/canvas/Canvas;
     .locals 1
 
-    .line 83
+    .prologue
+    .line 75
     new-instance v0, Lorg/oscim/android/canvas/AndroidCanvas;
 
     invoke-direct {v0}, Lorg/oscim/android/canvas/AndroidCanvas;-><init>()V
@@ -101,7 +106,8 @@
 .method public newPaintImpl()Lorg/oscim/backend/canvas/Paint;
     .locals 1
 
-    .line 73
+    .prologue
+    .line 65
     new-instance v0, Lorg/oscim/android/canvas/AndroidPaint;
 
     invoke-direct {v0}, Lorg/oscim/android/canvas/AndroidPaint;-><init>()V

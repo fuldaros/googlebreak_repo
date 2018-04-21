@@ -18,6 +18,7 @@
 .method constructor <init>()V
     .locals 0
 
+    .prologue
     .line 48
     invoke-direct {p0}, Lokio/Timeout;-><init>()V
 
@@ -34,5 +35,7 @@
         }
     .end annotation
 
+    .prologue
+    .line 58
     return-void
 .end method

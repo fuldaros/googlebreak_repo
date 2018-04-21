@@ -15,8 +15,6 @@
 
 
 # static fields
-.field static final synthetic $SwitchMap$android$graphics$Paint$Style:[I
-
 .field static final synthetic $SwitchMap$org$oscim$backend$canvas$Paint$FontFamily:[I
 
 .field static final synthetic $SwitchMap$org$oscim$backend$canvas$Paint$FontStyle:[I
@@ -24,10 +22,11 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 7
+    .locals 3
 
-    .line 144
-    invoke-static {}, Landroid/graphics/Paint$Style;->values()[Landroid/graphics/Paint$Style;
+    .prologue
+    .line 41
+    invoke-static {}, Lorg/oscim/backend/canvas/Paint$FontFamily;->values()[Lorg/oscim/backend/canvas/Paint$FontFamily;
 
     move-result-object v0
 
@@ -35,153 +34,132 @@
 
     new-array v0, v0, [I
 
-    sput-object v0, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$android$graphics$Paint$Style:[I
-
-    const/4 v0, 0x1
+    sput-object v0, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$org$oscim$backend$canvas$Paint$FontFamily:[I
 
     :try_start_0
-    sget-object v1, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$android$graphics$Paint$Style:[I
+    sget-object v0, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$org$oscim$backend$canvas$Paint$FontFamily:[I
 
-    sget-object v2, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;
+    sget-object v1, Lorg/oscim/backend/canvas/Paint$FontFamily;->DEFAULT:Lorg/oscim/backend/canvas/Paint$FontFamily;
 
-    invoke-virtual {v2}, Landroid/graphics/Paint$Style;->ordinal()I
+    invoke-virtual {v1}, Lorg/oscim/backend/canvas/Paint$FontFamily;->ordinal()I
 
-    move-result v2
+    move-result v1
 
-    aput v0, v1, v2
+    const/4 v2, 0x1
+
+    aput v2, v0, v1
     :try_end_0
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_0 .. :try_end_0} :catch_8
 
-    .line 45
-    :catch_0
-    invoke-static {}, Lorg/oscim/backend/canvas/Paint$FontFamily;->values()[Lorg/oscim/backend/canvas/Paint$FontFamily;
-
-    move-result-object v1
-
-    array-length v1, v1
-
-    new-array v1, v1, [I
-
-    sput-object v1, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$org$oscim$backend$canvas$Paint$FontFamily:[I
-
+    :goto_0
     :try_start_1
-    sget-object v1, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$org$oscim$backend$canvas$Paint$FontFamily:[I
+    sget-object v0, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$org$oscim$backend$canvas$Paint$FontFamily:[I
 
-    sget-object v2, Lorg/oscim/backend/canvas/Paint$FontFamily;->DEFAULT:Lorg/oscim/backend/canvas/Paint$FontFamily;
+    sget-object v1, Lorg/oscim/backend/canvas/Paint$FontFamily;->DEFAULT_BOLD:Lorg/oscim/backend/canvas/Paint$FontFamily;
 
-    invoke-virtual {v2}, Lorg/oscim/backend/canvas/Paint$FontFamily;->ordinal()I
+    invoke-virtual {v1}, Lorg/oscim/backend/canvas/Paint$FontFamily;->ordinal()I
 
-    move-result v2
+    move-result v1
 
-    aput v0, v1, v2
+    const/4 v2, 0x2
+
+    aput v2, v0, v1
     :try_end_1
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_1 .. :try_end_1} :catch_1
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_1 .. :try_end_1} :catch_7
 
-    :catch_1
-    const/4 v1, 0x2
-
+    :goto_1
     :try_start_2
-    sget-object v2, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$org$oscim$backend$canvas$Paint$FontFamily:[I
+    sget-object v0, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$org$oscim$backend$canvas$Paint$FontFamily:[I
 
-    sget-object v3, Lorg/oscim/backend/canvas/Paint$FontFamily;->DEFAULT_BOLD:Lorg/oscim/backend/canvas/Paint$FontFamily;
+    sget-object v1, Lorg/oscim/backend/canvas/Paint$FontFamily;->MONOSPACE:Lorg/oscim/backend/canvas/Paint$FontFamily;
 
-    invoke-virtual {v3}, Lorg/oscim/backend/canvas/Paint$FontFamily;->ordinal()I
+    invoke-virtual {v1}, Lorg/oscim/backend/canvas/Paint$FontFamily;->ordinal()I
 
-    move-result v3
+    move-result v1
 
-    aput v1, v2, v3
-    :try_end_2
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_2 .. :try_end_2} :catch_2
-
-    :catch_2
     const/4 v2, 0x3
 
+    aput v2, v0, v1
+    :try_end_2
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_2 .. :try_end_2} :catch_6
+
+    :goto_2
     :try_start_3
-    sget-object v3, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$org$oscim$backend$canvas$Paint$FontFamily:[I
+    sget-object v0, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$org$oscim$backend$canvas$Paint$FontFamily:[I
 
-    sget-object v4, Lorg/oscim/backend/canvas/Paint$FontFamily;->MONOSPACE:Lorg/oscim/backend/canvas/Paint$FontFamily;
+    sget-object v1, Lorg/oscim/backend/canvas/Paint$FontFamily;->SANS_SERIF:Lorg/oscim/backend/canvas/Paint$FontFamily;
 
-    invoke-virtual {v4}, Lorg/oscim/backend/canvas/Paint$FontFamily;->ordinal()I
+    invoke-virtual {v1}, Lorg/oscim/backend/canvas/Paint$FontFamily;->ordinal()I
 
-    move-result v4
+    move-result v1
 
-    aput v2, v3, v4
+    const/4 v2, 0x4
+
+    aput v2, v0, v1
     :try_end_3
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_3 .. :try_end_3} :catch_3
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_3 .. :try_end_3} :catch_5
 
-    :catch_3
-    const/4 v3, 0x4
-
+    :goto_3
     :try_start_4
-    sget-object v4, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$org$oscim$backend$canvas$Paint$FontFamily:[I
+    sget-object v0, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$org$oscim$backend$canvas$Paint$FontFamily:[I
 
-    sget-object v5, Lorg/oscim/backend/canvas/Paint$FontFamily;->SANS_SERIF:Lorg/oscim/backend/canvas/Paint$FontFamily;
+    sget-object v1, Lorg/oscim/backend/canvas/Paint$FontFamily;->SERIF:Lorg/oscim/backend/canvas/Paint$FontFamily;
 
-    invoke-virtual {v5}, Lorg/oscim/backend/canvas/Paint$FontFamily;->ordinal()I
+    invoke-virtual {v1}, Lorg/oscim/backend/canvas/Paint$FontFamily;->ordinal()I
 
-    move-result v5
+    move-result v1
 
-    aput v3, v4, v5
+    const/4 v2, 0x5
+
+    aput v2, v0, v1
     :try_end_4
     .catch Ljava/lang/NoSuchFieldError; {:try_start_4 .. :try_end_4} :catch_4
 
-    :catch_4
-    :try_start_5
-    sget-object v4, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$org$oscim$backend$canvas$Paint$FontFamily:[I
-
-    sget-object v5, Lorg/oscim/backend/canvas/Paint$FontFamily;->SERIF:Lorg/oscim/backend/canvas/Paint$FontFamily;
-
-    invoke-virtual {v5}, Lorg/oscim/backend/canvas/Paint$FontFamily;->ordinal()I
-
-    move-result v5
-
-    const/4 v6, 0x5
-
-    aput v6, v4, v5
-    :try_end_5
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_5 .. :try_end_5} :catch_5
-
-    .line 30
-    :catch_5
+    .line 26
+    :goto_4
     invoke-static {}, Lorg/oscim/backend/canvas/Paint$FontStyle;->values()[Lorg/oscim/backend/canvas/Paint$FontStyle;
 
-    move-result-object v4
+    move-result-object v0
 
-    array-length v4, v4
+    array-length v0, v0
 
-    new-array v4, v4, [I
+    new-array v0, v0, [I
 
-    sput-object v4, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$org$oscim$backend$canvas$Paint$FontStyle:[I
+    sput-object v0, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$org$oscim$backend$canvas$Paint$FontStyle:[I
 
-    :try_start_6
-    sget-object v4, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$org$oscim$backend$canvas$Paint$FontStyle:[I
-
-    sget-object v5, Lorg/oscim/backend/canvas/Paint$FontStyle;->BOLD:Lorg/oscim/backend/canvas/Paint$FontStyle;
-
-    invoke-virtual {v5}, Lorg/oscim/backend/canvas/Paint$FontStyle;->ordinal()I
-
-    move-result v5
-
-    aput v0, v4, v5
-    :try_end_6
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_6 .. :try_end_6} :catch_6
-
-    :catch_6
-    :try_start_7
+    :try_start_5
     sget-object v0, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$org$oscim$backend$canvas$Paint$FontStyle:[I
 
-    sget-object v4, Lorg/oscim/backend/canvas/Paint$FontStyle;->BOLD_ITALIC:Lorg/oscim/backend/canvas/Paint$FontStyle;
+    sget-object v1, Lorg/oscim/backend/canvas/Paint$FontStyle;->BOLD:Lorg/oscim/backend/canvas/Paint$FontStyle;
 
-    invoke-virtual {v4}, Lorg/oscim/backend/canvas/Paint$FontStyle;->ordinal()I
+    invoke-virtual {v1}, Lorg/oscim/backend/canvas/Paint$FontStyle;->ordinal()I
 
-    move-result v4
+    move-result v1
 
-    aput v1, v0, v4
-    :try_end_7
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_7 .. :try_end_7} :catch_7
+    const/4 v2, 0x1
 
-    :catch_7
-    :try_start_8
+    aput v2, v0, v1
+    :try_end_5
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_5 .. :try_end_5} :catch_3
+
+    :goto_5
+    :try_start_6
+    sget-object v0, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$org$oscim$backend$canvas$Paint$FontStyle:[I
+
+    sget-object v1, Lorg/oscim/backend/canvas/Paint$FontStyle;->BOLD_ITALIC:Lorg/oscim/backend/canvas/Paint$FontStyle;
+
+    invoke-virtual {v1}, Lorg/oscim/backend/canvas/Paint$FontStyle;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x2
+
+    aput v2, v0, v1
+    :try_end_6
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_6 .. :try_end_6} :catch_2
+
+    :goto_6
+    :try_start_7
     sget-object v0, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$org$oscim$backend$canvas$Paint$FontStyle:[I
 
     sget-object v1, Lorg/oscim/backend/canvas/Paint$FontStyle;->ITALIC:Lorg/oscim/backend/canvas/Paint$FontStyle;
@@ -190,12 +168,14 @@
 
     move-result v1
 
-    aput v2, v0, v1
-    :try_end_8
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_8 .. :try_end_8} :catch_8
+    const/4 v2, 0x3
 
-    :catch_8
-    :try_start_9
+    aput v2, v0, v1
+    :try_end_7
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_7 .. :try_end_7} :catch_1
+
+    :goto_7
+    :try_start_8
     sget-object v0, Lorg/oscim/android/canvas/AndroidPaint$1;->$SwitchMap$org$oscim$backend$canvas$Paint$FontStyle:[I
 
     sget-object v1, Lorg/oscim/backend/canvas/Paint$FontStyle;->NORMAL:Lorg/oscim/backend/canvas/Paint$FontStyle;
@@ -204,10 +184,58 @@
 
     move-result v1
 
-    aput v3, v0, v1
-    :try_end_9
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_9 .. :try_end_9} :catch_9
+    const/4 v2, 0x4
 
-    :catch_9
+    aput v2, v0, v1
+    :try_end_8
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_8 .. :try_end_8} :catch_0
+
+    :goto_8
     return-void
+
+    :catch_0
+    move-exception v0
+
+    goto :goto_8
+
+    :catch_1
+    move-exception v0
+
+    goto :goto_7
+
+    :catch_2
+    move-exception v0
+
+    goto :goto_6
+
+    :catch_3
+    move-exception v0
+
+    goto :goto_5
+
+    .line 41
+    :catch_4
+    move-exception v0
+
+    goto :goto_4
+
+    :catch_5
+    move-exception v0
+
+    goto :goto_3
+
+    :catch_6
+    move-exception v0
+
+    goto :goto_2
+
+    :catch_7
+    move-exception v0
+
+    goto :goto_1
+
+    :catch_8
+    move-exception v0
+
+    goto :goto_0
 .end method

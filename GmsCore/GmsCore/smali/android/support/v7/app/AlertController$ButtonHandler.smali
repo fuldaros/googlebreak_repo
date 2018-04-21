@@ -18,7 +18,8 @@
 .field private mDialog:Ljava/lang/ref/WeakReference;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/lang/ref/WeakReference<",
+            "Ljava/lang/ref/WeakReference",
+            "<",
             "Landroid/content/DialogInterface;",
             ">;"
         }
@@ -29,38 +30,42 @@
 # direct methods
 .method public constructor <init>(Landroid/content/DialogInterface;)V
     .locals 1
+    .param p1, "dialog"    # Landroid/content/DialogInterface;
 
-    .line 155
+    .prologue
+    .line 146
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
 
-    .line 156
+    .line 147
     new-instance v0, Ljava/lang/ref/WeakReference;
 
     invoke-direct {v0, p1}, Ljava/lang/ref/WeakReference;-><init>(Ljava/lang/Object;)V
 
     iput-object v0, p0, Landroid/support/v7/app/AlertController$ButtonHandler;->mDialog:Ljava/lang/ref/WeakReference;
 
+    .line 148
     return-void
 .end method
 
 
 # virtual methods
 .method public handleMessage(Landroid/os/Message;)V
-    .locals 2
+    .locals 3
+    .param p1, "msg"    # Landroid/os/Message;
 
-    .line 161
+    .prologue
+    .line 152
     iget v0, p1, Landroid/os/Message;->what:I
-
-    const/4 v1, 0x1
-
-    if-eq v0, v1, :cond_0
 
     packed-switch v0, :pswitch_data_0
 
-    goto :goto_0
-
-    .line 166
+    .line 163
+    :goto_0
     :pswitch_0
+    return-void
+
+    .line 157
+    :pswitch_1
     iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v0, Landroid/content/DialogInterface$OnClickListener;
@@ -73,29 +78,29 @@
 
     check-cast v1, Landroid/content/DialogInterface;
 
-    iget p1, p1, Landroid/os/Message;->what:I
+    iget v2, p1, Landroid/os/Message;->what:I
 
-    invoke-interface {v0, v1, p1}, Landroid/content/DialogInterface$OnClickListener;->onClick(Landroid/content/DialogInterface;I)V
+    invoke-interface {v0, v1, v2}, Landroid/content/DialogInterface$OnClickListener;->onClick(Landroid/content/DialogInterface;I)V
 
     goto :goto_0
 
-    .line 170
-    :cond_0
-    iget-object p1, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+    .line 161
+    :pswitch_2
+    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    check-cast p1, Landroid/content/DialogInterface;
+    check-cast v0, Landroid/content/DialogInterface;
 
-    invoke-interface {p1}, Landroid/content/DialogInterface;->dismiss()V
+    invoke-interface {v0}, Landroid/content/DialogInterface;->dismiss()V
 
-    :goto_0
-    return-void
+    goto :goto_0
 
-    nop
-
+    .line 152
     :pswitch_data_0
     .packed-switch -0x3
+        :pswitch_1
+        :pswitch_1
+        :pswitch_1
         :pswitch_0
-        :pswitch_0
-        :pswitch_0
+        :pswitch_2
     .end packed-switch
 .end method

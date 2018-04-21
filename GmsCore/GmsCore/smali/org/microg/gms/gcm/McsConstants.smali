@@ -4,20 +4,39 @@
 
 
 # static fields
-.field public static ACTION_CONNECT:Ljava/lang/String; = "org.microg.gms.gcm.mcs.CONNECT"
+.field public static ACTION_CONNECT:Ljava/lang/String;
 
-.field public static ACTION_HEARTBEAT:Ljava/lang/String; = "org.microg.gms.gcm.mcs.HEARTBEAT"
+.field public static ACTION_HEARTBEAT:Ljava/lang/String;
 
-.field public static ACTION_RECONNECT:Ljava/lang/String; = "org.microg.gms.gcm.mcs.RECONNECT"
+.field public static ACTION_RECONNECT:Ljava/lang/String;
 
-.field public static ACTION_SEND:Ljava/lang/String; = "org.microg.gms.gcm.mcs.SEND"
-
-.field public static EXTRA_REASON:Ljava/lang/String; = "org.microg.gms.gcm.mcs.REASON"
+.field public static EXTRA_REASON:Ljava/lang/String;
 
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 0
+    .locals 1
+
+    .prologue
+    .line 40
+    const-string v0, "org.microg.gms.gcm.mcs.CONNECT"
+
+    sput-object v0, Lorg/microg/gms/gcm/McsConstants;->ACTION_CONNECT:Ljava/lang/String;
+
+    .line 41
+    const-string v0, "org.microg.gms.gcm.mcs.RECONNECT"
+
+    sput-object v0, Lorg/microg/gms/gcm/McsConstants;->ACTION_RECONNECT:Ljava/lang/String;
+
+    .line 42
+    const-string v0, "org.microg.gms.gcm.mcs.HEARTBEAT"
+
+    sput-object v0, Lorg/microg/gms/gcm/McsConstants;->ACTION_HEARTBEAT:Ljava/lang/String;
+
+    .line 43
+    const-string v0, "org.microg.gms.gcm.mcs.REASON"
+
+    sput-object v0, Lorg/microg/gms/gcm/McsConstants;->EXTRA_REASON:Ljava/lang/String;
 
     return-void
 .end method

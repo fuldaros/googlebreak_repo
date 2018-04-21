@@ -11,11 +11,13 @@
 .method public constructor <init>()V
     .locals 1
 
+    .prologue
+    .line 24
     const-string v0, "NlpGeocodeService"
 
-    .line 24
     invoke-direct {p0, v0}, Lorg/microg/nlp/geocode/AbstractGeocodeService;-><init>(Ljava/lang/String;)V
 
+    .line 25
     return-void
 .end method
 
@@ -24,22 +26,25 @@
 .method protected destroyProvider()V
     .locals 1
 
+    .prologue
     .line 37
     sget-object v0, Lorg/microg/nlp/geocode/GeocodeServiceV1;->THE_ONE:Lorg/microg/nlp/geocode/GeocodeProviderV1;
 
     invoke-virtual {v0}, Lorg/microg/nlp/geocode/GeocodeProviderV1;->destroy()V
 
+    .line 38
     const/4 v0, 0x0
 
-    .line 38
     sput-object v0, Lorg/microg/nlp/geocode/GeocodeServiceV1;->THE_ONE:Lorg/microg/nlp/geocode/GeocodeProviderV1;
 
+    .line 39
     return-void
 .end method
 
 .method protected bridge synthetic getProvider()Lorg/microg/nlp/Provider;
     .locals 1
 
+    .prologue
     .line 19
     invoke-virtual {p0}, Lorg/microg/nlp/geocode/GeocodeServiceV1;->getProvider()Lorg/microg/nlp/geocode/GeocodeProvider;
 
@@ -51,9 +56,10 @@
 .method protected declared-synchronized getProvider()Lorg/microg/nlp/geocode/GeocodeProvider;
     .locals 1
 
+    .prologue
+    .line 29
     monitor-enter p0
 
-    .line 29
     :try_start_0
     sget-object v0, Lorg/microg/nlp/geocode/GeocodeServiceV1;->THE_ONE:Lorg/microg/nlp/geocode/GeocodeProviderV1;
 
@@ -76,10 +82,10 @@
 
     return-object v0
 
+    .line 29
     :catchall_0
     move-exception v0
 
-    .line 28
     monitor-exit p0
 
     throw v0

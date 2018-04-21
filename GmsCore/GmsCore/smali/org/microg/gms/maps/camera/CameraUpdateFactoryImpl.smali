@@ -11,15 +11,18 @@
 .method private constructor <init>()V
     .locals 0
 
+    .prologue
     .line 36
     invoke-direct {p0}, Lcom/google/android/gms/maps/internal/ICameraUpdateFactoryDelegate$Stub;-><init>()V
 
+    .line 38
     return-void
 .end method
 
 .method public static get()Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;
     .locals 1
 
+    .prologue
     .line 42
     sget-object v0, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;->instance:Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;
 
@@ -43,17 +46,19 @@
 # virtual methods
 .method public newCameraPosition(Lcom/google/android/gms/maps/model/CameraPosition;)Lcom/google/android/gms/dynamic/IObjectWrapper;
     .locals 2
+    .param p1, "cameraPosition"    # Lcom/google/android/gms/maps/model/CameraPosition;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
+    .prologue
+    .line 138
     const-string v0, "GmsMapCamUpdateFactory"
 
     const-string v1, "newCameraPosition"
 
-    .line 138
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 139
@@ -70,17 +75,19 @@
 
 .method public newLatLng(Lcom/google/android/gms/maps/model/LatLng;)Lcom/google/android/gms/dynamic/IObjectWrapper;
     .locals 2
+    .param p1, "latLng"    # Lcom/google/android/gms/maps/model/LatLng;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
+    .prologue
+    .line 149
     const-string v0, "GmsMapCamUpdateFactory"
 
     const-string v1, "newLatLng"
 
-    .line 149
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 150
@@ -96,72 +103,83 @@
 .end method
 
 .method public newLatLngBounds(Lcom/google/android/gms/maps/model/LatLngBounds;I)Lcom/google/android/gms/dynamic/IObjectWrapper;
-    .locals 1
+    .locals 2
+    .param p1, "bounds"    # Lcom/google/android/gms/maps/model/LatLngBounds;
+    .param p2, "padding"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    const-string p2, "GmsMapCamUpdateFactory"
-
-    const-string v0, "newLatLngBounds"
-
+    .prologue
     .line 177
-    invoke-static {p2, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    const-string v0, "GmsMapCamUpdateFactory"
+
+    const-string v1, "newLatLngBounds"
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 178
-    new-instance p2, Lcom/google/android/gms/dynamic/ObjectWrapper;
+    new-instance v0, Lcom/google/android/gms/dynamic/ObjectWrapper;
 
-    new-instance v0, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$10;
+    new-instance v1, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$10;
 
-    invoke-direct {v0, p0, p1}, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$10;-><init>(Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;Lcom/google/android/gms/maps/model/LatLngBounds;)V
+    invoke-direct {v1, p0, p1}, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$10;-><init>(Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;Lcom/google/android/gms/maps/model/LatLngBounds;)V
 
-    invoke-direct {p2, v0}, Lcom/google/android/gms/dynamic/ObjectWrapper;-><init>(Ljava/lang/Object;)V
+    invoke-direct {v0, v1}, Lcom/google/android/gms/dynamic/ObjectWrapper;-><init>(Ljava/lang/Object;)V
 
-    return-object p2
+    return-object v0
 .end method
 
 .method public newLatLngBoundsWithSize(Lcom/google/android/gms/maps/model/LatLngBounds;III)Lcom/google/android/gms/dynamic/IObjectWrapper;
-    .locals 1
+    .locals 2
+    .param p1, "bounds"    # Lcom/google/android/gms/maps/model/LatLngBounds;
+    .param p2, "width"    # I
+    .param p3, "height"    # I
+    .param p4, "padding"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    const-string p4, "GmsMapCamUpdateFactory"
-
-    const-string v0, "newLatLngBoundsWithSize"
-
+    .prologue
     .line 192
-    invoke-static {p4, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    const-string v0, "GmsMapCamUpdateFactory"
+
+    const-string v1, "newLatLngBoundsWithSize"
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 193
-    new-instance p4, Lcom/google/android/gms/dynamic/ObjectWrapper;
+    new-instance v0, Lcom/google/android/gms/dynamic/ObjectWrapper;
 
-    new-instance v0, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$11;
+    new-instance v1, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$11;
 
-    invoke-direct {v0, p0, p1, p2, p3}, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$11;-><init>(Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;Lcom/google/android/gms/maps/model/LatLngBounds;II)V
+    invoke-direct {v1, p0, p1, p2, p3}, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$11;-><init>(Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;Lcom/google/android/gms/maps/model/LatLngBounds;II)V
 
-    invoke-direct {p4, v0}, Lcom/google/android/gms/dynamic/ObjectWrapper;-><init>(Ljava/lang/Object;)V
+    invoke-direct {v0, v1}, Lcom/google/android/gms/dynamic/ObjectWrapper;-><init>(Ljava/lang/Object;)V
 
-    return-object p4
+    return-object v0
 .end method
 
 .method public newLatLngZoom(Lcom/google/android/gms/maps/model/LatLng;F)Lcom/google/android/gms/dynamic/IObjectWrapper;
     .locals 2
+    .param p1, "latLng"    # Lcom/google/android/gms/maps/model/LatLng;
+    .param p2, "zoom"    # F
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
+    .prologue
+    .line 163
     const-string v0, "GmsMapCamUpdateFactory"
 
     const-string v1, "newLatLngZoom"
 
-    .line 163
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 164
@@ -178,17 +196,20 @@
 
 .method public scrollBy(FF)Lcom/google/android/gms/dynamic/IObjectWrapper;
     .locals 2
+    .param p1, "x"    # F
+    .param p2, "y"    # F
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
+    .prologue
+    .line 79
     const-string v0, "GmsMapCamUpdateFactory"
 
     const-string v1, "scrollBy"
 
-    .line 79
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 80
@@ -205,17 +226,19 @@
 
 .method public zoomBy(F)Lcom/google/android/gms/dynamic/IObjectWrapper;
     .locals 2
+    .param p1, "zoomDelta"    # F
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
+    .prologue
+    .line 107
     const-string v0, "GmsMapCamUpdateFactory"
 
     const-string v1, "zoomBy"
 
-    .line 107
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 108
@@ -231,30 +254,34 @@
 .end method
 
 .method public zoomByWithFocus(FII)Lcom/google/android/gms/dynamic/IObjectWrapper;
-    .locals 0
+    .locals 2
+    .param p1, "zoomDelta"    # F
+    .param p2, "x"    # I
+    .param p3, "y"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    const-string p2, "GmsMapCamUpdateFactory"
-
-    const-string p3, "zoomByWithFocus"
-
+    .prologue
     .line 122
-    invoke-static {p2, p3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    const-string v0, "GmsMapCamUpdateFactory"
+
+    const-string v1, "zoomByWithFocus"
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 123
-    new-instance p2, Lcom/google/android/gms/dynamic/ObjectWrapper;
+    new-instance v0, Lcom/google/android/gms/dynamic/ObjectWrapper;
 
-    new-instance p3, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$6;
+    new-instance v1, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$6;
 
-    invoke-direct {p3, p0, p1}, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$6;-><init>(Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;F)V
+    invoke-direct {v1, p0, p1}, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$6;-><init>(Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;F)V
 
-    invoke-direct {p2, p3}, Lcom/google/android/gms/dynamic/ObjectWrapper;-><init>(Ljava/lang/Object;)V
+    invoke-direct {v0, v1}, Lcom/google/android/gms/dynamic/ObjectWrapper;-><init>(Ljava/lang/Object;)V
 
-    return-object p2
+    return-object v0
 .end method
 
 .method public zoomIn()Lcom/google/android/gms/dynamic/IObjectWrapper;
@@ -265,11 +292,12 @@
         }
     .end annotation
 
+    .prologue
+    .line 50
     const-string v0, "GmsMapCamUpdateFactory"
 
     const-string v1, "zoomIn"
 
-    .line 50
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 51
@@ -292,11 +320,12 @@
         }
     .end annotation
 
+    .prologue
+    .line 65
     const-string v0, "GmsMapCamUpdateFactory"
 
     const-string v1, "zoomOut"
 
-    .line 65
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 66
@@ -313,17 +342,19 @@
 
 .method public zoomTo(F)Lcom/google/android/gms/dynamic/IObjectWrapper;
     .locals 2
+    .param p1, "zoom"    # F
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
+    .prologue
+    .line 94
     const-string v0, "GmsMapCamUpdateFactory"
 
     const-string v1, "zoomTo"
 
-    .line 94
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 95

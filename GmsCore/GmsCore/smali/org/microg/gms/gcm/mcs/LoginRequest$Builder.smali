@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder<",
+        "Lcom/squareup/wire/Message$Builder",
+        "<",
         "Lorg/microg/gms/gcm/mcs/LoginRequest;",
         ">;"
     }
@@ -31,8 +32,6 @@
 
 .field public auth_token:Ljava/lang/String;
 
-.field public compress:Ljava/lang/Integer;
-
 .field public device_id:Ljava/lang/String;
 
 .field public domain:Ljava/lang/String;
@@ -41,8 +40,6 @@
 
 .field public id:Ljava/lang/String;
 
-.field public include_stream_ids:Ljava/lang/Boolean;
-
 .field public last_rmq_id:Ljava/lang/Long;
 
 .field public network_type:Ljava/lang/Integer;
@@ -50,7 +47,8 @@
 .field public received_persistent_id:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -62,7 +60,8 @@
 .field public setting:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Lorg/microg/gms/gcm/mcs/Setting;",
             ">;"
         }
@@ -80,59 +79,66 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 222
+    .prologue
+    .line 210
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
+    .line 211
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/gms/gcm/mcs/LoginRequest;)V
     .locals 1
+    .param p1, "message"    # Lorg/microg/gms/gcm/mcs/LoginRequest;
 
-    .line 226
+    .prologue
+    .line 214
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
+    .line 215
     if-nez p1, :cond_0
 
+    .line 232
+    :goto_0
     return-void
 
-    .line 228
+    .line 216
     :cond_0
     iget-object v0, p1, Lorg/microg/gms/gcm/mcs/LoginRequest;->id:Ljava/lang/String;
 
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->id:Ljava/lang/String;
 
-    .line 229
+    .line 217
     iget-object v0, p1, Lorg/microg/gms/gcm/mcs/LoginRequest;->domain:Ljava/lang/String;
 
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->domain:Ljava/lang/String;
 
-    .line 230
+    .line 218
     iget-object v0, p1, Lorg/microg/gms/gcm/mcs/LoginRequest;->user:Ljava/lang/String;
 
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->user:Ljava/lang/String;
 
-    .line 231
+    .line 219
     iget-object v0, p1, Lorg/microg/gms/gcm/mcs/LoginRequest;->resource:Ljava/lang/String;
 
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->resource:Ljava/lang/String;
 
-    .line 232
+    .line 220
     iget-object v0, p1, Lorg/microg/gms/gcm/mcs/LoginRequest;->auth_token:Ljava/lang/String;
 
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->auth_token:Ljava/lang/String;
 
-    .line 233
+    .line 221
     iget-object v0, p1, Lorg/microg/gms/gcm/mcs/LoginRequest;->device_id:Ljava/lang/String;
 
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->device_id:Ljava/lang/String;
 
-    .line 234
+    .line 222
     iget-object v0, p1, Lorg/microg/gms/gcm/mcs/LoginRequest;->last_rmq_id:Ljava/lang/Long;
 
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->last_rmq_id:Ljava/lang/Long;
 
-    .line 235
+    .line 223
     iget-object v0, p1, Lorg/microg/gms/gcm/mcs/LoginRequest;->setting:Ljava/util/List;
 
     invoke-static {v0}, Lorg/microg/gms/gcm/mcs/LoginRequest;->access$000(Ljava/util/List;)Ljava/util/List;
@@ -141,12 +147,7 @@
 
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->setting:Ljava/util/List;
 
-    .line 236
-    iget-object v0, p1, Lorg/microg/gms/gcm/mcs/LoginRequest;->compress:Ljava/lang/Integer;
-
-    iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->compress:Ljava/lang/Integer;
-
-    .line 237
+    .line 224
     iget-object v0, p1, Lorg/microg/gms/gcm/mcs/LoginRequest;->received_persistent_id:Ljava/util/List;
 
     invoke-static {v0}, Lorg/microg/gms/gcm/mcs/LoginRequest;->access$100(Ljava/util/List;)Ljava/util/List;
@@ -155,82 +156,87 @@
 
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->received_persistent_id:Ljava/util/List;
 
-    .line 238
-    iget-object v0, p1, Lorg/microg/gms/gcm/mcs/LoginRequest;->include_stream_ids:Ljava/lang/Boolean;
-
-    iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->include_stream_ids:Ljava/lang/Boolean;
-
-    .line 239
+    .line 225
     iget-object v0, p1, Lorg/microg/gms/gcm/mcs/LoginRequest;->adaptive_heartbeat:Ljava/lang/Boolean;
 
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->adaptive_heartbeat:Ljava/lang/Boolean;
 
-    .line 240
+    .line 226
     iget-object v0, p1, Lorg/microg/gms/gcm/mcs/LoginRequest;->heartbeat_stat:Lorg/microg/gms/gcm/mcs/HeartbeatStat;
 
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->heartbeat_stat:Lorg/microg/gms/gcm/mcs/HeartbeatStat;
 
-    .line 241
+    .line 227
     iget-object v0, p1, Lorg/microg/gms/gcm/mcs/LoginRequest;->use_rmq2:Ljava/lang/Boolean;
 
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->use_rmq2:Ljava/lang/Boolean;
 
-    .line 242
+    .line 228
     iget-object v0, p1, Lorg/microg/gms/gcm/mcs/LoginRequest;->account_id:Ljava/lang/Long;
 
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->account_id:Ljava/lang/Long;
 
-    .line 243
+    .line 229
     iget-object v0, p1, Lorg/microg/gms/gcm/mcs/LoginRequest;->auth_service:Lorg/microg/gms/gcm/mcs/LoginRequest$AuthService;
 
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->auth_service:Lorg/microg/gms/gcm/mcs/LoginRequest$AuthService;
 
-    .line 244
+    .line 230
     iget-object v0, p1, Lorg/microg/gms/gcm/mcs/LoginRequest;->network_type:Ljava/lang/Integer;
 
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->network_type:Ljava/lang/Integer;
 
-    .line 245
-    iget-object p1, p1, Lorg/microg/gms/gcm/mcs/LoginRequest;->status:Ljava/lang/Long;
+    .line 231
+    iget-object v0, p1, Lorg/microg/gms/gcm/mcs/LoginRequest;->status:Ljava/lang/Long;
 
-    iput-object p1, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->status:Ljava/lang/Long;
+    iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->status:Ljava/lang/Long;
 
-    return-void
+    goto :goto_0
 .end method
 
 
 # virtual methods
 .method public adaptive_heartbeat(Ljava/lang/Boolean;)Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;
     .locals 0
+    .param p1, "adaptive_heartbeat"    # Ljava/lang/Boolean;
 
-    .line 325
+    .prologue
+    .line 305
     iput-object p1, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->adaptive_heartbeat:Ljava/lang/Boolean;
 
+    .line 306
     return-object p0
 .end method
 
 .method public auth_service(Lorg/microg/gms/gcm/mcs/LoginRequest$AuthService;)Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;
     .locals 0
+    .param p1, "auth_service"    # Lorg/microg/gms/gcm/mcs/LoginRequest$AuthService;
 
-    .line 351
+    .prologue
+    .line 331
     iput-object p1, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->auth_service:Lorg/microg/gms/gcm/mcs/LoginRequest$AuthService;
 
+    .line 332
     return-object p0
 .end method
 
 .method public auth_token(Ljava/lang/String;)Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;
     .locals 0
+    .param p1, "auth_token"    # Ljava/lang/String;
 
-    .line 280
+    .prologue
+    .line 266
     iput-object p1, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->auth_token:Ljava/lang/String;
 
+    .line 267
     return-object p0
 .end method
 
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
-    .line 201
+    .prologue
+    .line 191
     invoke-virtual {p0}, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->build()Lorg/microg/gms/gcm/mcs/LoginRequest;
 
     move-result-object v0
@@ -241,10 +247,11 @@
 .method public build()Lorg/microg/gms/gcm/mcs/LoginRequest;
     .locals 2
 
-    .line 367
+    .prologue
+    .line 347
     invoke-virtual {p0}, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->checkRequiredFields()V
 
-    .line 368
+    .line 348
     new-instance v0, Lorg/microg/gms/gcm/mcs/LoginRequest;
 
     const/4 v1, 0x0
@@ -256,107 +263,136 @@
 
 .method public device_id(Ljava/lang/String;)Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;
     .locals 0
+    .param p1, "device_id"    # Ljava/lang/String;
 
-    .line 289
+    .prologue
+    .line 275
     iput-object p1, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->device_id:Ljava/lang/String;
 
+    .line 276
     return-object p0
 .end method
 
 .method public domain(Ljava/lang/String;)Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;
     .locals 0
+    .param p1, "domain"    # Ljava/lang/String;
 
-    .line 259
+    .prologue
+    .line 245
     iput-object p1, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->domain:Ljava/lang/String;
 
+    .line 246
     return-object p0
 .end method
 
 .method public id(Ljava/lang/String;)Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;
     .locals 0
+    .param p1, "id"    # Ljava/lang/String;
 
-    .line 249
+    .prologue
+    .line 235
     iput-object p1, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->id:Ljava/lang/String;
 
+    .line 236
     return-object p0
 .end method
 
 .method public network_type(Ljava/lang/Integer;)Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;
     .locals 0
+    .param p1, "network_type"    # Ljava/lang/Integer;
 
-    .line 356
+    .prologue
+    .line 336
     iput-object p1, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->network_type:Ljava/lang/Integer;
 
+    .line 337
     return-object p0
 .end method
 
 .method public received_persistent_id(Ljava/util/List;)Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;
-    .locals 0
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;)",
             "Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;"
         }
     .end annotation
 
-    .line 312
+    .prologue
+    .line 296
+    .local p1, "received_persistent_id":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     invoke-static {p1}, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->checkForNulls(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object p1
+    move-result-object v0
 
-    iput-object p1, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->received_persistent_id:Ljava/util/List;
+    iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->received_persistent_id:Ljava/util/List;
 
+    .line 297
     return-object p0
 .end method
 
 .method public resource(Ljava/lang/String;)Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;
     .locals 0
+    .param p1, "resource"    # Ljava/lang/String;
 
-    .line 272
+    .prologue
+    .line 258
     iput-object p1, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->resource:Ljava/lang/String;
 
+    .line 259
     return-object p0
 .end method
 
 .method public setting(Ljava/util/List;)Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;
-    .locals 0
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Lorg/microg/gms/gcm/mcs/Setting;",
             ">;)",
             "Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;"
         }
     .end annotation
 
-    .line 302
+    .prologue
+    .line 288
+    .local p1, "setting":Ljava/util/List;, "Ljava/util/List<Lorg/microg/gms/gcm/mcs/Setting;>;"
     invoke-static {p1}, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->checkForNulls(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object p1
+    move-result-object v0
 
-    iput-object p1, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->setting:Ljava/util/List;
+    iput-object v0, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->setting:Ljava/util/List;
 
+    .line 289
     return-object p0
 .end method
 
 .method public use_rmq2(Ljava/lang/Boolean;)Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;
     .locals 0
+    .param p1, "use_rmq2"    # Ljava/lang/Boolean;
 
-    .line 338
+    .prologue
+    .line 318
     iput-object p1, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->use_rmq2:Ljava/lang/Boolean;
 
+    .line 319
     return-object p0
 .end method
 
 .method public user(Ljava/lang/String;)Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;
     .locals 0
+    .param p1, "user"    # Ljava/lang/String;
 
-    .line 267
+    .prologue
+    .line 253
     iput-object p1, p0, Lorg/microg/gms/gcm/mcs/LoginRequest$Builder;->user:Ljava/lang/String;
 
+    .line 254
     return-object p0
 .end method

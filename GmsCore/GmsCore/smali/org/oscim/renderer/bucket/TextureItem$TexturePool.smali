@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lorg/oscim/utils/pool/SyncPool<",
+        "Lorg/oscim/utils/pool/SyncPool",
+        "<",
         "Lorg/oscim/renderer/bucket/TextureItem;",
         ">;"
     }
@@ -26,7 +27,8 @@
 .field private final mBitmaps:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/ArrayList<",
+            "Ljava/util/ArrayList",
+            "<",
             "Lorg/oscim/backend/canvas/Bitmap;",
             ">;"
         }
@@ -34,8 +36,6 @@
 .end field
 
 .field private final mHeight:I
-
-.field private final mMipmaps:Z
 
 .field protected mTexCnt:I
 
@@ -46,99 +46,108 @@
 
 # direct methods
 .method public constructor <init>(I)V
-    .locals 1
+    .locals 3
+    .param p1, "maxFill"    # I
 
-    .line 182
+    .prologue
+    const/4 v2, 0x0
+
+    .line 164
     invoke-direct {p0, p1}, Lorg/oscim/utils/pool/SyncPool;-><init>(I)V
 
-    .line 161
-    new-instance p1, Ljava/util/ArrayList;
+    .line 145
+    new-instance v0, Ljava/util/ArrayList;
 
-    const/16 v0, 0xa
+    const/16 v1, 0xa
 
-    invoke-direct {p1, v0}, Ljava/util/ArrayList;-><init>(I)V
+    invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(I)V
 
-    iput-object p1, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mBitmaps:Ljava/util/ArrayList;
+    iput-object v0, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mBitmaps:Ljava/util/ArrayList;
 
-    const/4 p1, 0x0
+    .line 154
+    iput v2, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mTexCnt:I
 
-    .line 171
-    iput p1, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mTexCnt:I
+    .line 165
+    iput v2, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mWidth:I
 
-    .line 183
-    iput p1, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mWidth:I
+    .line 166
+    iput v2, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mHeight:I
 
-    .line 184
-    iput p1, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mHeight:I
+    .line 167
+    iput-boolean v2, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mUseBitmapPool:Z
 
-    .line 185
-    iput-boolean p1, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mUseBitmapPool:Z
-
-    .line 186
-    iput-boolean p1, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mMipmaps:Z
-
+    .line 168
     return-void
 .end method
 
-.method public constructor <init>(IIIZ)V
-    .locals 1
+.method public constructor <init>(III)V
+    .locals 2
+    .param p1, "maxFill"    # I
+    .param p2, "width"    # I
+    .param p3, "height"    # I
 
-    .line 174
+    .prologue
+    .line 157
     invoke-direct {p0, p1}, Lorg/oscim/utils/pool/SyncPool;-><init>(I)V
 
-    .line 161
-    new-instance p1, Ljava/util/ArrayList;
+    .line 145
+    new-instance v0, Ljava/util/ArrayList;
 
-    const/16 v0, 0xa
+    const/16 v1, 0xa
 
-    invoke-direct {p1, v0}, Ljava/util/ArrayList;-><init>(I)V
+    invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(I)V
 
-    iput-object p1, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mBitmaps:Ljava/util/ArrayList;
+    iput-object v0, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mBitmaps:Ljava/util/ArrayList;
 
-    const/4 p1, 0x0
+    .line 154
+    const/4 v0, 0x0
 
-    .line 171
-    iput p1, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mTexCnt:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mTexCnt:I
 
-    .line 175
+    .line 158
     iput p2, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mWidth:I
 
-    .line 176
+    .line 159
     iput p3, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mHeight:I
 
-    const/4 p1, 0x1
+    .line 160
+    const/4 v0, 0x1
 
-    .line 177
-    iput-boolean p1, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mUseBitmapPool:Z
+    iput-boolean v0, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mUseBitmapPool:Z
 
-    .line 178
-    iput-boolean p4, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mMipmaps:Z
-
+    .line 161
     return-void
 .end method
 
 .method static synthetic access$000(Lorg/oscim/renderer/bucket/TextureItem$TexturePool;)I
-    .locals 0
+    .locals 1
+    .param p0, "x0"    # Lorg/oscim/renderer/bucket/TextureItem$TexturePool;
 
-    .line 160
-    iget p0, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mWidth:I
+    .prologue
+    .line 144
+    iget v0, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mWidth:I
 
-    return p0
+    return v0
 .end method
 
 .method static synthetic access$100(Lorg/oscim/renderer/bucket/TextureItem$TexturePool;)I
-    .locals 0
+    .locals 1
+    .param p0, "x0"    # Lorg/oscim/renderer/bucket/TextureItem$TexturePool;
 
-    .line 160
-    iget p0, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mHeight:I
+    .prologue
+    .line 144
+    iget v0, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mHeight:I
 
-    return p0
+    return v0
 .end method
 
 .method static synthetic access$200(Lorg/oscim/renderer/bucket/TextureItem$TexturePool;Lorg/oscim/renderer/bucket/TextureItem;)V
     .locals 0
+    .param p0, "x0"    # Lorg/oscim/renderer/bucket/TextureItem$TexturePool;
+    .param p1, "x1"    # Lorg/oscim/renderer/bucket/TextureItem;
 
-    .line 160
+    .prologue
+    .line 144
     invoke-direct {p0, p1}, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->uploadTexture(Lorg/oscim/renderer/bucket/TextureItem;)V
 
     return-void
@@ -146,199 +155,194 @@
 
 .method private uploadTexture(Lorg/oscim/renderer/bucket/TextureItem;)V
     .locals 4
+    .param p1, "t"    # Lorg/oscim/renderer/bucket/TextureItem;
 
-    .line 277
-    iget-object v0, p1, Lorg/oscim/renderer/bucket/TextureItem;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
-
-    if-nez v0, :cond_0
-
-    .line 278
-    new-instance p1, Ljava/lang/RuntimeException;
-
-    const-string v0, "Missing bitmap for texture"
-
-    invoke-direct {p1, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
-
-    throw p1
-
-    .line 280
-    :cond_0
-    iget v0, p1, Lorg/oscim/renderer/bucket/TextureItem;->id:I
-
-    const/4 v1, 0x1
-
-    if-gez v0, :cond_1
-
-    .line 281
-    invoke-static {v1}, Lorg/oscim/renderer/GLUtils;->glGenTextures(I)[I
-
-    move-result-object v0
+    .prologue
+    const/4 v3, 0x1
 
     const/4 v2, 0x0
 
-    .line 282
-    aget v0, v0, v2
+    .line 258
+    iget-object v1, p1, Lorg/oscim/renderer/bucket/TextureItem;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
 
-    iput v0, p1, Lorg/oscim/renderer/bucket/TextureItem;->id:I
+    if-nez v1, :cond_0
 
-    .line 284
-    iget-boolean v0, p1, Lorg/oscim/renderer/bucket/TextureItem;->mipmap:Z
+    .line 259
+    new-instance v1, Ljava/lang/RuntimeException;
 
-    iget-boolean v3, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mMipmaps:Z
+    const-string v2, "Missing bitmap for texture"
 
-    or-int/2addr v0, v3
+    invoke-direct {v1, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
-    iput-boolean v0, p1, Lorg/oscim/renderer/bucket/TextureItem;->mipmap:Z
+    throw v1
 
-    .line 286
+    .line 261
+    :cond_0
+    invoke-static {p1}, Lorg/oscim/renderer/bucket/TextureItem;->access$600(Lorg/oscim/renderer/bucket/TextureItem;)I
+
+    move-result v1
+
+    if-gez v1, :cond_2
+
+    .line 262
+    invoke-static {v3}, Lorg/oscim/renderer/GLUtils;->glGenTextures(I)[I
+
+    move-result-object v0
+
+    .line 263
+    .local v0, "textureIds":[I
+    aget v1, v0, v2
+
+    invoke-static {p1, v1}, Lorg/oscim/renderer/bucket/TextureItem;->access$602(Lorg/oscim/renderer/bucket/TextureItem;I)I
+
+    .line 265
     invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->initTexture(Lorg/oscim/renderer/bucket/TextureItem;)V
 
-    .line 293
-    iget v0, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mTexCnt:I
+    .line 272
+    iget v1, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mTexCnt:I
 
-    add-int/2addr v0, v1
+    add-int/lit8 v1, v1, 0x1
 
-    iput v0, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mTexCnt:I
+    iput v1, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mTexCnt:I
 
-    .line 295
-    iget-object v0, p1, Lorg/oscim/renderer/bucket/TextureItem;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
+    .line 274
+    iget-object v1, p1, Lorg/oscim/renderer/bucket/TextureItem;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
 
-    invoke-interface {v0, v2}, Lorg/oscim/backend/canvas/Bitmap;->uploadToTexture(Z)V
+    invoke-interface {v1, v2}, Lorg/oscim/backend/canvas/Bitmap;->uploadToTexture(Z)V
 
-    goto :goto_0
-
-    .line 297
-    :cond_1
-    iget v0, p1, Lorg/oscim/renderer/bucket/TextureItem;->id:I
-
-    invoke-static {v0}, Lorg/oscim/renderer/GLState;->bindTex2D(I)V
-
-    .line 300
-    iget-object v0, p1, Lorg/oscim/renderer/bucket/TextureItem;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
-
-    invoke-interface {v0, v1}, Lorg/oscim/backend/canvas/Bitmap;->uploadToTexture(Z)V
-
-    .line 303
+    .line 285
+    .end local v0    # "textureIds":[I
     :goto_0
-    iget-boolean v0, p1, Lorg/oscim/renderer/bucket/TextureItem;->mipmap:Z
+    iget-boolean v1, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mUseBitmapPool:Z
 
-    if-eqz v0, :cond_2
+    if-eqz v1, :cond_1
 
-    .line 304
-    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    const/16 v1, 0xde1
-
-    invoke-interface {v0, v1}, Lorg/oscim/backend/GL;->generateMipmap(I)V
-
-    .line 309
-    :cond_2
-    iget-boolean v0, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mUseBitmapPool:Z
-
-    if-eqz v0, :cond_3
-
-    .line 310
+    .line 286
     invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->releaseBitmap(Lorg/oscim/renderer/bucket/TextureItem;)V
 
-    :cond_3
+    .line 287
+    :cond_1
     return-void
+
+    .line 276
+    :cond_2
+    invoke-static {p1}, Lorg/oscim/renderer/bucket/TextureItem;->access$600(Lorg/oscim/renderer/bucket/TextureItem;)I
+
+    move-result v1
+
+    invoke-static {v1}, Lorg/oscim/renderer/GLState;->bindTex2D(I)V
+
+    .line 279
+    iget-object v1, p1, Lorg/oscim/renderer/bucket/TextureItem;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
+
+    invoke-interface {v1, v3}, Lorg/oscim/backend/canvas/Bitmap;->uploadToTexture(Z)V
+
+    goto :goto_0
 .end method
 
 
 # virtual methods
 .method protected clearItem(Lorg/oscim/renderer/bucket/TextureItem;)Z
     .locals 2
+    .param p1, "t"    # Lorg/oscim/renderer/bucket/TextureItem;
 
-    .line 231
+    .prologue
+    const/4 v0, 0x0
+
+    .line 212
     invoke-static {p1}, Lorg/oscim/renderer/bucket/TextureItem;->access$400(Lorg/oscim/renderer/bucket/TextureItem;)I
 
-    move-result v0
+    move-result v1
 
-    const/4 v1, 0x0
+    if-lez v1, :cond_1
 
-    if-lez v0, :cond_0
-
-    return v1
-
-    .line 234
+    .line 230
     :cond_0
-    invoke-static {p1}, Lorg/oscim/renderer/bucket/TextureItem;->access$500(Lorg/oscim/renderer/bucket/TextureItem;)Lorg/oscim/renderer/bucket/TextureItem;
+    :goto_0
+    return v0
 
-    move-result-object v0
-
-    if-eqz v0, :cond_2
-
-    .line 236
-    invoke-static {p1}, Lorg/oscim/renderer/bucket/TextureItem;->access$500(Lorg/oscim/renderer/bucket/TextureItem;)Lorg/oscim/renderer/bucket/TextureItem;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lorg/oscim/renderer/bucket/TextureItem;->access$400(Lorg/oscim/renderer/bucket/TextureItem;)I
-
-    move-result v0
-
-    if-nez v0, :cond_1
-
-    .line 237
-    invoke-static {p1}, Lorg/oscim/renderer/bucket/TextureItem;->access$500(Lorg/oscim/renderer/bucket/TextureItem;)Lorg/oscim/renderer/bucket/TextureItem;
-
-    move-result-object p1
-
-    invoke-virtual {p1}, Lorg/oscim/renderer/bucket/TextureItem;->dispose()Lorg/oscim/renderer/bucket/TextureItem;
-
-    return v1
-
-    .line 240
+    .line 215
     :cond_1
     invoke-static {p1}, Lorg/oscim/renderer/bucket/TextureItem;->access$500(Lorg/oscim/renderer/bucket/TextureItem;)Lorg/oscim/renderer/bucket/TextureItem;
 
-    move-result-object p1
+    move-result-object v1
 
-    invoke-static {p1}, Lorg/oscim/renderer/bucket/TextureItem;->access$410(Lorg/oscim/renderer/bucket/TextureItem;)I
+    if-eqz v1, :cond_3
 
-    return v1
+    .line 217
+    invoke-static {p1}, Lorg/oscim/renderer/bucket/TextureItem;->access$500(Lorg/oscim/renderer/bucket/TextureItem;)Lorg/oscim/renderer/bucket/TextureItem;
 
-    .line 244
+    move-result-object v1
+
+    invoke-static {v1}, Lorg/oscim/renderer/bucket/TextureItem;->access$400(Lorg/oscim/renderer/bucket/TextureItem;)I
+
+    move-result v1
+
+    if-nez v1, :cond_2
+
+    .line 218
+    invoke-static {p1}, Lorg/oscim/renderer/bucket/TextureItem;->access$500(Lorg/oscim/renderer/bucket/TextureItem;)Lorg/oscim/renderer/bucket/TextureItem;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Lorg/oscim/renderer/bucket/TextureItem;->dispose()Lorg/oscim/renderer/bucket/TextureItem;
+
+    goto :goto_0
+
+    .line 221
     :cond_2
-    iput-boolean v1, p1, Lorg/oscim/renderer/bucket/TextureItem;->loaded:Z
+    invoke-static {p1}, Lorg/oscim/renderer/bucket/TextureItem;->access$500(Lorg/oscim/renderer/bucket/TextureItem;)Lorg/oscim/renderer/bucket/TextureItem;
 
-    .line 246
-    iget-boolean v0, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mUseBitmapPool:Z
+    move-result-object v1
 
-    if-eqz v0, :cond_3
+    invoke-static {v1}, Lorg/oscim/renderer/bucket/TextureItem;->access$410(Lorg/oscim/renderer/bucket/TextureItem;)I
 
-    .line 247
+    goto :goto_0
+
+    .line 225
+    :cond_3
+    iput-boolean v0, p1, Lorg/oscim/renderer/bucket/TextureItem;->loaded:Z
+
+    .line 227
+    iget-boolean v1, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mUseBitmapPool:Z
+
+    if-eqz v1, :cond_4
+
+    .line 228
     invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->releaseBitmap(Lorg/oscim/renderer/bucket/TextureItem;)V
 
-    .line 249
-    :cond_3
-    iget p1, p1, Lorg/oscim/renderer/bucket/TextureItem;->id:I
-
-    if-ltz p1, :cond_4
-
-    const/4 v1, 0x1
-
+    .line 230
     :cond_4
-    return v1
+    invoke-static {p1}, Lorg/oscim/renderer/bucket/TextureItem;->access$600(Lorg/oscim/renderer/bucket/TextureItem;)I
+
+    move-result v1
+
+    if-ltz v1, :cond_0
+
+    const/4 v0, 0x1
+
+    goto :goto_0
 .end method
 
 .method protected bridge synthetic clearItem(Lorg/oscim/utils/pool/Inlist;)Z
-    .locals 0
+    .locals 1
 
-    .line 160
+    .prologue
+    .line 144
     check-cast p1, Lorg/oscim/renderer/bucket/TextureItem;
 
     invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->clearItem(Lorg/oscim/renderer/bucket/TextureItem;)Z
 
-    move-result p1
+    move-result v0
 
-    return p1
+    return v0
 .end method
 
 .method protected createItem()Lorg/oscim/renderer/bucket/TextureItem;
     .locals 3
 
-    .line 225
+    .prologue
+    .line 206
     new-instance v0, Lorg/oscim/renderer/bucket/TextureItem;
 
     const/4 v1, -0x1
@@ -353,7 +357,8 @@
 .method protected bridge synthetic createItem()Lorg/oscim/utils/pool/Inlist;
     .locals 1
 
-    .line 160
+    .prologue
+    .line 144
     invoke-virtual {p0}, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->createItem()Lorg/oscim/renderer/bucket/TextureItem;
 
     move-result-object v0
@@ -363,8 +368,10 @@
 
 .method protected freeItem(Lorg/oscim/renderer/bucket/TextureItem;)V
     .locals 3
+    .param p1, "t"    # Lorg/oscim/renderer/bucket/TextureItem;
 
-    .line 255
+    .prologue
+    .line 236
     invoke-static {p1}, Lorg/oscim/renderer/bucket/TextureItem;->access$500(Lorg/oscim/renderer/bucket/TextureItem;)Lorg/oscim/renderer/bucket/TextureItem;
 
     move-result-object v0
@@ -377,62 +384,66 @@
 
     if-nez v0, :cond_0
 
-    iget v0, p1, Lorg/oscim/renderer/bucket/TextureItem;->id:I
+    invoke-static {p1}, Lorg/oscim/renderer/bucket/TextureItem;->access$600(Lorg/oscim/renderer/bucket/TextureItem;)I
+
+    move-result v0
 
     if-ltz v0, :cond_0
 
-    .line 256
+    .line 237
     iget v0, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mTexCnt:I
 
     add-int/lit8 v0, v0, -0x1
 
     iput v0, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mTexCnt:I
 
-    .line 257
-    sget-object v0, Lorg/oscim/renderer/bucket/TextureItem;->disposedTextures:Ljava/util/ArrayList;
-
-    monitor-enter v0
-
-    .line 258
-    :try_start_0
+    .line 238
     sget-object v1, Lorg/oscim/renderer/bucket/TextureItem;->disposedTextures:Ljava/util/ArrayList;
 
-    iget v2, p1, Lorg/oscim/renderer/bucket/TextureItem;->id:I
+    monitor-enter v1
+
+    .line 239
+    :try_start_0
+    sget-object v0, Lorg/oscim/renderer/bucket/TextureItem;->disposedTextures:Ljava/util/ArrayList;
+
+    invoke-static {p1}, Lorg/oscim/renderer/bucket/TextureItem;->access$600(Lorg/oscim/renderer/bucket/TextureItem;)I
+
+    move-result v2
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v2
 
-    invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    const/4 v1, -0x1
+    .line 240
+    const/4 v0, -0x1
 
-    .line 259
-    iput v1, p1, Lorg/oscim/renderer/bucket/TextureItem;->id:I
+    invoke-static {p1, v0}, Lorg/oscim/renderer/bucket/TextureItem;->access$602(Lorg/oscim/renderer/bucket/TextureItem;I)I
 
-    .line 260
-    monitor-exit v0
+    .line 241
+    monitor-exit v1
 
-    goto :goto_0
+    .line 243
+    :cond_0
+    return-void
 
+    .line 241
     :catchall_0
-    move-exception p1
+    move-exception v0
 
-    monitor-exit v0
+    monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    throw p1
-
-    :cond_0
-    :goto_0
-    return-void
+    throw v0
 .end method
 
 .method protected bridge synthetic freeItem(Lorg/oscim/utils/pool/Inlist;)V
     .locals 0
 
-    .line 160
+    .prologue
+    .line 144
     check-cast p1, Lorg/oscim/renderer/bucket/TextureItem;
 
     invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->freeItem(Lorg/oscim/renderer/bucket/TextureItem;)V
@@ -441,121 +452,129 @@
 .end method
 
 .method public declared-synchronized get()Lorg/oscim/renderer/bucket/TextureItem;
-    .locals 5
+    .locals 6
 
+    .prologue
+    .line 179
     monitor-enter p0
 
-    .line 198
     :try_start_0
     invoke-super {p0}, Lorg/oscim/utils/pool/SyncPool;->get()Lorg/oscim/utils/pool/Inlist;
 
-    move-result-object v0
+    move-result-object v1
 
-    check-cast v0, Lorg/oscim/renderer/bucket/TextureItem;
+    check-cast v1, Lorg/oscim/renderer/bucket/TextureItem;
 
-    .line 200
-    iget-boolean v1, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mUseBitmapPool:Z
+    .line 181
+    .local v1, "t":Lorg/oscim/renderer/bucket/TextureItem;
+    iget-boolean v2, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mUseBitmapPool:Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    if-nez v1, :cond_0
+    if-nez v2, :cond_0
 
-    .line 201
+    .line 194
+    :goto_0
     monitor-exit p0
 
-    return-object v0
+    return-object v1
 
-    .line 203
+    .line 184
     :cond_0
     :try_start_1
-    iget-object v1, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mBitmaps:Ljava/util/ArrayList;
+    iget-object v3, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mBitmaps:Ljava/util/ArrayList;
 
-    monitor-enter v1
+    monitor-enter v3
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_1
 
-    .line 204
+    .line 185
     :try_start_2
     iget-object v2, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mBitmaps:Ljava/util/ArrayList;
 
     invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
 
-    move-result v2
+    move-result v0
 
-    const/4 v3, 0x0
+    .line 186
+    .local v0, "size":I
+    if-nez v0, :cond_1
 
-    if-nez v2, :cond_1
-
-    .line 206
+    .line 187
     iget v2, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mWidth:I
 
     iget v4, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mHeight:I
 
-    invoke-static {v2, v4, v3}, Lorg/oscim/backend/CanvasAdapter;->newBitmap(III)Lorg/oscim/backend/canvas/Bitmap;
+    const/4 v5, 0x0
+
+    invoke-static {v2, v4, v5}, Lorg/oscim/backend/CanvasAdapter;->newBitmap(III)Lorg/oscim/backend/canvas/Bitmap;
 
     move-result-object v2
 
-    iput-object v2, v0, Lorg/oscim/renderer/bucket/TextureItem;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
+    iput-object v2, v1, Lorg/oscim/renderer/bucket/TextureItem;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
+
+    .line 192
+    :goto_1
+    monitor-exit v3
 
     goto :goto_0
 
-    .line 208
+    .end local v0    # "size":I
+    :catchall_0
+    move-exception v2
+
+    monitor-exit v3
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    :try_start_3
+    throw v2
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_1
+
+    .line 179
+    .end local v1    # "t":Lorg/oscim/renderer/bucket/TextureItem;
+    :catchall_1
+    move-exception v2
+
+    monitor-exit p0
+
+    throw v2
+
+    .line 189
+    .restart local v0    # "size":I
+    .restart local v1    # "t":Lorg/oscim/renderer/bucket/TextureItem;
     :cond_1
-    iget-object v4, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mBitmaps:Ljava/util/ArrayList;
+    :try_start_4
+    iget-object v2, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mBitmaps:Ljava/util/ArrayList;
 
-    add-int/lit8 v2, v2, -0x1
+    add-int/lit8 v4, v0, -0x1
 
-    invoke-virtual {v4, v2}, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
+    invoke-virtual {v2, v4}, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
 
     move-result-object v2
 
     check-cast v2, Lorg/oscim/backend/canvas/Bitmap;
 
-    iput-object v2, v0, Lorg/oscim/renderer/bucket/TextureItem;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
+    iput-object v2, v1, Lorg/oscim/renderer/bucket/TextureItem;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
 
-    .line 209
-    iget-object v2, v0, Lorg/oscim/renderer/bucket/TextureItem;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
+    .line 190
+    iget-object v2, v1, Lorg/oscim/renderer/bucket/TextureItem;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
 
-    invoke-interface {v2, v3}, Lorg/oscim/backend/canvas/Bitmap;->eraseColor(I)V
+    const/4 v4, 0x0
 
-    .line 211
-    :goto_0
-    monitor-exit v1
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
-
-    .line 213
-    monitor-exit p0
-
-    return-object v0
-
-    :catchall_0
-    move-exception v0
-
-    .line 211
-    :try_start_3
-    monitor-exit v1
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_0
-
-    :try_start_4
-    throw v0
+    invoke-interface {v2, v4}, Lorg/oscim/backend/canvas/Bitmap;->eraseColor(I)V
     :try_end_4
-    .catchall {:try_start_4 .. :try_end_4} :catchall_1
+    .catchall {:try_start_4 .. :try_end_4} :catchall_0
 
-    :catchall_1
-    move-exception v0
-
-    .line 197
-    monitor-exit p0
-
-    throw v0
+    goto :goto_1
 .end method
 
 .method public bridge synthetic get()Lorg/oscim/utils/pool/Inlist;
     .locals 1
 
-    .line 160
+    .prologue
+    .line 144
     invoke-virtual {p0}, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->get()Lorg/oscim/renderer/bucket/TextureItem;
 
     move-result-object v0
@@ -564,153 +583,151 @@
 .end method
 
 .method protected initTexture(Lorg/oscim/renderer/bucket/TextureItem;)V
-    .locals 5
+    .locals 7
+    .param p1, "t"    # Lorg/oscim/renderer/bucket/TextureItem;
 
-    .line 314
-    iget v0, p1, Lorg/oscim/renderer/bucket/TextureItem;->id:I
+    .prologue
+    const/16 v6, 0x2802
+
+    const v5, 0x47012f00    # 33071.0f
+
+    const v4, 0x46240400    # 10497.0f
+
+    const v3, 0x46180400    # 9729.0f
+
+    const/16 v2, 0xde1
+
+    .line 290
+    invoke-static {p1}, Lorg/oscim/renderer/bucket/TextureItem;->access$600(Lorg/oscim/renderer/bucket/TextureItem;)I
+
+    move-result v0
 
     invoke-static {v0}, Lorg/oscim/renderer/GLState;->bindTex2D(I)V
 
-    .line 316
-    iget-boolean v0, p1, Lorg/oscim/renderer/bucket/TextureItem;->mipmap:Z
+    .line 292
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    const v1, 0x46180400    # 9729.0f
+    const/16 v1, 0x2801
 
-    const/16 v2, 0x2801
+    invoke-interface {v0, v2, v1, v3}, Lorg/oscim/backend/GL;->texParameterf(IIF)V
 
-    const/16 v3, 0xde1
+    .line 294
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    const/16 v1, 0x2800
+
+    invoke-interface {v0, v2, v1, v3}, Lorg/oscim/backend/GL;->texParameterf(IIF)V
+
+    .line 297
+    iget-boolean v0, p1, Lorg/oscim/renderer/bucket/TextureItem;->repeat:Z
 
     if-eqz v0, :cond_0
 
-    .line 317
+    .line 298
     sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    const v4, 0x461c0c00    # 9987.0f
+    invoke-interface {v0, v2, v6, v4}, Lorg/oscim/backend/GL;->texParameterf(IIF)V
 
-    invoke-interface {v0, v3, v2, v4}, Lorg/oscim/backend/GL;->texParameterf(IIF)V
+    .line 300
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    goto :goto_0
+    const/16 v1, 0x2803
 
-    .line 320
+    invoke-interface {v0, v2, v1, v4}, Lorg/oscim/backend/GL;->texParameterf(IIF)V
+
+    .line 308
+    :goto_0
+    return-void
+
+    .line 303
     :cond_0
     sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    invoke-interface {v0, v3, v2, v1}, Lorg/oscim/backend/GL;->texParameterf(IIF)V
+    invoke-interface {v0, v2, v6, v5}, Lorg/oscim/backend/GL;->texParameterf(IIF)V
 
-    .line 324
-    :goto_0
+    .line 305
     sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    const/16 v2, 0x2800
+    const/16 v1, 0x2803
 
-    invoke-interface {v0, v3, v2, v1}, Lorg/oscim/backend/GL;->texParameterf(IIF)V
+    invoke-interface {v0, v2, v1, v5}, Lorg/oscim/backend/GL;->texParameterf(IIF)V
 
-    .line 327
-    iget-boolean p1, p1, Lorg/oscim/renderer/bucket/TextureItem;->repeat:Z
-
-    const/16 v0, 0x2803
-
-    const/16 v1, 0x2802
-
-    if-eqz p1, :cond_1
-
-    .line 328
-    sget-object p1, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    const v2, 0x46240400    # 10497.0f
-
-    invoke-interface {p1, v3, v1, v2}, Lorg/oscim/backend/GL;->texParameterf(IIF)V
-
-    .line 330
-    sget-object p1, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    invoke-interface {p1, v3, v0, v2}, Lorg/oscim/backend/GL;->texParameterf(IIF)V
-
-    goto :goto_1
-
-    .line 333
-    :cond_1
-    sget-object p1, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    const v2, 0x47012f00    # 33071.0f
-
-    invoke-interface {p1, v3, v1, v2}, Lorg/oscim/backend/GL;->texParameterf(IIF)V
-
-    .line 335
-    sget-object p1, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    invoke-interface {p1, v3, v0, v2}, Lorg/oscim/backend/GL;->texParameterf(IIF)V
-
-    :goto_1
-    return-void
+    goto :goto_0
 .end method
 
 .method public releaseAll(Lorg/oscim/renderer/bucket/TextureItem;)Lorg/oscim/renderer/bucket/TextureItem;
-    .locals 1
+    .locals 2
+    .param p1, "t"    # Lorg/oscim/renderer/bucket/TextureItem;
 
-    .line 191
-    new-instance p1, Ljava/lang/RuntimeException;
+    .prologue
+    .line 172
+    new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v0, "use TextureItem.dispose()"
+    const-string v1, "use TextureItem.dispose()"
 
-    invoke-direct {p1, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
-    throw p1
+    throw v0
 .end method
 
 .method public bridge synthetic releaseAll(Lorg/oscim/utils/pool/Inlist;)Lorg/oscim/utils/pool/Inlist;
-    .locals 0
+    .locals 1
 
-    .line 160
+    .prologue
+    .line 144
     check-cast p1, Lorg/oscim/renderer/bucket/TextureItem;
 
     invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->releaseAll(Lorg/oscim/renderer/bucket/TextureItem;)Lorg/oscim/renderer/bucket/TextureItem;
 
-    move-result-object p1
+    move-result-object v0
 
-    return-object p1
+    return-object v0
 .end method
 
 .method protected releaseBitmap(Lorg/oscim/renderer/bucket/TextureItem;)V
     .locals 3
+    .param p1, "t"    # Lorg/oscim/renderer/bucket/TextureItem;
 
-    .line 266
+    .prologue
+    .line 247
     iget-object v0, p1, Lorg/oscim/renderer/bucket/TextureItem;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
 
     if-nez v0, :cond_0
 
+    .line 254
+    :goto_0
     return-void
 
-    .line 269
+    .line 250
     :cond_0
-    iget-object v0, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mBitmaps:Ljava/util/ArrayList;
-
-    monitor-enter v0
-
-    .line 270
-    :try_start_0
     iget-object v1, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mBitmaps:Ljava/util/ArrayList;
+
+    monitor-enter v1
+
+    .line 251
+    :try_start_0
+    iget-object v0, p0, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->mBitmaps:Ljava/util/ArrayList;
 
     iget-object v2, p1, Lorg/oscim/renderer/bucket/TextureItem;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
 
-    invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    const/4 v1, 0x0
+    .line 252
+    const/4 v0, 0x0
 
-    .line 271
-    iput-object v1, p1, Lorg/oscim/renderer/bucket/TextureItem;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
+    iput-object v0, p1, Lorg/oscim/renderer/bucket/TextureItem;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
 
-    .line 272
-    monitor-exit v0
+    .line 253
+    monitor-exit v1
 
-    return-void
+    goto :goto_0
 
     :catchall_0
-    move-exception p1
+    move-exception v0
 
-    monitor-exit v0
+    monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    throw p1
+    throw v0
 .end method

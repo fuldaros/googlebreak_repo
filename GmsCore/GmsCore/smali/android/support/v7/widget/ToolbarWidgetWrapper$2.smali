@@ -24,19 +24,20 @@
 
 # direct methods
 .method constructor <init>(Landroid/support/v7/widget/ToolbarWidgetWrapper;I)V
-    .locals 0
+    .locals 1
 
-    .line 568
+    .prologue
+    .line 591
     iput-object p1, p0, Landroid/support/v7/widget/ToolbarWidgetWrapper$2;->this$0:Landroid/support/v7/widget/ToolbarWidgetWrapper;
 
     iput p2, p0, Landroid/support/v7/widget/ToolbarWidgetWrapper$2;->val$visibility:I
 
     invoke-direct {p0}, Landroid/support/v4/view/ViewPropertyAnimatorListenerAdapter;-><init>()V
 
-    const/4 p1, 0x0
+    .line 592
+    const/4 v0, 0x0
 
-    .line 569
-    iput-boolean p1, p0, Landroid/support/v7/widget/ToolbarWidgetWrapper$2;->mCanceled:Z
+    iput-boolean v0, p0, Landroid/support/v7/widget/ToolbarWidgetWrapper$2;->mCanceled:Z
 
     return-void
 .end method
@@ -44,48 +45,61 @@
 
 # virtual methods
 .method public onAnimationCancel(Landroid/view/View;)V
-    .locals 0
+    .locals 1
+    .param p1, "view"    # Landroid/view/View;
 
-    const/4 p1, 0x1
+    .prologue
+    .line 608
+    const/4 v0, 0x1
 
-    .line 585
-    iput-boolean p1, p0, Landroid/support/v7/widget/ToolbarWidgetWrapper$2;->mCanceled:Z
+    iput-boolean v0, p0, Landroid/support/v7/widget/ToolbarWidgetWrapper$2;->mCanceled:Z
 
+    .line 609
     return-void
 .end method
 
 .method public onAnimationEnd(Landroid/view/View;)V
-    .locals 1
+    .locals 2
+    .param p1, "view"    # Landroid/view/View;
 
-    .line 578
-    iget-boolean p1, p0, Landroid/support/v7/widget/ToolbarWidgetWrapper$2;->mCanceled:Z
+    .prologue
+    .line 601
+    iget-boolean v0, p0, Landroid/support/v7/widget/ToolbarWidgetWrapper$2;->mCanceled:Z
 
-    if-nez p1, :cond_0
+    if-nez v0, :cond_0
 
-    .line 579
-    iget-object p1, p0, Landroid/support/v7/widget/ToolbarWidgetWrapper$2;->this$0:Landroid/support/v7/widget/ToolbarWidgetWrapper;
+    .line 602
+    iget-object v0, p0, Landroid/support/v7/widget/ToolbarWidgetWrapper$2;->this$0:Landroid/support/v7/widget/ToolbarWidgetWrapper;
 
-    iget-object p1, p1, Landroid/support/v7/widget/ToolbarWidgetWrapper;->mToolbar:Landroid/support/v7/widget/Toolbar;
+    invoke-static {v0}, Landroid/support/v7/widget/ToolbarWidgetWrapper;->access$000(Landroid/support/v7/widget/ToolbarWidgetWrapper;)Landroid/support/v7/widget/Toolbar;
 
-    iget v0, p0, Landroid/support/v7/widget/ToolbarWidgetWrapper$2;->val$visibility:I
+    move-result-object v0
 
-    invoke-virtual {p1, v0}, Landroid/support/v7/widget/Toolbar;->setVisibility(I)V
+    iget v1, p0, Landroid/support/v7/widget/ToolbarWidgetWrapper$2;->val$visibility:I
 
+    invoke-virtual {v0, v1}, Landroid/support/v7/widget/Toolbar;->setVisibility(I)V
+
+    .line 604
     :cond_0
     return-void
 .end method
 
 .method public onAnimationStart(Landroid/view/View;)V
-    .locals 1
+    .locals 2
+    .param p1, "view"    # Landroid/view/View;
 
-    .line 573
-    iget-object p1, p0, Landroid/support/v7/widget/ToolbarWidgetWrapper$2;->this$0:Landroid/support/v7/widget/ToolbarWidgetWrapper;
+    .prologue
+    .line 596
+    iget-object v0, p0, Landroid/support/v7/widget/ToolbarWidgetWrapper$2;->this$0:Landroid/support/v7/widget/ToolbarWidgetWrapper;
 
-    iget-object p1, p1, Landroid/support/v7/widget/ToolbarWidgetWrapper;->mToolbar:Landroid/support/v7/widget/Toolbar;
+    invoke-static {v0}, Landroid/support/v7/widget/ToolbarWidgetWrapper;->access$000(Landroid/support/v7/widget/ToolbarWidgetWrapper;)Landroid/support/v7/widget/Toolbar;
 
-    const/4 v0, 0x0
+    move-result-object v0
 
-    invoke-virtual {p1, v0}, Landroid/support/v7/widget/Toolbar;->setVisibility(I)V
+    const/4 v1, 0x0
 
+    invoke-virtual {v0, v1}, Landroid/support/v7/widget/Toolbar;->setVisibility(I)V
+
+    .line 597
     return-void
 .end method

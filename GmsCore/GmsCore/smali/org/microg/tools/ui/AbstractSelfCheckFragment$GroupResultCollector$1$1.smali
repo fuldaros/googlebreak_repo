@@ -24,7 +24,9 @@
 # direct methods
 .method constructor <init>(Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;)V
     .locals 0
+    .param p1, "this$2"    # Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;
 
+    .prologue
     .line 98
     iput-object p1, p0, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1$1;->this$2:Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;
 
@@ -36,9 +38,13 @@
 
 # virtual methods
 .method public onTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z
-    .locals 0
+    .locals 1
+    .param p1, "v"    # Landroid/view/View;
+    .param p2, "event"    # Landroid/view/MotionEvent;
 
-    const/4 p1, 0x1
+    .prologue
+    .line 101
+    const/4 v0, 0x1
 
-    return p1
+    return v0
 .end method

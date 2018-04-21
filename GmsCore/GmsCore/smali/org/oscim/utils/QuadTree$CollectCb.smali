@@ -22,8 +22,8 @@
         "Ljava/lang/Object;",
         ">",
         "Ljava/lang/Object;",
-        "Lorg/oscim/utils/SpatialIndex$SearchCb<",
-        "TT;>;"
+        "Lorg/oscim/utils/SpatialIndex$SearchCb",
+        "<TT;>;"
     }
 .end annotation
 
@@ -32,7 +32,9 @@
 .method constructor <init>()V
     .locals 0
 
+    .prologue
     .line 54
+    .local p0, "this":Lorg/oscim/utils/QuadTree$CollectCb;, "Lorg/oscim/utils/QuadTree$CollectCb<TT;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -41,7 +43,8 @@
 
 # virtual methods
 .method public call(Ljava/lang/Object;Ljava/lang/Object;)Z
-    .locals 0
+    .locals 2
+    .param p2, "context"    # Ljava/lang/Object;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(TT;",
@@ -50,13 +53,20 @@
         }
     .end annotation
 
+    .prologue
     .line 58
-    check-cast p2, Ljava/util/List;
+    .local p0, "this":Lorg/oscim/utils/QuadTree$CollectCb;, "Lorg/oscim/utils/QuadTree$CollectCb<TT;>;"
+    .local p1, "item":Ljava/lang/Object;, "TT;"
+    move-object v0, p2
+
+    check-cast v0, Ljava/util/List;
 
     .line 59
-    invoke-interface {p2, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    .local v0, "l":Ljava/util/List;, "Ljava/util/List<TT;>;"
+    invoke-interface {v0, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    const/4 p1, 0x1
+    .line 60
+    const/4 v1, 0x1
 
-    return p1
+    return v1
 .end method

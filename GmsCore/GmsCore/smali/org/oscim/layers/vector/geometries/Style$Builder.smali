@@ -17,169 +17,139 @@
 # instance fields
 .field private buffer:D
 
-.field public cap:Lorg/oscim/backend/canvas/Paint$Cap;
-
 .field private fillAlpha:F
 
 .field private fillColor:I
 
-.field public fixed:Z
-
 .field private generalization:I
 
-.field public heightOffset:F
-
-.field public randomOffset:Z
-
 .field private scalingZoomLevel:I
-
-.field public stipple:I
-
-.field public stippleColor:I
-
-.field public stippleWidth:F
 
 .field private strokeColor:I
 
 .field private strokeWidth:F
 
-.field public texture:Lorg/oscim/renderer/bucket/TextureItem;
-
 
 # direct methods
 .method protected constructor <init>()V
-    .locals 5
+    .locals 2
 
-    .line 112
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    const/high16 v0, 0x3f800000    # 1.0f
-
-    .line 92
-    iput v0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->strokeWidth:F
-
+    .prologue
     const v1, -0x777778
 
-    .line 93
+    .line 61
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 51
+    const/high16 v0, 0x3f800000    # 1.0f
+
+    iput v0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->strokeWidth:F
+
+    .line 52
     iput v1, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->strokeColor:I
 
-    .line 94
+    .line 53
     iput v1, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->fillColor:I
 
-    const/high16 v2, 0x3e800000    # 0.25f
+    .line 54
+    const/high16 v0, 0x3e800000    # 0.25f
 
-    .line 95
-    iput v2, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->fillAlpha:F
+    iput v0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->fillAlpha:F
 
-    const-wide/high16 v2, 0x3ff0000000000000L    # 1.0
+    .line 56
+    const-wide/high16 v0, 0x3ff0000000000000L    # 1.0
 
-    .line 97
-    iput-wide v2, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->buffer:D
+    iput-wide v0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->buffer:D
 
-    const/4 v2, 0x1
+    .line 57
+    const/4 v0, 0x1
 
-    .line 98
-    iput v2, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->scalingZoomLevel:I
+    iput v0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->scalingZoomLevel:I
 
-    const/4 v3, 0x0
-
-    .line 100
-    iput v3, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->generalization:I
-
-    .line 102
-    sget-object v4, Lorg/oscim/backend/canvas/Paint$Cap;->ROUND:Lorg/oscim/backend/canvas/Paint$Cap;
-
-    iput-object v4, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->cap:Lorg/oscim/backend/canvas/Paint$Cap;
-
-    .line 103
-    iput-boolean v3, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->fixed:Z
-
-    .line 104
-    iput v3, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->stipple:I
-
-    .line 105
-    iput v1, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->stippleColor:I
-
-    .line 106
-    iput v0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->stippleWidth:F
-
+    .line 59
     const/4 v0, 0x0
 
-    .line 107
-    iput-object v0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->texture:Lorg/oscim/renderer/bucket/TextureItem;
+    iput v0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->generalization:I
 
-    const/4 v0, 0x0
-
-    .line 109
-    iput v0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->heightOffset:F
-
-    .line 110
-    iput-boolean v2, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->randomOffset:Z
-
+    .line 63
     return-void
 .end method
 
 .method static synthetic access$000(Lorg/oscim/layers/vector/geometries/Style$Builder;)F
-    .locals 0
+    .locals 1
+    .param p0, "x0"    # Lorg/oscim/layers/vector/geometries/Style$Builder;
 
-    .line 90
-    iget p0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->strokeWidth:F
+    .prologue
+    .line 49
+    iget v0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->strokeWidth:F
 
-    return p0
+    return v0
 .end method
 
 .method static synthetic access$100(Lorg/oscim/layers/vector/geometries/Style$Builder;)I
-    .locals 0
+    .locals 1
+    .param p0, "x0"    # Lorg/oscim/layers/vector/geometries/Style$Builder;
 
-    .line 90
-    iget p0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->strokeColor:I
+    .prologue
+    .line 49
+    iget v0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->strokeColor:I
 
-    return p0
+    return v0
 .end method
 
 .method static synthetic access$200(Lorg/oscim/layers/vector/geometries/Style$Builder;)I
-    .locals 0
+    .locals 1
+    .param p0, "x0"    # Lorg/oscim/layers/vector/geometries/Style$Builder;
 
-    .line 90
-    iget p0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->fillColor:I
+    .prologue
+    .line 49
+    iget v0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->fillColor:I
 
-    return p0
+    return v0
 .end method
 
 .method static synthetic access$300(Lorg/oscim/layers/vector/geometries/Style$Builder;)F
-    .locals 0
+    .locals 1
+    .param p0, "x0"    # Lorg/oscim/layers/vector/geometries/Style$Builder;
 
-    .line 90
-    iget p0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->fillAlpha:F
+    .prologue
+    .line 49
+    iget v0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->fillAlpha:F
 
-    return p0
+    return v0
 .end method
 
 .method static synthetic access$400(Lorg/oscim/layers/vector/geometries/Style$Builder;)D
     .locals 2
+    .param p0, "x0"    # Lorg/oscim/layers/vector/geometries/Style$Builder;
 
-    .line 90
+    .prologue
+    .line 49
     iget-wide v0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->buffer:D
 
     return-wide v0
 .end method
 
 .method static synthetic access$500(Lorg/oscim/layers/vector/geometries/Style$Builder;)I
-    .locals 0
+    .locals 1
+    .param p0, "x0"    # Lorg/oscim/layers/vector/geometries/Style$Builder;
 
-    .line 90
-    iget p0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->scalingZoomLevel:I
+    .prologue
+    .line 49
+    iget v0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->scalingZoomLevel:I
 
-    return p0
+    return v0
 .end method
 
 .method static synthetic access$600(Lorg/oscim/layers/vector/geometries/Style$Builder;)I
-    .locals 0
+    .locals 1
+    .param p0, "x0"    # Lorg/oscim/layers/vector/geometries/Style$Builder;
 
-    .line 90
-    iget p0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->generalization:I
+    .prologue
+    .line 49
+    iget v0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->generalization:I
 
-    return p0
+    return v0
 .end method
 
 
@@ -187,7 +157,8 @@
 .method public build()Lorg/oscim/layers/vector/geometries/Style;
     .locals 2
 
-    .line 119
+    .prologue
+    .line 71
     new-instance v0, Lorg/oscim/layers/vector/geometries/Style;
 
     const/4 v1, 0x0
@@ -197,38 +168,52 @@
     return-object v0
 .end method
 
-.method public fillAlpha(F)Lorg/oscim/layers/vector/geometries/Style$Builder;
-    .locals 0
+.method public fillAlpha(D)Lorg/oscim/layers/vector/geometries/Style$Builder;
+    .locals 1
+    .param p1, "fillAlpha"    # D
 
-    .line 166
-    iput p1, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->fillAlpha:F
+    .prologue
+    .line 114
+    double-to-float v0, p1
 
+    iput v0, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->fillAlpha:F
+
+    .line 115
     return-object p0
 .end method
 
 .method public fillColor(I)Lorg/oscim/layers/vector/geometries/Style$Builder;
     .locals 0
+    .param p1, "fillColor"    # I
 
-    .line 150
+    .prologue
+    .line 103
     iput p1, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->fillColor:I
 
+    .line 104
     return-object p0
 .end method
 
 .method public strokeColor(I)Lorg/oscim/layers/vector/geometries/Style$Builder;
     .locals 0
+    .param p1, "stokeColor"    # I
 
-    .line 134
+    .prologue
+    .line 92
     iput p1, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->strokeColor:I
 
+    .line 93
     return-object p0
 .end method
 
 .method public strokeWidth(F)Lorg/oscim/layers/vector/geometries/Style$Builder;
     .locals 0
+    .param p1, "lineWidth"    # F
 
-    .line 126
+    .prologue
+    .line 81
     iput p1, p0, Lorg/oscim/layers/vector/geometries/Style$Builder;->strokeWidth:F
 
+    .line 82
     return-object p0
 .end method

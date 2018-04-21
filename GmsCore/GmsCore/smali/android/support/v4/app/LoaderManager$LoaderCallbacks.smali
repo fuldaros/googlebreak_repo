@@ -24,12 +24,24 @@
 
 
 # virtual methods
+.method public abstract onCreateLoader(ILandroid/os/Bundle;)Landroid/support/v4/content/Loader;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(I",
+            "Landroid/os/Bundle;",
+            ")",
+            "Landroid/support/v4/content/Loader",
+            "<TD;>;"
+        }
+    .end annotation
+.end method
+
 .method public abstract onLoadFinished(Landroid/support/v4/content/Loader;Ljava/lang/Object;)V
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Landroid/support/v4/content/Loader<",
-            "TD;>;TD;)V"
+            "Landroid/support/v4/content/Loader",
+            "<TD;>;TD;)V"
         }
     .end annotation
 .end method
@@ -38,8 +50,8 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Landroid/support/v4/content/Loader<",
-            "TD;>;)V"
+            "Landroid/support/v4/content/Loader",
+            "<TD;>;)V"
         }
     .end annotation
 .end method

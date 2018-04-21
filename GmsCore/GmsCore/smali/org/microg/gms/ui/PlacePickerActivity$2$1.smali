@@ -24,8 +24,10 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/ui/PlacePickerActivity$2;)V
     .locals 0
+    .param p1, "this$1"    # Lorg/microg/gms/ui/PlacePickerActivity$2;
 
-    .line 222
+    .prologue
+    .line 217
     iput-object p1, p0, Lorg/microg/gms/ui/PlacePickerActivity$2$1;->this$1:Lorg/microg/gms/ui/PlacePickerActivity$2;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,12 +40,14 @@
 .method public run()V
     .locals 1
 
-    .line 225
+    .prologue
+    .line 220
     iget-object v0, p0, Lorg/microg/gms/ui/PlacePickerActivity$2$1;->this$1:Lorg/microg/gms/ui/PlacePickerActivity$2;
 
     iget-object v0, v0, Lorg/microg/gms/ui/PlacePickerActivity$2;->this$0:Lorg/microg/gms/ui/PlacePickerActivity;
 
     invoke-static {v0}, Lorg/microg/gms/ui/PlacePickerActivity;->access$200(Lorg/microg/gms/ui/PlacePickerActivity;)V
 
+    .line 221
     return-void
 .end method

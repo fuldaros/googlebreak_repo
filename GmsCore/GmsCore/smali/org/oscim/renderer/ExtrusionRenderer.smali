@@ -28,14 +28,13 @@
 
 .field private final mTranslucent:Z
 
-.field private mZLimit:F
-
 
 # direct methods
 .method static constructor <clinit>()V
     .locals 1
 
-    .line 33
+    .prologue
+    .line 30
     const-class v0, Lorg/oscim/renderer/ExtrusionRenderer;
 
     invoke-static {v0}, Lorg/slf4j/LoggerFactory;->getLogger(Ljava/lang/Class;)Lorg/slf4j/Logger;
@@ -48,96 +47,740 @@
 .end method
 
 .method public constructor <init>(ZZ)V
-    .locals 1
+    .locals 2
+    .param p1, "mesh"    # Z
+    .param p2, "alpha"    # Z
 
-    .line 45
-    invoke-direct {p0}, Lorg/oscim/renderer/LayerRenderer;-><init>()V
-
+    .prologue
     const/4 v0, 0x0
 
-    .line 39
-    new-array v0, v0, [Lorg/oscim/renderer/bucket/ExtrusionBuckets;
+    .line 40
+    invoke-direct {p0}, Lorg/oscim/renderer/LayerRenderer;-><init>()V
 
-    iput-object v0, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mExtrusionBucketSet:[Lorg/oscim/renderer/bucket/ExtrusionBuckets;
+    .line 36
+    new-array v1, v0, [Lorg/oscim/renderer/bucket/ExtrusionBuckets;
 
-    const/high16 v0, 0x3f800000    # 1.0f
+    iput-object v1, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mExtrusionBucketSet:[Lorg/oscim/renderer/bucket/ExtrusionBuckets;
+
+    .line 38
+    const/high16 v1, 0x3f800000    # 1.0f
+
+    iput v1, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mAlpha:F
 
     .line 41
-    iput v0, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mAlpha:F
+    if-eqz p1, :cond_0
 
-    const v0, 0x7f7fffff    # Float.MAX_VALUE
+    const/4 v0, 0x1
 
-    .line 43
-    iput v0, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mZLimit:F
+    :cond_0
+    iput v0, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mMode:I
 
-    .line 46
-    iput p1, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mMode:I
-
-    .line 47
+    .line 42
     iput-boolean p2, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mTranslucent:Z
 
+    .line 43
     return-void
 .end method
 
 .method private getFade(Lorg/oscim/renderer/bucket/ExtrusionBuckets;)F
-    .locals 6
+    .locals 4
+    .param p1, "ebs"    # Lorg/oscim/renderer/bucket/ExtrusionBuckets;
 
-    .line 249
+    .prologue
+    .line 242
     iget-wide v0, p1, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->animTime:J
 
     const-wide/16 v2, 0x0
 
-    cmp-long v4, v0, v2
+    cmp-long v0, v0, v2
 
-    if-nez v4, :cond_0
+    if-nez v0, :cond_0
 
-    .line 250
+    .line 243
     sget-wide v0, Lorg/oscim/renderer/MapRenderer;->frametime:J
 
     const-wide/16 v2, 0x32
 
-    sub-long v4, v0, v2
+    sub-long/2addr v0, v2
 
-    iput-wide v4, p1, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->animTime:J
+    iput-wide v0, p1, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->animTime:J
 
-    .line 252
+    .line 245
     :cond_0
     sget-wide v0, Lorg/oscim/renderer/MapRenderer;->frametime:J
 
     iget-wide v2, p1, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->animTime:J
 
-    sub-long v4, v0, v2
+    sub-long/2addr v0, v2
 
-    long-to-float p1, v4
+    long-to-float v0, v0
 
-    const/high16 v0, 0x43960000    # 300.0f
+    const/high16 v1, 0x43960000    # 300.0f
 
-    div-float/2addr p1, v0
+    div-float/2addr v0, v1
 
-    const/4 v0, 0x0
+    const/4 v1, 0x0
 
-    const/high16 v1, 0x3f800000    # 1.0f
+    const/high16 v2, 0x3f800000    # 1.0f
 
-    invoke-static {p1, v0, v1}, Lorg/oscim/utils/FastMath;->clamp(FFF)F
+    invoke-static {v0, v1, v2}, Lorg/oscim/utils/FastMath;->clamp(FFF)F
 
-    move-result p1
+    move-result v0
 
-    return p1
+    return v0
 .end method
 
 .method private renderCombined(ILorg/oscim/renderer/bucket/ExtrusionBuckets;)V
-    .locals 7
+    .locals 11
+    .param p1, "vertexPointer"    # I
+    .param p2, "ebs"    # Lorg/oscim/renderer/bucket/ExtrusionBuckets;
 
-    .line 79
+    .prologue
+    const/16 v10, 0x1403
+
+    const/4 v4, 0x0
+
+    const/4 v9, 0x4
+
+    .line 73
     invoke-virtual {p2}, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->buckets()Lorg/oscim/renderer/bucket/ExtrusionBucket;
 
-    move-result-object p2
+    move-result-object v7
 
+    .local v7, "eb":Lorg/oscim/renderer/bucket/ExtrusionBucket;
     :goto_0
-    if-eqz p2, :cond_2
+    if-eqz v7, :cond_2
 
-    .line 81
+    .line 75
     sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    const/4 v2, 0x3
+
+    const/16 v3, 0x1402
+
+    const/16 v5, 0x8
+
+    .line 77
+    invoke-virtual {v7}, Lorg/oscim/renderer/bucket/ExtrusionBucket;->getVertexOffset()I
+
+    move-result v6
+
+    move v1, p1
+
+    .line 75
+    invoke-interface/range {v0 .. v6}, Lorg/oscim/backend/GL;->vertexAttribPointer(IIIZII)V
+
+    .line 79
+    iget-object v0, v7, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
+
+    aget v0, v0, v4
+
+    iget-object v1, v7, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
+
+    const/4 v2, 0x1
+
+    aget v1, v1, v2
+
+    add-int/2addr v0, v1
+
+    iget-object v1, v7, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
+
+    const/4 v2, 0x2
+
+    aget v1, v1, v2
+
+    add-int v8, v0, v1
+
+    .line 82
+    .local v8, "sumIndices":I
+    if-lez v8, :cond_0
+
+    .line 83
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    iget-object v1, v7, Lorg/oscim/renderer/bucket/ExtrusionBucket;->off:[I
+
+    aget v1, v1, v4
+
+    invoke-interface {v0, v9, v8, v10, v1}, Lorg/oscim/backend/GL;->drawElements(IIII)V
+
+    .line 87
+    :cond_0
+    iget-object v0, v7, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
+
+    aget v0, v0, v9
+
+    if-lez v0, :cond_1
+
+    .line 88
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    iget-object v1, v7, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
+
+    aget v1, v1, v9
+
+    iget-object v2, v7, Lorg/oscim/renderer/bucket/ExtrusionBucket;->off:[I
+
+    aget v2, v2, v9
+
+    invoke-interface {v0, v9, v1, v10, v2}, Lorg/oscim/backend/GL;->drawElements(IIII)V
+
+    .line 73
+    :cond_1
+    invoke-virtual {v7}, Lorg/oscim/renderer/bucket/ExtrusionBucket;->next()Lorg/oscim/renderer/bucket/ExtrusionBucket;
+
+    move-result-object v7
+
+    goto :goto_0
+
+    .line 92
+    .end local v8    # "sumIndices":I
+    :cond_2
+    return-void
+.end method
+
+.method private setMatrix(Lorg/oscim/renderer/ExtrusionRenderer$Shader;Lorg/oscim/renderer/GLViewport;Lorg/oscim/renderer/bucket/ExtrusionBuckets;)V
+    .locals 16
+    .param p1, "s"    # Lorg/oscim/renderer/ExtrusionRenderer$Shader;
+    .param p2, "v"    # Lorg/oscim/renderer/GLViewport;
+    .param p3, "l"    # Lorg/oscim/renderer/bucket/ExtrusionBuckets;
+
+    .prologue
+    .line 250
+    move-object/from16 v0, p3
+
+    iget v8, v0, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->zoomLevel:I
+
+    .line 251
+    .local v8, "z":I
+    sget v10, Lorg/oscim/core/Tile;->SIZE:I
+
+    int-to-double v10, v10
+
+    move-object/from16 v0, p2
+
+    iget-object v12, v0, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
+
+    iget-wide v12, v12, Lorg/oscim/core/MapPosition;->scale:D
+
+    mul-double v2, v10, v12
+
+    .line 252
+    .local v2, "curScale":D
+    move-object/from16 v0, p2
+
+    iget-object v10, v0, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
+
+    iget-wide v10, v10, Lorg/oscim/core/MapPosition;->scale:D
+
+    const/4 v12, 0x1
+
+    shl-int/2addr v12, v8
+
+    int-to-double v12, v12
+
+    div-double/2addr v10, v12
+
+    double-to-float v5, v10
+
+    .line 254
+    .local v5, "scale":F
+    move-object/from16 v0, p3
+
+    iget-wide v10, v0, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->x:D
+
+    move-object/from16 v0, p2
+
+    iget-object v12, v0, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
+
+    iget-wide v12, v12, Lorg/oscim/core/MapPosition;->x:D
+
+    sub-double/2addr v10, v12
+
+    mul-double/2addr v10, v2
+
+    double-to-float v6, v10
+
+    .line 255
+    .local v6, "x":F
+    move-object/from16 v0, p3
+
+    iget-wide v10, v0, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->y:D
+
+    move-object/from16 v0, p2
+
+    iget-object v12, v0, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
+
+    iget-wide v12, v12, Lorg/oscim/core/MapPosition;->y:D
+
+    sub-double/2addr v10, v12
+
+    mul-double/2addr v10, v2
+
+    double-to-float v7, v10
+
+    .line 257
+    .local v7, "y":F
+    move-object/from16 v0, p2
+
+    iget-object v10, v0, Lorg/oscim/renderer/GLViewport;->mvp:Lorg/oscim/renderer/GLMatrix;
+
+    const/high16 v11, 0x41000000    # 8.0f
+
+    div-float v11, v5, v11
+
+    invoke-virtual {v10, v6, v7, v11}, Lorg/oscim/renderer/GLMatrix;->setTransScale(FFF)V
+
+    .line 258
+    move-object/from16 v0, p2
+
+    iget-object v10, v0, Lorg/oscim/renderer/GLViewport;->mvp:Lorg/oscim/renderer/GLMatrix;
+
+    const/16 v11, 0xa
+
+    const/high16 v12, 0x41200000    # 10.0f
+
+    div-float v12, v5, v12
+
+    invoke-virtual {v10, v11, v12}, Lorg/oscim/renderer/GLMatrix;->setValue(IF)V
+
+    .line 259
+    move-object/from16 v0, p2
+
+    iget-object v10, v0, Lorg/oscim/renderer/GLViewport;->mvp:Lorg/oscim/renderer/GLMatrix;
+
+    move-object/from16 v0, p2
+
+    iget-object v11, v0, Lorg/oscim/renderer/GLViewport;->viewproj:Lorg/oscim/renderer/GLMatrix;
+
+    invoke-virtual {v10, v11}, Lorg/oscim/renderer/GLMatrix;->multiplyLhs(Lorg/oscim/renderer/GLMatrix;)V
+
+    .line 261
+    move-object/from16 v0, p0
+
+    iget-boolean v10, v0, Lorg/oscim/renderer/ExtrusionRenderer;->mTranslucent:Z
+
+    if-eqz v10, :cond_0
+
+    .line 264
+    const/4 v10, 0x1
+
+    shl-int v9, v10, v8
+
+    .line 265
+    .local v9, "zoom":I
+    move-object/from16 v0, p3
+
+    iget-wide v10, v0, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->x:D
+
+    int-to-double v12, v9
+
+    mul-double/2addr v10, v12
+
+    double-to-int v10, v10
+
+    rem-int/lit8 v10, v10, 0x4
+
+    move-object/from16 v0, p3
+
+    iget-wide v12, v0, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->y:D
+
+    int-to-double v14, v9
+
+    mul-double/2addr v12, v14
+
+    double-to-int v11, v12
+
+    rem-int/lit8 v11, v11, 0x4
+
+    mul-int/lit8 v11, v11, 0x4
+
+    add-int v4, v10, v11
+
+    .line 266
+    .local v4, "delta":I
+    move-object/from16 v0, p2
+
+    iget-object v10, v0, Lorg/oscim/renderer/GLViewport;->mvp:Lorg/oscim/renderer/GLMatrix;
+
+    invoke-virtual {v10, v4}, Lorg/oscim/renderer/GLMatrix;->addDepthOffset(I)V
+
+    .line 268
+    .end local v4    # "delta":I
+    .end local v9    # "zoom":I
+    :cond_0
+    move-object/from16 v0, p2
+
+    iget-object v10, v0, Lorg/oscim/renderer/GLViewport;->mvp:Lorg/oscim/renderer/GLMatrix;
+
+    move-object/from16 v0, p1
+
+    iget v11, v0, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uMVP:I
+
+    invoke-virtual {v10, v11}, Lorg/oscim/renderer/GLMatrix;->setAsUniform(I)V
+
+    .line 269
+    return-void
+.end method
+
+
+# virtual methods
+.method public render(Lorg/oscim/renderer/GLViewport;)V
+    .locals 14
+    .param p1, "v"    # Lorg/oscim/renderer/GLViewport;
+
+    .prologue
+    .line 97
+    const/4 v9, 0x0
+
+    .line 98
+    .local v9, "currentColor":[F
+    const/4 v8, 0x0
+
+    .line 100
+    .local v8, "currentAlpha":F
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    const/4 v1, 0x1
+
+    invoke-interface {v0, v1}, Lorg/oscim/backend/GL;->depthMask(Z)V
+
+    .line 101
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    const/16 v1, 0x100
+
+    invoke-interface {v0, v1}, Lorg/oscim/backend/GL;->clear(I)V
+
+    .line 103
+    const/4 v0, 0x1
+
+    const/4 v1, 0x0
+
+    invoke-static {v0, v1}, Lorg/oscim/renderer/GLState;->test(ZZ)V
+
+    .line 105
+    iget-object v13, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mShader:Lorg/oscim/renderer/ExtrusionRenderer$Shader;
+
+    .line 106
+    .local v13, "s":Lorg/oscim/renderer/ExtrusionRenderer$Shader;
+    invoke-virtual {v13}, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->useProgram()Z
+
+    .line 107
+    iget v0, v13, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->aPos:I
+
+    const/4 v1, -0x1
+
+    invoke-static {v0, v1}, Lorg/oscim/renderer/GLState;->enableVertexArrays(II)V
+
+    .line 111
+    iget-object v0, p1, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
+
+    iget v0, v0, Lorg/oscim/core/MapPosition;->zoomLevel:I
+
+    const/16 v1, 0x12
+
+    if-ge v0, v1, :cond_0
+
+    .line 112
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    const/16 v1, 0xb44
+
+    invoke-interface {v0, v1}, Lorg/oscim/backend/GL;->enable(I)V
+
+    .line 114
+    :cond_0
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    const/16 v1, 0x201
+
+    invoke-interface {v0, v1}, Lorg/oscim/backend/GL;->depthFunc(I)V
+
+    .line 115
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    iget v1, v13, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uAlpha:I
+
+    iget v2, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mAlpha:F
+
+    invoke-interface {v0, v1, v2}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+
+    .line 117
+    iget-object v11, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mExtrusionBucketSet:[Lorg/oscim/renderer/bucket/ExtrusionBuckets;
+
+    .line 119
+    .local v11, "ebs":[Lorg/oscim/renderer/bucket/ExtrusionBuckets;
+    iget-boolean v0, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mTranslucent:Z
+
+    if-eqz v0, :cond_5
+
+    .line 121
+    const/4 v0, 0x0
+
+    invoke-static {v0}, Lorg/oscim/renderer/GLState;->blend(Z)V
+
+    .line 122
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    const/4 v1, 0x0
+
+    const/4 v2, 0x0
+
+    const/4 v3, 0x0
+
+    const/4 v4, 0x0
+
+    invoke-interface {v0, v1, v2, v3, v4}, Lorg/oscim/backend/GL;->colorMask(ZZZZ)V
+
+    .line 123
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    iget v1, v13, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uMode:I
+
+    const/4 v2, -0x1
+
+    invoke-interface {v0, v1, v2}, Lorg/oscim/backend/GL;->uniform1i(II)V
+
+    .line 125
+    const/4 v12, 0x0
+
+    .local v12, "i":I
+    :goto_0
+    iget v0, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mBucketsCnt:I
+
+    if-ge v12, v0, :cond_4
+
+    .line 126
+    aget-object v0, v11, v12
+
+    iget-object v0, v0, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
+
+    if-nez v0, :cond_2
+
+    .line 239
+    :cond_1
+    :goto_1
+    return-void
+
+    .line 129
+    :cond_2
+    aget-object v0, v11, v12
+
+    iget-object v0, v0, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
+
+    invoke-virtual {v0}, Lorg/oscim/renderer/BufferObject;->bind()V
+
+    .line 130
+    aget-object v0, v11, v12
+
+    iget-object v0, v0, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->vbo:Lorg/oscim/renderer/BufferObject;
+
+    invoke-virtual {v0}, Lorg/oscim/renderer/BufferObject;->bind()V
+
+    .line 132
+    aget-object v0, v11, v12
+
+    invoke-direct {p0, v13, p1, v0}, Lorg/oscim/renderer/ExtrusionRenderer;->setMatrix(Lorg/oscim/renderer/ExtrusionRenderer$Shader;Lorg/oscim/renderer/GLViewport;Lorg/oscim/renderer/bucket/ExtrusionBuckets;)V
+
+    .line 134
+    iget v0, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mAlpha:F
+
+    aget-object v1, v11, v12
+
+    invoke-direct {p0, v1}, Lorg/oscim/renderer/ExtrusionRenderer;->getFade(Lorg/oscim/renderer/bucket/ExtrusionBuckets;)F
+
+    move-result v1
+
+    mul-float v7, v0, v1
+
+    .line 135
+    .local v7, "alpha":F
+    cmpl-float v0, v7, v8
+
+    if-eqz v0, :cond_3
+
+    .line 136
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    iget v1, v13, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uAlpha:I
+
+    invoke-interface {v0, v1, v7}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+
+    .line 137
+    move v8, v7
+
+    .line 140
+    :cond_3
+    iget v0, v13, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->aPos:I
+
+    aget-object v1, v11, v12
+
+    invoke-direct {p0, v0, v1}, Lorg/oscim/renderer/ExtrusionRenderer;->renderCombined(ILorg/oscim/renderer/bucket/ExtrusionBuckets;)V
+
+    .line 125
+    add-int/lit8 v12, v12, 0x1
+
+    goto :goto_0
+
+    .line 144
+    .end local v7    # "alpha":F
+    :cond_4
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    const/4 v1, 0x1
+
+    const/4 v2, 0x1
+
+    const/4 v3, 0x1
+
+    const/4 v4, 0x1
+
+    invoke-interface {v0, v1, v2, v3, v4}, Lorg/oscim/backend/GL;->colorMask(ZZZZ)V
+
+    .line 145
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    const/4 v1, 0x0
+
+    invoke-interface {v0, v1}, Lorg/oscim/backend/GL;->depthMask(Z)V
+
+    .line 146
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    const/16 v1, 0x202
+
+    invoke-interface {v0, v1}, Lorg/oscim/backend/GL;->depthFunc(I)V
+
+    .line 149
+    .end local v12    # "i":I
+    :cond_5
+    const/4 v0, 0x1
+
+    invoke-static {v0}, Lorg/oscim/renderer/GLState;->blend(Z)V
+
+    .line 151
+    iget v0, v13, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->aPos:I
+
+    iget v1, v13, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->aLight:I
+
+    invoke-static {v0, v1}, Lorg/oscim/renderer/GLState;->enableVertexArrays(II)V
+
+    .line 153
+    const/4 v12, 0x0
+
+    .restart local v12    # "i":I
+    :goto_2
+    iget v0, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mBucketsCnt:I
+
+    if-ge v12, v0, :cond_10
+
+    .line 154
+    aget-object v0, v11, v12
+
+    iget-object v0, v0, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
+
+    if-nez v0, :cond_6
+
+    .line 153
+    :goto_3
+    add-int/lit8 v12, v12, 0x1
+
+    goto :goto_2
+
+    .line 157
+    :cond_6
+    aget-object v0, v11, v12
+
+    iget-object v0, v0, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
+
+    invoke-virtual {v0}, Lorg/oscim/renderer/BufferObject;->bind()V
+
+    .line 158
+    aget-object v0, v11, v12
+
+    iget-object v0, v0, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->vbo:Lorg/oscim/renderer/BufferObject;
+
+    invoke-virtual {v0}, Lorg/oscim/renderer/BufferObject;->bind()V
+
+    .line 160
+    iget-boolean v0, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mTranslucent:Z
+
+    if-nez v0, :cond_7
+
+    .line 161
+    aget-object v0, v11, v12
+
+    invoke-direct {p0, v13, p1, v0}, Lorg/oscim/renderer/ExtrusionRenderer;->setMatrix(Lorg/oscim/renderer/ExtrusionRenderer$Shader;Lorg/oscim/renderer/GLViewport;Lorg/oscim/renderer/bucket/ExtrusionBuckets;)V
+
+    .line 163
+    :cond_7
+    iget v0, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mAlpha:F
+
+    aget-object v1, v11, v12
+
+    invoke-direct {p0, v1}, Lorg/oscim/renderer/ExtrusionRenderer;->getFade(Lorg/oscim/renderer/bucket/ExtrusionBuckets;)F
+
+    move-result v1
+
+    mul-float v7, v0, v1
+
+    .line 164
+    .restart local v7    # "alpha":F
+    cmpl-float v0, v7, v8
+
+    if-eqz v0, :cond_8
+
+    .line 165
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    iget v1, v13, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uAlpha:I
+
+    invoke-interface {v0, v1, v7}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+
+    .line 166
+    move v8, v7
+
+    .line 169
+    :cond_8
+    aget-object v0, v11, v12
+
+    invoke-virtual {v0}, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->buckets()Lorg/oscim/renderer/bucket/ExtrusionBucket;
+
+    move-result-object v10
+
+    .line 171
+    .local v10, "eb":Lorg/oscim/renderer/bucket/ExtrusionBucket;
+    :goto_4
+    if-eqz v10, :cond_f
+
+    .line 173
+    iget-object v0, v10, Lorg/oscim/renderer/bucket/ExtrusionBucket;->colors:[F
+
+    if-eq v0, v9, :cond_9
+
+    .line 174
+    iget-object v9, v10, Lorg/oscim/renderer/bucket/ExtrusionBucket;->colors:[F
+
+    .line 175
+    iget v1, v13, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uColor:I
+
+    iget v0, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mMode:I
+
+    if-nez v0, :cond_e
+
+    const/4 v0, 0x4
+
+    :goto_5
+    iget-object v2, v10, Lorg/oscim/renderer/bucket/ExtrusionBucket;->colors:[F
+
+    invoke-static {v1, v0, v2}, Lorg/oscim/renderer/GLUtils;->glUniform4fv(II[F)V
+
+    .line 180
+    :cond_9
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    iget v1, v13, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->aPos:I
 
     const/4 v2, 0x3
 
@@ -147,820 +790,309 @@
 
     const/16 v5, 0x8
 
-    .line 83
-    invoke-virtual {p2}, Lorg/oscim/renderer/bucket/ExtrusionBucket;->getVertexOffset()I
+    .line 181
+    invoke-virtual {v10}, Lorg/oscim/renderer/bucket/ExtrusionBucket;->getVertexOffset()I
 
     move-result v6
 
-    move v1, p1
-
-    .line 81
+    .line 180
     invoke-interface/range {v0 .. v6}, Lorg/oscim/backend/GL;->vertexAttribPointer(IIIZII)V
 
-    .line 85
-    iget-object v0, p2, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
+    .line 183
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    iget v1, v13, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->aLight:I
+
+    const/4 v2, 0x2
+
+    const/16 v3, 0x1401
+
+    const/4 v4, 0x0
+
+    const/16 v5, 0x8
+
+    .line 184
+    invoke-virtual {v10}, Lorg/oscim/renderer/bucket/ExtrusionBucket;->getVertexOffset()I
+
+    move-result v6
+
+    add-int/lit8 v6, v6, 0x6
+
+    .line 183
+    invoke-interface/range {v0 .. v6}, Lorg/oscim/backend/GL;->vertexAttribPointer(IIIZII)V
+
+    .line 187
+    iget-object v0, v10, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
 
     const/4 v1, 0x0
 
     aget v0, v0, v1
 
-    iget-object v2, p2, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
+    if-lez v0, :cond_c
 
-    const/4 v3, 0x1
+    .line 188
+    iget-boolean v0, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mTranslucent:Z
 
-    aget v2, v2, v3
+    if-eqz v0, :cond_a
 
-    add-int/2addr v0, v2
+    .line 189
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    iget-object v2, p2, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
+    const/16 v1, 0x202
+
+    invoke-interface {v0, v1}, Lorg/oscim/backend/GL;->depthFunc(I)V
+
+    .line 190
+    aget-object v0, v11, v12
+
+    invoke-direct {p0, v13, p1, v0}, Lorg/oscim/renderer/ExtrusionRenderer;->setMatrix(Lorg/oscim/renderer/ExtrusionRenderer$Shader;Lorg/oscim/renderer/GLViewport;Lorg/oscim/renderer/bucket/ExtrusionBuckets;)V
+
+    .line 194
+    :cond_a
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    iget v1, v13, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uMode:I
+
+    const/4 v2, 0x0
+
+    invoke-interface {v0, v1, v2}, Lorg/oscim/backend/GL;->uniform1i(II)V
+
+    .line 195
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    const/4 v1, 0x4
+
+    iget-object v2, v10, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
 
     const/4 v3, 0x2
 
     aget v2, v2, v3
 
-    add-int/2addr v0, v2
+    const/16 v3, 0x1403
 
-    const/16 v2, 0x1403
+    iget-object v4, v10, Lorg/oscim/renderer/bucket/ExtrusionBucket;->off:[I
 
-    const/4 v3, 0x4
+    const/4 v5, 0x2
 
-    if-lez v0, :cond_0
+    aget v4, v4, v5
 
-    .line 89
-    sget-object v4, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    invoke-interface {v0, v1, v2, v3, v4}, Lorg/oscim/backend/GL;->drawElements(IIII)V
 
-    iget-object v5, p2, Lorg/oscim/renderer/bucket/ExtrusionBucket;->off:[I
-
-    aget v1, v5, v1
-
-    invoke-interface {v4, v3, v0, v2, v1}, Lorg/oscim/backend/GL;->drawElements(IIII)V
-
-    .line 93
-    :cond_0
-    iget-object v0, p2, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
-
-    aget v0, v0, v3
-
-    if-lez v0, :cond_1
-
-    .line 94
+    .line 199
     sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    iget-object v1, p2, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
+    iget v1, v13, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uMode:I
 
-    aget v1, v1, v3
+    const/4 v2, 0x1
 
-    iget-object v4, p2, Lorg/oscim/renderer/bucket/ExtrusionBucket;->off:[I
+    invoke-interface {v0, v1, v2}, Lorg/oscim/backend/GL;->uniform1i(II)V
 
-    aget v4, v4, v3
+    .line 200
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    invoke-interface {v0, v3, v1, v2, v4}, Lorg/oscim/backend/GL;->drawElements(IIII)V
+    const/4 v1, 0x4
 
-    .line 79
-    :cond_1
-    invoke-virtual {p2}, Lorg/oscim/renderer/bucket/ExtrusionBucket;->next()Lorg/oscim/renderer/bucket/ExtrusionBucket;
+    iget-object v2, v10, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
 
-    move-result-object p2
+    const/4 v3, 0x0
 
-    goto :goto_0
+    aget v2, v2, v3
 
-    :cond_2
-    return-void
-.end method
+    const/16 v3, 0x1403
 
-.method private setMatrix(Lorg/oscim/renderer/ExtrusionRenderer$Shader;Lorg/oscim/renderer/GLViewport;Lorg/oscim/renderer/bucket/ExtrusionBuckets;)V
-    .locals 11
+    iget-object v4, v10, Lorg/oscim/renderer/bucket/ExtrusionBucket;->off:[I
 
-    .line 257
-    iget v0, p3, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->zoomLevel:I
+    const/4 v5, 0x0
 
-    .line 258
-    sget v1, Lorg/oscim/core/Tile;->SIZE:I
+    aget v4, v4, v5
 
-    int-to-double v1, v1
+    invoke-interface {v0, v1, v2, v3, v4}, Lorg/oscim/backend/GL;->drawElements(IIII)V
 
-    iget-object v3, p2, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
+    .line 204
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    iget-wide v3, v3, Lorg/oscim/core/MapPosition;->scale:D
+    iget v1, v13, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uMode:I
 
-    mul-double/2addr v1, v3
+    const/4 v2, 0x2
 
-    .line 259
-    iget-object v3, p2, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
+    invoke-interface {v0, v1, v2}, Lorg/oscim/backend/GL;->uniform1i(II)V
 
-    iget-wide v3, v3, Lorg/oscim/core/MapPosition;->scale:D
+    .line 205
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    const/4 v5, 0x1
+    const/4 v1, 0x4
 
-    shl-int v0, v5, v0
-
-    int-to-double v5, v0
-
-    div-double/2addr v3, v5
-
-    double-to-float v0, v3
-
-    .line 261
-    iget-wide v3, p3, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->x:D
-
-    iget-object v7, p2, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
-
-    iget-wide v7, v7, Lorg/oscim/core/MapPosition;->x:D
-
-    sub-double/2addr v3, v7
-
-    mul-double/2addr v3, v1
-
-    double-to-float v3, v3
-
-    .line 262
-    iget-wide v7, p3, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->y:D
-
-    iget-object v4, p2, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
-
-    iget-wide v9, v4, Lorg/oscim/core/MapPosition;->y:D
-
-    sub-double/2addr v7, v9
-
-    mul-double/2addr v7, v1
-
-    double-to-float v1, v7
-
-    .line 264
-    iget-object v2, p2, Lorg/oscim/renderer/GLViewport;->mvp:Lorg/oscim/renderer/GLMatrix;
-
-    sget v4, Lorg/oscim/renderer/MapRenderer;->COORD_SCALE:F
-
-    div-float v4, v0, v4
-
-    invoke-virtual {v2, v3, v1, v4}, Lorg/oscim/renderer/GLMatrix;->setTransScale(FFF)V
-
-    .line 265
-    iget-object v1, p2, Lorg/oscim/renderer/GLViewport;->mvp:Lorg/oscim/renderer/GLMatrix;
-
-    const/high16 v2, 0x41200000    # 10.0f
-
-    div-float/2addr v0, v2
-
-    const/16 v2, 0xa
-
-    invoke-virtual {v1, v2, v0}, Lorg/oscim/renderer/GLMatrix;->setValue(IF)V
-
-    .line 266
-    iget-object v0, p2, Lorg/oscim/renderer/GLViewport;->mvp:Lorg/oscim/renderer/GLMatrix;
-
-    iget-object v1, p2, Lorg/oscim/renderer/GLViewport;->viewproj:Lorg/oscim/renderer/GLMatrix;
-
-    invoke-virtual {v0, v1}, Lorg/oscim/renderer/GLMatrix;->multiplyLhs(Lorg/oscim/renderer/GLMatrix;)V
-
-    .line 268
-    iget-boolean v0, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mTranslucent:Z
-
-    if-eqz v0, :cond_0
-
-    .line 272
-    iget-wide v0, p3, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->x:D
-
-    mul-double/2addr v0, v5
-
-    double-to-int v0, v0
-
-    rem-int/lit8 v0, v0, 0x4
-
-    iget-wide v1, p3, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->y:D
-
-    mul-double/2addr v1, v5
-
-    double-to-int p3, v1
-
-    rem-int/lit8 p3, p3, 0x4
-
-    mul-int/lit8 p3, p3, 0x4
-
-    add-int/2addr v0, p3
-
-    .line 273
-    iget-object p3, p2, Lorg/oscim/renderer/GLViewport;->mvp:Lorg/oscim/renderer/GLMatrix;
-
-    invoke-virtual {p3, v0}, Lorg/oscim/renderer/GLMatrix;->addDepthOffset(I)V
-
-    .line 275
-    :cond_0
-    iget-object p2, p2, Lorg/oscim/renderer/GLViewport;->mvp:Lorg/oscim/renderer/GLMatrix;
-
-    iget p1, p1, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uMVP:I
-
-    invoke-virtual {p2, p1}, Lorg/oscim/renderer/GLMatrix;->setAsUniform(I)V
-
-    return-void
-.end method
-
-
-# virtual methods
-.method public render(Lorg/oscim/renderer/GLViewport;)V
-    .locals 31
-
-    move-object/from16 v0, p0
-
-    move-object/from16 v1, p1
-
-    .line 106
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    iget-object v2, v10, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
 
     const/4 v3, 0x1
 
-    invoke-interface {v2, v3}, Lorg/oscim/backend/GL;->depthMask(Z)V
+    aget v2, v2, v3
 
-    .line 107
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    const/16 v3, 0x1403
 
-    const/16 v4, 0x100
+    iget-object v4, v10, Lorg/oscim/renderer/bucket/ExtrusionBucket;->off:[I
 
-    invoke-interface {v2, v4}, Lorg/oscim/backend/GL;->clear(I)V
+    const/4 v5, 0x1
 
-    const/4 v2, 0x0
+    aget v4, v4, v5
 
-    .line 109
-    invoke-static {v3, v2}, Lorg/oscim/renderer/GLState;->test(ZZ)V
+    invoke-interface {v0, v1, v2, v3, v4}, Lorg/oscim/backend/GL;->drawElements(IIII)V
 
-    .line 111
-    iget-object v4, v0, Lorg/oscim/renderer/ExtrusionRenderer;->mShader:Lorg/oscim/renderer/ExtrusionRenderer$Shader;
+    .line 208
+    iget-boolean v0, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mTranslucent:Z
 
-    .line 112
-    invoke-virtual {v4}, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->useProgram()Z
+    if-eqz v0, :cond_b
 
-    .line 113
-    iget v5, v4, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->aPos:I
+    .line 212
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    const/4 v6, -0x1
+    const/16 v1, 0x203
 
-    invoke-static {v5, v6}, Lorg/oscim/renderer/GLState;->enableVertexArrays(II)V
+    invoke-interface {v0, v1}, Lorg/oscim/backend/GL;->depthFunc(I)V
 
-    .line 117
-    iget-object v5, v1, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
+    .line 213
+    iget-object v0, p1, Lorg/oscim/renderer/GLViewport;->mvp:Lorg/oscim/renderer/GLMatrix;
 
-    iget v5, v5, Lorg/oscim/core/MapPosition;->zoomLevel:I
+    const/16 v1, 0x64
 
-    const/16 v7, 0xb44
+    invoke-virtual {v0, v1}, Lorg/oscim/renderer/GLMatrix;->addDepthOffset(I)V
 
-    const/16 v8, 0x12
+    .line 214
+    iget-object v0, p1, Lorg/oscim/renderer/GLViewport;->mvp:Lorg/oscim/renderer/GLMatrix;
 
-    if-ge v5, v8, :cond_0
+    iget v1, v13, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uMVP:I
 
-    .line 118
-    sget-object v5, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    invoke-virtual {v0, v1}, Lorg/oscim/renderer/GLMatrix;->setAsUniform(I)V
 
-    invoke-interface {v5, v7}, Lorg/oscim/backend/GL;->enable(I)V
+    .line 217
+    :cond_b
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    .line 120
-    :cond_0
-    sget-object v5, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    iget v1, v13, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uMode:I
 
-    const/16 v9, 0x201
+    const/4 v2, 0x3
 
-    invoke-interface {v5, v9}, Lorg/oscim/backend/GL;->depthFunc(I)V
+    invoke-interface {v0, v1, v2}, Lorg/oscim/backend/GL;->uniform1i(II)V
 
-    .line 121
-    sget-object v5, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    .line 219
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    iget v9, v4, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uAlpha:I
+    const/4 v1, 0x1
 
-    iget v10, v0, Lorg/oscim/renderer/ExtrusionRenderer;->mAlpha:F
+    iget-object v2, v10, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
 
-    invoke-interface {v5, v9, v10}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+    const/4 v3, 0x3
 
-    .line 122
-    sget-object v5, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    aget v2, v2, v3
 
-    iget v9, v4, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uZLimit:I
+    const/16 v3, 0x1403
 
-    iget v10, v0, Lorg/oscim/renderer/ExtrusionRenderer;->mZLimit:F
+    iget-object v4, v10, Lorg/oscim/renderer/bucket/ExtrusionBucket;->off:[I
 
-    invoke-interface {v5, v9, v10}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+    const/4 v5, 0x3
 
-    .line 124
-    iget-object v5, v0, Lorg/oscim/renderer/ExtrusionRenderer;->mExtrusionBucketSet:[Lorg/oscim/renderer/bucket/ExtrusionBuckets;
+    aget v4, v4, v5
 
-    .line 126
-    iget-boolean v9, v0, Lorg/oscim/renderer/ExtrusionRenderer;->mTranslucent:Z
+    invoke-interface {v0, v1, v2, v3, v4}, Lorg/oscim/backend/GL;->drawElements(IIII)V
 
-    const/16 v10, 0x202
+    .line 224
+    :cond_c
+    iget-object v0, v10, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
 
-    const/4 v11, 0x0
+    const/4 v1, 0x4
 
-    if-eqz v9, :cond_4
+    aget v0, v0, v1
 
-    .line 128
-    invoke-static {v2}, Lorg/oscim/renderer/GLState;->blend(Z)V
+    if-lez v0, :cond_d
 
-    .line 129
-    sget-object v9, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    .line 225
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    invoke-interface {v9, v2, v2, v2, v2}, Lorg/oscim/backend/GL;->colorMask(ZZZZ)V
+    const/4 v1, 0x4
 
-    .line 130
-    sget-object v9, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    iget-object v2, v10, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
 
-    iget v12, v4, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uMode:I
+    const/4 v3, 0x4
 
-    invoke-interface {v9, v12, v6}, Lorg/oscim/backend/GL;->uniform1i(II)V
+    aget v2, v2, v3
 
-    move v6, v2
+    const/16 v3, 0x1403
 
-    .line 132
-    :goto_0
-    iget v9, v0, Lorg/oscim/renderer/ExtrusionRenderer;->mBucketsCnt:I
+    iget-object v4, v10, Lorg/oscim/renderer/bucket/ExtrusionBucket;->off:[I
 
-    if-ge v6, v9, :cond_3
+    const/4 v5, 0x4
 
-    .line 133
-    aget-object v9, v5, v6
+    aget v4, v4, v5
 
-    iget-object v9, v9, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
+    invoke-interface {v0, v1, v2, v3, v4}, Lorg/oscim/backend/GL;->drawElements(IIII)V
 
-    if-nez v9, :cond_1
+    .line 171
+    :cond_d
+    invoke-virtual {v10}, Lorg/oscim/renderer/bucket/ExtrusionBucket;->next()Lorg/oscim/renderer/bucket/ExtrusionBucket;
 
-    return-void
+    move-result-object v10
 
-    .line 136
-    :cond_1
-    aget-object v9, v5, v6
+    goto/16 :goto_4
 
-    iget-object v9, v9, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
-
-    invoke-virtual {v9}, Lorg/oscim/renderer/BufferObject;->bind()V
-
-    .line 137
-    aget-object v9, v5, v6
-
-    iget-object v9, v9, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->vbo:Lorg/oscim/renderer/BufferObject;
-
-    invoke-virtual {v9}, Lorg/oscim/renderer/BufferObject;->bind()V
-
-    .line 139
-    aget-object v9, v5, v6
-
-    invoke-direct {v0, v4, v1, v9}, Lorg/oscim/renderer/ExtrusionRenderer;->setMatrix(Lorg/oscim/renderer/ExtrusionRenderer$Shader;Lorg/oscim/renderer/GLViewport;Lorg/oscim/renderer/bucket/ExtrusionBuckets;)V
-
-    .line 141
-    iget v9, v0, Lorg/oscim/renderer/ExtrusionRenderer;->mAlpha:F
-
-    aget-object v12, v5, v6
-
-    invoke-direct {v0, v12}, Lorg/oscim/renderer/ExtrusionRenderer;->getFade(Lorg/oscim/renderer/bucket/ExtrusionBuckets;)F
-
-    move-result v12
-
-    mul-float/2addr v9, v12
-
-    cmpl-float v12, v9, v11
-
-    if-eqz v12, :cond_2
-
-    .line 143
-    sget-object v11, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    iget v12, v4, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uAlpha:I
-
-    invoke-interface {v11, v12, v9}, Lorg/oscim/backend/GL;->uniform1f(IF)V
-
-    move v11, v9
-
-    .line 147
-    :cond_2
-    iget v9, v4, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->aPos:I
-
-    aget-object v12, v5, v6
-
-    invoke-direct {v0, v9, v12}, Lorg/oscim/renderer/ExtrusionRenderer;->renderCombined(ILorg/oscim/renderer/bucket/ExtrusionBuckets;)V
-
-    add-int/lit8 v6, v6, 0x1
-
-    goto :goto_0
-
-    .line 151
-    :cond_3
-    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    invoke-interface {v6, v3, v3, v3, v3}, Lorg/oscim/backend/GL;->colorMask(ZZZZ)V
-
-    .line 152
-    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    invoke-interface {v6, v2}, Lorg/oscim/backend/GL;->depthMask(Z)V
-
-    .line 153
-    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    invoke-interface {v6, v10}, Lorg/oscim/backend/GL;->depthFunc(I)V
-
-    .line 156
-    :cond_4
-    invoke-static {v3}, Lorg/oscim/renderer/GLState;->blend(Z)V
-
-    .line 158
-    iget v6, v4, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->aPos:I
-
-    iget v9, v4, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->aLight:I
-
-    invoke-static {v6, v9}, Lorg/oscim/renderer/GLState;->enableVertexArrays(II)V
-
-    move v9, v2
-
-    const/4 v12, 0x0
-
-    .line 160
-    :goto_1
-    iget v13, v0, Lorg/oscim/renderer/ExtrusionRenderer;->mBucketsCnt:I
-
-    if-ge v9, v13, :cond_f
-
-    .line 161
-    aget-object v13, v5, v9
-
-    iget-object v13, v13, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
-
-    if-nez v13, :cond_5
-
-    const/4 v6, 0x0
+    .line 175
+    :cond_e
+    const/4 v0, 0x1
 
     goto/16 :goto_5
 
-    .line 164
-    :cond_5
-    aget-object v13, v5, v9
-
-    iget-object v13, v13, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
-
-    invoke-virtual {v13}, Lorg/oscim/renderer/BufferObject;->bind()V
-
-    .line 165
-    aget-object v13, v5, v9
-
-    iget-object v13, v13, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->vbo:Lorg/oscim/renderer/BufferObject;
-
-    invoke-virtual {v13}, Lorg/oscim/renderer/BufferObject;->bind()V
-
-    .line 167
-    iget-boolean v13, v0, Lorg/oscim/renderer/ExtrusionRenderer;->mTranslucent:Z
-
-    if-nez v13, :cond_6
-
-    .line 168
-    aget-object v13, v5, v9
-
-    invoke-direct {v0, v4, v1, v13}, Lorg/oscim/renderer/ExtrusionRenderer;->setMatrix(Lorg/oscim/renderer/ExtrusionRenderer$Shader;Lorg/oscim/renderer/GLViewport;Lorg/oscim/renderer/bucket/ExtrusionBuckets;)V
-
-    .line 170
-    :cond_6
-    iget v13, v0, Lorg/oscim/renderer/ExtrusionRenderer;->mAlpha:F
-
-    aget-object v14, v5, v9
-
-    invoke-direct {v0, v14}, Lorg/oscim/renderer/ExtrusionRenderer;->getFade(Lorg/oscim/renderer/bucket/ExtrusionBuckets;)F
-
-    move-result v14
-
-    mul-float/2addr v13, v14
-
-    cmpl-float v14, v13, v11
-
-    if-eqz v14, :cond_7
-
-    .line 172
-    sget-object v11, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    iget v14, v4, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uAlpha:I
-
-    invoke-interface {v11, v14, v13}, Lorg/oscim/backend/GL;->uniform1f(IF)V
-
-    goto :goto_2
-
-    :cond_7
-    move v13, v11
-
-    .line 176
-    :goto_2
-    aget-object v11, v5, v9
-
-    invoke-virtual {v11}, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->buckets()Lorg/oscim/renderer/bucket/ExtrusionBucket;
-
-    move-result-object v11
-
-    :goto_3
-    if-eqz v11, :cond_e
-
-    .line 180
-    invoke-virtual {v11}, Lorg/oscim/renderer/bucket/ExtrusionBucket;->getColors()[F
-
-    move-result-object v14
-
-    const/4 v15, 0x4
-
-    if-eq v14, v12, :cond_9
-
-    .line 181
-    invoke-virtual {v11}, Lorg/oscim/renderer/bucket/ExtrusionBucket;->getColors()[F
-
-    move-result-object v12
-
-    .line 182
-    iget v14, v4, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uColor:I
-
-    iget v7, v0, Lorg/oscim/renderer/ExtrusionRenderer;->mMode:I
-
-    if-nez v7, :cond_8
-
-    move v7, v15
-
-    goto :goto_4
-
-    :cond_8
-    move v7, v3
-
-    :goto_4
-    invoke-static {v14, v7, v12}, Lorg/oscim/renderer/GLUtils;->glUniform4fv(II[F)V
-
-    .line 187
-    :cond_9
-    sget-object v16, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    iget v7, v4, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->aPos:I
-
-    const/16 v18, 0x3
-
-    const/16 v19, 0x1402
-
-    const/16 v20, 0x0
-
-    const/16 v21, 0x8
-
-    .line 188
-    invoke-virtual {v11}, Lorg/oscim/renderer/bucket/ExtrusionBucket;->getVertexOffset()I
-
-    move-result v22
-
-    move/from16 v17, v7
-
-    .line 187
-    invoke-interface/range {v16 .. v22}, Lorg/oscim/backend/GL;->vertexAttribPointer(IIIZII)V
-
-    .line 190
-    sget-object v23, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    iget v7, v4, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->aLight:I
-
-    const/16 v25, 0x2
-
-    const/16 v26, 0x1401
-
-    const/16 v27, 0x0
-
-    const/16 v28, 0x8
-
-    .line 191
-    invoke-virtual {v11}, Lorg/oscim/renderer/bucket/ExtrusionBucket;->getVertexOffset()I
-
-    move-result v14
-
-    add-int/lit8 v29, v14, 0x6
-
-    move/from16 v24, v7
-
-    .line 190
-    invoke-interface/range {v23 .. v29}, Lorg/oscim/backend/GL;->vertexAttribPointer(IIIZII)V
-
-    .line 194
-    iget-object v7, v11, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
-
-    aget v7, v7, v2
-
-    const/16 v14, 0x1403
-
-    if-lez v7, :cond_c
-
-    .line 195
-    iget-boolean v7, v0, Lorg/oscim/renderer/ExtrusionRenderer;->mTranslucent:Z
-
-    if-eqz v7, :cond_a
-
-    .line 196
-    sget-object v7, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    invoke-interface {v7, v10}, Lorg/oscim/backend/GL;->depthFunc(I)V
-
-    .line 197
-    aget-object v7, v5, v9
-
-    invoke-direct {v0, v4, v1, v7}, Lorg/oscim/renderer/ExtrusionRenderer;->setMatrix(Lorg/oscim/renderer/ExtrusionRenderer$Shader;Lorg/oscim/renderer/GLViewport;Lorg/oscim/renderer/bucket/ExtrusionBuckets;)V
-
-    .line 201
-    :cond_a
-    sget-object v7, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    iget v10, v4, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uMode:I
-
-    invoke-interface {v7, v10, v2}, Lorg/oscim/backend/GL;->uniform1i(II)V
-
-    .line 202
-    sget-object v7, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    iget-object v10, v11, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
-
-    const/4 v8, 0x2
-
-    aget v10, v10, v8
-
-    iget-object v6, v11, Lorg/oscim/renderer/bucket/ExtrusionBucket;->off:[I
-
-    aget v6, v6, v8
-
-    invoke-interface {v7, v15, v10, v14, v6}, Lorg/oscim/backend/GL;->drawElements(IIII)V
-
-    .line 206
-    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    iget v7, v4, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uMode:I
-
-    invoke-interface {v6, v7, v3}, Lorg/oscim/backend/GL;->uniform1i(II)V
-
-    .line 207
-    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    iget-object v7, v11, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
-
-    aget v7, v7, v2
-
-    iget-object v10, v11, Lorg/oscim/renderer/bucket/ExtrusionBucket;->off:[I
-
-    aget v10, v10, v2
-
-    invoke-interface {v6, v15, v7, v14, v10}, Lorg/oscim/backend/GL;->drawElements(IIII)V
-
-    .line 211
-    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    iget v7, v4, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uMode:I
-
-    invoke-interface {v6, v7, v8}, Lorg/oscim/backend/GL;->uniform1i(II)V
-
-    .line 212
-    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    iget-object v7, v11, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
-
-    aget v7, v7, v3
-
-    iget-object v8, v11, Lorg/oscim/renderer/bucket/ExtrusionBucket;->off:[I
-
-    aget v8, v8, v3
-
-    invoke-interface {v6, v15, v7, v14, v8}, Lorg/oscim/backend/GL;->drawElements(IIII)V
-
-    .line 215
-    iget-boolean v6, v0, Lorg/oscim/renderer/ExtrusionRenderer;->mTranslucent:Z
-
-    if-eqz v6, :cond_b
-
-    .line 219
-    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    const/16 v7, 0x203
-
-    invoke-interface {v6, v7}, Lorg/oscim/backend/GL;->depthFunc(I)V
-
-    .line 220
-    iget-object v6, v1, Lorg/oscim/renderer/GLViewport;->mvp:Lorg/oscim/renderer/GLMatrix;
-
-    const/16 v7, 0x64
-
-    invoke-virtual {v6, v7}, Lorg/oscim/renderer/GLMatrix;->addDepthOffset(I)V
-
-    .line 221
-    iget-object v6, v1, Lorg/oscim/renderer/GLViewport;->mvp:Lorg/oscim/renderer/GLMatrix;
-
-    iget v7, v4, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uMVP:I
-
-    invoke-virtual {v6, v7}, Lorg/oscim/renderer/GLMatrix;->setAsUniform(I)V
-
-    .line 224
-    :cond_b
-    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    iget v7, v4, Lorg/oscim/renderer/ExtrusionRenderer$Shader;->uMode:I
-
-    const/4 v8, 0x3
-
-    invoke-interface {v6, v7, v8}, Lorg/oscim/backend/GL;->uniform1i(II)V
-
-    .line 226
-    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    iget-object v7, v11, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
-
-    aget v7, v7, v8
-
-    iget-object v10, v11, Lorg/oscim/renderer/bucket/ExtrusionBucket;->off:[I
-
-    aget v8, v10, v8
-
-    invoke-interface {v6, v3, v7, v14, v8}, Lorg/oscim/backend/GL;->drawElements(IIII)V
-
     .line 231
-    :cond_c
-    iget-object v6, v11, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
+    :cond_f
+    const/4 v0, 0x0
 
-    aget v6, v6, v15
-
-    if-lez v6, :cond_d
-
-    .line 232
-    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    iget-object v7, v11, Lorg/oscim/renderer/bucket/ExtrusionBucket;->idx:[I
-
-    aget v7, v7, v15
-
-    iget-object v8, v11, Lorg/oscim/renderer/bucket/ExtrusionBucket;->off:[I
-
-    aget v8, v8, v15
-
-    invoke-interface {v6, v15, v7, v14, v8}, Lorg/oscim/backend/GL;->drawElements(IIII)V
-
-    .line 178
-    :cond_d
-    invoke-virtual {v11}, Lorg/oscim/renderer/bucket/ExtrusionBucket;->next()Lorg/oscim/renderer/bucket/ExtrusionBucket;
-
-    move-result-object v11
-
-    const/16 v7, 0xb44
-
-    const/16 v8, 0x12
-
-    const/16 v10, 0x202
+    aput-object v0, v11, v12
 
     goto/16 :goto_3
 
-    :cond_e
-    const/4 v6, 0x0
+    .line 234
+    .end local v7    # "alpha":F
+    .end local v10    # "eb":Lorg/oscim/renderer/bucket/ExtrusionBucket;
+    :cond_10
+    iget-boolean v0, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mTranslucent:Z
+
+    if-nez v0, :cond_11
+
+    .line 235
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    const/4 v1, 0x0
+
+    invoke-interface {v0, v1}, Lorg/oscim/backend/GL;->depthMask(Z)V
+
+    .line 237
+    :cond_11
+    iget-object v0, p1, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
+
+    iget v0, v0, Lorg/oscim/core/MapPosition;->zoomLevel:I
+
+    const/16 v1, 0x12
+
+    if-ge v0, v1, :cond_1
 
     .line 238
-    aput-object v6, v5, v9
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    move v11, v13
+    const/16 v1, 0xb44
 
-    :goto_5
-    add-int/lit8 v9, v9, 0x1
-
-    const/16 v7, 0xb44
-
-    const/16 v8, 0x12
-
-    const/16 v10, 0x202
+    invoke-interface {v0, v1}, Lorg/oscim/backend/GL;->disable(I)V
 
     goto/16 :goto_1
-
-    .line 241
-    :cond_f
-    iget-boolean v3, v0, Lorg/oscim/renderer/ExtrusionRenderer;->mTranslucent:Z
-
-    if-nez v3, :cond_10
-
-    .line 242
-    sget-object v3, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    invoke-interface {v3, v2}, Lorg/oscim/backend/GL;->depthMask(Z)V
-
-    .line 244
-    :cond_10
-    iget-object v1, v1, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
-
-    iget v1, v1, Lorg/oscim/core/MapPosition;->zoomLevel:I
-
-    const/16 v2, 0x12
-
-    if-ge v1, v2, :cond_11
-
-    .line 245
-    sget-object v1, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    const/16 v2, 0xb44
-
-    invoke-interface {v1, v2}, Lorg/oscim/backend/GL;->disable(I)V
-
-    :cond_11
-    return-void
 .end method
 
 .method public setup()Z
     .locals 2
 
-    .line 69
+    .prologue
+    .line 63
     iget v0, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mMode:I
 
     if-nez v0, :cond_0
 
-    .line 70
+    .line 64
     new-instance v0, Lorg/oscim/renderer/ExtrusionRenderer$Shader;
 
     const-string v1, "extrusion_layer_ext"
@@ -969,9 +1101,13 @@
 
     iput-object v0, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mShader:Lorg/oscim/renderer/ExtrusionRenderer$Shader;
 
-    goto :goto_0
+    .line 68
+    :goto_0
+    const/4 v0, 0x1
 
-    .line 72
+    return v0
+
+    .line 66
     :cond_0
     new-instance v0, Lorg/oscim/renderer/ExtrusionRenderer$Shader;
 
@@ -981,8 +1117,5 @@
 
     iput-object v0, p0, Lorg/oscim/renderer/ExtrusionRenderer;->mShader:Lorg/oscim/renderer/ExtrusionRenderer$Shader;
 
-    :goto_0
-    const/4 v0, 0x1
-
-    return v0
+    goto :goto_0
 .end method

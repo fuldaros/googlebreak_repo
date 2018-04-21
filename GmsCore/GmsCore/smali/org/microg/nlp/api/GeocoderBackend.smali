@@ -37,7 +37,8 @@
             "(DDI",
             "Ljava/lang/String;",
             ")",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Landroid/location/Address;",
             ">;"
         }
@@ -58,7 +59,8 @@
             "IDDDD",
             "Ljava/lang/String;",
             ")",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Landroid/location/Address;",
             ">;"
         }

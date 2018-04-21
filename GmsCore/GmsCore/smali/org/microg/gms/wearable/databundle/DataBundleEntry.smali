@@ -29,7 +29,10 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;Lorg/microg/gms/wearable/databundle/DataBundleTypedValue;)V
     .locals 0
+    .param p1, "key"    # Ljava/lang/String;
+    .param p2, "typedValue"    # Lorg/microg/gms/wearable/databundle/DataBundleTypedValue;
 
+    .prologue
     .line 20
     invoke-direct {p0}, Lcom/squareup/wire/Message;-><init>()V
 
@@ -39,12 +42,15 @@
     .line 22
     iput-object p2, p0, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->typedValue:Lorg/microg/gms/wearable/databundle/DataBundleTypedValue;
 
+    .line 23
     return-void
 .end method
 
 .method private constructor <init>(Lorg/microg/gms/wearable/databundle/DataBundleEntry$Builder;)V
     .locals 2
+    .param p1, "builder"    # Lorg/microg/gms/wearable/databundle/DataBundleEntry$Builder;
 
+    .prologue
     .line 26
     iget-object v0, p1, Lorg/microg/gms/wearable/databundle/DataBundleEntry$Builder;->key:Ljava/lang/String;
 
@@ -55,12 +61,16 @@
     .line 27
     invoke-virtual {p0, p1}, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->setBuilder(Lcom/squareup/wire/Message$Builder;)V
 
+    .line 28
     return-void
 .end method
 
 .method synthetic constructor <init>(Lorg/microg/gms/wearable/databundle/DataBundleEntry$Builder;Lorg/microg/gms/wearable/databundle/DataBundleEntry$1;)V
     .locals 0
+    .param p1, "x0"    # Lorg/microg/gms/wearable/databundle/DataBundleEntry$Builder;
+    .param p2, "x1"    # Lorg/microg/gms/wearable/databundle/DataBundleEntry$1;
 
+    .prologue
     .line 10
     invoke-direct {p0, p1}, Lorg/microg/gms/wearable/databundle/DataBundleEntry;-><init>(Lorg/microg/gms/wearable/databundle/DataBundleEntry$Builder;)V
 
@@ -70,92 +80,98 @@
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 4
+    .locals 5
+    .param p1, "other"    # Ljava/lang/Object;
 
-    const/4 v0, 0x1
-
-    if-ne p1, p0, :cond_0
-
-    return v0
-
-    .line 33
-    :cond_0
-    instance-of v1, p1, Lorg/microg/gms/wearable/databundle/DataBundleEntry;
+    .prologue
+    const/4 v1, 0x1
 
     const/4 v2, 0x0
 
-    if-nez v1, :cond_1
-
-    return v2
-
-    .line 34
-    :cond_1
-    check-cast p1, Lorg/microg/gms/wearable/databundle/DataBundleEntry;
+    .line 32
+    if-ne p1, p0, :cond_1
 
     .line 35
-    iget-object v1, p0, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->key:Ljava/lang/String;
+    :cond_0
+    :goto_0
+    return v1
 
-    iget-object v3, p1, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->key:Ljava/lang/String;
+    .line 33
+    :cond_1
+    instance-of v3, p1, Lorg/microg/gms/wearable/databundle/DataBundleEntry;
 
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+    if-nez v3, :cond_2
 
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->typedValue:Lorg/microg/gms/wearable/databundle/DataBundleTypedValue;
-
-    iget-object p1, p1, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->typedValue:Lorg/microg/gms/wearable/databundle/DataBundleTypedValue;
-
-    .line 36
-    invoke-virtual {p0, v1, p1}, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result p1
-
-    if-eqz p1, :cond_2
+    move v1, v2
 
     goto :goto_0
 
     :cond_2
-    move v0, v2
+    move-object v0, p1
 
-    :goto_0
-    return v0
+    .line 34
+    check-cast v0, Lorg/microg/gms/wearable/databundle/DataBundleEntry;
+
+    .line 35
+    .local v0, "o":Lorg/microg/gms/wearable/databundle/DataBundleEntry;
+    iget-object v3, p0, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->key:Ljava/lang/String;
+
+    iget-object v4, v0, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->key:Ljava/lang/String;
+
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->typedValue:Lorg/microg/gms/wearable/databundle/DataBundleTypedValue;
+
+    iget-object v4, v0, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->typedValue:Lorg/microg/gms/wearable/databundle/DataBundleTypedValue;
+
+    .line 36
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_0
+
+    :cond_3
+    move v1, v2
+
+    goto :goto_0
 .end method
 
 .method public hashCode()I
-    .locals 3
+    .locals 4
+
+    .prologue
+    const/4 v1, 0x0
 
     .line 41
     iget v0, p0, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->hashCode:I
 
-    if-nez v0, :cond_2
+    .line 42
+    .local v0, "result":I
+    if-nez v0, :cond_1
 
     .line 43
-    iget-object v0, p0, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->key:Ljava/lang/String;
+    iget-object v2, p0, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->key:Ljava/lang/String;
 
-    const/4 v1, 0x0
+    if-eqz v2, :cond_2
 
-    if-eqz v0, :cond_0
+    iget-object v2, p0, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->key:Ljava/lang/String;
 
-    iget-object v0, p0, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->key:Ljava/lang/String;
-
-    invoke-virtual {v0}, Ljava/lang/String;->hashCode()I
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
 
     move-result v0
 
-    goto :goto_0
-
-    :cond_0
-    move v0, v1
-
-    :goto_0
-    mul-int/lit8 v0, v0, 0x25
-
     .line 44
-    iget-object v2, p0, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->typedValue:Lorg/microg/gms/wearable/databundle/DataBundleTypedValue;
+    :goto_0
+    mul-int/lit8 v2, v0, 0x25
 
-    if-eqz v2, :cond_1
+    iget-object v3, p0, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->typedValue:Lorg/microg/gms/wearable/databundle/DataBundleTypedValue;
+
+    if-eqz v3, :cond_0
 
     iget-object v1, p0, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->typedValue:Lorg/microg/gms/wearable/databundle/DataBundleTypedValue;
 
@@ -163,12 +179,19 @@
 
     move-result v1
 
-    :cond_1
-    add-int/2addr v0, v1
+    :cond_0
+    add-int v0, v2, v1
 
     .line 45
     iput v0, p0, Lorg/microg/gms/wearable/databundle/DataBundleEntry;->hashCode:I
 
-    :cond_2
+    .line 47
+    :cond_1
     return v0
+
+    :cond_2
+    move v0, v1
+
+    .line 43
+    goto :goto_0
 .end method

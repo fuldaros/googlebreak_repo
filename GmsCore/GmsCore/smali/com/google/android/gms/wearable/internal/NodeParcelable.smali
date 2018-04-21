@@ -10,7 +10,8 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator<",
+            "Landroid/os/Parcelable$Creator",
+            "<",
             "Lcom/google/android/gms/wearable/internal/NodeParcelable;",
             ">;"
         }
@@ -25,19 +26,7 @@
     .end annotation
 .end field
 
-.field private final hops:I
-    .annotation runtime Lorg/microg/safeparcel/SafeParceled;
-        value = 0x4
-    .end annotation
-.end field
-
-.field private final isNearby:Z
-    .annotation runtime Lorg/microg/safeparcel/SafeParceled;
-        value = 0x5
-    .end annotation
-.end field
-
-.field private final nodeId:Ljava/lang/String;
+.field private final id:Ljava/lang/String;
     .annotation runtime Lorg/microg/safeparcel/SafeParceled;
         value = 0x2
     .end annotation
@@ -54,7 +43,8 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .line 98
+    .prologue
+    .line 83
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
     const-class v1, Lcom/google/android/gms/wearable/internal/NodeParcelable;
@@ -69,164 +59,163 @@
 .method private constructor <init>()V
     .locals 1
 
-    .line 39
+    .prologue
+    .line 35
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
+    .line 28
     const/4 v0, 0x1
 
-    .line 28
     iput v0, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->versionCode:I
 
+    .line 36
     const/4 v0, 0x0
 
-    .line 40
     iput-object v0, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->displayName:Ljava/lang/String;
 
-    iput-object v0, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->nodeId:Ljava/lang/String;
+    iput-object v0, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->id:Ljava/lang/String;
 
-    const/4 v0, 0x0
-
-    .line 41
-    iput v0, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->hops:I
-
-    .line 42
-    iput-boolean v0, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->isNearby:Z
-
+    .line 37
     return-void
 .end method
 
 .method public constructor <init>(Lcom/google/android/gms/wearable/Node;)V
-    .locals 3
+    .locals 1
+    .param p1, "node"    # Lcom/google/android/gms/wearable/Node;
 
-    .line 57
+    .prologue
+    .line 44
+    invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
+
+    .line 28
+    const/4 v0, 0x1
+
+    iput v0, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->versionCode:I
+
+    .line 45
     invoke-interface {p1}, Lcom/google/android/gms/wearable/Node;->getId()Ljava/lang/String;
 
     move-result-object v0
 
+    iput-object v0, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->id:Ljava/lang/String;
+
+    .line 46
     invoke-interface {p1}, Lcom/google/android/gms/wearable/Node;->getDisplayName()Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-interface {p1}, Lcom/google/android/gms/wearable/Node;->isNearby()Z
+    iput-object v0, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->displayName:Ljava/lang/String;
 
-    move-result p1
-
-    const/4 v2, 0x0
-
-    invoke-direct {p0, v0, v1, v2, p1}, Lcom/google/android/gms/wearable/internal/NodeParcelable;-><init>(Ljava/lang/String;Ljava/lang/String;IZ)V
-
+    .line 47
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;)V
     .locals 1
+    .param p1, "id"    # Ljava/lang/String;
+    .param p2, "displayName"    # Ljava/lang/String;
 
-    const/4 v0, 0x0
-
-    .line 53
-    invoke-direct {p0, p1, p2, v0, v0}, Lcom/google/android/gms/wearable/internal/NodeParcelable;-><init>(Ljava/lang/String;Ljava/lang/String;IZ)V
-
-    return-void
-.end method
-
-.method public constructor <init>(Ljava/lang/String;Ljava/lang/String;IZ)V
-    .locals 1
-
-    .line 45
+    .prologue
+    .line 39
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
+    .line 28
     const/4 v0, 0x1
 
-    .line 28
     iput v0, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->versionCode:I
 
-    .line 46
-    iput-object p1, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->nodeId:Ljava/lang/String;
+    .line 40
+    iput-object p1, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->id:Ljava/lang/String;
 
-    .line 47
+    .line 41
     iput-object p2, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->displayName:Ljava/lang/String;
 
-    .line 48
-    iput p3, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->hops:I
-
-    .line 49
-    iput-boolean p4, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->isNearby:Z
-
+    .line 42
     return-void
 .end method
 
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 4
+    .locals 5
+    .param p1, "o"    # Ljava/lang/Object;
 
-    const/4 v0, 0x1
+    .prologue
+    const/4 v1, 0x1
 
-    if-ne p0, p1, :cond_0
+    const/4 v2, 0x0
 
-    return v0
+    .line 51
+    if-ne p0, p1, :cond_1
 
+    .line 59
     :cond_0
-    const/4 v1, 0x0
+    :goto_0
+    return v1
 
-    if-eqz p1, :cond_4
+    .line 52
+    :cond_1
+    if-eqz p1, :cond_2
 
-    .line 63
     invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    move-result-object v2
-
-    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     move-result-object v3
 
-    if-eq v2, v3, :cond_1
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    move-result-object v4
+
+    if-eq v3, v4, :cond_3
+
+    :cond_2
+    move v1, v2
 
     goto :goto_0
 
-    .line 65
-    :cond_1
-    check-cast p1, Lcom/google/android/gms/wearable/internal/NodeParcelable;
-
-    .line 67
-    iget-object v2, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->nodeId:Ljava/lang/String;
-
-    iget-object v3, p1, Lcom/google/android/gms/wearable/internal/NodeParcelable;->nodeId:Ljava/lang/String;
-
-    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v2
-
-    if-nez v2, :cond_2
-
-    return v1
-
-    .line 68
-    :cond_2
-    iget-object v2, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->displayName:Ljava/lang/String;
-
-    iget-object p1, p1, Lcom/google/android/gms/wearable/internal/NodeParcelable;->displayName:Ljava/lang/String;
-
-    invoke-virtual {v2, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result p1
-
-    if-nez p1, :cond_3
-
-    return v1
-
     :cond_3
-    return v0
+    move-object v0, p1
 
+    .line 54
+    check-cast v0, Lcom/google/android/gms/wearable/internal/NodeParcelable;
+
+    .line 56
+    .local v0, "that":Lcom/google/android/gms/wearable/internal/NodeParcelable;
+    iget-object v3, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->id:Ljava/lang/String;
+
+    iget-object v4, v0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->id:Ljava/lang/String;
+
+    invoke-virtual {v3, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_4
+
+    move v1, v2
+
+    goto :goto_0
+
+    .line 57
     :cond_4
-    :goto_0
-    return v1
+    iget-object v3, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->displayName:Ljava/lang/String;
+
+    iget-object v4, v0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->displayName:Ljava/lang/String;
+
+    invoke-virtual {v3, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_0
+
+    move v1, v2
+
+    goto :goto_0
 .end method
 
 .method public getDisplayName()Ljava/lang/String;
     .locals 1
 
-    .line 75
+    .prologue
+    .line 64
     iget-object v0, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->displayName:Ljava/lang/String;
 
     return-object v0
@@ -235,38 +224,46 @@
 .method public getId()Ljava/lang/String;
     .locals 1
 
-    .line 80
-    iget-object v0, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->nodeId:Ljava/lang/String;
+    .prologue
+    .line 69
+    iget-object v0, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->id:Ljava/lang/String;
 
     return-object v0
 .end method
 
 .method public hashCode()I
-    .locals 1
+    .locals 3
 
-    .line 90
-    iget-object v0, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->nodeId:Ljava/lang/String;
+    .prologue
+    .line 74
+    iget-object v1, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->id:Ljava/lang/String;
 
-    invoke-virtual {v0}, Ljava/lang/String;->hashCode()I
+    invoke-virtual {v1}, Ljava/lang/String;->hashCode()I
 
-    move-result v0
+    move-result v1
 
-    return v0
-.end method
+    add-int/lit16 v0, v1, 0x275
 
-.method public isNearby()Z
-    .locals 1
+    .line 75
+    .local v0, "result":I
+    mul-int/lit8 v1, v0, 0x25
 
-    .line 85
-    iget-boolean v0, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->isNearby:Z
+    iget-object v2, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->displayName:Ljava/lang/String;
 
-    return v0
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
+
+    move-result v2
+
+    add-int/2addr v1, v2
+
+    return v1
 .end method
 
 .method public toString()Ljava/lang/String;
     .locals 2
 
-    .line 95
+    .prologue
+    .line 80
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -275,37 +272,31 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    move-result-object v0
+
+    iget-object v1, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->id:Ljava/lang/String;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    const-string v1, ","
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
     iget-object v1, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->displayName:Ljava/lang/String;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v1, ", id="
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    iget-object v1, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->displayName:Ljava/lang/String;
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string v1, ", hops="
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    iget v1, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->hops:I
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    const-string v1, ", isNearby="
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    iget-boolean v1, p0, Lcom/google/android/gms/wearable/internal/NodeParcelable;->isNearby:Z
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+    move-result-object v0
 
     const-string v1, "}"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 

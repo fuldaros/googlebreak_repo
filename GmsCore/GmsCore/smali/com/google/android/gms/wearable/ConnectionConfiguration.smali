@@ -7,7 +7,8 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator<",
+            "Landroid/os/Parcelable$Creator",
+            "<",
             "Lcom/google/android/gms/wearable/ConnectionConfiguration;",
             ">;"
         }
@@ -81,6 +82,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
+    .prologue
     .line 84
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -96,15 +98,16 @@
 .method private constructor <init>()V
     .locals 2
 
+    .prologue
+    const/4 v0, 0x1
+
+    const/4 v1, 0x0
+
     .line 45
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    const/4 v0, 0x1
-
     .line 24
     iput v0, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->versionCode:I
-
-    const/4 v1, 0x0
 
     .line 36
     iput-boolean v1, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->connected:Z
@@ -112,9 +115,9 @@
     .line 40
     iput-boolean v0, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->btlePriority:Z
 
+    .line 46
     const/4 v0, 0x0
 
-    .line 46
     iput-object v0, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->address:Ljava/lang/String;
 
     iput-object v0, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->name:Ljava/lang/String;
@@ -127,27 +130,34 @@
     .line 48
     iput-boolean v1, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->enabled:Z
 
+    .line 49
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;IIZ)V
     .locals 2
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "address"    # Ljava/lang/String;
+    .param p3, "type"    # I
+    .param p4, "role"    # I
+    .param p5, "enabled"    # Z
+
+    .prologue
+    const/4 v1, 0x1
 
     .line 51
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    const/4 v0, 0x1
-
     .line 24
-    iput v0, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->versionCode:I
-
-    const/4 v1, 0x0
+    iput v1, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->versionCode:I
 
     .line 36
-    iput-boolean v1, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->connected:Z
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->connected:Z
 
     .line 40
-    iput-boolean v0, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->btlePriority:Z
+    iput-boolean v1, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->btlePriority:Z
 
     .line 52
     iput-object p1, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->name:Ljava/lang/String;
@@ -164,27 +174,35 @@
     .line 56
     iput-boolean p5, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->enabled:Z
 
+    .line 57
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;IIZLjava/lang/String;)V
     .locals 2
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "address"    # Ljava/lang/String;
+    .param p3, "type"    # I
+    .param p4, "role"    # I
+    .param p5, "enabled"    # Z
+    .param p6, "nodeId"    # Ljava/lang/String;
+
+    .prologue
+    const/4 v1, 0x1
 
     .line 59
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    const/4 v0, 0x1
-
     .line 24
-    iput v0, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->versionCode:I
-
-    const/4 v1, 0x0
+    iput v1, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->versionCode:I
 
     .line 36
-    iput-boolean v1, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->connected:Z
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->connected:Z
 
     .line 40
-    iput-boolean v0, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->btlePriority:Z
+    iput-boolean v1, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->btlePriority:Z
 
     .line 60
     iput-object p1, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->name:Ljava/lang/String;
@@ -204,13 +222,17 @@
     .line 65
     iput-object p6, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->nodeId:Ljava/lang/String;
 
+    .line 66
     return-void
 .end method
 
 
 # virtual methods
 .method public toString()Ljava/lang/String;
-    .locals 3
+    .locals 4
+
+    .prologue
+    const/16 v3, 0x27
 
     .line 70
     new-instance v0, Ljava/lang/StringBuilder;
@@ -219,106 +241,131 @@
 
     invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
+    .line 71
+    .local v0, "sb":Ljava/lang/StringBuilder;
     const-string v1, "name=\'"
 
-    .line 71
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-object v1, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->name:Ljava/lang/String;
+    move-result-object v1
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    iget-object v2, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->name:Ljava/lang/String;
 
-    const/16 v1, 0x27
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    move-result-object v1
 
-    const-string v2, ", address=\'"
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
     .line 72
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v1, ", address=\'"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     iget-object v2, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->address:Ljava/lang/String;
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    move-result-object v1
 
-    const-string v2, ", type="
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
     .line 73
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v1, ", type="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     iget v2, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->type:I
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    const-string v2, ", role="
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     .line 74
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v1, ", role="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     iget v2, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->role:I
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    const-string v2, ", enabled="
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     .line 75
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v1, ", enabled="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     iget-boolean v2, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->enabled:Z
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
-
-    const-string v2, ", connected="
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
     .line 76
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v1, ", connected="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     iget-boolean v2, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->connected:Z
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
-
-    const-string v2, ", peerNodeId=\'"
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
     .line 77
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v1, ", peerNodeId=\'"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     iget-object v2, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->peerNodeId:Ljava/lang/String;
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    move-result-object v1
 
-    const-string v2, ", btlePriority="
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
     .line 78
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v1, ", btlePriority="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     iget-boolean v2, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->btlePriority:Z
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
-
-    const-string v2, ", nodeId=\'"
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
     .line 79
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v1, ", nodeId=\'"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     iget-object v2, p0, Lcom/google/android/gms/wearable/ConnectionConfiguration;->nodeId:Ljava/lang/String;
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    move-result-object v1
 
-    const/16 v1, 0x7d
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
     .line 80
+    const/16 v1, 0x7d
+
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
     .line 81
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v1
 
-    return-object v0
+    return-object v1
 .end method

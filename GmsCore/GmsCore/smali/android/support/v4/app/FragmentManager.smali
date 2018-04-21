@@ -6,7 +6,6 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/support/v4/app/FragmentManager$FragmentLifecycleCallbacks;,
         Landroid/support/v4/app/FragmentManager$OnBackStackChangedListener;
     }
 .end annotation
@@ -16,9 +15,11 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 87
+    .prologue
+    .line 71
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 128
     return-void
 .end method
 
@@ -28,26 +29,6 @@
 .end method
 
 .method public abstract dump(Ljava/lang/String;Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;)V
-.end method
-
-.method public abstract findFragmentByTag(Ljava/lang/String;)Landroid/support/v4/app/Fragment;
-.end method
-
-.method public abstract getFragments()Ljava/util/List;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()",
-            "Ljava/util/List<",
-            "Landroid/support/v4/app/Fragment;",
-            ">;"
-        }
-    .end annotation
-.end method
-
-.method public abstract isStateSaved()Z
-.end method
-
-.method public abstract popBackStack(II)V
 .end method
 
 .method public abstract popBackStackImmediate()Z

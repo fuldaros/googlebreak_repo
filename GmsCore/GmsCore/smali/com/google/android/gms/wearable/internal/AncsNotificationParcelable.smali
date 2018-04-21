@@ -2,15 +2,13 @@
 .super Lorg/microg/safeparcel/AutoSafeParcelable;
 .source "AncsNotificationParcelable.java"
 
-# interfaces
-.implements Lcom/google/android/gms/wearable/AncsNotification;
-
 
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator<",
+            "Landroid/os/Parcelable$Creator",
+            "<",
             "Lcom/google/android/gms/wearable/internal/AncsNotificationParcelable;",
             ">;"
         }
@@ -22,7 +20,8 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .line 24
+    .prologue
+    .line 22
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
     const-class v1, Lcom/google/android/gms/wearable/internal/AncsNotificationParcelable;
@@ -37,7 +36,8 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 23
+    .prologue
+    .line 21
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
     return-void

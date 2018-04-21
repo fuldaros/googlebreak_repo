@@ -27,7 +27,8 @@
 .field public static final DEFAULT_EVENT:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Lorg/microg/gms/checkin/CheckinRequest$Checkin$Event;",
             ">;"
         }
@@ -39,7 +40,8 @@
 .field public static final DEFAULT_REQUESTEDGROUP:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -49,7 +51,8 @@
 .field public static final DEFAULT_STAT:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;",
             ">;"
         }
@@ -83,7 +86,8 @@
 
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Lorg/microg/gms/checkin/CheckinRequest$Checkin$Event;",
             ">;"
         }
@@ -106,7 +110,8 @@
 
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -136,7 +141,8 @@
 
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;",
             ">;"
         }
@@ -155,9 +161,10 @@
 .method static constructor <clinit>()V
     .locals 2
 
+    .prologue
+    .line 509
     const-wide/16 v0, 0x0
 
-    .line 509
     invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
     move-result-object v0
@@ -185,9 +192,9 @@
 
     sput-object v0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->DEFAULT_REQUESTEDGROUP:Ljava/util/List;
 
+    .line 516
     const/4 v0, 0x0
 
-    .line 516
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v0
@@ -198,19 +205,28 @@
 .end method
 
 .method public constructor <init>(Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;Ljava/lang/Long;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;)V
-    .locals 0
+    .locals 1
+    .param p1, "build"    # Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;
+    .param p2, "lastCheckinMs"    # Ljava/lang/Long;
+    .param p6, "cellOperator"    # Ljava/lang/String;
+    .param p7, "simOperator"    # Ljava/lang/String;
+    .param p8, "roaming"    # Ljava/lang/String;
+    .param p9, "userNumber"    # Ljava/lang/Integer;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
             "Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;",
             "Ljava/lang/Long;",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Lorg/microg/gms/checkin/CheckinRequest$Checkin$Event;",
             ">;",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;",
             ">;",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;",
             "Ljava/lang/String;",
@@ -221,7 +237,11 @@
         }
     .end annotation
 
+    .prologue
     .line 574
+    .local p3, "event":Ljava/util/List;, "Ljava/util/List<Lorg/microg/gms/checkin/CheckinRequest$Checkin$Event;>;"
+    .local p4, "stat":Ljava/util/List;, "Ljava/util/List<Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;>;"
+    .local p5, "requestedGroup":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     invoke-direct {p0}, Lcom/squareup/wire/Message;-><init>()V
 
     .line 575
@@ -233,23 +253,23 @@
     .line 577
     invoke-static {p3}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->immutableCopyOf(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object p1
+    move-result-object v0
 
-    iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->event:Ljava/util/List;
+    iput-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->event:Ljava/util/List;
 
     .line 578
     invoke-static {p4}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->immutableCopyOf(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object p1
+    move-result-object v0
 
-    iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->stat:Ljava/util/List;
+    iput-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->stat:Ljava/util/List;
 
     .line 579
     invoke-static {p5}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->immutableCopyOf(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object p1
+    move-result-object v0
 
-    iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->requestedGroup:Ljava/util/List;
+    iput-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->requestedGroup:Ljava/util/List;
 
     .line 580
     iput-object p6, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->cellOperator:Ljava/lang/String;
@@ -263,12 +283,15 @@
     .line 583
     iput-object p9, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->userNumber:Ljava/lang/Integer;
 
+    .line 584
     return-void
 .end method
 
 .method private constructor <init>(Lorg/microg/gms/checkin/CheckinRequest$Checkin$Builder;)V
     .locals 10
+    .param p1, "builder"    # Lorg/microg/gms/checkin/CheckinRequest$Checkin$Builder;
 
+    .prologue
     .line 587
     iget-object v1, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Builder;->build:Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;
 
@@ -295,12 +318,16 @@
     .line 588
     invoke-virtual {p0, p1}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->setBuilder(Lcom/squareup/wire/Message$Builder;)V
 
+    .line 589
     return-void
 .end method
 
 .method synthetic constructor <init>(Lorg/microg/gms/checkin/CheckinRequest$Checkin$Builder;Lorg/microg/gms/checkin/CheckinRequest$1;)V
     .locals 0
+    .param p1, "x0"    # Lorg/microg/gms/checkin/CheckinRequest$Checkin$Builder;
+    .param p2, "x1"    # Lorg/microg/gms/checkin/CheckinRequest$1;
 
+    .prologue
     .line 507
     invoke-direct {p0, p1}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;-><init>(Lorg/microg/gms/checkin/CheckinRequest$Checkin$Builder;)V
 
@@ -308,204 +335,218 @@
 .end method
 
 .method static synthetic access$500(Ljava/util/List;)Ljava/util/List;
-    .locals 0
+    .locals 1
+    .param p0, "x0"    # Ljava/util/List;
 
+    .prologue
     .line 507
     invoke-static {p0}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->copyOf(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object p0
+    move-result-object v0
 
-    return-object p0
+    return-object v0
 .end method
 
 .method static synthetic access$600(Ljava/util/List;)Ljava/util/List;
-    .locals 0
+    .locals 1
+    .param p0, "x0"    # Ljava/util/List;
 
+    .prologue
     .line 507
     invoke-static {p0}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->copyOf(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object p0
+    move-result-object v0
 
-    return-object p0
+    return-object v0
 .end method
 
 .method static synthetic access$700(Ljava/util/List;)Ljava/util/List;
-    .locals 0
+    .locals 1
+    .param p0, "x0"    # Ljava/util/List;
 
+    .prologue
     .line 507
     invoke-static {p0}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->copyOf(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object p0
+    move-result-object v0
 
-    return-object p0
+    return-object v0
 .end method
 
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 4
+    .locals 5
+    .param p1, "other"    # Ljava/lang/Object;
 
-    const/4 v0, 0x1
-
-    if-ne p1, p0, :cond_0
-
-    return v0
-
-    .line 594
-    :cond_0
-    instance-of v1, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin;
+    .prologue
+    const/4 v1, 0x1
 
     const/4 v2, 0x0
 
-    if-nez v1, :cond_1
-
-    return v2
-
-    .line 595
-    :cond_1
-    check-cast p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin;
+    .line 593
+    if-ne p1, p0, :cond_1
 
     .line 596
-    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->build:Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;
+    :cond_0
+    :goto_0
+    return v1
 
-    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->build:Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;
+    .line 594
+    :cond_1
+    instance-of v3, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin;
 
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+    if-nez v3, :cond_2
 
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->lastCheckinMs:Ljava/lang/Long;
-
-    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->lastCheckinMs:Ljava/lang/Long;
-
-    .line 597
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->event:Ljava/util/List;
-
-    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->event:Ljava/util/List;
-
-    .line 598
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->equals(Ljava/util/List;Ljava/util/List;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->stat:Ljava/util/List;
-
-    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->stat:Ljava/util/List;
-
-    .line 599
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->equals(Ljava/util/List;Ljava/util/List;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->requestedGroup:Ljava/util/List;
-
-    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->requestedGroup:Ljava/util/List;
-
-    .line 600
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->equals(Ljava/util/List;Ljava/util/List;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->cellOperator:Ljava/lang/String;
-
-    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->cellOperator:Ljava/lang/String;
-
-    .line 601
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->simOperator:Ljava/lang/String;
-
-    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->simOperator:Ljava/lang/String;
-
-    .line 602
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->roaming:Ljava/lang/String;
-
-    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->roaming:Ljava/lang/String;
-
-    .line 603
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->userNumber:Ljava/lang/Integer;
-
-    iget-object p1, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->userNumber:Ljava/lang/Integer;
-
-    .line 604
-    invoke-virtual {p0, v1, p1}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result p1
-
-    if-eqz p1, :cond_2
+    move v1, v2
 
     goto :goto_0
 
     :cond_2
-    move v0, v2
+    move-object v0, p1
 
-    :goto_0
-    return v0
+    .line 595
+    check-cast v0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;
+
+    .line 596
+    .local v0, "o":Lorg/microg/gms/checkin/CheckinRequest$Checkin;
+    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->build:Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;
+
+    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->build:Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;
+
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->lastCheckinMs:Ljava/lang/Long;
+
+    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->lastCheckinMs:Ljava/lang/Long;
+
+    .line 597
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->event:Ljava/util/List;
+
+    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->event:Ljava/util/List;
+
+    .line 598
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->equals(Ljava/util/List;Ljava/util/List;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->stat:Ljava/util/List;
+
+    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->stat:Ljava/util/List;
+
+    .line 599
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->equals(Ljava/util/List;Ljava/util/List;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->requestedGroup:Ljava/util/List;
+
+    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->requestedGroup:Ljava/util/List;
+
+    .line 600
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->equals(Ljava/util/List;Ljava/util/List;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->cellOperator:Ljava/lang/String;
+
+    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->cellOperator:Ljava/lang/String;
+
+    .line 601
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->simOperator:Ljava/lang/String;
+
+    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->simOperator:Ljava/lang/String;
+
+    .line 602
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->roaming:Ljava/lang/String;
+
+    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->roaming:Ljava/lang/String;
+
+    .line 603
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->userNumber:Ljava/lang/Integer;
+
+    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->userNumber:Ljava/lang/Integer;
+
+    .line 604
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_0
+
+    :cond_3
+    move v1, v2
+
+    goto :goto_0
 .end method
 
 .method public hashCode()I
-    .locals 4
+    .locals 5
+
+    .prologue
+    const/4 v3, 0x1
+
+    const/4 v1, 0x0
 
     .line 609
     iget v0, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->hashCode:I
 
-    if-nez v0, :cond_9
+    .line 610
+    .local v0, "result":I
+    if-nez v0, :cond_2
 
     .line 611
-    iget-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->build:Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->build:Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;
 
-    const/4 v1, 0x0
+    if-eqz v2, :cond_3
 
-    if-eqz v0, :cond_0
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->build:Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;
 
-    iget-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->build:Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;
-
-    invoke-virtual {v0}, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;->hashCode()I
+    invoke-virtual {v2}, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;->hashCode()I
 
     move-result v0
 
-    goto :goto_0
-
-    :cond_0
-    move v0, v1
-
-    :goto_0
-    mul-int/lit8 v0, v0, 0x25
-
     .line 612
+    :goto_0
+    mul-int/lit8 v4, v0, 0x25
+
     iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->lastCheckinMs:Ljava/lang/Long;
 
-    if-eqz v2, :cond_1
+    if-eqz v2, :cond_4
 
     iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->lastCheckinMs:Ljava/lang/Long;
 
@@ -513,143 +554,111 @@
 
     move-result v2
 
-    goto :goto_1
-
-    :cond_1
-    move v2, v1
-
     :goto_1
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
+    add-int v0, v4, v2
 
     .line 613
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->event:Ljava/util/List;
-
-    const/4 v3, 0x1
-
-    if-eqz v2, :cond_2
+    mul-int/lit8 v4, v0, 0x25
 
     iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->event:Ljava/util/List;
-
-    invoke-interface {v2}, Ljava/util/List;->hashCode()I
-
-    move-result v2
-
-    goto :goto_2
-
-    :cond_2
-    move v2, v3
-
-    :goto_2
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
-
-    .line 614
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->stat:Ljava/util/List;
-
-    if-eqz v2, :cond_3
-
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->stat:Ljava/util/List;
-
-    invoke-interface {v2}, Ljava/util/List;->hashCode()I
-
-    move-result v2
-
-    goto :goto_3
-
-    :cond_3
-    move v2, v3
-
-    :goto_3
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
-
-    .line 615
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->requestedGroup:Ljava/util/List;
-
-    if-eqz v2, :cond_4
-
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->requestedGroup:Ljava/util/List;
-
-    invoke-interface {v2}, Ljava/util/List;->hashCode()I
-
-    move-result v3
-
-    :cond_4
-    add-int/2addr v0, v3
-
-    mul-int/lit8 v0, v0, 0x25
-
-    .line 616
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->cellOperator:Ljava/lang/String;
 
     if-eqz v2, :cond_5
 
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->event:Ljava/util/List;
+
+    invoke-interface {v2}, Ljava/util/List;->hashCode()I
+
+    move-result v2
+
+    :goto_2
+    add-int v0, v4, v2
+
+    .line 614
+    mul-int/lit8 v4, v0, 0x25
+
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->stat:Ljava/util/List;
+
+    if-eqz v2, :cond_6
+
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->stat:Ljava/util/List;
+
+    invoke-interface {v2}, Ljava/util/List;->hashCode()I
+
+    move-result v2
+
+    :goto_3
+    add-int v0, v4, v2
+
+    .line 615
+    mul-int/lit8 v2, v0, 0x25
+
+    iget-object v4, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->requestedGroup:Ljava/util/List;
+
+    if-eqz v4, :cond_0
+
+    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->requestedGroup:Ljava/util/List;
+
+    invoke-interface {v3}, Ljava/util/List;->hashCode()I
+
+    move-result v3
+
+    :cond_0
+    add-int v0, v2, v3
+
+    .line 616
+    mul-int/lit8 v3, v0, 0x25
+
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->cellOperator:Ljava/lang/String;
+
+    if-eqz v2, :cond_7
+
     iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->cellOperator:Ljava/lang/String;
 
     invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
 
     move-result v2
 
-    goto :goto_4
-
-    :cond_5
-    move v2, v1
-
     :goto_4
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
+    add-int v0, v3, v2
 
     .line 617
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->simOperator:Ljava/lang/String;
-
-    if-eqz v2, :cond_6
+    mul-int/lit8 v3, v0, 0x25
 
     iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->simOperator:Ljava/lang/String;
-
-    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
-
-    move-result v2
-
-    goto :goto_5
-
-    :cond_6
-    move v2, v1
-
-    :goto_5
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
-
-    .line 618
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->roaming:Ljava/lang/String;
-
-    if-eqz v2, :cond_7
-
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->roaming:Ljava/lang/String;
-
-    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
-
-    move-result v2
-
-    goto :goto_6
-
-    :cond_7
-    move v2, v1
-
-    :goto_6
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
-
-    .line 619
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->userNumber:Ljava/lang/Integer;
 
     if-eqz v2, :cond_8
+
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->simOperator:Ljava/lang/String;
+
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
+
+    move-result v2
+
+    :goto_5
+    add-int v0, v3, v2
+
+    .line 618
+    mul-int/lit8 v3, v0, 0x25
+
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->roaming:Ljava/lang/String;
+
+    if-eqz v2, :cond_9
+
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->roaming:Ljava/lang/String;
+
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
+
+    move-result v2
+
+    :goto_6
+    add-int v0, v3, v2
+
+    .line 619
+    mul-int/lit8 v2, v0, 0x25
+
+    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->userNumber:Ljava/lang/Integer;
+
+    if-eqz v3, :cond_1
 
     iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->userNumber:Ljava/lang/Integer;
 
@@ -657,12 +666,55 @@
 
     move-result v1
 
-    :cond_8
-    add-int/2addr v0, v1
+    :cond_1
+    add-int v0, v2, v1
 
     .line 620
     iput v0, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin;->hashCode:I
 
-    :cond_9
+    .line 622
+    :cond_2
     return v0
+
+    :cond_3
+    move v0, v1
+
+    .line 611
+    goto :goto_0
+
+    :cond_4
+    move v2, v1
+
+    .line 612
+    goto :goto_1
+
+    :cond_5
+    move v2, v3
+
+    .line 613
+    goto :goto_2
+
+    :cond_6
+    move v2, v3
+
+    .line 614
+    goto :goto_3
+
+    :cond_7
+    move v2, v1
+
+    .line 616
+    goto :goto_4
+
+    :cond_8
+    move v2, v1
+
+    .line 617
+    goto :goto_5
+
+    :cond_9
+    move v2, v1
+
+    .line 618
+    goto :goto_6
 .end method

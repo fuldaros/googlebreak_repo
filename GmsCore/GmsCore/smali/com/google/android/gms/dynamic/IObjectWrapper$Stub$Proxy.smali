@@ -24,13 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
+    .param p1, "remote"    # Landroid/os/IBinder;
 
+    .prologue
     .line 56
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 57
     iput-object p1, p0, Lcom/google/android/gms/dynamic/IObjectWrapper$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
+    .line 58
     return-void
 .end method
 
@@ -39,6 +42,7 @@
 .method public asBinder()Landroid/os/IBinder;
     .locals 1
 
+    .prologue
     .line 61
     iget-object v0, p0, Lcom/google/android/gms/dynamic/IObjectWrapper$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 

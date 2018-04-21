@@ -30,249 +30,285 @@
 # direct methods
 .method public constructor <init>(FFFF)V
     .locals 0
+    .param p1, "minx"    # F
+    .param p2, "miny"    # F
+    .param p3, "maxx"    # F
+    .param p4, "maxy"    # F
 
-    .line 37
+    .prologue
+    .line 36
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 38
+    .line 37
     iput p1, p0, Lorg/oscim/utils/geom/LineClipper;->xmin:F
 
-    .line 39
+    .line 38
     iput p2, p0, Lorg/oscim/utils/geom/LineClipper;->ymin:F
 
-    .line 40
+    .line 39
     iput p3, p0, Lorg/oscim/utils/geom/LineClipper;->xmax:F
 
-    .line 41
+    .line 40
     iput p4, p0, Lorg/oscim/utils/geom/LineClipper;->ymax:F
 
+    .line 41
     return-void
 .end method
 
 .method private clip(FFFFII)Z
     .locals 7
+    .param p1, "x0"    # F
+    .param p2, "y0"    # F
+    .param p3, "x1"    # F
+    .param p4, "y1"    # F
+    .param p5, "outcode0"    # I
+    .param p6, "outcode1"    # I
 
+    .prologue
+    .line 135
+    const/4 v0, 0x0
+
+    .line 138
+    .local v0, "accept":Z
     :goto_0
-    or-int v0, p5, p6
+    or-int v5, p5, p6
 
-    const/4 v1, 0x0
+    if-nez v5, :cond_2
 
-    const/4 v2, 0x1
+    .line 140
+    const/4 v0, 0x1
 
-    if-nez v0, :cond_0
-
-    move v1, v2
-
-    goto :goto_1
-
+    .line 197
     :cond_0
-    and-int v0, p5, p6
+    if-eqz v0, :cond_1
 
-    if-eqz v0, :cond_2
-
-    :goto_1
-    if-eqz v1, :cond_1
-
-    .line 199
+    .line 198
     iput p1, p0, Lorg/oscim/utils/geom/LineClipper;->outX1:F
 
-    .line 200
+    .line 199
     iput p2, p0, Lorg/oscim/utils/geom/LineClipper;->outY1:F
 
-    .line 201
+    .line 200
     iput p3, p0, Lorg/oscim/utils/geom/LineClipper;->outX2:F
 
-    .line 202
+    .line 201
     iput p4, p0, Lorg/oscim/utils/geom/LineClipper;->outY2:F
 
+    .line 203
     :cond_1
-    return v1
+    return v0
 
+    .line 142
     :cond_2
-    if-nez p5, :cond_3
+    and-int v5, p5, p6
 
-    move v0, p6
+    if-nez v5, :cond_0
 
-    goto :goto_2
+    .line 148
+    const/4 v3, 0x0
 
-    :cond_3
-    move v0, p5
-
-    :goto_2
-    and-int/lit8 v3, v0, 0x8
-
+    .line 149
+    .local v3, "x":F
     const/4 v4, 0x0
 
-    if-eqz v3, :cond_4
+    .line 152
+    .local v4, "y":F
+    if-nez p5, :cond_6
 
-    sub-float v3, p3, p1
+    move v2, p6
+
+    .line 156
+    .local v2, "outcodeOut":I
+    :goto_1
+    and-int/lit8 v5, v2, 0x8
+
+    if-eqz v5, :cond_7
+
+    .line 158
+    sub-float v5, p3, p1
+
+    iget v6, p0, Lorg/oscim/utils/geom/LineClipper;->ymax:F
+
+    sub-float/2addr v6, p2
+
+    mul-float/2addr v5, v6
+
+    sub-float v6, p4, p2
+
+    div-float/2addr v5, v6
+
+    add-float v3, p1, v5
 
     .line 159
     iget v4, p0, Lorg/oscim/utils/geom/LineClipper;->ymax:F
 
-    sub-float/2addr v4, p2
+    .line 174
+    :cond_3
+    :goto_2
+    const/4 v1, 0x0
 
-    mul-float/2addr v3, v4
+    .line 175
+    .local v1, "outcode":I
+    iget v5, p0, Lorg/oscim/utils/geom/LineClipper;->xmin:F
 
-    sub-float v4, p4, p2
+    cmpg-float v5, v3, v5
 
-    div-float/2addr v3, v4
+    if-gez v5, :cond_a
 
-    add-float v4, p1, v3
+    .line 176
+    or-int/lit8 v1, v1, 0x1
+
+    .line 179
+    :cond_4
+    :goto_3
+    iget v5, p0, Lorg/oscim/utils/geom/LineClipper;->ymin:F
+
+    cmpg-float v5, v4, v5
+
+    if-gez v5, :cond_b
+
+    .line 180
+    or-int/lit8 v1, v1, 0x4
+
+    .line 186
+    :cond_5
+    :goto_4
+    if-ne v2, p5, :cond_c
+
+    .line 187
+    move p1, v3
+
+    .line 188
+    move p2, v4
+
+    .line 189
+    move p5, v1
+
+    goto :goto_0
+
+    .end local v1    # "outcode":I
+    .end local v2    # "outcodeOut":I
+    :cond_6
+    move v2, p5
+
+    .line 152
+    goto :goto_1
 
     .line 160
-    iget v3, p0, Lorg/oscim/utils/geom/LineClipper;->ymax:F
+    .restart local v2    # "outcodeOut":I
+    :cond_7
+    and-int/lit8 v5, v2, 0x4
 
-    goto :goto_4
+    if-eqz v5, :cond_8
 
-    :cond_4
-    and-int/lit8 v3, v0, 0x4
+    .line 162
+    sub-float v5, p3, p1
 
-    if-eqz v3, :cond_5
+    iget v6, p0, Lorg/oscim/utils/geom/LineClipper;->ymin:F
 
-    sub-float v3, p3, p1
+    sub-float/2addr v6, p2
+
+    mul-float/2addr v5, v6
+
+    sub-float v6, p4, p2
+
+    div-float/2addr v5, v6
+
+    add-float v3, p1, v5
 
     .line 163
     iget v4, p0, Lorg/oscim/utils/geom/LineClipper;->ymin:F
 
-    sub-float/2addr v4, p2
-
-    mul-float/2addr v3, v4
-
-    sub-float v4, p4, p2
-
-    div-float/2addr v3, v4
-
-    add-float v4, p1, v3
+    goto :goto_2
 
     .line 164
-    iget v3, p0, Lorg/oscim/utils/geom/LineClipper;->ymin:F
+    :cond_8
+    and-int/lit8 v5, v2, 0x2
 
-    goto :goto_4
+    if-eqz v5, :cond_9
 
-    :cond_5
-    and-int/lit8 v3, v0, 0x2
+    .line 166
+    sub-float v5, p4, p2
 
-    if-eqz v3, :cond_6
+    iget v6, p0, Lorg/oscim/utils/geom/LineClipper;->xmax:F
 
-    sub-float v3, p4, p2
+    sub-float/2addr v6, p1
+
+    mul-float/2addr v5, v6
+
+    sub-float v6, p3, p1
+
+    div-float/2addr v5, v6
+
+    add-float v4, p2, v5
 
     .line 167
-    iget v4, p0, Lorg/oscim/utils/geom/LineClipper;->xmax:F
-
-    sub-float/2addr v4, p1
-
-    mul-float/2addr v3, v4
-
-    sub-float v4, p3, p1
-
-    div-float/2addr v3, v4
-
-    add-float v4, p2, v3
-
-    .line 168
     iget v3, p0, Lorg/oscim/utils/geom/LineClipper;->xmax:F
 
-    :goto_3
-    move v6, v4
+    goto :goto_2
 
-    move v4, v3
+    .line 168
+    :cond_9
+    and-int/lit8 v5, v2, 0x1
 
-    move v3, v6
+    if-eqz v5, :cond_3
 
-    goto :goto_4
+    .line 170
+    sub-float v5, p4, p2
 
-    :cond_6
-    and-int/lit8 v3, v0, 0x1
+    iget v6, p0, Lorg/oscim/utils/geom/LineClipper;->xmin:F
 
-    if-eqz v3, :cond_7
+    sub-float/2addr v6, p1
 
-    sub-float v3, p4, p2
+    mul-float/2addr v5, v6
+
+    sub-float v6, p3, p1
+
+    div-float/2addr v5, v6
+
+    add-float v4, p2, v5
 
     .line 171
-    iget v4, p0, Lorg/oscim/utils/geom/LineClipper;->xmin:F
-
-    sub-float/2addr v4, p1
-
-    mul-float/2addr v3, v4
-
-    sub-float v4, p3, p1
-
-    div-float/2addr v3, v4
-
-    add-float v4, p2, v3
-
-    .line 172
     iget v3, p0, Lorg/oscim/utils/geom/LineClipper;->xmin:F
+
+    goto :goto_2
+
+    .line 177
+    .restart local v1    # "outcode":I
+    :cond_a
+    iget v5, p0, Lorg/oscim/utils/geom/LineClipper;->xmax:F
+
+    cmpl-float v5, v3, v5
+
+    if-lez v5, :cond_4
+
+    .line 178
+    or-int/lit8 v1, v1, 0x2
 
     goto :goto_3
 
-    :cond_7
-    move v3, v4
+    .line 181
+    :cond_b
+    iget v5, p0, Lorg/oscim/utils/geom/LineClipper;->ymax:F
 
-    .line 176
-    :goto_4
-    iget v5, p0, Lorg/oscim/utils/geom/LineClipper;->xmin:F
+    cmpl-float v5, v4, v5
 
-    cmpg-float v5, v4, v5
-
-    if-gez v5, :cond_8
-
-    move v1, v2
-
-    goto :goto_5
-
-    .line 178
-    :cond_8
-    iget v2, p0, Lorg/oscim/utils/geom/LineClipper;->xmax:F
-
-    cmpl-float v2, v4, v2
-
-    if-lez v2, :cond_9
-
-    const/4 v1, 0x2
-
-    .line 180
-    :cond_9
-    :goto_5
-    iget v2, p0, Lorg/oscim/utils/geom/LineClipper;->ymin:F
-
-    cmpg-float v2, v3, v2
-
-    if-gez v2, :cond_a
-
-    or-int/lit8 v1, v1, 0x4
-
-    goto :goto_6
+    if-lez v5, :cond_5
 
     .line 182
-    :cond_a
-    iget v2, p0, Lorg/oscim/utils/geom/LineClipper;->ymax:F
-
-    cmpl-float v2, v3, v2
-
-    if-lez v2, :cond_b
-
     or-int/lit8 v1, v1, 0x8
 
-    :cond_b
-    :goto_6
-    if-ne v0, p5, :cond_c
+    goto :goto_4
 
-    move p5, v1
-
-    move p2, v3
-
-    move p1, v4
-
-    goto/16 :goto_0
-
+    .line 191
     :cond_c
+    move p3, v3
+
+    .line 192
+    move p4, v4
+
+    .line 193
     move p6, v1
-
-    move p4, v3
-
-    move p3, v4
 
     goto/16 :goto_0
 .end method
@@ -280,440 +316,534 @@
 
 # virtual methods
 .method public clipLine(Lorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;)I
-    .locals 11
+    .locals 15
+    .param p1, "in"    # Lorg/oscim/core/GeometryBuffer;
+    .param p2, "out"    # Lorg/oscim/core/GeometryBuffer;
+
+    .prologue
+    .line 218
+    invoke-virtual/range {p2 .. p2}, Lorg/oscim/core/GeometryBuffer;->clear()Lorg/oscim/core/GeometryBuffer;
+
+    .line 219
+    const/4 v10, 0x0
+
+    .line 220
+    .local v10, "pointPos":I
+    const/4 v9, 0x0
+
+    .line 222
+    .local v9, "numLines":I
+    const/4 v3, 0x0
+
+    .local v3, "i":I
+    move-object/from16 v0, p1
+
+    iget-object v13, v0, Lorg/oscim/core/GeometryBuffer;->index:[I
+
+    array-length v8, v13
+
+    .local v8, "n":I
+    :goto_0
+    if-ge v3, v8, :cond_0
 
     .line 223
-    invoke-virtual {p2}, Lorg/oscim/core/GeometryBuffer;->clear()Lorg/oscim/core/GeometryBuffer;
+    move-object/from16 v0, p1
 
-    .line 227
-    iget-object v0, p1, Lorg/oscim/core/GeometryBuffer;->index:[I
+    iget-object v13, v0, Lorg/oscim/core/GeometryBuffer;->index:[I
 
-    const/4 v1, 0x0
+    aget v7, v13, v3
 
-    array-length v0, v0
-
-    move v2, v1
-
-    move v3, v2
-
-    move v4, v3
-
-    :goto_0
-    if-ge v2, v0, :cond_8
-
-    .line 228
-    iget-object v5, p1, Lorg/oscim/core/GeometryBuffer;->index:[I
-
-    aget v5, v5, v2
-
-    if-gez v5, :cond_0
-
-    goto/16 :goto_5
-
-    :cond_0
-    const/4 v6, 0x4
-
-    if-ge v5, v6, :cond_1
-
-    add-int/2addr v4, v5
-
-    goto :goto_4
-
-    :cond_1
-    if-nez v5, :cond_2
-
-    goto :goto_4
-
-    :cond_2
-    add-int/2addr v5, v4
-
-    .line 244
-    iget-object v6, p1, Lorg/oscim/core/GeometryBuffer;->points:[F
-
-    add-int/lit8 v7, v4, 0x1
-
-    aget v4, v6, v4
-
-    .line 245
-    iget-object v6, p1, Lorg/oscim/core/GeometryBuffer;->points:[F
-
-    add-int/lit8 v8, v7, 0x1
-
-    aget v6, v6, v7
-
-    .line 247
-    invoke-virtual {p0, v4, v6}, Lorg/oscim/utils/geom/LineClipper;->clipStart(FF)Z
-
-    move-result v7
-
-    if-eqz v7, :cond_3
-
-    .line 250
-    invoke-virtual {p2}, Lorg/oscim/core/GeometryBuffer;->startLine()Lorg/oscim/core/GeometryBuffer;
-
-    .line 251
-    invoke-virtual {p2, v4, v6}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
-
-    add-int/lit8 v3, v3, 0x1
-
-    :cond_3
-    :goto_1
-    if-ge v8, v5, :cond_7
-
-    .line 257
-    iget-object v4, p1, Lorg/oscim/core/GeometryBuffer;->points:[F
-
-    add-int/lit8 v6, v8, 0x1
-
-    aget v4, v4, v8
-
-    .line 258
-    iget-object v8, p1, Lorg/oscim/core/GeometryBuffer;->points:[F
-
-    add-int/lit8 v9, v6, 0x1
-
-    aget v6, v8, v6
-
-    .line 260
-    invoke-virtual {p0, v4, v6}, Lorg/oscim/utils/geom/LineClipper;->clipNext(FF)I
-
-    move-result v8
-
-    if-nez v8, :cond_4
-
-    move v7, v1
-
-    goto :goto_3
-
-    :cond_4
-    const/4 v10, 0x1
-
-    if-ne v8, v10, :cond_5
-
-    .line 266
-    invoke-virtual {p2, v4, v6}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
-
-    goto :goto_3
-
-    :cond_5
-    if-eqz v7, :cond_6
-
-    .line 270
-    iget v7, p0, Lorg/oscim/utils/geom/LineClipper;->outX2:F
-
-    iget v8, p0, Lorg/oscim/utils/geom/LineClipper;->outY2:F
-
-    invoke-virtual {p2, v7, v8}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
-
-    goto :goto_2
-
-    .line 273
-    :cond_6
-    invoke-virtual {p2}, Lorg/oscim/core/GeometryBuffer;->startLine()Lorg/oscim/core/GeometryBuffer;
-
-    add-int/lit8 v3, v3, 0x1
-
-    .line 275
-    iget v7, p0, Lorg/oscim/utils/geom/LineClipper;->outX1:F
-
-    iget v8, p0, Lorg/oscim/utils/geom/LineClipper;->outY1:F
-
-    invoke-virtual {p2, v7, v8}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
-
-    .line 276
-    iget v7, p0, Lorg/oscim/utils/geom/LineClipper;->outX2:F
-
-    iget v8, p0, Lorg/oscim/utils/geom/LineClipper;->outY2:F
-
-    invoke-virtual {p2, v7, v8}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
+    .line 224
+    .local v7, "len":I
+    if-gez v7, :cond_1
 
     .line 278
-    :goto_2
-    invoke-virtual {p0, v4, v6}, Lorg/oscim/utils/geom/LineClipper;->clipStart(FF)Z
-
-    move-result v4
-
-    move v7, v4
-
-    :goto_3
-    move v8, v9
-
-    goto :goto_1
-
-    :cond_7
-    move v4, v5
-
-    :goto_4
-    add-int/lit8 v2, v2, 0x1
-
-    goto :goto_0
-
-    :cond_8
-    :goto_5
-    return v3
-.end method
-
-.method public clipNext(FF)I
-    .locals 10
-
-    .line 100
-    iget v0, p0, Lorg/oscim/utils/geom/LineClipper;->xmin:F
-
-    cmpg-float v0, p1, v0
-
-    const/4 v1, 0x1
-
-    const/4 v2, 0x0
-
-    if-gez v0, :cond_0
-
-    move v0, v1
-
-    goto :goto_0
-
-    .line 102
+    .end local v7    # "len":I
     :cond_0
-    iget v0, p0, Lorg/oscim/utils/geom/LineClipper;->xmax:F
+    return v9
 
-    cmpl-float v0, p1, v0
+    .line 227
+    .restart local v7    # "len":I
+    :cond_1
+    const/4 v13, 0x4
 
-    if-lez v0, :cond_1
+    if-ge v7, v13, :cond_3
 
-    const/4 v0, 0x2
+    .line 228
+    add-int/2addr v10, v7
+
+    .line 222
+    :cond_2
+    :goto_1
+    add-int/lit8 v3, v3, 0x1
 
     goto :goto_0
 
-    :cond_1
-    move v0, v2
-
-    .line 105
-    :goto_0
-    iget v3, p0, Lorg/oscim/utils/geom/LineClipper;->ymin:F
-
-    cmpg-float v3, p2, v3
-
-    if-gez v3, :cond_2
-
-    or-int/lit8 v0, v0, 0x4
-
-    goto :goto_1
-
-    .line 107
-    :cond_2
-    iget v3, p0, Lorg/oscim/utils/geom/LineClipper;->ymax:F
-
-    cmpl-float v3, p2, v3
-
-    if-lez v3, :cond_3
-
-    or-int/lit8 v0, v0, 0x8
-
-    .line 110
+    .line 232
     :cond_3
-    :goto_1
-    iget v3, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+    if-eqz v7, :cond_2
 
-    or-int/2addr v3, v0
+    .line 236
+    move v4, v10
 
-    if-nez v3, :cond_4
+    .line 237
+    .local v4, "inPos":I
+    add-int v2, v4, v7
 
-    goto :goto_2
+    .line 239
+    .local v2, "end":I
+    move-object/from16 v0, p1
 
-    .line 113
-    :cond_4
-    iget v1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+    iget-object v13, v0, Lorg/oscim/core/GeometryBuffer;->points:[F
 
-    and-int/2addr v1, v0
+    add-int/lit8 v5, v4, 0x1
 
-    if-eqz v1, :cond_6
+    .end local v4    # "inPos":I
+    .local v5, "inPos":I
+    aget v11, v13, v4
 
-    :cond_5
-    move v1, v2
+    .line 240
+    .local v11, "x":F
+    move-object/from16 v0, p1
 
-    goto :goto_2
+    iget-object v13, v0, Lorg/oscim/core/GeometryBuffer;->points:[F
 
-    .line 117
-    :cond_6
-    iget v4, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevX:F
+    add-int/lit8 v4, v5, 0x1
 
-    iget v5, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevY:F
+    .end local v5    # "inPos":I
+    .restart local v4    # "inPos":I
+    aget v12, v13, v5
 
-    iget v8, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+    .line 242
+    .local v12, "y":F
+    invoke-virtual {p0, v11, v12}, Lorg/oscim/utils/geom/LineClipper;->clipStart(FF)Z
 
-    move-object v3, p0
+    move-result v6
 
-    move v6, p1
+    .line 244
+    .local v6, "inside":Z
+    if-eqz v6, :cond_8
 
-    move v7, p2
+    .line 245
+    invoke-virtual/range {p2 .. p2}, Lorg/oscim/core/GeometryBuffer;->startLine()Lorg/oscim/core/GeometryBuffer;
 
-    move v9, v0
+    .line 246
+    move-object/from16 v0, p2
 
-    invoke-direct/range {v3 .. v9}, Lorg/oscim/utils/geom/LineClipper;->clip(FFFFII)Z
+    invoke-virtual {v0, v11, v12}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
+
+    .line 247
+    add-int/lit8 v9, v9, 0x1
+
+    move v5, v4
+
+    .line 250
+    .end local v4    # "inPos":I
+    .restart local v5    # "inPos":I
+    :goto_2
+    if-ge v5, v2, :cond_7
+
+    .line 252
+    move-object/from16 v0, p1
+
+    iget-object v13, v0, Lorg/oscim/core/GeometryBuffer;->points:[F
+
+    add-int/lit8 v4, v5, 0x1
+
+    .end local v5    # "inPos":I
+    .restart local v4    # "inPos":I
+    aget v11, v13, v5
+
+    .line 253
+    move-object/from16 v0, p1
+
+    iget-object v13, v0, Lorg/oscim/core/GeometryBuffer;->points:[F
+
+    add-int/lit8 v5, v4, 0x1
+
+    .end local v4    # "inPos":I
+    .restart local v5    # "inPos":I
+    aget v12, v13, v4
+
+    .line 255
+    invoke-virtual {p0, v11, v12}, Lorg/oscim/utils/geom/LineClipper;->clipNext(FF)I
 
     move-result v1
 
-    if-eqz v1, :cond_5
+    .line 256
+    .local v1, "clip":I
+    if-nez v1, :cond_4
 
-    const/4 v1, -0x1
+    .line 258
+    const/4 v6, 0x0
 
-    .line 119
-    :goto_2
-    iput v0, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+    goto :goto_2
 
-    .line 120
-    iput p1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevX:F
+    .line 259
+    :cond_4
+    const/4 v13, 0x1
 
-    .line 121
-    iput p2, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevY:F
+    if-ne v1, v13, :cond_5
 
-    return v1
-.end method
+    .line 261
+    move-object/from16 v0, p2
 
-.method public clipStart(FF)Z
-    .locals 3
+    invoke-virtual {v0, v11, v12}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
 
-    .line 61
-    iput p1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevX:F
+    goto :goto_2
 
-    .line 62
-    iput p2, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevY:F
+    .line 263
+    :cond_5
+    if-eqz v6, :cond_6
 
-    const/4 v0, 0x0
+    .line 265
+    iget v13, p0, Lorg/oscim/utils/geom/LineClipper;->outX2:F
 
-    .line 64
-    iput v0, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+    iget v14, p0, Lorg/oscim/utils/geom/LineClipper;->outY2:F
 
-    .line 65
-    iget v1, p0, Lorg/oscim/utils/geom/LineClipper;->xmin:F
+    move-object/from16 v0, p2
 
-    cmpg-float v1, p1, v1
+    invoke-virtual {v0, v13, v14}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
 
-    const/4 v2, 0x1
+    .line 273
+    :goto_3
+    invoke-virtual {p0, v11, v12}, Lorg/oscim/utils/geom/LineClipper;->clipStart(FF)Z
 
-    if-gez v1, :cond_0
+    move-result v6
 
-    .line 66
-    iget p1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+    goto :goto_2
 
-    or-int/2addr p1, v2
+    .line 268
+    :cond_6
+    invoke-virtual/range {p2 .. p2}, Lorg/oscim/core/GeometryBuffer;->startLine()Lorg/oscim/core/GeometryBuffer;
 
-    iput p1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+    .line 269
+    add-int/lit8 v9, v9, 0x1
 
-    goto :goto_0
+    .line 270
+    iget v13, p0, Lorg/oscim/utils/geom/LineClipper;->outX1:F
 
-    .line 67
-    :cond_0
-    iget v1, p0, Lorg/oscim/utils/geom/LineClipper;->xmax:F
+    iget v14, p0, Lorg/oscim/utils/geom/LineClipper;->outY1:F
 
-    cmpl-float p1, p1, v1
+    move-object/from16 v0, p2
 
-    if-lez p1, :cond_1
+    invoke-virtual {v0, v13, v14}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
 
-    .line 68
-    iget p1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+    .line 271
+    iget v13, p0, Lorg/oscim/utils/geom/LineClipper;->outX2:F
 
-    or-int/lit8 p1, p1, 0x2
+    iget v14, p0, Lorg/oscim/utils/geom/LineClipper;->outY2:F
 
-    iput p1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+    move-object/from16 v0, p2
 
-    .line 69
-    :cond_1
-    :goto_0
-    iget p1, p0, Lorg/oscim/utils/geom/LineClipper;->ymin:F
+    invoke-virtual {v0, v13, v14}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
 
-    cmpg-float p1, p2, p1
+    goto :goto_3
 
-    if-gez p1, :cond_2
-
-    .line 70
-    iget p1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
-
-    or-int/lit8 p1, p1, 0x4
-
-    iput p1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+    .line 276
+    .end local v1    # "clip":I
+    :cond_7
+    move v10, v2
 
     goto :goto_1
 
-    .line 71
-    :cond_2
-    iget p1, p0, Lorg/oscim/utils/geom/LineClipper;->ymax:F
+    .end local v5    # "inPos":I
+    .restart local v4    # "inPos":I
+    :cond_8
+    move v5, v4
 
-    cmpl-float p1, p2, p1
-
-    if-lez p1, :cond_3
-
-    .line 72
-    iget p1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
-
-    or-int/lit8 p1, p1, 0x8
-
-    iput p1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
-
-    .line 74
-    :cond_3
-    :goto_1
-    iget p1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
-
-    if-nez p1, :cond_4
-
-    move v0, v2
-
-    :cond_4
-    return v0
+    .end local v4    # "inPos":I
+    .restart local v5    # "inPos":I
+    goto :goto_2
 .end method
 
-.method public outcode(FF)I
-    .locals 1
+.method public clipNext(FF)I
+    .locals 8
+    .param p1, "x1"    # F
+    .param p2, "y1"    # F
 
-    .line 80
+    .prologue
+    .line 98
+    const/4 v6, 0x0
+
+    .line 99
+    .local v6, "outcode":I
     iget v0, p0, Lorg/oscim/utils/geom/LineClipper;->xmin:F
 
     cmpg-float v0, p1, v0
 
-    if-gez v0, :cond_0
+    if-gez v0, :cond_2
 
-    const/4 p1, 0x1
+    .line 100
+    or-int/lit8 v6, v6, 0x1
 
-    goto :goto_0
-
-    .line 82
+    .line 104
     :cond_0
-    iget v0, p0, Lorg/oscim/utils/geom/LineClipper;->xmax:F
-
-    cmpl-float p1, p1, v0
-
-    if-lez p1, :cond_1
-
-    const/4 p1, 0x2
-
-    goto :goto_0
-
-    :cond_1
-    const/4 p1, 0x0
-
-    .line 84
     :goto_0
     iget v0, p0, Lorg/oscim/utils/geom/LineClipper;->ymin:F
 
     cmpg-float v0, p2, v0
 
-    if-gez v0, :cond_2
+    if-gez v0, :cond_3
 
-    or-int/lit8 p1, p1, 0x4
+    .line 105
+    or-int/lit8 v6, v6, 0x4
+
+    .line 109
+    :cond_1
+    :goto_1
+    iget v0, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+
+    or-int/2addr v0, v6
+
+    if-nez v0, :cond_4
+
+    .line 111
+    const/4 v7, 0x1
+
+    .line 118
+    .local v7, "accept":I
+    :goto_2
+    iput v6, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+
+    .line 119
+    iput p1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevX:F
+
+    .line 120
+    iput p2, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevY:F
+
+    .line 122
+    return v7
+
+    .line 101
+    .end local v7    # "accept":I
+    :cond_2
+    iget v0, p0, Lorg/oscim/utils/geom/LineClipper;->xmax:F
+
+    cmpl-float v0, p1, v0
+
+    if-lez v0, :cond_0
+
+    .line 102
+    or-int/lit8 v6, v6, 0x2
+
+    goto :goto_0
+
+    .line 106
+    :cond_3
+    iget v0, p0, Lorg/oscim/utils/geom/LineClipper;->ymax:F
+
+    cmpl-float v0, p2, v0
+
+    if-lez v0, :cond_1
+
+    .line 107
+    or-int/lit8 v6, v6, 0x8
 
     goto :goto_1
 
-    .line 86
-    :cond_2
-    iget v0, p0, Lorg/oscim/utils/geom/LineClipper;->ymax:F
+    .line 112
+    :cond_4
+    iget v0, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
 
-    cmpl-float p2, p2, v0
+    and-int/2addr v0, v6
 
-    if-lez p2, :cond_3
+    if-eqz v0, :cond_5
 
-    or-int/lit8 p1, p1, 0x8
+    .line 114
+    const/4 v7, 0x0
 
-    :cond_3
+    .restart local v7    # "accept":I
+    goto :goto_2
+
+    .line 116
+    .end local v7    # "accept":I
+    :cond_5
+    iget v1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevX:F
+
+    iget v2, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevY:F
+
+    iget v5, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+
+    move-object v0, p0
+
+    move v3, p1
+
+    move v4, p2
+
+    invoke-direct/range {v0 .. v6}, Lorg/oscim/utils/geom/LineClipper;->clip(FFFFII)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_6
+
+    const/4 v7, -0x1
+
+    .restart local v7    # "accept":I
+    :goto_3
+    goto :goto_2
+
+    .end local v7    # "accept":I
+    :cond_6
+    const/4 v7, 0x0
+
+    goto :goto_3
+.end method
+
+.method public clipStart(FF)Z
+    .locals 2
+    .param p1, "x0"    # F
+    .param p2, "y0"    # F
+
+    .prologue
+    const/4 v0, 0x0
+
+    .line 60
+    iput p1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevX:F
+
+    .line 61
+    iput p2, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevY:F
+
+    .line 63
+    iput v0, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+
+    .line 64
+    iget v1, p0, Lorg/oscim/utils/geom/LineClipper;->xmin:F
+
+    cmpg-float v1, p1, v1
+
+    if-gez v1, :cond_3
+
+    .line 65
+    iget v1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+
+    or-int/lit8 v1, v1, 0x1
+
+    iput v1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+
+    .line 68
+    :cond_0
+    :goto_0
+    iget v1, p0, Lorg/oscim/utils/geom/LineClipper;->ymin:F
+
+    cmpg-float v1, p2, v1
+
+    if-gez v1, :cond_4
+
+    .line 69
+    iget v1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+
+    or-int/lit8 v1, v1, 0x4
+
+    iput v1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+
+    .line 73
+    :cond_1
     :goto_1
-    return p1
+    iget v1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+
+    if-nez v1, :cond_2
+
+    const/4 v0, 0x1
+
+    :cond_2
+    return v0
+
+    .line 66
+    :cond_3
+    iget v1, p0, Lorg/oscim/utils/geom/LineClipper;->xmax:F
+
+    cmpl-float v1, p1, v1
+
+    if-lez v1, :cond_0
+
+    .line 67
+    iget v1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+
+    or-int/lit8 v1, v1, 0x2
+
+    iput v1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+
+    goto :goto_0
+
+    .line 70
+    :cond_4
+    iget v1, p0, Lorg/oscim/utils/geom/LineClipper;->ymax:F
+
+    cmpl-float v1, p2, v1
+
+    if-lez v1, :cond_1
+
+    .line 71
+    iget v1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+
+    or-int/lit8 v1, v1, 0x8
+
+    iput v1, p0, Lorg/oscim/utils/geom/LineClipper;->mPrevOutcode:I
+
+    goto :goto_1
+.end method
+
+.method public outcode(FF)I
+    .locals 2
+    .param p1, "x"    # F
+    .param p2, "y"    # F
+
+    .prologue
+    .line 78
+    const/4 v0, 0x0
+
+    .line 79
+    .local v0, "outcode":I
+    iget v1, p0, Lorg/oscim/utils/geom/LineClipper;->xmin:F
+
+    cmpg-float v1, p1, v1
+
+    if-gez v1, :cond_2
+
+    .line 80
+    or-int/lit8 v0, v0, 0x1
+
+    .line 83
+    :cond_0
+    :goto_0
+    iget v1, p0, Lorg/oscim/utils/geom/LineClipper;->ymin:F
+
+    cmpg-float v1, p2, v1
+
+    if-gez v1, :cond_3
+
+    .line 84
+    or-int/lit8 v0, v0, 0x4
+
+    .line 88
+    :cond_1
+    :goto_1
+    return v0
+
+    .line 81
+    :cond_2
+    iget v1, p0, Lorg/oscim/utils/geom/LineClipper;->xmax:F
+
+    cmpl-float v1, p1, v1
+
+    if-lez v1, :cond_0
+
+    .line 82
+    or-int/lit8 v0, v0, 0x2
+
+    goto :goto_0
+
+    .line 85
+    :cond_3
+    iget v1, p0, Lorg/oscim/utils/geom/LineClipper;->ymax:F
+
+    cmpl-float v1, p2, v1
+
+    if-lez v1, :cond_1
+
+    .line 86
+    or-int/lit8 v0, v0, 0x8
+
+    goto :goto_1
 .end method

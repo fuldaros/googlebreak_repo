@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder<",
+        "Lcom/squareup/wire/Message$Builder",
+        "<",
         "Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;",
         ">;"
     }
@@ -26,7 +27,8 @@
 .field public availableFeature:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -42,7 +44,8 @@
 .field public glExtension:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -60,7 +63,8 @@
 .field public locale:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -72,7 +76,8 @@
 .field public nativePlatform:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -86,7 +91,8 @@
 .field public sharedLibrary:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -102,20 +108,27 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 1496
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
+    .line 1497
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;)V
     .locals 1
+    .param p1, "message"    # Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;
 
+    .prologue
     .line 1500
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
+    .line 1501
     if-nez p1, :cond_0
 
+    .line 1519
+    :goto_0
     return-void
 
     .line 1502
@@ -220,40 +233,45 @@
     iput-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->deviceClass:Ljava/lang/Integer;
 
     .line 1518
-    iget-object p1, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->maxApkDownloadSizeMb:Ljava/lang/Integer;
+    iget-object v0, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->maxApkDownloadSizeMb:Ljava/lang/Integer;
 
-    iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->maxApkDownloadSizeMb:Ljava/lang/Integer;
+    iput-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->maxApkDownloadSizeMb:Ljava/lang/Integer;
 
-    return-void
+    goto :goto_0
 .end method
 
 
 # virtual methods
 .method public availableFeature(Ljava/util/List;)Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;
-    .locals 0
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;)",
             "Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;"
         }
     .end annotation
 
+    .prologue
     .line 1609
+    .local p1, "availableFeature":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     invoke-static {p1}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->checkForNulls(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object p1
+    move-result-object v0
 
-    iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->availableFeature:Ljava/util/List;
+    iput-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->availableFeature:Ljava/util/List;
 
+    .line 1610
     return-object p0
 .end method
 
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
+    .prologue
     .line 1476
     invoke-virtual {p0}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->build()Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;
 
@@ -265,6 +283,7 @@
 .method public build()Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;
     .locals 2
 
+    .prologue
     .line 1676
     new-instance v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;
 
@@ -277,178 +296,224 @@
 
 .method public densityDpi(Ljava/lang/Integer;)Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;
     .locals 0
+    .param p1, "densityDpi"    # Ljava/lang/Integer;
 
+    .prologue
     .line 1580
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->densityDpi:Ljava/lang/Integer;
 
+    .line 1581
     return-object p0
 .end method
 
 .method public glEsVersion(Ljava/lang/Integer;)Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;
     .locals 0
+    .param p1, "glEsVersion"    # Ljava/lang/Integer;
 
+    .prologue
     .line 1589
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->glEsVersion:Ljava/lang/Integer;
 
+    .line 1590
     return-object p0
 .end method
 
 .method public glExtension(Ljava/util/List;)Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;
-    .locals 0
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;)",
             "Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;"
         }
     .end annotation
 
+    .prologue
     .line 1654
+    .local p1, "glExtension":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     invoke-static {p1}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->checkForNulls(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object p1
+    move-result-object v0
 
-    iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->glExtension:Ljava/util/List;
+    iput-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->glExtension:Ljava/util/List;
 
+    .line 1655
     return-object p0
 .end method
 
 .method public hasFiveWayNavigation(Ljava/lang/Boolean;)Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;
     .locals 0
+    .param p1, "hasFiveWayNavigation"    # Ljava/lang/Boolean;
 
+    .prologue
     .line 1571
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->hasFiveWayNavigation:Ljava/lang/Boolean;
 
+    .line 1572
     return-object p0
 .end method
 
 .method public hasHardKeyboard(Ljava/lang/Boolean;)Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;
     .locals 0
+    .param p1, "hasHardKeyboard"    # Ljava/lang/Boolean;
 
+    .prologue
     .line 1562
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->hasHardKeyboard:Ljava/lang/Boolean;
 
+    .line 1563
     return-object p0
 .end method
 
 .method public heightPixels(Ljava/lang/Integer;)Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;
     .locals 0
+    .param p1, "heightPixels"    # Ljava/lang/Integer;
 
+    .prologue
     .line 1636
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->heightPixels:Ljava/lang/Integer;
 
+    .line 1637
     return-object p0
 .end method
 
 .method public keyboardType(Ljava/lang/Integer;)Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;
     .locals 0
+    .param p1, "keyboardType"    # Ljava/lang/Integer;
 
+    .prologue
     .line 1535
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->keyboardType:Ljava/lang/Integer;
 
+    .line 1536
     return-object p0
 .end method
 
 .method public locale(Ljava/util/List;)Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;
-    .locals 0
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;)",
             "Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;"
         }
     .end annotation
 
+    .prologue
     .line 1645
+    .local p1, "locale":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     invoke-static {p1}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->checkForNulls(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object p1
+    move-result-object v0
 
-    iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->locale:Ljava/util/List;
+    iput-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->locale:Ljava/util/List;
 
+    .line 1646
     return-object p0
 .end method
 
 .method public nativePlatform(Ljava/util/List;)Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;
-    .locals 0
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;)",
             "Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;"
         }
     .end annotation
 
+    .prologue
     .line 1618
+    .local p1, "nativePlatform":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     invoke-static {p1}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->checkForNulls(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object p1
+    move-result-object v0
 
-    iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->nativePlatform:Ljava/util/List;
+    iput-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->nativePlatform:Ljava/util/List;
 
+    .line 1619
     return-object p0
 .end method
 
 .method public navigation(Ljava/lang/Integer;)Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;
     .locals 0
+    .param p1, "navigation"    # Ljava/lang/Integer;
 
+    .prologue
     .line 1544
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->navigation:Ljava/lang/Integer;
 
+    .line 1545
     return-object p0
 .end method
 
 .method public screenLayout(Ljava/lang/Integer;)Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;
     .locals 0
+    .param p1, "screenLayout"    # Ljava/lang/Integer;
 
+    .prologue
     .line 1553
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->screenLayout:Ljava/lang/Integer;
 
+    .line 1554
     return-object p0
 .end method
 
 .method public sharedLibrary(Ljava/util/List;)Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;
-    .locals 0
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;)",
             "Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;"
         }
     .end annotation
 
+    .prologue
     .line 1600
+    .local p1, "sharedLibrary":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     invoke-static {p1}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->checkForNulls(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object p1
+    move-result-object v0
 
-    iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->sharedLibrary:Ljava/util/List;
+    iput-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->sharedLibrary:Ljava/util/List;
 
+    .line 1601
     return-object p0
 .end method
 
 .method public touchScreen(Ljava/lang/Integer;)Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;
     .locals 0
+    .param p1, "touchScreen"    # Ljava/lang/Integer;
 
+    .prologue
     .line 1526
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->touchScreen:Ljava/lang/Integer;
 
+    .line 1527
     return-object p0
 .end method
 
 .method public widthPixels(Ljava/lang/Integer;)Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;
     .locals 0
+    .param p1, "widthPixels"    # Ljava/lang/Integer;
 
+    .prologue
     .line 1627
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->widthPixels:Ljava/lang/Integer;
 
+    .line 1628
     return-object p0
 .end method

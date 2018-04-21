@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/lang/Enum<",
+        "Ljava/lang/Enum",
+        "<",
         "Lorg/oscim/core/GeometryBuffer$GeometryType;",
         ">;"
     }
@@ -44,64 +45,65 @@
 .method static constructor <clinit>()V
     .locals 7
 
-    .line 47
+    .prologue
+    const/4 v6, 0x4
+
+    const/4 v5, 0x3
+
+    const/4 v4, 0x2
+
+    const/4 v3, 0x1
+
+    const/4 v2, 0x0
+
+    .line 42
     new-instance v0, Lorg/oscim/core/GeometryBuffer$GeometryType;
 
     const-string v1, "NONE"
-
-    const/4 v2, 0x0
 
     invoke-direct {v0, v1, v2, v2}, Lorg/oscim/core/GeometryBuffer$GeometryType;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Lorg/oscim/core/GeometryBuffer$GeometryType;->NONE:Lorg/oscim/core/GeometryBuffer$GeometryType;
 
-    .line 48
+    .line 43
     new-instance v0, Lorg/oscim/core/GeometryBuffer$GeometryType;
 
     const-string v1, "POINT"
-
-    const/4 v3, 0x1
 
     invoke-direct {v0, v1, v3, v3}, Lorg/oscim/core/GeometryBuffer$GeometryType;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Lorg/oscim/core/GeometryBuffer$GeometryType;->POINT:Lorg/oscim/core/GeometryBuffer$GeometryType;
 
-    .line 49
+    .line 44
     new-instance v0, Lorg/oscim/core/GeometryBuffer$GeometryType;
 
     const-string v1, "LINE"
-
-    const/4 v4, 0x2
 
     invoke-direct {v0, v1, v4, v4}, Lorg/oscim/core/GeometryBuffer$GeometryType;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Lorg/oscim/core/GeometryBuffer$GeometryType;->LINE:Lorg/oscim/core/GeometryBuffer$GeometryType;
 
-    .line 50
+    .line 45
     new-instance v0, Lorg/oscim/core/GeometryBuffer$GeometryType;
 
     const-string v1, "POLY"
-
-    const/4 v5, 0x3
 
     invoke-direct {v0, v1, v5, v5}, Lorg/oscim/core/GeometryBuffer$GeometryType;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Lorg/oscim/core/GeometryBuffer$GeometryType;->POLY:Lorg/oscim/core/GeometryBuffer$GeometryType;
 
-    .line 51
+    .line 46
     new-instance v0, Lorg/oscim/core/GeometryBuffer$GeometryType;
 
     const-string v1, "TRIS"
-
-    const/4 v6, 0x4
 
     invoke-direct {v0, v1, v6, v6}, Lorg/oscim/core/GeometryBuffer$GeometryType;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Lorg/oscim/core/GeometryBuffer$GeometryType;->TRIS:Lorg/oscim/core/GeometryBuffer$GeometryType;
 
+    .line 41
     const/4 v0, 0x5
 
-    .line 46
     new-array v0, v0, [Lorg/oscim/core/GeometryBuffer$GeometryType;
 
     sget-object v1, Lorg/oscim/core/GeometryBuffer$GeometryType;->NONE:Lorg/oscim/core/GeometryBuffer$GeometryType;
@@ -131,40 +133,46 @@
 
 .method private constructor <init>(Ljava/lang/String;II)V
     .locals 0
+    .param p3, "type"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I)V"
         }
     .end annotation
 
-    .line 53
+    .prologue
+    .line 48
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
-    .line 54
+    .line 49
     iput p3, p0, Lorg/oscim/core/GeometryBuffer$GeometryType;->nativeInt:I
 
+    .line 50
     return-void
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lorg/oscim/core/GeometryBuffer$GeometryType;
     .locals 1
+    .param p0, "name"    # Ljava/lang/String;
 
-    .line 46
+    .prologue
+    .line 41
     const-class v0, Lorg/oscim/core/GeometryBuffer$GeometryType;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
 
-    move-result-object p0
+    move-result-object v0
 
-    check-cast p0, Lorg/oscim/core/GeometryBuffer$GeometryType;
+    check-cast v0, Lorg/oscim/core/GeometryBuffer$GeometryType;
 
-    return-object p0
+    return-object v0
 .end method
 
 .method public static values()[Lorg/oscim/core/GeometryBuffer$GeometryType;
     .locals 1
 
-    .line 46
+    .prologue
+    .line 41
     sget-object v0, Lorg/oscim/core/GeometryBuffer$GeometryType;->$VALUES:[Lorg/oscim/core/GeometryBuffer$GeometryType;
 
     invoke-virtual {v0}, [Lorg/oscim/core/GeometryBuffer$GeometryType;->clone()Ljava/lang/Object;

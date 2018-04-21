@@ -22,12 +22,8 @@ main(){
   // last two bits hold the texture coordinates.
   v_st = abs(mod(dir, 4.0)) - 1.0;
 }
-
 $$
-
-#ifdef GL_OES_standard_derivatives
 #extension GL_OES_standard_derivatives : enable
-#endif
 #ifdef GLES
 precision highp float;
 #endif

@@ -18,7 +18,8 @@
 .method constructor <init>()V
     .locals 0
 
-    .line 82
+    .prologue
+    .line 78
     invoke-direct {p0}, Lorg/oscim/utils/math/Interpolation;-><init>()V
 
     return-void
@@ -27,20 +28,22 @@
 
 # virtual methods
 .method public apply(F)F
-    .locals 1
+    .locals 2
+    .param p1, "a"    # F
 
+    .prologue
+    .line 81
     const v0, 0x40490fdb    # (float)Math.PI
 
-    mul-float/2addr p1, v0
+    mul-float/2addr v0, p1
 
-    const/high16 v0, 0x40000000    # 2.0f
+    const/high16 v1, 0x40000000    # 2.0f
 
-    div-float/2addr p1, v0
+    div-float/2addr v0, v1
 
-    .line 85
-    invoke-static {p1}, Lorg/oscim/utils/math/MathUtils;->sin(F)F
+    invoke-static {v0}, Lorg/oscim/utils/math/MathUtils;->sin(F)F
 
-    move-result p1
+    move-result v0
 
-    return p1
+    return v0
 .end method

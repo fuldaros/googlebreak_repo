@@ -39,10 +39,10 @@
         value = {
             "(",
             "Lorg/oscim/core/Box;",
-            "Ljava/util/List<",
-            "TT;>;)",
-            "Ljava/util/List<",
-            "TT;>;"
+            "Ljava/util/List",
+            "<TT;>;)",
+            "Ljava/util/List",
+            "<TT;>;"
         }
     .end annotation
 .end method

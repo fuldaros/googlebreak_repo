@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder<",
+        "Lcom/squareup/wire/Message$Builder",
+        "<",
         "Lorg/microg/wearable/proto/RootMessage;",
         ">;"
     }
@@ -50,20 +51,27 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 118
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
+    .line 119
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/wearable/proto/RootMessage;)V
     .locals 1
+    .param p1, "message"    # Lorg/microg/wearable/proto/RootMessage;
 
+    .prologue
     .line 122
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
+    .line 123
     if-nez p1, :cond_0
 
+    .line 135
+    :goto_0
     return-void
 
     .line 124
@@ -118,27 +126,31 @@
     iput-object v0, p0, Lorg/microg/wearable/proto/RootMessage$Builder;->hasAsset:Ljava/lang/Boolean;
 
     .line 134
-    iget-object p1, p1, Lorg/microg/wearable/proto/RootMessage;->channelRequest:Lorg/microg/wearable/proto/Request;
+    iget-object v0, p1, Lorg/microg/wearable/proto/RootMessage;->channelRequest:Lorg/microg/wearable/proto/Request;
 
-    iput-object p1, p0, Lorg/microg/wearable/proto/RootMessage$Builder;->channelRequest:Lorg/microg/wearable/proto/Request;
+    iput-object v0, p0, Lorg/microg/wearable/proto/RootMessage$Builder;->channelRequest:Lorg/microg/wearable/proto/Request;
 
-    return-void
+    goto :goto_0
 .end method
 
 
 # virtual methods
 .method public ackAsset(Lorg/microg/wearable/proto/AckAsset;)Lorg/microg/wearable/proto/RootMessage$Builder;
     .locals 0
+    .param p1, "ackAsset"    # Lorg/microg/wearable/proto/AckAsset;
 
+    .prologue
     .line 143
     iput-object p1, p0, Lorg/microg/wearable/proto/RootMessage$Builder;->ackAsset:Lorg/microg/wearable/proto/AckAsset;
 
+    .line 144
     return-object p0
 .end method
 
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
+    .prologue
     .line 104
     invoke-virtual {p0}, Lorg/microg/wearable/proto/RootMessage$Builder;->build()Lorg/microg/wearable/proto/RootMessage;
 
@@ -150,6 +162,7 @@
 .method public build()Lorg/microg/wearable/proto/RootMessage;
     .locals 2
 
+    .prologue
     .line 194
     new-instance v0, Lorg/microg/wearable/proto/RootMessage;
 
@@ -162,81 +175,72 @@
 
 .method public connect(Lorg/microg/wearable/proto/Connect;)Lorg/microg/wearable/proto/RootMessage$Builder;
     .locals 0
+    .param p1, "connect"    # Lorg/microg/wearable/proto/Connect;
 
+    .prologue
     .line 153
     iput-object p1, p0, Lorg/microg/wearable/proto/RootMessage$Builder;->connect:Lorg/microg/wearable/proto/Connect;
 
-    return-object p0
-.end method
-
-.method public fetchAsset(Lorg/microg/wearable/proto/FetchAsset;)Lorg/microg/wearable/proto/RootMessage$Builder;
-    .locals 0
-
-    .line 148
-    iput-object p1, p0, Lorg/microg/wearable/proto/RootMessage$Builder;->fetchAsset:Lorg/microg/wearable/proto/FetchAsset;
-
+    .line 154
     return-object p0
 .end method
 
 .method public filePiece(Lorg/microg/wearable/proto/FilePiece;)Lorg/microg/wearable/proto/RootMessage$Builder;
     .locals 0
+    .param p1, "filePiece"    # Lorg/microg/wearable/proto/FilePiece;
 
+    .prologue
     .line 178
     iput-object p1, p0, Lorg/microg/wearable/proto/RootMessage$Builder;->filePiece:Lorg/microg/wearable/proto/FilePiece;
 
+    .line 179
     return-object p0
 .end method
 
 .method public hasAsset(Ljava/lang/Boolean;)Lorg/microg/wearable/proto/RootMessage$Builder;
     .locals 0
+    .param p1, "hasAsset"    # Ljava/lang/Boolean;
 
+    .prologue
     .line 183
     iput-object p1, p0, Lorg/microg/wearable/proto/RootMessage$Builder;->hasAsset:Ljava/lang/Boolean;
 
-    return-object p0
-.end method
-
-.method public heartbeat(Lorg/microg/wearable/proto/Heartbeat;)Lorg/microg/wearable/proto/RootMessage$Builder;
-    .locals 0
-
-    .line 173
-    iput-object p1, p0, Lorg/microg/wearable/proto/RootMessage$Builder;->heartbeat:Lorg/microg/wearable/proto/Heartbeat;
-
-    return-object p0
-.end method
-
-.method public rpcRequest(Lorg/microg/wearable/proto/Request;)Lorg/microg/wearable/proto/RootMessage$Builder;
-    .locals 0
-
-    .line 168
-    iput-object p1, p0, Lorg/microg/wearable/proto/RootMessage$Builder;->rpcRequest:Lorg/microg/wearable/proto/Request;
-
+    .line 184
     return-object p0
 .end method
 
 .method public setAsset(Lorg/microg/wearable/proto/SetAsset;)Lorg/microg/wearable/proto/RootMessage$Builder;
     .locals 0
+    .param p1, "setAsset"    # Lorg/microg/wearable/proto/SetAsset;
 
+    .prologue
     .line 138
     iput-object p1, p0, Lorg/microg/wearable/proto/RootMessage$Builder;->setAsset:Lorg/microg/wearable/proto/SetAsset;
 
+    .line 139
     return-object p0
 .end method
 
 .method public setDataItem(Lorg/microg/wearable/proto/SetDataItem;)Lorg/microg/wearable/proto/RootMessage$Builder;
     .locals 0
+    .param p1, "setDataItem"    # Lorg/microg/wearable/proto/SetDataItem;
 
+    .prologue
     .line 163
     iput-object p1, p0, Lorg/microg/wearable/proto/RootMessage$Builder;->setDataItem:Lorg/microg/wearable/proto/SetDataItem;
 
+    .line 164
     return-object p0
 .end method
 
 .method public syncStart(Lorg/microg/wearable/proto/SyncStart;)Lorg/microg/wearable/proto/RootMessage$Builder;
     .locals 0
+    .param p1, "syncStart"    # Lorg/microg/wearable/proto/SyncStart;
 
+    .prologue
     .line 158
     iput-object p1, p0, Lorg/microg/wearable/proto/RootMessage$Builder;->syncStart:Lorg/microg/wearable/proto/SyncStart;
 
+    .line 159
     return-object p0
 .end method

@@ -32,7 +32,9 @@
 # direct methods
 .method constructor <init>(Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;Ljava/lang/String;Lorg/microg/tools/selfcheck/SelfCheckGroup$Result;Ljava/lang/String;Lorg/microg/tools/selfcheck/SelfCheckGroup$CheckResolver;)V
     .locals 0
+    .param p1, "this$1"    # Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;
 
+    .prologue
     .line 93
     iput-object p1, p0, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;->this$1:Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;
 
@@ -52,36 +54,40 @@
 
 # virtual methods
 .method public run()V
-    .locals 4
+    .locals 6
+
+    .prologue
+    const/4 v5, 0x1
 
     .line 96
-    iget-object v0, p0, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;->this$1:Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;
+    iget-object v1, p0, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;->this$1:Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;
 
-    iget-object v0, v0, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;->this$0:Lorg/microg/tools/ui/AbstractSelfCheckFragment;
+    iget-object v1, v1, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;->this$0:Lorg/microg/tools/ui/AbstractSelfCheckFragment;
 
-    invoke-virtual {v0}, Lorg/microg/tools/ui/AbstractSelfCheckFragment;->getContext()Landroid/content/Context;
+    invoke-virtual {v1}, Lorg/microg/tools/ui/AbstractSelfCheckFragment;->getContext()Landroid/content/Context;
 
-    move-result-object v0
+    move-result-object v1
 
-    invoke-static {v0}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
+    invoke-static {v1}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
 
-    move-result-object v0
+    move-result-object v1
 
-    sget v1, Lorg/microg/tools/ui/R$layout;->self_check_entry:I
+    sget v2, Lorg/microg/tools/ui/R$layout;->self_check_entry:I
 
-    iget-object v2, p0, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;->this$1:Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;
+    iget-object v3, p0, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;->this$1:Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;
 
-    invoke-static {v2}, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;->access$000(Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;)Landroid/view/ViewGroup;
+    invoke-static {v3}, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;->access$000(Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;)Landroid/view/ViewGroup;
 
-    move-result-object v2
+    move-result-object v3
 
-    const/4 v3, 0x0
+    const/4 v4, 0x0
 
-    invoke-virtual {v0, v1, v2, v3}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
+    invoke-virtual {v1, v2, v3, v4}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
     move-result-object v0
 
     .line 97
+    .local v0, "resultEntry":Landroid/view/View;
     sget v1, Lorg/microg/tools/ui/R$id;->self_check_name:I
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
@@ -112,9 +118,7 @@
 
     sget-object v2, Lorg/microg/tools/selfcheck/SelfCheckGroup$Result;->Positive:Lorg/microg/tools/selfcheck/SelfCheckGroup$Result;
 
-    const/4 v3, 0x1
-
-    if-ne v1, v2, :cond_0
+    if-ne v1, v2, :cond_1
 
     .line 105
     sget v1, Lorg/microg/tools/ui/R$id;->self_check_result:I
@@ -125,7 +129,7 @@
 
     check-cast v1, Landroid/widget/CheckBox;
 
-    invoke-virtual {v1, v3}, Landroid/widget/CheckBox;->setChecked(Z)V
+    invoke-virtual {v1, v5}, Landroid/widget/CheckBox;->setChecked(Z)V
 
     .line 106
     sget v1, Lorg/microg/tools/ui/R$id;->self_check_resolution:I
@@ -138,10 +142,22 @@
 
     invoke-virtual {v1, v2}, Landroid/view/View;->setVisibility(I)V
 
-    goto :goto_0
+    .line 122
+    :cond_0
+    :goto_0
+    iget-object v1, p0, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;->this$1:Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;
+
+    invoke-static {v1}, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;->access$000(Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;)Landroid/view/ViewGroup;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v0}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
+
+    .line 123
+    return-void
 
     .line 108
-    :cond_0
+    :cond_1
     sget v1, Lorg/microg/tools/ui/R$id;->self_check_resolution:I
 
     invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
@@ -159,7 +175,7 @@
 
     sget-object v2, Lorg/microg/tools/selfcheck/SelfCheckGroup$Result;->Unknown:Lorg/microg/tools/selfcheck/SelfCheckGroup$Result;
 
-    if-ne v1, v2, :cond_1
+    if-ne v1, v2, :cond_2
 
     .line 110
     sget v1, Lorg/microg/tools/ui/R$id;->self_check_result:I
@@ -173,13 +189,13 @@
     invoke-virtual {v1, v2}, Landroid/view/View;->setVisibility(I)V
 
     .line 112
-    :cond_1
+    :cond_2
     iget-object v1, p0, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;->val$resolver:Lorg/microg/tools/selfcheck/SelfCheckGroup$CheckResolver;
 
-    if-eqz v1, :cond_2
+    if-eqz v1, :cond_0
 
     .line 113
-    invoke-virtual {v0, v3}, Landroid/view/View;->setClickable(Z)V
+    invoke-virtual {v0, v5}, Landroid/view/View;->setClickable(Z)V
 
     .line 114
     new-instance v1, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1$2;
@@ -188,16 +204,5 @@
 
     invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 122
-    :cond_2
-    :goto_0
-    iget-object v1, p0, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;->this$1:Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;
-
-    invoke-static {v1}, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;->access$000(Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;)Landroid/view/ViewGroup;
-
-    move-result-object v1
-
-    invoke-virtual {v1, v0}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
-
-    return-void
+    goto :goto_0
 .end method

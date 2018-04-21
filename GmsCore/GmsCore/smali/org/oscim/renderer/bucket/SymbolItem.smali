@@ -6,7 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lorg/oscim/utils/pool/Inlist<",
+        "Lorg/oscim/utils/pool/Inlist",
+        "<",
         "Lorg/oscim/renderer/bucket/SymbolItem;",
         ">;"
     }
@@ -17,7 +18,8 @@
 .field public static final pool:Lorg/oscim/utils/pool/SyncPool;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Lorg/oscim/utils/pool/SyncPool<",
+            "Lorg/oscim/utils/pool/SyncPool",
+            "<",
             "Lorg/oscim/renderer/bucket/SymbolItem;",
             ">;"
         }
@@ -32,8 +34,6 @@
 
 .field public offset:Lorg/oscim/core/PointF;
 
-.field public rotation:F
-
 .field public texRegion:Lorg/oscim/renderer/atlas/TextureRegion;
 
 .field public x:F
@@ -45,7 +45,8 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .line 29
+    .prologue
+    .line 27
     new-instance v0, Lorg/oscim/renderer/bucket/SymbolItem$1;
 
     const/16 v1, 0x80
@@ -60,7 +61,8 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 27
+    .prologue
+    .line 25
     invoke-direct {p0}, Lorg/oscim/utils/pool/Inlist;-><init>()V
 
     return-void
@@ -68,86 +70,50 @@
 
 
 # virtual methods
-.method public set(FFLorg/oscim/backend/canvas/Bitmap;FZ)V
-    .locals 0
-
-    .line 73
-    iput p1, p0, Lorg/oscim/renderer/bucket/SymbolItem;->x:F
-
-    .line 74
-    iput p2, p0, Lorg/oscim/renderer/bucket/SymbolItem;->y:F
-
-    .line 75
-    iput-object p3, p0, Lorg/oscim/renderer/bucket/SymbolItem;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
-
-    .line 76
-    iput p4, p0, Lorg/oscim/renderer/bucket/SymbolItem;->rotation:F
-
-    .line 77
-    iput-boolean p5, p0, Lorg/oscim/renderer/bucket/SymbolItem;->billboard:Z
-
-    return-void
-.end method
-
 .method public set(FFLorg/oscim/backend/canvas/Bitmap;Z)V
-    .locals 6
-
-    const/4 v4, 0x0
-
-    move-object v0, p0
-
-    move v1, p1
-
-    move v2, p2
-
-    move-object v3, p3
-
-    move v5, p4
-
-    .line 69
-    invoke-virtual/range {v0 .. v5}, Lorg/oscim/renderer/bucket/SymbolItem;->set(FFLorg/oscim/backend/canvas/Bitmap;FZ)V
-
-    return-void
-.end method
-
-.method public set(FFLorg/oscim/renderer/atlas/TextureRegion;FZ)V
     .locals 0
+    .param p1, "x"    # F
+    .param p2, "y"    # F
+    .param p3, "bitmap"    # Lorg/oscim/backend/canvas/Bitmap;
+    .param p4, "billboard"    # Z
+
+    .prologue
+    .line 60
+    iput p1, p0, Lorg/oscim/renderer/bucket/SymbolItem;->x:F
 
     .line 61
-    iput p1, p0, Lorg/oscim/renderer/bucket/SymbolItem;->x:F
-
-    .line 62
     iput p2, p0, Lorg/oscim/renderer/bucket/SymbolItem;->y:F
 
+    .line 62
+    iput-object p3, p0, Lorg/oscim/renderer/bucket/SymbolItem;->bitmap:Lorg/oscim/backend/canvas/Bitmap;
+
     .line 63
-    iput-object p3, p0, Lorg/oscim/renderer/bucket/SymbolItem;->texRegion:Lorg/oscim/renderer/atlas/TextureRegion;
+    iput-boolean p4, p0, Lorg/oscim/renderer/bucket/SymbolItem;->billboard:Z
 
     .line 64
-    iput p4, p0, Lorg/oscim/renderer/bucket/SymbolItem;->rotation:F
-
-    .line 65
-    iput-boolean p5, p0, Lorg/oscim/renderer/bucket/SymbolItem;->billboard:Z
-
     return-void
 .end method
 
 .method public set(FFLorg/oscim/renderer/atlas/TextureRegion;Z)V
-    .locals 6
+    .locals 0
+    .param p1, "x"    # F
+    .param p2, "y"    # F
+    .param p3, "texture"    # Lorg/oscim/renderer/atlas/TextureRegion;
+    .param p4, "billboard"    # Z
 
-    const/4 v4, 0x0
+    .prologue
+    .line 53
+    iput p1, p0, Lorg/oscim/renderer/bucket/SymbolItem;->x:F
 
-    move-object v0, p0
+    .line 54
+    iput p2, p0, Lorg/oscim/renderer/bucket/SymbolItem;->y:F
 
-    move v1, p1
+    .line 55
+    iput-object p3, p0, Lorg/oscim/renderer/bucket/SymbolItem;->texRegion:Lorg/oscim/renderer/atlas/TextureRegion;
 
-    move v2, p2
-
-    move-object v3, p3
-
-    move v5, p4
+    .line 56
+    iput-boolean p4, p0, Lorg/oscim/renderer/bucket/SymbolItem;->billboard:Z
 
     .line 57
-    invoke-virtual/range {v0 .. v5}, Lorg/oscim/renderer/bucket/SymbolItem;->set(FFLorg/oscim/renderer/atlas/TextureRegion;FZ)V
-
     return-void
 .end method

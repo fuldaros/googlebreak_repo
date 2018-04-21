@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lorg/microg/gms/auth/login/LoginActivity;->init()V
+    value = Lorg/microg/gms/auth/login/LoginActivity;->onCreate(Landroid/os/Bundle;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -19,7 +19,8 @@
 .annotation system Ldalvik/annotation/Signature;
     value = {
         "Ljava/lang/Object;",
-        "Landroid/webkit/ValueCallback<",
+        "Landroid/webkit/ValueCallback",
+        "<",
         "Ljava/lang/Boolean;",
         ">;"
     }
@@ -33,8 +34,10 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/auth/login/LoginActivity;)V
     .locals 0
+    .param p1, "this$0"    # Lorg/microg/gms/auth/login/LoginActivity;
 
-    .line 172
+    .prologue
+    .line 128
     iput-object p1, p0, Lorg/microg/gms/auth/login/LoginActivity$2;->this$0:Lorg/microg/gms/auth/login/LoginActivity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -45,20 +48,24 @@
 
 # virtual methods
 .method public onReceiveValue(Ljava/lang/Boolean;)V
-    .locals 0
+    .locals 1
+    .param p1, "value"    # Ljava/lang/Boolean;
 
-    .line 175
-    iget-object p1, p0, Lorg/microg/gms/auth/login/LoginActivity$2;->this$0:Lorg/microg/gms/auth/login/LoginActivity;
+    .prologue
+    .line 131
+    iget-object v0, p0, Lorg/microg/gms/auth/login/LoginActivity$2;->this$0:Lorg/microg/gms/auth/login/LoginActivity;
 
-    invoke-static {p1}, Lorg/microg/gms/auth/login/LoginActivity;->access$300(Lorg/microg/gms/auth/login/LoginActivity;)V
+    invoke-static {v0}, Lorg/microg/gms/auth/login/LoginActivity;->access$300(Lorg/microg/gms/auth/login/LoginActivity;)V
 
+    .line 132
     return-void
 .end method
 
 .method public bridge synthetic onReceiveValue(Ljava/lang/Object;)V
     .locals 0
 
-    .line 172
+    .prologue
+    .line 128
     check-cast p1, Ljava/lang/Boolean;
 
     invoke-virtual {p0, p1}, Lorg/microg/gms/auth/login/LoginActivity$2;->onReceiveValue(Ljava/lang/Boolean;)V

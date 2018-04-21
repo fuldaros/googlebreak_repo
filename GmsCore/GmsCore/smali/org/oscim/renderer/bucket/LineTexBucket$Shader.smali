@@ -31,139 +31,143 @@
 
 .field uMVP:I
 
-.field uMode:I
-
 .field uPatternScale:I
 
 .field uPatternWidth:I
+
+.field uScale:I
 
 .field uWidth:I
 
 
 # direct methods
 .method constructor <init>(Ljava/lang/String;)V
-    .locals 0
+    .locals 1
+    .param p1, "shaderFile"    # Ljava/lang/String;
 
-    .line 223
+    .prologue
+    .line 241
     invoke-direct {p0}, Lorg/oscim/renderer/GLShader;-><init>()V
 
-    .line 224
+    .line 242
     invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->create(Ljava/lang/String;)Z
 
-    move-result p1
+    move-result v0
 
-    if-nez p1, :cond_0
+    if-nez v0, :cond_0
 
+    .line 260
+    :goto_0
     return-void
 
+    .line 245
     :cond_0
-    const-string p1, "u_mvp"
+    const-string v0, "u_mvp"
 
-    .line 227
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getUniform(Ljava/lang/String;)I
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getUniform(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->uMVP:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->uMVP:I
 
-    const-string p1, "u_color"
+    .line 247
+    const-string v0, "u_scale"
 
-    .line 229
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getUniform(Ljava/lang/String;)I
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getUniform(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->uColor:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->uScale:I
 
-    const-string p1, "u_width"
+    .line 248
+    const-string v0, "u_color"
 
-    .line 230
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getUniform(Ljava/lang/String;)I
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getUniform(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->uWidth:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->uColor:I
 
-    const-string p1, "u_bgcolor"
+    .line 249
+    const-string v0, "u_width"
 
-    .line 231
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getUniform(Ljava/lang/String;)I
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getUniform(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->uBgColor:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->uWidth:I
 
-    const-string p1, "u_mode"
+    .line 250
+    const-string v0, "u_bgcolor"
 
-    .line 232
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getUniform(Ljava/lang/String;)I
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getUniform(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->uMode:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->uBgColor:I
 
-    const-string p1, "u_pwidth"
+    .line 252
+    const-string v0, "u_pwidth"
 
-    .line 234
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getUniform(Ljava/lang/String;)I
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getUniform(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->uPatternWidth:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->uPatternWidth:I
 
-    const-string p1, "u_pscale"
+    .line 253
+    const-string v0, "u_pscale"
 
-    .line 235
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getUniform(Ljava/lang/String;)I
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getUniform(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->uPatternScale:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->uPatternScale:I
 
-    const-string p1, "a_pos0"
+    .line 255
+    const-string v0, "a_pos0"
 
-    .line 237
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getAttrib(Ljava/lang/String;)I
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getAttrib(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->aPos0:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->aPos0:I
 
-    const-string p1, "a_pos1"
+    .line 256
+    const-string v0, "a_pos1"
 
-    .line 238
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getAttrib(Ljava/lang/String;)I
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getAttrib(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->aPos1:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->aPos1:I
 
-    const-string p1, "a_len0"
+    .line 257
+    const-string v0, "a_len0"
 
-    .line 239
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getAttrib(Ljava/lang/String;)I
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getAttrib(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->aLen0:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->aLen0:I
 
-    const-string p1, "a_len1"
+    .line 258
+    const-string v0, "a_len1"
 
-    .line 240
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getAttrib(Ljava/lang/String;)I
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getAttrib(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->aLen1:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->aLen1:I
 
-    const-string p1, "a_flip"
+    .line 259
+    const-string v0, "a_flip"
 
-    .line 241
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getAttrib(Ljava/lang/String;)I
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->getAttrib(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->aFlip:I
+    iput v0, p0, Lorg/oscim/renderer/bucket/LineTexBucket$Shader;->aFlip:I
 
-    return-void
+    goto :goto_0
 .end method

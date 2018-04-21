@@ -29,8 +29,10 @@
 # direct methods
 .method constructor <init>(Lorg/oscim/theme/RenderTheme;)V
     .locals 0
+    .param p1, "this$0"    # Lorg/oscim/theme/RenderTheme;
 
-    .line 69
+    .prologue
+    .line 66
     iput-object p1, p0, Lorg/oscim/theme/RenderTheme$RenderStyleItem;->this$0:Lorg/oscim/theme/RenderTheme;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V

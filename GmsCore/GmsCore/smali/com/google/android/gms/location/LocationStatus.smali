@@ -7,7 +7,8 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator<",
+            "Landroid/os/Parcelable$Creator",
+            "<",
             "Lcom/google/android/gms/location/LocationStatus;",
             ">;"
         }
@@ -45,6 +46,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
+    .prologue
     .line 91
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -60,12 +62,13 @@
 .method public constructor <init>()V
     .locals 1
 
+    .prologue
     .line 24
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
+    .line 34
     const/4 v0, 0x1
 
-    .line 34
     iput v0, p0, Lcom/google/android/gms/location/LocationStatus;->versionCode:I
 
     return-void
@@ -74,112 +77,128 @@
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 7
+    .locals 8
+    .param p1, "o"    # Ljava/lang/Object;
 
-    const/4 v0, 0x1
-
-    if-ne p0, p1, :cond_0
-
-    return v0
-
-    :cond_0
-    const/4 v1, 0x0
-
-    if-eqz p1, :cond_5
-
-    .line 47
-    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    move-result-object v2
-
-    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    move-result-object v3
-
-    if-eq v2, v3, :cond_1
-
-    goto :goto_0
-
-    .line 50
-    :cond_1
-    check-cast p1, Lcom/google/android/gms/location/LocationStatus;
-
-    .line 52
-    iget v2, p0, Lcom/google/android/gms/location/LocationStatus;->cellStatus:I
-
-    iget v3, p1, Lcom/google/android/gms/location/LocationStatus;->cellStatus:I
-
-    if-eq v2, v3, :cond_2
-
-    return v1
-
-    .line 54
-    :cond_2
-    iget-wide v2, p0, Lcom/google/android/gms/location/LocationStatus;->elapsedRealtimeNanos:J
-
-    iget-wide v4, p1, Lcom/google/android/gms/location/LocationStatus;->elapsedRealtimeNanos:J
-
-    cmp-long v6, v2, v4
-
-    if-eqz v6, :cond_3
-
-    return v1
-
-    .line 56
-    :cond_3
-    iget v2, p0, Lcom/google/android/gms/location/LocationStatus;->wifiStatus:I
-
-    iget p1, p1, Lcom/google/android/gms/location/LocationStatus;->wifiStatus:I
-
-    if-eq v2, p1, :cond_4
-
-    return v1
-
-    :cond_4
-    return v0
-
-    :cond_5
-    :goto_0
-    return v1
-.end method
-
-.method public hashCode()I
-    .locals 3
-
-    const/4 v0, 0x3
-
-    .line 64
-    new-array v0, v0, [Ljava/lang/Object;
-
-    iget v1, p0, Lcom/google/android/gms/location/LocationStatus;->cellStatus:I
-
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v1
+    .prologue
+    const/4 v1, 0x1
 
     const/4 v2, 0x0
 
-    aput-object v1, v0, v2
+    .line 45
+    if-ne p0, p1, :cond_1
 
-    iget v1, p0, Lcom/google/android/gms/location/LocationStatus;->wifiStatus:I
+    .line 59
+    :cond_0
+    :goto_0
+    return v1
 
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    .line 47
+    :cond_1
+    if-eqz p1, :cond_2
 
-    move-result-object v1
+    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    const/4 v2, 0x1
+    move-result-object v3
 
-    aput-object v1, v0, v2
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    iget-wide v1, p0, Lcom/google/android/gms/location/LocationStatus;->elapsedRealtimeNanos:J
+    move-result-object v4
 
-    invoke-static {v1, v2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+    if-eq v3, v4, :cond_3
 
-    move-result-object v1
+    :cond_2
+    move v1, v2
 
-    const/4 v2, 0x2
+    .line 48
+    goto :goto_0
 
-    aput-object v1, v0, v2
+    :cond_3
+    move-object v0, p1
+
+    .line 50
+    check-cast v0, Lcom/google/android/gms/location/LocationStatus;
+
+    .line 52
+    .local v0, "that":Lcom/google/android/gms/location/LocationStatus;
+    iget v3, p0, Lcom/google/android/gms/location/LocationStatus;->cellStatus:I
+
+    iget v4, v0, Lcom/google/android/gms/location/LocationStatus;->cellStatus:I
+
+    if-eq v3, v4, :cond_4
+
+    move v1, v2
+
+    .line 53
+    goto :goto_0
+
+    .line 54
+    :cond_4
+    iget-wide v4, p0, Lcom/google/android/gms/location/LocationStatus;->elapsedRealtimeNanos:J
+
+    iget-wide v6, v0, Lcom/google/android/gms/location/LocationStatus;->elapsedRealtimeNanos:J
+
+    cmp-long v3, v4, v6
+
+    if-eqz v3, :cond_5
+
+    move v1, v2
+
+    .line 55
+    goto :goto_0
+
+    .line 56
+    :cond_5
+    iget v3, p0, Lcom/google/android/gms/location/LocationStatus;->wifiStatus:I
+
+    iget v4, v0, Lcom/google/android/gms/location/LocationStatus;->wifiStatus:I
+
+    if-eq v3, v4, :cond_0
+
+    move v1, v2
+
+    .line 57
+    goto :goto_0
+.end method
+
+.method public hashCode()I
+    .locals 4
+
+    .prologue
+    .line 64
+    const/4 v0, 0x3
+
+    new-array v0, v0, [Ljava/lang/Object;
+
+    const/4 v1, 0x0
+
+    iget v2, p0, Lcom/google/android/gms/location/LocationStatus;->cellStatus:I
+
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v2
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x1
+
+    iget v2, p0, Lcom/google/android/gms/location/LocationStatus;->wifiStatus:I
+
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v2
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x2
+
+    iget-wide v2, p0, Lcom/google/android/gms/location/LocationStatus;->elapsedRealtimeNanos:J
+
+    invoke-static {v2, v3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v2
+
+    aput-object v2, v0, v1
 
     invoke-static {v0}, Ljava/util/Arrays;->hashCode([Ljava/lang/Object;)I
 

@@ -24,7 +24,9 @@
 # direct methods
 .method constructor <init>(Lorg/microg/tools/selfcheck/RomSpoofSignatureChecks;)V
     .locals 0
+    .param p1, "this$0"    # Lorg/microg/tools/selfcheck/RomSpoofSignatureChecks;
 
+    .prologue
     .line 68
     iput-object p1, p0, Lorg/microg/tools/selfcheck/RomSpoofSignatureChecks$1;->this$0:Lorg/microg/tools/selfcheck/RomSpoofSignatureChecks;
 
@@ -37,19 +39,22 @@
 # virtual methods
 .method public tryResolve(Landroid/support/v4/app/Fragment;)V
     .locals 3
+    .param p1, "fragment"    # Landroid/support/v4/app/Fragment;
 
-    const/4 v0, 0x1
+    .prologue
+    const/4 v2, 0x0
 
     .line 71
+    const/4 v0, 0x1
+
     new-array v0, v0, [Ljava/lang/String;
 
     const-string v1, "android.permission.FAKE_PACKAGE_SIGNATURE"
-
-    const/4 v2, 0x0
 
     aput-object v1, v0, v2
 
     invoke-virtual {p1, v0, v2}, Landroid/support/v4/app/Fragment;->requestPermissions([Ljava/lang/String;I)V
 
+    .line 72
     return-void
 .end method

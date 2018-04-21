@@ -6,7 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/lang/Enum<",
+        "Ljava/lang/Enum",
+        "<",
         "Lorg/microg/gms/common/GmsService;",
         ">;"
     }
@@ -161,20 +162,29 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 18
+    .locals 11
+
+    .prologue
+    const/4 v10, 0x3
+
+    const/16 v9, 0x33
+
+    const/4 v8, 0x2
+
+    const/4 v7, 0x1
+
+    const/4 v6, 0x0
 
     .line 20
     new-instance v0, Lorg/microg/gms/common/GmsService;
 
     const-string v1, "UNKNOWN"
 
-    const/4 v2, 0x0
+    const/4 v2, -0x2
 
-    new-array v3, v2, [Ljava/lang/String;
+    new-array v3, v6, [Ljava/lang/String;
 
-    const/4 v4, -0x2
-
-    invoke-direct {v0, v1, v2, v4, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v6, v2, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->UNKNOWN:Lorg/microg/gms/common/GmsService;
 
@@ -183,13 +193,11 @@
 
     const-string v1, "ANY"
 
-    new-array v3, v2, [Ljava/lang/String;
+    const/4 v2, -0x1
 
-    const/4 v4, 0x1
+    new-array v3, v6, [Ljava/lang/String;
 
-    const/4 v5, -0x1
-
-    invoke-direct {v0, v1, v4, v5, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v7, v2, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->ANY:Lorg/microg/gms/common/GmsService;
 
@@ -198,15 +206,13 @@
 
     const-string v1, "GAMES"
 
-    new-array v3, v4, [Ljava/lang/String;
+    new-array v2, v7, [Ljava/lang/String;
 
-    const-string v5, "com.google.android.gms.games.service.START"
+    const-string v3, "com.google.android.gms.games.service.START"
 
-    aput-object v5, v3, v2
+    aput-object v3, v2, v6
 
-    const/4 v5, 0x2
-
-    invoke-direct {v0, v1, v5, v4, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v8, v7, v2}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->GAMES:Lorg/microg/gms/common/GmsService;
 
@@ -215,19 +221,17 @@
 
     const-string v1, "PLUS"
 
-    new-array v3, v5, [Ljava/lang/String;
+    new-array v2, v8, [Ljava/lang/String;
 
-    const-string v6, "com.google.android.gms.plus.service.START"
+    const-string v3, "com.google.android.gms.plus.service.START"
 
-    aput-object v6, v3, v2
+    aput-object v3, v2, v6
 
-    const-string v6, "com.google.android.gms.plus.service.internal.START"
+    const-string v3, "com.google.android.gms.plus.service.internal.START"
 
-    aput-object v6, v3, v4
+    aput-object v3, v2, v7
 
-    const/4 v6, 0x3
-
-    invoke-direct {v0, v1, v6, v5, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v10, v8, v2}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->PLUS:Lorg/microg/gms/common/GmsService;
 
@@ -236,15 +240,15 @@
 
     const-string v1, "PANORAMA"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/4 v2, 0x4
 
-    const-string v7, "com.google.android.gms.panorama.service.START"
+    new-array v3, v7, [Ljava/lang/String;
 
-    aput-object v7, v3, v2
+    const-string v4, "com.google.android.gms.panorama.service.START"
 
-    const/4 v7, 0x4
+    aput-object v4, v3, v6
 
-    invoke-direct {v0, v1, v7, v6, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v10, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->PANORAMA:Lorg/microg/gms/common/GmsService;
 
@@ -253,15 +257,17 @@
 
     const-string v1, "WALLET"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/4 v2, 0x5
 
-    const-string v8, "com.google.android.gms.wallet.service.BIND"
+    const/4 v3, 0x4
 
-    aput-object v8, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/4 v8, 0x5
+    const-string v5, "com.google.android.gms.wallet.service.BIND"
 
-    invoke-direct {v0, v1, v8, v7, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    aput-object v5, v4, v6
+
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->WALLET:Lorg/microg/gms/common/GmsService;
 
@@ -270,15 +276,17 @@
 
     const-string v1, "PEOPLE"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/4 v2, 0x6
 
-    const-string v9, "com.google.android.gms.people.service.START"
+    const/4 v3, 0x5
 
-    aput-object v9, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/4 v9, 0x6
+    const-string v5, "com.google.android.gms.people.service.START"
 
-    invoke-direct {v0, v1, v9, v8, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    aput-object v5, v4, v6
+
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->PEOPLE:Lorg/microg/gms/common/GmsService;
 
@@ -287,11 +295,13 @@
 
     const-string v1, "LOCATION"
 
-    new-array v3, v2, [Ljava/lang/String;
+    const/4 v2, 0x7
 
-    const/4 v10, 0x7
+    const/4 v3, 0x6
 
-    invoke-direct {v0, v1, v10, v9, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    new-array v4, v6, [Ljava/lang/String;
+
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->LOCATION:Lorg/microg/gms/common/GmsService;
 
@@ -300,15 +310,17 @@
 
     const-string v1, "APPSTATE"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x8
 
-    const-string v11, "com.google.android.gms.appstate.service.START"
+    const/4 v3, 0x7
 
-    aput-object v11, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v11, 0x8
+    const-string v5, "com.google.android.gms.appstate.service.START"
 
-    invoke-direct {v0, v1, v11, v10, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    aput-object v5, v4, v6
+
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->APPSTATE:Lorg/microg/gms/common/GmsService;
 
@@ -317,15 +329,17 @@
 
     const-string v1, "ADREQUEST"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x9
 
-    const-string v12, "com.google.android.gms.ads.service.START"
+    const/16 v3, 0x8
 
-    aput-object v12, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v12, 0x9
+    const-string v5, "com.google.android.gms.ads.service.START"
 
-    invoke-direct {v0, v1, v12, v11, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    aput-object v5, v4, v6
+
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->ADREQUEST:Lorg/microg/gms/common/GmsService;
 
@@ -334,15 +348,17 @@
 
     const-string v1, "ACCOUNT"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0xa
 
-    const-string v13, "com.google.android.gms.accounts.ACCOUNT_SERVICE"
+    const/16 v3, 0x9
 
-    aput-object v13, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v13, 0xa
+    const-string v5, "com.google.android.gms.accounts.ACCOUNT_SERVICE"
 
-    invoke-direct {v0, v1, v13, v12, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    aput-object v5, v4, v6
+
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->ACCOUNT:Lorg/microg/gms/common/GmsService;
 
@@ -351,15 +367,17 @@
 
     const-string v1, "CAST"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0xb
 
-    const-string v14, "com.google.android.gms.cast.service.BIND_CAST_DEVICE_CONTROLLER_SERVICE"
+    const/16 v3, 0xa
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0xb
+    const-string v5, "com.google.android.gms.cast.service.BIND_CAST_DEVICE_CONTROLLER_SERVICE"
 
-    invoke-direct {v0, v1, v14, v13, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    aput-object v5, v4, v6
+
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->CAST:Lorg/microg/gms/common/GmsService;
 
@@ -368,15 +386,17 @@
 
     const-string v1, "DRIVE"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0xc
 
-    const-string v15, "com.google.android.gms.drive.ApiService.START"
+    const/16 v3, 0xb
 
-    aput-object v15, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v15, 0xc
+    const-string v5, "com.google.android.gms.drive.ApiService.START"
 
-    invoke-direct {v0, v1, v15, v14, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    aput-object v5, v4, v6
+
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->DRIVE:Lorg/microg/gms/common/GmsService;
 
@@ -385,15 +405,17 @@
 
     const-string v1, "ADDRESS"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0xd
 
-    const-string v16, "com.google.android.gms.identity.service.BIND"
+    const/16 v3, 0xc
 
-    aput-object v16, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0xd
+    const-string v5, "com.google.android.gms.identity.service.BIND"
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    aput-object v5, v4, v6
+
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->ADDRESS:Lorg/microg/gms/common/GmsService;
 
@@ -402,15 +424,17 @@
 
     const-string v1, "CAR"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0xe
 
-    const-string v16, "com.google.android.gms.car.service.START"
+    const/16 v3, 0xd
 
-    aput-object v16, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v15, 0xe
+    const-string v5, "com.google.android.gms.car.service.START"
 
-    invoke-direct {v0, v1, v15, v14, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    aput-object v5, v4, v6
+
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->CAR:Lorg/microg/gms/common/GmsService;
 
@@ -419,15 +443,17 @@
 
     const-string v1, "WEARABLE"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0xf
 
-    const-string v16, "com.google.android.gms.wearable.BIND"
+    const/16 v3, 0xe
 
-    aput-object v16, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0xf
+    const-string v5, "com.google.android.gms.wearable.BIND"
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    aput-object v5, v4, v6
+
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->WEARABLE:Lorg/microg/gms/common/GmsService;
 
@@ -436,17 +462,17 @@
 
     const-string v1, "AUTH"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x10
 
-    const-string v14, "com.google.android.gms.auth.service.START"
+    const/16 v3, 0x10
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x10
+    const-string v5, "com.google.android.gms.auth.service.START"
 
-    const/16 v15, 0x10
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->AUTH:Lorg/microg/gms/common/GmsService;
 
@@ -455,17 +481,17 @@
 
     const-string v1, "FITNESS"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x11
 
-    const-string v14, "com.google.android.gms.fitness.GoogleFitnessService.START"
+    const/16 v3, 0x11
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x11
+    const-string v5, "com.google.android.gms.fitness.GoogleFitnessService.START"
 
-    const/16 v15, 0x11
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->FITNESS:Lorg/microg/gms/common/GmsService;
 
@@ -474,17 +500,17 @@
 
     const-string v1, "REMINDERS"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x12
 
-    const-string v14, "com.google.android.gms.reminders.service.START"
+    const/16 v3, 0x12
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x12
+    const-string v5, "com.google.android.gms.reminders.service.START"
 
-    const/16 v15, 0x12
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->REMINDERS:Lorg/microg/gms/common/GmsService;
 
@@ -493,17 +519,17 @@
 
     const-string v1, "LIGHTWEIGHT_INDEX"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x13
 
-    const-string v14, "com.google.android.gms.icing.LIGHTWEIGHT_INDEX_SERVICE"
+    const/16 v3, 0x13
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x13
+    const-string v5, "com.google.android.gms.icing.LIGHTWEIGHT_INDEX_SERVICE"
 
-    const/16 v15, 0x13
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->LIGHTWEIGHT_INDEX:Lorg/microg/gms/common/GmsService;
 
@@ -512,17 +538,17 @@
 
     const-string v1, "DEVICE_CONNECTION"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x14
 
-    const-string v14, "com.google.android.gms.deviceconnection.service.START"
+    const/16 v3, 0x14
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x14
+    const-string v5, "com.google.android.gms.deviceconnection.service.START"
 
-    const/16 v15, 0x14
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->DEVICE_CONNECTION:Lorg/microg/gms/common/GmsService;
 
@@ -531,17 +557,17 @@
 
     const-string v1, "INDEX"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x15
 
-    const-string v14, "com.google.android.gms.icing.INDEX_SERVICE"
+    const/16 v3, 0x15
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x15
+    const-string v5, "com.google.android.gms.icing.INDEX_SERVICE"
 
-    const/16 v15, 0x15
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->INDEX:Lorg/microg/gms/common/GmsService;
 
@@ -550,21 +576,21 @@
 
     const-string v1, "LOCATION_REPORTING"
 
-    new-array v3, v5, [Ljava/lang/String;
+    const/16 v2, 0x16
 
-    const-string v14, "com.google.android.gms.location.reporting.service.START"
+    const/16 v3, 0x16
 
-    aput-object v14, v3, v2
+    new-array v4, v8, [Ljava/lang/String;
 
-    const-string v14, "com.google.android.location.reporting.service.START"
+    const-string v5, "com.google.android.gms.location.reporting.service.START"
 
-    aput-object v14, v3, v4
+    aput-object v5, v4, v6
 
-    const/16 v14, 0x16
+    const-string v5, "com.google.android.location.reporting.service.START"
 
-    const/16 v15, 0x16
+    aput-object v5, v4, v7
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->LOCATION_REPORTING:Lorg/microg/gms/common/GmsService;
 
@@ -573,17 +599,17 @@
 
     const-string v1, "LOCATION_MANAGER"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x17
 
-    const-string v14, "com.google.android.location.internal.GoogleLocationManagerService.START"
+    const/16 v3, 0x17
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x17
+    const-string v5, "com.google.android.location.internal.GoogleLocationManagerService.START"
 
-    const/16 v15, 0x17
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->LOCATION_MANAGER:Lorg/microg/gms/common/GmsService;
 
@@ -592,17 +618,17 @@
 
     const-string v1, "PLAY_LOG"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x18
 
-    const-string v14, "com.google.android.gms.playlog.service.START"
+    const/16 v3, 0x18
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x18
+    const-string v5, "com.google.android.gms.playlog.service.START"
 
-    const/16 v15, 0x18
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->PLAY_LOG:Lorg/microg/gms/common/GmsService;
 
@@ -611,17 +637,17 @@
 
     const-string v1, "DROIDGUARD"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x19
 
-    const-string v14, "com.google.android.gms.droidguard.service.START"
+    const/16 v3, 0x19
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x19
+    const-string v5, "com.google.android.gms.droidguard.service.START"
 
-    const/16 v15, 0x19
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->DROIDGUARD:Lorg/microg/gms/common/GmsService;
 
@@ -630,17 +656,17 @@
 
     const-string v1, "LOCKBOX"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x1a
 
-    const-string v14, "com.google.android.gms.lockbox.service.START"
+    const/16 v3, 0x1a
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x1a
+    const-string v5, "com.google.android.gms.lockbox.service.START"
 
-    const/16 v15, 0x1a
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->LOCKBOX:Lorg/microg/gms/common/GmsService;
 
@@ -649,17 +675,17 @@
 
     const-string v1, "CAST_MIRRORING"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x1b
 
-    const-string v14, "com.google.android.gms.cast_mirroring.service.START"
+    const/16 v3, 0x1b
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x1b
+    const-string v5, "com.google.android.gms.cast_mirroring.service.START"
 
-    const/16 v15, 0x1b
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->CAST_MIRRORING:Lorg/microg/gms/common/GmsService;
 
@@ -668,17 +694,17 @@
 
     const-string v1, "NETWORK_QUALITY"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x1c
 
-    const-string v14, "com.google.android.gms.mdm.services.START"
+    const/16 v3, 0x1c
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x1c
+    const-string v5, "com.google.android.gms.mdm.services.START"
 
-    const/16 v15, 0x1c
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->NETWORK_QUALITY:Lorg/microg/gms/common/GmsService;
 
@@ -687,17 +713,17 @@
 
     const-string v1, "FEEDBACK"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x1d
 
-    const-string v14, "com.google.android.gms.feedback.internal.IFeedbackService"
+    const/16 v3, 0x1d
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x1d
+    const-string v5, "com.google.android.gms.feedback.internal.IFeedbackService"
 
-    const/16 v15, 0x1d
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->FEEDBACK:Lorg/microg/gms/common/GmsService;
 
@@ -706,13 +732,13 @@
 
     const-string v1, "SEARCH_ADMINISTRATION"
 
-    new-array v3, v2, [Ljava/lang/String;
+    const/16 v2, 0x1e
 
-    const/16 v14, 0x1e
+    const/16 v3, 0x1e
 
-    const/16 v15, 0x1e
+    new-array v4, v6, [Ljava/lang/String;
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->SEARCH_ADMINISTRATION:Lorg/microg/gms/common/GmsService;
 
@@ -721,17 +747,17 @@
 
     const-string v1, "PHOTO_AUTO_BACKUP"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x1f
 
-    const-string v14, "com.google.android.gms.photos.autobackup.service.START"
+    const/16 v3, 0x1f
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x1f
+    const-string v5, "com.google.android.gms.photos.autobackup.service.START"
 
-    const/16 v15, 0x1f
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->PHOTO_AUTO_BACKUP:Lorg/microg/gms/common/GmsService;
 
@@ -740,13 +766,13 @@
 
     const-string v1, "SEARCH_QUERIES"
 
-    new-array v3, v2, [Ljava/lang/String;
+    const/16 v2, 0x20
 
-    const/16 v14, 0x20
+    const/16 v3, 0x20
 
-    const/16 v15, 0x20
+    new-array v4, v6, [Ljava/lang/String;
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->SEARCH_QUERIES:Lorg/microg/gms/common/GmsService;
 
@@ -755,13 +781,13 @@
 
     const-string v1, "SEARCH_GLOBAL"
 
-    new-array v3, v2, [Ljava/lang/String;
+    const/16 v2, 0x21
 
-    const/16 v14, 0x21
+    const/16 v3, 0x21
 
-    const/16 v15, 0x21
+    new-array v4, v6, [Ljava/lang/String;
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->SEARCH_GLOBAL:Lorg/microg/gms/common/GmsService;
 
@@ -770,17 +796,17 @@
 
     const-string v1, "UDC"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x22
 
-    const-string v14, "com.google.android.gms.udc.service.START"
+    const/16 v3, 0x23
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x22
+    const-string v5, "com.google.android.gms.udc.service.START"
 
-    const/16 v15, 0x23
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->UDC:Lorg/microg/gms/common/GmsService;
 
@@ -789,13 +815,13 @@
 
     const-string v1, "SEARCH_CORPORA"
 
-    new-array v3, v2, [Ljava/lang/String;
+    const/16 v2, 0x23
 
-    const/16 v14, 0x23
+    const/16 v3, 0x24
 
-    const/16 v15, 0x24
+    new-array v4, v6, [Ljava/lang/String;
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->SEARCH_CORPORA:Lorg/microg/gms/common/GmsService;
 
@@ -804,17 +830,17 @@
 
     const-string v1, "DEVICE_MANAGER"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x24
 
-    const-string v14, "com.google.android.gms.mdm.services.DeviceManagerApiService.START"
+    const/16 v3, 0x25
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x24
+    const-string v5, "com.google.android.gms.mdm.services.DeviceManagerApiService.START"
 
-    const/16 v15, 0x25
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->DEVICE_MANAGER:Lorg/microg/gms/common/GmsService;
 
@@ -823,17 +849,17 @@
 
     const-string v1, "PSEUDONYMOUS_ID"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x25
 
-    const-string v14, "com.google.android.gms.pseudonymous.service.START"
+    const/16 v3, 0x26
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x25
+    const-string v5, "com.google.android.gms.pseudonymous.service.START"
 
-    const/16 v15, 0x26
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->PSEUDONYMOUS_ID:Lorg/microg/gms/common/GmsService;
 
@@ -842,17 +868,17 @@
 
     const-string v1, "COMMON"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x26
 
-    const-string v14, "com.google.android.gms.common.service.START"
+    const/16 v3, 0x27
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x26
+    const-string v5, "com.google.android.gms.common.service.START"
 
-    const/16 v15, 0x27
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->COMMON:Lorg/microg/gms/common/GmsService;
 
@@ -861,17 +887,17 @@
 
     const-string v1, "CLEARCUT_LOGGER"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x27
 
-    const-string v14, "com.google.android.gms.clearcut.service.START"
+    const/16 v3, 0x28
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x27
+    const-string v5, "com.google.android.gms.clearcut.service.START"
 
-    const/16 v15, 0x28
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->CLEARCUT_LOGGER:Lorg/microg/gms/common/GmsService;
 
@@ -880,17 +906,17 @@
 
     const-string v1, "USAGE_REPORTING"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x28
 
-    const-string v14, "com.google.android.gms.usagereporting.service.START"
+    const/16 v3, 0x29
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x28
+    const-string v5, "com.google.android.gms.usagereporting.service.START"
 
-    const/16 v15, 0x29
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->USAGE_REPORTING:Lorg/microg/gms/common/GmsService;
 
@@ -899,17 +925,17 @@
 
     const-string v1, "KIDS"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x29
 
-    const-string v14, "com.google.android.gms.kids.service.START"
+    const/16 v3, 0x2a
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x29
+    const-string v5, "com.google.android.gms.kids.service.START"
 
-    const/16 v15, 0x2a
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->KIDS:Lorg/microg/gms/common/GmsService;
 
@@ -918,17 +944,17 @@
 
     const-string v1, "DOWNLOAD"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x2a
 
-    const-string v14, "com.google.android.gms.common.download.START"
+    const/16 v3, 0x2b
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x2a
+    const-string v5, "com.google.android.gms.common.download.START"
 
-    const/16 v15, 0x2b
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->DOWNLOAD:Lorg/microg/gms/common/GmsService;
 
@@ -937,17 +963,17 @@
 
     const-string v1, "SIGN_IN"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x2b
 
-    const-string v14, "com.google.android.gms.signin.service.START"
+    const/16 v3, 0x2c
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x2b
+    const-string v5, "com.google.android.gms.signin.service.START"
 
-    const/16 v15, 0x2c
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->SIGN_IN:Lorg/microg/gms/common/GmsService;
 
@@ -956,17 +982,17 @@
 
     const-string v1, "SAFETY_NET_CLIENT"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x2c
 
-    const-string v14, "com.google.android.gms.safetynet.service.START"
+    const/16 v3, 0x2d
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x2c
+    const-string v5, "com.google.android.gms.safetynet.service.START"
 
-    const/16 v15, 0x2d
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->SAFETY_NET_CLIENT:Lorg/microg/gms/common/GmsService;
 
@@ -975,17 +1001,17 @@
 
     const-string v1, "GSERVICES"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x2d
 
-    const-string v14, "com.google.android.gms.ads.gservice.START"
+    const/16 v3, 0x2e
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x2d
+    const-string v5, "com.google.android.gms.ads.gservice.START"
 
-    const/16 v15, 0x2e
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->GSERVICES:Lorg/microg/gms/common/GmsService;
 
@@ -994,17 +1020,17 @@
 
     const-string v1, "CONTEXT_MANAGER"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x2e
 
-    const-string v14, "com.google.android.contextmanager.service.ContextManagerService.START"
+    const/16 v3, 0x2f
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x2e
+    const-string v5, "com.google.android.contextmanager.service.ContextManagerService.START"
 
-    const/16 v15, 0x2f
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->CONTEXT_MANAGER:Lorg/microg/gms/common/GmsService;
 
@@ -1013,17 +1039,17 @@
 
     const-string v1, "AUDIO_MODEM"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x2f
 
-    const-string v14, "com.google.android.gms.audiomodem.service.AudioModemService.START"
+    const/16 v3, 0x30
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x2f
+    const-string v5, "com.google.android.gms.audiomodem.service.AudioModemService.START"
 
-    const/16 v15, 0x30
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->AUDIO_MODEM:Lorg/microg/gms/common/GmsService;
 
@@ -1032,17 +1058,17 @@
 
     const-string v1, "NEARBY_SHARING"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x30
 
-    const-string v14, "com.google.android.gms.nearby.sharing.service.NearbySharingService.START"
+    const/16 v3, 0x31
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x30
+    const-string v5, "com.google.android.gms.nearby.sharing.service.NearbySharingService.START"
 
-    const/16 v15, 0x31
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->NEARBY_SHARING:Lorg/microg/gms/common/GmsService;
 
@@ -1051,17 +1077,15 @@
 
     const-string v1, "LIGHTWEIGHT_NETWORK_QUALITY"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x31
 
-    const-string v14, "com.google.android.gms.herrevad.services.LightweightNetworkQualityAndroidService.START"
+    new-array v3, v7, [Ljava/lang/String;
 
-    aput-object v14, v3, v2
+    const-string v4, "com.google.android.gms.herrevad.services.LightweightNetworkQualityAndroidService.START"
 
-    const/16 v14, 0x31
+    aput-object v4, v3, v6
 
-    const/16 v15, 0x32
-
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v9, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->LIGHTWEIGHT_NETWORK_QUALITY:Lorg/microg/gms/common/GmsService;
 
@@ -1070,17 +1094,15 @@
 
     const-string v1, "PHENOTYPE"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x32
 
-    const-string v14, "com.google.android.gms.phenotype.service.START"
+    new-array v3, v7, [Ljava/lang/String;
 
-    aput-object v14, v3, v2
+    const-string v4, "com.google.android.gms.phenotype.service.START"
 
-    const/16 v14, 0x32
+    aput-object v4, v3, v6
 
-    const/16 v15, 0x33
-
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v9, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->PHENOTYPE:Lorg/microg/gms/common/GmsService;
 
@@ -1089,17 +1111,15 @@
 
     const-string v1, "VOICE_UNLOCK"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x34
 
-    const-string v14, "com.google.android.gms.speech.service.START"
+    new-array v3, v7, [Ljava/lang/String;
 
-    aput-object v14, v3, v2
+    const-string v4, "com.google.android.gms.speech.service.START"
 
-    const/16 v14, 0x33
+    aput-object v4, v3, v6
 
-    const/16 v15, 0x34
-
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v9, v2, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->VOICE_UNLOCK:Lorg/microg/gms/common/GmsService;
 
@@ -1108,17 +1128,17 @@
 
     const-string v1, "NEARBY_CONNECTIONS"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x34
 
-    const-string v14, "com.google.android.gms.nearby.connection.service.START"
+    const/16 v3, 0x36
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x34
+    const-string v5, "com.google.android.gms.nearby.connection.service.START"
 
-    const/16 v15, 0x36
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->NEARBY_CONNECTIONS:Lorg/microg/gms/common/GmsService;
 
@@ -1127,17 +1147,17 @@
 
     const-string v1, "FITNESS_SENSORS"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x35
 
-    const-string v14, "com.google.android.gms.fitness.SensorsApi"
+    const/16 v3, 0x37
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x35
+    const-string v5, "com.google.android.gms.fitness.SensorsApi"
 
-    const/16 v15, 0x37
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->FITNESS_SENSORS:Lorg/microg/gms/common/GmsService;
 
@@ -1146,17 +1166,17 @@
 
     const-string v1, "FITNESS_RECORDING"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x36
 
-    const-string v14, "com.google.android.gms.fitness.RecordingApi"
+    const/16 v3, 0x38
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x36
+    const-string v5, "com.google.android.gms.fitness.RecordingApi"
 
-    const/16 v15, 0x38
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->FITNESS_RECORDING:Lorg/microg/gms/common/GmsService;
 
@@ -1165,17 +1185,17 @@
 
     const-string v1, "FITNESS_HISTORY"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x37
 
-    const-string v14, "com.google.android.gms.fitness.HistoryApi"
+    const/16 v3, 0x39
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x37
+    const-string v5, "com.google.android.gms.fitness.HistoryApi"
 
-    const/16 v15, 0x39
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->FITNESS_HISTORY:Lorg/microg/gms/common/GmsService;
 
@@ -1184,17 +1204,17 @@
 
     const-string v1, "FITNESS_SESSIONS"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x38
 
-    const-string v14, "com.google.android.gms.fitness.SessionsApi"
+    const/16 v3, 0x3a
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x38
+    const-string v5, "com.google.android.gms.fitness.SessionsApi"
 
-    const/16 v15, 0x3a
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->FITNESS_SESSIONS:Lorg/microg/gms/common/GmsService;
 
@@ -1203,17 +1223,17 @@
 
     const-string v1, "FITNESS_BLE"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x39
 
-    const-string v14, "com.google.android.gms.fitness.BleApi"
+    const/16 v3, 0x3b
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x39
+    const-string v5, "com.google.android.gms.fitness.BleApi"
 
-    const/16 v15, 0x3b
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->FITNESS_BLE:Lorg/microg/gms/common/GmsService;
 
@@ -1222,17 +1242,17 @@
 
     const-string v1, "FITNESS_CONFIG"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x3a
 
-    const-string v14, "com.google.android.gms.fitness.ConfigApi"
+    const/16 v3, 0x3c
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x3a
+    const-string v5, "com.google.android.gms.fitness.ConfigApi"
 
-    const/16 v15, 0x3c
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->FITNESS_CONFIG:Lorg/microg/gms/common/GmsService;
 
@@ -1241,17 +1261,17 @@
 
     const-string v1, "FITNESS_INTERNAL"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x3b
 
-    const-string v14, "com.google.android.gms.fitness.InternalApi"
+    const/16 v3, 0x3d
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x3b
+    const-string v5, "com.google.android.gms.fitness.InternalApi"
 
-    const/16 v15, 0x3d
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->FITNESS_INTERNAL:Lorg/microg/gms/common/GmsService;
 
@@ -1260,17 +1280,17 @@
 
     const-string v1, "NEARBY_MESSAGES"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x3c
 
-    const-string v14, "com.google.android.gms.nearby.messages.service.NearbyMessagesService.START"
+    const/16 v3, 0x3e
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x3c
+    const-string v5, "com.google.android.gms.nearby.messages.service.NearbyMessagesService.START"
 
-    const/16 v15, 0x3e
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->NEARBY_MESSAGES:Lorg/microg/gms/common/GmsService;
 
@@ -1279,17 +1299,17 @@
 
     const-string v1, "HELP"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x3d
 
-    const-string v14, "com.google.android.gms.googlehelp.service.GoogleHelpService.START"
+    const/16 v3, 0x3f
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x3d
+    const-string v5, "com.google.android.gms.googlehelp.service.GoogleHelpService.START"
 
-    const/16 v15, 0x3f
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->HELP:Lorg/microg/gms/common/GmsService;
 
@@ -1298,17 +1318,17 @@
 
     const-string v1, "CONFIG"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x3e
 
-    const-string v14, "com.google.android.gms.config.START"
+    const/16 v3, 0x40
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x3e
+    const-string v5, "com.google.android.gms.config.START"
 
-    const/16 v15, 0x40
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->CONFIG:Lorg/microg/gms/common/GmsService;
 
@@ -1317,17 +1337,17 @@
 
     const-string v1, "GEODATA"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x3f
 
-    const-string v14, "com.google.android.gms.location.places.GeoDataApi"
+    const/16 v3, 0x41
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x3f
+    const-string v5, "com.google.android.gms.location.places.GeoDataApi"
 
-    const/16 v15, 0x41
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->GEODATA:Lorg/microg/gms/common/GmsService;
 
@@ -1336,13 +1356,13 @@
 
     const-string v1, "SEARCH_IME"
 
-    new-array v3, v2, [Ljava/lang/String;
+    const/16 v2, 0x40
 
-    const/16 v14, 0x40
+    const/16 v3, 0x42
 
-    const/16 v15, 0x42
+    new-array v4, v6, [Ljava/lang/String;
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->SEARCH_IME:Lorg/microg/gms/common/GmsService;
 
@@ -1351,17 +1371,17 @@
 
     const-string v1, "PLACE_DETECTION"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x41
 
-    const-string v14, "com.google.android.gms.location.places.PlaceDetectionApi"
+    const/16 v3, 0x43
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x41
+    const-string v5, "com.google.android.gms.location.places.PlaceDetectionApi"
 
-    const/16 v15, 0x43
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->PLACE_DETECTION:Lorg/microg/gms/common/GmsService;
 
@@ -1370,404 +1390,416 @@
 
     const-string v1, "CREDENTIALS"
 
-    new-array v3, v4, [Ljava/lang/String;
+    const/16 v2, 0x42
 
-    const-string v14, "com.google.android.gms.auth.api.credentials.service.START"
+    const/16 v3, 0x44
 
-    aput-object v14, v3, v2
+    new-array v4, v7, [Ljava/lang/String;
 
-    const/16 v14, 0x42
+    const-string v5, "com.google.android.gms.auth.api.credentials.service.START"
 
-    const/16 v15, 0x44
+    aput-object v5, v4, v6
 
-    invoke-direct {v0, v1, v14, v15, v3}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2, v3, v4}, Lorg/microg/gms/common/GmsService;-><init>(Ljava/lang/String;II[Ljava/lang/String;)V
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->CREDENTIALS:Lorg/microg/gms/common/GmsService;
 
+    .line 19
     const/16 v0, 0x43
 
-    .line 19
     new-array v0, v0, [Lorg/microg/gms/common/GmsService;
 
     sget-object v1, Lorg/microg/gms/common/GmsService;->UNKNOWN:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v1, v0, v6
 
     sget-object v1, Lorg/microg/gms/common/GmsService;->ANY:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v4
+    aput-object v1, v0, v7
 
     sget-object v1, Lorg/microg/gms/common/GmsService;->GAMES:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v5
+    aput-object v1, v0, v8
 
     sget-object v1, Lorg/microg/gms/common/GmsService;->PLUS:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v6
-
-    sget-object v1, Lorg/microg/gms/common/GmsService;->PANORAMA:Lorg/microg/gms/common/GmsService;
-
-    aput-object v1, v0, v7
-
-    sget-object v1, Lorg/microg/gms/common/GmsService;->WALLET:Lorg/microg/gms/common/GmsService;
-
-    aput-object v1, v0, v8
-
-    sget-object v1, Lorg/microg/gms/common/GmsService;->PEOPLE:Lorg/microg/gms/common/GmsService;
-
-    aput-object v1, v0, v9
-
-    sget-object v1, Lorg/microg/gms/common/GmsService;->LOCATION:Lorg/microg/gms/common/GmsService;
-
     aput-object v1, v0, v10
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->APPSTATE:Lorg/microg/gms/common/GmsService;
+    const/4 v1, 0x4
 
-    aput-object v1, v0, v11
+    sget-object v2, Lorg/microg/gms/common/GmsService;->PANORAMA:Lorg/microg/gms/common/GmsService;
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->ADREQUEST:Lorg/microg/gms/common/GmsService;
+    aput-object v2, v0, v1
 
-    aput-object v1, v0, v12
+    const/4 v1, 0x5
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->ACCOUNT:Lorg/microg/gms/common/GmsService;
+    sget-object v2, Lorg/microg/gms/common/GmsService;->WALLET:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v13
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->CAST:Lorg/microg/gms/common/GmsService;
+    const/4 v1, 0x6
 
-    const/16 v2, 0xb
+    sget-object v2, Lorg/microg/gms/common/GmsService;->PEOPLE:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->DRIVE:Lorg/microg/gms/common/GmsService;
+    const/4 v1, 0x7
 
-    const/16 v2, 0xc
+    sget-object v2, Lorg/microg/gms/common/GmsService;->LOCATION:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->ADDRESS:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x8
 
-    const/16 v2, 0xd
+    sget-object v2, Lorg/microg/gms/common/GmsService;->APPSTATE:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->CAR:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x9
 
-    const/16 v2, 0xe
+    sget-object v2, Lorg/microg/gms/common/GmsService;->ADREQUEST:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->WEARABLE:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0xa
 
-    const/16 v2, 0xf
+    sget-object v2, Lorg/microg/gms/common/GmsService;->ACCOUNT:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->AUTH:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0xb
 
-    const/16 v2, 0x10
+    sget-object v2, Lorg/microg/gms/common/GmsService;->CAST:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->FITNESS:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0xc
 
-    const/16 v2, 0x11
+    sget-object v2, Lorg/microg/gms/common/GmsService;->DRIVE:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->REMINDERS:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0xd
 
-    const/16 v2, 0x12
+    sget-object v2, Lorg/microg/gms/common/GmsService;->ADDRESS:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->LIGHTWEIGHT_INDEX:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0xe
 
-    const/16 v2, 0x13
+    sget-object v2, Lorg/microg/gms/common/GmsService;->CAR:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->DEVICE_CONNECTION:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0xf
 
-    const/16 v2, 0x14
+    sget-object v2, Lorg/microg/gms/common/GmsService;->WEARABLE:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->INDEX:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x10
 
-    const/16 v2, 0x15
+    sget-object v2, Lorg/microg/gms/common/GmsService;->AUTH:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->LOCATION_REPORTING:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x11
 
-    const/16 v2, 0x16
+    sget-object v2, Lorg/microg/gms/common/GmsService;->FITNESS:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->LOCATION_MANAGER:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x12
 
-    const/16 v2, 0x17
+    sget-object v2, Lorg/microg/gms/common/GmsService;->REMINDERS:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->PLAY_LOG:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x13
 
-    const/16 v2, 0x18
+    sget-object v2, Lorg/microg/gms/common/GmsService;->LIGHTWEIGHT_INDEX:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->DROIDGUARD:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x14
 
-    const/16 v2, 0x19
+    sget-object v2, Lorg/microg/gms/common/GmsService;->DEVICE_CONNECTION:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->LOCKBOX:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x15
 
-    const/16 v2, 0x1a
+    sget-object v2, Lorg/microg/gms/common/GmsService;->INDEX:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->CAST_MIRRORING:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x16
 
-    const/16 v2, 0x1b
+    sget-object v2, Lorg/microg/gms/common/GmsService;->LOCATION_REPORTING:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->NETWORK_QUALITY:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x17
 
-    const/16 v2, 0x1c
+    sget-object v2, Lorg/microg/gms/common/GmsService;->LOCATION_MANAGER:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->FEEDBACK:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x18
 
-    const/16 v2, 0x1d
+    sget-object v2, Lorg/microg/gms/common/GmsService;->PLAY_LOG:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->SEARCH_ADMINISTRATION:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x19
 
-    const/16 v2, 0x1e
+    sget-object v2, Lorg/microg/gms/common/GmsService;->DROIDGUARD:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->PHOTO_AUTO_BACKUP:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x1a
 
-    const/16 v2, 0x1f
+    sget-object v2, Lorg/microg/gms/common/GmsService;->LOCKBOX:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->SEARCH_QUERIES:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x1b
 
-    const/16 v2, 0x20
+    sget-object v2, Lorg/microg/gms/common/GmsService;->CAST_MIRRORING:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->SEARCH_GLOBAL:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x1c
 
-    const/16 v2, 0x21
+    sget-object v2, Lorg/microg/gms/common/GmsService;->NETWORK_QUALITY:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->UDC:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x1d
 
-    const/16 v2, 0x22
+    sget-object v2, Lorg/microg/gms/common/GmsService;->FEEDBACK:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->SEARCH_CORPORA:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x1e
 
-    const/16 v2, 0x23
+    sget-object v2, Lorg/microg/gms/common/GmsService;->SEARCH_ADMINISTRATION:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->DEVICE_MANAGER:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x1f
 
-    const/16 v2, 0x24
+    sget-object v2, Lorg/microg/gms/common/GmsService;->PHOTO_AUTO_BACKUP:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->PSEUDONYMOUS_ID:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x20
 
-    const/16 v2, 0x25
+    sget-object v2, Lorg/microg/gms/common/GmsService;->SEARCH_QUERIES:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->COMMON:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x21
 
-    const/16 v2, 0x26
+    sget-object v2, Lorg/microg/gms/common/GmsService;->SEARCH_GLOBAL:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->CLEARCUT_LOGGER:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x22
 
-    const/16 v2, 0x27
+    sget-object v2, Lorg/microg/gms/common/GmsService;->UDC:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->USAGE_REPORTING:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x23
 
-    const/16 v2, 0x28
+    sget-object v2, Lorg/microg/gms/common/GmsService;->SEARCH_CORPORA:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->KIDS:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x24
 
-    const/16 v2, 0x29
+    sget-object v2, Lorg/microg/gms/common/GmsService;->DEVICE_MANAGER:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->DOWNLOAD:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x25
 
-    const/16 v2, 0x2a
+    sget-object v2, Lorg/microg/gms/common/GmsService;->PSEUDONYMOUS_ID:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->SIGN_IN:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x26
 
-    const/16 v2, 0x2b
+    sget-object v2, Lorg/microg/gms/common/GmsService;->COMMON:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->SAFETY_NET_CLIENT:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x27
 
-    const/16 v2, 0x2c
+    sget-object v2, Lorg/microg/gms/common/GmsService;->CLEARCUT_LOGGER:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->GSERVICES:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x28
 
-    const/16 v2, 0x2d
+    sget-object v2, Lorg/microg/gms/common/GmsService;->USAGE_REPORTING:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->CONTEXT_MANAGER:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x29
 
-    const/16 v2, 0x2e
+    sget-object v2, Lorg/microg/gms/common/GmsService;->KIDS:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->AUDIO_MODEM:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x2a
 
-    const/16 v2, 0x2f
+    sget-object v2, Lorg/microg/gms/common/GmsService;->DOWNLOAD:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->NEARBY_SHARING:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x2b
 
-    const/16 v2, 0x30
+    sget-object v2, Lorg/microg/gms/common/GmsService;->SIGN_IN:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->LIGHTWEIGHT_NETWORK_QUALITY:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x2c
 
-    const/16 v2, 0x31
+    sget-object v2, Lorg/microg/gms/common/GmsService;->SAFETY_NET_CLIENT:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->PHENOTYPE:Lorg/microg/gms/common/GmsService;
+    const/16 v1, 0x2d
 
-    const/16 v2, 0x32
+    sget-object v2, Lorg/microg/gms/common/GmsService;->GSERVICES:Lorg/microg/gms/common/GmsService;
 
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x2e
+
+    sget-object v2, Lorg/microg/gms/common/GmsService;->CONTEXT_MANAGER:Lorg/microg/gms/common/GmsService;
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x2f
+
+    sget-object v2, Lorg/microg/gms/common/GmsService;->AUDIO_MODEM:Lorg/microg/gms/common/GmsService;
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x30
+
+    sget-object v2, Lorg/microg/gms/common/GmsService;->NEARBY_SHARING:Lorg/microg/gms/common/GmsService;
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x31
+
+    sget-object v2, Lorg/microg/gms/common/GmsService;->LIGHTWEIGHT_NETWORK_QUALITY:Lorg/microg/gms/common/GmsService;
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x32
+
+    sget-object v2, Lorg/microg/gms/common/GmsService;->PHENOTYPE:Lorg/microg/gms/common/GmsService;
+
+    aput-object v2, v0, v1
 
     sget-object v1, Lorg/microg/gms/common/GmsService;->VOICE_UNLOCK:Lorg/microg/gms/common/GmsService;
 
-    const/16 v2, 0x33
+    aput-object v1, v0, v9
 
-    aput-object v1, v0, v2
+    const/16 v1, 0x34
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->NEARBY_CONNECTIONS:Lorg/microg/gms/common/GmsService;
+    sget-object v2, Lorg/microg/gms/common/GmsService;->NEARBY_CONNECTIONS:Lorg/microg/gms/common/GmsService;
 
-    const/16 v2, 0x34
+    aput-object v2, v0, v1
 
-    aput-object v1, v0, v2
+    const/16 v1, 0x35
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->FITNESS_SENSORS:Lorg/microg/gms/common/GmsService;
+    sget-object v2, Lorg/microg/gms/common/GmsService;->FITNESS_SENSORS:Lorg/microg/gms/common/GmsService;
 
-    const/16 v2, 0x35
+    aput-object v2, v0, v1
 
-    aput-object v1, v0, v2
+    const/16 v1, 0x36
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->FITNESS_RECORDING:Lorg/microg/gms/common/GmsService;
+    sget-object v2, Lorg/microg/gms/common/GmsService;->FITNESS_RECORDING:Lorg/microg/gms/common/GmsService;
 
-    const/16 v2, 0x36
+    aput-object v2, v0, v1
 
-    aput-object v1, v0, v2
+    const/16 v1, 0x37
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->FITNESS_HISTORY:Lorg/microg/gms/common/GmsService;
+    sget-object v2, Lorg/microg/gms/common/GmsService;->FITNESS_HISTORY:Lorg/microg/gms/common/GmsService;
 
-    const/16 v2, 0x37
+    aput-object v2, v0, v1
 
-    aput-object v1, v0, v2
+    const/16 v1, 0x38
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->FITNESS_SESSIONS:Lorg/microg/gms/common/GmsService;
+    sget-object v2, Lorg/microg/gms/common/GmsService;->FITNESS_SESSIONS:Lorg/microg/gms/common/GmsService;
 
-    const/16 v2, 0x38
+    aput-object v2, v0, v1
 
-    aput-object v1, v0, v2
+    const/16 v1, 0x39
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->FITNESS_BLE:Lorg/microg/gms/common/GmsService;
+    sget-object v2, Lorg/microg/gms/common/GmsService;->FITNESS_BLE:Lorg/microg/gms/common/GmsService;
 
-    const/16 v2, 0x39
+    aput-object v2, v0, v1
 
-    aput-object v1, v0, v2
+    const/16 v1, 0x3a
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->FITNESS_CONFIG:Lorg/microg/gms/common/GmsService;
+    sget-object v2, Lorg/microg/gms/common/GmsService;->FITNESS_CONFIG:Lorg/microg/gms/common/GmsService;
 
-    const/16 v2, 0x3a
+    aput-object v2, v0, v1
 
-    aput-object v1, v0, v2
+    const/16 v1, 0x3b
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->FITNESS_INTERNAL:Lorg/microg/gms/common/GmsService;
+    sget-object v2, Lorg/microg/gms/common/GmsService;->FITNESS_INTERNAL:Lorg/microg/gms/common/GmsService;
 
-    const/16 v2, 0x3b
+    aput-object v2, v0, v1
 
-    aput-object v1, v0, v2
+    const/16 v1, 0x3c
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->NEARBY_MESSAGES:Lorg/microg/gms/common/GmsService;
+    sget-object v2, Lorg/microg/gms/common/GmsService;->NEARBY_MESSAGES:Lorg/microg/gms/common/GmsService;
 
-    const/16 v2, 0x3c
+    aput-object v2, v0, v1
 
-    aput-object v1, v0, v2
+    const/16 v1, 0x3d
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->HELP:Lorg/microg/gms/common/GmsService;
+    sget-object v2, Lorg/microg/gms/common/GmsService;->HELP:Lorg/microg/gms/common/GmsService;
 
-    const/16 v2, 0x3d
+    aput-object v2, v0, v1
 
-    aput-object v1, v0, v2
+    const/16 v1, 0x3e
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->CONFIG:Lorg/microg/gms/common/GmsService;
+    sget-object v2, Lorg/microg/gms/common/GmsService;->CONFIG:Lorg/microg/gms/common/GmsService;
 
-    const/16 v2, 0x3e
+    aput-object v2, v0, v1
 
-    aput-object v1, v0, v2
+    const/16 v1, 0x3f
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->GEODATA:Lorg/microg/gms/common/GmsService;
+    sget-object v2, Lorg/microg/gms/common/GmsService;->GEODATA:Lorg/microg/gms/common/GmsService;
 
-    const/16 v2, 0x3f
+    aput-object v2, v0, v1
 
-    aput-object v1, v0, v2
+    const/16 v1, 0x40
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->SEARCH_IME:Lorg/microg/gms/common/GmsService;
+    sget-object v2, Lorg/microg/gms/common/GmsService;->SEARCH_IME:Lorg/microg/gms/common/GmsService;
 
-    const/16 v2, 0x40
+    aput-object v2, v0, v1
 
-    aput-object v1, v0, v2
+    const/16 v1, 0x41
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->PLACE_DETECTION:Lorg/microg/gms/common/GmsService;
+    sget-object v2, Lorg/microg/gms/common/GmsService;->PLACE_DETECTION:Lorg/microg/gms/common/GmsService;
 
-    const/16 v2, 0x41
+    aput-object v2, v0, v1
 
-    aput-object v1, v0, v2
+    const/16 v1, 0x42
 
-    sget-object v1, Lorg/microg/gms/common/GmsService;->CREDENTIALS:Lorg/microg/gms/common/GmsService;
+    sget-object v2, Lorg/microg/gms/common/GmsService;->CREDENTIALS:Lorg/microg/gms/common/GmsService;
 
-    const/16 v2, 0x42
-
-    aput-object v1, v0, v2
+    aput-object v2, v0, v1
 
     sput-object v0, Lorg/microg/gms/common/GmsService;->$VALUES:[Lorg/microg/gms/common/GmsService;
 
@@ -1775,7 +1807,9 @@
 .end method
 
 .method private varargs constructor <init>(Ljava/lang/String;II[Ljava/lang/String;)V
-    .locals 0
+    .locals 1
+    .param p3, "serviceId"    # I
+    .param p4, "actions"    # [Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I[",
@@ -1784,6 +1818,7 @@
         }
     .end annotation
 
+    .prologue
     .line 92
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
@@ -1791,67 +1826,80 @@
     iput p3, p0, Lorg/microg/gms/common/GmsService;->SERVICE_ID:I
 
     .line 94
-    array-length p1, p4
+    array-length v0, p4
 
-    if-lez p1, :cond_0
+    if-lez v0, :cond_0
 
-    const/4 p1, 0x0
+    const/4 v0, 0x0
 
-    aget-object p1, p4, p1
-
-    goto :goto_0
-
-    :cond_0
-    const/4 p1, 0x0
+    aget-object v0, p4, v0
 
     :goto_0
-    iput-object p1, p0, Lorg/microg/gms/common/GmsService;->ACTION:Ljava/lang/String;
+    iput-object v0, p0, Lorg/microg/gms/common/GmsService;->ACTION:Ljava/lang/String;
 
     .line 95
     iput-object p4, p0, Lorg/microg/gms/common/GmsService;->SECONDARY_ACTIONS:[Ljava/lang/String;
 
+    .line 96
     return-void
+
+    .line 94
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
 .end method
 
 .method public static byServiceId(I)Lorg/microg/gms/common/GmsService;
     .locals 5
+    .param p0, "serviceId"    # I
 
+    .prologue
     .line 104
     invoke-static {}, Lorg/microg/gms/common/GmsService;->values()[Lorg/microg/gms/common/GmsService;
 
-    move-result-object v0
+    move-result-object v2
+
+    array-length v3, v2
 
     const/4 v1, 0x0
 
-    array-length v2, v0
-
     :goto_0
-    if-ge v1, v2, :cond_1
+    if-ge v1, v3, :cond_1
 
-    aget-object v3, v0, v1
+    aget-object v0, v2, v1
 
     .line 105
-    iget v4, v3, Lorg/microg/gms/common/GmsService;->SERVICE_ID:I
+    .local v0, "service":Lorg/microg/gms/common/GmsService;
+    iget v4, v0, Lorg/microg/gms/common/GmsService;->SERVICE_ID:I
 
     if-ne v4, p0, :cond_0
 
-    return-object v3
+    .line 107
+    .end local v0    # "service":Lorg/microg/gms/common/GmsService;
+    :goto_1
+    return-object v0
 
+    .line 104
+    .restart local v0    # "service":Lorg/microg/gms/common/GmsService;
     :cond_0
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
     .line 107
+    .end local v0    # "service":Lorg/microg/gms/common/GmsService;
     :cond_1
-    sget-object p0, Lorg/microg/gms/common/GmsService;->UNKNOWN:Lorg/microg/gms/common/GmsService;
+    sget-object v0, Lorg/microg/gms/common/GmsService;->UNKNOWN:Lorg/microg/gms/common/GmsService;
 
-    return-object p0
+    goto :goto_1
 .end method
 
 .method public static nameFromServiceId(I)Ljava/lang/String;
     .locals 1
+    .param p0, "serviceId"    # I
 
+    .prologue
     .line 111
     invoke-static {p0}, Lorg/microg/gms/common/GmsService;->byServiceId(I)Lorg/microg/gms/common/GmsService;
 
@@ -1859,29 +1907,32 @@
 
     invoke-virtual {v0, p0}, Lorg/microg/gms/common/GmsService;->toString(I)Ljava/lang/String;
 
-    move-result-object p0
+    move-result-object v0
 
-    return-object p0
+    return-object v0
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lorg/microg/gms/common/GmsService;
     .locals 1
+    .param p0, "name"    # Ljava/lang/String;
 
+    .prologue
     .line 19
     const-class v0, Lorg/microg/gms/common/GmsService;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
 
-    move-result-object p0
+    move-result-object v0
 
-    check-cast p0, Lorg/microg/gms/common/GmsService;
+    check-cast v0, Lorg/microg/gms/common/GmsService;
 
-    return-object p0
+    return-object v0
 .end method
 
 .method public static values()[Lorg/microg/gms/common/GmsService;
     .locals 1
 
+    .prologue
     .line 19
     sget-object v0, Lorg/microg/gms/common/GmsService;->$VALUES:[Lorg/microg/gms/common/GmsService;
 
@@ -1898,7 +1949,9 @@
 # virtual methods
 .method public toString(I)Ljava/lang/String;
     .locals 2
+    .param p1, "serviceId"    # I
 
+    .prologue
     .line 115
     sget-object v0, Lorg/microg/gms/common/GmsService;->UNKNOWN:Lorg/microg/gms/common/GmsService;
 
@@ -1906,11 +1959,12 @@
 
     invoke-virtual {p0}, Lorg/microg/gms/common/GmsService;->toString()Ljava/lang/String;
 
-    move-result-object p1
-
-    return-object p1
+    move-result-object v0
 
     .line 116
+    :goto_0
+    return-object v0
+
     :cond_0
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -1920,15 +1974,21 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    move-result-object v0
+
     invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    const-string p1, ")"
+    move-result-object v0
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v1, ")"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object p1
+    move-result-object v0
 
-    return-object p1
+    goto :goto_0
 .end method

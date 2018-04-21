@@ -26,56 +26,60 @@
 
 # direct methods
 .method constructor <init>(Ljava/lang/String;)V
-    .locals 0
+    .locals 1
+    .param p1, "shaderFile"    # Ljava/lang/String;
 
-    .line 160
+    .prologue
+    .line 161
     invoke-direct {p0}, Lorg/oscim/renderer/GLShader;-><init>()V
 
-    .line 161
+    .line 162
     invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/MeshBucket$Renderer$Shader;->create(Ljava/lang/String;)Z
 
-    move-result p1
+    move-result v0
 
-    if-nez p1, :cond_0
+    if-nez v0, :cond_0
 
+    .line 169
+    :goto_0
     return-void
-
-    :cond_0
-    const-string p1, "u_mvp"
-
-    .line 164
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/MeshBucket$Renderer$Shader;->getUniform(Ljava/lang/String;)I
-
-    move-result p1
-
-    iput p1, p0, Lorg/oscim/renderer/bucket/MeshBucket$Renderer$Shader;->uMVP:I
-
-    const-string p1, "u_color"
 
     .line 165
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/MeshBucket$Renderer$Shader;->getUniform(Ljava/lang/String;)I
+    :cond_0
+    const-string v0, "u_mvp"
 
-    move-result p1
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/MeshBucket$Renderer$Shader;->getUniform(Ljava/lang/String;)I
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/MeshBucket$Renderer$Shader;->uColor:I
+    move-result v0
 
-    const-string p1, "u_height"
+    iput v0, p0, Lorg/oscim/renderer/bucket/MeshBucket$Renderer$Shader;->uMVP:I
 
     .line 166
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/MeshBucket$Renderer$Shader;->getUniform(Ljava/lang/String;)I
+    const-string v0, "u_color"
 
-    move-result p1
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/MeshBucket$Renderer$Shader;->getUniform(Ljava/lang/String;)I
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/MeshBucket$Renderer$Shader;->uHeight:I
+    move-result v0
 
-    const-string p1, "a_pos"
+    iput v0, p0, Lorg/oscim/renderer/bucket/MeshBucket$Renderer$Shader;->uColor:I
 
     .line 167
-    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/MeshBucket$Renderer$Shader;->getAttrib(Ljava/lang/String;)I
+    const-string v0, "u_height"
 
-    move-result p1
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/MeshBucket$Renderer$Shader;->getUniform(Ljava/lang/String;)I
 
-    iput p1, p0, Lorg/oscim/renderer/bucket/MeshBucket$Renderer$Shader;->aPos:I
+    move-result v0
 
-    return-void
+    iput v0, p0, Lorg/oscim/renderer/bucket/MeshBucket$Renderer$Shader;->uHeight:I
+
+    .line 168
+    const-string v0, "a_pos"
+
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/MeshBucket$Renderer$Shader;->getAttrib(Ljava/lang/String;)I
+
+    move-result v0
+
+    iput v0, p0, Lorg/oscim/renderer/bucket/MeshBucket$Renderer$Shader;->aPos:I
+
+    goto :goto_0
 .end method

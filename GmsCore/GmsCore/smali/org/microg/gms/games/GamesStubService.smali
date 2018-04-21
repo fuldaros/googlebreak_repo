@@ -7,9 +7,10 @@
 .method public constructor <init>()V
     .locals 3
 
+    .prologue
+    .line 41
     const-string v0, "GmsGamesSvc"
 
-    .line 41
     sget-object v1, Lorg/microg/gms/common/GmsService;->GAMES:Lorg/microg/gms/common/GmsService;
 
     const/4 v2, 0x0
@@ -18,87 +19,95 @@
 
     invoke-direct {p0, v0, v1, v2}, Lorg/microg/gms/BaseService;-><init>(Ljava/lang/String;Lorg/microg/gms/common/GmsService;[Lorg/microg/gms/common/GmsService;)V
 
+    .line 42
     return-void
 .end method
 
 
 # virtual methods
 .method public handleServiceRequest(Lcom/google/android/gms/common/internal/IGmsCallbacks;Lcom/google/android/gms/common/internal/GetServiceRequest;Lorg/microg/gms/common/GmsService;)V
-    .locals 4
+    .locals 6
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "request"    # Lcom/google/android/gms/common/internal/GetServiceRequest;
+    .param p3, "service"    # Lorg/microg/gms/common/GmsService;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
+    .prologue
+    .line 46
+    const/4 v2, 0x0
+
     .line 47
-    iget-object p3, p2, Lcom/google/android/gms/common/internal/GetServiceRequest;->extras:Landroid/os/Bundle;
+    .local v2, "packageName":Ljava/lang/String;
+    iget-object v3, p2, Lcom/google/android/gms/common/internal/GetServiceRequest;->extras:Landroid/os/Bundle;
 
-    const/4 v0, 0x0
-
-    if-eqz p3, :cond_0
+    if-eqz v3, :cond_0
 
     .line 48
-    iget-object p2, p2, Lcom/google/android/gms/common/internal/GetServiceRequest;->extras:Landroid/os/Bundle;
+    iget-object v3, p2, Lcom/google/android/gms/common/internal/GetServiceRequest;->extras:Landroid/os/Bundle;
 
-    const-string p3, "com.google.android.gms.games.key.gamePackageName"
+    const-string v4, "com.google.android.gms.games.key.gamePackageName"
 
-    invoke-virtual {p2, p3}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v3, v4}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object p2
+    move-result-object v2
 
-    goto :goto_0
-
+    .line 50
     :cond_0
-    move-object p2, v0
+    if-nez v2, :cond_1
 
-    :goto_0
-    if-nez p2, :cond_1
-
-    const-string p2, "com.google.android.gms"
+    const-string v2, "com.google.android.gms"
 
     .line 51
     :cond_1
-    new-instance p3, Landroid/content/Intent;
+    new-instance v1, Landroid/content/Intent;
 
-    const-string v1, "com.google.android.gms.games.PLAY_GAMES_UPGRADE"
+    const-string v3, "com.google.android.gms.games.PLAY_GAMES_UPGRADE"
 
-    invoke-direct {p3, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
-
-    const-string v1, "com.google.android.gms"
+    invoke-direct {v1, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
     .line 52
-    invoke-virtual {p3, v1}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+    .local v1, "intent":Landroid/content/Intent;
+    const-string v3, "com.google.android.gms"
 
-    const-string v1, "com.google.android.gms.games.GAME_PACKAGE_NAME"
+    invoke-virtual {v1, v3}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
 
     .line 53
-    invoke-virtual {p3, v1, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    const-string v3, "com.google.android.gms.games.GAME_PACKAGE_NAME"
+
+    invoke-virtual {v1, v3, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
     .line 54
-    new-instance v1, Landroid/os/Bundle;
+    new-instance v0, Landroid/os/Bundle;
 
-    invoke-direct {v1}, Landroid/os/Bundle;-><init>()V
-
-    const-string v2, "pendingIntent"
+    invoke-direct {v0}, Landroid/os/Bundle;-><init>()V
 
     .line 55
-    invoke-virtual {p2}, Ljava/lang/String;->hashCode()I
+    .local v0, "bundle":Landroid/os/Bundle;
+    const-string v3, "pendingIntent"
 
-    move-result p2
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
 
-    const/high16 v3, 0x8000000
+    move-result v4
 
-    invoke-static {p0, p2, p3, v3}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    const/high16 v5, 0x8000000
 
-    move-result-object p2
+    invoke-static {p0, v4, v1, v5}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
 
-    invoke-virtual {v1, v2, p2}, Landroid/os/Bundle;->putParcelable(Ljava/lang/String;Landroid/os/Parcelable;)V
+    move-result-object v4
 
-    const/4 p2, 0x6
+    invoke-virtual {v0, v3, v4}, Landroid/os/Bundle;->putParcelable(Ljava/lang/String;Landroid/os/Parcelable;)V
 
     .line 56
-    invoke-interface {p1, p2, v0, v1}, Lcom/google/android/gms/common/internal/IGmsCallbacks;->onPostInitComplete(ILandroid/os/IBinder;Landroid/os/Bundle;)V
+    const/4 v3, 0x6
 
+    const/4 v4, 0x0
+
+    invoke-interface {p1, v3, v4, v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks;->onPostInitComplete(ILandroid/os/IBinder;Landroid/os/Bundle;)V
+
+    .line 57
     return-void
 .end method

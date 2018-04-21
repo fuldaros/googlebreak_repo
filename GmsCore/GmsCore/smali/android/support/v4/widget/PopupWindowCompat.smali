@@ -6,111 +6,142 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatApi23Impl;,
-        Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatApi21Impl;,
-        Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatApi19Impl;,
-        Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatBaseImpl;
+        Landroid/support/v4/widget/PopupWindowCompat$Api23PopupWindowImpl;,
+        Landroid/support/v4/widget/PopupWindowCompat$Api21PopupWindowImpl;,
+        Landroid/support/v4/widget/PopupWindowCompat$KitKatPopupWindowImpl;,
+        Landroid/support/v4/widget/PopupWindowCompat$GingerbreadPopupWindowImpl;,
+        Landroid/support/v4/widget/PopupWindowCompat$BasePopupWindowImpl;,
+        Landroid/support/v4/widget/PopupWindowCompat$PopupWindowImpl;
     }
 .end annotation
 
 
 # static fields
-.field static final IMPL:Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatBaseImpl;
+.field static final IMPL:Landroid/support/v4/widget/PopupWindowCompat$PopupWindowImpl;
 
 
 # direct methods
 .method static constructor <clinit>()V
     .locals 2
 
-    .line 186
+    .prologue
+    .line 135
     sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
 
+    .line 136
+    .local v0, "version":I
     const/16 v1, 0x17
 
     if-lt v0, v1, :cond_0
 
-    .line 187
-    new-instance v0, Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatApi23Impl;
+    .line 137
+    new-instance v1, Landroid/support/v4/widget/PopupWindowCompat$Api23PopupWindowImpl;
 
-    invoke-direct {v0}, Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatApi23Impl;-><init>()V
+    invoke-direct {v1}, Landroid/support/v4/widget/PopupWindowCompat$Api23PopupWindowImpl;-><init>()V
 
-    sput-object v0, Landroid/support/v4/widget/PopupWindowCompat;->IMPL:Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatBaseImpl;
+    sput-object v1, Landroid/support/v4/widget/PopupWindowCompat;->IMPL:Landroid/support/v4/widget/PopupWindowCompat$PopupWindowImpl;
 
-    goto :goto_0
+    .line 147
+    :goto_0
+    return-void
 
-    .line 188
+    .line 138
     :cond_0
-    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
-
     const/16 v1, 0x15
 
     if-lt v0, v1, :cond_1
 
-    .line 189
-    new-instance v0, Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatApi21Impl;
+    .line 139
+    new-instance v1, Landroid/support/v4/widget/PopupWindowCompat$Api21PopupWindowImpl;
 
-    invoke-direct {v0}, Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatApi21Impl;-><init>()V
+    invoke-direct {v1}, Landroid/support/v4/widget/PopupWindowCompat$Api21PopupWindowImpl;-><init>()V
 
-    sput-object v0, Landroid/support/v4/widget/PopupWindowCompat;->IMPL:Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatBaseImpl;
+    sput-object v1, Landroid/support/v4/widget/PopupWindowCompat;->IMPL:Landroid/support/v4/widget/PopupWindowCompat$PopupWindowImpl;
 
     goto :goto_0
 
-    .line 190
+    .line 140
     :cond_1
-    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
-
     const/16 v1, 0x13
 
     if-lt v0, v1, :cond_2
 
-    .line 191
-    new-instance v0, Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatApi19Impl;
+    .line 141
+    new-instance v1, Landroid/support/v4/widget/PopupWindowCompat$KitKatPopupWindowImpl;
 
-    invoke-direct {v0}, Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatApi19Impl;-><init>()V
+    invoke-direct {v1}, Landroid/support/v4/widget/PopupWindowCompat$KitKatPopupWindowImpl;-><init>()V
 
-    sput-object v0, Landroid/support/v4/widget/PopupWindowCompat;->IMPL:Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatBaseImpl;
+    sput-object v1, Landroid/support/v4/widget/PopupWindowCompat;->IMPL:Landroid/support/v4/widget/PopupWindowCompat$PopupWindowImpl;
 
     goto :goto_0
 
-    .line 193
+    .line 142
     :cond_2
-    new-instance v0, Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatBaseImpl;
+    const/16 v1, 0x9
 
-    invoke-direct {v0}, Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatBaseImpl;-><init>()V
+    if-lt v0, v1, :cond_3
 
-    sput-object v0, Landroid/support/v4/widget/PopupWindowCompat;->IMPL:Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatBaseImpl;
+    .line 143
+    new-instance v1, Landroid/support/v4/widget/PopupWindowCompat$GingerbreadPopupWindowImpl;
 
-    :goto_0
-    return-void
+    invoke-direct {v1}, Landroid/support/v4/widget/PopupWindowCompat$GingerbreadPopupWindowImpl;-><init>()V
+
+    sput-object v1, Landroid/support/v4/widget/PopupWindowCompat;->IMPL:Landroid/support/v4/widget/PopupWindowCompat$PopupWindowImpl;
+
+    goto :goto_0
+
+    .line 145
+    :cond_3
+    new-instance v1, Landroid/support/v4/widget/PopupWindowCompat$BasePopupWindowImpl;
+
+    invoke-direct {v1}, Landroid/support/v4/widget/PopupWindowCompat$BasePopupWindowImpl;-><init>()V
+
+    sput-object v1, Landroid/support/v4/widget/PopupWindowCompat;->IMPL:Landroid/support/v4/widget/PopupWindowCompat$PopupWindowImpl;
+
+    goto :goto_0
 .end method
 
 .method public static setOverlapAnchor(Landroid/widget/PopupWindow;Z)V
     .locals 1
+    .param p0, "popupWindow"    # Landroid/widget/PopupWindow;
+    .param p1, "overlapAnchor"    # Z
 
-    .line 229
-    sget-object v0, Landroid/support/v4/widget/PopupWindowCompat;->IMPL:Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatBaseImpl;
+    .prologue
+    .line 181
+    sget-object v0, Landroid/support/v4/widget/PopupWindowCompat;->IMPL:Landroid/support/v4/widget/PopupWindowCompat$PopupWindowImpl;
 
-    invoke-virtual {v0, p0, p1}, Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatBaseImpl;->setOverlapAnchor(Landroid/widget/PopupWindow;Z)V
+    invoke-interface {v0, p0, p1}, Landroid/support/v4/widget/PopupWindowCompat$PopupWindowImpl;->setOverlapAnchor(Landroid/widget/PopupWindow;Z)V
 
+    .line 182
     return-void
 .end method
 
 .method public static setWindowLayoutType(Landroid/widget/PopupWindow;I)V
     .locals 1
+    .param p0, "popupWindow"    # Landroid/widget/PopupWindow;
+    .param p1, "layoutType"    # I
 
-    .line 252
-    sget-object v0, Landroid/support/v4/widget/PopupWindowCompat;->IMPL:Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatBaseImpl;
+    .prologue
+    .line 204
+    sget-object v0, Landroid/support/v4/widget/PopupWindowCompat;->IMPL:Landroid/support/v4/widget/PopupWindowCompat$PopupWindowImpl;
 
-    invoke-virtual {v0, p0, p1}, Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatBaseImpl;->setWindowLayoutType(Landroid/widget/PopupWindow;I)V
+    invoke-interface {v0, p0, p1}, Landroid/support/v4/widget/PopupWindowCompat$PopupWindowImpl;->setWindowLayoutType(Landroid/widget/PopupWindow;I)V
 
+    .line 205
     return-void
 .end method
 
 .method public static showAsDropDown(Landroid/widget/PopupWindow;Landroid/view/View;III)V
     .locals 6
+    .param p0, "popup"    # Landroid/widget/PopupWindow;
+    .param p1, "anchor"    # Landroid/view/View;
+    .param p2, "xoff"    # I
+    .param p3, "yoff"    # I
+    .param p4, "gravity"    # I
 
-    .line 219
-    sget-object v0, Landroid/support/v4/widget/PopupWindowCompat;->IMPL:Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatBaseImpl;
+    .prologue
+    .line 171
+    sget-object v0, Landroid/support/v4/widget/PopupWindowCompat;->IMPL:Landroid/support/v4/widget/PopupWindowCompat$PopupWindowImpl;
 
     move-object v1, p0
 
@@ -122,7 +153,8 @@
 
     move v5, p4
 
-    invoke-virtual/range {v0 .. v5}, Landroid/support/v4/widget/PopupWindowCompat$PopupWindowCompatBaseImpl;->showAsDropDown(Landroid/widget/PopupWindow;Landroid/view/View;III)V
+    invoke-interface/range {v0 .. v5}, Landroid/support/v4/widget/PopupWindowCompat$PopupWindowImpl;->showAsDropDown(Landroid/widget/PopupWindow;Landroid/view/View;III)V
 
+    .line 172
     return-void
 .end method

@@ -99,46 +99,55 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 5
+    .locals 6
 
-    .line 38
+    .prologue
+    const/4 v1, 0x2
+
+    const/high16 v5, 0x40a00000    # 5.0f
+
+    const/4 v4, 0x4
+
+    const/high16 v3, 0x41200000    # 10.0f
+
+    const/high16 v2, 0x40000000    # 2.0f
+
+    .line 34
     new-instance v0, Lorg/oscim/utils/math/Interpolation$1;
 
     invoke-direct {v0}, Lorg/oscim/utils/math/Interpolation$1;-><init>()V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->linear:Lorg/oscim/utils/math/Interpolation;
 
-    .line 45
+    .line 41
     new-instance v0, Lorg/oscim/utils/math/Interpolation$2;
 
     invoke-direct {v0}, Lorg/oscim/utils/math/Interpolation$2;-><init>()V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->fade:Lorg/oscim/utils/math/Interpolation;
 
-    .line 52
+    .line 48
     new-instance v0, Lorg/oscim/utils/math/Interpolation$Pow;
-
-    const/4 v1, 0x2
 
     invoke-direct {v0, v1}, Lorg/oscim/utils/math/Interpolation$Pow;-><init>(I)V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->pow2:Lorg/oscim/utils/math/Interpolation$Pow;
 
-    .line 53
+    .line 49
     new-instance v0, Lorg/oscim/utils/math/Interpolation$PowIn;
 
     invoke-direct {v0, v1}, Lorg/oscim/utils/math/Interpolation$PowIn;-><init>(I)V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->pow2In:Lorg/oscim/utils/math/Interpolation$PowIn;
 
-    .line 54
+    .line 50
     new-instance v0, Lorg/oscim/utils/math/Interpolation$PowOut;
 
     invoke-direct {v0, v1}, Lorg/oscim/utils/math/Interpolation$PowOut;-><init>(I)V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->pow2Out:Lorg/oscim/utils/math/Interpolation$PowOut;
 
-    .line 56
+    .line 52
     new-instance v0, Lorg/oscim/utils/math/Interpolation$Pow;
 
     const/4 v1, 0x3
@@ -147,218 +156,218 @@
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->pow3:Lorg/oscim/utils/math/Interpolation$Pow;
 
-    .line 57
+    .line 53
     new-instance v0, Lorg/oscim/utils/math/Interpolation$PowIn;
+
+    const/4 v1, 0x3
 
     invoke-direct {v0, v1}, Lorg/oscim/utils/math/Interpolation$PowIn;-><init>(I)V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->pow3In:Lorg/oscim/utils/math/Interpolation$PowIn;
 
-    .line 58
+    .line 54
     new-instance v0, Lorg/oscim/utils/math/Interpolation$PowOut;
+
+    const/4 v1, 0x3
 
     invoke-direct {v0, v1}, Lorg/oscim/utils/math/Interpolation$PowOut;-><init>(I)V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->pow3Out:Lorg/oscim/utils/math/Interpolation$PowOut;
 
+    .line 56
+    new-instance v0, Lorg/oscim/utils/math/Interpolation$Pow;
+
+    invoke-direct {v0, v4}, Lorg/oscim/utils/math/Interpolation$Pow;-><init>(I)V
+
+    sput-object v0, Lorg/oscim/utils/math/Interpolation;->pow4:Lorg/oscim/utils/math/Interpolation$Pow;
+
+    .line 57
+    new-instance v0, Lorg/oscim/utils/math/Interpolation$PowIn;
+
+    invoke-direct {v0, v4}, Lorg/oscim/utils/math/Interpolation$PowIn;-><init>(I)V
+
+    sput-object v0, Lorg/oscim/utils/math/Interpolation;->pow4In:Lorg/oscim/utils/math/Interpolation$PowIn;
+
+    .line 58
+    new-instance v0, Lorg/oscim/utils/math/Interpolation$PowOut;
+
+    invoke-direct {v0, v4}, Lorg/oscim/utils/math/Interpolation$PowOut;-><init>(I)V
+
+    sput-object v0, Lorg/oscim/utils/math/Interpolation;->pow4Out:Lorg/oscim/utils/math/Interpolation$PowOut;
+
     .line 60
     new-instance v0, Lorg/oscim/utils/math/Interpolation$Pow;
 
-    const/4 v1, 0x4
+    const/4 v1, 0x5
 
     invoke-direct {v0, v1}, Lorg/oscim/utils/math/Interpolation$Pow;-><init>(I)V
 
-    sput-object v0, Lorg/oscim/utils/math/Interpolation;->pow4:Lorg/oscim/utils/math/Interpolation$Pow;
+    sput-object v0, Lorg/oscim/utils/math/Interpolation;->pow5:Lorg/oscim/utils/math/Interpolation$Pow;
 
     .line 61
     new-instance v0, Lorg/oscim/utils/math/Interpolation$PowIn;
 
+    const/4 v1, 0x5
+
     invoke-direct {v0, v1}, Lorg/oscim/utils/math/Interpolation$PowIn;-><init>(I)V
 
-    sput-object v0, Lorg/oscim/utils/math/Interpolation;->pow4In:Lorg/oscim/utils/math/Interpolation$PowIn;
+    sput-object v0, Lorg/oscim/utils/math/Interpolation;->pow5In:Lorg/oscim/utils/math/Interpolation$PowIn;
 
     .line 62
     new-instance v0, Lorg/oscim/utils/math/Interpolation$PowOut;
 
+    const/4 v1, 0x5
+
     invoke-direct {v0, v1}, Lorg/oscim/utils/math/Interpolation$PowOut;-><init>(I)V
-
-    sput-object v0, Lorg/oscim/utils/math/Interpolation;->pow4Out:Lorg/oscim/utils/math/Interpolation$PowOut;
-
-    .line 64
-    new-instance v0, Lorg/oscim/utils/math/Interpolation$Pow;
-
-    const/4 v2, 0x5
-
-    invoke-direct {v0, v2}, Lorg/oscim/utils/math/Interpolation$Pow;-><init>(I)V
-
-    sput-object v0, Lorg/oscim/utils/math/Interpolation;->pow5:Lorg/oscim/utils/math/Interpolation$Pow;
-
-    .line 65
-    new-instance v0, Lorg/oscim/utils/math/Interpolation$PowIn;
-
-    invoke-direct {v0, v2}, Lorg/oscim/utils/math/Interpolation$PowIn;-><init>(I)V
-
-    sput-object v0, Lorg/oscim/utils/math/Interpolation;->pow5In:Lorg/oscim/utils/math/Interpolation$PowIn;
-
-    .line 66
-    new-instance v0, Lorg/oscim/utils/math/Interpolation$PowOut;
-
-    invoke-direct {v0, v2}, Lorg/oscim/utils/math/Interpolation$PowOut;-><init>(I)V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->pow5Out:Lorg/oscim/utils/math/Interpolation$PowOut;
 
-    .line 68
+    .line 64
     new-instance v0, Lorg/oscim/utils/math/Interpolation$3;
 
     invoke-direct {v0}, Lorg/oscim/utils/math/Interpolation$3;-><init>()V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->sine:Lorg/oscim/utils/math/Interpolation;
 
-    .line 75
+    .line 71
     new-instance v0, Lorg/oscim/utils/math/Interpolation$4;
 
     invoke-direct {v0}, Lorg/oscim/utils/math/Interpolation$4;-><init>()V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->sineIn:Lorg/oscim/utils/math/Interpolation;
 
-    .line 82
+    .line 78
     new-instance v0, Lorg/oscim/utils/math/Interpolation$5;
 
     invoke-direct {v0}, Lorg/oscim/utils/math/Interpolation$5;-><init>()V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->sineOut:Lorg/oscim/utils/math/Interpolation;
 
+    .line 85
+    new-instance v0, Lorg/oscim/utils/math/Interpolation$Exp;
+
+    invoke-direct {v0, v2, v3}, Lorg/oscim/utils/math/Interpolation$Exp;-><init>(FF)V
+
+    sput-object v0, Lorg/oscim/utils/math/Interpolation;->exp10:Lorg/oscim/utils/math/Interpolation;
+
+    .line 86
+    new-instance v0, Lorg/oscim/utils/math/Interpolation$ExpIn;
+
+    invoke-direct {v0, v2, v3}, Lorg/oscim/utils/math/Interpolation$ExpIn;-><init>(FF)V
+
+    sput-object v0, Lorg/oscim/utils/math/Interpolation;->exp10In:Lorg/oscim/utils/math/Interpolation;
+
+    .line 87
+    new-instance v0, Lorg/oscim/utils/math/Interpolation$ExpOut;
+
+    invoke-direct {v0, v2, v3}, Lorg/oscim/utils/math/Interpolation$ExpOut;-><init>(FF)V
+
+    sput-object v0, Lorg/oscim/utils/math/Interpolation;->exp10Out:Lorg/oscim/utils/math/Interpolation;
+
     .line 89
     new-instance v0, Lorg/oscim/utils/math/Interpolation$Exp;
 
-    const/high16 v2, 0x41200000    # 10.0f
+    invoke-direct {v0, v2, v5}, Lorg/oscim/utils/math/Interpolation$Exp;-><init>(FF)V
 
-    const/high16 v3, 0x40000000    # 2.0f
-
-    invoke-direct {v0, v3, v2}, Lorg/oscim/utils/math/Interpolation$Exp;-><init>(FF)V
-
-    sput-object v0, Lorg/oscim/utils/math/Interpolation;->exp10:Lorg/oscim/utils/math/Interpolation;
+    sput-object v0, Lorg/oscim/utils/math/Interpolation;->exp5:Lorg/oscim/utils/math/Interpolation;
 
     .line 90
     new-instance v0, Lorg/oscim/utils/math/Interpolation$ExpIn;
 
-    invoke-direct {v0, v3, v2}, Lorg/oscim/utils/math/Interpolation$ExpIn;-><init>(FF)V
+    invoke-direct {v0, v2, v5}, Lorg/oscim/utils/math/Interpolation$ExpIn;-><init>(FF)V
 
-    sput-object v0, Lorg/oscim/utils/math/Interpolation;->exp10In:Lorg/oscim/utils/math/Interpolation;
+    sput-object v0, Lorg/oscim/utils/math/Interpolation;->exp5In:Lorg/oscim/utils/math/Interpolation;
 
     .line 91
     new-instance v0, Lorg/oscim/utils/math/Interpolation$ExpOut;
 
-    invoke-direct {v0, v3, v2}, Lorg/oscim/utils/math/Interpolation$ExpOut;-><init>(FF)V
-
-    sput-object v0, Lorg/oscim/utils/math/Interpolation;->exp10Out:Lorg/oscim/utils/math/Interpolation;
-
-    .line 93
-    new-instance v0, Lorg/oscim/utils/math/Interpolation$Exp;
-
-    const/high16 v4, 0x40a00000    # 5.0f
-
-    invoke-direct {v0, v3, v4}, Lorg/oscim/utils/math/Interpolation$Exp;-><init>(FF)V
-
-    sput-object v0, Lorg/oscim/utils/math/Interpolation;->exp5:Lorg/oscim/utils/math/Interpolation;
-
-    .line 94
-    new-instance v0, Lorg/oscim/utils/math/Interpolation$ExpIn;
-
-    invoke-direct {v0, v3, v4}, Lorg/oscim/utils/math/Interpolation$ExpIn;-><init>(FF)V
-
-    sput-object v0, Lorg/oscim/utils/math/Interpolation;->exp5In:Lorg/oscim/utils/math/Interpolation;
-
-    .line 95
-    new-instance v0, Lorg/oscim/utils/math/Interpolation$ExpOut;
-
-    invoke-direct {v0, v3, v4}, Lorg/oscim/utils/math/Interpolation$ExpOut;-><init>(FF)V
+    invoke-direct {v0, v2, v5}, Lorg/oscim/utils/math/Interpolation$ExpOut;-><init>(FF)V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->exp5Out:Lorg/oscim/utils/math/Interpolation;
 
-    .line 97
+    .line 93
     new-instance v0, Lorg/oscim/utils/math/Interpolation$6;
 
     invoke-direct {v0}, Lorg/oscim/utils/math/Interpolation$6;-><init>()V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->circle:Lorg/oscim/utils/math/Interpolation;
 
-    .line 110
+    .line 106
     new-instance v0, Lorg/oscim/utils/math/Interpolation$7;
 
     invoke-direct {v0}, Lorg/oscim/utils/math/Interpolation$7;-><init>()V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->circleIn:Lorg/oscim/utils/math/Interpolation;
 
-    .line 117
+    .line 113
     new-instance v0, Lorg/oscim/utils/math/Interpolation$8;
 
     invoke-direct {v0}, Lorg/oscim/utils/math/Interpolation$8;-><init>()V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->circleOut:Lorg/oscim/utils/math/Interpolation;
 
-    .line 125
+    .line 121
     new-instance v0, Lorg/oscim/utils/math/Interpolation$Elastic;
 
-    invoke-direct {v0, v3, v2}, Lorg/oscim/utils/math/Interpolation$Elastic;-><init>(FF)V
+    invoke-direct {v0, v2, v3}, Lorg/oscim/utils/math/Interpolation$Elastic;-><init>(FF)V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->elastic:Lorg/oscim/utils/math/Interpolation$Elastic;
 
-    .line 126
+    .line 122
     new-instance v0, Lorg/oscim/utils/math/Interpolation$ElasticIn;
 
-    invoke-direct {v0, v3, v2}, Lorg/oscim/utils/math/Interpolation$ElasticIn;-><init>(FF)V
+    invoke-direct {v0, v2, v3}, Lorg/oscim/utils/math/Interpolation$ElasticIn;-><init>(FF)V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->elasticIn:Lorg/oscim/utils/math/Interpolation$Elastic;
 
-    .line 127
+    .line 123
     new-instance v0, Lorg/oscim/utils/math/Interpolation$ElasticOut;
 
-    invoke-direct {v0, v3, v2}, Lorg/oscim/utils/math/Interpolation$ElasticOut;-><init>(FF)V
+    invoke-direct {v0, v2, v3}, Lorg/oscim/utils/math/Interpolation$ElasticOut;-><init>(FF)V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->elasticOut:Lorg/oscim/utils/math/Interpolation$Elastic;
 
-    .line 129
+    .line 125
     new-instance v0, Lorg/oscim/utils/math/Interpolation$Swing;
 
-    const/high16 v2, 0x3fc00000    # 1.5f
+    const/high16 v1, 0x3fc00000    # 1.5f
 
-    invoke-direct {v0, v2}, Lorg/oscim/utils/math/Interpolation$Swing;-><init>(F)V
+    invoke-direct {v0, v1}, Lorg/oscim/utils/math/Interpolation$Swing;-><init>(F)V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->swing:Lorg/oscim/utils/math/Interpolation;
 
-    .line 130
+    .line 126
     new-instance v0, Lorg/oscim/utils/math/Interpolation$SwingIn;
 
-    invoke-direct {v0, v3}, Lorg/oscim/utils/math/Interpolation$SwingIn;-><init>(F)V
+    invoke-direct {v0, v2}, Lorg/oscim/utils/math/Interpolation$SwingIn;-><init>(F)V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->swingIn:Lorg/oscim/utils/math/Interpolation;
 
-    .line 131
+    .line 127
     new-instance v0, Lorg/oscim/utils/math/Interpolation$SwingOut;
 
-    invoke-direct {v0, v3}, Lorg/oscim/utils/math/Interpolation$SwingOut;-><init>(F)V
+    invoke-direct {v0, v2}, Lorg/oscim/utils/math/Interpolation$SwingOut;-><init>(F)V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->swingOut:Lorg/oscim/utils/math/Interpolation;
 
-    .line 133
+    .line 129
     new-instance v0, Lorg/oscim/utils/math/Interpolation$Bounce;
 
-    invoke-direct {v0, v1}, Lorg/oscim/utils/math/Interpolation$Bounce;-><init>(I)V
+    invoke-direct {v0, v4}, Lorg/oscim/utils/math/Interpolation$Bounce;-><init>(I)V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->bounce:Lorg/oscim/utils/math/Interpolation;
 
-    .line 134
+    .line 130
     new-instance v0, Lorg/oscim/utils/math/Interpolation$BounceIn;
 
-    invoke-direct {v0, v1}, Lorg/oscim/utils/math/Interpolation$BounceIn;-><init>(I)V
+    invoke-direct {v0, v4}, Lorg/oscim/utils/math/Interpolation$BounceIn;-><init>(I)V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->bounceIn:Lorg/oscim/utils/math/Interpolation;
 
-    .line 135
+    .line 131
     new-instance v0, Lorg/oscim/utils/math/Interpolation$BounceOut;
 
-    invoke-direct {v0, v1}, Lorg/oscim/utils/math/Interpolation$BounceOut;-><init>(I)V
+    invoke-direct {v0, v4}, Lorg/oscim/utils/math/Interpolation$BounceOut;-><init>(I)V
 
     sput-object v0, Lorg/oscim/utils/math/Interpolation;->bounceOut:Lorg/oscim/utils/math/Interpolation;
 
@@ -368,6 +377,7 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 25
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 

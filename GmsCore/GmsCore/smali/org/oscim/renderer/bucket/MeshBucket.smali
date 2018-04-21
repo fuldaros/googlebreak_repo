@@ -29,6 +29,7 @@
 .method static constructor <clinit>()V
     .locals 1
 
+    .prologue
     .line 40
     const-class v0, Lorg/oscim/renderer/bucket/MeshBucket;
 
@@ -43,19 +44,22 @@
 
 .method public constructor <init>(I)V
     .locals 3
+    .param p1, "level"    # I
 
+    .prologue
+    .line 51
     const/4 v0, 0x3
 
     const/4 v1, 0x1
 
     const/4 v2, 0x0
 
-    .line 51
-    invoke-direct {p0, v0, v1, v2}, Lorg/oscim/renderer/bucket/RenderBucket;-><init>(BZZ)V
+    invoke-direct {p0, v0, v1, v2}, Lorg/oscim/renderer/bucket/RenderBucket;-><init>(IZZ)V
 
     .line 52
     iput p1, p0, Lorg/oscim/renderer/bucket/MeshBucket;->level:I
 
+    .line 53
     return-void
 .end method
 
@@ -63,59 +67,60 @@
 # virtual methods
 .method public addConvexMesh(Lorg/oscim/core/GeometryBuffer;)V
     .locals 10
+    .param p1, "geom"    # Lorg/oscim/core/GeometryBuffer;
+
+    .prologue
+    const/4 v9, 0x0
+
+    const/high16 v8, 0x41000000    # 8.0f
 
     .line 64
-    iget v0, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numVertices:I
+    iget v4, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numVertices:I
 
-    int-to-short v0, v0
+    int-to-short v3, v4
 
     .line 66
-    iget v1, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numVertices:I
+    .local v3, "start":S
+    iget v4, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numVertices:I
 
-    const/high16 v2, 0x10000
+    const/high16 v5, 0x10000
 
-    if-lt v1, v2, :cond_0
+    if-lt v4, v5, :cond_1
 
+    .line 92
+    :cond_0
     return-void
 
     .line 70
-    :cond_0
-    iget-object v1, p0, Lorg/oscim/renderer/bucket/MeshBucket;->vertexItems:Lorg/oscim/renderer/bucket/VertexData;
+    :cond_1
+    iget-object v4, p0, Lorg/oscim/renderer/bucket/MeshBucket;->vertexItems:Lorg/oscim/renderer/bucket/VertexData;
 
-    iget-object v2, p1, Lorg/oscim/core/GeometryBuffer;->points:[F
+    iget-object v5, p1, Lorg/oscim/core/GeometryBuffer;->points:[F
 
-    const/4 v3, 0x0
+    aget v5, v5, v9
 
-    aget v2, v2, v3
+    mul-float/2addr v5, v8
 
-    sget v4, Lorg/oscim/renderer/MapRenderer;->COORD_SCALE:F
+    iget-object v6, p1, Lorg/oscim/core/GeometryBuffer;->points:[F
 
-    mul-float/2addr v2, v4
+    const/4 v7, 0x1
 
-    iget-object v4, p1, Lorg/oscim/core/GeometryBuffer;->points:[F
+    aget v6, v6, v7
 
-    const/4 v5, 0x1
+    mul-float/2addr v6, v8
 
-    aget v4, v4, v5
-
-    sget v6, Lorg/oscim/renderer/MapRenderer;->COORD_SCALE:F
-
-    mul-float/2addr v4, v6
-
-    invoke-virtual {v1, v2, v4}, Lorg/oscim/renderer/bucket/VertexData;->add(FF)V
+    invoke-virtual {v4, v5, v6}, Lorg/oscim/renderer/bucket/VertexData;->add(FF)V
 
     .line 73
-    iget-object v1, p0, Lorg/oscim/renderer/bucket/MeshBucket;->vertexItems:Lorg/oscim/renderer/bucket/VertexData;
+    iget-object v4, p0, Lorg/oscim/renderer/bucket/MeshBucket;->vertexItems:Lorg/oscim/renderer/bucket/VertexData;
 
-    iget-object v2, p1, Lorg/oscim/core/GeometryBuffer;->points:[F
+    iget-object v5, p1, Lorg/oscim/core/GeometryBuffer;->points:[F
 
-    const/4 v4, 0x2
+    const/4 v6, 0x2
 
-    aget v2, v2, v4
+    aget v5, v5, v6
 
-    sget v6, Lorg/oscim/renderer/MapRenderer;->COORD_SCALE:F
-
-    mul-float/2addr v2, v6
+    mul-float/2addr v5, v8
 
     iget-object v6, p1, Lorg/oscim/core/GeometryBuffer;->points:[F
 
@@ -123,98 +128,99 @@
 
     aget v6, v6, v7
 
-    sget v8, Lorg/oscim/renderer/MapRenderer;->COORD_SCALE:F
-
     mul-float/2addr v6, v8
 
-    invoke-virtual {v1, v2, v6}, Lorg/oscim/renderer/bucket/VertexData;->add(FF)V
+    invoke-virtual {v4, v5, v6}, Lorg/oscim/renderer/bucket/VertexData;->add(FF)V
 
-    add-int/lit8 v1, v0, 0x1
+    .line 75
+    add-int/lit8 v4, v3, 0x1
 
-    int-to-short v1, v1
+    int-to-short v1, v4
 
     .line 77
-    iget v2, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numVertices:I
+    .local v1, "prev":S
+    iget v4, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numVertices:I
 
-    add-int/2addr v2, v4
+    add-int/lit8 v4, v4, 0x2
 
-    iput v2, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numVertices:I
-
-    const/4 v2, 0x4
+    iput v4, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numVertices:I
 
     .line 79
+    const/4 v0, 0x4
+
+    .local v0, "i":I
     :goto_0
     iget-object v4, p1, Lorg/oscim/core/GeometryBuffer;->index:[I
 
-    aget v4, v4, v3
+    aget v4, v4, v9
 
-    if-ge v2, v4, :cond_1
+    if-ge v0, v4, :cond_0
 
     .line 81
     iget-object v4, p0, Lorg/oscim/renderer/bucket/MeshBucket;->vertexItems:Lorg/oscim/renderer/bucket/VertexData;
 
+    iget-object v5, p1, Lorg/oscim/core/GeometryBuffer;->points:[F
+
+    add-int/lit8 v6, v0, 0x0
+
+    aget v5, v5, v6
+
+    mul-float/2addr v5, v8
+
     iget-object v6, p1, Lorg/oscim/core/GeometryBuffer;->points:[F
 
-    add-int/lit8 v8, v2, 0x0
+    add-int/lit8 v7, v0, 0x1
 
-    aget v6, v6, v8
-
-    sget v8, Lorg/oscim/renderer/MapRenderer;->COORD_SCALE:F
+    aget v6, v6, v7
 
     mul-float/2addr v6, v8
 
-    iget-object v8, p1, Lorg/oscim/core/GeometryBuffer;->points:[F
-
-    add-int/lit8 v9, v2, 0x1
-
-    aget v8, v8, v9
-
-    sget v9, Lorg/oscim/renderer/MapRenderer;->COORD_SCALE:F
-
-    mul-float/2addr v8, v9
-
-    invoke-virtual {v4, v6, v8}, Lorg/oscim/renderer/bucket/VertexData;->add(FF)V
+    invoke-virtual {v4, v5, v6}, Lorg/oscim/renderer/bucket/VertexData;->add(FF)V
 
     .line 84
     iget-object v4, p0, Lorg/oscim/renderer/bucket/MeshBucket;->indiceItems:Lorg/oscim/renderer/bucket/VertexData;
 
-    add-int/lit8 v6, v1, 0x1
+    add-int/lit8 v5, v1, 0x1
 
-    int-to-short v6, v6
+    int-to-short v2, v5
 
-    invoke-virtual {v4, v0, v1, v6}, Lorg/oscim/renderer/bucket/VertexData;->add(SSS)V
+    .end local v1    # "prev":S
+    .local v2, "prev":S
+    invoke-virtual {v4, v3, v1, v2}, Lorg/oscim/renderer/bucket/VertexData;->add(SSS)V
 
     .line 85
-    iget v1, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numVertices:I
+    iget v4, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numVertices:I
 
-    add-int/2addr v1, v5
+    add-int/lit8 v4, v4, 0x1
 
-    iput v1, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numVertices:I
+    iput v4, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numVertices:I
 
     .line 87
-    iget v1, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numIndices:I
+    iget v4, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numIndices:I
 
-    add-int/2addr v1, v7
+    add-int/lit8 v4, v4, 0x3
 
-    iput v1, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numIndices:I
+    iput v4, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numIndices:I
 
-    add-int/lit8 v2, v2, 0x2
+    .line 79
+    add-int/lit8 v0, v0, 0x2
 
-    move v1, v6
+    move v1, v2
 
+    .end local v2    # "prev":S
+    .restart local v1    # "prev":S
     goto :goto_0
-
-    :cond_1
-    return-void
 .end method
 
 .method public addMesh(Lorg/oscim/core/GeometryBuffer;)V
-    .locals 2
+    .locals 3
+    .param p1, "geom"    # Lorg/oscim/core/GeometryBuffer;
 
+    .prologue
     .line 56
     iget v0, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numPoints:I
 
-    iget v1, p1, Lorg/oscim/core/GeometryBuffer;->pointNextPos:I
+    iget v1, p1, Lorg/oscim/core/GeometryBuffer;->pointPos:I
 
     add-int/2addr v0, v1
 
@@ -240,141 +246,158 @@
 
     iget-object v1, p1, Lorg/oscim/core/GeometryBuffer;->index:[I
 
-    iget-object p1, p1, Lorg/oscim/core/GeometryBuffer;->points:[F
+    iget-object v2, p1, Lorg/oscim/core/GeometryBuffer;->points:[F
 
-    invoke-virtual {v0, v1, p1}, Lorg/oscim/utils/TessJNI;->addContour2D([I[F)V
+    invoke-virtual {v0, v1, v2}, Lorg/oscim/utils/TessJNI;->addContour2D([I[F)V
 
+    .line 61
     return-void
 .end method
 
 .method protected prepare()V
-    .locals 8
+    .locals 9
+
+    .prologue
+    const/16 v8, 0x168
 
     .line 95
-    iget-object v0, p0, Lorg/oscim/renderer/bucket/MeshBucket;->tess:Lorg/oscim/utils/TessJNI;
+    iget-object v5, p0, Lorg/oscim/renderer/bucket/MeshBucket;->tess:Lorg/oscim/utils/TessJNI;
 
-    if-nez v0, :cond_0
+    if-nez v5, :cond_0
 
+    .line 148
+    :goto_0
     return-void
 
     .line 98
     :cond_0
-    iget v0, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numPoints:I
+    iget v5, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numPoints:I
 
-    if-nez v0, :cond_1
+    if-nez v5, :cond_1
 
     .line 99
-    iget-object v0, p0, Lorg/oscim/renderer/bucket/MeshBucket;->tess:Lorg/oscim/utils/TessJNI;
+    iget-object v5, p0, Lorg/oscim/renderer/bucket/MeshBucket;->tess:Lorg/oscim/utils/TessJNI;
 
-    invoke-virtual {v0}, Lorg/oscim/utils/TessJNI;->dispose()V
-
-    return-void
-
-    .line 102
-    :cond_1
-    iget-object v0, p0, Lorg/oscim/renderer/bucket/MeshBucket;->tess:Lorg/oscim/utils/TessJNI;
-
-    invoke-virtual {v0}, Lorg/oscim/utils/TessJNI;->tesselate()Z
-
-    move-result v0
-
-    if-nez v0, :cond_2
-
-    .line 103
-    iget-object v0, p0, Lorg/oscim/renderer/bucket/MeshBucket;->tess:Lorg/oscim/utils/TessJNI;
-
-    invoke-virtual {v0}, Lorg/oscim/utils/TessJNI;->dispose()V
-
-    .line 104
-    sget-object v0, Lorg/oscim/renderer/bucket/MeshBucket;->log:Lorg/slf4j/Logger;
-
-    const-string v1, "error in tessellation {}"
-
-    iget v2, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numPoints:I
-
-    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v2
-
-    invoke-interface {v0, v1, v2}, Lorg/slf4j/Logger;->error(Ljava/lang/String;Ljava/lang/Object;)V
-
-    return-void
-
-    .line 108
-    :cond_2
-    iget-object v0, p0, Lorg/oscim/renderer/bucket/MeshBucket;->tess:Lorg/oscim/utils/TessJNI;
-
-    invoke-virtual {v0}, Lorg/oscim/utils/TessJNI;->getElementCount()I
-
-    move-result v0
-
-    mul-int/lit8 v0, v0, 0x3
-
-    .line 112
-    iget-object v1, p0, Lorg/oscim/renderer/bucket/MeshBucket;->indiceItems:Lorg/oscim/renderer/bucket/VertexData;
-
-    invoke-virtual {v1}, Lorg/oscim/renderer/bucket/VertexData;->countSize()I
-
-    move-result v1
-
-    :goto_0
-    const/16 v2, 0x168
-
-    if-ge v1, v0, :cond_4
-
-    sub-int v3, v0, v1
-
-    if-le v3, v2, :cond_3
-
-    goto :goto_1
-
-    :cond_3
-    move v2, v3
-
-    .line 117
-    :goto_1
-    iget-object v3, p0, Lorg/oscim/renderer/bucket/MeshBucket;->indiceItems:Lorg/oscim/renderer/bucket/VertexData;
-
-    invoke-virtual {v3}, Lorg/oscim/renderer/bucket/VertexData;->obtainChunk()Lorg/oscim/renderer/bucket/VertexData$Chunk;
-
-    move-result-object v3
-
-    .line 119
-    iget-object v4, p0, Lorg/oscim/renderer/bucket/MeshBucket;->tess:Lorg/oscim/utils/TessJNI;
-
-    iget-object v3, v3, Lorg/oscim/renderer/bucket/VertexData$Chunk;->vertices:[S
-
-    invoke-virtual {v4, v3, v1, v2}, Lorg/oscim/utils/TessJNI;->getElements([SII)V
-
-    add-int/2addr v1, v2
-
-    .line 125
-    iget-object v3, p0, Lorg/oscim/renderer/bucket/MeshBucket;->indiceItems:Lorg/oscim/renderer/bucket/VertexData;
-
-    invoke-virtual {v3, v2}, Lorg/oscim/renderer/bucket/VertexData;->releaseChunk(I)V
+    invoke-virtual {v5}, Lorg/oscim/utils/TessJNI;->dispose()V
 
     goto :goto_0
 
+    .line 102
+    :cond_1
+    iget-object v5, p0, Lorg/oscim/renderer/bucket/MeshBucket;->tess:Lorg/oscim/utils/TessJNI;
+
+    invoke-virtual {v5}, Lorg/oscim/utils/TessJNI;->tesselate()Z
+
+    move-result v5
+
+    if-nez v5, :cond_2
+
+    .line 103
+    iget-object v5, p0, Lorg/oscim/renderer/bucket/MeshBucket;->tess:Lorg/oscim/utils/TessJNI;
+
+    invoke-virtual {v5}, Lorg/oscim/utils/TessJNI;->dispose()V
+
+    .line 104
+    sget-object v5, Lorg/oscim/renderer/bucket/MeshBucket;->log:Lorg/slf4j/Logger;
+
+    const-string v6, "error in tessellation {}"
+
+    iget v7, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numPoints:I
+
+    invoke-static {v7}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v7
+
+    invoke-interface {v5, v6, v7}, Lorg/slf4j/Logger;->error(Ljava/lang/String;Ljava/lang/Object;)V
+
+    goto :goto_0
+
+    .line 108
+    :cond_2
+    iget-object v5, p0, Lorg/oscim/renderer/bucket/MeshBucket;->tess:Lorg/oscim/utils/TessJNI;
+
+    invoke-virtual {v5}, Lorg/oscim/utils/TessJNI;->getElementCount()I
+
+    move-result v5
+
+    mul-int/lit8 v1, v5, 0x3
+
+    .line 112
+    .local v1, "nelems":I
+    iget-object v5, p0, Lorg/oscim/renderer/bucket/MeshBucket;->indiceItems:Lorg/oscim/renderer/bucket/VertexData;
+
+    invoke-virtual {v5}, Lorg/oscim/renderer/bucket/VertexData;->countSize()I
+
+    move-result v3
+
+    .local v3, "offset":I
+    :goto_1
+    if-ge v3, v1, :cond_4
+
+    .line 113
+    sub-int v4, v1, v3
+
+    .line 114
+    .local v4, "size":I
+    if-le v4, v8, :cond_3
+
+    .line 115
+    const/16 v4, 0x168
+
+    .line 117
+    :cond_3
+    iget-object v5, p0, Lorg/oscim/renderer/bucket/MeshBucket;->indiceItems:Lorg/oscim/renderer/bucket/VertexData;
+
+    invoke-virtual {v5}, Lorg/oscim/renderer/bucket/VertexData;->obtainChunk()Lorg/oscim/renderer/bucket/VertexData$Chunk;
+
+    move-result-object v0
+
+    .line 119
+    .local v0, "chunk":Lorg/oscim/renderer/bucket/VertexData$Chunk;
+    iget-object v5, p0, Lorg/oscim/renderer/bucket/MeshBucket;->tess:Lorg/oscim/utils/TessJNI;
+
+    iget-object v6, v0, Lorg/oscim/renderer/bucket/VertexData$Chunk;->vertices:[S
+
+    invoke-virtual {v5, v6, v3, v4}, Lorg/oscim/utils/TessJNI;->getElements([SII)V
+
+    .line 120
+    add-int/2addr v3, v4
+
+    .line 125
+    iget-object v5, p0, Lorg/oscim/renderer/bucket/MeshBucket;->indiceItems:Lorg/oscim/renderer/bucket/VertexData;
+
+    invoke-virtual {v5, v4}, Lorg/oscim/renderer/bucket/VertexData;->releaseChunk(I)V
+
+    goto :goto_1
+
     .line 128
+    .end local v0    # "chunk":Lorg/oscim/renderer/bucket/VertexData$Chunk;
+    .end local v4    # "size":I
     :cond_4
-    iget-object v1, p0, Lorg/oscim/renderer/bucket/MeshBucket;->tess:Lorg/oscim/utils/TessJNI;
+    iget-object v5, p0, Lorg/oscim/renderer/bucket/MeshBucket;->tess:Lorg/oscim/utils/TessJNI;
 
-    invoke-virtual {v1}, Lorg/oscim/utils/TessJNI;->getVertexCount()I
+    invoke-virtual {v5}, Lorg/oscim/utils/TessJNI;->getVertexCount()I
 
-    move-result v1
+    move-result v5
 
-    mul-int/lit8 v1, v1, 0x2
+    mul-int/lit8 v2, v5, 0x2
 
+    .line 130
+    .local v2, "nverts":I
     const/4 v3, 0x0
 
     :goto_2
-    if-ge v3, v1, :cond_6
+    if-ge v3, v2, :cond_6
 
-    sub-int v4, v1, v3
+    .line 131
+    sub-int v4, v2, v3
 
-    if-le v4, v2, :cond_5
+    .line 132
+    .restart local v4    # "size":I
+    if-le v4, v8, :cond_5
 
-    move v4, v2
+    .line 133
+    const/16 v4, 0x168
 
     .line 135
     :cond_5
@@ -382,47 +405,51 @@
 
     invoke-virtual {v5}, Lorg/oscim/renderer/bucket/VertexData;->obtainChunk()Lorg/oscim/renderer/bucket/VertexData$Chunk;
 
-    move-result-object v5
+    move-result-object v0
 
     .line 137
-    iget-object v6, p0, Lorg/oscim/renderer/bucket/MeshBucket;->tess:Lorg/oscim/utils/TessJNI;
+    .restart local v0    # "chunk":Lorg/oscim/renderer/bucket/VertexData$Chunk;
+    iget-object v5, p0, Lorg/oscim/renderer/bucket/MeshBucket;->tess:Lorg/oscim/utils/TessJNI;
 
-    iget-object v5, v5, Lorg/oscim/renderer/bucket/VertexData$Chunk;->vertices:[S
+    iget-object v6, v0, Lorg/oscim/renderer/bucket/VertexData$Chunk;->vertices:[S
 
-    sget v7, Lorg/oscim/renderer/MapRenderer;->COORD_SCALE:F
+    const/high16 v7, 0x41000000    # 8.0f
 
-    invoke-virtual {v6, v5, v3, v4, v7}, Lorg/oscim/utils/TessJNI;->getVertices([SIIF)V
+    invoke-virtual {v5, v6, v3, v4, v7}, Lorg/oscim/utils/TessJNI;->getVertices([SIIF)V
 
+    .line 139
     add-int/2addr v3, v4
 
-    .line 140
+    .line 141
     iget-object v5, p0, Lorg/oscim/renderer/bucket/MeshBucket;->vertexItems:Lorg/oscim/renderer/bucket/VertexData;
 
     invoke-virtual {v5, v4}, Lorg/oscim/renderer/bucket/VertexData;->releaseChunk(I)V
 
     goto :goto_2
 
-    .line 143
-    :cond_6
-    iget v2, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numIndices:I
-
-    add-int/2addr v2, v0
-
-    iput v2, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numIndices:I
-
     .line 144
-    iget v0, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numVertices:I
+    .end local v0    # "chunk":Lorg/oscim/renderer/bucket/VertexData$Chunk;
+    .end local v4    # "size":I
+    :cond_6
+    iget v5, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numIndices:I
 
-    shr-int/lit8 v1, v1, 0x1
+    add-int/2addr v5, v1
 
-    add-int/2addr v0, v1
+    iput v5, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numIndices:I
 
-    iput v0, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numVertices:I
+    .line 145
+    iget v5, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numVertices:I
 
-    .line 146
-    iget-object v0, p0, Lorg/oscim/renderer/bucket/MeshBucket;->tess:Lorg/oscim/utils/TessJNI;
+    shr-int/lit8 v6, v2, 0x1
 
-    invoke-virtual {v0}, Lorg/oscim/utils/TessJNI;->dispose()V
+    add-int/2addr v5, v6
 
-    return-void
+    iput v5, p0, Lorg/oscim/renderer/bucket/MeshBucket;->numVertices:I
+
+    .line 147
+    iget-object v5, p0, Lorg/oscim/renderer/bucket/MeshBucket;->tess:Lorg/oscim/utils/TessJNI;
+
+    invoke-virtual {v5}, Lorg/oscim/utils/TessJNI;->dispose()V
+
+    goto/16 :goto_0
 .end method

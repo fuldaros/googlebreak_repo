@@ -7,7 +7,8 @@
 .field public static CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator<",
+            "Landroid/os/Parcelable$Creator",
+            "<",
             "Lcom/google/android/gms/search/corpora/RequestIndexingRequest;",
             ">;"
         }
@@ -45,6 +46,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
+    .prologue
     .line 52
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -60,34 +62,39 @@
 .method private constructor <init>()V
     .locals 2
 
+    .prologue
+    const/4 v1, 0x0
+
     .line 36
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
+    .line 24
     const/4 v0, 0x1
 
-    .line 24
     iput v0, p0, Lcom/google/android/gms/search/corpora/RequestIndexingRequest;->versionCode:I
 
-    const/4 v0, 0x0
-
     .line 37
-    iput-object v0, p0, Lcom/google/android/gms/search/corpora/RequestIndexingRequest;->packageName:Ljava/lang/String;
+    iput-object v1, p0, Lcom/google/android/gms/search/corpora/RequestIndexingRequest;->packageName:Ljava/lang/String;
 
     .line 38
-    iput-object v0, p0, Lcom/google/android/gms/search/corpora/RequestIndexingRequest;->corpus:Ljava/lang/String;
-
-    const-wide/16 v0, 0x0
+    iput-object v1, p0, Lcom/google/android/gms/search/corpora/RequestIndexingRequest;->corpus:Ljava/lang/String;
 
     .line 39
+    const-wide/16 v0, 0x0
+
     iput-wide v0, p0, Lcom/google/android/gms/search/corpora/RequestIndexingRequest;->sequenceNumber:J
 
+    .line 40
     return-void
 .end method
 
 
 # virtual methods
 .method public toString()Ljava/lang/String;
-    .locals 3
+    .locals 4
+
+    .prologue
+    const/16 v2, 0x27
 
     .line 44
     new-instance v0, Ljava/lang/StringBuilder;
@@ -98,43 +105,63 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    move-result-object v0
+
     iget v1, p0, Lcom/google/android/gms/search/corpora/RequestIndexingRequest;->versionCode:I
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     const-string v1, ", packageName=\'"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    move-result-object v0
+
     iget-object v1, p0, Lcom/google/android/gms/search/corpora/RequestIndexingRequest;->packageName:Ljava/lang/String;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const/16 v1, 0x27
+    move-result-object v0
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    const-string v2, ", corpus=\'"
+    move-result-object v0
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v1, ", corpus=\'"
 
-    iget-object v2, p0, Lcom/google/android/gms/search/corpora/RequestIndexingRequest;->corpus:Ljava/lang/String;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v0
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    iget-object v1, p0, Lcom/google/android/gms/search/corpora/RequestIndexingRequest;->corpus:Ljava/lang/String;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     const-string v1, ", sequenceNumber="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-wide v1, p0, Lcom/google/android/gms/search/corpora/RequestIndexingRequest;->sequenceNumber:J
+    move-result-object v0
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    iget-wide v2, p0, Lcom/google/android/gms/search/corpora/RequestIndexingRequest;->sequenceNumber:J
+
+    invoke-virtual {v0, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     const/16 v1, 0x7d
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 

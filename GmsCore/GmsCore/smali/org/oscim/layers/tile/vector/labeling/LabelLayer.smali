@@ -16,7 +16,7 @@
 
 
 # static fields
-.field static final LABEL_DATA:Ljava/lang/String; = "org.oscim.layers.tile.vector.labeling.LabelLayer"
+.field public static final LABEL_DATA:Ljava/lang/String;
 
 .field static final log:Lorg/slf4j/Logger;
 
@@ -31,7 +31,8 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .line 35
+    .prologue
+    .line 32
     const-class v0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;
 
     invoke-static {v0}, Lorg/slf4j/LoggerFactory;->getLogger(Ljava/lang/Class;)Lorg/slf4j/Logger;
@@ -40,29 +41,28 @@
 
     sput-object v0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->log:Lorg/slf4j/Logger;
 
+    .line 34
+    const-class v0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;
+
+    invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->LABEL_DATA:Ljava/lang/String;
+
     return-void
 .end method
 
 .method public constructor <init>(Lorg/oscim/map/Map;Lorg/oscim/layers/tile/vector/VectorTileLayer;)V
-    .locals 1
+    .locals 2
+    .param p1, "map"    # Lorg/oscim/map/Map;
+    .param p2, "l"    # Lorg/oscim/layers/tile/vector/VectorTileLayer;
 
-    .line 45
-    new-instance v0, Lorg/oscim/layers/tile/vector/labeling/LabelTileLoaderHook;
-
-    invoke-direct {v0}, Lorg/oscim/layers/tile/vector/labeling/LabelTileLoaderHook;-><init>()V
-
-    invoke-direct {p0, p1, p2, v0}, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;-><init>(Lorg/oscim/map/Map;Lorg/oscim/layers/tile/vector/VectorTileLayer;Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;)V
-
-    return-void
-.end method
-
-.method public constructor <init>(Lorg/oscim/map/Map;Lorg/oscim/layers/tile/vector/VectorTileLayer;Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;)V
-    .locals 1
-
-    .line 49
+    .prologue
+    .line 42
     invoke-direct {p0, p1}, Lorg/oscim/layers/Layer;-><init>(Lorg/oscim/map/Map;)V
 
-    .line 50
+    .line 43
     invoke-virtual {p2}, Lorg/oscim/layers/tile/vector/VectorTileLayer;->getManager()Lorg/oscim/layers/tile/TileManager;
 
     move-result-object v0
@@ -71,46 +71,53 @@
 
     invoke-virtual {v0, p0}, Lorg/oscim/event/EventDispatcher;->bind(Lorg/oscim/event/EventListener;)V
 
-    .line 51
-    invoke-virtual {p2, p3}, Lorg/oscim/layers/tile/vector/VectorTileLayer;->addHook(Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;)V
+    .line 44
+    new-instance v0, Lorg/oscim/layers/tile/vector/labeling/LabelTileLoaderHook;
 
-    .line 53
-    new-instance p3, Lorg/oscim/layers/tile/vector/labeling/LabelPlacement;
+    invoke-direct {v0}, Lorg/oscim/layers/tile/vector/labeling/LabelTileLoaderHook;-><init>()V
+
+    invoke-virtual {p2, v0}, Lorg/oscim/layers/tile/vector/VectorTileLayer;->addHook(Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;)V
+
+    .line 46
+    new-instance v0, Lorg/oscim/layers/tile/vector/labeling/LabelPlacement;
 
     invoke-virtual {p2}, Lorg/oscim/layers/tile/vector/VectorTileLayer;->tileRenderer()Lorg/oscim/layers/tile/TileRenderer;
 
-    move-result-object p2
+    move-result-object v1
 
-    invoke-direct {p3, p1, p2}, Lorg/oscim/layers/tile/vector/labeling/LabelPlacement;-><init>(Lorg/oscim/map/Map;Lorg/oscim/layers/tile/TileRenderer;)V
+    invoke-direct {v0, p1, v1}, Lorg/oscim/layers/tile/vector/labeling/LabelPlacement;-><init>(Lorg/oscim/map/Map;Lorg/oscim/layers/tile/TileRenderer;)V
 
-    iput-object p3, p0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->mLabelPlacer:Lorg/oscim/layers/tile/vector/labeling/LabelPlacement;
+    iput-object v0, p0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->mLabelPlacer:Lorg/oscim/layers/tile/vector/labeling/LabelPlacement;
 
-    .line 54
-    new-instance p2, Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;
+    .line 47
+    new-instance v0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;
 
-    invoke-direct {p2, p0, p1}, Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;-><init>(Lorg/oscim/layers/tile/vector/labeling/LabelLayer;Lorg/oscim/map/Map;)V
+    invoke-direct {v0, p0, p1}, Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;-><init>(Lorg/oscim/layers/tile/vector/labeling/LabelLayer;Lorg/oscim/map/Map;)V
 
-    iput-object p2, p0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->mWorker:Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;
+    iput-object v0, p0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->mWorker:Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;
 
-    .line 55
-    new-instance p1, Lorg/oscim/layers/tile/vector/labeling/TextRenderer;
+    .line 48
+    new-instance v0, Lorg/oscim/layers/tile/vector/labeling/TextRenderer;
 
-    iget-object p2, p0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->mWorker:Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;
+    iget-object v1, p0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->mWorker:Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;
 
-    invoke-direct {p1, p2}, Lorg/oscim/layers/tile/vector/labeling/TextRenderer;-><init>(Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;)V
+    invoke-direct {v0, v1}, Lorg/oscim/layers/tile/vector/labeling/TextRenderer;-><init>(Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;)V
 
-    iput-object p1, p0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->mRenderer:Lorg/oscim/renderer/LayerRenderer;
+    iput-object v0, p0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->mRenderer:Lorg/oscim/renderer/LayerRenderer;
 
+    .line 49
     return-void
 .end method
 
 .method static synthetic access$000(Lorg/oscim/layers/tile/vector/labeling/LabelLayer;)Lorg/oscim/layers/tile/vector/labeling/LabelPlacement;
-    .locals 0
+    .locals 1
+    .param p0, "x0"    # Lorg/oscim/layers/tile/vector/labeling/LabelLayer;
 
-    .line 33
-    iget-object p0, p0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->mLabelPlacer:Lorg/oscim/layers/tile/vector/labeling/LabelPlacement;
+    .prologue
+    .line 30
+    iget-object v0, p0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->mLabelPlacer:Lorg/oscim/layers/tile/vector/labeling/LabelPlacement;
 
-    return-object p0
+    return-object v0
 .end method
 
 
@@ -118,94 +125,90 @@
 .method public onDetach()V
     .locals 2
 
-    .line 102
+    .prologue
+    .line 92
     iget-object v0, p0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->mWorker:Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;->cancel(Z)V
 
-    .line 103
+    .line 93
     invoke-super {p0}, Lorg/oscim/layers/Layer;->onDetach()V
 
+    .line 94
     return-void
 .end method
 
 .method public onMapEvent(Lorg/oscim/event/Event;Lorg/oscim/core/MapPosition;)V
-    .locals 2
+    .locals 4
+    .param p1, "event"    # Lorg/oscim/event/Event;
+    .param p2, "mapPosition"    # Lorg/oscim/core/MapPosition;
 
-    .line 109
-    sget-object p2, Lorg/oscim/map/Map;->CLEAR_EVENT:Lorg/oscim/event/Event;
+    .prologue
+    .line 99
+    sget-object v0, Lorg/oscim/map/Map;->CLEAR_EVENT:Lorg/oscim/event/Event;
 
-    if-ne p1, p2, :cond_0
+    if-ne p1, v0, :cond_0
 
-    .line 110
-    iget-object p2, p0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->mWorker:Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;
+    .line 100
+    iget-object v0, p0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->mWorker:Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;
 
-    const/4 v0, 0x1
+    const/4 v1, 0x1
 
-    invoke-virtual {p2, v0}, Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;->cancel(Z)V
+    invoke-virtual {v0, v1}, Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;->cancel(Z)V
 
-    .line 112
+    .line 102
     :cond_0
-    invoke-virtual {p0}, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->isEnabled()Z
+    sget-object v0, Lorg/oscim/map/Map;->POSITION_EVENT:Lorg/oscim/event/Event;
 
-    move-result p2
+    if-ne p1, v0, :cond_1
 
-    if-nez p2, :cond_1
+    .line 103
+    iget-object v0, p0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->mWorker:Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;
 
-    return-void
+    const-wide/16 v2, 0x64
 
-    .line 115
+    invoke-virtual {v0, v2, v3}, Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;->submit(J)V
+
+    .line 104
     :cond_1
-    sget-object p2, Lorg/oscim/map/Map;->POSITION_EVENT:Lorg/oscim/event/Event;
-
-    if-ne p1, p2, :cond_2
-
-    .line 116
-    iget-object p1, p0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->mWorker:Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;
-
-    const-wide/16 v0, 0x64
-
-    invoke-virtual {p1, v0, v1}, Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;->submit(J)V
-
-    :cond_2
     return-void
 .end method
 
 .method public onTileManagerEvent(Lorg/oscim/event/Event;Lorg/oscim/layers/tile/MapTile;)V
-    .locals 2
+    .locals 4
+    .param p1, "e"    # Lorg/oscim/event/Event;
+    .param p2, "tile"    # Lorg/oscim/layers/tile/MapTile;
 
-    .line 138
+    .prologue
+    .line 125
     sget-object v0, Lorg/oscim/layers/tile/TileManager;->TILE_LOADED:Lorg/oscim/event/Event;
+
+    if-ne p1, v0, :cond_1
+
+    .line 126
+    iget-boolean v0, p2, Lorg/oscim/layers/tile/MapTile;->isVisible:Z
+
+    if-eqz v0, :cond_0
+
+    .line 127
+    iget-object v0, p0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->mWorker:Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;
+
+    const-wide/16 v2, 0x19
+
+    invoke-virtual {v0, v2, v3}, Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;->submit(J)V
+
+    .line 132
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 129
+    :cond_1
+    sget-object v0, Lorg/oscim/layers/tile/TileManager;->TILE_REMOVED:Lorg/oscim/event/Event;
 
     if-ne p1, v0, :cond_0
 
-    .line 139
-    iget-boolean p1, p2, Lorg/oscim/layers/tile/MapTile;->isVisible:Z
-
-    if-eqz p1, :cond_1
-
-    invoke-virtual {p0}, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->isEnabled()Z
-
-    move-result p1
-
-    if-eqz p1, :cond_1
-
-    .line 140
-    iget-object p1, p0, Lorg/oscim/layers/tile/vector/labeling/LabelLayer;->mWorker:Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;
-
-    const-wide/16 v0, 0x19
-
-    invoke-virtual {p1, v0, v1}, Lorg/oscim/layers/tile/vector/labeling/LabelLayer$Worker;->submit(J)V
-
     goto :goto_0
-
-    .line 142
-    :cond_0
-    sget-object p1, Lorg/oscim/layers/tile/TileManager;->TILE_REMOVED:Lorg/oscim/event/Event;
-
-    :cond_1
-    :goto_0
-    return-void
 .end method

@@ -28,7 +28,9 @@
 # direct methods
 .method constructor <init>(Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter;Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;Ljava/lang/String;)V
     .locals 0
+    .param p1, "this$1"    # Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter;
 
+    .prologue
     .line 190
     iput-object p1, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter$2;->this$1:Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter;
 
@@ -44,28 +46,31 @@
 
 # virtual methods
 .method public onClick(Landroid/view/View;)V
-    .locals 3
+    .locals 4
+    .param p1, "v"    # Landroid/view/View;
 
+    .prologue
     .line 193
-    iget-object p1, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter$2;->this$1:Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter;
-
-    invoke-virtual {p1}, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter;->getContext()Landroid/content/Context;
-
-    move-result-object p1
-
     iget-object v0, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter$2;->this$1:Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter;
 
-    iget-object v0, v0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter;->this$0:Lorg/microg/nlp/ui/AbstractBackendPreference;
-
-    iget-object v1, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter$2;->val$backend:Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;
-
-    iget-object v2, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter$2;->val$metaName:Ljava/lang/String;
-
-    invoke-static {v0, v1, v2}, Lorg/microg/nlp/ui/AbstractBackendPreference;->access$400(Lorg/microg/nlp/ui/AbstractBackendPreference;Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;Ljava/lang/String;)Landroid/content/Intent;
+    invoke-virtual {v0}, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter;->getContext()Landroid/content/Context;
 
     move-result-object v0
 
-    invoke-virtual {p1, v0}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+    iget-object v1, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter$2;->this$1:Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter;
 
+    iget-object v1, v1, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter;->this$0:Lorg/microg/nlp/ui/AbstractBackendPreference;
+
+    iget-object v2, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter$2;->val$backend:Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;
+
+    iget-object v3, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter$2;->val$metaName:Ljava/lang/String;
+
+    invoke-static {v1, v2, v3}, Lorg/microg/nlp/ui/AbstractBackendPreference;->access$400(Lorg/microg/nlp/ui/AbstractBackendPreference;Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;Ljava/lang/String;)Landroid/content/Intent;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+
+    .line 194
     return-void
 .end method

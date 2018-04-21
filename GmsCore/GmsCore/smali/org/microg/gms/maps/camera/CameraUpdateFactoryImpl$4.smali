@@ -23,7 +23,9 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;F)V
     .locals 0
+    .param p1, "this$0"    # Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;
 
+    .prologue
     .line 95
     iput-object p1, p0, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$4;->this$0:Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;
 
@@ -37,21 +39,25 @@
 
 # virtual methods
 .method getMapPosition(Lorg/oscim/map/Map;)Lorg/oscim/core/MapPosition;
-    .locals 2
+    .locals 4
+    .param p1, "map"    # Lorg/oscim/map/Map;
 
+    .prologue
     .line 98
     invoke-virtual {p1}, Lorg/oscim/map/Map;->getMapPosition()Lorg/oscim/core/MapPosition;
 
-    move-result-object p1
+    move-result-object v0
 
     .line 99
-    iget v0, p0, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$4;->val$zoom:F
+    .local v0, "mapPosition":Lorg/oscim/core/MapPosition;
+    iget v1, p0, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$4;->val$zoom:F
 
-    invoke-static {v0}, Lorg/microg/gms/maps/GmsMapsTypeHelper;->fromZoom(F)D
+    invoke-static {v1}, Lorg/microg/gms/maps/GmsMapsTypeHelper;->fromZoom(F)D
 
-    move-result-wide v0
+    move-result-wide v2
 
-    invoke-virtual {p1, v0, v1}, Lorg/oscim/core/MapPosition;->setScale(D)Lorg/oscim/core/MapPosition;
+    invoke-virtual {v0, v2, v3}, Lorg/oscim/core/MapPosition;->setScale(D)Lorg/oscim/core/MapPosition;
 
-    return-object p1
+    .line 100
+    return-object v0
 .end method

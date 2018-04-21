@@ -18,7 +18,8 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 335
+    .prologue
+    .line 325
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -26,5 +27,5 @@
 
 
 # virtual methods
-.method public abstract getPopup()Landroid/support/v7/view/menu/ShowableListMenu;
+.method public abstract getPopup()Landroid/support/v7/widget/ListPopupWindow;
 .end method

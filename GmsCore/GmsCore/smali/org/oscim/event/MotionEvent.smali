@@ -7,6 +7,7 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 19
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -15,9 +16,6 @@
 
 
 # virtual methods
-.method public abstract copy()Lorg/oscim/event/MotionEvent;
-.end method
-
 .method public abstract getAction()I
 .end method
 
@@ -37,7 +35,4 @@
 .end method
 
 .method public abstract getY(I)F
-.end method
-
-.method public abstract recycle()V
 .end method

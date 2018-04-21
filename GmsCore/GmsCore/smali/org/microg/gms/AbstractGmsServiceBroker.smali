@@ -7,7 +7,8 @@
 .field private final supportedServices:Ljava/util/EnumSet;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/EnumSet<",
+            "Ljava/util/EnumSet",
+            "<",
             "Lorg/microg/gms/common/GmsService;",
             ">;"
         }
@@ -21,29 +22,39 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/EnumSet<",
+            "Ljava/util/EnumSet",
+            "<",
             "Lorg/microg/gms/common/GmsService;",
             ">;)V"
         }
     .end annotation
 
+    .prologue
     .line 40
+    .local p1, "supportedServices":Ljava/util/EnumSet;, "Ljava/util/EnumSet<Lorg/microg/gms/common/GmsService;>;"
     invoke-direct {p0}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;-><init>()V
 
     .line 41
     iput-object p1, p0, Lorg/microg/gms/AbstractGmsServiceBroker;->supportedServices:Ljava/util/EnumSet;
 
+    .line 42
     return-void
 .end method
 
 .method private callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
     .locals 6
+    .param p1, "service"    # Lorg/microg/gms/common/GmsService;
+    .param p2, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p3, "gmsVersion"    # I
+    .param p4, "packageName"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
+    .prologue
+    .line 228
     const/4 v5, 0x0
 
     move-object v0, p0
@@ -56,24 +67,29 @@
 
     move-object v4, p4
 
-    .line 228
     invoke-direct/range {v0 .. v5}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
 
+    .line 229
     return-void
 .end method
 
 .method private callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
     .locals 8
+    .param p1, "service"    # Lorg/microg/gms/common/GmsService;
+    .param p2, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p3, "gmsVersion"    # I
+    .param p4, "packageName"    # Ljava/lang/String;
+    .param p5, "extras"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
+    .prologue
     const/4 v6, 0x0
 
-    const/4 v7, 0x0
-
+    .line 233
     move-object v0, p0
 
     move-object v1, p1
@@ -86,28 +102,41 @@
 
     move-object v5, p5
 
-    .line 233
+    move-object v7, v6
+
     invoke-direct/range {v0 .. v7}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;Ljava/lang/String;[Ljava/lang/String;)V
 
+    .line 234
     return-void
 .end method
 
 .method private callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;Ljava/lang/String;[Ljava/lang/String;)V
-    .locals 1
+    .locals 4
+    .param p1, "service"    # Lorg/microg/gms/common/GmsService;
+    .param p2, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p3, "gmsVersion"    # I
+    .param p4, "packageName"    # Ljava/lang/String;
+    .param p5, "extras"    # Landroid/os/Bundle;
+    .param p6, "accountName"    # Ljava/lang/String;
+    .param p7, "scopes"    # [Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
+    .prologue
+    const/4 v2, 0x0
+
     .line 237
     new-instance v0, Lcom/google/android/gms/common/internal/GetServiceRequest;
 
-    iget p1, p1, Lorg/microg/gms/common/GmsService;->SERVICE_ID:I
+    iget v1, p1, Lorg/microg/gms/common/GmsService;->SERVICE_ID:I
 
-    invoke-direct {v0, p1}, Lcom/google/android/gms/common/internal/GetServiceRequest;-><init>(I)V
+    invoke-direct {v0, v1}, Lcom/google/android/gms/common/internal/GetServiceRequest;-><init>(I)V
 
     .line 238
+    .local v0, "request":Lcom/google/android/gms/common/internal/GetServiceRequest;
     iput p3, v0, Lcom/google/android/gms/common/internal/GetServiceRequest;->gmsVersion:I
 
     .line 239
@@ -116,55 +145,60 @@
     .line 240
     iput-object p5, v0, Lcom/google/android/gms/common/internal/GetServiceRequest;->extras:Landroid/os/Bundle;
 
-    const/4 p1, 0x0
-
+    .line 241
     if-nez p6, :cond_0
 
-    move-object p3, p1
+    move-object v1, v2
 
-    goto :goto_0
+    :goto_0
+    iput-object v1, v0, Lcom/google/android/gms/common/internal/GetServiceRequest;->account:Landroid/accounts/Account;
+
+    .line 242
+    if-nez p7, :cond_1
+
+    :goto_1
+    iput-object v2, v0, Lcom/google/android/gms/common/internal/GetServiceRequest;->scopes:[Lcom/google/android/gms/common/api/Scope;
+
+    .line 243
+    invoke-virtual {p0, p2, v0}, Lorg/microg/gms/AbstractGmsServiceBroker;->getService(Lcom/google/android/gms/common/internal/IGmsCallbacks;Lcom/google/android/gms/common/internal/GetServiceRequest;)V
+
+    .line 244
+    return-void
 
     .line 241
     :cond_0
-    new-instance p3, Landroid/accounts/Account;
+    new-instance v1, Landroid/accounts/Account;
 
-    const-string p4, "com.google"
+    const-string v3, "com.google"
 
-    invoke-direct {p3, p6, p4}, Landroid/accounts/Account;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-direct {v1, p6, v3}, Landroid/accounts/Account;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
-    :goto_0
-    iput-object p3, v0, Lcom/google/android/gms/common/internal/GetServiceRequest;->account:Landroid/accounts/Account;
-
-    if-nez p7, :cond_1
-
-    goto :goto_1
+    goto :goto_0
 
     .line 242
     :cond_1
     invoke-direct {p0, p7}, Lorg/microg/gms/AbstractGmsServiceBroker;->scopesFromStringArray([Ljava/lang/String;)[Lcom/google/android/gms/common/api/Scope;
 
-    move-result-object p1
+    move-result-object v2
 
-    :goto_1
-    iput-object p1, v0, Lcom/google/android/gms/common/internal/GetServiceRequest;->scopes:[Lcom/google/android/gms/common/api/Scope;
-
-    .line 243
-    invoke-virtual {p0, p2, v0}, Lorg/microg/gms/AbstractGmsServiceBroker;->getService(Lcom/google/android/gms/common/internal/IGmsCallbacks;Lcom/google/android/gms/common/internal/GetServiceRequest;)V
-
-    return-void
+    goto :goto_1
 .end method
 
 .method private scopesFromStringArray([Ljava/lang/String;)[Lcom/google/android/gms/common/api/Scope;
     .locals 4
+    .param p1, "arr"    # [Ljava/lang/String;
 
-    const/4 v0, 0x0
-
+    .prologue
     .line 247
-    array-length v1, p1
+    array-length v2, p1
 
-    new-array v1, v1, [Lcom/google/android/gms/common/api/Scope;
+    new-array v1, v2, [Lcom/google/android/gms/common/api/Scope;
 
     .line 248
+    .local v1, "scopes":[Lcom/google/android/gms/common/api/Scope;
+    const/4 v0, 0x0
+
+    .local v0, "i":I
     :goto_0
     array-length v2, p1
 
@@ -179,10 +213,12 @@
 
     aput-object v2, v1, v0
 
+    .line 248
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
+    .line 251
     :cond_0
     return-object v1
 .end method
@@ -191,6 +227,10 @@
 # virtual methods
 .method public getAdMobService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
     .locals 6
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -200,6 +240,7 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 133
     sget-object v1, Lorg/microg/gms/common/GmsService;->ADREQUEST:Lorg/microg/gms/common/GmsService;
 
@@ -215,11 +256,15 @@
 
     invoke-direct/range {v0 .. v5}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
 
+    .line 134
     return-void
 .end method
 
 .method public getAddressService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
     .locals 1
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -229,16 +274,21 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 217
     sget-object v0, Lorg/microg/gms/common/GmsService;->ADDRESS:Lorg/microg/gms/common/GmsService;
 
     invoke-direct {p0, v0, p1, p2, p3}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
 
+    .line 218
     return-void
 .end method
 
 .method public getAppDataSearchService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
     .locals 1
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -248,16 +298,23 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 65
     sget-object v0, Lorg/microg/gms/common/GmsService;->INDEX:Lorg/microg/gms/common/GmsService;
 
     invoke-direct {p0, v0, p1, p2, p3}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
 
+    .line 66
     return-void
 .end method
 
 .method public getAppStateService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
     .locals 8
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "accountName"    # Ljava/lang/String;
+    .param p5, "scopes"    # [Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -267,6 +324,7 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 119
     sget-object v1, Lorg/microg/gms/common/GmsService;->APPSTATE:Lorg/microg/gms/common/GmsService;
 
@@ -286,11 +344,16 @@
 
     invoke-direct/range {v0 .. v7}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;Ljava/lang/String;[Ljava/lang/String;)V
 
+    .line 120
     return-void
 .end method
 
 .method public getAutoBackupService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
     .locals 6
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -300,6 +363,7 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 210
     sget-object v1, Lorg/microg/gms/common/GmsService;->PHOTO_AUTO_BACKUP:Lorg/microg/gms/common/GmsService;
 
@@ -315,11 +379,16 @@
 
     invoke-direct/range {v0 .. v5}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
 
+    .line 211
     return-void
 .end method
 
 .method public getCastMirroringService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
     .locals 6
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -329,6 +398,7 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 154
     sget-object v1, Lorg/microg/gms/common/GmsService;->CAST_MIRRORING:Lorg/microg/gms/common/GmsService;
 
@@ -344,11 +414,17 @@
 
     invoke-direct/range {v0 .. v5}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
 
+    .line 155
     return-void
 .end method
 
 .method public getCastService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/IBinder;Landroid/os/Bundle;)V
-    .locals 0
+    .locals 2
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "binder"    # Landroid/os/IBinder;
+    .param p5, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -358,18 +434,25 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 182
-    new-instance p1, Ljava/lang/IllegalArgumentException;
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string p2, "Cast service not supported"
+    const-string v1, "Cast service not supported"
 
-    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw p1
+    throw v0
 .end method
 
 .method public getDriveService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)V
     .locals 8
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "scopes"    # [Ljava/lang/String;
+    .param p5, "accountName"    # Ljava/lang/String;
+    .param p6, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -379,6 +462,7 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 189
     sget-object v1, Lorg/microg/gms/common/GmsService;->DRIVE:Lorg/microg/gms/common/GmsService;
 
@@ -398,11 +482,16 @@
 
     invoke-direct/range {v0 .. v7}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;Ljava/lang/String;[Ljava/lang/String;)V
 
+    .line 190
     return-void
 .end method
 
 .method public getDroidGuardService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
     .locals 6
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -412,6 +501,7 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 140
     sget-object v1, Lorg/microg/gms/common/GmsService;->DROIDGUARD:Lorg/microg/gms/common/GmsService;
 
@@ -427,11 +517,21 @@
 
     invoke-direct/range {v0 .. v5}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
 
+    .line 141
     return-void
 .end method
 
 .method public getGamesService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/os/IBinder;Ljava/lang/String;Landroid/os/Bundle;)V
     .locals 9
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "accountName"    # Ljava/lang/String;
+    .param p5, "scopes"    # [Ljava/lang/String;
+    .param p6, "gamePackageName"    # Ljava/lang/String;
+    .param p7, "popupWindowToken"    # Landroid/os/IBinder;
+    .param p8, "desiredLocale"    # Ljava/lang/String;
+    .param p9, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -441,34 +541,27 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
+    .line 108
     if-nez p9, :cond_0
 
-    .line 108
-    new-instance v0, Landroid/os/Bundle;
+    new-instance v6, Landroid/os/Bundle;
 
-    invoke-direct {v0}, Landroid/os/Bundle;-><init>()V
-
-    move-object v6, v0
-
-    goto :goto_0
-
-    :cond_0
-    move-object/from16 v6, p9
-
-    :goto_0
-    const-string v0, "com.google.android.gms.games.key.gamePackageName"
-
-    move-object v1, p6
+    invoke-direct {v6}, Landroid/os/Bundle;-><init>()V
 
     .line 109
-    invoke-virtual {v6, v0, v1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+    .local v6, "extras":Landroid/os/Bundle;
+    :goto_0
+    const-string v1, "com.google.android.gms.games.key.gamePackageName"
 
-    const-string v0, "com.google.android.gms.games.key.desiredLocale"
-
-    move-object/from16 v1, p8
+    invoke-virtual {v6, v1, p6}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 110
-    invoke-virtual {v6, v0, v1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+    const-string v1, "com.google.android.gms.games.key.desiredLocale"
+
+    move-object/from16 v0, p8
+
+    invoke-virtual {v6, v1, v0}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 112
     sget-object v2, Lorg/microg/gms/common/GmsService;->GAMES:Lorg/microg/gms/common/GmsService;
@@ -487,11 +580,23 @@
 
     invoke-direct/range {v1 .. v8}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;Ljava/lang/String;[Ljava/lang/String;)V
 
+    .line 113
     return-void
+
+    .end local v6    # "extras":Landroid/os/Bundle;
+    :cond_0
+    move-object/from16 v6, p9
+
+    .line 108
+    goto :goto_0
 .end method
 
 .method public getGoogleFeedbackService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
     .locals 6
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -501,6 +606,7 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 175
     sget-object v1, Lorg/microg/gms/common/GmsService;->FEEDBACK:Lorg/microg/gms/common/GmsService;
 
@@ -516,11 +622,16 @@
 
     invoke-direct/range {v0 .. v5}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
 
+    .line 176
     return-void
 .end method
 
 .method public getGoogleIdentityService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
     .locals 6
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -530,6 +641,7 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 168
     sget-object v1, Lorg/microg/gms/common/GmsService;->ACCOUNT:Lorg/microg/gms/common/GmsService;
 
@@ -545,11 +657,16 @@
 
     invoke-direct/range {v0 .. v5}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
 
+    .line 169
     return-void
 .end method
 
 .method public getGoogleLocationManagerService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
     .locals 6
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -559,6 +676,7 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 99
     sget-object v1, Lorg/microg/gms/common/GmsService;->LOCATION_MANAGER:Lorg/microg/gms/common/GmsService;
 
@@ -574,11 +692,15 @@
 
     invoke-direct/range {v0 .. v5}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
 
+    .line 100
     return-void
 .end method
 
 .method public getLightweightAppDataSearchService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
     .locals 1
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -588,16 +710,22 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 196
     sget-object v0, Lorg/microg/gms/common/GmsService;->LIGHTWEIGHT_INDEX:Lorg/microg/gms/common/GmsService;
 
     invoke-direct {p0, v0, p1, p2, p3}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
 
+    .line 197
     return-void
 .end method
 
 .method public getLocationService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
     .locals 6
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -607,6 +735,7 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 92
     sget-object v1, Lorg/microg/gms/common/GmsService;->LOCATION:Lorg/microg/gms/common/GmsService;
 
@@ -622,11 +751,16 @@
 
     invoke-direct/range {v0 .. v5}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
 
+    .line 93
     return-void
 .end method
 
 .method public getLockboxService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
     .locals 6
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -636,6 +770,7 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 147
     sget-object v1, Lorg/microg/gms/common/GmsService;->LOCKBOX:Lorg/microg/gms/common/GmsService;
 
@@ -651,11 +786,16 @@
 
     invoke-direct/range {v0 .. v5}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
 
+    .line 148
     return-void
 .end method
 
 .method public getNetworkQualityService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
     .locals 6
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -665,6 +805,7 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 161
     sget-object v1, Lorg/microg/gms/common/GmsService;->NETWORK_QUALITY:Lorg/microg/gms/common/GmsService;
 
@@ -680,11 +821,16 @@
 
     invoke-direct/range {v0 .. v5}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
 
+    .line 162
     return-void
 .end method
 
 .method public getPanoramaService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
     .locals 6
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -694,6 +840,7 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 58
     sget-object v1, Lorg/microg/gms/common/GmsService;->PANORAMA:Lorg/microg/gms/common/GmsService;
 
@@ -709,11 +856,16 @@
 
     invoke-direct/range {v0 .. v5}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
 
+    .line 59
     return-void
 .end method
 
 .method public getPeopleService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
     .locals 6
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -723,6 +875,7 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 78
     sget-object v1, Lorg/microg/gms/common/GmsService;->PEOPLE:Lorg/microg/gms/common/GmsService;
 
@@ -738,11 +891,16 @@
 
     invoke-direct/range {v0 .. v5}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
 
+    .line 79
     return-void
 .end method
 
 .method public getPlayLogService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
     .locals 6
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -752,6 +910,7 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 126
     sget-object v1, Lorg/microg/gms/common/GmsService;->PLAY_LOG:Lorg/microg/gms/common/GmsService;
 
@@ -767,11 +926,19 @@
 
     invoke-direct/range {v0 .. v5}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
 
+    .line 127
     return-void
 .end method
 
 .method public getPlusService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)V
     .locals 8
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "authPackage"    # Ljava/lang/String;
+    .param p5, "scopes"    # [Ljava/lang/String;
+    .param p6, "accountName"    # Ljava/lang/String;
+    .param p7, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -781,20 +948,20 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
+    .line 49
     if-nez p7, :cond_0
 
-    .line 49
-    new-instance p7, Landroid/os/Bundle;
+    new-instance v5, Landroid/os/Bundle;
 
-    invoke-direct {p7}, Landroid/os/Bundle;-><init>()V
-
-    :cond_0
-    move-object v5, p7
-
-    const-string p7, "auth_package"
+    invoke-direct {v5}, Landroid/os/Bundle;-><init>()V
 
     .line 50
-    invoke-virtual {v5, p7, p4}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+    .local v5, "extras":Landroid/os/Bundle;
+    :goto_0
+    const-string v0, "auth_package"
+
+    invoke-virtual {v5, v0, p4}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 51
     sget-object v1, Lorg/microg/gms/common/GmsService;->PLUS:Lorg/microg/gms/common/GmsService;
@@ -813,11 +980,23 @@
 
     invoke-direct/range {v0 .. v7}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;Ljava/lang/String;[Ljava/lang/String;)V
 
+    .line 52
     return-void
+
+    .end local v5    # "extras":Landroid/os/Bundle;
+    :cond_0
+    move-object v5, p7
+
+    .line 49
+    goto :goto_0
 .end method
 
 .method public getReportingService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
     .locals 6
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -827,6 +1006,7 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 85
     sget-object v1, Lorg/microg/gms/common/GmsService;->LOCATION_REPORTING:Lorg/microg/gms/common/GmsService;
 
@@ -842,11 +1022,15 @@
 
     invoke-direct/range {v0 .. v5}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
 
+    .line 86
     return-void
 .end method
 
 .method public getSearchAdministrationService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
     .locals 1
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -856,37 +1040,43 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 203
     sget-object v0, Lorg/microg/gms/common/GmsService;->SEARCH_ADMINISTRATION:Lorg/microg/gms/common/GmsService;
 
     invoke-direct {p0, v0, p1, p2, p3}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
 
+    .line 204
     return-void
 .end method
 
 .method public getService(Lcom/google/android/gms/common/internal/IGmsCallbacks;Lcom/google/android/gms/common/internal/GetServiceRequest;)V
-    .locals 3
+    .locals 4
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "request"    # Lcom/google/android/gms/common/internal/GetServiceRequest;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
+    .prologue
     .line 256
-    iget v0, p2, Lcom/google/android/gms/common/internal/GetServiceRequest;->serviceId:I
+    iget v1, p2, Lcom/google/android/gms/common/internal/GetServiceRequest;->serviceId:I
 
-    invoke-static {v0}, Lorg/microg/gms/common/GmsService;->byServiceId(I)Lorg/microg/gms/common/GmsService;
+    invoke-static {v1}, Lorg/microg/gms/common/GmsService;->byServiceId(I)Lorg/microg/gms/common/GmsService;
 
     move-result-object v0
 
     .line 257
+    .local v0, "gmsService":Lorg/microg/gms/common/GmsService;
     iget-object v1, p0, Lorg/microg/gms/AbstractGmsServiceBroker;->supportedServices:Ljava/util/EnumSet;
 
     invoke-virtual {v1, v0}, Ljava/util/EnumSet;->contains(Ljava/lang/Object;)Z
 
     move-result v1
 
-    if-nez v1, :cond_1
+    if-nez v1, :cond_0
 
     iget-object v1, p0, Lorg/microg/gms/AbstractGmsServiceBroker;->supportedServices:Ljava/util/EnumSet;
 
@@ -896,63 +1086,71 @@
 
     move-result v1
 
-    if-eqz v1, :cond_0
-
-    goto :goto_0
-
-    :cond_0
-    const-string p1, "GmsServiceBroker"
-
-    .line 260
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v1, "Service not supported: "
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-static {p1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 261
-    new-instance p1, Ljava/lang/IllegalArgumentException;
-
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v1, "Service not supported: "
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    iget p2, p2, Lcom/google/android/gms/common/internal/GetServiceRequest;->serviceId:I
-
-    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object p2
-
-    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    throw p1
+    if-eqz v1, :cond_1
 
     .line 258
-    :cond_1
-    :goto_0
+    :cond_0
     invoke-virtual {p0, p1, p2, v0}, Lorg/microg/gms/AbstractGmsServiceBroker;->handleServiceRequest(Lcom/google/android/gms/common/internal/IGmsCallbacks;Lcom/google/android/gms/common/internal/GetServiceRequest;Lorg/microg/gms/common/GmsService;)V
 
+    .line 263
     return-void
+
+    .line 260
+    :cond_1
+    const-string v1, "GmsServiceBroker"
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "Service not supported: "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 261
+    new-instance v1, Ljava/lang/IllegalArgumentException;
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "Service not supported: "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    iget v3, p2, Lcom/google/android/gms/common/internal/GetServiceRequest;->serviceId:I
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v1
 .end method
 
 .method public getWalletService(Lcom/google/android/gms/common/internal/IGmsCallbacks;I)V
     .locals 1
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -962,16 +1160,21 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
+    .line 71
     const/4 v0, 0x0
 
-    .line 71
     invoke-virtual {p0, p1, p2, v0}, Lorg/microg/gms/AbstractGmsServiceBroker;->getWalletServiceWithPackageName(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
 
+    .line 72
     return-void
 .end method
 
 .method public getWalletServiceWithPackageName(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
     .locals 1
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "versionCode"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -981,11 +1184,13 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
     .line 223
     sget-object v0, Lorg/microg/gms/common/GmsService;->WALLET:Lorg/microg/gms/common/GmsService;
 
     invoke-direct {p0, v0, p1, p2, p3}, Lorg/microg/gms/AbstractGmsServiceBroker;->callGetService(Lorg/microg/gms/common/GmsService;Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
 
+    .line 224
     return-void
 .end method
 
@@ -998,75 +1203,98 @@
 .end method
 
 .method public onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-    .locals 2
+    .locals 3
+    .param p1, "code"    # I
+    .param p2, "data"    # Landroid/os/Parcel;
+    .param p3, "reply"    # Landroid/os/Parcel;
+    .param p4, "flags"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
+    .prologue
     .line 274
     invoke-super {p0, p1, p2, p3, p4}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    move-result p3
+    move-result v0
 
-    if-eqz p3, :cond_0
+    if-eqz v0, :cond_0
 
-    const/4 p1, 0x1
+    const/4 v0, 0x1
 
-    return p1
-
-    :cond_0
-    const-string p3, "GmsServiceBroker"
+    .line 276
+    :goto_0
+    return v0
 
     .line 275
-    new-instance v0, Ljava/lang/StringBuilder;
+    :cond_0
+    const-string v0, "GmsServiceBroker"
 
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    const-string v1, "onTransact [unknown]: "
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, "onTransact [unknown]: "
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string p1, ", "
+    move-result-object v1
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    move-result-object v1
 
-    const-string p1, ", "
+    const-string v2, ", "
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, p4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    move-result-object v1
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v1
 
-    invoke-static {p3, p1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    const-string v2, ", "
 
-    const/4 p1, 0x0
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    return p1
+    move-result-object v1
+
+    invoke-virtual {v1, p4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 276
+    const/4 v0, 0x0
+
+    goto :goto_0
 .end method
 
 .method public validateAccount(Lcom/google/android/gms/common/internal/IGmsCallbacks;Lcom/google/android/gms/common/internal/ValidateAccountRequest;)V
-    .locals 0
+    .locals 2
+    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
+    .param p2, "request"    # Lcom/google/android/gms/common/internal/ValidateAccountRequest;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
+    .prologue
     .line 269
-    new-instance p1, Ljava/lang/IllegalArgumentException;
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string p2, "ValidateAccountRequest not supported"
+    const-string v1, "ValidateAccountRequest not supported"
 
-    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw p1
+    throw v0
 .end method

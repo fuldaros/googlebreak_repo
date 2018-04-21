@@ -10,38 +10,54 @@
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
     .locals 0
+    .param p1, "context"    # Landroid/content/Context;
 
-    .line 46
+    .prologue
+    .line 45
     invoke-direct {p0}, Lcom/google/android/gms/people/internal/IPeopleService$Stub;-><init>()V
 
-    .line 47
+    .line 46
     iput-object p1, p0, Lorg/microg/gms/people/PeopleServiceImpl;->context:Landroid/content/Context;
 
+    .line 47
     return-void
 .end method
 
 .method static synthetic access$000(Lorg/microg/gms/people/PeopleServiceImpl;)Landroid/content/Context;
-    .locals 0
+    .locals 1
+    .param p0, "x0"    # Lorg/microg/gms/people/PeopleServiceImpl;
 
-    .line 42
-    iget-object p0, p0, Lorg/microg/gms/people/PeopleServiceImpl;->context:Landroid/content/Context;
+    .prologue
+    .line 41
+    iget-object v0, p0, Lorg/microg/gms/people/PeopleServiceImpl;->context:Landroid/content/Context;
 
-    return-object p0
+    return-object v0
 .end method
 
 
 # virtual methods
 .method public loadAutocompleteList(Lcom/google/android/gms/people/internal/IPeopleCallbacks;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;Ljava/lang/String;IIIZ)Lcom/google/android/gms/common/internal/ICancelToken;
     .locals 3
+    .param p1, "callbacks"    # Lcom/google/android/gms/people/internal/IPeopleCallbacks;
+    .param p2, "account"    # Ljava/lang/String;
+    .param p3, "pageId"    # Ljava/lang/String;
+    .param p4, "directorySearch"    # Z
+    .param p5, "var5"    # Ljava/lang/String;
+    .param p6, "query"    # Ljava/lang/String;
+    .param p7, "autocompleteType"    # I
+    .param p8, "var8"    # I
+    .param p9, "numberOfResults"    # I
+    .param p10, "var10"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
+    .prologue
+    .line 148
     const-string v0, "GmsPeopleSvcImpl"
 
-    .line 150
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -50,468 +66,660 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string p2, ", "
+    move-result-object v1
 
     invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string p2, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p4}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    const-string p2, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string p2, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string p2, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p7}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    const-string p2, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    const-string p2, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p9}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    const-string p2, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p10}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
+    move-result-object v1
+
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object p2
+    move-result-object v1
 
-    invoke-static {v0, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 151
-    new-instance p2, Landroid/os/Bundle;
+    .line 149
+    const/4 v0, 0x0
 
-    invoke-direct {p2}, Landroid/os/Bundle;-><init>()V
+    new-instance v1, Landroid/os/Bundle;
 
-    const/4 p3, 0x0
+    invoke-direct {v1}, Landroid/os/Bundle;-><init>()V
 
-    const/4 p4, 0x0
+    const/4 v2, 0x0
 
-    invoke-interface {p1, p3, p2, p4}, Lcom/google/android/gms/people/internal/IPeopleCallbacks;->onDataHolder(ILandroid/os/Bundle;Lcom/google/android/gms/common/data/DataHolder;)V
+    invoke-interface {p1, v0, v1, v2}, Lcom/google/android/gms/people/internal/IPeopleCallbacks;->onDataHolder(ILandroid/os/Bundle;Lcom/google/android/gms/common/data/DataHolder;)V
 
-    .line 152
-    new-instance p1, Lorg/microg/gms/common/NonCancelToken;
+    .line 150
+    new-instance v0, Lorg/microg/gms/common/NonCancelToken;
 
-    invoke-direct {p1}, Lorg/microg/gms/common/NonCancelToken;-><init>()V
+    invoke-direct {v0}, Lorg/microg/gms/common/NonCancelToken;-><init>()V
 
-    return-object p1
+    return-object v0
 .end method
 
 .method public loadCircles(Lcom/google/android/gms/people/internal/IPeopleCallbacks;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Z)V
-    .locals 3
+    .locals 10
+    .param p1, "callbacks"    # Lcom/google/android/gms/people/internal/IPeopleCallbacks;
+    .param p2, "account"    # Ljava/lang/String;
+    .param p3, "pageGaiaId"    # Ljava/lang/String;
+    .param p4, "circleId"    # Ljava/lang/String;
+    .param p5, "type"    # I
+    .param p6, "var6"    # Ljava/lang/String;
+    .param p7, "var7"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    const-string v0, "GmsPeopleSvcImpl"
+    .prologue
+    .line 89
+    const-string v7, "GmsPeopleSvcImpl"
 
-    .line 91
-    new-instance v1, Ljava/lang/StringBuilder;
+    new-instance v8, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "loadCircles: "
+    const-string v9, "loadCircles: "
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v8
 
-    const-string v2, ", "
+    invoke-virtual {v8, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v8
 
-    invoke-virtual {v1, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v9, ", "
 
-    const-string p3, ", "
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v8
 
-    invoke-virtual {v1, p4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v8, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string p3, ", "
+    move-result-object v8
 
-    invoke-virtual {v1, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v9, ", "
 
-    invoke-virtual {v1, p5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string p3, ", "
+    move-result-object v8
 
-    invoke-virtual {v1, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v8, p4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, p6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v8
 
-    const-string p3, ", "
+    const-string v9, ", "
 
-    invoke-virtual {v1, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, p7}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+    move-result-object v8
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v8, p5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object p3
+    move-result-object v8
 
-    invoke-static {v0, p3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    const-string v9, ", "
+
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v8
+
+    move-object/from16 v0, p6
+
+    invoke-virtual {v8, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v8
+
+    const-string v9, ", "
+
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v8
+
+    move/from16 v0, p7
+
+    invoke-virtual {v8, v0}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v8
+
+    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v8
+
+    invoke-static {v7, v8}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 90
+    iget-object v7, p0, Lorg/microg/gms/people/PeopleServiceImpl;->context:Landroid/content/Context;
+
+    invoke-static {v7}, Lorg/microg/gms/common/PackageUtils;->assertExtendedAccess(Landroid/content/Context;)V
 
     .line 92
-    iget-object p3, p0, Lorg/microg/gms/people/PeopleServiceImpl;->context:Landroid/content/Context;
+    :try_start_0
+    new-instance v2, Lorg/microg/gms/people/DatabaseHelper;
 
-    invoke-static {p3}, Lorg/microg/gms/common/PackageUtils;->assertExtendedAccess(Landroid/content/Context;)V
+    iget-object v7, p0, Lorg/microg/gms/people/PeopleServiceImpl;->context:Landroid/content/Context;
+
+    invoke-direct {v2, v7}, Lorg/microg/gms/people/DatabaseHelper;-><init>(Landroid/content/Context;)V
+
+    .line 93
+    .local v2, "databaseHelper":Lorg/microg/gms/people/DatabaseHelper;
+    invoke-virtual {v2, p2}, Lorg/microg/gms/people/DatabaseHelper;->getOwner(Ljava/lang/String;)Landroid/database/Cursor;
+
+    move-result-object v5
 
     .line 94
-    :try_start_0
-    new-instance p3, Lorg/microg/gms/people/DatabaseHelper;
-
-    iget-object p6, p0, Lorg/microg/gms/people/PeopleServiceImpl;->context:Landroid/content/Context;
-
-    invoke-direct {p3, p6}, Lorg/microg/gms/people/DatabaseHelper;-><init>(Landroid/content/Context;)V
+    .local v5, "owner":Landroid/database/Cursor;
+    const/4 v6, -0x1
 
     .line 95
-    invoke-virtual {p3, p2}, Lorg/microg/gms/people/DatabaseHelper;->getOwner(Ljava/lang/String;)Landroid/database/Cursor;
+    .local v6, "ownerId":I
+    invoke-interface {v5}, Landroid/database/Cursor;->moveToNext()Z
 
-    move-result-object p2
+    move-result v7
 
-    const/4 p6, -0x1
+    if-eqz v7, :cond_0
 
-    .line 97
-    invoke-interface {p2}, Landroid/database/Cursor;->moveToNext()Z
+    .line 96
+    const/4 v7, 0x0
 
-    move-result p7
+    invoke-interface {v5, v7}, Landroid/database/Cursor;->getInt(I)I
 
-    const/4 v0, 0x0
-
-    if-eqz p7, :cond_0
+    move-result v6
 
     .line 98
-    invoke-interface {p2, v0}, Landroid/database/Cursor;->getInt(I)I
+    :cond_0
+    invoke-interface {v5}, Landroid/database/Cursor;->close()V
 
-    move-result p6
+    .line 99
+    new-instance v4, Landroid/os/Bundle;
+
+    invoke-direct {v4}, Landroid/os/Bundle;-><init>()V
 
     .line 100
-    :cond_0
-    invoke-interface {p2}, Landroid/database/Cursor;->close()V
+    .local v4, "extras":Landroid/os/Bundle;
+    invoke-virtual {v2, v6, p4, p5}, Lorg/microg/gms/people/DatabaseHelper;->getCircles(ILjava/lang/String;I)Landroid/database/Cursor;
+
+    move-result-object v7
+
+    const/4 v8, 0x0
+
+    invoke-static {v7, v8, v4}, Lcom/google/android/gms/common/data/DataHolder;->fromCursor(Landroid/database/Cursor;ILandroid/os/Bundle;)Lcom/google/android/gms/common/data/DataHolder;
+
+    move-result-object v1
 
     .line 101
-    new-instance p2, Landroid/os/Bundle;
+    .local v1, "dataHolder":Lcom/google/android/gms/common/data/DataHolder;
+    const/4 v7, 0x0
 
-    invoke-direct {p2}, Landroid/os/Bundle;-><init>()V
+    new-instance v8, Landroid/os/Bundle;
+
+    invoke-direct {v8}, Landroid/os/Bundle;-><init>()V
+
+    invoke-interface {p1, v7, v8, v1}, Lcom/google/android/gms/people/internal/IPeopleCallbacks;->onDataHolder(ILandroid/os/Bundle;Lcom/google/android/gms/common/data/DataHolder;)V
 
     .line 102
-    new-instance p7, Lcom/google/android/gms/common/data/DataHolder;
-
-    invoke-virtual {p3, p6, p4, p5}, Lorg/microg/gms/people/DatabaseHelper;->getCircles(ILjava/lang/String;I)Landroid/database/Cursor;
-
-    move-result-object p4
-
-    invoke-direct {p7, p4, v0, p2}, Lcom/google/android/gms/common/data/DataHolder;-><init>(Landroid/database/Cursor;ILandroid/os/Bundle;)V
-
-    .line 103
-    new-instance p2, Landroid/os/Bundle;
-
-    invoke-direct {p2}, Landroid/os/Bundle;-><init>()V
-
-    invoke-interface {p1, v0, p2, p7}, Lcom/google/android/gms/people/internal/IPeopleCallbacks;->onDataHolder(ILandroid/os/Bundle;Lcom/google/android/gms/common/data/DataHolder;)V
-
-    .line 104
-    invoke-virtual {p3}, Lorg/microg/gms/people/DatabaseHelper;->close()V
+    invoke-virtual {v2}, Lorg/microg/gms/people/DatabaseHelper;->close()V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    goto :goto_0
-
-    :catch_0
-    move-exception p1
-
-    const-string p2, "GmsPeopleSvcImpl"
-
     .line 106
-    invoke-static {p2, p1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
-
+    .end local v1    # "dataHolder":Lcom/google/android/gms/common/data/DataHolder;
+    .end local v2    # "databaseHelper":Lorg/microg/gms/people/DatabaseHelper;
+    .end local v4    # "extras":Landroid/os/Bundle;
+    .end local v5    # "owner":Landroid/database/Cursor;
+    .end local v6    # "ownerId":I
     :goto_0
     return-void
+
+    .line 103
+    :catch_0
+    move-exception v3
+
+    .line 104
+    .local v3, "e":Ljava/lang/Exception;
+    const-string v7, "GmsPeopleSvcImpl"
+
+    invoke-static {v7, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    goto :goto_0
 .end method
 
 .method public loadOwnerAvatar(Lcom/google/android/gms/people/internal/IPeopleCallbacks;Ljava/lang/String;Ljava/lang/String;II)Lcom/google/android/gms/common/internal/ICancelToken;
-    .locals 3
+    .locals 4
+    .param p1, "callbacks"    # Lcom/google/android/gms/people/internal/IPeopleCallbacks;
+    .param p2, "account"    # Ljava/lang/String;
+    .param p3, "pageId"    # Ljava/lang/String;
+    .param p4, "size"    # I
+    .param p5, "flags"    # I
 
-    const-string v0, "GmsPeopleSvcImpl"
+    .prologue
+    .line 116
+    const-string v1, "GmsPeopleSvcImpl"
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "loadOwnerAvatar: "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    const-string v3, ", "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    const-string v3, ", "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    const-string v3, ", "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 117
+    iget-object v1, p0, Lorg/microg/gms/people/PeopleServiceImpl;->context:Landroid/content/Context;
+
+    invoke-static {v1}, Lorg/microg/gms/common/PackageUtils;->assertExtendedAccess(Landroid/content/Context;)V
 
     .line 118
-    new-instance v1, Ljava/lang/StringBuilder;
+    new-instance v0, Ljava/lang/Thread;
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    new-instance v1, Lorg/microg/gms/people/PeopleServiceImpl$1;
 
-    const-string v2, "loadOwnerAvatar: "
+    invoke-direct {v1, p0, p2, p1}, Lorg/microg/gms/people/PeopleServiceImpl$1;-><init>(Lorg/microg/gms/people/PeopleServiceImpl;Ljava/lang/String;Lcom/google/android/gms/people/internal/IPeopleCallbacks;)V
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-direct {v0, v1}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 137
+    .local v0, "thread":Ljava/lang/Thread;
+    invoke-virtual {v0}, Ljava/lang/Thread;->start()V
 
-    const-string v2, ", "
+    .line 138
+    new-instance v1, Lorg/microg/gms/people/PeopleServiceImpl$2;
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-direct {v1, p0, v0}, Lorg/microg/gms/people/PeopleServiceImpl$2;-><init>(Lorg/microg/gms/people/PeopleServiceImpl;Ljava/lang/Thread;)V
 
-    invoke-virtual {v1, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string p3, ", "
-
-    invoke-virtual {v1, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v1, p4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    const-string p3, ", "
-
-    invoke-virtual {v1, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v1, p5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object p3
-
-    invoke-static {v0, p3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 119
-    iget-object p3, p0, Lorg/microg/gms/people/PeopleServiceImpl;->context:Landroid/content/Context;
-
-    invoke-static {p3}, Lorg/microg/gms/common/PackageUtils;->assertExtendedAccess(Landroid/content/Context;)V
-
-    .line 120
-    new-instance p3, Ljava/lang/Thread;
-
-    new-instance p4, Lorg/microg/gms/people/PeopleServiceImpl$1;
-
-    invoke-direct {p4, p0, p2, p1}, Lorg/microg/gms/people/PeopleServiceImpl$1;-><init>(Lorg/microg/gms/people/PeopleServiceImpl;Ljava/lang/String;Lcom/google/android/gms/people/internal/IPeopleCallbacks;)V
-
-    invoke-direct {p3, p4}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
-
-    .line 139
-    invoke-virtual {p3}, Ljava/lang/Thread;->start()V
-
-    .line 140
-    new-instance p1, Lorg/microg/gms/people/PeopleServiceImpl$2;
-
-    invoke-direct {p1, p0, p3}, Lorg/microg/gms/people/PeopleServiceImpl$2;-><init>(Lorg/microg/gms/people/PeopleServiceImpl;Ljava/lang/Thread;)V
-
-    return-object p1
+    return-object v1
 .end method
 
 .method public loadOwners(Lcom/google/android/gms/people/internal/IPeopleCallbacks;ZZLjava/lang/String;Ljava/lang/String;I)V
-    .locals 3
+    .locals 14
+    .param p1, "callbacks"    # Lcom/google/android/gms/people/internal/IPeopleCallbacks;
+    .param p2, "var2"    # Z
+    .param p3, "var3"    # Z
+    .param p4, "accountName"    # Ljava/lang/String;
+    .param p5, "var5"    # Ljava/lang/String;
+    .param p6, "sortOrder"    # I
 
-    const-string v0, "GmsPeopleSvcImpl"
+    .prologue
+    .line 51
+    const-string v9, "GmsPeopleSvcImpl"
+
+    new-instance v10, Ljava/lang/StringBuilder;
+
+    invoke-direct {v10}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v11, "loadOwners: "
+
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    move/from16 v0, p2
+
+    invoke-virtual {v10, v0}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    const-string v11, ", "
+
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    move/from16 v0, p3
+
+    invoke-virtual {v10, v0}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    const-string v11, ", "
+
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    move-object/from16 v0, p4
+
+    invoke-virtual {v10, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    const-string v11, ", "
+
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    move-object/from16 v0, p5
+
+    invoke-virtual {v10, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    const-string v11, ", "
+
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    move/from16 v0, p6
+
+    invoke-virtual {v10, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    invoke-virtual {v10}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v10
+
+    invoke-static {v9, v10}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 52
+    iget-object v9, p0, Lorg/microg/gms/people/PeopleServiceImpl;->context:Landroid/content/Context;
+
+    invoke-static {v9}, Lorg/microg/gms/common/PackageUtils;->assertExtendedAccess(Landroid/content/Context;)V
 
     .line 53
-    new-instance v1, Ljava/lang/StringBuilder;
+    iget-object v9, p0, Lorg/microg/gms/people/PeopleServiceImpl;->context:Landroid/content/Context;
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-static {v9}, Landroid/accounts/AccountManager;->get(Landroid/content/Context;)Landroid/accounts/AccountManager;
 
-    const-string v2, "loadOwners: "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
-
-    const-string p2, ", "
-
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v1, p3}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
-
-    const-string p2, ", "
-
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v1, p4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string p2, ", "
-
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v1, p5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string p2, ", "
-
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v1, p6}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object p2
-
-    invoke-static {v0, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    move-result-object v2
 
     .line 54
-    iget-object p2, p0, Lorg/microg/gms/people/PeopleServiceImpl;->context:Landroid/content/Context;
+    .local v2, "accountManager":Landroid/accounts/AccountManager;
+    new-instance v3, Landroid/os/Bundle;
 
-    invoke-static {p2}, Lorg/microg/gms/common/PackageUtils;->assertExtendedAccess(Landroid/content/Context;)V
+    invoke-direct {v3}, Landroid/os/Bundle;-><init>()V
 
     .line 55
-    iget-object p2, p0, Lorg/microg/gms/people/PeopleServiceImpl;->context:Landroid/content/Context;
+    .local v3, "accountMetadata":Landroid/os/Bundle;
+    iget-object v9, p0, Lorg/microg/gms/people/PeopleServiceImpl;->context:Landroid/content/Context;
 
-    invoke-static {p2}, Landroid/accounts/AccountManager;->get(Landroid/content/Context;)Landroid/accounts/AccountManager;
+    const v10, 0x7f07007e
 
-    move-result-object p2
+    invoke-virtual {v9, v10}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    move-result-object v4
 
     .line 56
-    new-instance p3, Landroid/os/Bundle;
+    .local v4, "accountType":Ljava/lang/String;
+    invoke-virtual {v2, v4}, Landroid/accounts/AccountManager;->getAccountsByType(Ljava/lang/String;)[Landroid/accounts/Account;
 
-    invoke-direct {p3}, Landroid/os/Bundle;-><init>()V
+    move-result-object v10
 
-    const-string p5, "com.google"
+    array-length v11, v10
 
-    .line 58
-    invoke-virtual {p2, p5}, Landroid/accounts/AccountManager;->getAccountsByType(Ljava/lang/String;)[Landroid/accounts/Account;
-
-    move-result-object p2
-
-    const/4 p5, 0x0
-
-    array-length p6, p2
-
-    move v0, p5
+    const/4 v9, 0x0
 
     :goto_0
-    if-ge v0, p6, :cond_2
+    if-ge v9, v11, :cond_2
 
-    aget-object v1, p2, v0
+    aget-object v1, v10, v9
 
+    .line 57
+    .local v1, "account":Landroid/accounts/Account;
     if-eqz p4, :cond_0
 
-    .line 59
-    iget-object v2, v1, Landroid/accounts/Account;->name:Ljava/lang/String;
+    iget-object v12, v1, Landroid/accounts/Account;->name:Ljava/lang/String;
 
-    invoke-virtual {v2, p4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    move-object/from16 v0, p4
 
-    move-result v2
+    invoke-virtual {v12, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    if-eqz v2, :cond_1
+    move-result v12
 
-    .line 60
+    if-eqz v12, :cond_1
+
+    .line 58
     :cond_0
-    iget-object v1, v1, Landroid/accounts/Account;->name:Ljava/lang/String;
+    iget-object v12, v1, Landroid/accounts/Account;->name:Ljava/lang/String;
 
-    new-instance v2, Lcom/google/android/gms/people/model/AccountMetadata;
+    new-instance v13, Lcom/google/android/gms/people/model/AccountMetadata;
 
-    invoke-direct {v2}, Lcom/google/android/gms/people/model/AccountMetadata;-><init>()V
+    invoke-direct {v13}, Lcom/google/android/gms/people/model/AccountMetadata;-><init>()V
 
-    invoke-virtual {p3, v1, v2}, Landroid/os/Bundle;->putParcelable(Ljava/lang/String;Landroid/os/Parcelable;)V
+    invoke-virtual {v3, v12, v13}, Landroid/os/Bundle;->putParcelable(Ljava/lang/String;Landroid/os/Parcelable;)V
 
+    .line 56
     :cond_1
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v9, v9, 0x1
 
     goto :goto_0
 
-    .line 63
+    .line 61
+    .end local v1    # "account":Landroid/accounts/Account;
     :cond_2
-    new-instance p2, Landroid/os/Bundle;
+    new-instance v8, Landroid/os/Bundle;
 
-    invoke-direct {p2}, Landroid/os/Bundle;-><init>()V
+    invoke-direct {v8}, Landroid/os/Bundle;-><init>()V
 
-    const-string p4, "account_metadata"
+    .line 62
+    .local v8, "extras":Landroid/os/Bundle;
+    const-string v9, "account_metadata"
+
+    invoke-virtual {v8, v9, v3}, Landroid/os/Bundle;->putBundle(Ljava/lang/String;Landroid/os/Bundle;)V
 
     .line 64
-    invoke-virtual {p2, p4, p3}, Landroid/os/Bundle;->putBundle(Ljava/lang/String;Landroid/os/Bundle;)V
+    :try_start_0
+    new-instance v6, Lorg/microg/gms/people/DatabaseHelper;
+
+    iget-object v9, p0, Lorg/microg/gms/people/PeopleServiceImpl;->context:Landroid/content/Context;
+
+    invoke-direct {v6, v9}, Lorg/microg/gms/people/DatabaseHelper;-><init>(Landroid/content/Context;)V
+
+    .line 65
+    .local v6, "databaseHelper":Lorg/microg/gms/people/DatabaseHelper;
+    invoke-virtual {v6}, Lorg/microg/gms/people/DatabaseHelper;->getOwners()Landroid/database/Cursor;
+
+    move-result-object v9
+
+    const/4 v10, 0x0
+
+    invoke-static {v9, v10, v8}, Lcom/google/android/gms/common/data/DataHolder;->fromCursor(Landroid/database/Cursor;ILandroid/os/Bundle;)Lcom/google/android/gms/common/data/DataHolder;
+
+    move-result-object v5
 
     .line 66
-    :try_start_0
-    new-instance p3, Lorg/microg/gms/people/DatabaseHelper;
+    .local v5, "dataHolder":Lcom/google/android/gms/common/data/DataHolder;
+    const-string v9, "GmsPeopleSvcImpl"
 
-    iget-object p4, p0, Lorg/microg/gms/people/PeopleServiceImpl;->context:Landroid/content/Context;
+    new-instance v10, Ljava/lang/StringBuilder;
 
-    invoke-direct {p3, p4}, Lorg/microg/gms/people/DatabaseHelper;-><init>(Landroid/content/Context;)V
+    invoke-direct {v10}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v11, "loadOwners[result]: "
+
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    invoke-virtual {v10, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    invoke-virtual {v10}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v10
+
+    invoke-static {v9, v10}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 67
-    new-instance p4, Lcom/google/android/gms/common/data/DataHolder;
+    const/4 v9, 0x0
 
-    invoke-virtual {p3}, Lorg/microg/gms/people/DatabaseHelper;->getOwners()Landroid/database/Cursor;
-
-    move-result-object p6
-
-    invoke-direct {p4, p6, p5, p2}, Lcom/google/android/gms/common/data/DataHolder;-><init>(Landroid/database/Cursor;ILandroid/os/Bundle;)V
-
-    const-string p6, "GmsPeopleSvcImpl"
+    invoke-interface {p1, v9, v8, v5}, Lcom/google/android/gms/people/internal/IPeopleCallbacks;->onDataHolder(ILandroid/os/Bundle;Lcom/google/android/gms/common/data/DataHolder;)V
 
     .line 68
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v1, "loadOwners[result]: "
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0, p4}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-static {p6, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 69
-    invoke-interface {p1, p5, p2, p4}, Lcom/google/android/gms/people/internal/IPeopleCallbacks;->onDataHolder(ILandroid/os/Bundle;Lcom/google/android/gms/common/data/DataHolder;)V
-
-    .line 70
-    invoke-virtual {p3}, Lorg/microg/gms/people/DatabaseHelper;->close()V
+    invoke-virtual {v6}, Lorg/microg/gms/people/DatabaseHelper;->close()V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    goto :goto_1
-
-    :catch_0
-    move-exception p1
-
-    const-string p2, "GmsPeopleSvcImpl"
-
     .line 72
-    invoke-static {p2, p1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
-
+    .end local v5    # "dataHolder":Lcom/google/android/gms/common/data/DataHolder;
+    .end local v6    # "databaseHelper":Lorg/microg/gms/people/DatabaseHelper;
     :goto_1
     return-void
+
+    .line 69
+    :catch_0
+    move-exception v7
+
+    .line 70
+    .local v7, "e":Ljava/lang/Exception;
+    const-string v9, "GmsPeopleSvcImpl"
+
+    invoke-static {v9, v7}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    goto :goto_1
 .end method
 
 .method public loadPeopleForAggregation(Lcom/google/android/gms/people/internal/IPeopleCallbacks;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IZIILjava/lang/String;ZII)V
     .locals 3
+    .param p1, "callbacks"    # Lcom/google/android/gms/people/internal/IPeopleCallbacks;
+    .param p2, "account"    # Ljava/lang/String;
+    .param p3, "var3"    # Ljava/lang/String;
+    .param p4, "filter"    # Ljava/lang/String;
+    .param p5, "var5"    # I
+    .param p6, "var6"    # Z
+    .param p7, "var7"    # I
+    .param p8, "var8"    # I
+    .param p9, "var9"    # Ljava/lang/String;
+    .param p10, "var10"    # Z
+    .param p11, "var11"    # I
+    .param p12, "var12"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
+    .prologue
+    .line 76
     const-string v0, "GmsPeopleSvcImpl"
 
-    .line 78
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -520,155 +728,228 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string p2, ", "
+    move-result-object v1
 
     invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string p2, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string p2, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    const-string p2, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p6}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    const-string p2, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p7}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    const-string p2, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    const-string p2, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string p2, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p10}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    const-string p2, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p11}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    const-string p2, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p12}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
+    move-result-object v1
+
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object p2
+    move-result-object v1
 
-    invoke-static {v0, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 79
-    new-instance p2, Landroid/os/Bundle;
+    .line 77
+    const/4 v0, 0x0
 
-    invoke-direct {p2}, Landroid/os/Bundle;-><init>()V
+    new-instance v1, Landroid/os/Bundle;
 
-    const/4 p3, 0x0
+    invoke-direct {v1}, Landroid/os/Bundle;-><init>()V
 
-    const/4 p4, 0x0
+    const/4 v2, 0x0
 
-    invoke-interface {p1, p3, p2, p4}, Lcom/google/android/gms/people/internal/IPeopleCallbacks;->onDataHolder(ILandroid/os/Bundle;Lcom/google/android/gms/common/data/DataHolder;)V
+    invoke-interface {p1, v0, v1, v2}, Lcom/google/android/gms/people/internal/IPeopleCallbacks;->onDataHolder(ILandroid/os/Bundle;Lcom/google/android/gms/common/data/DataHolder;)V
 
+    .line 78
     return-void
 .end method
 
 .method public onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-    .locals 2
+    .locals 3
+    .param p1, "code"    # I
+    .param p2, "data"    # Landroid/os/Parcel;
+    .param p3, "reply"    # Landroid/os/Parcel;
+    .param p4, "flags"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .line 157
+    .prologue
+    .line 155
     invoke-super {p0, p1, p2, p3, p4}, Lcom/google/android/gms/people/internal/IPeopleService$Stub;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    move-result p3
+    move-result v0
 
-    if-eqz p3, :cond_0
+    if-eqz v0, :cond_0
 
-    const/4 p1, 0x1
+    const/4 v0, 0x1
 
-    return p1
+    .line 157
+    :goto_0
+    return v0
 
+    .line 156
     :cond_0
-    const-string p3, "GmsPeopleSvcImpl"
+    const-string v0, "GmsPeopleSvcImpl"
 
-    .line 158
-    new-instance v0, Ljava/lang/StringBuilder;
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "onTransact [unknown]: "
+    const-string v2, "onTransact [unknown]: "
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    move-result-object v1
 
-    const-string p1, ", "
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v1
 
-    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
 
-    const-string p1, ", "
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v1
 
-    invoke-virtual {v0, p4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v1
 
-    move-result-object p1
+    const-string v2, ", "
 
-    invoke-static {p3, p1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const/4 p1, 0x0
+    move-result-object v1
 
-    return p1
+    invoke-virtual {v1, p4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 157
+    const/4 v0, 0x0
+
+    goto :goto_0
 .end method
 
 .method public registerDataChangedListener(Lcom/google/android/gms/people/internal/IPeopleCallbacks;ZLjava/lang/String;Ljava/lang/String;I)Landroid/os/Bundle;
-    .locals 3
+    .locals 4
+    .param p1, "callbacks"    # Lcom/google/android/gms/people/internal/IPeopleCallbacks;
+    .param p2, "register"    # Z
+    .param p3, "var3"    # Ljava/lang/String;
+    .param p4, "var4"    # Ljava/lang/String;
+    .param p5, "scopes"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
+    .prologue
+    const/4 v3, 0x0
+
+    .line 82
     const-string v0, "GmsPeopleSvcImpl"
 
-    .line 84
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -677,57 +958,78 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    move-result-object v1
+
     invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    const-string p2, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string p2, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string p2, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
+    move-result-object v1
+
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object p2
+    move-result-object v1
 
-    invoke-static {v0, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 85
-    new-instance p2, Landroid/os/Bundle;
+    .line 83
+    const/4 v0, 0x0
 
-    invoke-direct {p2}, Landroid/os/Bundle;-><init>()V
+    new-instance v1, Landroid/os/Bundle;
 
-    const/4 p3, 0x0
+    invoke-direct {v1}, Landroid/os/Bundle;-><init>()V
 
-    const/4 p4, 0x0
+    invoke-interface {p1, v0, v1, v3}, Lcom/google/android/gms/people/internal/IPeopleCallbacks;->onDataHolder(ILandroid/os/Bundle;Lcom/google/android/gms/common/data/DataHolder;)V
 
-    invoke-interface {p1, p4, p2, p3}, Lcom/google/android/gms/people/internal/IPeopleCallbacks;->onDataHolder(ILandroid/os/Bundle;Lcom/google/android/gms/common/data/DataHolder;)V
-
-    return-object p3
+    .line 84
+    return-object v3
 .end method
 
 .method public requestSync(Ljava/lang/String;Ljava/lang/String;JZZ)Landroid/os/Bundle;
     .locals 3
+    .param p1, "account"    # Ljava/lang/String;
+    .param p2, "var2"    # Ljava/lang/String;
+    .param p3, "var3"    # J
+    .param p5, "var5"    # Z
+    .param p6, "var6"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
+    .prologue
+    .line 110
     const-string v0, "GmsPeopleSvcImpl"
 
-    .line 112
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -736,39 +1038,60 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string p1, ", "
+    move-result-object v1
 
     invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string p1, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p3, p4}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    const-string p1, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p5}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    const-string p1, ", "
+    move-result-object v1
 
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ", "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p6}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
+    move-result-object v1
+
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object p1
+    move-result-object v1
 
-    invoke-static {v0, p1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    const/4 p1, 0x0
+    .line 111
+    const/4 v0, 0x0
 
-    return-object p1
+    return-object v0
 .end method

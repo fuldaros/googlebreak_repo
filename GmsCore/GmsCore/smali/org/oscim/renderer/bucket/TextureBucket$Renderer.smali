@@ -16,192 +16,203 @@
 
 # direct methods
 .method public static draw(Lorg/oscim/renderer/bucket/RenderBucket;Lorg/oscim/renderer/GLViewport;F)Lorg/oscim/renderer/bucket/RenderBucket;
-    .locals 7
+    .locals 11
+    .param p0, "b"    # Lorg/oscim/renderer/bucket/RenderBucket;
+    .param p1, "v"    # Lorg/oscim/renderer/GLViewport;
+    .param p2, "scale"    # F
 
-    const/4 v0, 0x0
+    .prologue
+    const/4 v5, 0x0
 
-    .line 124
-    invoke-static {v0, v0}, Lorg/oscim/renderer/GLState;->test(ZZ)V
+    const/high16 v10, 0x41000000    # 8.0f
 
-    const/4 v1, 0x1
+    const/high16 v6, 0x3f800000    # 1.0f
 
-    .line 125
-    invoke-static {v1}, Lorg/oscim/renderer/GLState;->blend(Z)V
+    .line 115
+    invoke-static {v5, v5}, Lorg/oscim/renderer/GLState;->test(ZZ)V
 
-    .line 127
-    sget-object v1, Lorg/oscim/renderer/bucket/TextureBucket;->shader:Lorg/oscim/renderer/bucket/TextureBucket$Shader;
+    .line 116
+    const/4 v5, 0x1
 
-    invoke-virtual {v1}, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->useProgram()Z
+    invoke-static {v5}, Lorg/oscim/renderer/GLState;->blend(Z)V
 
-    .line 129
-    move-object v1, p0
+    .line 118
+    sget-object v5, Lorg/oscim/renderer/bucket/TextureBucket;->shader:Lorg/oscim/renderer/bucket/TextureBucket$Shader;
 
-    check-cast v1, Lorg/oscim/renderer/bucket/TextureBucket;
+    invoke-virtual {v5}, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->useProgram()Z
 
-    .line 130
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    move-object v4, p0
 
-    sget-object v3, Lorg/oscim/renderer/bucket/TextureBucket;->shader:Lorg/oscim/renderer/bucket/TextureBucket$Shader;
+    .line 120
+    check-cast v4, Lorg/oscim/renderer/bucket/TextureBucket;
 
-    iget v3, v3, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->uScale:I
+    .line 121
+    .local v4, "tb":Lorg/oscim/renderer/bucket/TextureBucket;
+    sget-object v7, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    iget-boolean v4, v1, Lorg/oscim/renderer/bucket/TextureBucket;->fixed:Z
+    sget-object v5, Lorg/oscim/renderer/bucket/TextureBucket;->shader:Lorg/oscim/renderer/bucket/TextureBucket$Shader;
 
-    const/high16 v5, 0x3f800000    # 1.0f
+    iget v8, v5, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->uScale:I
 
-    if-eqz v4, :cond_0
+    iget-boolean v5, v4, Lorg/oscim/renderer/bucket/TextureBucket;->fixed:Z
 
-    div-float p2, v5, p2
+    if-eqz v5, :cond_1
 
-    goto :goto_0
-
-    :cond_0
-    move p2, v5
+    div-float v5, v6, p2
 
     :goto_0
-    invoke-interface {v2, v3, p2}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+    invoke-interface {v7, v8, v5}, Lorg/oscim/backend/GL;->uniform1f(IF)V
 
-    .line 131
-    sget-object p2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    .line 123
+    iget-object v5, p1, Lorg/oscim/renderer/GLViewport;->proj:Lorg/oscim/renderer/GLMatrix;
 
-    sget-object v2, Lorg/oscim/renderer/bucket/TextureBucket;->shader:Lorg/oscim/renderer/bucket/TextureBucket$Shader;
+    sget-object v7, Lorg/oscim/renderer/bucket/TextureBucket;->shader:Lorg/oscim/renderer/bucket/TextureBucket$Shader;
 
-    iget v2, v2, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->uCoordScale:I
+    iget v7, v7, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->uProj:I
 
-    sget v3, Lorg/oscim/renderer/MapRenderer;->COORD_SCALE:F
+    invoke-virtual {v5, v7}, Lorg/oscim/renderer/GLMatrix;->setAsUniform(I)V
 
-    invoke-interface {p2, v2, v3}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+    .line 124
+    iget-object v5, p1, Lorg/oscim/renderer/GLViewport;->mvp:Lorg/oscim/renderer/GLMatrix;
 
-    .line 133
-    iget-object p2, p1, Lorg/oscim/renderer/GLViewport;->proj:Lorg/oscim/renderer/GLMatrix;
+    sget-object v7, Lorg/oscim/renderer/bucket/TextureBucket;->shader:Lorg/oscim/renderer/bucket/TextureBucket$Shader;
 
-    sget-object v2, Lorg/oscim/renderer/bucket/TextureBucket;->shader:Lorg/oscim/renderer/bucket/TextureBucket$Shader;
+    iget v7, v7, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->uMV:I
 
-    iget v2, v2, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->uProj:I
+    invoke-virtual {v5, v7}, Lorg/oscim/renderer/GLMatrix;->setAsUniform(I)V
 
-    invoke-virtual {p2, v2}, Lorg/oscim/renderer/GLMatrix;->setAsUniform(I)V
-
-    .line 134
-    iget-object p1, p1, Lorg/oscim/renderer/GLViewport;->mvp:Lorg/oscim/renderer/GLMatrix;
-
-    sget-object p2, Lorg/oscim/renderer/bucket/TextureBucket;->shader:Lorg/oscim/renderer/bucket/TextureBucket$Shader;
-
-    iget p2, p2, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->uMV:I
-
-    invoke-virtual {p1, p2}, Lorg/oscim/renderer/GLMatrix;->setAsUniform(I)V
-
-    .line 136
+    .line 126
     invoke-static {}, Lorg/oscim/renderer/MapRenderer;->bindQuadIndicesVBO()V
 
-    .line 138
-    iget-object p1, v1, Lorg/oscim/renderer/bucket/TextureBucket;->textures:Lorg/oscim/renderer/bucket/TextureItem;
+    .line 128
+    iget-object v3, v4, Lorg/oscim/renderer/bucket/TextureBucket;->textures:Lorg/oscim/renderer/bucket/TextureItem;
 
+    .local v3, "t":Lorg/oscim/renderer/bucket/TextureItem;
     :goto_1
-    if-eqz p1, :cond_3
+    if-eqz v3, :cond_3
 
-    .line 139
-    sget-object p2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    .line 129
+    sget-object v5, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    sget-object v2, Lorg/oscim/renderer/bucket/TextureBucket;->shader:Lorg/oscim/renderer/bucket/TextureBucket$Shader;
+    sget-object v7, Lorg/oscim/renderer/bucket/TextureBucket;->shader:Lorg/oscim/renderer/bucket/TextureBucket$Shader;
 
-    iget v2, v2, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->uTexSize:I
+    iget v7, v7, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->uTexSize:I
 
-    iget v3, p1, Lorg/oscim/renderer/bucket/TextureItem;->width:I
+    iget v8, v3, Lorg/oscim/renderer/bucket/TextureItem;->width:I
 
-    int-to-float v3, v3
+    int-to-float v8, v8
 
-    sget v4, Lorg/oscim/renderer/MapRenderer;->COORD_SCALE:F
+    mul-float/2addr v8, v10
 
-    mul-float/2addr v3, v4
+    div-float v8, v6, v8
 
-    div-float v3, v5, v3
+    iget v9, v3, Lorg/oscim/renderer/bucket/TextureItem;->height:I
 
-    iget v4, p1, Lorg/oscim/renderer/bucket/TextureItem;->height:I
+    int-to-float v9, v9
 
-    int-to-float v4, v4
+    mul-float/2addr v9, v10
 
-    sget v6, Lorg/oscim/renderer/MapRenderer;->COORD_SCALE:F
+    div-float v9, v6, v9
 
-    mul-float/2addr v4, v6
+    invoke-interface {v5, v7, v8, v9}, Lorg/oscim/backend/GL;->uniform2f(IFF)V
 
-    div-float v4, v5, v4
+    .line 132
+    invoke-virtual {v3}, Lorg/oscim/renderer/bucket/TextureItem;->bind()V
 
-    invoke-interface {p2, v2, v3, v4}, Lorg/oscim/backend/GL;->uniform2f(IFF)V
+    .line 135
+    const/4 v0, 0x0
+
+    .local v0, "i":I
+    :goto_2
+    iget v5, v3, Lorg/oscim/renderer/bucket/TextureItem;->indices:I
+
+    if-ge v0, v5, :cond_2
+
+    .line 138
+    iget v5, v3, Lorg/oscim/renderer/bucket/TextureItem;->offset:I
+
+    add-int/2addr v5, v0
+
+    mul-int/lit8 v5, v5, 0x8
+
+    iget v7, v4, Lorg/oscim/renderer/bucket/TextureBucket;->vertexOffset:I
+
+    add-int v2, v5, v7
+
+    .line 140
+    .local v2, "off":I
+    iget v5, v3, Lorg/oscim/renderer/bucket/TextureItem;->indices:I
+
+    sub-int v1, v5, v0
+
+    .line 141
+    .local v1, "numIndices":I
+    const/16 v5, 0xc00
+
+    if-le v1, v5, :cond_0
 
     .line 142
-    invoke-virtual {p1}, Lorg/oscim/renderer/bucket/TextureItem;->bind()V
+    const/16 v1, 0xc00
 
-    move p2, v0
+    .line 144
+    :cond_0
+    invoke-virtual {v4, v2, v1}, Lorg/oscim/renderer/bucket/TextureBucket;->render(II)V
 
-    .line 145
-    :goto_2
-    iget v2, p1, Lorg/oscim/renderer/bucket/TextureItem;->indices:I
-
-    if-ge p2, v2, :cond_2
-
-    .line 148
-    iget v2, p1, Lorg/oscim/renderer/bucket/TextureItem;->offset:I
-
-    add-int/2addr v2, p2
-
-    mul-int/lit8 v2, v2, 0x8
-
-    iget v3, v1, Lorg/oscim/renderer/bucket/TextureBucket;->vertexOffset:I
-
-    add-int/2addr v2, v3
-
-    .line 150
-    iget v3, p1, Lorg/oscim/renderer/bucket/TextureItem;->indices:I
-
-    sub-int/2addr v3, p2
-
-    const/16 v4, 0xc00
-
-    if-le v3, v4, :cond_1
-
-    move v3, v4
-
-    .line 154
-    :cond_1
-    invoke-virtual {v1, v2, v3}, Lorg/oscim/renderer/bucket/TextureBucket;->render(II)V
-
-    add-int/lit16 p2, p2, 0xc00
+    .line 135
+    add-int/lit16 v0, v0, 0xc00
 
     goto :goto_2
 
-    .line 138
+    .end local v0    # "i":I
+    .end local v1    # "numIndices":I
+    .end local v2    # "off":I
+    .end local v3    # "t":Lorg/oscim/renderer/bucket/TextureItem;
+    :cond_1
+    move v5, v6
+
+    .line 121
+    goto :goto_0
+
+    .line 128
+    .restart local v0    # "i":I
+    .restart local v3    # "t":Lorg/oscim/renderer/bucket/TextureItem;
     :cond_2
-    iget-object p1, p1, Lorg/oscim/renderer/bucket/TextureItem;->next:Lorg/oscim/utils/pool/Inlist;
+    iget-object v3, v3, Lorg/oscim/renderer/bucket/TextureItem;->next:Lorg/oscim/utils/pool/Inlist;
 
-    check-cast p1, Lorg/oscim/renderer/bucket/TextureItem;
+    .end local v3    # "t":Lorg/oscim/renderer/bucket/TextureItem;
+    check-cast v3, Lorg/oscim/renderer/bucket/TextureItem;
 
+    .restart local v3    # "t":Lorg/oscim/renderer/bucket/TextureItem;
     goto :goto_1
 
-    .line 158
+    .line 148
+    .end local v0    # "i":I
     :cond_3
-    iget-object p0, p0, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
+    iget-object v5, p0, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
 
-    check-cast p0, Lorg/oscim/renderer/bucket/RenderBucket;
+    check-cast v5, Lorg/oscim/renderer/bucket/RenderBucket;
 
-    return-object p0
+    return-object v5
 .end method
 
 .method static init()V
     .locals 2
 
-    .line 116
+    .prologue
+    .line 107
     new-instance v0, Lorg/oscim/renderer/bucket/TextureBucket$Shader;
 
     invoke-direct {v0}, Lorg/oscim/renderer/bucket/TextureBucket$Shader;-><init>()V
 
     sput-object v0, Lorg/oscim/renderer/bucket/TextureBucket;->shader:Lorg/oscim/renderer/bucket/TextureBucket$Shader;
 
-    .line 119
+    .line 110
     sget-object v0, Lorg/oscim/renderer/bucket/TextureBucket;->pool:Lorg/oscim/renderer/bucket/TextureItem$TexturePool;
 
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Lorg/oscim/renderer/bucket/TextureItem$TexturePool;->init(I)V
 
+    .line 111
     return-void
 .end method

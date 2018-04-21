@@ -19,10 +19,11 @@
 .method public constructor <init>()V
     .locals 1
 
+    .prologue
+    const/4 v0, 0x0
+
     .line 61
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    const/4 v0, 0x0
 
     .line 56
     iput-boolean v0, p0, Lcom/vividsolutions/jts/geomgraph/GraphComponent;->isInResult:Z
@@ -36,6 +37,7 @@
     .line 59
     iput-boolean v0, p0, Lcom/vividsolutions/jts/geomgraph/GraphComponent;->isVisited:Z
 
+    .line 62
     return-void
 .end method
 
@@ -44,6 +46,7 @@
 .method public getLabel()Lcom/vividsolutions/jts/geomgraph/Label;
     .locals 1
 
+    .prologue
     .line 68
     iget-object v0, p0, Lcom/vividsolutions/jts/geomgraph/GraphComponent;->label:Lcom/vividsolutions/jts/geomgraph/Label;
 
@@ -53,6 +56,7 @@
 .method public isVisited()Z
     .locals 1
 
+    .prologue
     .line 79
     iget-boolean v0, p0, Lcom/vividsolutions/jts/geomgraph/GraphComponent;->isVisited:Z
 
@@ -61,7 +65,9 @@
 
 .method public setInResult(Z)V
     .locals 0
+    .param p1, "isInResult"    # Z
 
+    .prologue
     .line 70
     iput-boolean p1, p0, Lcom/vividsolutions/jts/geomgraph/GraphComponent;->isInResult:Z
 
@@ -70,7 +76,9 @@
 
 .method public setVisited(Z)V
     .locals 0
+    .param p1, "isVisited"    # Z
 
+    .prologue
     .line 80
     iput-boolean p1, p0, Lcom/vividsolutions/jts/geomgraph/GraphComponent;->isVisited:Z
 

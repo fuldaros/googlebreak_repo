@@ -18,9 +18,10 @@
         "<T:",
         "Ljava/lang/Object;",
         ">",
-        "Lorg/oscim/utils/pool/Inlist<",
-        "Lorg/oscim/utils/quadtree/BoxTree$BoxItem<",
-        "TT;>;>;"
+        "Lorg/oscim/utils/pool/Inlist",
+        "<",
+        "Lorg/oscim/utils/quadtree/BoxTree$BoxItem",
+        "<TT;>;>;"
     }
 .end annotation
 
@@ -47,14 +48,18 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 81
+    .prologue
+    .line 77
+    .local p0, "this":Lorg/oscim/utils/quadtree/BoxTree$BoxItem;, "Lorg/oscim/utils/quadtree/BoxTree$BoxItem<TT;>;"
     invoke-direct {p0}, Lorg/oscim/utils/pool/Inlist;-><init>()V
 
+    .line 78
     return-void
 .end method
 
 .method public constructor <init>(Lorg/oscim/core/Box;Ljava/lang/Object;)V
     .locals 2
+    .param p1, "box"    # Lorg/oscim/core/Box;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -63,40 +68,44 @@
         }
     .end annotation
 
-    .line 98
+    .prologue
+    .line 94
+    .local p0, "this":Lorg/oscim/utils/quadtree/BoxTree$BoxItem;, "Lorg/oscim/utils/quadtree/BoxTree$BoxItem<TT;>;"
+    .local p2, "item":Ljava/lang/Object;, "TT;"
     invoke-direct {p0}, Lorg/oscim/utils/pool/Inlist;-><init>()V
 
-    .line 99
+    .line 95
     iget-wide v0, p1, Lorg/oscim/core/Box;->xmin:D
 
     double-to-int v0, v0
 
     iput v0, p0, Lorg/oscim/utils/quadtree/BoxTree$BoxItem;->x1:I
 
-    .line 100
+    .line 96
     iget-wide v0, p1, Lorg/oscim/core/Box;->ymin:D
 
     double-to-int v0, v0
 
     iput v0, p0, Lorg/oscim/utils/quadtree/BoxTree$BoxItem;->y1:I
 
-    .line 101
+    .line 97
     iget-wide v0, p1, Lorg/oscim/core/Box;->xmax:D
 
     double-to-int v0, v0
 
     iput v0, p0, Lorg/oscim/utils/quadtree/BoxTree$BoxItem;->x2:I
 
-    .line 102
+    .line 98
     iget-wide v0, p1, Lorg/oscim/core/Box;->ymax:D
 
-    double-to-int p1, v0
+    double-to-int v0, v0
 
-    iput p1, p0, Lorg/oscim/utils/quadtree/BoxTree$BoxItem;->y2:I
+    iput v0, p0, Lorg/oscim/utils/quadtree/BoxTree$BoxItem;->y2:I
 
-    .line 103
+    .line 99
     iput-object p2, p0, Lorg/oscim/utils/quadtree/BoxTree$BoxItem;->item:Ljava/lang/Object;
 
+    .line 100
     return-void
 .end method
 
@@ -107,12 +116,15 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Lorg/oscim/utils/quadtree/BoxTree$BoxItem<",
-            "*>;)Z"
+            "Lorg/oscim/utils/quadtree/BoxTree$BoxItem",
+            "<*>;)Z"
         }
     .end annotation
 
-    .line 107
+    .prologue
+    .line 103
+    .local p0, "this":Lorg/oscim/utils/quadtree/BoxTree$BoxItem;, "Lorg/oscim/utils/quadtree/BoxTree$BoxItem<TT;>;"
+    .local p1, "it":Lorg/oscim/utils/quadtree/BoxTree$BoxItem;, "Lorg/oscim/utils/quadtree/BoxTree$BoxItem<*>;"
     iget v0, p0, Lorg/oscim/utils/quadtree/BoxTree$BoxItem;->x1:I
 
     iget v1, p1, Lorg/oscim/utils/quadtree/BoxTree$BoxItem;->x2:I
@@ -131,27 +143,31 @@
 
     if-gt v0, v1, :cond_0
 
-    iget p1, p1, Lorg/oscim/utils/quadtree/BoxTree$BoxItem;->y1:I
+    iget v0, p1, Lorg/oscim/utils/quadtree/BoxTree$BoxItem;->y1:I
 
-    iget v0, p0, Lorg/oscim/utils/quadtree/BoxTree$BoxItem;->y2:I
+    iget v1, p0, Lorg/oscim/utils/quadtree/BoxTree$BoxItem;->y2:I
 
-    if-gt p1, v0, :cond_0
+    if-gt v0, v1, :cond_0
 
-    const/4 p1, 0x1
-
-    goto :goto_0
-
-    :cond_0
-    const/4 p1, 0x0
+    const/4 v0, 0x1
 
     :goto_0
-    return p1
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
 .end method
 
 .method public toString()Ljava/lang/String;
     .locals 3
 
-    .line 140
+    .prologue
+    .local p0, "this":Lorg/oscim/utils/quadtree/BoxTree$BoxItem;, "Lorg/oscim/utils/quadtree/BoxTree$BoxItem<TT;>;"
+    const/16 v2, 0x2c
+
+    .line 136
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -160,35 +176,51 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    move-result-object v0
+
     iget v1, p0, Lorg/oscim/utils/quadtree/BoxTree$BoxItem;->x1:I
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    const/16 v1, 0x2c
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
-
-    iget v2, p0, Lorg/oscim/utils/quadtree/BoxTree$BoxItem;->y1:I
-
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    const/16 v2, 0x2f
+    move-result-object v0
 
     invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    iget v2, p0, Lorg/oscim/utils/quadtree/BoxTree$BoxItem;->x2:I
+    move-result-object v0
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    iget v1, p0, Lorg/oscim/utils/quadtree/BoxTree$BoxItem;->y1:I
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    const/16 v1, 0x2f
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    iget v1, p0, Lorg/oscim/utils/quadtree/BoxTree$BoxItem;->x2:I
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     iget v1, p0, Lorg/oscim/utils/quadtree/BoxTree$BoxItem;->y2:I
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
+    move-result-object v0
+
     const/16 v1, 0x5d
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 

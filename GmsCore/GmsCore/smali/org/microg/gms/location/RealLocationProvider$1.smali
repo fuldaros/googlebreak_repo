@@ -24,7 +24,9 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/location/RealLocationProvider;)V
     .locals 0
+    .param p1, "this$0"    # Lorg/microg/gms/location/RealLocationProvider;
 
+    .prologue
     .line 43
     iput-object p1, p0, Lorg/microg/gms/location/RealLocationProvider$1;->this$0:Lorg/microg/gms/location/RealLocationProvider;
 
@@ -37,38 +39,52 @@
 # virtual methods
 .method public onLocationChanged(Landroid/location/Location;)V
     .locals 1
+    .param p1, "location"    # Landroid/location/Location;
 
+    .prologue
     .line 46
     iget-object v0, p0, Lorg/microg/gms/location/RealLocationProvider$1;->this$0:Lorg/microg/gms/location/RealLocationProvider;
 
     invoke-static {v0, p1}, Lorg/microg/gms/location/RealLocationProvider;->access$002(Lorg/microg/gms/location/RealLocationProvider;Landroid/location/Location;)Landroid/location/Location;
 
     .line 47
-    iget-object p1, p0, Lorg/microg/gms/location/RealLocationProvider$1;->this$0:Lorg/microg/gms/location/RealLocationProvider;
+    iget-object v0, p0, Lorg/microg/gms/location/RealLocationProvider$1;->this$0:Lorg/microg/gms/location/RealLocationProvider;
 
-    invoke-static {p1}, Lorg/microg/gms/location/RealLocationProvider;->access$100(Lorg/microg/gms/location/RealLocationProvider;)Lorg/microg/gms/location/LocationChangeListener;
+    invoke-static {v0}, Lorg/microg/gms/location/RealLocationProvider;->access$100(Lorg/microg/gms/location/RealLocationProvider;)Lorg/microg/gms/location/LocationChangeListener;
 
-    move-result-object p1
+    move-result-object v0
 
-    invoke-interface {p1}, Lorg/microg/gms/location/LocationChangeListener;->onLocationChanged()V
+    invoke-interface {v0}, Lorg/microg/gms/location/LocationChangeListener;->onLocationChanged()V
 
+    .line 48
     return-void
 .end method
 
 .method public onProviderDisabled(Ljava/lang/String;)V
     .locals 0
+    .param p1, "s"    # Ljava/lang/String;
 
+    .prologue
+    .line 63
     return-void
 .end method
 
 .method public onProviderEnabled(Ljava/lang/String;)V
     .locals 0
+    .param p1, "s"    # Ljava/lang/String;
 
+    .prologue
+    .line 58
     return-void
 .end method
 
 .method public onStatusChanged(Ljava/lang/String;ILandroid/os/Bundle;)V
     .locals 0
+    .param p1, "s"    # Ljava/lang/String;
+    .param p2, "i"    # I
+    .param p3, "bundle"    # Landroid/os/Bundle;
 
+    .prologue
+    .line 53
     return-void
 .end method

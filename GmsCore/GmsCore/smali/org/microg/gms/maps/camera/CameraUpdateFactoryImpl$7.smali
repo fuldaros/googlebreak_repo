@@ -23,7 +23,9 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;Lcom/google/android/gms/maps/model/CameraPosition;)V
     .locals 0
+    .param p1, "this$0"    # Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;
 
+    .prologue
     .line 139
     iput-object p1, p0, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$7;->this$0:Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;
 
@@ -37,14 +39,16 @@
 
 # virtual methods
 .method getMapPosition(Lorg/oscim/map/Map;)Lorg/oscim/core/MapPosition;
-    .locals 0
+    .locals 1
+    .param p1, "map"    # Lorg/oscim/map/Map;
 
+    .prologue
     .line 142
-    iget-object p1, p0, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$7;->val$cameraPosition:Lcom/google/android/gms/maps/model/CameraPosition;
+    iget-object v0, p0, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$7;->val$cameraPosition:Lcom/google/android/gms/maps/model/CameraPosition;
 
-    invoke-static {p1}, Lorg/microg/gms/maps/GmsMapsTypeHelper;->fromCameraPosition(Lcom/google/android/gms/maps/model/CameraPosition;)Lorg/oscim/core/MapPosition;
+    invoke-static {v0}, Lorg/microg/gms/maps/GmsMapsTypeHelper;->fromCameraPosition(Lcom/google/android/gms/maps/model/CameraPosition;)Lorg/oscim/core/MapPosition;
 
-    move-result-object p1
+    move-result-object v0
 
-    return-object p1
+    return-object v0
 .end method

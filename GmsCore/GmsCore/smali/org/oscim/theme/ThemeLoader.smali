@@ -3,89 +3,140 @@
 .source "ThemeLoader.java"
 
 
+# static fields
+.field static final log:Lorg/slf4j/Logger;
+
+
 # direct methods
-.method public static load(Lorg/oscim/theme/ThemeFile;)Lorg/oscim/theme/IRenderTheme;
+.method static constructor <clinit>()V
     .locals 1
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Lorg/oscim/theme/IRenderTheme$ThemeException;
-        }
-    .end annotation
 
-    const/4 v0, 0x0
+    .prologue
+    .line 30
+    const-class v0, Lorg/oscim/theme/ThemeLoader;
 
-    .line 45
-    invoke-static {p0, v0}, Lorg/oscim/theme/ThemeLoader;->load(Lorg/oscim/theme/ThemeFile;Lorg/oscim/theme/ThemeCallback;)Lorg/oscim/theme/IRenderTheme;
+    invoke-static {v0}, Lorg/slf4j/LoggerFactory;->getLogger(Ljava/lang/Class;)Lorg/slf4j/Logger;
 
-    move-result-object p0
+    move-result-object v0
 
-    return-object p0
+    sput-object v0, Lorg/oscim/theme/ThemeLoader;->log:Lorg/slf4j/Logger;
+
+    return-void
 .end method
 
-.method public static load(Lorg/oscim/theme/ThemeFile;Lorg/oscim/theme/ThemeCallback;)Lorg/oscim/theme/IRenderTheme;
-    .locals 1
+.method public constructor <init>()V
+    .locals 0
+
+    .prologue
+    .line 29
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public static load(Ljava/io/InputStream;)Lorg/oscim/theme/IRenderTheme;
+    .locals 4
+    .param p0, "inputStream"    # Ljava/io/InputStream;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lorg/oscim/theme/IRenderTheme$ThemeException;
         }
     .end annotation
 
-    .line 50
-    invoke-interface {p0}, Lorg/oscim/theme/ThemeFile;->isMapsforgeTheme()Z
+    .prologue
+    .line 58
+    :try_start_0
+    invoke-static {p0}, Lorg/oscim/theme/XmlThemeBuilder;->read(Ljava/io/InputStream;)Lorg/oscim/theme/IRenderTheme;
 
-    move-result v0
+    move-result-object v0
 
-    if-eqz v0, :cond_1
-
-    .line 51
-    sget-boolean v0, Lorg/oscim/utils/Parameters;->TEXTURE_ATLAS:Z
-
+    .line 59
+    .local v0, "t":Lorg/oscim/theme/IRenderTheme;
     if-eqz v0, :cond_0
 
-    invoke-static {p0, p1}, Lorg/oscim/theme/XmlMapsforgeAtlasThemeBuilder;->read(Lorg/oscim/theme/ThemeFile;Lorg/oscim/theme/ThemeCallback;)Lorg/oscim/theme/IRenderTheme;
+    .line 60
+    sget v1, Lorg/oscim/backend/CanvasAdapter;->textScale:F
 
-    move-result-object p0
+    sget v2, Lorg/oscim/backend/CanvasAdapter;->dpi:F
 
-    goto :goto_0
+    const/high16 v3, 0x43700000    # 240.0f
 
+    div-float/2addr v2, v3
+
+    const/high16 v3, 0x3f800000    # 1.0f
+
+    sub-float/2addr v2, v3
+
+    const/high16 v3, 0x3f000000    # 0.5f
+
+    mul-float/2addr v2, v3
+
+    add-float/2addr v1, v2
+
+    invoke-interface {v0, v1}, Lorg/oscim/theme/IRenderTheme;->scaleTextSize(F)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 63
     :cond_0
-    invoke-static {p0, p1}, Lorg/oscim/theme/XmlMapsforgeThemeBuilder;->read(Lorg/oscim/theme/ThemeFile;Lorg/oscim/theme/ThemeCallback;)Lorg/oscim/theme/IRenderTheme;
+    invoke-static {p0}, Lorg/oscim/utils/IOUtils;->closeQuietly(Ljava/io/Closeable;)V
 
-    move-result-object p0
+    return-object v0
 
-    goto :goto_0
+    .end local v0    # "t":Lorg/oscim/theme/IRenderTheme;
+    :catchall_0
+    move-exception v1
 
-    .line 53
-    :cond_1
-    sget-boolean v0, Lorg/oscim/utils/Parameters;->TEXTURE_ATLAS:Z
+    invoke-static {p0}, Lorg/oscim/utils/IOUtils;->closeQuietly(Ljava/io/Closeable;)V
 
-    if-eqz v0, :cond_2
+    throw v1
+.end method
 
-    invoke-static {p0, p1}, Lorg/oscim/theme/XmlAtlasThemeBuilder;->read(Lorg/oscim/theme/ThemeFile;Lorg/oscim/theme/ThemeCallback;)Lorg/oscim/theme/IRenderTheme;
+.method public static load(Lorg/oscim/theme/ThemeFile;)Lorg/oscim/theme/IRenderTheme;
+    .locals 4
+    .param p0, "theme"    # Lorg/oscim/theme/ThemeFile;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lorg/oscim/theme/IRenderTheme$ThemeException;
+        }
+    .end annotation
 
-    move-result-object p0
+    .prologue
+    .line 46
+    :try_start_0
+    invoke-interface {p0}, Lorg/oscim/theme/ThemeFile;->getRenderThemeAsStream()Ljava/io/InputStream;
 
-    goto :goto_0
+    move-result-object v1
 
-    :cond_2
-    invoke-static {p0, p1}, Lorg/oscim/theme/XmlThemeBuilder;->read(Lorg/oscim/theme/ThemeFile;Lorg/oscim/theme/ThemeCallback;)Lorg/oscim/theme/IRenderTheme;
+    .line 47
+    .local v1, "is":Ljava/io/InputStream;
+    invoke-static {v1}, Lorg/oscim/theme/ThemeLoader;->load(Ljava/io/InputStream;)Lorg/oscim/theme/IRenderTheme;
+    :try_end_0
+    .catch Ljava/io/FileNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-result-object p0
+    move-result-object v2
 
+    .line 52
+    .end local v1    # "is":Ljava/io/InputStream;
     :goto_0
-    if-eqz p0, :cond_3
+    return-object v2
 
-    .line 55
-    invoke-static {}, Lorg/oscim/backend/CanvasAdapter;->getScale()F
+    .line 48
+    :catch_0
+    move-exception v0
 
-    move-result p1
+    .line 49
+    .local v0, "e":Ljava/io/FileNotFoundException;
+    sget-object v2, Lorg/oscim/theme/ThemeLoader;->log:Lorg/slf4j/Logger;
 
-    sget v0, Lorg/oscim/backend/CanvasAdapter;->textScale:F
+    invoke-virtual {v0}, Ljava/io/FileNotFoundException;->getMessage()Ljava/lang/String;
 
-    mul-float/2addr p1, v0
+    move-result-object v3
 
-    invoke-interface {p0, p1}, Lorg/oscim/theme/IRenderTheme;->scaleTextSize(F)V
+    invoke-interface {v2, v3}, Lorg/slf4j/Logger;->error(Ljava/lang/String;)V
 
-    :cond_3
-    return-object p0
+    .line 52
+    const/4 v2, 0x0
+
+    goto :goto_0
 .end method

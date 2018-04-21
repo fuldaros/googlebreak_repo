@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lorg/oscim/utils/pool/Inlist<",
+        "Lorg/oscim/utils/pool/Inlist",
+        "<",
         "Lorg/oscim/utils/KeyMap$HashItem;",
         ">;"
     }
@@ -26,7 +27,8 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 444
+    .prologue
+    .line 453
     invoke-direct {p0}, Lorg/oscim/utils/pool/Inlist;-><init>()V
 
     return-void

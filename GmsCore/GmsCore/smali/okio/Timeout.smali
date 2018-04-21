@@ -17,6 +17,7 @@
 .method static constructor <clinit>()V
     .locals 1
 
+    .prologue
     .line 48
     new-instance v0, Lokio/Timeout$1;
 
@@ -30,22 +31,25 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 69
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 70
     return-void
 .end method
 
 
 # virtual methods
 .method public throwIfReached()V
-    .locals 5
+    .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
+    .prologue
     .line 145
     invoke-static {}, Ljava/lang/Thread;->interrupted()Z
 
@@ -72,9 +76,9 @@
 
     iget-wide v2, p0, Lokio/Timeout;->deadlineNanoTime:J
 
-    cmp-long v4, v0, v2
+    cmp-long v0, v0, v2
 
-    if-lez v4, :cond_1
+    if-lez v0, :cond_1
 
     .line 150
     new-instance v0, Ljava/io/IOException;
@@ -85,6 +89,7 @@
 
     throw v0
 
+    .line 152
     :cond_1
     return-void
 .end method

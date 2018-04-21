@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder<",
+        "Lcom/squareup/wire/Message$Builder",
+        "<",
         "Lorg/microg/gms/auth/ConsentData;",
         ">;"
     }
@@ -28,7 +29,8 @@
 .field public scopes:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Lorg/microg/gms/auth/ConsentData$ScopeDetails;",
             ">;"
         }
@@ -40,20 +42,27 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 58
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
+    .line 59
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/gms/auth/ConsentData;)V
     .locals 1
+    .param p1, "message"    # Lorg/microg/gms/auth/ConsentData;
 
+    .prologue
     .line 62
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
+    .line 63
     if-nez p1, :cond_0
 
+    .line 66
+    :goto_0
     return-void
 
     .line 64
@@ -63,15 +72,15 @@
     iput-object v0, p0, Lorg/microg/gms/auth/ConsentData$Builder;->app:Lorg/microg/gms/auth/ConsentData$AppDetails;
 
     .line 65
-    iget-object p1, p1, Lorg/microg/gms/auth/ConsentData;->scopes:Ljava/util/List;
+    iget-object v0, p1, Lorg/microg/gms/auth/ConsentData;->scopes:Ljava/util/List;
 
-    invoke-static {p1}, Lorg/microg/gms/auth/ConsentData;->access$000(Ljava/util/List;)Ljava/util/List;
+    invoke-static {v0}, Lorg/microg/gms/auth/ConsentData;->access$000(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object p1
+    move-result-object v0
 
-    iput-object p1, p0, Lorg/microg/gms/auth/ConsentData$Builder;->scopes:Ljava/util/List;
+    iput-object v0, p0, Lorg/microg/gms/auth/ConsentData$Builder;->scopes:Ljava/util/List;
 
-    return-void
+    goto :goto_0
 .end method
 
 
@@ -79,6 +88,7 @@
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
+    .prologue
     .line 53
     invoke-virtual {p0}, Lorg/microg/gms/auth/ConsentData$Builder;->build()Lorg/microg/gms/auth/ConsentData;
 
@@ -90,6 +100,7 @@
 .method public build()Lorg/microg/gms/auth/ConsentData;
     .locals 2
 
+    .prologue
     .line 80
     new-instance v0, Lorg/microg/gms/auth/ConsentData;
 

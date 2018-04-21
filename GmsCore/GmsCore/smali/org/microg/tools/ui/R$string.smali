@@ -15,110 +15,78 @@
 
 
 # static fields
-.field public static final abc_action_bar_home_description:I = 0x7f0e0000
+.field public static final abc_action_bar_home_description:I = 0x7f070000
 
-.field public static final abc_action_bar_up_description:I = 0x7f0e0001
+.field public static final abc_action_bar_home_description_format:I = 0x7f070001
 
-.field public static final abc_action_menu_overflow_description:I = 0x7f0e0002
+.field public static final abc_action_bar_home_subtitle_description_format:I = 0x7f070002
 
-.field public static final abc_action_mode_done:I = 0x7f0e0003
+.field public static final abc_action_bar_up_description:I = 0x7f070003
 
-.field public static final abc_activity_chooser_view_see_all:I = 0x7f0e0004
+.field public static final abc_action_menu_overflow_description:I = 0x7f070004
 
-.field public static final abc_activitychooserview_choose_application:I = 0x7f0e0005
+.field public static final abc_action_mode_done:I = 0x7f070005
 
-.field public static final abc_capital_off:I = 0x7f0e0006
+.field public static final abc_activity_chooser_view_see_all:I = 0x7f070006
 
-.field public static final abc_capital_on:I = 0x7f0e0007
+.field public static final abc_activitychooserview_choose_application:I = 0x7f070007
 
-.field public static final abc_font_family_body_1_material:I = 0x7f0e0008
+.field public static final abc_capital_off:I = 0x7f070008
 
-.field public static final abc_font_family_body_2_material:I = 0x7f0e0009
+.field public static final abc_capital_on:I = 0x7f070009
 
-.field public static final abc_font_family_button_material:I = 0x7f0e000a
+.field public static final abc_search_hint:I = 0x7f07000a
 
-.field public static final abc_font_family_caption_material:I = 0x7f0e000b
+.field public static final abc_searchview_description_clear:I = 0x7f07000b
 
-.field public static final abc_font_family_display_1_material:I = 0x7f0e000c
+.field public static final abc_searchview_description_query:I = 0x7f07000c
 
-.field public static final abc_font_family_display_2_material:I = 0x7f0e000d
+.field public static final abc_searchview_description_search:I = 0x7f07000d
 
-.field public static final abc_font_family_display_3_material:I = 0x7f0e000e
+.field public static final abc_searchview_description_submit:I = 0x7f07000e
 
-.field public static final abc_font_family_display_4_material:I = 0x7f0e000f
+.field public static final abc_searchview_description_voice:I = 0x7f07000f
 
-.field public static final abc_font_family_headline_material:I = 0x7f0e0010
+.field public static final abc_shareactionprovider_share_with:I = 0x7f070010
 
-.field public static final abc_font_family_menu_material:I = 0x7f0e0011
+.field public static final abc_shareactionprovider_share_with_application:I = 0x7f070011
 
-.field public static final abc_font_family_subhead_material:I = 0x7f0e0012
+.field public static final abc_toolbar_collapse_description:I = 0x7f070012
 
-.field public static final abc_font_family_title_material:I = 0x7f0e0013
+.field public static final about_android_support_license:I = 0x7f070073
 
-.field public static final abc_search_hint:I = 0x7f0e0014
+.field public static final about_android_support_v4:I = 0x7f070074
 
-.field public static final abc_searchview_description_clear:I = 0x7f0e0015
+.field public static final about_android_support_v7_appcompat:I = 0x7f070075
 
-.field public static final abc_searchview_description_query:I = 0x7f0e0016
+.field public static final about_default_license:I = 0x7f070076
 
-.field public static final abc_searchview_description_search:I = 0x7f0e0017
+.field public static final about_name_version_str:I = 0x7f070077
 
-.field public static final abc_searchview_description_submit:I = 0x7f0e0018
+.field public static final about_root_libraries:I = 0x7f070078
 
-.field public static final abc_searchview_description_voice:I = 0x7f0e0019
+.field public static final about_root_summary:I = 0x7f070079
 
-.field public static final abc_shareactionprovider_share_with:I = 0x7f0e001a
+.field public static final about_root_title:I = 0x7f07007a
 
-.field public static final abc_shareactionprovider_share_with_application:I = 0x7f0e001b
+.field public static final about_root_version:I = 0x7f07007b
 
-.field public static final abc_toolbar_collapse_description:I = 0x7f0e001c
+.field public static final about_version_str:I = 0x7f07007c
 
-.field public static final about_android_support_license:I = 0x7f0e001d
+.field public static final lib_license:I = 0x7f07007f
 
-.field public static final about_android_support_v4:I = 0x7f0e001e
+.field public static final lib_name:I = 0x7f070080
 
-.field public static final about_android_support_v7_appcompat:I = 0x7f0e001f
+.field public static final prefcat_setup:I = 0x7f07005d
 
-.field public static final about_android_support_v7_preference:I = 0x7f0e0020
+.field public static final self_check_cat_permissions:I = 0x7f070060
 
-.field public static final about_default_license:I = 0x7f0e0021
+.field public static final self_check_desc:I = 0x7f070061
 
-.field public static final about_name_version_str:I = 0x7f0e0022
+.field public static final self_check_name_permission:I = 0x7f070068
 
-.field public static final about_root_libraries:I = 0x7f0e0023
+.field public static final self_check_resolution_permission:I = 0x7f070070
 
-.field public static final about_root_summary:I = 0x7f0e0024
+.field public static final self_check_title:I = 0x7f070072
 
-.field public static final about_root_title:I = 0x7f0e0025
-
-.field public static final about_root_version:I = 0x7f0e0026
-
-.field public static final about_version_str:I = 0x7f0e0027
-
-.field public static final expand_button_title:I = 0x7f0e003f
-
-.field public static final lib_license:I = 0x7f0e0058
-
-.field public static final lib_name:I = 0x7f0e0059
-
-.field public static final prefcat_setup:I = 0x7f0e0130
-
-.field public static final search_menu_title:I = 0x7f0e0135
-
-.field public static final self_check_cat_permissions:I = 0x7f0e013a
-
-.field public static final self_check_desc:I = 0x7f0e013c
-
-.field public static final self_check_name_permission:I = 0x7f0e014c
-
-.field public static final self_check_resolution_permission:I = 0x7f0e015f
-
-.field public static final self_check_title:I = 0x7f0e0162
-
-.field public static final status_bar_notification_info_overflow:I = 0x7f0e016c
-
-.field public static final summary_collapsed_preference_list:I = 0x7f0e016d
-
-.field public static final v7_preference_off:I = 0x7f0e016e
-
-.field public static final v7_preference_on:I = 0x7f0e016f
+.field public static final status_bar_notification_info_overflow:I = 0x7f070013

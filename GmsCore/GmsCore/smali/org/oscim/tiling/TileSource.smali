@@ -16,10 +16,6 @@
 # instance fields
 .field private mFadeSteps:[Lorg/oscim/layers/tile/bitmap/BitmapTileLayer$FadeStep;
 
-.field protected mName:Ljava/lang/String;
-
-.field protected mTileSize:I
-
 .field protected mZoomMax:I
 
 .field protected mZoomMin:I
@@ -35,61 +31,49 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Lorg/oscim/tiling/TileSource$Builder<",
-            "*>;)V"
+            "Lorg/oscim/tiling/TileSource$Builder",
+            "<*>;)V"
         }
     .end annotation
 
-    .line 79
+    .prologue
+    .line 63
+    .local p1, "builder":Lorg/oscim/tiling/TileSource$Builder;, "Lorg/oscim/tiling/TileSource$Builder<*>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 52
     const/4 v0, 0x0
 
-    .line 66
     iput v0, p0, Lorg/oscim/tiling/TileSource;->mZoomMin:I
 
+    .line 53
     const/16 v0, 0x14
 
-    .line 67
     iput v0, p0, Lorg/oscim/tiling/TileSource;->mZoomMax:I
 
-    const/16 v0, 0x100
-
-    .line 69
-    iput v0, p0, Lorg/oscim/tiling/TileSource;->mTileSize:I
-
-    .line 93
+    .line 75
     new-instance v0, Lorg/oscim/tiling/TileSource$Options;
 
     invoke-direct {v0}, Lorg/oscim/tiling/TileSource$Options;-><init>()V
 
     iput-object v0, p0, Lorg/oscim/tiling/TileSource;->options:Lorg/oscim/tiling/TileSource$Options;
 
-    .line 80
+    .line 64
     iget v0, p1, Lorg/oscim/tiling/TileSource$Builder;->zoomMin:I
 
     iput v0, p0, Lorg/oscim/tiling/TileSource;->mZoomMin:I
 
-    .line 81
+    .line 65
     iget v0, p1, Lorg/oscim/tiling/TileSource$Builder;->zoomMax:I
 
     iput v0, p0, Lorg/oscim/tiling/TileSource;->mZoomMax:I
 
-    .line 82
+    .line 66
     iget-object v0, p1, Lorg/oscim/tiling/TileSource$Builder;->fadeSteps:[Lorg/oscim/layers/tile/bitmap/BitmapTileLayer$FadeStep;
 
     iput-object v0, p0, Lorg/oscim/tiling/TileSource;->mFadeSteps:[Lorg/oscim/layers/tile/bitmap/BitmapTileLayer$FadeStep;
 
-    .line 83
-    iget-object v0, p1, Lorg/oscim/tiling/TileSource$Builder;->name:Ljava/lang/String;
-
-    iput-object v0, p0, Lorg/oscim/tiling/TileSource;->mName:Ljava/lang/String;
-
-    .line 84
-    iget p1, p1, Lorg/oscim/tiling/TileSource$Builder;->tileSize:I
-
-    iput p1, p0, Lorg/oscim/tiling/TileSource;->mTileSize:I
-
+    .line 67
     return-void
 .end method
 
@@ -104,7 +88,8 @@
 .method public getFadeSteps()[Lorg/oscim/layers/tile/bitmap/BitmapTileLayer$FadeStep;
     .locals 1
 
-    .line 119
+    .prologue
+    .line 97
     iget-object v0, p0, Lorg/oscim/tiling/TileSource;->mFadeSteps:[Lorg/oscim/layers/tile/bitmap/BitmapTileLayer$FadeStep;
 
     return-object v0
@@ -113,7 +98,8 @@
 .method public getZoomLevelMax()I
     .locals 1
 
-    .line 107
+    .prologue
+    .line 89
     iget v0, p0, Lorg/oscim/tiling/TileSource;->mZoomMax:I
 
     return v0
@@ -122,7 +108,8 @@
 .method public getZoomLevelMin()I
     .locals 1
 
-    .line 111
+    .prologue
+    .line 93
     iget v0, p0, Lorg/oscim/tiling/TileSource;->mZoomMin:I
 
     return v0
@@ -133,9 +120,12 @@
 
 .method public setCache(Lorg/oscim/tiling/ITileCache;)V
     .locals 0
+    .param p1, "cache"    # Lorg/oscim/tiling/ITileCache;
 
-    .line 103
+    .prologue
+    .line 85
     iput-object p1, p0, Lorg/oscim/tiling/TileSource;->tileCache:Lorg/oscim/tiling/ITileCache;
 
+    .line 86
     return-void
 .end method

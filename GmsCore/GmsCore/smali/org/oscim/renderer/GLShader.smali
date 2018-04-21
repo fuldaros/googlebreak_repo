@@ -15,7 +15,8 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .line 31
+    .prologue
+    .line 14
     const-class v0, Lorg/oscim/renderer/GLShader;
 
     invoke-static {v0}, Lorg/slf4j/LoggerFactory;->getLogger(Ljava/lang/Class;)Lorg/slf4j/Logger;
@@ -30,543 +31,599 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 30
+    .prologue
+    .line 13
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method public static createProgramVersioned(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
-    .locals 3
+.method public static createProgram(Ljava/lang/String;Ljava/lang/String;)I
+    .locals 9
+    .param p0, "vertexSource"    # Ljava/lang/String;
+    .param p1, "fragmentSource"    # Ljava/lang/String;
 
+    .prologue
+    const/4 v8, 0x1
+
+    const/4 v5, 0x0
+
+    .line 89
     const-string v0, ""
 
-    if-eqz p2, :cond_0
+    .line 90
+    .local v0, "defs":Ljava/lang/String;
+    sget-boolean v6, Lorg/oscim/backend/GLAdapter;->GDX_DESKTOP_QUIRKS:Z
 
-    .line 124
-    new-instance v1, Ljava/lang/StringBuilder;
+    if-eqz v6, :cond_1
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    .line 91
+    new-instance v6, Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v0, "#version "
+    invoke-virtual {v6, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v6
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v7, "#define DESKTOP_QUIRKS 1\n"
 
-    const-string p2, "\n"
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v6
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 125
+    .line 95
+    :goto_0
+    const v6, 0x8b31
+
+    new-instance v7, Ljava/lang/StringBuilder;
+
+    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v7, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    invoke-virtual {v7, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v7
+
+    invoke-static {v6, v7}, Lorg/oscim/renderer/GLShader;->loadShader(ILjava/lang/String;)I
+
+    move-result v4
+
+    .line 96
+    .local v4, "vertexShader":I
+    if-nez v4, :cond_2
+
+    move v3, v5
+
+    .line 123
     :cond_0
-    sget-boolean p2, Lorg/oscim/backend/GLAdapter;->GDX_DESKTOP_QUIRKS:Z
+    :goto_1
+    return v3
 
-    if-eqz p2, :cond_1
+    .line 93
+    .end local v4    # "vertexShader":I
+    :cond_1
+    new-instance v6, Ljava/lang/StringBuilder;
 
-    .line 126
-    new-instance p2, Ljava/lang/StringBuilder;
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {p2}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-virtual {v6, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {p2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v6
 
-    const-string v0, "#define DESKTOP_QUIRKS 1\n"
+    const-string v7, "#define GLES 1\n"
 
-    invoke-virtual {p2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v6
 
-    move-result-object p2
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
 
     goto :goto_0
 
-    .line 128
-    :cond_1
-    new-instance p2, Ljava/lang/StringBuilder;
-
-    invoke-direct {p2}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {p2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string v0, "#define GLES 1\n"
-
-    invoke-virtual {p2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object p2
-
-    :goto_0
-    const v0, 0x8b31
-
-    .line 130
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object p0
-
-    invoke-static {v0, p0}, Lorg/oscim/renderer/GLShader;->loadShader(ILjava/lang/String;)I
-
-    move-result p0
-
-    const/4 v0, 0x0
-
-    if-nez p0, :cond_2
-
-    return v0
-
+    .line 100
+    .restart local v4    # "vertexShader":I
     :cond_2
-    const v1, 0x8b30
+    const v6, 0x8b30
 
-    .line 135
-    new-instance v2, Ljava/lang/StringBuilder;
+    new-instance v7, Ljava/lang/StringBuilder;
 
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v2, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v7, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v7
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v7, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v7
 
-    invoke-static {v1, p1}, Lorg/oscim/renderer/GLShader;->loadShader(ILjava/lang/String;)I
+    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result p1
+    move-result-object v7
 
-    if-nez p1, :cond_3
+    invoke-static {v6, v7}, Lorg/oscim/renderer/GLShader;->loadShader(ILjava/lang/String;)I
 
-    return v0
+    move-result v2
 
-    .line 140
+    .line 101
+    .local v2, "pixelShader":I
+    if-nez v2, :cond_3
+
+    move v3, v5
+
+    .line 102
+    goto :goto_1
+
+    .line 105
     :cond_3
-    sget-object p2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    invoke-interface {p2}, Lorg/oscim/backend/GL;->createProgram()I
+    invoke-interface {v6}, Lorg/oscim/backend/GL;->createProgram()I
 
-    move-result p2
+    move-result v3
 
-    if-eqz p2, :cond_4
+    .line 106
+    .local v3, "program":I
+    if-eqz v3, :cond_0
 
-    const-string v1, "glCreateProgram"
+    .line 107
+    const-string v6, "glCreateProgram"
 
-    .line 142
-    invoke-static {v1}, Lorg/oscim/renderer/GLUtils;->checkGlError(Ljava/lang/String;)V
+    invoke-static {v6}, Lorg/oscim/renderer/GLUtils;->checkGlError(Ljava/lang/String;)V
 
-    .line 143
-    sget-object v1, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    .line 108
+    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    invoke-interface {v1, p2, p0}, Lorg/oscim/backend/GL;->attachShader(II)V
+    invoke-interface {v6, v3, v4}, Lorg/oscim/backend/GL;->attachShader(II)V
 
-    const-string p0, "glAttachShader"
+    .line 109
+    const-string v6, "glAttachShader"
 
-    .line 144
-    invoke-static {p0}, Lorg/oscim/renderer/GLUtils;->checkGlError(Ljava/lang/String;)V
+    invoke-static {v6}, Lorg/oscim/renderer/GLUtils;->checkGlError(Ljava/lang/String;)V
 
-    .line 145
-    sget-object p0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    .line 110
+    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    invoke-interface {p0, p2, p1}, Lorg/oscim/backend/GL;->attachShader(II)V
+    invoke-interface {v6, v3, v2}, Lorg/oscim/backend/GL;->attachShader(II)V
 
-    const-string p0, "glAttachShader"
+    .line 111
+    const-string v6, "glAttachShader"
 
-    .line 146
-    invoke-static {p0}, Lorg/oscim/renderer/GLUtils;->checkGlError(Ljava/lang/String;)V
+    invoke-static {v6}, Lorg/oscim/renderer/GLUtils;->checkGlError(Ljava/lang/String;)V
 
-    .line 147
-    sget-object p0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    .line 112
+    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    invoke-interface {p0, p2}, Lorg/oscim/backend/GL;->linkProgram(I)V
+    invoke-interface {v6, v3}, Lorg/oscim/backend/GL;->linkProgram(I)V
 
-    const/4 p0, 0x1
+    .line 113
+    invoke-static {v8}, Lorg/oscim/renderer/MapRenderer;->getIntBuffer(I)Ljava/nio/IntBuffer;
 
-    .line 148
-    invoke-static {p0}, Lorg/oscim/renderer/MapRenderer;->getIntBuffer(I)Ljava/nio/IntBuffer;
+    move-result-object v1
 
-    move-result-object p1
+    .line 114
+    .local v1, "linkStatus":Ljava/nio/IntBuffer;
+    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    .line 149
-    sget-object v1, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    const v7, 0x8b82
 
-    const v2, 0x8b82
+    invoke-interface {v6, v3, v7, v1}, Lorg/oscim/backend/GL;->getProgramiv(IILjava/nio/IntBuffer;)V
 
-    invoke-interface {v1, p2, v2, p1}, Lorg/oscim/backend/GL;->getProgramiv(IILjava/nio/IntBuffer;)V
+    .line 115
+    invoke-virtual {v1, v5}, Ljava/nio/IntBuffer;->position(I)Ljava/nio/Buffer;
 
-    .line 150
-    invoke-virtual {p1, v0}, Ljava/nio/IntBuffer;->position(I)Ljava/nio/Buffer;
+    .line 116
+    invoke-virtual {v1}, Ljava/nio/IntBuffer;->get()I
 
-    .line 151
-    invoke-virtual {p1}, Ljava/nio/IntBuffer;->get()I
+    move-result v5
 
-    move-result p1
+    if-eq v5, v8, :cond_0
 
-    if-eq p1, p0, :cond_4
+    .line 117
+    sget-object v5, Lorg/oscim/renderer/GLShader;->log:Lorg/slf4j/Logger;
 
-    .line 152
-    sget-object p0, Lorg/oscim/renderer/GLShader;->log:Lorg/slf4j/Logger;
+    const-string v6, "Could not link program: "
 
-    const-string p1, "Could not link program: "
+    invoke-interface {v5, v6}, Lorg/slf4j/Logger;->error(Ljava/lang/String;)V
 
-    invoke-interface {p0, p1}, Lorg/slf4j/Logger;->error(Ljava/lang/String;)V
+    .line 118
+    sget-object v5, Lorg/oscim/renderer/GLShader;->log:Lorg/slf4j/Logger;
 
-    .line 153
-    sget-object p0, Lorg/oscim/renderer/GLShader;->log:Lorg/slf4j/Logger;
+    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    sget-object p1, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    invoke-interface {v6, v3}, Lorg/oscim/backend/GL;->getProgramInfoLog(I)Ljava/lang/String;
 
-    invoke-interface {p1, p2}, Lorg/oscim/backend/GL;->getProgramInfoLog(I)Ljava/lang/String;
+    move-result-object v6
 
-    move-result-object p1
+    invoke-interface {v5, v6}, Lorg/slf4j/Logger;->error(Ljava/lang/String;)V
 
-    invoke-interface {p0, p1}, Lorg/slf4j/Logger;->error(Ljava/lang/String;)V
+    .line 119
+    sget-object v5, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    .line 154
-    sget-object p0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    invoke-interface {v5, v3}, Lorg/oscim/backend/GL;->deleteProgram(I)V
 
-    invoke-interface {p0, p2}, Lorg/oscim/backend/GL;->deleteProgram(I)V
+    .line 120
+    const/4 v3, 0x0
 
-    move p2, v0
-
-    :cond_4
-    return p2
+    goto/16 :goto_1
 .end method
 
 .method public static loadShader(ILjava/lang/String;)I
-    .locals 4
+    .locals 5
+    .param p0, "shaderType"    # I
+    .param p1, "source"    # Ljava/lang/String;
 
-    .line 99
-    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    invoke-interface {v0, p0}, Lorg/oscim/backend/GL;->createShader(I)I
-
-    move-result v0
-
-    const/4 v1, 0x0
-
-    if-eqz v0, :cond_0
-
-    .line 101
+    .prologue
+    .line 70
     sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    invoke-interface {v2, v0, p1}, Lorg/oscim/backend/GL;->shaderSource(ILjava/lang/String;)V
+    invoke-interface {v2, p0}, Lorg/oscim/backend/GL;->createShader(I)I
 
-    .line 102
-    sget-object p1, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    move-result v1
 
-    invoke-interface {p1, v0}, Lorg/oscim/backend/GL;->compileShader(I)V
+    .line 71
+    .local v1, "shader":I
+    if-eqz v1, :cond_0
 
-    const/4 p1, 0x1
+    .line 72
+    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    .line 103
-    invoke-static {p1}, Lorg/oscim/renderer/MapRenderer;->getIntBuffer(I)Ljava/nio/IntBuffer;
+    invoke-interface {v2, v1, p1}, Lorg/oscim/backend/GL;->shaderSource(ILjava/lang/String;)V
 
-    move-result-object p1
+    .line 73
+    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    .line 105
+    invoke-interface {v2, v1}, Lorg/oscim/backend/GL;->compileShader(I)V
+
+    .line 74
+    const/4 v2, 0x1
+
+    invoke-static {v2}, Lorg/oscim/renderer/MapRenderer;->getIntBuffer(I)Ljava/nio/IntBuffer;
+
+    move-result-object v0
+
+    .line 76
+    .local v0, "compiled":Ljava/nio/IntBuffer;
     sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
     const v3, 0x8b81
 
-    invoke-interface {v2, v0, v3, p1}, Lorg/oscim/backend/GL;->getShaderiv(IILjava/nio/IntBuffer;)V
-
-    .line 106
-    invoke-virtual {p1, v1}, Ljava/nio/IntBuffer;->position(I)Ljava/nio/Buffer;
-
-    .line 107
-    invoke-virtual {p1}, Ljava/nio/IntBuffer;->get()I
-
-    move-result p1
-
-    if-nez p1, :cond_0
-
-    .line 108
-    sget-object p1, Lorg/oscim/renderer/GLShader;->log:Lorg/slf4j/Logger;
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, "Could not compile shader "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v2, p0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    const-string p0, ":"
-
-    invoke-virtual {v2, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object p0
-
-    invoke-interface {p1, p0}, Lorg/slf4j/Logger;->error(Ljava/lang/String;)V
-
-    .line 109
-    sget-object p0, Lorg/oscim/renderer/GLShader;->log:Lorg/slf4j/Logger;
-
-    sget-object p1, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    invoke-interface {p1, v0}, Lorg/oscim/backend/GL;->getShaderInfoLog(I)Ljava/lang/String;
-
-    move-result-object p1
-
-    invoke-interface {p0, p1}, Lorg/slf4j/Logger;->error(Ljava/lang/String;)V
-
-    .line 110
-    sget-object p0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    invoke-interface {p0, v0}, Lorg/oscim/backend/GL;->deleteShader(I)V
-
-    move v0, v1
-
-    :cond_0
-    return v0
-.end method
-
-.method public static loadShaderVersioned(Ljava/lang/String;Ljava/lang/String;)I
-    .locals 4
-
-    .line 76
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v1, "shaders/"
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string p0, ".glsl"
-
-    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object p0
+    invoke-interface {v2, v1, v3, v0}, Lorg/oscim/backend/GL;->getShaderiv(IILjava/nio/IntBuffer;)V
 
     .line 77
-    invoke-static {p0}, Lorg/oscim/backend/AssetAdapter;->readTextFile(Ljava/lang/String;)Ljava/lang/String;
+    const/4 v2, 0x0
 
-    move-result-object v0
+    invoke-virtual {v0, v2}, Ljava/nio/IntBuffer;->position(I)Ljava/nio/Buffer;
 
-    if-nez v0, :cond_0
-
-    .line 80
-    new-instance p1, Ljava/lang/IllegalArgumentException;
-
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v1, "shader file not found: "
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object p0
-
-    invoke-direct {p1, p0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    throw p1
-
-    :cond_0
-    const/16 v1, 0x24
-
-    .line 83
-    invoke-virtual {v0, v1}, Ljava/lang/String;->indexOf(I)I
+    .line 78
+    invoke-virtual {v0}, Ljava/nio/IntBuffer;->get()I
 
     move-result v2
 
-    if-ltz v2, :cond_3
+    if-nez v2, :cond_0
 
-    add-int/lit8 v3, v2, 0x1
+    .line 79
+    sget-object v2, Lorg/oscim/renderer/GLShader;->log:Lorg/slf4j/Logger;
 
-    .line 84
-    invoke-virtual {v0, v3}, Ljava/lang/String;->charAt(I)C
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    move-result v3
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    if-eq v3, v1, :cond_1
+    const-string v4, "Could not compile shader "
 
-    goto :goto_0
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    :cond_1
-    add-int/lit8 p0, v2, 0x2
+    move-result-object v3
 
-    .line 87
-    invoke-virtual {v0, p0}, Ljava/lang/String;->substring(I)Ljava/lang/String;
+    invoke-virtual {v3, p0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object p0
+    move-result-object v3
 
+    const-string v4, ":"
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-interface {v2, v3}, Lorg/slf4j/Logger;->error(Ljava/lang/String;)V
+
+    .line 80
+    sget-object v2, Lorg/oscim/renderer/GLShader;->log:Lorg/slf4j/Logger;
+
+    sget-object v3, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    invoke-interface {v3, v1}, Lorg/oscim/backend/GL;->getShaderInfoLog(I)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-interface {v2, v3}, Lorg/slf4j/Logger;->error(Ljava/lang/String;)V
+
+    .line 81
+    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    invoke-interface {v2, v1}, Lorg/oscim/backend/GL;->deleteShader(I)V
+
+    .line 82
     const/4 v1, 0x0
 
-    .line 88
-    invoke-virtual {v0, v1, v2}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+    .line 85
+    .end local v0    # "compiled":Ljava/nio/IntBuffer;
+    :cond_0
+    return v1
+.end method
+
+.method public static loadShader(Ljava/lang/String;)I
+    .locals 8
+    .param p0, "file"    # Ljava/lang/String;
+
+    .prologue
+    const/16 v7, 0x24
+
+    .line 47
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v6, "shaders/"
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    const-string v6, ".glsl"
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    .line 48
+    .local v2, "path":Ljava/lang/String;
+    invoke-static {v2}, Lorg/oscim/backend/AssetAdapter;->readTextFile(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 50
+    .local v4, "vs":Ljava/lang/String;
+    if-nez v4, :cond_0
+
+    .line 51
+    new-instance v5, Ljava/lang/IllegalArgumentException;
+
+    new-instance v6, Ljava/lang/StringBuilder;
+
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v7, "shader file not found: "
+
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v6
+
+    invoke-virtual {v6, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v6
+
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-direct {v5, v6}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v5
+
+    .line 54
+    :cond_0
+    invoke-virtual {v4, v7}, Ljava/lang/String;->indexOf(I)I
+
+    move-result v1
+
+    .line 55
+    .local v1, "fsStart":I
+    if-ltz v1, :cond_1
+
+    add-int/lit8 v5, v1, 0x1
+
+    invoke-virtual {v4, v5}, Ljava/lang/String;->charAt(I)C
+
+    move-result v5
+
+    if-eq v5, v7, :cond_2
+
+    .line 56
+    :cond_1
+    new-instance v5, Ljava/lang/IllegalArgumentException;
+
+    new-instance v6, Ljava/lang/StringBuilder;
+
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v7, "not a shader file "
+
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v6
+
+    invoke-virtual {v6, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v6
+
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-direct {v5, v6}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v5
+
+    .line 58
+    :cond_2
+    add-int/lit8 v5, v1, 0x2
+
+    invoke-virtual {v4, v5}, Ljava/lang/String;->substring(I)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 90
-    invoke-static {v0, p0, p1}, Lorg/oscim/renderer/GLShader;->createProgramVersioned(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+    .line 59
+    .local v0, "fs":Ljava/lang/String;
+    const/4 v5, 0x0
 
-    move-result p1
+    invoke-virtual {v4, v5, v1}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
-    if-nez p1, :cond_2
+    move-result-object v4
 
-    .line 92
-    sget-object v1, Ljava/lang/System;->out:Ljava/io/PrintStream;
+    .line 61
+    invoke-static {v4, v0}, Lorg/oscim/renderer/GLShader;->createProgram(Ljava/lang/String;Ljava/lang/String;)I
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    move-result v3
 
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+    .line 62
+    .local v3, "shader":I
+    if-nez v3, :cond_3
 
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 63
+    sget-object v5, Ljava/lang/System;->out:Ljava/io/PrintStream;
 
-    const-string v0, " \n\n"
+    new-instance v6, Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v2, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v6
 
-    move-result-object p0
+    const-string v7, " \n\n"
 
-    invoke-virtual {v1, p0}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    :cond_2
-    return p1
+    move-result-object v6
 
-    .line 85
+    invoke-virtual {v6, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v6
+
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {v5, v6}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
+
+    .line 65
     :cond_3
-    :goto_0
-    new-instance p1, Ljava/lang/IllegalArgumentException;
-
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v1, "not a shader file "
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object p0
-
-    invoke-direct {p1, p0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    throw p1
+    return v3
 .end method
 
 
 # virtual methods
 .method protected create(Ljava/lang/String;)Z
     .locals 1
+    .param p1, "fileName"    # Ljava/lang/String;
 
-    const/4 v0, 0x0
+    .prologue
+    .line 24
+    invoke-static {p1}, Lorg/oscim/renderer/GLShader;->loadShader(Ljava/lang/String;)I
 
-    .line 45
-    invoke-virtual {p0, p1, v0}, Lorg/oscim/renderer/GLShader;->createVersioned(Ljava/lang/String;Ljava/lang/String;)Z
+    move-result v0
 
-    move-result p1
+    iput v0, p0, Lorg/oscim/renderer/GLShader;->program:I
 
-    return p1
-.end method
+    .line 25
+    iget v0, p0, Lorg/oscim/renderer/GLShader;->program:I
 
-.method protected createVersioned(Ljava/lang/String;Ljava/lang/String;)Z
-    .locals 0
+    if-eqz v0, :cond_0
 
-    .line 49
-    invoke-static {p1, p2}, Lorg/oscim/renderer/GLShader;->loadShaderVersioned(Ljava/lang/String;Ljava/lang/String;)I
-
-    move-result p1
-
-    iput p1, p0, Lorg/oscim/renderer/GLShader;->program:I
-
-    .line 50
-    iget p1, p0, Lorg/oscim/renderer/GLShader;->program:I
-
-    if-eqz p1, :cond_0
-
-    const/4 p1, 0x1
-
-    goto :goto_0
-
-    :cond_0
-    const/4 p1, 0x0
+    const/4 v0, 0x1
 
     :goto_0
-    return p1
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
 .end method
 
 .method protected getAttrib(Ljava/lang/String;)I
     .locals 3
+    .param p1, "name"    # Ljava/lang/String;
 
-    .line 54
-    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    .prologue
+    .line 29
+    sget-object v1, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    iget v1, p0, Lorg/oscim/renderer/GLShader;->program:I
+    iget v2, p0, Lorg/oscim/renderer/GLShader;->program:I
 
-    invoke-interface {v0, v1, p1}, Lorg/oscim/backend/GL;->getAttribLocation(ILjava/lang/String;)I
+    invoke-interface {v1, v2, p1}, Lorg/oscim/backend/GL;->getAttribLocation(ILjava/lang/String;)I
 
     move-result v0
 
+    .line 30
+    .local v0, "loc":I
     if-gez v0, :cond_0
 
-    .line 56
+    .line 31
     sget-object v1, Lorg/oscim/renderer/GLShader;->log:Lorg/slf4j/Logger;
 
     const-string v2, "missing attribute: {}"
 
     invoke-interface {v1, v2, p1}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;)V
 
+    .line 32
     :cond_0
     return v0
 .end method
 
 .method protected getUniform(Ljava/lang/String;)I
     .locals 3
+    .param p1, "name"    # Ljava/lang/String;
 
-    .line 61
-    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    .prologue
+    .line 36
+    sget-object v1, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    iget v1, p0, Lorg/oscim/renderer/GLShader;->program:I
+    iget v2, p0, Lorg/oscim/renderer/GLShader;->program:I
 
-    invoke-interface {v0, v1, p1}, Lorg/oscim/backend/GL;->getUniformLocation(ILjava/lang/String;)I
+    invoke-interface {v1, v2, p1}, Lorg/oscim/backend/GL;->getUniformLocation(ILjava/lang/String;)I
 
     move-result v0
 
+    .line 37
+    .local v0, "loc":I
     if-gez v0, :cond_0
 
-    .line 63
+    .line 38
     sget-object v1, Lorg/oscim/renderer/GLShader;->log:Lorg/slf4j/Logger;
 
     const-string v2, "missing uniform: {}"
 
     invoke-interface {v1, v2, p1}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;)V
 
+    .line 39
     :cond_0
     return v0
 .end method
@@ -574,7 +631,8 @@
 .method public useProgram()Z
     .locals 1
 
-    .line 68
+    .prologue
+    .line 43
     iget v0, p0, Lorg/oscim/renderer/GLShader;->program:I
 
     invoke-static {v0}, Lorg/oscim/renderer/GLState;->useProgram(I)Z

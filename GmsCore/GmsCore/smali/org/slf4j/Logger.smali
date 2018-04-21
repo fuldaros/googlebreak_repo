@@ -28,5 +28,5 @@
 .method public varargs abstract error(Ljava/lang/String;[Ljava/lang/Object;)V
 .end method
 
-.method public abstract getName()Ljava/lang/String;
+.method public abstract warn(Ljava/lang/String;)V
 .end method

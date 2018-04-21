@@ -18,7 +18,8 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 97
+    .prologue
+    .line 98
     invoke-direct {p0}, Lorg/microg/tools/ui/AbstractSelfCheckFragment;-><init>()V
 
     return-void
@@ -31,20 +32,23 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Lorg/microg/tools/selfcheck/SelfCheckGroup;",
             ">;)V"
         }
     .end annotation
 
-    .line 101
+    .prologue
+    .line 102
+    .local p1, "checks":Ljava/util/List;, "Ljava/util/List<Lorg/microg/tools/selfcheck/SelfCheckGroup;>;"
     sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
 
     const/16 v1, 0x16
 
     if-le v0, v1, :cond_0
 
-    .line 102
+    .line 103
     new-instance v0, Lorg/microg/tools/selfcheck/PermissionCheckGroup;
 
     const/4 v1, 0x1
@@ -61,7 +65,7 @@
 
     invoke-interface {p1, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 104
+    .line 105
     :cond_0
     new-instance v0, Lorg/microg/tools/selfcheck/NlpOsCompatChecks;
 
@@ -69,12 +73,13 @@
 
     invoke-interface {p1, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 105
+    .line 106
     new-instance v0, Lorg/microg/tools/selfcheck/NlpStatusChecks;
 
     invoke-direct {v0}, Lorg/microg/tools/selfcheck/NlpStatusChecks;-><init>()V
 
     invoke-interface {p1, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
+    .line 107
     return-void
 .end method

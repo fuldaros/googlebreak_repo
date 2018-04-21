@@ -19,7 +19,8 @@
 .annotation system Ldalvik/annotation/Signature;
     value = {
         "Ljava/lang/Object;",
-        "Landroid/os/Parcelable$Creator<",
+        "Landroid/os/Parcelable$Creator",
+        "<",
         "Landroid/support/v4/app/FragmentManagerState;",
         ">;"
     }
@@ -30,7 +31,8 @@
 .method constructor <init>()V
     .locals 0
 
-    .line 627
+    .prologue
+    .line 391
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -40,8 +42,10 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/support/v4/app/FragmentManagerState;
     .locals 1
+    .param p1, "in"    # Landroid/os/Parcel;
 
-    .line 630
+    .prologue
+    .line 393
     new-instance v0, Landroid/support/v4/app/FragmentManagerState;
 
     invoke-direct {v0, p1}, Landroid/support/v4/app/FragmentManagerState;-><init>(Landroid/os/Parcel;)V
@@ -50,32 +54,36 @@
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-    .locals 0
+    .locals 1
 
-    .line 627
+    .prologue
+    .line 391
     invoke-virtual {p0, p1}, Landroid/support/v4/app/FragmentManagerState$1;->createFromParcel(Landroid/os/Parcel;)Landroid/support/v4/app/FragmentManagerState;
 
-    move-result-object p1
+    move-result-object v0
 
-    return-object p1
+    return-object v0
 .end method
 
 .method public newArray(I)[Landroid/support/v4/app/FragmentManagerState;
-    .locals 0
+    .locals 1
+    .param p1, "size"    # I
 
-    .line 635
-    new-array p1, p1, [Landroid/support/v4/app/FragmentManagerState;
+    .prologue
+    .line 397
+    new-array v0, p1, [Landroid/support/v4/app/FragmentManagerState;
 
-    return-object p1
+    return-object v0
 .end method
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
-    .locals 0
+    .locals 1
 
-    .line 627
+    .prologue
+    .line 391
     invoke-virtual {p0, p1}, Landroid/support/v4/app/FragmentManagerState$1;->newArray(I)[Landroid/support/v4/app/FragmentManagerState;
 
-    move-result-object p1
+    move-result-object v0
 
-    return-object p1
+    return-object v0
 .end method

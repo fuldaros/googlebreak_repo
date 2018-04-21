@@ -5,181 +5,224 @@
 
 # direct methods
 .method public static octant(DD)I
-    .locals 7
+    .locals 8
+    .param p0, "dx"    # D
+    .param p2, "dy"    # D
 
-    const-wide/16 v0, 0x0
+    .prologue
+    const-wide/16 v6, 0x0
 
-    cmpl-double v2, p0, v0
+    .line 60
+    cmpl-double v4, p0, v6
 
-    if-nez v2, :cond_0
+    if-nez v4, :cond_0
 
-    cmpl-double v2, p2, v0
+    cmpl-double v4, p2, v6
 
-    if-nez v2, :cond_0
+    if-nez v4, :cond_0
 
     .line 61
-    new-instance v0, Ljava/lang/IllegalArgumentException;
+    new-instance v4, Ljava/lang/IllegalArgumentException;
 
-    new-instance v1, Ljava/lang/StringBuilder;
+    new-instance v5, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Cannot compute the octant for point ( "
+    const-string v6, "Cannot compute the octant for point ( "
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, p0, p1}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+    move-result-object v5
 
-    const-string p0, ", "
+    invoke-virtual {v5, p0, p1}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v5
 
-    invoke-virtual {v1, p2, p3}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+    const-string v6, ", "
 
-    const-string p0, " )"
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v5
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v5, p2, p3}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
 
-    move-result-object p0
+    move-result-object v5
 
-    invoke-direct {v0, p0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    const-string v6, " )"
 
-    throw v0
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-direct {v4, v5}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v4
 
     .line 63
     :cond_0
     invoke-static {p0, p1}, Ljava/lang/Math;->abs(D)D
 
-    move-result-wide v2
+    move-result-wide v0
 
     .line 64
+    .local v0, "adx":D
     invoke-static {p2, p3}, Ljava/lang/Math;->abs(D)D
 
-    move-result-wide v4
+    move-result-wide v2
 
-    cmpl-double v6, p0, v0
+    .line 66
+    .local v2, "ady":D
+    cmpl-double v4, p0, v6
 
-    if-ltz v6, :cond_4
+    if-ltz v4, :cond_4
 
-    cmpl-double p0, p2, v0
+    .line 67
+    cmpl-double v4, p2, v6
 
-    if-ltz p0, :cond_2
+    if-ltz v4, :cond_2
 
-    cmpl-double p0, v2, v4
+    .line 68
+    cmpl-double v4, v0, v2
 
-    if-ltz p0, :cond_1
+    if-ltz v4, :cond_1
 
-    const/4 p0, 0x0
+    .line 69
+    const/4 v4, 0x0
 
-    return p0
+    .line 91
+    :goto_0
+    return v4
 
+    .line 71
     :cond_1
-    const/4 p0, 0x1
+    const/4 v4, 0x1
 
-    return p0
+    goto :goto_0
 
+    .line 74
     :cond_2
-    cmpl-double p0, v2, v4
+    cmpl-double v4, v0, v2
 
-    if-ltz p0, :cond_3
+    if-ltz v4, :cond_3
 
-    const/4 p0, 0x7
+    .line 75
+    const/4 v4, 0x7
 
-    return p0
+    goto :goto_0
 
+    .line 77
     :cond_3
-    const/4 p0, 0x6
+    const/4 v4, 0x6
 
-    return p0
+    goto :goto_0
 
+    .line 81
     :cond_4
-    cmpl-double p0, p2, v0
+    cmpl-double v4, p2, v6
 
-    if-ltz p0, :cond_6
+    if-ltz v4, :cond_6
 
-    cmpl-double p0, v2, v4
+    .line 82
+    cmpl-double v4, v0, v2
 
-    if-ltz p0, :cond_5
+    if-ltz v4, :cond_5
 
-    const/4 p0, 0x3
+    .line 83
+    const/4 v4, 0x3
 
-    return p0
+    goto :goto_0
 
+    .line 85
     :cond_5
-    const/4 p0, 0x2
+    const/4 v4, 0x2
 
-    return p0
+    goto :goto_0
 
+    .line 88
     :cond_6
-    cmpl-double p0, v2, v4
+    cmpl-double v4, v0, v2
 
-    if-ltz p0, :cond_7
+    if-ltz v4, :cond_7
 
-    const/4 p0, 0x4
+    .line 89
+    const/4 v4, 0x4
 
-    return p0
+    goto :goto_0
 
+    .line 91
     :cond_7
-    const/4 p0, 0x5
+    const/4 v4, 0x5
 
-    return p0
+    goto :goto_0
 .end method
 
 .method public static octant(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)I
-    .locals 6
+    .locals 10
+    .param p0, "p0"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p1, "p1"    # Lcom/vividsolutions/jts/geom/Coordinate;
+
+    .prologue
+    const-wide/16 v8, 0x0
 
     .line 101
-    iget-wide v0, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v4, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    iget-wide v2, p0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v6, p0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    sub-double/2addr v0, v2
+    sub-double v0, v4, v6
 
     .line 102
-    iget-wide v2, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    .local v0, "dx":D
+    iget-wide v4, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    iget-wide v4, p0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v6, p0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    sub-double/2addr v2, v4
+    sub-double v2, v4, v6
 
-    const-wide/16 v4, 0x0
+    .line 103
+    .local v2, "dy":D
+    cmpl-double v4, v0, v8
 
-    cmpl-double p1, v0, v4
+    if-nez v4, :cond_0
 
-    if-nez p1, :cond_0
+    cmpl-double v4, v2, v8
 
-    cmpl-double p1, v2, v4
-
-    if-nez p1, :cond_0
+    if-nez v4, :cond_0
 
     .line 104
-    new-instance p1, Ljava/lang/IllegalArgumentException;
+    new-instance v4, Ljava/lang/IllegalArgumentException;
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    new-instance v5, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "Cannot compute the octant for two identical points "
+    const-string v6, "Cannot compute the octant for two identical points "
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    move-result-object v5
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v5, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object p0
+    move-result-object v5
 
-    invoke-direct {p1, p0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    throw p1
+    move-result-object v5
+
+    invoke-direct {v4, v5}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v4
 
     .line 105
     :cond_0
     invoke-static {v0, v1, v2, v3}, Lcom/vividsolutions/jts/noding/Octant;->octant(DD)I
 
-    move-result p0
+    move-result v4
 
-    return p0
+    return v4
 .end method

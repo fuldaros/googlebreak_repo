@@ -10,14 +10,6 @@
     }
 .end annotation
 
-.annotation system Ldalvik/annotation/Signature;
-    value = {
-        "Lorg/oscim/theme/styles/RenderStyle<",
-        "Lorg/oscim/theme/styles/AreaStyle;",
-        ">;"
-    }
-.end annotation
-
 
 # instance fields
 .field public final blendColor:I
@@ -28,11 +20,7 @@
 
 .field public final fadeScale:I
 
-.field public final heightOffset:F
-
 .field private final level:I
-
-.field public mesh:Z
 
 .field public final strokeColor:I
 
@@ -40,238 +28,147 @@
 
 .field public final style:Ljava/lang/String;
 
-.field public final symbolHeight:I
-
-.field public final symbolPercent:I
-
-.field public final symbolWidth:I
-
 .field public final texture:Lorg/oscim/renderer/bucket/TextureItem;
 
 
 # direct methods
 .method public constructor <init>(I)V
     .locals 1
+    .param p1, "color"    # I
 
+    .prologue
+    .line 59
     const/4 v0, 0x0
 
-    .line 88
     invoke-direct {p0, v0, p1}, Lorg/oscim/theme/styles/AreaStyle;-><init>(II)V
 
+    .line 60
     return-void
 .end method
 
 .method public constructor <init>(II)V
-    .locals 1
+    .locals 2
+    .param p1, "level"    # I
+    .param p2, "color"    # I
 
-    .line 91
+    .prologue
+    const/4 v1, -0x1
+
+    .line 62
     invoke-direct {p0}, Lorg/oscim/theme/styles/RenderStyle;-><init>()V
 
-    .line 92
+    .line 63
     iput p1, p0, Lorg/oscim/theme/styles/AreaStyle;->level:I
 
-    const-string p1, ""
+    .line 64
+    const-string v0, ""
 
-    .line 93
-    iput-object p1, p0, Lorg/oscim/theme/styles/AreaStyle;->style:Ljava/lang/String;
+    iput-object v0, p0, Lorg/oscim/theme/styles/AreaStyle;->style:Ljava/lang/String;
 
-    const/4 p1, -0x1
+    .line 65
+    iput v1, p0, Lorg/oscim/theme/styles/AreaStyle;->fadeScale:I
 
-    .line 94
-    iput p1, p0, Lorg/oscim/theme/styles/AreaStyle;->fadeScale:I
-
+    .line 66
     const/4 v0, 0x0
 
-    .line 95
     iput v0, p0, Lorg/oscim/theme/styles/AreaStyle;->blendColor:I
 
-    .line 96
-    iput p1, p0, Lorg/oscim/theme/styles/AreaStyle;->blendScale:I
+    .line 67
+    iput v1, p0, Lorg/oscim/theme/styles/AreaStyle;->blendScale:I
 
-    .line 97
+    .line 68
     iput p2, p0, Lorg/oscim/theme/styles/AreaStyle;->color:I
 
-    const/4 p1, 0x0
+    .line 69
+    const/4 v0, 0x0
 
-    .line 98
-    iput-object p1, p0, Lorg/oscim/theme/styles/AreaStyle;->texture:Lorg/oscim/renderer/bucket/TextureItem;
+    iput-object v0, p0, Lorg/oscim/theme/styles/AreaStyle;->texture:Lorg/oscim/renderer/bucket/TextureItem;
 
-    .line 99
+    .line 70
     iput p2, p0, Lorg/oscim/theme/styles/AreaStyle;->strokeColor:I
 
-    const/high16 p1, 0x3f800000    # 1.0f
+    .line 71
+    const/high16 v0, 0x3f800000    # 1.0f
 
-    .line 100
-    iput p1, p0, Lorg/oscim/theme/styles/AreaStyle;->strokeWidth:F
+    iput v0, p0, Lorg/oscim/theme/styles/AreaStyle;->strokeWidth:F
 
-    .line 101
-    iput-boolean v0, p0, Lorg/oscim/theme/styles/AreaStyle;->mesh:Z
-
-    const/4 p1, 0x0
-
-    .line 103
-    iput p1, p0, Lorg/oscim/theme/styles/AreaStyle;->heightOffset:F
-
-    .line 105
-    iput v0, p0, Lorg/oscim/theme/styles/AreaStyle;->symbolWidth:I
-
-    .line 106
-    iput v0, p0, Lorg/oscim/theme/styles/AreaStyle;->symbolHeight:I
-
-    const/16 p1, 0x64
-
-    .line 107
-    iput p1, p0, Lorg/oscim/theme/styles/AreaStyle;->symbolPercent:I
-
+    .line 72
     return-void
 .end method
 
 .method public constructor <init>(Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;)V
-    .locals 2
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Lorg/oscim/theme/styles/AreaStyle$AreaBuilder<",
-            "*>;)V"
+            "Lorg/oscim/theme/styles/AreaStyle$AreaBuilder",
+            "<*>;)V"
         }
     .end annotation
 
-    .line 110
+    .prologue
+    .line 74
+    .local p1, "b":Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;, "Lorg/oscim/theme/styles/AreaStyle$AreaBuilder<*>;"
     invoke-direct {p0}, Lorg/oscim/theme/styles/RenderStyle;-><init>()V
 
-    .line 111
-    iget-object v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->cat:Ljava/lang/String;
-
-    iput-object v0, p0, Lorg/oscim/theme/styles/AreaStyle;->cat:Ljava/lang/String;
-
-    .line 112
+    .line 75
     iget v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->level:I
 
     iput v0, p0, Lorg/oscim/theme/styles/AreaStyle;->level:I
 
-    .line 113
+    .line 76
     iget-object v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->style:Ljava/lang/String;
 
     iput-object v0, p0, Lorg/oscim/theme/styles/AreaStyle;->style:Ljava/lang/String;
 
-    .line 114
+    .line 77
     iget v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->fadeScale:I
 
     iput v0, p0, Lorg/oscim/theme/styles/AreaStyle;->fadeScale:I
 
-    .line 115
-    iget-object v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->themeCallback:Lorg/oscim/theme/ThemeCallback;
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->themeCallback:Lorg/oscim/theme/ThemeCallback;
-
-    iget v1, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->blendColor:I
-
-    invoke-interface {v0, v1}, Lorg/oscim/theme/ThemeCallback;->getColor(I)I
-
-    move-result v0
-
-    goto :goto_0
-
-    :cond_0
+    .line 78
     iget v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->blendColor:I
 
-    :goto_0
     iput v0, p0, Lorg/oscim/theme/styles/AreaStyle;->blendColor:I
 
-    .line 116
+    .line 79
     iget v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->blendScale:I
 
     iput v0, p0, Lorg/oscim/theme/styles/AreaStyle;->blendScale:I
 
-    .line 117
-    iget-object v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->themeCallback:Lorg/oscim/theme/ThemeCallback;
-
-    if-eqz v0, :cond_1
-
-    iget-object v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->themeCallback:Lorg/oscim/theme/ThemeCallback;
-
-    iget v1, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->fillColor:I
-
-    invoke-interface {v0, v1}, Lorg/oscim/theme/ThemeCallback;->getColor(I)I
-
-    move-result v0
-
-    goto :goto_1
-
-    :cond_1
+    .line 80
     iget v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->fillColor:I
 
-    :goto_1
     iput v0, p0, Lorg/oscim/theme/styles/AreaStyle;->color:I
 
-    .line 118
+    .line 81
     iget-object v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->texture:Lorg/oscim/renderer/bucket/TextureItem;
 
     iput-object v0, p0, Lorg/oscim/theme/styles/AreaStyle;->texture:Lorg/oscim/renderer/bucket/TextureItem;
 
-    .line 119
-    iget-object v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->themeCallback:Lorg/oscim/theme/ThemeCallback;
-
-    if-eqz v0, :cond_2
-
-    iget-object v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->themeCallback:Lorg/oscim/theme/ThemeCallback;
-
-    iget v1, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->strokeColor:I
-
-    invoke-interface {v0, v1}, Lorg/oscim/theme/ThemeCallback;->getColor(I)I
-
-    move-result v0
-
-    goto :goto_2
-
-    :cond_2
+    .line 83
     iget v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->strokeColor:I
 
-    :goto_2
     iput v0, p0, Lorg/oscim/theme/styles/AreaStyle;->strokeColor:I
 
-    .line 120
+    .line 84
     iget v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->strokeWidth:F
 
     iput v0, p0, Lorg/oscim/theme/styles/AreaStyle;->strokeWidth:F
 
-    .line 121
-    iget-boolean v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->mesh:Z
-
-    iput-boolean v0, p0, Lorg/oscim/theme/styles/AreaStyle;->mesh:Z
-
-    .line 123
-    iget v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->heightOffset:F
-
-    iput v0, p0, Lorg/oscim/theme/styles/AreaStyle;->heightOffset:F
-
-    .line 125
-    iget v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->symbolWidth:I
-
-    iput v0, p0, Lorg/oscim/theme/styles/AreaStyle;->symbolWidth:I
-
-    .line 126
-    iget v0, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->symbolHeight:I
-
-    iput v0, p0, Lorg/oscim/theme/styles/AreaStyle;->symbolHeight:I
-
-    .line 127
-    iget p1, p1, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;->symbolPercent:I
-
-    iput p1, p0, Lorg/oscim/theme/styles/AreaStyle;->symbolPercent:I
-
+    .line 85
     return-void
 .end method
 
 .method static synthetic access$000(Lorg/oscim/theme/styles/AreaStyle;)I
-    .locals 0
+    .locals 1
+    .param p0, "x0"    # Lorg/oscim/theme/styles/AreaStyle;
 
-    .line 31
-    iget p0, p0, Lorg/oscim/theme/styles/AreaStyle;->level:I
+    .prologue
+    .line 29
+    iget v0, p0, Lorg/oscim/theme/styles/AreaStyle;->level:I
 
-    return p0
+    return v0
 .end method
 
 .method public static builder()Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;
@@ -279,12 +176,13 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Lorg/oscim/theme/styles/AreaStyle$AreaBuilder<",
-            "*>;"
+            "Lorg/oscim/theme/styles/AreaStyle$AreaBuilder",
+            "<*>;"
         }
     .end annotation
 
-    .line 299
+    .prologue
+    .line 206
     new-instance v0, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;
 
     invoke-direct {v0}, Lorg/oscim/theme/styles/AreaStyle$AreaBuilder;-><init>()V
@@ -297,7 +195,8 @@
 .method public current()Lorg/oscim/theme/styles/AreaStyle;
     .locals 1
 
-    .line 132
+    .prologue
+    .line 89
     iget-object v0, p0, Lorg/oscim/theme/styles/AreaStyle;->mCurrent:Lorg/oscim/theme/styles/RenderStyle;
 
     check-cast v0, Lorg/oscim/theme/styles/AreaStyle;
@@ -305,167 +204,172 @@
     return-object v0
 .end method
 
-.method public bridge synthetic current()Lorg/oscim/theme/styles/RenderStyle;
-    .locals 1
-
-    .line 31
-    invoke-virtual {p0}, Lorg/oscim/theme/styles/AreaStyle;->current()Lorg/oscim/theme/styles/AreaStyle;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
 .method public getBlend(D)F
-    .locals 4
+    .locals 5
+    .param p1, "scale"    # D
 
-    .line 170
-    iget v0, p0, Lorg/oscim/theme/styles/AreaStyle;->blendScale:I
+    .prologue
+    const/high16 v4, 0x3f800000    # 1.0f
 
     const/4 v1, 0x0
 
-    if-gez v0, :cond_0
-
-    return v1
-
-    :cond_0
-    const/4 v0, 0x1
-
-    .line 173
+    .line 127
     iget v2, p0, Lorg/oscim/theme/styles/AreaStyle;->blendScale:I
 
-    shl-int/2addr v0, v2
+    if-gez v2, :cond_0
 
-    int-to-double v2, v0
+    .line 131
+    :goto_0
+    return v1
 
-    div-double/2addr p1, v2
+    .line 130
+    :cond_0
+    const/4 v2, 0x1
 
-    double-to-float p1, p1
+    iget v3, p0, Lorg/oscim/theme/styles/AreaStyle;->blendScale:I
 
-    const/high16 p2, 0x3f800000    # 1.0f
+    shl-int/2addr v2, v3
 
-    sub-float/2addr p1, p2
+    int-to-double v2, v2
 
-    .line 174
-    invoke-static {p1, v1, p2}, Lorg/oscim/utils/FastMath;->clamp(FFF)F
+    div-double v2, p1, v2
 
-    move-result p1
+    double-to-float v2, v2
 
-    return p1
+    sub-float v0, v2, v4
+
+    .line 131
+    .local v0, "f":F
+    invoke-static {v0, v1, v4}, Lorg/oscim/utils/FastMath;->clamp(FFF)F
+
+    move-result v1
+
+    goto :goto_0
 .end method
 
 .method public getFade(D)F
-    .locals 4
+    .locals 5
+    .param p1, "scale"    # D
 
-    .line 162
-    iget v0, p0, Lorg/oscim/theme/styles/AreaStyle;->fadeScale:I
-
+    .prologue
     const/high16 v1, 0x3f800000    # 1.0f
 
-    if-gez v0, :cond_0
-
-    return v1
-
-    :cond_0
-    const/4 v0, 0x1
-
-    .line 165
+    .line 119
     iget v2, p0, Lorg/oscim/theme/styles/AreaStyle;->fadeScale:I
 
-    shl-int/2addr v0, v2
+    if-gez v2, :cond_0
 
-    int-to-double v2, v0
+    .line 123
+    :goto_0
+    return v1
 
-    div-double/2addr p1, v2
+    .line 122
+    :cond_0
+    const/4 v2, 0x1
 
-    double-to-float p1, p1
+    iget v3, p0, Lorg/oscim/theme/styles/AreaStyle;->fadeScale:I
 
-    sub-float/2addr p1, v1
+    shl-int/2addr v2, v3
 
-    const/high16 p2, 0x3e800000    # 0.25f
+    int-to-double v2, v2
 
-    .line 166
-    invoke-static {p1, p2, v1}, Lorg/oscim/utils/FastMath;->clamp(FFF)F
+    div-double v2, p1, v2
 
-    move-result p1
+    double-to-float v2, v2
 
-    return p1
+    sub-float v0, v2, v1
+
+    .line 123
+    .local v0, "f":F
+    const/high16 v2, 0x3e800000    # 0.25f
+
+    invoke-static {v0, v2, v1}, Lorg/oscim/utils/FastMath;->clamp(FFF)F
+
+    move-result v1
+
+    goto :goto_0
 .end method
 
 .method public hasAlpha(I)Z
     .locals 3
+    .param p1, "zoom"    # I
 
-    .line 141
-    iget v0, p0, Lorg/oscim/theme/styles/AreaStyle;->color:I
+    .prologue
+    const/4 v1, 0x0
 
-    invoke-static {v0}, Lorg/oscim/backend/canvas/Color;->isOpaque(I)Z
+    const/4 v0, 0x1
 
-    move-result v0
+    .line 98
+    iget v2, p0, Lorg/oscim/theme/styles/AreaStyle;->color:I
 
-    const/4 v1, 0x1
+    invoke-static {v2}, Lorg/oscim/backend/canvas/Color;->isOpaque(I)Z
 
-    if-nez v0, :cond_0
+    move-result v2
 
-    return v1
+    if-nez v2, :cond_1
 
-    .line 144
+    .line 115
     :cond_0
-    iget-object v0, p0, Lorg/oscim/theme/styles/AreaStyle;->texture:Lorg/oscim/renderer/bucket/TextureItem;
+    :goto_0
+    return v0
 
-    if-eqz v0, :cond_1
-
-    return v1
-
-    .line 147
+    .line 101
     :cond_1
-    iget v0, p0, Lorg/oscim/theme/styles/AreaStyle;->blendScale:I
+    iget-object v2, p0, Lorg/oscim/theme/styles/AreaStyle;->texture:Lorg/oscim/renderer/bucket/TextureItem;
 
-    const/4 v2, 0x0
+    if-nez v2, :cond_0
 
-    if-gez v0, :cond_2
+    .line 104
+    iget v2, p0, Lorg/oscim/theme/styles/AreaStyle;->blendScale:I
 
-    iget v0, p0, Lorg/oscim/theme/styles/AreaStyle;->fadeScale:I
+    if-gez v2, :cond_2
 
-    if-gez v0, :cond_2
+    iget v2, p0, Lorg/oscim/theme/styles/AreaStyle;->fadeScale:I
 
-    return v2
+    if-gez v2, :cond_2
 
-    .line 150
+    move v0, v1
+
+    .line 105
+    goto :goto_0
+
+    .line 107
     :cond_2
-    iget v0, p0, Lorg/oscim/theme/styles/AreaStyle;->blendScale:I
+    iget v2, p0, Lorg/oscim/theme/styles/AreaStyle;->blendScale:I
 
-    if-lt p1, v0, :cond_3
+    if-lt p1, v2, :cond_3
 
-    .line 151
-    iget v0, p0, Lorg/oscim/theme/styles/AreaStyle;->blendColor:I
+    .line 108
+    iget v2, p0, Lorg/oscim/theme/styles/AreaStyle;->blendColor:I
 
-    invoke-static {v0}, Lorg/oscim/backend/canvas/Color;->isOpaque(I)Z
+    invoke-static {v2}, Lorg/oscim/backend/canvas/Color;->isOpaque(I)Z
 
-    move-result v0
+    move-result v2
 
-    if-nez v0, :cond_3
+    if-eqz v2, :cond_0
 
-    return v1
-
-    .line 155
+    .line 112
     :cond_3
-    iget v0, p0, Lorg/oscim/theme/styles/AreaStyle;->fadeScale:I
+    iget v2, p0, Lorg/oscim/theme/styles/AreaStyle;->fadeScale:I
 
-    if-gt v0, p1, :cond_4
+    if-le v2, p1, :cond_0
 
-    return v1
+    move v0, v1
 
-    :cond_4
-    return v2
+    .line 115
+    goto :goto_0
 .end method
 
 .method public renderWay(Lorg/oscim/theme/styles/RenderStyle$Callback;)V
     .locals 1
+    .param p1, "cb"    # Lorg/oscim/theme/styles/RenderStyle$Callback;
 
-    .line 137
+    .prologue
+    .line 94
     iget v0, p0, Lorg/oscim/theme/styles/AreaStyle;->level:I
 
     invoke-interface {p1, p0, v0}, Lorg/oscim/theme/styles/RenderStyle$Callback;->renderArea(Lorg/oscim/theme/styles/AreaStyle;I)V
 
+    .line 95
     return-void
 .end method

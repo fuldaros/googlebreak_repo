@@ -3,12 +3,12 @@
 .source "SettingsActivity.java"
 
 # interfaces
-.implements Landroid/support/v7/preference/Preference$OnPreferenceClickListener;
+.implements Landroid/preference/Preference$OnPreferenceClickListener;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lorg/microg/nlp/ui/SettingsActivity$MyPreferenceFragment;->onCreatePreferencesFix(Landroid/os/Bundle;Ljava/lang/String;)V
+    value = Lorg/microg/nlp/ui/SettingsActivity$MyPreferenceFragment;->onCreate(Landroid/os/Bundle;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -24,8 +24,10 @@
 # direct methods
 .method constructor <init>(Lorg/microg/nlp/ui/SettingsActivity$MyPreferenceFragment;)V
     .locals 0
+    .param p1, "this$0"    # Lorg/microg/nlp/ui/SettingsActivity$MyPreferenceFragment;
 
-    .line 82
+    .prologue
+    .line 83
     iput-object p1, p0, Lorg/microg/nlp/ui/SettingsActivity$MyPreferenceFragment$2;->this$0:Lorg/microg/nlp/ui/SettingsActivity$MyPreferenceFragment;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -35,49 +37,52 @@
 
 
 # virtual methods
-.method public onPreferenceClick(Landroid/support/v7/preference/Preference;)Z
-    .locals 2
+.method public onPreferenceClick(Landroid/preference/Preference;)Z
+    .locals 3
+    .param p1, "preference"    # Landroid/preference/Preference;
 
-    .line 85
-    iget-object p1, p0, Lorg/microg/nlp/ui/SettingsActivity$MyPreferenceFragment$2;->this$0:Lorg/microg/nlp/ui/SettingsActivity$MyPreferenceFragment;
-
-    invoke-virtual {p1}, Lorg/microg/nlp/ui/SettingsActivity$MyPreferenceFragment;->getFragmentManager()Landroid/support/v4/app/FragmentManager;
-
-    move-result-object p1
-
-    invoke-virtual {p1}, Landroid/support/v4/app/FragmentManager;->beginTransaction()Landroid/support/v4/app/FragmentTransaction;
-
-    move-result-object p1
-
-    const-string v0, "root"
-
+    .prologue
     .line 86
-    invoke-virtual {p1, v0}, Landroid/support/v4/app/FragmentTransaction;->addToBackStack(Ljava/lang/String;)Landroid/support/v4/app/FragmentTransaction;
+    iget-object v0, p0, Lorg/microg/nlp/ui/SettingsActivity$MyPreferenceFragment$2;->this$0:Lorg/microg/nlp/ui/SettingsActivity$MyPreferenceFragment;
 
-    move-result-object p1
+    invoke-virtual {v0}, Lorg/microg/nlp/ui/SettingsActivity$MyPreferenceFragment;->getFragmentManager()Landroid/support/v4/app/FragmentManager;
 
-    const/16 v0, 0x1001
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/support/v4/app/FragmentManager;->beginTransaction()Landroid/support/v4/app/FragmentTransaction;
+
+    move-result-object v0
+
+    const-string v1, "root"
 
     .line 87
-    invoke-virtual {p1, v0}, Landroid/support/v4/app/FragmentTransaction;->setTransition(I)Landroid/support/v4/app/FragmentTransaction;
+    invoke-virtual {v0, v1}, Landroid/support/v4/app/FragmentTransaction;->addToBackStack(Ljava/lang/String;)Landroid/support/v4/app/FragmentTransaction;
 
-    move-result-object p1
+    move-result-object v0
 
-    sget v0, Lorg/microg/nlp/R$id;->content_wrapper:I
-
-    new-instance v1, Lorg/microg/nlp/ui/SettingsActivity$MyAboutFragment;
-
-    invoke-direct {v1}, Lorg/microg/nlp/ui/SettingsActivity$MyAboutFragment;-><init>()V
+    const/16 v1, 0x1001
 
     .line 88
-    invoke-virtual {p1, v0, v1}, Landroid/support/v4/app/FragmentTransaction;->replace(ILandroid/support/v4/app/Fragment;)Landroid/support/v4/app/FragmentTransaction;
+    invoke-virtual {v0, v1}, Landroid/support/v4/app/FragmentTransaction;->setTransition(I)Landroid/support/v4/app/FragmentTransaction;
 
-    move-result-object p1
+    move-result-object v0
+
+    sget v1, Lorg/microg/nlp/R$id;->content_wrapper:I
+
+    new-instance v2, Lorg/microg/nlp/ui/SettingsActivity$MyAboutFragment;
+
+    invoke-direct {v2}, Lorg/microg/nlp/ui/SettingsActivity$MyAboutFragment;-><init>()V
 
     .line 89
-    invoke-virtual {p1}, Landroid/support/v4/app/FragmentTransaction;->commit()I
+    invoke-virtual {v0, v1, v2}, Landroid/support/v4/app/FragmentTransaction;->replace(ILandroid/support/v4/app/Fragment;)Landroid/support/v4/app/FragmentTransaction;
 
-    const/4 p1, 0x1
+    move-result-object v0
 
-    return p1
+    .line 90
+    invoke-virtual {v0}, Landroid/support/v4/app/FragmentTransaction;->commit()I
+
+    .line 91
+    const/4 v0, 0x1
+
+    return v0
 .end method

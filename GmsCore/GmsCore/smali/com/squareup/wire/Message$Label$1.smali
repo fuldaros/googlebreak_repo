@@ -19,7 +19,8 @@
 .annotation system Ldalvik/annotation/Signature;
     value = {
         "Ljava/lang/Object;",
-        "Ljava/util/Comparator<",
+        "Ljava/util/Comparator",
+        "<",
         "Lcom/squareup/wire/Message$Label;",
         ">;"
     }
@@ -30,6 +31,7 @@
 .method constructor <init>()V
     .locals 0
 
+    .prologue
     .line 110
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -39,27 +41,31 @@
 
 # virtual methods
 .method public compare(Lcom/squareup/wire/Message$Label;Lcom/squareup/wire/Message$Label;)I
-    .locals 0
+    .locals 2
+    .param p1, "o1"    # Lcom/squareup/wire/Message$Label;
+    .param p2, "o2"    # Lcom/squareup/wire/Message$Label;
 
+    .prologue
     .line 112
     invoke-virtual {p1}, Lcom/squareup/wire/Message$Label;->name()Ljava/lang/String;
 
-    move-result-object p1
+    move-result-object v0
 
     invoke-virtual {p2}, Lcom/squareup/wire/Message$Label;->name()Ljava/lang/String;
 
-    move-result-object p2
+    move-result-object v1
 
-    invoke-virtual {p1, p2}, Ljava/lang/String;->compareTo(Ljava/lang/String;)I
+    invoke-virtual {v0, v1}, Ljava/lang/String;->compareTo(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    return p1
+    return v0
 .end method
 
 .method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
-    .locals 0
+    .locals 1
 
+    .prologue
     .line 110
     check-cast p1, Lcom/squareup/wire/Message$Label;
 
@@ -67,7 +73,7 @@
 
     invoke-virtual {p0, p1, p2}, Lcom/squareup/wire/Message$Label$1;->compare(Lcom/squareup/wire/Message$Label;Lcom/squareup/wire/Message$Label;)I
 
-    move-result p1
+    move-result v0
 
-    return p1
+    return v0
 .end method

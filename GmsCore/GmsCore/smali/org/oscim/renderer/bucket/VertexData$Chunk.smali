@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lorg/oscim/utils/pool/Inlist<",
+        "Lorg/oscim/utils/pool/Inlist",
+        "<",
         "Lorg/oscim/renderer/bucket/VertexData$Chunk;",
         ">;"
     }
@@ -32,12 +33,13 @@
 .method public constructor <init>()V
     .locals 1
 
+    .prologue
     .line 49
     invoke-direct {p0}, Lorg/oscim/utils/pool/Inlist;-><init>()V
 
+    .line 50
     const/16 v0, 0x168
 
-    .line 50
     new-array v0, v0, [S
 
     iput-object v0, p0, Lorg/oscim/renderer/bucket/VertexData$Chunk;->vertices:[S

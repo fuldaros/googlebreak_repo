@@ -13,14 +13,17 @@
 
 # direct methods
 .method public static getMediaUri(Ljava/lang/Object;)Landroid/net/Uri;
-    .locals 0
+    .locals 1
+    .param p0, "descriptionObj"    # Ljava/lang/Object;
 
-    .line 25
+    .prologue
+    .line 23
     check-cast p0, Landroid/media/MediaDescription;
 
+    .end local p0    # "descriptionObj":Ljava/lang/Object;
     invoke-virtual {p0}, Landroid/media/MediaDescription;->getMediaUri()Landroid/net/Uri;
 
-    move-result-object p0
+    move-result-object v0
 
-    return-object p0
+    return-object v0
 .end method

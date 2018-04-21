@@ -15,8 +15,10 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lorg/oscim/utils/pool/Pool<",
-        "Lorg/oscim/utils/KeyMap<",
+        "Lorg/oscim/utils/pool/Pool",
+        "<",
+        "Lorg/oscim/utils/KeyMap",
+        "<",
         "Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;",
         ">;>;"
     }
@@ -27,7 +29,8 @@
 .method constructor <init>()V
     .locals 0
 
-    .line 124
+    .prologue
+    .line 119
     invoke-direct {p0}, Lorg/oscim/utils/pool/Pool;-><init>()V
 
     return-void
@@ -40,13 +43,15 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Lorg/oscim/utils/KeyMap<",
+            "Lorg/oscim/utils/KeyMap",
+            "<",
             "Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;",
             ">;"
         }
     .end annotation
 
-    .line 127
+    .prologue
+    .line 122
     new-instance v0, Lorg/oscim/utils/KeyMap;
 
     const/16 v1, 0x800
@@ -59,7 +64,8 @@
 .method protected bridge synthetic createItem()Lorg/oscim/utils/pool/Inlist;
     .locals 1
 
-    .line 124
+    .prologue
+    .line 119
     invoke-virtual {p0}, Lorg/oscim/renderer/bucket/ExtrusionBucket$2;->createItem()Lorg/oscim/utils/KeyMap;
 
     move-result-object v0

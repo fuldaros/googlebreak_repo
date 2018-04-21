@@ -25,6 +25,7 @@
 .method constructor <init>(Lcom/vividsolutions/jts/noding/ScaledNoder;)V
     .locals 0
 
+    .prologue
     .line 125
     iput-object p1, p0, Lcom/vividsolutions/jts/noding/ScaledNoder$2;->this$0:Lcom/vividsolutions/jts/noding/ScaledNoder;
 
@@ -36,21 +37,27 @@
 
 # virtual methods
 .method public execute(Ljava/lang/Object;)Ljava/lang/Object;
-    .locals 1
+    .locals 3
+    .param p1, "obj"    # Ljava/lang/Object;
 
+    .prologue
     .line 127
-    check-cast p1, Lcom/vividsolutions/jts/noding/SegmentString;
+    move-object v0, p1
+
+    check-cast v0, Lcom/vividsolutions/jts/noding/SegmentString;
 
     .line 128
-    iget-object v0, p0, Lcom/vividsolutions/jts/noding/ScaledNoder$2;->this$0:Lcom/vividsolutions/jts/noding/ScaledNoder;
+    .local v0, "ss":Lcom/vividsolutions/jts/noding/SegmentString;
+    iget-object v1, p0, Lcom/vividsolutions/jts/noding/ScaledNoder$2;->this$0:Lcom/vividsolutions/jts/noding/ScaledNoder;
 
-    invoke-interface {p1}, Lcom/vividsolutions/jts/noding/SegmentString;->getCoordinates()[Lcom/vividsolutions/jts/geom/Coordinate;
+    invoke-interface {v0}, Lcom/vividsolutions/jts/noding/SegmentString;->getCoordinates()[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    move-result-object p1
+    move-result-object v2
 
-    invoke-static {v0, p1}, Lcom/vividsolutions/jts/noding/ScaledNoder;->access$100(Lcom/vividsolutions/jts/noding/ScaledNoder;[Lcom/vividsolutions/jts/geom/Coordinate;)V
+    invoke-static {v1, v2}, Lcom/vividsolutions/jts/noding/ScaledNoder;->access$100(Lcom/vividsolutions/jts/noding/ScaledNoder;[Lcom/vividsolutions/jts/geom/Coordinate;)V
 
-    const/4 p1, 0x0
+    .line 129
+    const/4 v1, 0x0
 
-    return-object p1
+    return-object v1
 .end method

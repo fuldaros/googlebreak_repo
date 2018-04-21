@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder<",
+        "Lcom/squareup/wire/Message$Builder",
+        "<",
         "Lorg/microg/gms/gcm/mcs/StreamAck;",
         ">;"
     }
@@ -26,18 +27,23 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 32
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
+    .line 33
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/gms/gcm/mcs/StreamAck;)V
     .locals 0
+    .param p1, "message"    # Lorg/microg/gms/gcm/mcs/StreamAck;
 
+    .prologue
     .line 36
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
+    .line 37
     return-void
 .end method
 
@@ -46,6 +52,7 @@
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
+    .prologue
     .line 30
     invoke-virtual {p0}, Lorg/microg/gms/gcm/mcs/StreamAck$Builder;->build()Lorg/microg/gms/gcm/mcs/StreamAck;
 
@@ -57,6 +64,7 @@
 .method public build()Lorg/microg/gms/gcm/mcs/StreamAck;
     .locals 2
 
+    .prologue
     .line 41
     new-instance v0, Lorg/microg/gms/gcm/mcs/StreamAck;
 

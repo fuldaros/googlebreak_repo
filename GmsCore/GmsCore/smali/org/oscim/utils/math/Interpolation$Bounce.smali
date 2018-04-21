@@ -17,105 +17,116 @@
 # direct methods
 .method public constructor <init>(I)V
     .locals 0
+    .param p1, "bounces"    # I
 
-    .line 273
+    .prologue
+    .line 269
     invoke-direct {p0, p1}, Lorg/oscim/utils/math/Interpolation$BounceOut;-><init>(I)V
 
+    .line 270
     return-void
 .end method
 
 .method private out(F)F
     .locals 4
+    .param p1, "a"    # F
 
-    .line 277
-    iget-object v0, p0, Lorg/oscim/utils/math/Interpolation$Bounce;->widths:[F
+    .prologue
+    const/high16 v3, 0x40000000    # 2.0f
 
-    const/4 v1, 0x0
+    const/4 v2, 0x0
 
-    aget v0, v0, v1
+    .line 273
+    iget-object v1, p0, Lorg/oscim/utils/math/Interpolation$Bounce;->widths:[F
 
-    const/high16 v2, 0x40000000    # 2.0f
+    aget v1, v1, v2
 
-    div-float/2addr v0, v2
+    div-float/2addr v1, v3
 
-    add-float/2addr v0, p1
+    add-float v0, p1, v1
 
-    .line 278
-    iget-object v3, p0, Lorg/oscim/utils/math/Interpolation$Bounce;->widths:[F
+    .line 274
+    .local v0, "test":F
+    iget-object v1, p0, Lorg/oscim/utils/math/Interpolation$Bounce;->widths:[F
 
-    aget v3, v3, v1
+    aget v1, v1, v2
 
-    cmpg-float v3, v0, v3
+    cmpg-float v1, v0, v1
 
-    if-gez v3, :cond_0
+    if-gez v1, :cond_0
 
-    .line 279
-    iget-object p1, p0, Lorg/oscim/utils/math/Interpolation$Bounce;->widths:[F
+    .line 275
+    iget-object v1, p0, Lorg/oscim/utils/math/Interpolation$Bounce;->widths:[F
 
-    aget p1, p1, v1
+    aget v1, v1, v2
 
-    div-float/2addr p1, v2
+    div-float/2addr v1, v3
 
-    div-float/2addr v0, p1
+    div-float v1, v0, v1
 
-    const/high16 p1, 0x3f800000    # 1.0f
+    const/high16 v2, 0x3f800000    # 1.0f
 
-    sub-float/2addr v0, p1
+    sub-float/2addr v1, v2
 
-    return v0
+    .line 276
+    :goto_0
+    return v1
 
-    .line 280
     :cond_0
     invoke-super {p0, p1}, Lorg/oscim/utils/math/Interpolation$BounceOut;->apply(F)F
 
-    move-result p1
+    move-result v1
 
-    return p1
+    goto :goto_0
 .end method
 
 
 # virtual methods
 .method public apply(F)F
     .locals 4
+    .param p1, "a"    # F
 
-    const/high16 v0, 0x3f000000    # 0.5f
-
-    cmpg-float v1, p1, v0
+    .prologue
+    const/high16 v3, 0x3f000000    # 0.5f
 
     const/high16 v2, 0x3f800000    # 1.0f
 
-    const/high16 v3, 0x40000000    # 2.0f
+    const/high16 v1, 0x40000000    # 2.0f
 
-    if-gtz v1, :cond_0
+    .line 281
+    cmpg-float v0, p1, v3
 
-    mul-float/2addr p1, v3
+    if-gtz v0, :cond_0
 
-    sub-float p1, v2, p1
+    .line 282
+    mul-float v0, p1, v1
 
-    .line 286
-    invoke-direct {p0, p1}, Lorg/oscim/utils/math/Interpolation$Bounce;->out(F)F
+    sub-float v0, v2, v0
 
-    move-result p1
+    invoke-direct {p0, v0}, Lorg/oscim/utils/math/Interpolation$Bounce;->out(F)F
 
-    sub-float/2addr v2, p1
+    move-result v0
 
-    div-float/2addr v2, v3
+    sub-float v0, v2, v0
 
-    return v2
+    div-float/2addr v0, v1
+
+    .line 283
+    :goto_0
+    return v0
 
     :cond_0
-    mul-float/2addr p1, v3
+    mul-float v0, p1, v1
 
-    sub-float/2addr p1, v2
+    sub-float/2addr v0, v2
 
-    .line 287
-    invoke-direct {p0, p1}, Lorg/oscim/utils/math/Interpolation$Bounce;->out(F)F
+    invoke-direct {p0, v0}, Lorg/oscim/utils/math/Interpolation$Bounce;->out(F)F
 
-    move-result p1
+    move-result v0
 
-    div-float/2addr p1, v3
+    div-float/2addr v0, v1
 
-    add-float/2addr p1, v0
+    add-float/2addr v0, v3
 
-    return p1
+    goto :goto_0
 .end method

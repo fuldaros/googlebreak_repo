@@ -24,8 +24,10 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/auth/login/LoginActivity;)V
     .locals 0
+    .param p1, "this$0"    # Lorg/microg/gms/auth/login/LoginActivity;
 
-    .line 265
+    .prologue
+    .line 218
     iput-object p1, p0, Lorg/microg/gms/auth/login/LoginActivity$4;->this$0:Lorg/microg/gms/auth/login/LoginActivity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,7 +40,8 @@
 .method public run()V
     .locals 2
 
-    .line 268
+    .prologue
+    .line 221
     iget-object v0, p0, Lorg/microg/gms/auth/login/LoginActivity$4;->this$0:Lorg/microg/gms/auth/login/LoginActivity;
 
     invoke-static {v0}, Lorg/microg/gms/auth/login/LoginActivity;->access$100(Lorg/microg/gms/auth/login/LoginActivity;)Landroid/webkit/WebView;
@@ -49,5 +52,6 @@
 
     invoke-virtual {v0, v1}, Landroid/webkit/WebView;->setVisibility(I)V
 
+    .line 222
     return-void
 .end method

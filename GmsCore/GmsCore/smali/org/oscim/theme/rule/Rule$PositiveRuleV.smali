@@ -21,7 +21,15 @@
 # direct methods
 .method constructor <init>(IIILjava/lang/String;[Lorg/oscim/theme/rule/Rule;[Lorg/oscim/theme/styles/RenderStyle;)V
     .locals 6
+    .param p1, "element"    # I
+    .param p2, "zoom"    # I
+    .param p3, "selector"    # I
+    .param p4, "value"    # Ljava/lang/String;
+    .param p5, "subRules"    # [Lorg/oscim/theme/rule/Rule;
+    .param p6, "styles"    # [Lorg/oscim/theme/styles/RenderStyle;
 
+    .prologue
+    .line 198
     move-object v0, p0
 
     move v1, p1
@@ -34,52 +42,54 @@
 
     move-object v5, p6
 
-    .line 206
     invoke-direct/range {v0 .. v5}, Lorg/oscim/theme/rule/Rule;-><init>(III[Lorg/oscim/theme/rule/Rule;[Lorg/oscim/theme/styles/RenderStyle;)V
 
-    .line 207
+    .line 199
     iput-object p4, p0, Lorg/oscim/theme/rule/Rule$PositiveRuleV;->mValue:Ljava/lang/String;
 
+    .line 200
     return-void
 .end method
 
 
 # virtual methods
 .method public matchesTags([Lorg/oscim/core/Tag;)Z
-    .locals 5
+    .locals 6
+    .param p1, "tags"    # [Lorg/oscim/core/Tag;
 
-    const/4 v0, 0x0
+    .prologue
+    const/4 v1, 0x0
 
-    .line 212
-    array-length v1, p1
+    .line 204
+    array-length v3, p1
 
-    move v2, v0
+    move v2, v1
 
     :goto_0
-    if-ge v2, v1, :cond_1
+    if-ge v2, v3, :cond_0
 
-    aget-object v3, p1, v2
+    aget-object v0, p1, v2
 
-    .line 213
+    .line 205
+    .local v0, "tag":Lorg/oscim/core/Tag;
     iget-object v4, p0, Lorg/oscim/theme/rule/Rule$PositiveRuleV;->mValue:Ljava/lang/String;
 
-    iget-object v3, v3, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
+    iget-object v5, v0, Lorg/oscim/core/Tag;->value:Ljava/lang/String;
 
-    invoke-static {v4, v3}, Lorg/oscim/utils/Utils;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+    if-ne v4, v5, :cond_1
 
-    move-result v3
+    .line 206
+    const/4 v1, 0x1
 
-    if-eqz v3, :cond_0
-
-    const/4 p1, 0x1
-
-    return p1
-
+    .line 208
+    .end local v0    # "tag":Lorg/oscim/core/Tag;
     :cond_0
+    return v1
+
+    .line 204
+    .restart local v0    # "tag":Lorg/oscim/core/Tag;
+    :cond_1
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
-
-    :cond_1
-    return v0
 .end method

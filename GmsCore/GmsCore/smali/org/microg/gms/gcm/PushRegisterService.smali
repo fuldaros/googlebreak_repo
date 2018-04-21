@@ -3,1073 +3,1024 @@
 .source "PushRegisterService.java"
 
 
-# static fields
-.field private static requestPending:Z = false
-
-
-# instance fields
-.field private database:Lorg/microg/gms/gcm/GcmDatabase;
-
-
 # direct methods
-.method static constructor <clinit>()V
-    .locals 0
-
-    return-void
-.end method
-
 .method public constructor <init>()V
     .locals 1
 
+    .prologue
+    .line 59
     const-string v0, "GmsGcmRegisterSvc"
 
-    .line 60
     invoke-direct {p0, v0}, Landroid/app/IntentService;-><init>(Ljava/lang/String;)V
 
+    .line 60
     const/4 v0, 0x0
 
-    .line 61
     invoke-virtual {p0, v0}, Lorg/microg/gms/gcm/PushRegisterService;->setIntentRedelivery(Z)V
 
+    .line 61
     return-void
 .end method
 
-.method private static attachRequestId(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+.method private getSharedPreferences()Landroid/content/SharedPreferences;
     .locals 2
 
-    if-nez p1, :cond_0
+    .prologue
+    .line 64
+    const-string v0, "gcm_registrations"
 
-    return-object p0
+    const/4 v1, 0x0
 
-    .line 260
-    :cond_0
-    new-instance v0, Ljava/lang/StringBuilder;
+    invoke-virtual {p0, v0, v1}, Lorg/microg/gms/gcm/PushRegisterService;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
 
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+    move-result-object v0
 
-    const-string v1, "|ID|"
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string p1, "|"
-
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object p0
-
-    return-object p0
+    return-object v0
 .end method
 
-.method public static register(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/microg/gms/gcm/RegisterResponse;
-    .locals 7
+.method private packageFromPendingIntent(Landroid/app/PendingIntent;)Ljava/lang/String;
+    .locals 2
+    .param p1, "pi"    # Landroid/app/PendingIntent;
 
-    .line 77
-    new-instance v0, Lorg/microg/gms/gcm/GcmDatabase;
+    .prologue
+    .line 93
+    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
 
-    invoke-direct {v0, p0}, Lorg/microg/gms/gcm/GcmDatabase;-><init>(Landroid/content/Context;)V
+    const/16 v1, 0x11
 
-    const/4 v6, 0x0
+    if-ge v0, v1, :cond_0
 
-    move-object v1, p0
+    .line 94
+    invoke-virtual {p1}, Landroid/app/PendingIntent;->getTargetPackage()Ljava/lang/String;
 
-    move-object v2, p1
+    move-result-object v0
 
-    move-object v3, p2
+    .line 96
+    :goto_0
+    return-object v0
 
-    move-object v4, p3
+    :cond_0
+    invoke-virtual {p1}, Landroid/app/PendingIntent;->getCreatorPackage()Ljava/lang/String;
 
-    move-object v5, p4
-
-    .line 78
-    invoke-static/range {v1 .. v6}, Lorg/microg/gms/gcm/PushRegisterService;->register(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lorg/microg/gms/gcm/RegisterResponse;
-
-    move-result-object p0
-
-    .line 79
-    iget-object p3, p0, Lorg/microg/gms/gcm/RegisterResponse;->token:Ljava/lang/String;
-
-    if-eqz p3, :cond_0
-
-    .line 81
-    invoke-virtual {v0, p1, p2, p3}, Lorg/microg/gms/gcm/GcmDatabase;->noteAppRegistered(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    move-result-object v0
 
     goto :goto_0
-
-    .line 83
-    :cond_0
-    iget-object p2, p0, Lorg/microg/gms/gcm/RegisterResponse;->responseText:Ljava/lang/String;
-
-    invoke-virtual {v0, p1, p2}, Lorg/microg/gms/gcm/GcmDatabase;->noteAppRegistrationError(Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 85
-    :goto_0
-    invoke-virtual {v0}, Lorg/microg/gms/gcm/GcmDatabase;->close()V
-
-    return-object p0
 .end method
 
 .method public static register(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lorg/microg/gms/gcm/RegisterResponse;
-    .locals 2
+    .locals 5
+    .param p0, "context"    # Landroid/content/Context;
+    .param p1, "app"    # Ljava/lang/String;
+    .param p2, "appSignature"    # Ljava/lang/String;
+    .param p3, "sender"    # Ljava/lang/String;
+    .param p4, "info"    # Ljava/lang/String;
+    .param p5, "delete"    # Z
 
-    .line 214
+    .prologue
+    .line 137
     :try_start_0
-    new-instance v0, Lorg/microg/gms/gcm/RegisterRequest;
+    new-instance v2, Lorg/microg/gms/gcm/RegisterRequest;
 
-    invoke-direct {v0}, Lorg/microg/gms/gcm/RegisterRequest;-><init>()V
+    invoke-direct {v2}, Lorg/microg/gms/gcm/RegisterRequest;-><init>()V
 
-    .line 215
+    .line 138
     invoke-static {p0}, Lorg/microg/gms/common/Utils;->getBuild(Landroid/content/Context;)Lorg/microg/gms/common/Build;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Lorg/microg/gms/gcm/RegisterRequest;->build(Lorg/microg/gms/common/Build;)Lorg/microg/gms/gcm/RegisterRequest;
+
+    move-result-object v2
+
+    .line 139
+    invoke-virtual {v2, p3}, Lorg/microg/gms/gcm/RegisterRequest;->sender(Ljava/lang/String;)Lorg/microg/gms/gcm/RegisterRequest;
+
+    move-result-object v2
+
+    .line 140
+    invoke-virtual {v2, p4}, Lorg/microg/gms/gcm/RegisterRequest;->info(Ljava/lang/String;)Lorg/microg/gms/gcm/RegisterRequest;
+
+    move-result-object v2
+
+    .line 141
+    invoke-static {p0}, Lorg/microg/gms/checkin/LastCheckinInfo;->read(Landroid/content/Context;)Lorg/microg/gms/checkin/LastCheckinInfo;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Lorg/microg/gms/gcm/RegisterRequest;->checkin(Lorg/microg/gms/checkin/LastCheckinInfo;)Lorg/microg/gms/gcm/RegisterRequest;
+
+    move-result-object v2
+
+    .line 142
+    invoke-static {p0, p1}, Lorg/microg/gms/common/PackageUtils;->versionCode(Landroid/content/Context;Ljava/lang/String;)I
+
+    move-result v3
+
+    invoke-virtual {v2, p1, p2, v3}, Lorg/microg/gms/gcm/RegisterRequest;->app(Ljava/lang/String;Ljava/lang/String;I)Lorg/microg/gms/gcm/RegisterRequest;
+
+    move-result-object v2
+
+    .line 143
+    invoke-virtual {v2, p5}, Lorg/microg/gms/gcm/RegisterRequest;->delete(Z)Lorg/microg/gms/gcm/RegisterRequest;
+
+    move-result-object v2
+
+    .line 144
+    invoke-virtual {v2}, Lorg/microg/gms/gcm/RegisterRequest;->getResponse()Lorg/microg/gms/gcm/RegisterResponse;
 
     move-result-object v1
 
-    invoke-virtual {v0, v1}, Lorg/microg/gms/gcm/RegisterRequest;->build(Lorg/microg/gms/common/Build;)Lorg/microg/gms/gcm/RegisterRequest;
+    .line 145
+    .local v1, "response":Lorg/microg/gms/gcm/RegisterResponse;
+    const-string v2, "GmsGcmRegisterSvc"
 
-    move-result-object v0
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    .line 216
-    invoke-virtual {v0, p3}, Lorg/microg/gms/gcm/RegisterRequest;->sender(Ljava/lang/String;)Lorg/microg/gms/gcm/RegisterRequest;
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    move-result-object p3
+    const-string v4, "received response: "
 
-    .line 217
-    invoke-virtual {p3, p4}, Lorg/microg/gms/gcm/RegisterRequest;->info(Ljava/lang/String;)Lorg/microg/gms/gcm/RegisterRequest;
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object p3
+    move-result-object v3
 
-    .line 218
-    invoke-static {p0}, Lorg/microg/gms/checkin/LastCheckinInfo;->read(Landroid/content/Context;)Lorg/microg/gms/checkin/LastCheckinInfo;
+    invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object p4
+    move-result-object v3
 
-    invoke-virtual {p3, p4}, Lorg/microg/gms/gcm/RegisterRequest;->checkin(Lorg/microg/gms/checkin/LastCheckinInfo;)Lorg/microg/gms/gcm/RegisterRequest;
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object p3
+    move-result-object v3
 
-    .line 219
-    invoke-static {p0, p1}, Lorg/microg/gms/common/PackageUtils;->versionCode(Landroid/content/Context;Ljava/lang/String;)I
-
-    move-result p0
-
-    invoke-virtual {p3, p1, p2, p0}, Lorg/microg/gms/gcm/RegisterRequest;->app(Ljava/lang/String;Ljava/lang/String;I)Lorg/microg/gms/gcm/RegisterRequest;
-
-    move-result-object p0
-
-    .line 220
-    invoke-virtual {p0, p5}, Lorg/microg/gms/gcm/RegisterRequest;->delete(Z)Lorg/microg/gms/gcm/RegisterRequest;
-
-    move-result-object p0
-
-    .line 221
-    invoke-virtual {p0}, Lorg/microg/gms/gcm/RegisterRequest;->getResponse()Lorg/microg/gms/gcm/RegisterResponse;
-
-    move-result-object p0
-
-    const-string p1, "GmsGcmRegisterSvc"
-
-    .line 222
-    new-instance p2, Ljava/lang/StringBuilder;
-
-    invoke-direct {p2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string p3, "received response: "
-
-    invoke-virtual {p2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {p2, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object p2
-
-    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
-    return-object p0
+    .line 151
+    .end local v1    # "response":Lorg/microg/gms/gcm/RegisterResponse;
+    :goto_0
+    return-object v1
 
+    .line 147
     :catch_0
-    move-exception p0
+    move-exception v0
 
-    const-string p1, "GmsGcmRegisterSvc"
+    .line 148
+    .local v0, "e":Ljava/io/IOException;
+    const-string v2, "GmsGcmRegisterSvc"
 
-    .line 225
-    invoke-static {p1, p0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-static {v2, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 228
-    new-instance p0, Lorg/microg/gms/gcm/RegisterResponse;
+    .line 151
+    new-instance v1, Lorg/microg/gms/gcm/RegisterResponse;
 
-    invoke-direct {p0}, Lorg/microg/gms/gcm/RegisterResponse;-><init>()V
+    invoke-direct {v1}, Lorg/microg/gms/gcm/RegisterResponse;-><init>()V
 
-    return-object p0
+    goto :goto_0
 .end method
 
-.method private register(Landroid/content/Intent;Ljava/lang/String;)V
-    .locals 4
+.method private register(Landroid/content/Intent;)V
+    .locals 13
+    .param p1, "intent"    # Landroid/content/Intent;
 
+    .prologue
+    const/4 v4, 0x0
+
+    .line 101
     const-string v0, "app"
 
-    .line 140
     invoke-virtual {p1, v0}, Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;
 
-    move-result-object v0
+    move-result-object v10
 
-    check-cast v0, Landroid/app/PendingIntent;
+    check-cast v10, Landroid/app/PendingIntent;
 
-    .line 141
-    invoke-static {v0}, Lorg/microg/gms/common/PackageUtils;->packageFromPendingIntent(Landroid/app/PendingIntent;)Ljava/lang/String;
+    .line 102
+    .local v10, "pendingIntent":Landroid/app/PendingIntent;
+    const-string v0, "sender"
 
-    move-result-object v0
+    invoke-virtual {p1, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
 
-    const-string v1, "GmsGcmRegisterSvc"
+    move-result-object v3
 
-    .line 142
-    new-instance v2, Ljava/lang/StringBuilder;
+    .line 103
+    .local v3, "sender":Ljava/lang/String;
+    invoke-direct {p0, v10}, Lorg/microg/gms/gcm/PushRegisterService;->packageFromPendingIntent(Landroid/app/PendingIntent;)Ljava/lang/String;
 
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+    move-result-object v1
 
-    const-string v3, "register[req]: "
+    .line 104
+    .local v1, "app":Ljava/lang/String;
+    const-string v0, "GmsGcmRegisterSvc"
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v12, "register[req]: "
+
+    invoke-virtual {v5, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
 
     invoke-virtual {p1}, Landroid/content/Intent;->toString()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v12
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v3, " extras="
+    move-result-object v5
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v12, " extras="
+
+    invoke-virtual {v5, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
 
     invoke-virtual {p1}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
 
-    move-result-object v3
+    move-result-object v12
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-static {v0, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 106
+    new-instance v9, Landroid/content/Intent;
+
+    const-string v0, "com.google.android.c2dm.intent.REGISTRATION"
+
+    invoke-direct {v9, v0}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+
+    .line 107
+    .local v9, "outIntent":Landroid/content/Intent;
+    invoke-static {p0, v1}, Lorg/microg/gms/common/PackageUtils;->firstSignatureDigest(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
 
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    .line 109
+    .local v2, "appSignature":Ljava/lang/String;
+    const/4 v5, 0x0
 
-    .line 144
-    iget-object v1, p0, Lorg/microg/gms/gcm/PushRegisterService;->database:Lorg/microg/gms/gcm/GcmDatabase;
+    move-object v0, p0
 
-    invoke-virtual {v1, v0}, Lorg/microg/gms/gcm/GcmDatabase;->getApp(Ljava/lang/String;)Lorg/microg/gms/gcm/GcmDatabase$App;
+    invoke-static/range {v0 .. v5}, Lorg/microg/gms/gcm/PushRegisterService;->register(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lorg/microg/gms/gcm/RegisterResponse;
 
-    move-result-object v1
+    move-result-object v0
 
-    if-nez v1, :cond_0
+    iget-object v11, v0, Lorg/microg/gms/gcm/RegisterResponse;->token:Ljava/lang/String;
 
-    .line 145
-    invoke-static {p0}, Lorg/microg/gms/gcm/GcmPrefs;->get(Landroid/content/Context;)Lorg/microg/gms/gcm/GcmPrefs;
+    .line 110
+    .local v11, "regId":Ljava/lang/String;
+    if-eqz v11, :cond_0
 
-    move-result-object v2
+    .line 111
+    const-string v0, "registration_id"
 
-    invoke-virtual {v2}, Lorg/microg/gms/gcm/GcmPrefs;->isConfirmNewApps()Z
+    invoke-virtual {v9, v0, v11}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    move-result v2
+    .line 112
+    invoke-direct {p0}, Lorg/microg/gms/gcm/PushRegisterService;->getSharedPreferences()Landroid/content/SharedPreferences;
 
-    if-eqz v2, :cond_0
+    move-result-object v0
 
-    .line 147
-    :try_start_0
-    invoke-virtual {p0}, Lorg/microg/gms/gcm/PushRegisterService;->getPackageManager()Landroid/content/pm/PackageManager;
+    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
-    move-result-object v1
+    move-result-object v0
 
-    const/4 v2, 0x0
+    new-instance v5, Ljava/lang/StringBuilder;
 
-    .line 148
-    invoke-virtual {v1, v0, v2}, Landroid/content/pm/PackageManager;->getApplicationInfo(Ljava/lang/String;I)Landroid/content/pm/ApplicationInfo;
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 149
-    new-instance v1, Landroid/content/Intent;
+    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-class v2, Lorg/microg/gms/ui/AskPushPermission;
+    move-result-object v5
 
-    invoke-direct {v1, p0, v2}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+    const-string v12, ":"
 
-    const-string v2, "com.google.android.gms.gcm.PENDING_INTENT"
+    invoke-virtual {v5, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 150
-    invoke-virtual {v1, v2, p1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
+    move-result-object v5
 
-    const-string v2, "app"
+    invoke-virtual {v5, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 151
-    invoke-virtual {v1, v2, v0}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    move-result-object v5
 
-    const/high16 v2, 0x10000000
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    .line 152
-    invoke-virtual {v1, v2}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+    move-result-object v5
 
-    .line 153
-    invoke-virtual {p0, v1}, Lorg/microg/gms/gcm/PushRegisterService;->startActivity(Landroid/content/Intent;)V
-    :try_end_0
-    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
+    invoke-interface {v0, v5, v11}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
-    goto :goto_0
+    move-result-object v0
 
-    .line 155
-    :catch_0
-    invoke-static {p0, p1, v0, p2}, Lorg/microg/gms/gcm/PushRegisterService;->replyNotAvailable(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V
 
-    goto :goto_0
-
-    :cond_0
-    if-eqz v1, :cond_1
-
-    .line 157
-    iget-boolean v1, v1, Lorg/microg/gms/gcm/GcmDatabase$App;->allowRegister:Z
-
-    if-nez v1, :cond_1
-
-    .line 158
-    invoke-static {p0, p1, v0, p2}, Lorg/microg/gms/gcm/PushRegisterService;->replyNotAvailable(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;Ljava/lang/String;)V
-
-    goto :goto_0
-
-    .line 160
-    :cond_1
-    invoke-static {p0, p1, v0, p2}, Lorg/microg/gms/gcm/PushRegisterService;->registerAndReply(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;Ljava/lang/String;)V
-
+    .line 118
     :goto_0
-    return-void
-.end method
+    const-string v0, "GmsGcmRegisterSvc"
 
-.method public static registerAndReply(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;Ljava/lang/String;)V
-    .locals 4
+    new-instance v5, Ljava/lang/StringBuilder;
 
-    .line 180
-    new-instance v0, Landroid/content/Intent;
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "com.google.android.c2dm.intent.REGISTRATION"
+    const-string v12, "register[res]: "
 
-    invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v5, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v1, "sender"
+    move-result-object v5
 
-    .line 181
-    invoke-virtual {p1, v1}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v5, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    move-result-object v5
 
-    .line 182
-    invoke-static {p0, p2}, Lorg/microg/gms/common/PackageUtils;->firstSignatureDigest(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    const-string v12, " extras="
 
-    move-result-object v2
+    invoke-virtual {v5, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const/4 v3, 0x0
+    move-result-object v5
 
-    .line 183
-    invoke-static {p0, p2, v2, v1, v3}, Lorg/microg/gms/gcm/PushRegisterService;->register(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/microg/gms/gcm/RegisterResponse;
+    invoke-virtual {v9}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
 
-    move-result-object v1
+    move-result-object v12
 
-    iget-object v1, v1, Lorg/microg/gms/gcm/RegisterResponse;->token:Ljava/lang/String;
+    invoke-virtual {v5, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    if-eqz v1, :cond_0
+    move-result-object v5
 
-    const-string v2, "registration_id"
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    .line 185
-    invoke-static {v1, p3}, Lorg/microg/gms/gcm/PushRegisterService;->attachRequestId(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    move-result-object v5
 
-    move-result-object p3
+    invoke-static {v0, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    invoke-virtual {v0, v2, p3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-
-    goto :goto_0
-
-    :cond_0
-    const-string v1, "error"
-
-    const-string v2, "SERVICE_NOT_AVAILABLE"
-
-    .line 187
-    invoke-static {v2, p3}, Lorg/microg/gms/gcm/PushRegisterService;->attachRequestId(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object p3
-
-    invoke-virtual {v0, v1, p3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-
-    :goto_0
-    const-string p3, "GmsGcmRegisterSvc"
-
-    .line 190
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, "register[res]: "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    const-string v2, " extras="
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-static {p3, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 191
-    invoke-static {p0, p1, p2, v0}, Lorg/microg/gms/gcm/PushRegisterService;->sendReply(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;Landroid/content/Intent;)V
-
-    return-void
-.end method
-
-.method public static replyNotAvailable(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;Ljava/lang/String;)V
-    .locals 3
-
-    if-nez p2, :cond_0
-
-    const-string p2, "app"
-
-    .line 166
-    invoke-virtual {p1, p2}, Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;
-
-    move-result-object p2
-
-    check-cast p2, Landroid/app/PendingIntent;
-
-    .line 167
-    invoke-static {p2}, Lorg/microg/gms/common/PackageUtils;->packageFromPendingIntent(Landroid/app/PendingIntent;)Ljava/lang/String;
-
-    move-result-object p2
-
-    :cond_0
-    if-nez p2, :cond_1
-
-    return-void
-
-    .line 173
-    :cond_1
-    new-instance v0, Landroid/content/Intent;
-
-    const-string v1, "com.google.android.c2dm.intent.REGISTRATION"
-
-    invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
-
-    const-string v1, "error"
-
-    const-string v2, "SERVICE_NOT_AVAILABLE"
-
-    .line 174
-    invoke-static {v2, p3}, Lorg/microg/gms/gcm/PushRegisterService;->attachRequestId(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object p3
-
-    invoke-virtual {v0, v1, p3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-
-    const-string p3, "GmsGcmRegisterSvc"
-
-    const-string v1, "registration not allowed"
-
-    .line 175
-    invoke-static {p3, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 176
-    invoke-static {p0, p1, p2, v0}, Lorg/microg/gms/gcm/PushRegisterService;->sendReply(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;Landroid/content/Intent;)V
-
-    return-void
-.end method
-
-.method private static sendReply(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;Landroid/content/Intent;)V
-    .locals 1
-
+    .line 120
     :try_start_0
     const-string v0, "google.messenger"
 
-    .line 197
     invoke-virtual {p1, v0}, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_1
 
+    .line 121
     const-string v0, "google.messenger"
 
-    .line 198
     invoke-virtual {p1, v0}, Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;
 
-    move-result-object p1
+    move-result-object v8
 
-    check-cast p1, Landroid/os/Messenger;
+    check-cast v8, Landroid/os/Messenger;
 
-    .line 199
+    .line 122
+    .local v8, "messenger":Landroid/os/Messenger;
     invoke-static {}, Landroid/os/Message;->obtain()Landroid/os/Message;
 
-    move-result-object v0
+    move-result-object v7
 
-    .line 200
-    iput-object p3, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
+    .line 123
+    .local v7, "message":Landroid/os/Message;
+    iput-object v9, v7, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    .line 201
-    invoke-virtual {p1, v0}, Landroid/os/Messenger;->send(Landroid/os/Message;)V
+    .line 124
+    invoke-virtual {v8, v7}, Landroid/os/Messenger;->send(Landroid/os/Message;)V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
+    .line 133
+    .end local v7    # "message":Landroid/os/Message;
+    .end local v8    # "messenger":Landroid/os/Messenger;
+    :goto_1
     return-void
 
-    :catch_0
-    move-exception p1
-
-    const-string v0, "GmsGcmRegisterSvc"
-
-    .line 205
-    invoke-static {v0, p1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    .line 208
+    .line 114
     :cond_0
-    invoke-virtual {p3, p2}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+    const-string v0, "error"
 
-    const/4 p1, 0x0
+    const-string v5, "SERVICE_NOT_AVAILABLE"
 
-    .line 209
-    invoke-virtual {p0, p3, p1}, Landroid/content/Context;->sendOrderedBroadcast(Landroid/content/Intent;Ljava/lang/String;)V
+    invoke-virtual {v9, v0, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    return-void
-.end method
+    .line 115
+    invoke-direct {p0}, Lorg/microg/gms/gcm/PushRegisterService;->getSharedPreferences()Landroid/content/SharedPreferences;
 
-.method public static unregister(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/microg/gms/gcm/RegisterResponse;
-    .locals 7
+    move-result-object v0
 
-    .line 90
-    new-instance v0, Lorg/microg/gms/gcm/GcmDatabase;
+    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
-    invoke-direct {v0, p0}, Lorg/microg/gms/gcm/GcmDatabase;-><init>(Landroid/content/Context;)V
+    move-result-object v0
 
-    const/4 v6, 0x1
+    new-instance v5, Ljava/lang/StringBuilder;
 
-    move-object v1, p0
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    move-object v2, p1
+    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-object v3, p2
+    move-result-object v5
 
-    move-object v4, p3
+    const-string v12, ":"
 
-    move-object v5, p4
+    invoke-virtual {v5, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 91
-    invoke-static/range {v1 .. v6}, Lorg/microg/gms/gcm/PushRegisterService;->register(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lorg/microg/gms/gcm/RegisterResponse;
+    move-result-object v5
 
-    move-result-object p0
+    invoke-virtual {v5, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 92
-    iget-object p3, p0, Lorg/microg/gms/gcm/RegisterResponse;->deleted:Ljava/lang/String;
+    move-result-object v5
 
-    invoke-virtual {p1, p3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result p3
+    move-result-object v5
 
-    if-nez p3, :cond_0
+    const-string v12, "-"
 
-    .line 93
-    iget-object p2, p0, Lorg/microg/gms/gcm/RegisterResponse;->responseText:Ljava/lang/String;
+    invoke-interface {v0, v5, v12}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
-    invoke-virtual {v0, p1, p2}, Lorg/microg/gms/gcm/GcmDatabase;->noteAppRegistrationError(Ljava/lang/String;Ljava/lang/String;)V
+    move-result-object v0
+
+    invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V
 
     goto :goto_0
 
-    .line 95
-    :cond_0
-    invoke-virtual {v0, p1, p2}, Lorg/microg/gms/gcm/GcmDatabase;->noteAppUnregistered(Ljava/lang/String;Ljava/lang/String;)V
+    .line 127
+    :catch_0
+    move-exception v6
 
-    .line 97
-    :goto_0
-    invoke-virtual {v0}, Lorg/microg/gms/gcm/GcmDatabase;->close()V
+    .line 128
+    .local v6, "e":Ljava/lang/Exception;
+    const-string v0, "GmsGcmRegisterSvc"
 
-    return-object p0
+    invoke-static {v0, v6}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    .line 131
+    .end local v6    # "e":Ljava/lang/Exception;
+    :cond_1
+    invoke-virtual {v9, v1}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 132
+    invoke-virtual {p0, v9, v4}, Lorg/microg/gms/gcm/PushRegisterService;->sendOrderedBroadcast(Landroid/content/Intent;Ljava/lang/String;)V
+
+    goto :goto_1
 .end method
 
-.method private unregister(Landroid/content/Intent;Ljava/lang/String;)V
-    .locals 5
+.method private unregister(Landroid/content/Intent;)V
+    .locals 13
+    .param p1, "intent"    # Landroid/content/Intent;
 
+    .prologue
+    const/4 v3, 0x0
+
+    .line 155
     const-string v0, "app"
 
-    .line 232
     invoke-virtual {p1, v0}, Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;
 
-    move-result-object v0
+    move-result-object v10
 
-    check-cast v0, Landroid/app/PendingIntent;
+    check-cast v10, Landroid/app/PendingIntent;
 
-    .line 233
-    invoke-static {v0}, Lorg/microg/gms/common/PackageUtils;->packageFromPendingIntent(Landroid/app/PendingIntent;)Ljava/lang/String;
+    .line 156
+    .local v10, "pendingIntent":Landroid/app/PendingIntent;
+    invoke-direct {p0, v10}, Lorg/microg/gms/gcm/PushRegisterService;->packageFromPendingIntent(Landroid/app/PendingIntent;)Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v1
 
-    const-string v1, "GmsGcmRegisterSvc"
+    .line 157
+    .local v1, "app":Ljava/lang/String;
+    const-string v0, "GmsGcmRegisterSvc"
 
-    .line 234
-    new-instance v2, Ljava/lang/StringBuilder;
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "unregister[req]: "
+    const-string v5, "unregister[req]: "
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
 
     invoke-virtual {p1}, Landroid/content/Intent;->toString()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v5
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v3, " extras="
+    move-result-object v4
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v5, " extras="
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
 
     invoke-virtual {p1}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
 
-    move-result-object v3
+    move-result-object v5
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v0, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 159
+    new-instance v9, Landroid/content/Intent;
+
+    const-string v0, "com.google.android.c2dm.intent.REGISTRATION"
+
+    invoke-direct {v9, v0}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+
+    .line 160
+    .local v9, "outIntent":Landroid/content/Intent;
+    invoke-static {p0, v1}, Lorg/microg/gms/common/PackageUtils;->firstSignatureDigest(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
 
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    .line 162
+    .local v2, "appSignature":Ljava/lang/String;
+    const-string v0, "%%REMOVED%%"
 
-    .line 236
-    new-instance v1, Landroid/content/Intent;
+    invoke-direct {p0}, Lorg/microg/gms/gcm/PushRegisterService;->getSharedPreferences()Landroid/content/SharedPreferences;
 
-    const-string v2, "com.google.android.c2dm.intent.REGISTRATION"
+    move-result-object v4
 
-    invoke-direct {v1, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+    new-instance v5, Ljava/lang/StringBuilder;
 
-    .line 237
-    invoke-static {p0, v0}, Lorg/microg/gms/common/PackageUtils;->firstSignatureDigest(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    move-result-object v2
+    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 239
-    iget-object v3, p0, Lorg/microg/gms/gcm/PushRegisterService;->database:Lorg/microg/gms/gcm/GcmDatabase;
+    move-result-object v5
 
-    invoke-virtual {v3, v0, v2}, Lorg/microg/gms/gcm/GcmDatabase;->getRegistration(Ljava/lang/String;Ljava/lang/String;)Lorg/microg/gms/gcm/GcmDatabase$Registration;
+    const-string v12, ":"
 
-    move-result-object v3
+    invoke-virtual {v5, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    if-nez v3, :cond_0
+    move-result-object v5
 
-    const-string v2, "unregistered"
+    invoke-virtual {v5, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 240
-    invoke-static {v0, p2}, Lorg/microg/gms/gcm/PushRegisterService;->attachRequestId(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    move-result-object v5
 
-    move-result-object p2
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-virtual {v1, v2, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    move-result-object v5
 
-    goto :goto_0
+    invoke-interface {v4, v5, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
+    move-result-object v4
+
+    invoke-virtual {v0, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    .line 163
+    const-string v0, "unregistered"
+
+    invoke-virtual {v9, v0, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 179
     :cond_0
-    const/4 v3, 0x0
+    :goto_0
+    const-string v0, "GmsGcmRegisterSvc"
 
-    .line 242
-    invoke-static {p0, v0, v2, v3, v3}, Lorg/microg/gms/gcm/PushRegisterService;->unregister(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/microg/gms/gcm/RegisterResponse;
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 243
-    iget-object v3, v2, Lorg/microg/gms/gcm/RegisterResponse;->deleted:Ljava/lang/String;
+    const-string v5, "unregister[res]: "
 
-    invoke-virtual {v0, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result v3
+    move-result-object v4
 
-    if-nez v3, :cond_1
+    invoke-virtual {v9}, Landroid/content/Intent;->toString()Ljava/lang/String;
 
-    const-string v3, "error"
+    move-result-object v5
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    const-string v5, " extras="
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v9}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+
+    move-result-object v5
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v0, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 181
+    :try_start_0
+    const-string v0, "google.messenger"
+
+    invoke-virtual {p1, v0}, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_3
+
+    .line 182
+    const-string v0, "google.messenger"
+
+    invoke-virtual {p1, v0}, Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;
+
+    move-result-object v8
+
+    check-cast v8, Landroid/os/Messenger;
+
+    .line 183
+    .local v8, "messenger":Landroid/os/Messenger;
+    invoke-static {}, Landroid/os/Message;->obtain()Landroid/os/Message;
+
+    move-result-object v7
+
+    .line 184
+    .local v7, "message":Landroid/os/Message;
+    iput-object v9, v7, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    .line 185
+    invoke-virtual {v8, v7}, Landroid/os/Messenger;->send(Landroid/os/Message;)V
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 194
+    .end local v7    # "message":Landroid/os/Message;
+    .end local v8    # "messenger":Landroid/os/Messenger;
+    :goto_1
+    return-void
+
+    .line 165
+    :cond_1
+    const/4 v5, 0x1
+
+    move-object v0, p0
+
+    move-object v4, v3
+
+    invoke-static/range {v0 .. v5}, Lorg/microg/gms/gcm/PushRegisterService;->register(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lorg/microg/gms/gcm/RegisterResponse;
+
+    move-result-object v11
+
+    .line 166
+    .local v11, "response":Lorg/microg/gms/gcm/RegisterResponse;
+    iget-object v0, v11, Lorg/microg/gms/gcm/RegisterResponse;->deleted:Ljava/lang/String;
+
+    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_2
+
+    .line 167
+    const-string v0, "error"
 
     const-string v4, "SERVICE_NOT_AVAILABLE"
 
-    .line 244
-    invoke-static {v4, p2}, Lorg/microg/gms/gcm/PushRegisterService;->attachRequestId(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v9, v0, v4}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    move-result-object p2
+    .line 168
+    invoke-direct {p0}, Lorg/microg/gms/gcm/PushRegisterService;->getSharedPreferences()Landroid/content/SharedPreferences;
 
-    invoke-virtual {v1, v3, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    move-result-object v0
 
-    .line 246
-    iget-object p2, v2, Lorg/microg/gms/gcm/RegisterResponse;->retryAfter:Ljava/lang/String;
+    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
-    if-eqz p2, :cond_2
+    move-result-object v0
 
-    iget-object p2, v2, Lorg/microg/gms/gcm/RegisterResponse;->retryAfter:Ljava/lang/String;
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    const-string v3, ":"
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {p2, v3}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result p2
+    move-result-object v4
 
-    if-nez p2, :cond_2
+    const-string v5, ":"
 
-    const-string p2, "Retry-After"
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 247
-    iget-object v2, v2, Lorg/microg/gms/gcm/RegisterResponse;->retryAfter:Ljava/lang/String;
+    move-result-object v4
 
-    invoke-static {v2}, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
+    invoke-static {p0, v1}, Lorg/microg/gms/common/PackageUtils;->firstSignatureDigest(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-wide v2
+    move-result-object v5
 
-    invoke-virtual {v1, p2, v2, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;J)Landroid/content/Intent;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    goto :goto_0
+    move-result-object v4
 
-    :cond_1
-    const-string v2, "unregistered"
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    .line 250
-    invoke-static {v0, p2}, Lorg/microg/gms/gcm/PushRegisterService;->attachRequestId(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    move-result-object v4
 
-    move-result-object p2
+    const-string v5, "%%ERROR%%"
 
-    invoke-virtual {v1, v2, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    invoke-interface {v0, v4, v5}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
+    move-result-object v0
+
+    invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    .line 170
+    iget-object v0, v11, Lorg/microg/gms/gcm/RegisterResponse;->retryAfter:Ljava/lang/String;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, v11, Lorg/microg/gms/gcm/RegisterResponse;->retryAfter:Ljava/lang/String;
+
+    const-string v4, ":"
+
+    invoke-virtual {v0, v4}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 171
+    const-string v0, "Retry-After"
+
+    iget-object v4, v11, Lorg/microg/gms/gcm/RegisterResponse;->retryAfter:Ljava/lang/String;
+
+    invoke-static {v4}, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
+
+    move-result-wide v4
+
+    invoke-virtual {v9, v0, v4, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;J)Landroid/content/Intent;
+
+    goto/16 :goto_0
+
+    .line 174
     :cond_2
-    :goto_0
-    const-string p2, "GmsGcmRegisterSvc"
+    const-string v0, "unregistered"
 
-    .line 254
-    new-instance v2, Ljava/lang/StringBuilder;
+    invoke-virtual {v9, v0, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+    .line 175
+    invoke-direct {p0}, Lorg/microg/gms/gcm/PushRegisterService;->getSharedPreferences()Landroid/content/SharedPreferences;
 
-    const-string v3, "unregister[res]: "
+    move-result-object v0
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
-    invoke-virtual {v1}, Landroid/content/Intent;->toString()Ljava/lang/String;
+    move-result-object v0
 
-    move-result-object v3
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, " extras="
+    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v4
 
-    invoke-virtual {v1}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+    const-string v5, ":"
 
-    move-result-object v3
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    move-result-object v4
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-static {p0, v1}, Lorg/microg/gms/common/PackageUtils;->firstSignatureDigest(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v5
 
-    invoke-static {p2, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 255
-    invoke-static {p0, p1, v0, v1}, Lorg/microg/gms/gcm/PushRegisterService;->sendReply(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;Landroid/content/Intent;)V
+    move-result-object v4
 
-    return-void
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    const-string v5, "%%REMOVED%%"
+
+    invoke-interface {v0, v4, v5}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    move-result-object v0
+
+    invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    goto/16 :goto_0
+
+    .line 188
+    .end local v11    # "response":Lorg/microg/gms/gcm/RegisterResponse;
+    :catch_0
+    move-exception v6
+
+    .line 189
+    .local v6, "e":Ljava/lang/Exception;
+    const-string v0, "GmsGcmRegisterSvc"
+
+    invoke-static {v0, v6}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    .line 192
+    .end local v6    # "e":Ljava/lang/Exception;
+    :cond_3
+    invoke-virtual {v9, v1}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 193
+    invoke-virtual {p0, v9, v3}, Lorg/microg/gms/gcm/PushRegisterService;->sendOrderedBroadcast(Landroid/content/Intent;Ljava/lang/String;)V
+
+    goto/16 :goto_1
 .end method
 
 
 # virtual methods
-.method public onCreate()V
-    .locals 1
-
-    .line 66
-    invoke-super {p0}, Landroid/app/IntentService;->onCreate()V
-
-    .line 67
-    new-instance v0, Lorg/microg/gms/gcm/GcmDatabase;
-
-    invoke-direct {v0, p0}, Lorg/microg/gms/gcm/GcmDatabase;-><init>(Landroid/content/Context;)V
-
-    iput-object v0, p0, Lorg/microg/gms/gcm/PushRegisterService;->database:Lorg/microg/gms/gcm/GcmDatabase;
-
-    return-void
-.end method
-
-.method public onDestroy()V
-    .locals 1
-
-    .line 72
-    invoke-super {p0}, Landroid/app/IntentService;->onDestroy()V
-
-    .line 73
-    iget-object v0, p0, Lorg/microg/gms/gcm/PushRegisterService;->database:Lorg/microg/gms/gcm/GcmDatabase;
-
-    invoke-virtual {v0}, Lorg/microg/gms/gcm/GcmDatabase;->close()V
-
-    return-void
-.end method
-
 .method protected onHandleIntent(Landroid/content/Intent;)V
     .locals 7
+    .param p1, "intent"    # Landroid/content/Intent;
 
-    const-string v0, "GmsGcmRegisterSvc"
+    .prologue
+    const/4 v6, 0x1
 
-    .line 103
-    new-instance v1, Ljava/lang/StringBuilder;
+    .line 69
+    const-string v2, "GmsGcmRegisterSvc"
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    const-string v2, "onHandleIntent: "
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v4, "onHandleIntent: "
 
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    const-string v0, "kid"
-
-    .line 106
-    invoke-virtual {p1, v0}, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z
-
-    move-result v0
-
-    const/4 v1, 0x0
-
-    const/4 v2, 0x1
-
-    if-eqz v0, :cond_0
-
-    const-string v0, "kid"
-
-    invoke-virtual {p1, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v0
-
-    const-string v3, "|"
-
-    invoke-virtual {v0, v3}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    const-string v0, "kid"
-
-    .line 107
-    invoke-virtual {p1, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v0
-
-    const-string v3, "\\|"
-
-    invoke-virtual {v0, v3}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
-
-    move-result-object v0
-
-    .line 108
-    array-length v3, v0
-
-    const/4 v4, 0x3
-
-    if-lt v3, v4, :cond_0
-
-    const-string v3, "ID"
-
-    aget-object v4, v0, v2
-
-    invoke-virtual {v3, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_0
-
-    const/4 v3, 0x2
-
-    .line 109
-    aget-object v0, v0, v3
-
-    goto :goto_0
-
-    :cond_0
-    move-object v0, v1
-
-    .line 113
-    :goto_0
-    invoke-static {p0}, Lorg/microg/gms/gcm/GcmPrefs;->get(Landroid/content/Context;)Lorg/microg/gms/gcm/GcmPrefs;
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
-    invoke-virtual {v3}, Lorg/microg/gms/gcm/GcmPrefs;->isEnabled()Z
+    invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result v3
+    move-result-object v3
 
-    if-eqz v3, :cond_4
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    .line 114
+    move-result-object v3
+
+    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 70
     invoke-static {p0}, Lorg/microg/gms/checkin/LastCheckinInfo;->read(Landroid/content/Context;)Lorg/microg/gms/checkin/LastCheckinInfo;
 
-    move-result-object v1
+    move-result-object v2
 
-    iget-wide v3, v1, Lorg/microg/gms/checkin/LastCheckinInfo;->lastCheckin:J
+    iget-wide v2, v2, Lorg/microg/gms/checkin/LastCheckinInfo;->lastCheckin:J
 
-    const-wide/16 v5, 0x0
+    const-wide/16 v4, 0x0
 
-    cmp-long v1, v3, v5
+    cmp-long v2, v2, v4
 
-    if-lez v1, :cond_3
+    if-lez v2, :cond_3
 
+    .line 72
     :try_start_0
-    const-string v1, "com.google.android.c2dm.intent.UNREGISTER"
+    const-string v2, "com.google.android.c2dm.intent.UNREGISTER"
 
-    .line 116
     invoke-virtual {p1}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v3
 
-    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v1
+    move-result v2
 
-    if-nez v1, :cond_2
+    if-nez v2, :cond_0
 
-    const-string v1, "com.google.android.c2dm.intent.REGISTER"
+    const-string v2, "com.google.android.c2dm.intent.REGISTER"
 
-    .line 117
+    .line 73
     invoke-virtual {p1}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v3
 
-    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v1
+    move-result v2
 
-    if-eqz v1, :cond_1
+    if-eqz v2, :cond_2
 
-    const-string v1, "1"
+    const-string v2, "1"
 
-    const-string v2, "delete"
+    const-string v3, "delete"
 
-    invoke-virtual {p1, v2}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {p1, v3}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v3
 
-    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v1
+    move-result v2
 
-    if-eqz v1, :cond_1
+    if-eqz v2, :cond_2
 
-    goto :goto_1
+    .line 74
+    :cond_0
+    invoke-direct {p0, p1}, Lorg/microg/gms/gcm/PushRegisterService;->unregister(Landroid/content/Intent;)V
 
+    .line 89
     :cond_1
-    const-string v1, "com.google.android.c2dm.intent.REGISTER"
+    :goto_0
+    return-void
 
-    .line 119
+    .line 75
+    :cond_2
+    const-string v2, "com.google.android.c2dm.intent.REGISTER"
+
     invoke-virtual {p1}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v3
 
-    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v1
+    move-result v2
 
-    if-eqz v1, :cond_5
+    if-eqz v2, :cond_1
 
-    .line 120
-    invoke-direct {p0, p1, v0}, Lorg/microg/gms/gcm/PushRegisterService;->register(Landroid/content/Intent;Ljava/lang/String;)V
-
-    goto :goto_2
-
-    .line 118
-    :cond_2
-    :goto_1
-    invoke-direct {p0, p1, v0}, Lorg/microg/gms/gcm/PushRegisterService;->unregister(Landroid/content/Intent;Ljava/lang/String;)V
+    .line 76
+    invoke-direct {p0, p1}, Lorg/microg/gms/gcm/PushRegisterService;->register(Landroid/content/Intent;)V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    goto :goto_2
+    goto :goto_0
 
+    .line 78
     :catch_0
-    move-exception p1
+    move-exception v0
 
-    const-string v0, "GmsGcmRegisterSvc"
+    .line 79
+    .local v0, "e":Ljava/lang/Exception;
+    const-string v2, "GmsGcmRegisterSvc"
 
-    .line 123
-    invoke-static {v0, p1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-static {v2, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    goto :goto_2
+    goto :goto_0
 
+    .line 81
+    .end local v0    # "e":Ljava/lang/Exception;
     :cond_3
-    const-string v0, "skip_checkin"
+    const-string v2, "skip_checkin"
 
-    const/4 v1, 0x0
+    const/4 v3, 0x0
 
-    .line 125
-    invoke-virtual {p1, v0, v1}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
+    invoke-virtual {p1, v2, v3}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
 
-    move-result v0
+    move-result v2
 
-    if-nez v0, :cond_5
+    if-nez v2, :cond_1
 
-    const-string v0, "GmsGcmRegisterSvc"
+    .line 82
+    const-string v2, "GmsGcmRegisterSvc"
 
-    const-string v1, "No checkin yet, trying to checkin"
+    const-string v3, "No checkin yet, trying to checkin"
 
-    .line 126
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    const-string v0, "skip_checkin"
+    .line 83
+    const-string v2, "skip_checkin"
 
-    .line 127
-    invoke-virtual {p1, v0, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
+    invoke-virtual {p1, v2, v6}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
 
-    .line 128
-    new-instance v0, Landroid/content/Intent;
+    .line 84
+    new-instance v1, Landroid/content/Intent;
 
-    const-class v1, Lorg/microg/gms/checkin/CheckinService;
+    const-class v2, Lorg/microg/gms/checkin/CheckinService;
 
-    invoke-direct {v0, p0, v1}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+    invoke-direct {v1, p0, v2}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
 
-    const-string v1, "force"
+    .line 85
+    .local v1, "subIntent":Landroid/content/Intent;
+    const-string v2, "force"
 
-    .line 129
-    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
+    invoke-virtual {v1, v2, v6}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
 
-    const-string v1, "callback"
+    .line 86
+    const-string v2, "callback"
 
-    .line 130
-    invoke-virtual {v0, v1, p1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
+    invoke-virtual {v1, v2, p1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
 
-    .line 131
-    invoke-virtual {p0, v0}, Lorg/microg/gms/gcm/PushRegisterService;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
+    .line 87
+    invoke-virtual {p0, v1}, Lorg/microg/gms/gcm/PushRegisterService;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
 
-    goto :goto_2
-
-    .line 135
-    :cond_4
-    invoke-static {p0, p1, v1, v0}, Lorg/microg/gms/gcm/PushRegisterService;->replyNotAvailable(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;Ljava/lang/String;)V
-
-    :cond_5
-    :goto_2
-    return-void
+    goto :goto_0
 .end method

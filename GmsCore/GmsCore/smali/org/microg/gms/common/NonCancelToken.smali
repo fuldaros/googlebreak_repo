@@ -7,6 +7,7 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 23
     invoke-direct {p0}, Lcom/google/android/gms/common/internal/ICancelToken$Stub;-><init>()V
 
@@ -23,5 +24,7 @@
         }
     .end annotation
 
+    .prologue
+    .line 27
     return-void
 .end method

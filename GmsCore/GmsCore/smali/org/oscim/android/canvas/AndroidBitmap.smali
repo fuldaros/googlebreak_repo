@@ -12,89 +12,109 @@
 
 # direct methods
 .method public constructor <init>(III)V
-    .locals 0
+    .locals 1
+    .param p1, "width"    # I
+    .param p2, "height"    # I
+    .param p3, "format"    # I
 
-    .line 54
+    .prologue
+    .line 49
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 55
-    sget-object p3, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+    .line 50
+    sget-object v0, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
 
-    .line 56
-    invoke-static {p1, p2, p3}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    .line 51
+    invoke-static {p1, p2, v0}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
 
-    move-result-object p1
+    move-result-object v0
 
-    iput-object p1, p0, Lorg/oscim/android/canvas/AndroidBitmap;->mBitmap:Landroid/graphics/Bitmap;
+    iput-object v0, p0, Lorg/oscim/android/canvas/AndroidBitmap;->mBitmap:Landroid/graphics/Bitmap;
 
+    .line 52
     return-void
 .end method
 
 .method public constructor <init>(Landroid/graphics/Bitmap;)V
     .locals 0
+    .param p1, "bitmap"    # Landroid/graphics/Bitmap;
 
-    .line 59
+    .prologue
+    .line 54
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 60
+    .line 55
     iput-object p1, p0, Lorg/oscim/android/canvas/AndroidBitmap;->mBitmap:Landroid/graphics/Bitmap;
 
+    .line 56
     return-void
 .end method
 
 .method public constructor <init>(Ljava/io/InputStream;)V
-    .locals 2
+    .locals 4
+    .param p1, "inputStream"    # Ljava/io/InputStream;
 
-    .line 36
+    .prologue
+    .line 31
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 37
+    .line 32
     invoke-static {p1}, Landroid/graphics/BitmapFactory;->decodeStream(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
 
-    move-result-object p1
+    move-result-object v0
 
-    .line 39
+    .line 34
+    .local v0, "bitmap":Landroid/graphics/Bitmap;
     :try_start_0
-    invoke-static {p1}, Landroid/opengl/GLUtils;->getType(Landroid/graphics/Bitmap;)I
+    invoke-static {v0}, Landroid/opengl/GLUtils;->getType(Landroid/graphics/Bitmap;)I
     :try_end_0
     .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0
 
-    goto :goto_0
-
-    .line 41
-    :catch_0
-    sget-object v0, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
-
-    const/4 v1, 0x0
-
-    invoke-virtual {p1, v0, v1}, Landroid/graphics/Bitmap;->copy(Landroid/graphics/Bitmap$Config;Z)Landroid/graphics/Bitmap;
-
-    move-result-object p1
-
-    .line 43
+    .line 38
     :goto_0
-    iput-object p1, p0, Lorg/oscim/android/canvas/AndroidBitmap;->mBitmap:Landroid/graphics/Bitmap;
+    iput-object v0, p0, Lorg/oscim/android/canvas/AndroidBitmap;->mBitmap:Landroid/graphics/Bitmap;
 
+    .line 39
     return-void
+
+    .line 35
+    :catch_0
+    move-exception v1
+
+    .line 36
+    .local v1, "e":Ljava/lang/IllegalArgumentException;
+    sget-object v2, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+
+    const/4 v3, 0x0
+
+    invoke-virtual {v0, v2, v3}, Landroid/graphics/Bitmap;->copy(Landroid/graphics/Bitmap$Config;Z)Landroid/graphics/Bitmap;
+
+    move-result-object v0
+
+    goto :goto_0
 .end method
 
 
 # virtual methods
 .method public eraseColor(I)V
     .locals 1
+    .param p1, "color"    # I
 
-    .line 85
+    .prologue
+    .line 80
     iget-object v0, p0, Lorg/oscim/android/canvas/AndroidBitmap;->mBitmap:Landroid/graphics/Bitmap;
 
     invoke-virtual {v0, p1}, Landroid/graphics/Bitmap;->eraseColor(I)V
 
+    .line 81
     return-void
 .end method
 
 .method public getHeight()I
     .locals 1
 
-    .line 70
+    .prologue
+    .line 65
     iget-object v0, p0, Lorg/oscim/android/canvas/AndroidBitmap;->mBitmap:Landroid/graphics/Bitmap;
 
     invoke-virtual {v0}, Landroid/graphics/Bitmap;->getHeight()I
@@ -107,7 +127,8 @@
 .method public getWidth()I
     .locals 1
 
-    .line 65
+    .prologue
+    .line 60
     iget-object v0, p0, Lorg/oscim/android/canvas/AndroidBitmap;->mBitmap:Landroid/graphics/Bitmap;
 
     invoke-virtual {v0}, Landroid/graphics/Bitmap;->getWidth()I
@@ -120,74 +141,81 @@
 .method public recycle()V
     .locals 1
 
-    .line 103
+    .prologue
+    .line 98
     iget-object v0, p0, Lorg/oscim/android/canvas/AndroidBitmap;->mBitmap:Landroid/graphics/Bitmap;
 
     if-nez v0, :cond_0
 
+    .line 102
+    :goto_0
     return-void
 
-    .line 106
+    .line 101
     :cond_0
     iget-object v0, p0, Lorg/oscim/android/canvas/AndroidBitmap;->mBitmap:Landroid/graphics/Bitmap;
 
     invoke-virtual {v0}, Landroid/graphics/Bitmap;->recycle()V
 
-    return-void
+    goto :goto_0
 .end method
 
 .method public uploadToTexture(Z)V
-    .locals 8
+    .locals 13
+    .param p1, "replace"    # Z
 
-    .line 90
-    iget-object v0, p0, Lorg/oscim/android/canvas/AndroidBitmap;->mBitmap:Landroid/graphics/Bitmap;
+    .prologue
+    const/16 v0, 0xde1
 
-    invoke-static {v0}, Landroid/opengl/GLUtils;->getInternalFormat(Landroid/graphics/Bitmap;)I
+    const/4 v1, 0x0
 
-    move-result v0
+    .line 85
+    iget-object v2, p0, Lorg/oscim/android/canvas/AndroidBitmap;->mBitmap:Landroid/graphics/Bitmap;
 
-    .line 91
-    iget-object v1, p0, Lorg/oscim/android/canvas/AndroidBitmap;->mBitmap:Landroid/graphics/Bitmap;
+    invoke-static {v2}, Landroid/opengl/GLUtils;->getInternalFormat(Landroid/graphics/Bitmap;)I
 
-    invoke-static {v1}, Landroid/opengl/GLUtils;->getType(Landroid/graphics/Bitmap;)I
+    move-result v5
 
-    move-result v7
+    .line 86
+    .local v5, "format":I
+    iget-object v2, p0, Lorg/oscim/android/canvas/AndroidBitmap;->mBitmap:Landroid/graphics/Bitmap;
 
+    invoke-static {v2}, Landroid/opengl/GLUtils;->getType(Landroid/graphics/Bitmap;)I
+
+    move-result v6
+
+    .line 88
+    .local v6, "type":I
     if-eqz p1, :cond_0
 
-    const/16 v1, 0xde1
-
-    const/4 v2, 0x0
-
-    const/4 v3, 0x0
-
-    const/4 v4, 0x0
-
-    .line 94
-    iget-object v5, p0, Lorg/oscim/android/canvas/AndroidBitmap;->mBitmap:Landroid/graphics/Bitmap;
-
-    move v6, v0
-
-    invoke-static/range {v1 .. v7}, Landroid/opengl/GLUtils;->texSubImage2D(IIIILandroid/graphics/Bitmap;II)V
-
-    goto :goto_0
-
-    :cond_0
-    const/16 v1, 0xde1
-
-    const/4 v2, 0x0
-
-    .line 97
+    .line 89
     iget-object v4, p0, Lorg/oscim/android/canvas/AndroidBitmap;->mBitmap:Landroid/graphics/Bitmap;
 
-    const/4 v6, 0x0
+    move v2, v1
 
-    move v3, v0
+    move v3, v1
 
-    move v5, v7
+    invoke-static/range {v0 .. v6}, Landroid/opengl/GLUtils;->texSubImage2D(IIIILandroid/graphics/Bitmap;II)V
 
-    invoke-static/range {v1 .. v6}, Landroid/opengl/GLUtils;->texImage2D(IIILandroid/graphics/Bitmap;II)V
-
+    .line 94
     :goto_0
     return-void
+
+    .line 92
+    :cond_0
+    iget-object v10, p0, Lorg/oscim/android/canvas/AndroidBitmap;->mBitmap:Landroid/graphics/Bitmap;
+
+    move v7, v0
+
+    move v8, v1
+
+    move v9, v5
+
+    move v11, v6
+
+    move v12, v1
+
+    invoke-static/range {v7 .. v12}, Landroid/opengl/GLUtils;->texImage2D(IIILandroid/graphics/Bitmap;II)V
+
+    goto :goto_0
 .end method

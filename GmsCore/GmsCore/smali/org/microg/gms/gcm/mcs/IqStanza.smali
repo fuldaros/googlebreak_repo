@@ -116,45 +116,46 @@
 .method static constructor <clinit>()V
     .locals 4
 
-    const-wide/16 v0, 0x0
+    .prologue
+    const/4 v1, 0x0
+
+    const-wide/16 v2, 0x0
 
     .line 22
-    invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+    invoke-static {v2, v3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
-    move-result-object v2
+    move-result-object v0
 
-    sput-object v2, Lorg/microg/gms/gcm/mcs/IqStanza;->DEFAULT_RMQ_ID:Ljava/lang/Long;
+    sput-object v0, Lorg/microg/gms/gcm/mcs/IqStanza;->DEFAULT_RMQ_ID:Ljava/lang/Long;
 
     .line 23
-    sget-object v2, Lorg/microg/gms/gcm/mcs/IqStanza$IqType;->GET:Lorg/microg/gms/gcm/mcs/IqStanza$IqType;
+    sget-object v0, Lorg/microg/gms/gcm/mcs/IqStanza$IqType;->GET:Lorg/microg/gms/gcm/mcs/IqStanza$IqType;
 
-    sput-object v2, Lorg/microg/gms/gcm/mcs/IqStanza;->DEFAULT_TYPE:Lorg/microg/gms/gcm/mcs/IqStanza$IqType;
-
-    const/4 v2, 0x0
+    sput-object v0, Lorg/microg/gms/gcm/mcs/IqStanza;->DEFAULT_TYPE:Lorg/microg/gms/gcm/mcs/IqStanza$IqType;
 
     .line 28
-    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v3
+    move-result-object v0
 
-    sput-object v3, Lorg/microg/gms/gcm/mcs/IqStanza;->DEFAULT_STREAM_ID:Ljava/lang/Integer;
+    sput-object v0, Lorg/microg/gms/gcm/mcs/IqStanza;->DEFAULT_STREAM_ID:Ljava/lang/Integer;
 
     .line 29
-    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v2
+    move-result-object v0
 
-    sput-object v2, Lorg/microg/gms/gcm/mcs/IqStanza;->DEFAULT_LAST_STREAM_ID_RECEIVED:Ljava/lang/Integer;
+    sput-object v0, Lorg/microg/gms/gcm/mcs/IqStanza;->DEFAULT_LAST_STREAM_ID_RECEIVED:Ljava/lang/Integer;
 
     .line 30
-    invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+    invoke-static {v2, v3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
-    move-result-object v2
+    move-result-object v0
 
-    sput-object v2, Lorg/microg/gms/gcm/mcs/IqStanza;->DEFAULT_ACCOUNT_ID:Ljava/lang/Long;
+    sput-object v0, Lorg/microg/gms/gcm/mcs/IqStanza;->DEFAULT_ACCOUNT_ID:Ljava/lang/Long;
 
     .line 31
-    invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+    invoke-static {v2, v3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
     move-result-object v0
 
@@ -165,7 +166,20 @@
 
 .method public constructor <init>(Ljava/lang/Long;Lorg/microg/gms/gcm/mcs/IqStanza$IqType;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/microg/gms/gcm/mcs/ErrorInfo;Lorg/microg/gms/gcm/mcs/Extension;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Ljava/lang/Long;)V
     .locals 0
+    .param p1, "rmq_id"    # Ljava/lang/Long;
+    .param p2, "type"    # Lorg/microg/gms/gcm/mcs/IqStanza$IqType;
+    .param p3, "id"    # Ljava/lang/String;
+    .param p4, "from"    # Ljava/lang/String;
+    .param p5, "to"    # Ljava/lang/String;
+    .param p6, "error"    # Lorg/microg/gms/gcm/mcs/ErrorInfo;
+    .param p7, "extension"    # Lorg/microg/gms/gcm/mcs/Extension;
+    .param p8, "persistent_id"    # Ljava/lang/String;
+    .param p9, "stream_id"    # Ljava/lang/Integer;
+    .param p10, "last_stream_id_received"    # Ljava/lang/Integer;
+    .param p11, "account_id"    # Ljava/lang/Long;
+    .param p12, "status"    # Ljava/lang/Long;
 
+    .prologue
     .line 72
     invoke-direct {p0}, Lcom/squareup/wire/Message;-><init>()V
 
@@ -205,12 +219,15 @@
     .line 84
     iput-object p12, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->status:Ljava/lang/Long;
 
+    .line 85
     return-void
 .end method
 
 .method private constructor <init>(Lorg/microg/gms/gcm/mcs/IqStanza$Builder;)V
     .locals 13
+    .param p1, "builder"    # Lorg/microg/gms/gcm/mcs/IqStanza$Builder;
 
+    .prologue
     .line 88
     iget-object v1, p1, Lorg/microg/gms/gcm/mcs/IqStanza$Builder;->rmq_id:Ljava/lang/Long;
 
@@ -243,12 +260,16 @@
     .line 89
     invoke-virtual {p0, p1}, Lorg/microg/gms/gcm/mcs/IqStanza;->setBuilder(Lcom/squareup/wire/Message$Builder;)V
 
+    .line 90
     return-void
 .end method
 
 .method synthetic constructor <init>(Lorg/microg/gms/gcm/mcs/IqStanza$Builder;Lorg/microg/gms/gcm/mcs/IqStanza$1;)V
     .locals 0
+    .param p1, "x0"    # Lorg/microg/gms/gcm/mcs/IqStanza$Builder;
+    .param p2, "x1"    # Lorg/microg/gms/gcm/mcs/IqStanza$1;
 
+    .prologue
     .line 20
     invoke-direct {p0, p1}, Lorg/microg/gms/gcm/mcs/IqStanza;-><init>(Lorg/microg/gms/gcm/mcs/IqStanza$Builder;)V
 
@@ -258,202 +279,208 @@
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 4
+    .locals 5
+    .param p1, "other"    # Ljava/lang/Object;
 
-    const/4 v0, 0x1
-
-    if-ne p1, p0, :cond_0
-
-    return v0
-
-    .line 95
-    :cond_0
-    instance-of v1, p1, Lorg/microg/gms/gcm/mcs/IqStanza;
+    .prologue
+    const/4 v1, 0x1
 
     const/4 v2, 0x0
 
-    if-nez v1, :cond_1
-
-    return v2
-
-    .line 96
-    :cond_1
-    check-cast p1, Lorg/microg/gms/gcm/mcs/IqStanza;
+    .line 94
+    if-ne p1, p0, :cond_1
 
     .line 97
-    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->rmq_id:Ljava/lang/Long;
+    :cond_0
+    :goto_0
+    return v1
 
-    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/IqStanza;->rmq_id:Ljava/lang/Long;
+    .line 95
+    :cond_1
+    instance-of v3, p1, Lorg/microg/gms/gcm/mcs/IqStanza;
 
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+    if-nez v3, :cond_2
 
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->type:Lorg/microg/gms/gcm/mcs/IqStanza$IqType;
-
-    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/IqStanza;->type:Lorg/microg/gms/gcm/mcs/IqStanza$IqType;
-
-    .line 98
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->id:Ljava/lang/String;
-
-    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/IqStanza;->id:Ljava/lang/String;
-
-    .line 99
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->from:Ljava/lang/String;
-
-    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/IqStanza;->from:Ljava/lang/String;
-
-    .line 100
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->to:Ljava/lang/String;
-
-    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/IqStanza;->to:Ljava/lang/String;
-
-    .line 101
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->error:Lorg/microg/gms/gcm/mcs/ErrorInfo;
-
-    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/IqStanza;->error:Lorg/microg/gms/gcm/mcs/ErrorInfo;
-
-    .line 102
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->extension:Lorg/microg/gms/gcm/mcs/Extension;
-
-    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/IqStanza;->extension:Lorg/microg/gms/gcm/mcs/Extension;
-
-    .line 103
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->persistent_id:Ljava/lang/String;
-
-    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/IqStanza;->persistent_id:Ljava/lang/String;
-
-    .line 104
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->stream_id:Ljava/lang/Integer;
-
-    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/IqStanza;->stream_id:Ljava/lang/Integer;
-
-    .line 105
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->last_stream_id_received:Ljava/lang/Integer;
-
-    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/IqStanza;->last_stream_id_received:Ljava/lang/Integer;
-
-    .line 106
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->account_id:Ljava/lang/Long;
-
-    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/IqStanza;->account_id:Ljava/lang/Long;
-
-    .line 107
-    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->status:Ljava/lang/Long;
-
-    iget-object p1, p1, Lorg/microg/gms/gcm/mcs/IqStanza;->status:Ljava/lang/Long;
-
-    .line 108
-    invoke-virtual {p0, v1, p1}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result p1
-
-    if-eqz p1, :cond_2
+    move v1, v2
 
     goto :goto_0
 
     :cond_2
-    move v0, v2
+    move-object v0, p1
 
-    :goto_0
-    return v0
+    .line 96
+    check-cast v0, Lorg/microg/gms/gcm/mcs/IqStanza;
+
+    .line 97
+    .local v0, "o":Lorg/microg/gms/gcm/mcs/IqStanza;
+    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->rmq_id:Ljava/lang/Long;
+
+    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/IqStanza;->rmq_id:Ljava/lang/Long;
+
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->type:Lorg/microg/gms/gcm/mcs/IqStanza$IqType;
+
+    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/IqStanza;->type:Lorg/microg/gms/gcm/mcs/IqStanza$IqType;
+
+    .line 98
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->id:Ljava/lang/String;
+
+    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/IqStanza;->id:Ljava/lang/String;
+
+    .line 99
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->from:Ljava/lang/String;
+
+    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/IqStanza;->from:Ljava/lang/String;
+
+    .line 100
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->to:Ljava/lang/String;
+
+    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/IqStanza;->to:Ljava/lang/String;
+
+    .line 101
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->error:Lorg/microg/gms/gcm/mcs/ErrorInfo;
+
+    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/IqStanza;->error:Lorg/microg/gms/gcm/mcs/ErrorInfo;
+
+    .line 102
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->extension:Lorg/microg/gms/gcm/mcs/Extension;
+
+    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/IqStanza;->extension:Lorg/microg/gms/gcm/mcs/Extension;
+
+    .line 103
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->persistent_id:Ljava/lang/String;
+
+    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/IqStanza;->persistent_id:Ljava/lang/String;
+
+    .line 104
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->stream_id:Ljava/lang/Integer;
+
+    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/IqStanza;->stream_id:Ljava/lang/Integer;
+
+    .line 105
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->last_stream_id_received:Ljava/lang/Integer;
+
+    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/IqStanza;->last_stream_id_received:Ljava/lang/Integer;
+
+    .line 106
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->account_id:Ljava/lang/Long;
+
+    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/IqStanza;->account_id:Ljava/lang/Long;
+
+    .line 107
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->status:Ljava/lang/Long;
+
+    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/IqStanza;->status:Ljava/lang/Long;
+
+    .line 108
+    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/IqStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_0
+
+    :cond_3
+    move v1, v2
+
+    goto/16 :goto_0
 .end method
 
 .method public hashCode()I
-    .locals 3
+    .locals 4
+
+    .prologue
+    const/4 v1, 0x0
 
     .line 113
     iget v0, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->hashCode:I
 
-    if-nez v0, :cond_c
+    .line 114
+    .local v0, "result":I
+    if-nez v0, :cond_1
 
     .line 115
-    iget-object v0, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->rmq_id:Ljava/lang/Long;
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->rmq_id:Ljava/lang/Long;
 
-    const/4 v1, 0x0
+    if-eqz v2, :cond_2
 
-    if-eqz v0, :cond_0
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->rmq_id:Ljava/lang/Long;
 
-    iget-object v0, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->rmq_id:Ljava/lang/Long;
-
-    invoke-virtual {v0}, Ljava/lang/Long;->hashCode()I
+    invoke-virtual {v2}, Ljava/lang/Long;->hashCode()I
 
     move-result v0
 
-    goto :goto_0
-
-    :cond_0
-    move v0, v1
-
-    :goto_0
-    mul-int/lit8 v0, v0, 0x25
-
     .line 116
+    :goto_0
+    mul-int/lit8 v3, v0, 0x25
+
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->type:Lorg/microg/gms/gcm/mcs/IqStanza$IqType;
 
-    if-eqz v2, :cond_1
+    if-eqz v2, :cond_3
 
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->type:Lorg/microg/gms/gcm/mcs/IqStanza$IqType;
 
@@ -461,83 +488,63 @@
 
     move-result v2
 
-    goto :goto_1
-
-    :cond_1
-    move v2, v1
-
     :goto_1
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
+    add-int v0, v3, v2
 
     .line 117
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->id:Ljava/lang/String;
-
-    if-eqz v2, :cond_2
+    mul-int/lit8 v3, v0, 0x25
 
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->id:Ljava/lang/String;
-
-    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
-
-    move-result v2
-
-    goto :goto_2
-
-    :cond_2
-    move v2, v1
-
-    :goto_2
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
-
-    .line 118
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->from:Ljava/lang/String;
-
-    if-eqz v2, :cond_3
-
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->from:Ljava/lang/String;
-
-    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
-
-    move-result v2
-
-    goto :goto_3
-
-    :cond_3
-    move v2, v1
-
-    :goto_3
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
-
-    .line 119
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->to:Ljava/lang/String;
 
     if-eqz v2, :cond_4
 
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->id:Ljava/lang/String;
+
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
+
+    move-result v2
+
+    :goto_2
+    add-int v0, v3, v2
+
+    .line 118
+    mul-int/lit8 v3, v0, 0x25
+
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->from:Ljava/lang/String;
+
+    if-eqz v2, :cond_5
+
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->from:Ljava/lang/String;
+
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
+
+    move-result v2
+
+    :goto_3
+    add-int v0, v3, v2
+
+    .line 119
+    mul-int/lit8 v3, v0, 0x25
+
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->to:Ljava/lang/String;
+
+    if-eqz v2, :cond_6
+
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->to:Ljava/lang/String;
 
     invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
 
     move-result v2
 
-    goto :goto_4
-
-    :cond_4
-    move v2, v1
-
     :goto_4
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
+    add-int v0, v3, v2
 
     .line 120
+    mul-int/lit8 v3, v0, 0x25
+
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->error:Lorg/microg/gms/gcm/mcs/ErrorInfo;
 
-    if-eqz v2, :cond_5
+    if-eqz v2, :cond_7
 
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->error:Lorg/microg/gms/gcm/mcs/ErrorInfo;
 
@@ -545,20 +552,15 @@
 
     move-result v2
 
-    goto :goto_5
-
-    :cond_5
-    move v2, v1
-
     :goto_5
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
+    add-int v0, v3, v2
 
     .line 121
+    mul-int/lit8 v3, v0, 0x25
+
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->extension:Lorg/microg/gms/gcm/mcs/Extension;
 
-    if-eqz v2, :cond_6
+    if-eqz v2, :cond_8
 
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->extension:Lorg/microg/gms/gcm/mcs/Extension;
 
@@ -566,20 +568,15 @@
 
     move-result v2
 
-    goto :goto_6
-
-    :cond_6
-    move v2, v1
-
     :goto_6
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
+    add-int v0, v3, v2
 
     .line 122
+    mul-int/lit8 v3, v0, 0x25
+
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->persistent_id:Ljava/lang/String;
 
-    if-eqz v2, :cond_7
+    if-eqz v2, :cond_9
 
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->persistent_id:Ljava/lang/String;
 
@@ -587,62 +584,47 @@
 
     move-result v2
 
-    goto :goto_7
-
-    :cond_7
-    move v2, v1
-
     :goto_7
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
+    add-int v0, v3, v2
 
     .line 123
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->stream_id:Ljava/lang/Integer;
-
-    if-eqz v2, :cond_8
+    mul-int/lit8 v3, v0, 0x25
 
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->stream_id:Ljava/lang/Integer;
-
-    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
-
-    move-result v2
-
-    goto :goto_8
-
-    :cond_8
-    move v2, v1
-
-    :goto_8
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
-
-    .line 124
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->last_stream_id_received:Ljava/lang/Integer;
-
-    if-eqz v2, :cond_9
-
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->last_stream_id_received:Ljava/lang/Integer;
-
-    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
-
-    move-result v2
-
-    goto :goto_9
-
-    :cond_9
-    move v2, v1
-
-    :goto_9
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
-
-    .line 125
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->account_id:Ljava/lang/Long;
 
     if-eqz v2, :cond_a
+
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->stream_id:Ljava/lang/Integer;
+
+    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
+
+    move-result v2
+
+    :goto_8
+    add-int v0, v3, v2
+
+    .line 124
+    mul-int/lit8 v3, v0, 0x25
+
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->last_stream_id_received:Ljava/lang/Integer;
+
+    if-eqz v2, :cond_b
+
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->last_stream_id_received:Ljava/lang/Integer;
+
+    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
+
+    move-result v2
+
+    :goto_9
+    add-int v0, v3, v2
+
+    .line 125
+    mul-int/lit8 v3, v0, 0x25
+
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->account_id:Ljava/lang/Long;
+
+    if-eqz v2, :cond_c
 
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->account_id:Ljava/lang/Long;
 
@@ -650,20 +632,15 @@
 
     move-result v2
 
-    goto :goto_a
-
-    :cond_a
-    move v2, v1
-
     :goto_a
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
+    add-int v0, v3, v2
 
     .line 126
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->status:Ljava/lang/Long;
+    mul-int/lit8 v2, v0, 0x25
 
-    if-eqz v2, :cond_b
+    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->status:Ljava/lang/Long;
+
+    if-eqz v3, :cond_0
 
     iget-object v1, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->status:Ljava/lang/Long;
 
@@ -671,12 +648,79 @@
 
     move-result v1
 
-    :cond_b
-    add-int/2addr v0, v1
+    :cond_0
+    add-int v0, v2, v1
 
     .line 127
     iput v0, p0, Lorg/microg/gms/gcm/mcs/IqStanza;->hashCode:I
 
-    :cond_c
+    .line 129
+    :cond_1
     return v0
+
+    :cond_2
+    move v0, v1
+
+    .line 115
+    goto/16 :goto_0
+
+    :cond_3
+    move v2, v1
+
+    .line 116
+    goto/16 :goto_1
+
+    :cond_4
+    move v2, v1
+
+    .line 117
+    goto/16 :goto_2
+
+    :cond_5
+    move v2, v1
+
+    .line 118
+    goto :goto_3
+
+    :cond_6
+    move v2, v1
+
+    .line 119
+    goto :goto_4
+
+    :cond_7
+    move v2, v1
+
+    .line 120
+    goto :goto_5
+
+    :cond_8
+    move v2, v1
+
+    .line 121
+    goto :goto_6
+
+    :cond_9
+    move v2, v1
+
+    .line 122
+    goto :goto_7
+
+    :cond_a
+    move v2, v1
+
+    .line 123
+    goto :goto_8
+
+    :cond_b
+    move v2, v1
+
+    .line 124
+    goto :goto_9
+
+    :cond_c
+    move v2, v1
+
+    .line 125
+    goto :goto_a
 .end method

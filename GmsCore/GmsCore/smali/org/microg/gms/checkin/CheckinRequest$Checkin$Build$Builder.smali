@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder<",
+        "Lcom/squareup/wire/Message$Builder",
+        "<",
         "Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;",
         ">;"
     }
@@ -56,20 +57,27 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 932
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
+    .line 933
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;)V
     .locals 1
+    .param p1, "message"    # Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;
 
+    .prologue
     .line 936
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
+    .line 937
     if-nez p1, :cond_0
 
+    .line 952
+    :goto_0
     return-void
 
     .line 938
@@ -139,36 +147,43 @@
     iput-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;->product:Ljava/lang/String;
 
     .line 951
-    iget-object p1, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;->otaInstalled:Ljava/lang/Boolean;
+    iget-object v0, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;->otaInstalled:Ljava/lang/Boolean;
 
-    iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;->otaInstalled:Ljava/lang/Boolean;
+    iput-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;->otaInstalled:Ljava/lang/Boolean;
 
-    return-void
+    goto :goto_0
 .end method
 
 
 # virtual methods
 .method public bootloader(Ljava/lang/String;)Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;
     .locals 0
+    .param p1, "bootloader"    # Ljava/lang/String;
 
+    .prologue
     .line 994
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;->bootloader:Ljava/lang/String;
 
+    .line 995
     return-object p0
 .end method
 
 .method public brand(Ljava/lang/String;)Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;
     .locals 0
+    .param p1, "brand"    # Ljava/lang/String;
 
+    .prologue
     .line 977
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;->brand:Ljava/lang/String;
 
+    .line 978
     return-object p0
 .end method
 
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
+    .prologue
     .line 915
     invoke-virtual {p0}, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;->build()Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;
 
@@ -180,6 +195,7 @@
 .method public build()Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;
     .locals 2
 
+    .prologue
     .line 1081
     new-instance v0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build;
 
@@ -192,99 +208,132 @@
 
 .method public clientId(Ljava/lang/String;)Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;
     .locals 0
+    .param p1, "clientId"    # Ljava/lang/String;
 
+    .prologue
     .line 1003
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;->clientId:Ljava/lang/String;
 
+    .line 1004
     return-object p0
 .end method
 
 .method public device(Ljava/lang/String;)Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;
     .locals 0
+    .param p1, "device"    # Ljava/lang/String;
 
+    .prologue
     .line 1030
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;->device:Ljava/lang/String;
 
+    .line 1031
     return-object p0
 .end method
 
 .method public fingerprint(Ljava/lang/String;)Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;
     .locals 0
+    .param p1, "fingerprint"    # Ljava/lang/String;
 
+    .prologue
     .line 959
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;->fingerprint:Ljava/lang/String;
 
+    .line 960
     return-object p0
 .end method
 
 .method public hardware(Ljava/lang/String;)Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;
     .locals 0
+    .param p1, "hardware"    # Ljava/lang/String;
 
+    .prologue
     .line 968
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;->hardware:Ljava/lang/String;
 
+    .line 969
     return-object p0
 .end method
 
 .method public manufacturer(Ljava/lang/String;)Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;
     .locals 0
+    .param p1, "manufacturer"    # Ljava/lang/String;
 
+    .prologue
     .line 1057
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;->manufacturer:Ljava/lang/String;
 
+    .line 1058
     return-object p0
 .end method
 
 .method public model(Ljava/lang/String;)Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;
     .locals 0
+    .param p1, "model"    # Ljava/lang/String;
 
+    .prologue
     .line 1048
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;->model:Ljava/lang/String;
 
+    .line 1049
     return-object p0
 .end method
 
 .method public otaInstalled(Ljava/lang/Boolean;)Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;
     .locals 0
+    .param p1, "otaInstalled"    # Ljava/lang/Boolean;
 
+    .prologue
     .line 1075
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;->otaInstalled:Ljava/lang/Boolean;
 
+    .line 1076
     return-object p0
 .end method
 
 .method public product(Ljava/lang/String;)Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;
     .locals 0
+    .param p1, "product"    # Ljava/lang/String;
 
+    .prologue
     .line 1066
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;->product:Ljava/lang/String;
 
+    .line 1067
     return-object p0
 .end method
 
 .method public radio(Ljava/lang/String;)Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;
     .locals 0
+    .param p1, "radio"    # Ljava/lang/String;
 
+    .prologue
     .line 985
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;->radio:Ljava/lang/String;
 
+    .line 986
     return-object p0
 .end method
 
 .method public sdkVersion(Ljava/lang/Integer;)Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;
     .locals 0
+    .param p1, "sdkVersion"    # Ljava/lang/Integer;
 
+    .prologue
     .line 1039
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;->sdkVersion:Ljava/lang/Integer;
 
+    .line 1040
     return-object p0
 .end method
 
 .method public time(Ljava/lang/Long;)Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;
     .locals 0
+    .param p1, "time"    # Ljava/lang/Long;
 
+    .prologue
     .line 1012
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Build$Builder;->time:Ljava/lang/Long;
 
+    .line 1013
     return-object p0
 .end method

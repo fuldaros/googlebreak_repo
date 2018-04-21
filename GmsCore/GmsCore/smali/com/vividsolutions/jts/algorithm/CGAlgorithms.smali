@@ -7,395 +7,526 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 126
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 127
     return-void
 .end method
 
 .method public static computeOrientation(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)I
-    .locals 0
+    .locals 1
+    .param p0, "p1"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p1, "p2"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p2, "q"    # Lcom/vividsolutions/jts/geom/Coordinate;
 
+    .prologue
     .line 289
     invoke-static {p0, p1, p2}, Lcom/vividsolutions/jts/algorithm/CGAlgorithms;->orientationIndex(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)I
 
-    move-result p0
+    move-result v0
 
-    return p0
+    return v0
 .end method
 
 .method public static distancePointLine(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)D
-    .locals 10
+    .locals 16
+    .param p0, "p"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p1, "A"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p2, "B"    # Lcom/vividsolutions/jts/geom/Coordinate;
 
+    .prologue
     .line 309
-    iget-wide v0, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    move-object/from16 v0, p1
 
-    iget-wide v2, p2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v8, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    cmpl-double v4, v0, v2
+    move-object/from16 v0, p2
 
-    if-nez v4, :cond_0
+    iget-wide v10, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    iget-wide v0, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    cmpl-double v8, v8, v10
 
-    iget-wide v2, p2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    if-nez v8, :cond_0
 
-    cmpl-double v4, v0, v2
+    move-object/from16 v0, p1
 
-    if-nez v4, :cond_0
+    iget-wide v8, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-object/from16 v0, p2
+
+    iget-wide v10, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    cmpl-double v8, v8, v10
+
+    if-nez v8, :cond_0
 
     .line 310
-    invoke-virtual {p0, p1}, Lcom/vividsolutions/jts/geom/Coordinate;->distance(Lcom/vividsolutions/jts/geom/Coordinate;)D
+    invoke-virtual/range {p0 .. p1}, Lcom/vividsolutions/jts/geom/Coordinate;->distance(Lcom/vividsolutions/jts/geom/Coordinate;)D
 
-    move-result-wide p0
+    move-result-wide v8
 
-    return-wide p0
+    .line 347
+    :goto_0
+    return-wide v8
 
     .line 326
     :cond_0
-    iget-wide v0, p2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    move-object/from16 v0, p2
 
-    iget-wide v2, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v8, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    sub-double/2addr v0, v2
+    move-object/from16 v0, p1
 
-    iget-wide v2, p2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v10, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    iget-wide v4, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    sub-double/2addr v8, v10
 
-    sub-double/2addr v2, v4
+    move-object/from16 v0, p2
 
-    mul-double/2addr v0, v2
+    iget-wide v10, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    iget-wide v2, p2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    move-object/from16 v0, p1
 
-    iget-wide v4, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v12, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    sub-double/2addr v2, v4
+    sub-double/2addr v10, v12
 
-    iget-wide v4, p2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    mul-double/2addr v8, v10
 
-    iget-wide v6, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    move-object/from16 v0, p2
 
-    sub-double/2addr v4, v6
+    iget-wide v10, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    mul-double/2addr v2, v4
+    move-object/from16 v0, p1
 
-    add-double/2addr v0, v2
+    iget-wide v12, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    sub-double/2addr v10, v12
+
+    move-object/from16 v0, p2
+
+    iget-wide v12, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-object/from16 v0, p1
+
+    iget-wide v14, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    sub-double/2addr v12, v14
+
+    mul-double/2addr v10, v12
+
+    add-double v2, v8, v10
 
     .line 327
-    iget-wide v2, p0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    .local v2, "len2":D
+    move-object/from16 v0, p0
 
-    iget-wide v4, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v8, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    sub-double/2addr v2, v4
+    move-object/from16 v0, p1
 
-    iget-wide v4, p2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v10, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    iget-wide v6, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    sub-double/2addr v8, v10
 
-    sub-double/2addr v4, v6
+    move-object/from16 v0, p2
 
-    mul-double/2addr v2, v4
+    iget-wide v10, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    iget-wide v4, p0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    move-object/from16 v0, p1
 
-    iget-wide v6, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v12, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    sub-double/2addr v4, v6
+    sub-double/2addr v10, v12
 
-    iget-wide v6, p2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    mul-double/2addr v8, v10
 
-    iget-wide v8, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    move-object/from16 v0, p0
 
-    sub-double/2addr v6, v8
+    iget-wide v10, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    mul-double/2addr v4, v6
+    move-object/from16 v0, p1
 
-    add-double/2addr v2, v4
+    iget-wide v12, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    div-double/2addr v2, v0
+    sub-double/2addr v10, v12
 
-    const-wide/16 v4, 0x0
+    move-object/from16 v0, p2
 
-    cmpg-double v6, v2, v4
+    iget-wide v12, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    if-gtz v6, :cond_1
+    move-object/from16 v0, p1
+
+    iget-wide v14, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    sub-double/2addr v12, v14
+
+    mul-double/2addr v10, v12
+
+    add-double/2addr v8, v10
+
+    div-double v4, v8, v2
+
+    .line 330
+    .local v4, "r":D
+    const-wide/16 v8, 0x0
+
+    cmpg-double v8, v4, v8
+
+    if-gtz v8, :cond_1
 
     .line 331
-    invoke-virtual {p0, p1}, Lcom/vividsolutions/jts/geom/Coordinate;->distance(Lcom/vividsolutions/jts/geom/Coordinate;)D
+    invoke-virtual/range {p0 .. p1}, Lcom/vividsolutions/jts/geom/Coordinate;->distance(Lcom/vividsolutions/jts/geom/Coordinate;)D
 
-    move-result-wide p0
+    move-result-wide v8
 
-    return-wide p0
+    goto :goto_0
 
+    .line 332
     :cond_1
-    const-wide/high16 v4, 0x3ff0000000000000L    # 1.0
+    const-wide/high16 v8, 0x3ff0000000000000L    # 1.0
 
-    cmpl-double v6, v2, v4
+    cmpl-double v8, v4, v8
 
-    if-ltz v6, :cond_2
+    if-ltz v8, :cond_2
 
     .line 333
-    invoke-virtual {p0, p2}, Lcom/vividsolutions/jts/geom/Coordinate;->distance(Lcom/vividsolutions/jts/geom/Coordinate;)D
+    move-object/from16 v0, p0
 
-    move-result-wide p0
+    move-object/from16 v1, p2
 
-    return-wide p0
+    invoke-virtual {v0, v1}, Lcom/vividsolutions/jts/geom/Coordinate;->distance(Lcom/vividsolutions/jts/geom/Coordinate;)D
+
+    move-result-wide v8
+
+    goto :goto_0
 
     .line 345
     :cond_2
-    iget-wide v2, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    move-object/from16 v0, p1
 
-    iget-wide v4, p0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v8, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    sub-double/2addr v2, v4
+    move-object/from16 v0, p0
 
-    iget-wide v4, p2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v10, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    iget-wide v6, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    sub-double/2addr v8, v10
 
-    sub-double/2addr v4, v6
+    move-object/from16 v0, p2
 
-    mul-double/2addr v2, v4
+    iget-wide v10, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    iget-wide v4, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    move-object/from16 v0, p1
 
-    iget-wide v6, p0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v12, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    sub-double/2addr v4, v6
+    sub-double/2addr v10, v12
 
-    iget-wide v6, p2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    mul-double/2addr v8, v10
 
-    iget-wide p0, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    move-object/from16 v0, p1
 
-    sub-double/2addr v6, p0
+    iget-wide v10, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    mul-double/2addr v4, v6
+    move-object/from16 v0, p0
 
-    sub-double/2addr v2, v4
+    iget-wide v12, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    div-double/2addr v2, v0
+    sub-double/2addr v10, v12
+
+    move-object/from16 v0, p2
+
+    iget-wide v12, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    move-object/from16 v0, p1
+
+    iget-wide v14, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    sub-double/2addr v12, v14
+
+    mul-double/2addr v10, v12
+
+    sub-double/2addr v8, v10
+
+    div-double v6, v8, v2
 
     .line 347
-    invoke-static {v2, v3}, Ljava/lang/Math;->abs(D)D
+    .local v6, "s":D
+    invoke-static {v6, v7}, Ljava/lang/Math;->abs(D)D
 
-    move-result-wide p0
+    move-result-wide v8
 
-    invoke-static {v0, v1}, Ljava/lang/Math;->sqrt(D)D
+    invoke-static {v2, v3}, Ljava/lang/Math;->sqrt(D)D
 
-    move-result-wide v0
+    move-result-wide v10
 
-    mul-double/2addr p0, v0
+    mul-double/2addr v8, v10
 
-    return-wide p0
+    goto/16 :goto_0
 .end method
 
 .method public static isCCW([Lcom/vividsolutions/jts/geom/Coordinate;)Z
-    .locals 12
+    .locals 18
+    .param p0, "ring"    # [Lcom/vividsolutions/jts/geom/Coordinate;
 
-    const/4 v0, 0x1
-
-    const/4 v1, 0x3
-
+    .prologue
     .line 211
-    array-length v2, p0
+    move-object/from16 v0, p0
 
-    sub-int/2addr v2, v0
+    array-length v13, v0
 
-    if-ge v2, v1, :cond_0
+    add-int/lit8 v9, v13, -0x1
+
+    .line 213
+    .local v9, "nPts":I
+    const/4 v13, 0x3
+
+    if-ge v9, v13, :cond_0
 
     .line 214
-    new-instance p0, Ljava/lang/IllegalArgumentException;
+    new-instance v13, Ljava/lang/IllegalArgumentException;
 
-    const-string v0, "Ring has fewer than 3 points, so orientation cannot be determined"
+    const-string v14, "Ring has fewer than 3 points, so orientation cannot be determined"
 
-    invoke-direct {p0, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v13, v14}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw p0
-
-    :cond_0
-    const/4 v1, 0x0
+    throw v13
 
     .line 218
-    aget-object v3, p0, v1
+    :cond_0
+    const/4 v13, 0x0
 
-    move v5, v1
+    aget-object v4, p0, v13
 
-    move-object v4, v3
+    .line 219
+    .local v4, "hiPt":Lcom/vividsolutions/jts/geom/Coordinate;
+    const/4 v3, 0x0
 
-    move v3, v0
+    .line 220
+    .local v3, "hiIndex":I
+    const/4 v5, 0x1
 
+    .local v5, "i":I
     :goto_0
-    if-gt v3, v2, :cond_2
+    if-gt v5, v9, :cond_2
 
     .line 221
-    aget-object v6, p0, v3
+    aget-object v11, p0, v5
 
     .line 222
-    iget-wide v7, v6, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    .local v11, "p":Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-wide v14, v11, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    iget-wide v9, v4, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v0, v4, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    cmpl-double v11, v7, v9
+    move-wide/from16 v16, v0
 
-    if-lez v11, :cond_1
+    cmpl-double v13, v14, v16
 
-    move v5, v3
+    if-lez v13, :cond_1
 
-    move-object v4, v6
+    .line 223
+    move-object v4, v11
 
+    .line 224
+    move v3, v5
+
+    .line 220
     :cond_1
-    add-int/lit8 v3, v3, 0x1
+    add-int/lit8 v5, v5, 0x1
 
     goto :goto_0
 
+    .line 229
+    .end local v11    # "p":Lcom/vividsolutions/jts/geom/Coordinate;
     :cond_2
-    move v3, v5
+    move v7, v3
 
+    .line 231
+    .local v7, "iPrev":I
     :cond_3
-    sub-int/2addr v3, v0
+    add-int/lit8 v7, v7, -0x1
 
-    if-gez v3, :cond_4
+    .line 232
+    if-gez v7, :cond_4
 
-    move v3, v2
+    .line 233
+    move v7, v9
 
     .line 234
     :cond_4
-    aget-object v6, p0, v3
+    aget-object v13, p0, v7
 
-    invoke-virtual {v6, v4}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
+    invoke-virtual {v13, v4}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
-    move-result v6
+    move-result v13
 
-    if-eqz v6, :cond_5
+    if-eqz v13, :cond_5
 
-    if-ne v3, v5, :cond_3
+    if-ne v7, v3, :cond_3
 
+    .line 237
     :cond_5
-    move v6, v5
-
-    :cond_6
-    add-int/2addr v6, v0
+    move v6, v3
 
     .line 239
-    rem-int/2addr v6, v2
+    .local v6, "iNext":I
+    :cond_6
+    add-int/lit8 v13, v6, 0x1
+
+    rem-int v6, v13, v9
 
     .line 240
-    aget-object v7, p0, v6
+    aget-object v13, p0, v6
 
-    invoke-virtual {v7, v4}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
+    invoke-virtual {v13, v4}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
-    move-result v7
+    move-result v13
 
-    if-eqz v7, :cond_7
+    if-eqz v13, :cond_7
 
-    if-ne v6, v5, :cond_6
+    if-ne v6, v3, :cond_6
 
     .line 242
     :cond_7
-    aget-object v2, p0, v3
+    aget-object v12, p0, v7
 
     .line 243
-    aget-object p0, p0, v6
+    .local v12, "prev":Lcom/vividsolutions/jts/geom/Coordinate;
+    aget-object v10, p0, v6
 
     .line 251
-    invoke-virtual {v2, v4}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
+    .local v10, "next":Lcom/vividsolutions/jts/geom/Coordinate;
+    invoke-virtual {v12, v4}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
-    move-result v3
+    move-result v13
 
-    if-nez v3, :cond_b
+    if-nez v13, :cond_8
 
-    invoke-virtual {p0, v4}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
+    invoke-virtual {v10, v4}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
-    move-result v3
+    move-result v13
 
-    if-nez v3, :cond_b
+    if-nez v13, :cond_8
 
-    invoke-virtual {v2, p0}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
+    invoke-virtual {v12, v10}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
-    move-result v3
+    move-result v13
 
-    if-eqz v3, :cond_8
+    if-eqz v13, :cond_9
 
-    goto :goto_2
+    .line 252
+    :cond_8
+    const/4 v8, 0x0
+
+    .line 274
+    :goto_1
+    return v8
 
     .line 254
-    :cond_8
-    invoke-static {v2, v4, p0}, Lcom/vividsolutions/jts/algorithm/CGAlgorithms;->computeOrientation(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)I
+    :cond_9
+    invoke-static {v12, v4, v10}, Lcom/vividsolutions/jts/algorithm/CGAlgorithms;->computeOrientation(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)I
 
-    move-result v3
+    move-result v2
 
-    if-nez v3, :cond_a
+    .line 265
+    .local v2, "disc":I
+    const/4 v8, 0x0
+
+    .line 266
+    .local v8, "isCCW":Z
+    if-nez v2, :cond_b
 
     .line 268
-    iget-wide v2, v2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v14, v12, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    iget-wide v4, p0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v0, v10, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    cmpl-double p0, v2, v4
+    move-wide/from16 v16, v0
 
-    if-lez p0, :cond_9
+    cmpl-double v13, v14, v16
 
-    goto :goto_1
+    if-lez v13, :cond_a
 
-    :cond_9
-    move v0, v1
+    const/4 v8, 0x1
 
+    :goto_2
     goto :goto_1
 
     :cond_a
-    if-lez v3, :cond_9
+    const/4 v8, 0x0
 
-    :goto_1
-    return v0
+    goto :goto_2
 
+    .line 272
     :cond_b
-    :goto_2
-    return v1
+    if-lez v2, :cond_c
+
+    const/4 v8, 0x1
+
+    :goto_3
+    goto :goto_1
+
+    :cond_c
+    const/4 v8, 0x0
+
+    goto :goto_3
 .end method
 
 .method public static isPointInRing(Lcom/vividsolutions/jts/geom/Coordinate;[Lcom/vividsolutions/jts/geom/Coordinate;)Z
-    .locals 0
+    .locals 2
+    .param p0, "p"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p1, "ring"    # [Lcom/vividsolutions/jts/geom/Coordinate;
 
+    .prologue
     .line 148
     invoke-static {p0, p1}, Lcom/vividsolutions/jts/algorithm/CGAlgorithms;->locatePointInRing(Lcom/vividsolutions/jts/geom/Coordinate;[Lcom/vividsolutions/jts/geom/Coordinate;)I
 
-    move-result p0
+    move-result v0
 
-    const/4 p1, 0x2
+    const/4 v1, 0x2
 
-    if-eq p0, p1, :cond_0
+    if-eq v0, v1, :cond_0
 
-    const/4 p0, 0x1
-
-    goto :goto_0
-
-    :cond_0
-    const/4 p0, 0x0
+    const/4 v0, 0x1
 
     :goto_0
-    return p0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
 .end method
 
 .method public static locatePointInRing(Lcom/vividsolutions/jts/geom/Coordinate;[Lcom/vividsolutions/jts/geom/Coordinate;)I
-    .locals 0
+    .locals 1
+    .param p0, "p"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p1, "ring"    # [Lcom/vividsolutions/jts/geom/Coordinate;
 
+    .prologue
     .line 167
     invoke-static {p0, p1}, Lcom/vividsolutions/jts/algorithm/RayCrossingCounter;->locatePointInRing(Lcom/vividsolutions/jts/geom/Coordinate;[Lcom/vividsolutions/jts/geom/Coordinate;)I
 
-    move-result p0
+    move-result v0
 
-    return p0
+    return v0
 .end method
 
 .method public static orientationIndex(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)I
-    .locals 0
+    .locals 1
+    .param p0, "p1"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p1, "p2"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p2, "q"    # Lcom/vividsolutions/jts/geom/Coordinate;
 
+    .prologue
     .line 117
     invoke-static {p0, p1, p2}, Lcom/vividsolutions/jts/algorithm/CGAlgorithmsDD;->orientationIndex(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)I
 
-    move-result p0
+    move-result v0
 
-    return p0
+    return v0
 .end method

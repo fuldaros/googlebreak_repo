@@ -12,7 +12,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lorg/oscim/utils/pool/Inlist<",
+        "Lorg/oscim/utils/pool/Inlist",
+        "<",
         "Lorg/oscim/renderer/atlas/TextureAtlas;",
         ">;"
     }
@@ -29,7 +30,8 @@
 .field private mRegions:Ljava/util/HashMap;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/HashMap<",
+            "Ljava/util/HashMap",
+            "<",
             "Ljava/lang/Object;",
             "Lorg/oscim/renderer/atlas/TextureRegion;",
             ">;"
@@ -46,7 +48,8 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .line 75
+    .prologue
+    .line 73
     const-class v0, Lorg/oscim/renderer/atlas/TextureAtlas;
 
     invoke-static {v0}, Lorg/slf4j/LoggerFactory;->getLogger(Ljava/lang/Class;)Lorg/slf4j/Logger;
@@ -60,38 +63,41 @@
 
 .method public constructor <init>(Lorg/oscim/backend/canvas/Bitmap;)V
     .locals 1
+    .param p1, "bitmap"    # Lorg/oscim/backend/canvas/Bitmap;
 
-    .line 134
+    .prologue
+    .line 124
     invoke-direct {p0}, Lorg/oscim/utils/pool/Inlist;-><init>()V
 
-    .line 135
+    .line 125
     new-instance v0, Lorg/oscim/renderer/bucket/TextureItem;
 
     invoke-direct {v0, p1}, Lorg/oscim/renderer/bucket/TextureItem;-><init>(Lorg/oscim/backend/canvas/Bitmap;)V
 
     iput-object v0, p0, Lorg/oscim/renderer/atlas/TextureAtlas;->texture:Lorg/oscim/renderer/bucket/TextureItem;
 
-    .line 136
-    iget-object p1, p0, Lorg/oscim/renderer/atlas/TextureAtlas;->texture:Lorg/oscim/renderer/bucket/TextureItem;
+    .line 126
+    iget-object v0, p0, Lorg/oscim/renderer/atlas/TextureAtlas;->texture:Lorg/oscim/renderer/bucket/TextureItem;
 
-    iget p1, p1, Lorg/oscim/renderer/bucket/TextureItem;->width:I
+    iget v0, v0, Lorg/oscim/renderer/bucket/TextureItem;->width:I
 
-    iput p1, p0, Lorg/oscim/renderer/atlas/TextureAtlas;->mWidth:I
+    iput v0, p0, Lorg/oscim/renderer/atlas/TextureAtlas;->mWidth:I
 
-    .line 137
-    iget-object p1, p0, Lorg/oscim/renderer/atlas/TextureAtlas;->texture:Lorg/oscim/renderer/bucket/TextureItem;
+    .line 127
+    iget-object v0, p0, Lorg/oscim/renderer/atlas/TextureAtlas;->texture:Lorg/oscim/renderer/bucket/TextureItem;
 
-    iget p1, p1, Lorg/oscim/renderer/bucket/TextureItem;->height:I
+    iget v0, v0, Lorg/oscim/renderer/bucket/TextureItem;->height:I
 
-    iput p1, p0, Lorg/oscim/renderer/atlas/TextureAtlas;->mHeight:I
+    iput v0, p0, Lorg/oscim/renderer/atlas/TextureAtlas;->mHeight:I
 
-    .line 139
-    new-instance p1, Ljava/util/HashMap;
+    .line 129
+    new-instance v0, Ljava/util/HashMap;
 
-    invoke-direct {p1}, Ljava/util/HashMap;-><init>()V
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
-    iput-object p1, p0, Lorg/oscim/renderer/atlas/TextureAtlas;->mRegions:Ljava/util/HashMap;
+    iput-object v0, p0, Lorg/oscim/renderer/atlas/TextureAtlas;->mRegions:Ljava/util/HashMap;
 
+    .line 130
     return-void
 .end method
 
@@ -99,8 +105,11 @@
 # virtual methods
 .method public addTextureRegion(Ljava/lang/Object;Lorg/oscim/renderer/atlas/TextureAtlas$Rect;)V
     .locals 3
+    .param p1, "key"    # Ljava/lang/Object;
+    .param p2, "r"    # Lorg/oscim/renderer/atlas/TextureAtlas$Rect;
 
-    .line 146
+    .prologue
+    .line 136
     iget-object v0, p0, Lorg/oscim/renderer/atlas/TextureAtlas;->mRegions:Ljava/util/HashMap;
 
     new-instance v1, Lorg/oscim/renderer/atlas/TextureRegion;
@@ -111,38 +120,23 @@
 
     invoke-virtual {v0, p1, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
+    .line 138
     return-void
-.end method
-
-.method public getRegions()Ljava/util/Map;
-    .locals 1
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()",
-            "Ljava/util/Map<",
-            "Ljava/lang/Object;",
-            "Lorg/oscim/renderer/atlas/TextureRegion;",
-            ">;"
-        }
-    .end annotation
-
-    .line 245
-    iget-object v0, p0, Lorg/oscim/renderer/atlas/TextureAtlas;->mRegions:Ljava/util/HashMap;
-
-    return-object v0
 .end method
 
 .method public getTextureRegion(Ljava/lang/Object;)Lorg/oscim/renderer/atlas/TextureRegion;
     .locals 1
+    .param p1, "key"    # Ljava/lang/Object;
 
-    .line 151
+    .prologue
+    .line 141
     iget-object v0, p0, Lorg/oscim/renderer/atlas/TextureAtlas;->mRegions:Ljava/util/HashMap;
 
     invoke-virtual {v0, p1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object p1
+    move-result-object v0
 
-    check-cast p1, Lorg/oscim/renderer/atlas/TextureRegion;
+    check-cast v0, Lorg/oscim/renderer/atlas/TextureRegion;
 
-    return-object p1
+    return-object v0
 .end method

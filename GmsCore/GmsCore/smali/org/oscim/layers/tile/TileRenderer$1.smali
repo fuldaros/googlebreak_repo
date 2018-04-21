@@ -21,8 +21,10 @@
 # direct methods
 .method constructor <init>(Lorg/oscim/layers/tile/TileRenderer;)V
     .locals 0
+    .param p1, "this$0"    # Lorg/oscim/layers/tile/TileRenderer;
 
-    .line 261
+    .prologue
+    .line 255
     iput-object p1, p0, Lorg/oscim/layers/tile/TileRenderer$1;->this$0:Lorg/oscim/layers/tile/TileRenderer;
 
     invoke-direct {p0}, Lorg/oscim/utils/ScanBox;-><init>()V
@@ -33,224 +35,247 @@
 
 # virtual methods
 .method protected setVisible(III)V
-    .locals 9
+    .locals 12
+    .param p1, "y"    # I
+    .param p2, "x1"    # I
+    .param p3, "x2"    # I
+
+    .prologue
+    .line 259
+    iget-object v9, p0, Lorg/oscim/layers/tile/TileRenderer$1;->this$0:Lorg/oscim/layers/tile/TileRenderer;
+
+    iget-object v9, v9, Lorg/oscim/layers/tile/TileRenderer;->mDrawTiles:Lorg/oscim/layers/tile/TileSet;
+
+    iget-object v5, v9, Lorg/oscim/layers/tile/TileSet;->tiles:[Lorg/oscim/layers/tile/MapTile;
+
+    .line 260
+    .local v5, "tiles":[Lorg/oscim/layers/tile/MapTile;
+    iget-object v9, p0, Lorg/oscim/layers/tile/TileRenderer$1;->this$0:Lorg/oscim/layers/tile/TileRenderer;
+
+    iget-object v9, v9, Lorg/oscim/layers/tile/TileRenderer;->mDrawTiles:Lorg/oscim/layers/tile/TileSet;
+
+    iget v2, v9, Lorg/oscim/layers/tile/TileSet;->cnt:I
+
+    .line 262
+    .local v2, "proxyOffset":I
+    const/4 v1, 0x0
+
+    .local v1, "i":I
+    :goto_0
+    if-ge v1, v2, :cond_1
+
+    .line 263
+    aget-object v3, v5, v1
+
+    .line 264
+    .local v3, "t":Lorg/oscim/layers/tile/MapTile;
+    iget v9, v3, Lorg/oscim/layers/tile/MapTile;->tileY:I
+
+    if-ne v9, p1, :cond_0
+
+    iget v9, v3, Lorg/oscim/layers/tile/MapTile;->tileX:I
+
+    if-lt v9, p2, :cond_0
+
+    iget v9, v3, Lorg/oscim/layers/tile/MapTile;->tileX:I
+
+    if-ge v9, p3, :cond_0
 
     .line 265
-    iget-object v0, p0, Lorg/oscim/layers/tile/TileRenderer$1;->this$0:Lorg/oscim/layers/tile/TileRenderer;
+    const/4 v9, 0x1
 
-    iget-object v0, v0, Lorg/oscim/layers/tile/TileRenderer;->mDrawTiles:Lorg/oscim/layers/tile/TileSet;
+    iput-boolean v9, v3, Lorg/oscim/layers/tile/MapTile;->isVisible:Z
 
-    iget-object v0, v0, Lorg/oscim/layers/tile/TileSet;->tiles:[Lorg/oscim/layers/tile/MapTile;
-
-    .line 266
-    iget-object v1, p0, Lorg/oscim/layers/tile/TileRenderer$1;->this$0:Lorg/oscim/layers/tile/TileRenderer;
-
-    iget-object v1, v1, Lorg/oscim/layers/tile/TileRenderer;->mDrawTiles:Lorg/oscim/layers/tile/TileSet;
-
-    iget v1, v1, Lorg/oscim/layers/tile/TileSet;->cnt:I
-
-    const/4 v2, 0x0
-
-    move v3, v2
-
-    :goto_0
-    const/4 v4, 0x1
-
-    if-ge v3, v1, :cond_1
-
-    .line 269
-    aget-object v5, v0, v3
-
-    .line 270
-    iget v6, v5, Lorg/oscim/layers/tile/MapTile;->tileY:I
-
-    if-ne v6, p1, :cond_0
-
-    iget v6, v5, Lorg/oscim/layers/tile/MapTile;->tileX:I
-
-    if-lt v6, p2, :cond_0
-
-    iget v6, v5, Lorg/oscim/layers/tile/MapTile;->tileX:I
-
-    if-ge v6, p3, :cond_0
-
-    .line 271
-    iput-boolean v4, v5, Lorg/oscim/layers/tile/MapTile;->isVisible:Z
-
+    .line 262
     :cond_0
-    add-int/lit8 v3, v3, 0x1
+    add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 276
+    .line 270
+    .end local v3    # "t":Lorg/oscim/layers/tile/MapTile;
     :cond_1
-    iget v3, p0, Lorg/oscim/layers/tile/TileRenderer$1;->mZoom:I
+    const/4 v9, 0x1
 
-    shl-int v3, v4, v3
+    iget v10, p0, Lorg/oscim/layers/tile/TileRenderer$1;->mZoom:I
 
-    if-ltz p2, :cond_2
+    shl-int v7, v9, v10
 
-    if-ge p3, v3, :cond_2
-
-    return-void
-
-    :cond_2
-    :goto_1
-    if-ge p2, p3, :cond_d
-
+    .line 271
+    .local v7, "xmax":I
     if-ltz p2, :cond_3
 
-    if-ge p2, v3, :cond_3
-
-    goto/16 :goto_6
-
-    :cond_3
-    if-gez p2, :cond_4
-
-    add-int v5, v3, p2
-
-    goto :goto_2
-
-    :cond_4
-    sub-int v5, p2, v3
-
-    :goto_2
-    if-ltz v5, :cond_c
-
-    if-lt v5, v3, :cond_5
-
-    goto :goto_6
-
-    :cond_5
-    move v6, v1
-
-    .line 294
-    :goto_3
-    iget-object v7, p0, Lorg/oscim/layers/tile/TileRenderer$1;->this$0:Lorg/oscim/layers/tile/TileRenderer;
-
-    iget v7, v7, Lorg/oscim/layers/tile/TileRenderer;->mProxyTileCnt:I
-
-    add-int/2addr v7, v1
-
-    if-ge v6, v7, :cond_7
-
-    .line 295
-    aget-object v7, v0, v6
-
-    iget v7, v7, Lorg/oscim/layers/tile/MapTile;->tileX:I
-
-    if-ne v7, p2, :cond_6
-
-    aget-object v7, v0, v6
-
-    iget v7, v7, Lorg/oscim/layers/tile/MapTile;->tileY:I
-
-    if-ne v7, p1, :cond_6
-
-    goto :goto_6
-
-    :cond_6
-    add-int/lit8 v6, v6, 0x1
-
-    goto :goto_3
-
-    :cond_7
-    move v6, v2
-
-    :goto_4
-    const/4 v7, 0x0
-
-    if-ge v6, v1, :cond_9
-
-    .line 300
-    aget-object v8, v0, v6
-
-    iget v8, v8, Lorg/oscim/layers/tile/MapTile;->tileX:I
-
-    if-ne v8, v5, :cond_8
-
-    aget-object v8, v0, v6
-
-    iget v8, v8, Lorg/oscim/layers/tile/MapTile;->tileY:I
-
-    if-ne v8, p1, :cond_8
-
-    .line 301
-    aget-object v5, v0, v6
-
-    goto :goto_5
-
-    :cond_8
-    add-int/lit8 v6, v6, 0x1
-
-    goto :goto_4
-
-    :cond_9
-    move-object v5, v7
-
-    :goto_5
-    if-nez v5, :cond_a
-
-    goto :goto_6
-
-    .line 308
-    :cond_a
-    iget-object v6, p0, Lorg/oscim/layers/tile/TileRenderer$1;->this$0:Lorg/oscim/layers/tile/TileRenderer;
-
-    iget v6, v6, Lorg/oscim/layers/tile/TileRenderer;->mProxyTileCnt:I
-
-    add-int/2addr v6, v1
-
-    array-length v8, v0
-
-    if-lt v6, v8, :cond_b
-
-    goto :goto_7
+    if-ge p3, v7, :cond_3
 
     .line 313
-    :cond_b
-    new-instance v6, Lorg/oscim/layers/tile/MapTile;
+    :cond_2
+    return-void
 
-    iget v8, p0, Lorg/oscim/layers/tile/TileRenderer$1;->mZoom:I
+    .line 274
+    :cond_3
+    move v6, p2
 
-    int-to-byte v8, v8
+    .local v6, "x":I
+    :goto_1
+    if-ge v6, p3, :cond_2
 
-    invoke-direct {v6, v7, p2, p1, v8}, Lorg/oscim/layers/tile/MapTile;-><init>(Lorg/oscim/layers/tile/MapTile$TileNode;III)V
+    .line 275
+    if-ltz v6, :cond_5
 
-    .line 314
-    iput-boolean v4, v6, Lorg/oscim/layers/tile/MapTile;->isVisible:Z
+    if-ge v6, v7, :cond_5
 
-    .line 315
-    iput-object v5, v6, Lorg/oscim/layers/tile/MapTile;->holder:Lorg/oscim/layers/tile/MapTile;
-
-    .line 316
-    iget-byte v7, v5, Lorg/oscim/layers/tile/MapTile;->state:B
-
-    iput-byte v7, v6, Lorg/oscim/layers/tile/MapTile;->state:B
-
-    .line 317
-    iput-boolean v4, v5, Lorg/oscim/layers/tile/MapTile;->isVisible:Z
-
-    .line 318
-    iget-object v5, p0, Lorg/oscim/layers/tile/TileRenderer$1;->this$0:Lorg/oscim/layers/tile/TileRenderer;
-
-    iget v7, v5, Lorg/oscim/layers/tile/TileRenderer;->mProxyTileCnt:I
-
-    add-int/lit8 v8, v7, 0x1
-
-    iput v8, v5, Lorg/oscim/layers/tile/TileRenderer;->mProxyTileCnt:I
-
-    add-int/2addr v7, v1
-
-    aput-object v6, v0, v7
-
-    :cond_c
-    :goto_6
-    add-int/lit8 p2, p2, 0x1
+    .line 274
+    :cond_4
+    :goto_2
+    add-int/lit8 v6, v6, 0x1
 
     goto :goto_1
 
-    :cond_d
-    :goto_7
-    return-void
+    .line 278
+    :cond_5
+    move v8, v6
+
+    .line 279
+    .local v8, "xx":I
+    if-gez v6, :cond_7
+
+    .line 280
+    add-int v8, v7, v6
+
+    .line 284
+    :goto_3
+    if-ltz v8, :cond_4
+
+    if-ge v8, v7, :cond_4
+
+    .line 287
+    move v1, v2
+
+    :goto_4
+    iget-object v9, p0, Lorg/oscim/layers/tile/TileRenderer$1;->this$0:Lorg/oscim/layers/tile/TileRenderer;
+
+    iget v9, v9, Lorg/oscim/layers/tile/TileRenderer;->mProxyTileCnt:I
+
+    add-int/2addr v9, v2
+
+    if-ge v1, v9, :cond_8
+
+    .line 288
+    aget-object v9, v5, v1
+
+    iget v9, v9, Lorg/oscim/layers/tile/MapTile;->tileX:I
+
+    if-ne v9, v6, :cond_6
+
+    aget-object v9, v5, v1
+
+    iget v9, v9, Lorg/oscim/layers/tile/MapTile;->tileY:I
+
+    if-eq v9, p1, :cond_4
+
+    .line 287
+    :cond_6
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_4
+
+    .line 282
+    :cond_7
+    sub-int v8, v6, v7
+
+    goto :goto_3
+
+    .line 291
+    :cond_8
+    const/4 v4, 0x0
+
+    .line 292
+    .local v4, "tile":Lorg/oscim/layers/tile/MapTile;
+    const/4 v1, 0x0
+
+    :goto_5
+    if-ge v1, v2, :cond_9
+
+    .line 293
+    aget-object v9, v5, v1
+
+    iget v9, v9, Lorg/oscim/layers/tile/MapTile;->tileX:I
+
+    if-ne v9, v8, :cond_a
+
+    aget-object v9, v5, v1
+
+    iget v9, v9, Lorg/oscim/layers/tile/MapTile;->tileY:I
+
+    if-ne v9, p1, :cond_a
+
+    .line 294
+    aget-object v4, v5, v1
+
+    .line 298
+    :cond_9
+    if-eqz v4, :cond_4
+
+    .line 301
+    iget-object v9, p0, Lorg/oscim/layers/tile/TileRenderer$1;->this$0:Lorg/oscim/layers/tile/TileRenderer;
+
+    iget v9, v9, Lorg/oscim/layers/tile/TileRenderer;->mProxyTileCnt:I
+
+    add-int/2addr v9, v2
+
+    array-length v10, v5
+
+    if-ge v9, v10, :cond_2
+
+    .line 306
+    new-instance v0, Lorg/oscim/layers/tile/MapTile;
+
+    const/4 v9, 0x0
+
+    iget v10, p0, Lorg/oscim/layers/tile/TileRenderer$1;->mZoom:I
+
+    int-to-byte v10, v10
+
+    invoke-direct {v0, v9, v6, p1, v10}, Lorg/oscim/layers/tile/MapTile;-><init>(Lorg/oscim/layers/tile/MapTile$TileNode;III)V
+
+    .line 307
+    .local v0, "holder":Lorg/oscim/layers/tile/MapTile;
+    const/4 v9, 0x1
+
+    iput-boolean v9, v0, Lorg/oscim/layers/tile/MapTile;->isVisible:Z
+
+    .line 308
+    iput-object v4, v0, Lorg/oscim/layers/tile/MapTile;->holder:Lorg/oscim/layers/tile/MapTile;
+
+    .line 309
+    iget-byte v9, v4, Lorg/oscim/layers/tile/MapTile;->state:B
+
+    iput-byte v9, v0, Lorg/oscim/layers/tile/MapTile;->state:B
+
+    .line 310
+    const/4 v9, 0x1
+
+    iput-boolean v9, v4, Lorg/oscim/layers/tile/MapTile;->isVisible:Z
+
+    .line 311
+    iget-object v9, p0, Lorg/oscim/layers/tile/TileRenderer$1;->this$0:Lorg/oscim/layers/tile/TileRenderer;
+
+    iget v10, v9, Lorg/oscim/layers/tile/TileRenderer;->mProxyTileCnt:I
+
+    add-int/lit8 v11, v10, 0x1
+
+    iput v11, v9, Lorg/oscim/layers/tile/TileRenderer;->mProxyTileCnt:I
+
+    add-int v9, v2, v10
+
+    aput-object v0, v5, v9
+
+    goto :goto_2
+
+    .line 292
+    .end local v0    # "holder":Lorg/oscim/layers/tile/MapTile;
+    :cond_a
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_5
 .end method

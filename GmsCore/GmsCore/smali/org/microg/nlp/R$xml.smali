@@ -15,10 +15,10 @@
 
 
 # static fields
-.field public static final nlp_about_preferences:I = 0x7f110002
+.field public static final nlp_about_preferences:I = 0x7f060003
 
-.field public static final nlp_injected_setting:I = 0x7f110003
+.field public static final nlp_injected_setting:I = 0x7f060004
 
-.field public static final nlp_preferences:I = 0x7f110004
+.field public static final nlp_preferences:I = 0x7f060005
 
-.field public static final nlp_setup_preferences:I = 0x7f110005
+.field public static final nlp_setup_preferences:I = 0x7f060006

@@ -7,7 +7,8 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator<",
+            "Landroid/os/Parcelable$Creator",
+            "<",
             "Lcom/google/android/gms/appdatasearch/SuggestionResults;",
             ">;"
         }
@@ -45,6 +46,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
+    .prologue
     .line 53
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -58,50 +60,55 @@
 .end method
 
 .method private constructor <init>()V
-    .locals 1
+    .locals 2
+
+    .prologue
+    const/4 v1, 0x0
 
     .line 33
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
+    .line 34
     const/4 v0, 0x2
 
-    .line 34
     iput v0, p0, Lcom/google/android/gms/appdatasearch/SuggestionResults;->versionCode:I
 
-    const/4 v0, 0x0
-
     .line 35
-    iput-object v0, p0, Lcom/google/android/gms/appdatasearch/SuggestionResults;->errorMessage:Ljava/lang/String;
+    iput-object v1, p0, Lcom/google/android/gms/appdatasearch/SuggestionResults;->errorMessage:Ljava/lang/String;
 
     .line 36
-    iput-object v0, p0, Lcom/google/android/gms/appdatasearch/SuggestionResults;->s2:[Ljava/lang/String;
+    iput-object v1, p0, Lcom/google/android/gms/appdatasearch/SuggestionResults;->s2:[Ljava/lang/String;
 
-    iput-object v0, p0, Lcom/google/android/gms/appdatasearch/SuggestionResults;->s1:[Ljava/lang/String;
+    iput-object v1, p0, Lcom/google/android/gms/appdatasearch/SuggestionResults;->s1:[Ljava/lang/String;
 
+    .line 37
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;)V
-    .locals 1
+    .locals 2
+    .param p1, "errorMessage"    # Ljava/lang/String;
+
+    .prologue
+    const/4 v1, 0x0
 
     .line 39
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
+    .line 40
     const/4 v0, 0x2
 
-    .line 40
     iput v0, p0, Lcom/google/android/gms/appdatasearch/SuggestionResults;->versionCode:I
 
     .line 41
     iput-object p1, p0, Lcom/google/android/gms/appdatasearch/SuggestionResults;->errorMessage:Ljava/lang/String;
 
-    const/4 p1, 0x0
-
     .line 42
-    iput-object p1, p0, Lcom/google/android/gms/appdatasearch/SuggestionResults;->s1:[Ljava/lang/String;
+    iput-object v1, p0, Lcom/google/android/gms/appdatasearch/SuggestionResults;->s1:[Ljava/lang/String;
 
     .line 43
-    iput-object p1, p0, Lcom/google/android/gms/appdatasearch/SuggestionResults;->s2:[Ljava/lang/String;
+    iput-object v1, p0, Lcom/google/android/gms/appdatasearch/SuggestionResults;->s2:[Ljava/lang/String;
 
+    .line 44
     return-void
 .end method

@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder<",
+        "Lcom/squareup/wire/Message$Builder",
+        "<",
         "Lorg/microg/wearable/proto/SetDataItem;",
         ">;"
     }
@@ -26,7 +27,8 @@
 .field public assets:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Lorg/microg/wearable/proto/AssetEntry;",
             ">;"
         }
@@ -50,7 +52,8 @@
 .field public unknown3:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -64,20 +67,27 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 127
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
+    .line 128
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/wearable/proto/SetDataItem;)V
     .locals 1
+    .param p1, "message"    # Lorg/microg/wearable/proto/SetDataItem;
 
+    .prologue
     .line 131
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
+    .line 132
     if-nez p1, :cond_0
 
+    .line 143
+    :goto_0
     return-void
 
     .line 133
@@ -135,40 +145,45 @@
     iput-object v0, p0, Lorg/microg/wearable/proto/SetDataItem$Builder;->signatureDigest:Ljava/lang/String;
 
     .line 142
-    iget-object p1, p1, Lorg/microg/wearable/proto/SetDataItem;->lastModified:Ljava/lang/Long;
+    iget-object v0, p1, Lorg/microg/wearable/proto/SetDataItem;->lastModified:Ljava/lang/Long;
 
-    iput-object p1, p0, Lorg/microg/wearable/proto/SetDataItem$Builder;->lastModified:Ljava/lang/Long;
+    iput-object v0, p0, Lorg/microg/wearable/proto/SetDataItem$Builder;->lastModified:Ljava/lang/Long;
 
-    return-void
+    goto :goto_0
 .end method
 
 
 # virtual methods
 .method public assets(Ljava/util/List;)Lorg/microg/wearable/proto/SetDataItem$Builder;
-    .locals 0
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List<",
+            "Ljava/util/List",
+            "<",
             "Lorg/microg/wearable/proto/AssetEntry;",
             ">;)",
             "Lorg/microg/wearable/proto/SetDataItem$Builder;"
         }
     .end annotation
 
+    .prologue
     .line 181
+    .local p1, "assets":Ljava/util/List;, "Ljava/util/List<Lorg/microg/wearable/proto/AssetEntry;>;"
     invoke-static {p1}, Lorg/microg/wearable/proto/SetDataItem$Builder;->checkForNulls(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object p1
+    move-result-object v0
 
-    iput-object p1, p0, Lorg/microg/wearable/proto/SetDataItem$Builder;->assets:Ljava/util/List;
+    iput-object v0, p0, Lorg/microg/wearable/proto/SetDataItem$Builder;->assets:Ljava/util/List;
 
+    .line 182
     return-object p0
 .end method
 
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
+    .prologue
     .line 114
     invoke-virtual {p0}, Lorg/microg/wearable/proto/SetDataItem$Builder;->build()Lorg/microg/wearable/proto/SetDataItem;
 
@@ -180,6 +195,7 @@
 .method public build()Lorg/microg/wearable/proto/SetDataItem;
     .locals 2
 
+    .prologue
     .line 197
     new-instance v0, Lorg/microg/wearable/proto/SetDataItem;
 
@@ -192,72 +208,96 @@
 
 .method public data(Lokio/ByteString;)Lorg/microg/wearable/proto/SetDataItem$Builder;
     .locals 0
+    .param p1, "data"    # Lokio/ByteString;
 
+    .prologue
     .line 161
     iput-object p1, p0, Lorg/microg/wearable/proto/SetDataItem$Builder;->data:Lokio/ByteString;
 
+    .line 162
     return-object p0
 .end method
 
 .method public deleted(Ljava/lang/Boolean;)Lorg/microg/wearable/proto/SetDataItem$Builder;
     .locals 0
+    .param p1, "deleted"    # Ljava/lang/Boolean;
 
+    .prologue
     .line 171
     iput-object p1, p0, Lorg/microg/wearable/proto/SetDataItem$Builder;->deleted:Ljava/lang/Boolean;
 
+    .line 172
     return-object p0
 .end method
 
 .method public lastModified(Ljava/lang/Long;)Lorg/microg/wearable/proto/SetDataItem$Builder;
     .locals 0
+    .param p1, "lastModified"    # Ljava/lang/Long;
 
+    .prologue
     .line 191
     iput-object p1, p0, Lorg/microg/wearable/proto/SetDataItem$Builder;->lastModified:Ljava/lang/Long;
 
+    .line 192
     return-object p0
 .end method
 
 .method public packageName(Ljava/lang/String;)Lorg/microg/wearable/proto/SetDataItem$Builder;
     .locals 0
+    .param p1, "packageName"    # Ljava/lang/String;
 
+    .prologue
     .line 146
     iput-object p1, p0, Lorg/microg/wearable/proto/SetDataItem$Builder;->packageName:Ljava/lang/String;
 
+    .line 147
     return-object p0
 .end method
 
 .method public seqId(Ljava/lang/Long;)Lorg/microg/wearable/proto/SetDataItem$Builder;
     .locals 0
+    .param p1, "seqId"    # Ljava/lang/Long;
 
+    .prologue
     .line 166
     iput-object p1, p0, Lorg/microg/wearable/proto/SetDataItem$Builder;->seqId:Ljava/lang/Long;
 
+    .line 167
     return-object p0
 .end method
 
 .method public signatureDigest(Ljava/lang/String;)Lorg/microg/wearable/proto/SetDataItem$Builder;
     .locals 0
+    .param p1, "signatureDigest"    # Ljava/lang/String;
 
+    .prologue
     .line 186
     iput-object p1, p0, Lorg/microg/wearable/proto/SetDataItem$Builder;->signatureDigest:Ljava/lang/String;
 
+    .line 187
     return-object p0
 .end method
 
 .method public source(Ljava/lang/String;)Lorg/microg/wearable/proto/SetDataItem$Builder;
     .locals 0
+    .param p1, "source"    # Ljava/lang/String;
 
+    .prologue
     .line 176
     iput-object p1, p0, Lorg/microg/wearable/proto/SetDataItem$Builder;->source:Ljava/lang/String;
 
+    .line 177
     return-object p0
 .end method
 
 .method public uri(Ljava/lang/String;)Lorg/microg/wearable/proto/SetDataItem$Builder;
     .locals 0
+    .param p1, "uri"    # Ljava/lang/String;
 
+    .prologue
     .line 151
     iput-object p1, p0, Lorg/microg/wearable/proto/SetDataItem$Builder;->uri:Ljava/lang/String;
 
+    .line 152
     return-object p0
 .end method

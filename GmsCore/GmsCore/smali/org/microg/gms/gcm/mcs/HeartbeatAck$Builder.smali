@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder<",
+        "Lcom/squareup/wire/Message$Builder",
+        "<",
         "Lorg/microg/gms/gcm/mcs/HeartbeatAck;",
         ">;"
     }
@@ -34,20 +35,27 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 68
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
+    .line 69
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/gms/gcm/mcs/HeartbeatAck;)V
     .locals 1
+    .param p1, "message"    # Lorg/microg/gms/gcm/mcs/HeartbeatAck;
 
+    .prologue
     .line 72
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
+    .line 73
     if-nez p1, :cond_0
 
+    .line 77
+    :goto_0
     return-void
 
     .line 74
@@ -62,11 +70,11 @@
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck$Builder;->last_stream_id_received:Ljava/lang/Integer;
 
     .line 76
-    iget-object p1, p1, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->status:Ljava/lang/Long;
+    iget-object v0, p1, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->status:Ljava/lang/Long;
 
-    iput-object p1, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck$Builder;->status:Ljava/lang/Long;
+    iput-object v0, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck$Builder;->status:Ljava/lang/Long;
 
-    return-void
+    goto :goto_0
 .end method
 
 
@@ -74,6 +82,7 @@
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
+    .prologue
     .line 62
     invoke-virtual {p0}, Lorg/microg/gms/gcm/mcs/HeartbeatAck$Builder;->build()Lorg/microg/gms/gcm/mcs/HeartbeatAck;
 
@@ -85,6 +94,7 @@
 .method public build()Lorg/microg/gms/gcm/mcs/HeartbeatAck;
     .locals 2
 
+    .prologue
     .line 96
     new-instance v0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;
 
@@ -97,18 +107,24 @@
 
 .method public last_stream_id_received(Ljava/lang/Integer;)Lorg/microg/gms/gcm/mcs/HeartbeatAck$Builder;
     .locals 0
+    .param p1, "last_stream_id_received"    # Ljava/lang/Integer;
 
+    .prologue
     .line 85
     iput-object p1, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck$Builder;->last_stream_id_received:Ljava/lang/Integer;
 
+    .line 86
     return-object p0
 .end method
 
 .method public status(Ljava/lang/Long;)Lorg/microg/gms/gcm/mcs/HeartbeatAck$Builder;
     .locals 0
+    .param p1, "status"    # Ljava/lang/Long;
 
+    .prologue
     .line 90
     iput-object p1, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck$Builder;->status:Ljava/lang/Long;
 
+    .line 91
     return-object p0
 .end method

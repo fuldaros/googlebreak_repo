@@ -27,8 +27,9 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List<",
-            "Lcom/google/android/gms/location/internal/ParcelableGeofence;",
+            "Ljava/util/List",
+            "<",
+            "Lcom/google/android/gms/location/Geofence;",
             ">;",
             "Landroid/app/PendingIntent;",
             "Lcom/google/android/gms/location/internal/IGeofencerCallbacks;",
@@ -61,14 +62,6 @@
 .end method
 
 .method public abstract getLastLocationWithPackage(Ljava/lang/String;)Landroid/location/Location;
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract getLocationAvailabilityWithPackage(Ljava/lang/String;)Lcom/google/android/gms/location/LocationAvailability;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -133,6 +126,14 @@
 .end method
 
 .method public abstract iglms26(Landroid/location/Location;I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract iglms34(Ljava/lang/String;)Lcom/google/android/gms/location/LocationAvailability;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

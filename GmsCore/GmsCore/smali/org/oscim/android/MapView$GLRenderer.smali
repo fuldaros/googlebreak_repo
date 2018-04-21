@@ -20,10 +20,13 @@
 # direct methods
 .method public constructor <init>(Lorg/oscim/map/Map;)V
     .locals 0
+    .param p1, "map"    # Lorg/oscim/map/Map;
 
-    .line 250
+    .prologue
+    .line 234
     invoke-direct {p0, p1}, Lorg/oscim/renderer/MapRenderer;-><init>(Lorg/oscim/map/Map;)V
 
+    .line 235
     return-void
 .end method
 
@@ -31,27 +34,39 @@
 # virtual methods
 .method public onDrawFrame(Ljavax/microedition/khronos/opengles/GL10;)V
     .locals 0
+    .param p1, "gl"    # Ljavax/microedition/khronos/opengles/GL10;
 
-    .line 266
+    .prologue
+    .line 250
     invoke-super {p0}, Lorg/oscim/renderer/MapRenderer;->onDrawFrame()V
 
+    .line 251
     return-void
 .end method
 
 .method public onSurfaceChanged(Ljavax/microedition/khronos/opengles/GL10;II)V
     .locals 0
+    .param p1, "gl"    # Ljavax/microedition/khronos/opengles/GL10;
+    .param p2, "width"    # I
+    .param p3, "height"    # I
 
-    .line 260
+    .prologue
+    .line 244
     invoke-super {p0, p2, p3}, Lorg/oscim/renderer/MapRenderer;->onSurfaceChanged(II)V
 
+    .line 246
     return-void
 .end method
 
 .method public onSurfaceCreated(Ljavax/microedition/khronos/opengles/GL10;Ljavax/microedition/khronos/egl/EGLConfig;)V
     .locals 0
+    .param p1, "gl"    # Ljavax/microedition/khronos/opengles/GL10;
+    .param p2, "config"    # Ljavax/microedition/khronos/egl/EGLConfig;
 
-    .line 255
+    .prologue
+    .line 239
     invoke-super {p0}, Lorg/oscim/renderer/MapRenderer;->onSurfaceCreated()V
 
+    .line 240
     return-void
 .end method

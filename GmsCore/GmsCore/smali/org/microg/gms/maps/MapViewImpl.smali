@@ -16,7 +16,10 @@
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Lcom/google/android/gms/maps/GoogleMapOptions;)V
     .locals 0
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "options"    # Lcom/google/android/gms/maps/GoogleMapOptions;
 
+    .prologue
     .line 42
     invoke-direct {p0}, Lcom/google/android/gms/maps/internal/IMapViewDelegate$Stub;-><init>()V
 
@@ -26,64 +29,70 @@
     .line 44
     iput-object p2, p0, Lorg/microg/gms/maps/MapViewImpl;->options:Lcom/google/android/gms/maps/GoogleMapOptions;
 
+    .line 45
     return-void
 .end method
 
 .method static synthetic access$000(Lorg/microg/gms/maps/MapViewImpl;)Lorg/microg/gms/maps/GoogleMapImpl;
-    .locals 0
+    .locals 1
+    .param p0, "x0"    # Lorg/microg/gms/maps/MapViewImpl;
 
+    .prologue
     .line 34
     invoke-direct {p0}, Lorg/microg/gms/maps/MapViewImpl;->myMap()Lorg/microg/gms/maps/GoogleMapImpl;
 
-    move-result-object p0
+    move-result-object v0
 
-    return-object p0
+    return-object v0
 .end method
 
 .method private myMap()Lorg/microg/gms/maps/GoogleMapImpl;
-    .locals 2
+    .locals 4
 
+    .prologue
     .line 48
-    iget-object v0, p0, Lorg/microg/gms/maps/MapViewImpl;->map:Lorg/microg/gms/maps/GoogleMapImpl;
+    iget-object v1, p0, Lorg/microg/gms/maps/MapViewImpl;->map:Lorg/microg/gms/maps/GoogleMapImpl;
 
-    if-nez v0, :cond_0
-
-    const-string v0, "GmsMapViewImpl"
-
-    const-string v1, "GoogleMap instance created"
+    if-nez v1, :cond_0
 
     .line 49
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    const-string v1, "GmsMapViewImpl"
+
+    const-string v2, "GoogleMap instance created"
+
+    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 50
-    iget-object v0, p0, Lorg/microg/gms/maps/MapViewImpl;->context:Landroid/content/Context;
+    iget-object v1, p0, Lorg/microg/gms/maps/MapViewImpl;->context:Landroid/content/Context;
 
-    const-string v1, "layout_inflater"
+    const-string v2, "layout_inflater"
 
-    invoke-virtual {v0, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    invoke-virtual {v1, v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Landroid/view/LayoutInflater;
 
     .line 51
+    .local v0, "inflater":Landroid/view/LayoutInflater;
+    new-instance v1, Lorg/microg/gms/maps/GoogleMapImpl;
+
     invoke-virtual {v0}, Landroid/view/LayoutInflater;->getContext()Landroid/content/Context;
 
-    move-result-object v0
+    move-result-object v2
 
-    iget-object v1, p0, Lorg/microg/gms/maps/MapViewImpl;->options:Lcom/google/android/gms/maps/GoogleMapOptions;
+    iget-object v3, p0, Lorg/microg/gms/maps/MapViewImpl;->options:Lcom/google/android/gms/maps/GoogleMapOptions;
 
-    invoke-static {v0, v1}, Lorg/microg/gms/maps/GoogleMapImpl;->create(Landroid/content/Context;Lcom/google/android/gms/maps/GoogleMapOptions;)Lorg/microg/gms/maps/GoogleMapImpl;
+    invoke-direct {v1, v2, v3}, Lorg/microg/gms/maps/GoogleMapImpl;-><init>(Landroid/content/Context;Lcom/google/android/gms/maps/GoogleMapOptions;)V
 
-    move-result-object v0
-
-    iput-object v0, p0, Lorg/microg/gms/maps/MapViewImpl;->map:Lorg/microg/gms/maps/GoogleMapImpl;
+    iput-object v1, p0, Lorg/microg/gms/maps/MapViewImpl;->map:Lorg/microg/gms/maps/GoogleMapImpl;
 
     .line 53
+    .end local v0    # "inflater":Landroid/view/LayoutInflater;
     :cond_0
-    iget-object v0, p0, Lorg/microg/gms/maps/MapViewImpl;->map:Lorg/microg/gms/maps/GoogleMapImpl;
+    iget-object v1, p0, Lorg/microg/gms/maps/MapViewImpl;->map:Lorg/microg/gms/maps/GoogleMapImpl;
 
-    return-object v0
+    return-object v1
 .end method
 
 
@@ -96,11 +105,12 @@
         }
     .end annotation
 
+    .prologue
+    .line 58
     const-string v0, "GmsMapViewImpl"
 
     const-string v1, "getMap"
 
-    .line 58
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 59
@@ -113,17 +123,19 @@
 
 .method public getMapAsync(Lcom/google/android/gms/maps/internal/IOnMapReadyCallback;)V
     .locals 2
+    .param p1, "callback"    # Lcom/google/android/gms/maps/internal/IOnMapReadyCallback;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
+    .prologue
+    .line 112
     const-string v0, "GmsMapViewImpl"
 
     const-string v1, "getMapAsync"
 
-    .line 112
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 113
@@ -143,6 +155,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
+    .line 123
     return-void
 .end method
 
@@ -154,6 +167,7 @@
         }
     .end annotation
 
+    .prologue
     .line 107
     invoke-direct {p0}, Lorg/microg/gms/maps/MapViewImpl;->myMap()Lorg/microg/gms/maps/GoogleMapImpl;
 
@@ -171,20 +185,23 @@
 .end method
 
 .method public onCreate(Landroid/os/Bundle;)V
-    .locals 1
+    .locals 2
+    .param p1, "savedInstanceState"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    const-string p1, "GmsMapViewImpl"
-
-    const-string v0, "onCreate"
-
+    .prologue
     .line 65
-    invoke-static {p1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    const-string v0, "GmsMapViewImpl"
 
+    const-string v1, "onCreate"
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 66
     return-void
 .end method
 
@@ -196,11 +213,12 @@
         }
     .end annotation
 
+    .prologue
+    .line 91
     const-string v0, "GmsMapViewImpl"
 
     const-string v1, "onDestroy"
 
-    .line 91
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 92
@@ -210,6 +228,7 @@
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/GoogleMapImpl;->onDestroy()V
 
+    .line 93
     return-void
 .end method
 
@@ -221,13 +240,15 @@
         }
     .end annotation
 
+    .prologue
+    .line 97
     const-string v0, "GmsMapViewImpl"
 
     const-string v1, "onLowMemory"
 
-    .line 97
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
+    .line 98
     return-void
 .end method
 
@@ -239,11 +260,12 @@
         }
     .end annotation
 
+    .prologue
+    .line 85
     const-string v0, "GmsMapViewImpl"
 
     const-string v1, "onPause"
 
-    .line 85
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 86
@@ -253,67 +275,11 @@
 
     invoke-virtual {v0}, Lorg/microg/gms/maps/GoogleMapImpl;->onPause()V
 
+    .line 87
     return-void
 .end method
 
 .method public onResume()V
-    .locals 2
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-
-    const-string v0, "GmsMapViewImpl"
-
-    const-string v1, "onResume"
-
-    .line 70
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 72
-    invoke-direct {p0}, Lorg/microg/gms/maps/MapViewImpl;->myMap()Lorg/microg/gms/maps/GoogleMapImpl;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Lorg/microg/gms/maps/GoogleMapImpl;->onResume()V
-
-    .line 73
-    iget-object v0, p0, Lorg/microg/gms/maps/MapViewImpl;->readyCallback:Lcom/google/android/gms/maps/internal/IOnMapReadyCallback;
-
-    if-eqz v0, :cond_0
-
-    .line 75
-    :try_start_0
-    iget-object v0, p0, Lorg/microg/gms/maps/MapViewImpl;->readyCallback:Lcom/google/android/gms/maps/internal/IOnMapReadyCallback;
-
-    iget-object v1, p0, Lorg/microg/gms/maps/MapViewImpl;->map:Lorg/microg/gms/maps/GoogleMapImpl;
-
-    invoke-interface {v0, v1}, Lcom/google/android/gms/maps/internal/IOnMapReadyCallback;->onMapReady(Lcom/google/android/gms/maps/internal/IGoogleMapDelegate;)V
-
-    const/4 v0, 0x0
-
-    .line 76
-    iput-object v0, p0, Lorg/microg/gms/maps/MapViewImpl;->readyCallback:Lcom/google/android/gms/maps/internal/IOnMapReadyCallback;
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
-
-    goto :goto_0
-
-    :catch_0
-    move-exception v0
-
-    const-string v1, "GmsMapViewImpl"
-
-    .line 78
-    invoke-static {v1, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    :cond_0
-    :goto_0
-    return-void
-.end method
-
-.method public onSaveInstanceState(Landroid/os/Bundle;)V
     .locals 3
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -321,9 +287,72 @@
         }
     .end annotation
 
+    .prologue
+    .line 70
+    const-string v1, "GmsMapViewImpl"
+
+    const-string v2, "onResume"
+
+    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 72
+    invoke-direct {p0}, Lorg/microg/gms/maps/MapViewImpl;->myMap()Lorg/microg/gms/maps/GoogleMapImpl;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Lorg/microg/gms/maps/GoogleMapImpl;->onResume()V
+
+    .line 73
+    iget-object v1, p0, Lorg/microg/gms/maps/MapViewImpl;->readyCallback:Lcom/google/android/gms/maps/internal/IOnMapReadyCallback;
+
+    if-eqz v1, :cond_0
+
+    .line 75
+    :try_start_0
+    iget-object v1, p0, Lorg/microg/gms/maps/MapViewImpl;->readyCallback:Lcom/google/android/gms/maps/internal/IOnMapReadyCallback;
+
+    iget-object v2, p0, Lorg/microg/gms/maps/MapViewImpl;->map:Lorg/microg/gms/maps/GoogleMapImpl;
+
+    invoke-interface {v1, v2}, Lcom/google/android/gms/maps/internal/IOnMapReadyCallback;->onMapReady(Lcom/google/android/gms/maps/internal/IGoogleMapDelegate;)V
+
+    .line 76
+    const/4 v1, 0x0
+
+    iput-object v1, p0, Lorg/microg/gms/maps/MapViewImpl;->readyCallback:Lcom/google/android/gms/maps/internal/IOnMapReadyCallback;
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 81
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 77
+    :catch_0
+    move-exception v0
+
+    .line 78
+    .local v0, "e":Ljava/lang/Exception;
+    const-string v1, "GmsMapViewImpl"
+
+    invoke-static {v1, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    goto :goto_0
+.end method
+
+.method public onSaveInstanceState(Landroid/os/Bundle;)V
+    .locals 3
+    .param p1, "outState"    # Landroid/os/Bundle;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 102
     const-string v0, "GmsMapViewImpl"
 
-    .line 102
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -332,69 +361,94 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    move-result-object v1
+
     invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object p1
+    move-result-object v1
 
-    invoke-static {v0, p1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
+    .line 103
     return-void
 .end method
 
 .method public onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-    .locals 2
+    .locals 3
+    .param p1, "code"    # I
+    .param p2, "data"    # Landroid/os/Parcel;
+    .param p3, "reply"    # Landroid/os/Parcel;
+    .param p4, "flags"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
+    .prologue
     .line 127
     invoke-super {p0, p1, p2, p3, p4}, Lcom/google/android/gms/maps/internal/IMapViewDelegate$Stub;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    move-result p3
+    move-result v0
 
-    if-eqz p3, :cond_0
+    if-eqz v0, :cond_0
 
-    const/4 p1, 0x1
+    const/4 v0, 0x1
 
-    return p1
-
-    :cond_0
-    const-string p3, "GmsMapViewImpl"
+    .line 129
+    :goto_0
+    return v0
 
     .line 128
-    new-instance v0, Ljava/lang/StringBuilder;
+    :cond_0
+    const-string v0, "GmsMapViewImpl"
 
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    const-string v1, "onTransact [unknown]: "
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, "onTransact [unknown]: "
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string p1, ", "
+    move-result-object v1
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    move-result-object v1
 
-    const-string p1, ", "
+    const-string v2, ", "
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, p4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    move-result-object v1
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v1
 
-    invoke-static {p3, p1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    const-string v2, ", "
 
-    const/4 p1, 0x0
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    return p1
+    move-result-object v1
+
+    invoke-virtual {v1, p4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 129
+    const/4 v0, 0x0
+
+    goto :goto_0
 .end method

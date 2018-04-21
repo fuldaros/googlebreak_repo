@@ -19,7 +19,8 @@
 .annotation system Ldalvik/annotation/Signature;
     value = {
         "Ljava/lang/Object;",
-        "Ljava/util/Comparator<",
+        "Ljava/util/Comparator",
+        "<",
         "Ljava/lang/reflect/Field;",
         ">;"
     }
@@ -30,6 +31,7 @@
 .method constructor <init>()V
     .locals 0
 
+    .prologue
     .line 34
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -39,8 +41,9 @@
 
 # virtual methods
 .method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
-    .locals 0
+    .locals 1
 
+    .prologue
     .line 34
     check-cast p1, Ljava/lang/reflect/Field;
 
@@ -48,26 +51,29 @@
 
     invoke-virtual {p0, p1, p2}, Lcom/squareup/wire/BuilderAdapter$1;->compare(Ljava/lang/reflect/Field;Ljava/lang/reflect/Field;)I
 
-    move-result p1
+    move-result v0
 
-    return p1
+    return v0
 .end method
 
 .method public compare(Ljava/lang/reflect/Field;Ljava/lang/reflect/Field;)I
-    .locals 0
+    .locals 2
+    .param p1, "field1"    # Ljava/lang/reflect/Field;
+    .param p2, "field2"    # Ljava/lang/reflect/Field;
 
+    .prologue
     .line 36
     invoke-virtual {p1}, Ljava/lang/reflect/Field;->getName()Ljava/lang/String;
 
-    move-result-object p1
+    move-result-object v0
 
     invoke-virtual {p2}, Ljava/lang/reflect/Field;->getName()Ljava/lang/String;
 
-    move-result-object p2
+    move-result-object v1
 
-    invoke-virtual {p1, p2}, Ljava/lang/String;->compareTo(Ljava/lang/String;)I
+    invoke-virtual {v0, v1}, Ljava/lang/String;->compareTo(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v0
 
-    return p1
+    return v0
 .end method

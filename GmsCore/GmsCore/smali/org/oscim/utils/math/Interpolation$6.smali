@@ -18,7 +18,8 @@
 .method constructor <init>()V
     .locals 0
 
-    .line 97
+    .prologue
+    .line 93
     invoke-direct {p0}, Lorg/oscim/utils/math/Interpolation;-><init>()V
 
     return-void
@@ -27,60 +28,68 @@
 
 # virtual methods
 .method public apply(F)F
-    .locals 5
+    .locals 4
+    .param p1, "a"    # F
 
+    .prologue
+    const/high16 v3, 0x40000000    # 2.0f
+
+    const/high16 v2, 0x3f800000    # 1.0f
+
+    .line 96
     const/high16 v0, 0x3f000000    # 0.5f
 
     cmpg-float v0, p1, v0
 
-    const/high16 v1, 0x40000000    # 2.0f
-
-    const/high16 v2, 0x3f800000    # 1.0f
-
     if-gtz v0, :cond_0
 
-    mul-float/2addr p1, v1
+    .line 97
+    mul-float/2addr p1, v3
 
-    mul-float/2addr p1, p1
+    .line 98
+    mul-float v0, p1, p1
 
-    sub-float p1, v2, p1
+    sub-float v0, v2, v0
 
-    float-to-double v3, p1
+    float-to-double v0, v0
+
+    invoke-static {v0, v1}, Ljava/lang/Math;->sqrt(D)D
+
+    move-result-wide v0
+
+    double-to-float v0, v0
+
+    sub-float v0, v2, v0
+
+    div-float/2addr v0, v3
 
     .line 102
-    invoke-static {v3, v4}, Ljava/lang/Math;->sqrt(D)D
+    :goto_0
+    return v0
 
-    move-result-wide v3
-
-    double-to-float p1, v3
-
-    sub-float/2addr v2, p1
-
-    div-float/2addr v2, v1
-
-    return v2
-
+    .line 100
     :cond_0
     sub-float/2addr p1, v2
 
-    mul-float/2addr p1, v1
+    .line 101
+    mul-float/2addr p1, v3
 
-    mul-float/2addr p1, p1
+    .line 102
+    mul-float v0, p1, p1
 
-    sub-float p1, v2, p1
+    sub-float v0, v2, v0
 
-    float-to-double v3, p1
+    float-to-double v0, v0
 
-    .line 106
-    invoke-static {v3, v4}, Ljava/lang/Math;->sqrt(D)D
+    invoke-static {v0, v1}, Ljava/lang/Math;->sqrt(D)D
 
-    move-result-wide v3
+    move-result-wide v0
 
-    double-to-float p1, v3
+    double-to-float v0, v0
 
-    add-float/2addr p1, v2
+    add-float/2addr v0, v2
 
-    div-float/2addr p1, v1
+    div-float/2addr v0, v3
 
-    return p1
+    goto :goto_0
 .end method

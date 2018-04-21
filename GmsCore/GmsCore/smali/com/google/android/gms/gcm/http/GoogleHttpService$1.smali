@@ -21,7 +21,9 @@
 # direct methods
 .method constructor <init>(Lcom/google/android/gms/gcm/http/GoogleHttpService;)V
     .locals 0
+    .param p1, "this$0"    # Lcom/google/android/gms/gcm/http/GoogleHttpService;
 
+    .prologue
     .line 30
     iput-object p1, p0, Lcom/google/android/gms/gcm/http/GoogleHttpService$1;->this$0:Lcom/google/android/gms/gcm/http/GoogleHttpService;
 
@@ -33,14 +35,17 @@
 
 # virtual methods
 .method public checkUrl(Ljava/lang/String;)Landroid/os/Bundle;
-    .locals 0
+    .locals 1
+    .param p1, "url"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    const/4 p1, 0x0
+    .prologue
+    .line 33
+    const/4 v0, 0x0
 
-    return-object p1
+    return-object v0
 .end method

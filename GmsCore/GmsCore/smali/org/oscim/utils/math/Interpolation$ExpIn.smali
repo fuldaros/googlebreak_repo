@@ -17,10 +17,14 @@
 # direct methods
 .method public constructor <init>(FF)V
     .locals 0
+    .param p1, "value"    # F
+    .param p2, "power"    # F
 
-    .line 198
+    .prologue
+    .line 194
     invoke-direct {p0, p1, p2}, Lorg/oscim/utils/math/Interpolation$Exp;-><init>(FF)V
 
+    .line 195
     return-void
 .end method
 
@@ -28,8 +32,10 @@
 # virtual methods
 .method public apply(F)F
     .locals 4
+    .param p1, "a"    # F
 
-    .line 203
+    .prologue
+    .line 199
     iget v0, p0, Lorg/oscim/utils/math/Interpolation$ExpIn;->value:F
 
     float-to-double v0, v0
@@ -38,9 +44,9 @@
 
     const/high16 v3, 0x3f800000    # 1.0f
 
-    sub-float/2addr p1, v3
+    sub-float v3, p1, v3
 
-    mul-float/2addr v2, p1
+    mul-float/2addr v2, v3
 
     float-to-double v2, v2
 
@@ -48,15 +54,15 @@
 
     move-result-wide v0
 
-    double-to-float p1, v0
+    double-to-float v0, v0
 
-    iget v0, p0, Lorg/oscim/utils/math/Interpolation$ExpIn;->min:F
+    iget v1, p0, Lorg/oscim/utils/math/Interpolation$ExpIn;->min:F
 
-    sub-float/2addr p1, v0
+    sub-float/2addr v0, v1
 
-    iget v0, p0, Lorg/oscim/utils/math/Interpolation$ExpIn;->scale:F
+    iget v1, p0, Lorg/oscim/utils/math/Interpolation$ExpIn;->scale:F
 
-    mul-float/2addr p1, v0
+    mul-float/2addr v0, v1
 
-    return p1
+    return v0
 .end method

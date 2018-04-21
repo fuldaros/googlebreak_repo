@@ -41,9 +41,10 @@
 .method static constructor <clinit>()V
     .locals 1
 
+    .prologue
+    .line 14
     const/4 v0, 0x0
 
-    .line 14
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v0
@@ -55,7 +56,11 @@
 
 .method public constructor <init>(Ljava/lang/String;Lorg/microg/wearable/proto/Asset;Ljava/lang/Integer;)V
     .locals 0
+    .param p1, "key"    # Ljava/lang/String;
+    .param p2, "value"    # Lorg/microg/wearable/proto/Asset;
+    .param p3, "unknown3"    # Ljava/lang/Integer;
 
+    .prologue
     .line 25
     invoke-direct {p0}, Lcom/squareup/wire/Message;-><init>()V
 
@@ -68,12 +73,15 @@
     .line 28
     iput-object p3, p0, Lorg/microg/wearable/proto/AssetEntry;->unknown3:Ljava/lang/Integer;
 
+    .line 29
     return-void
 .end method
 
 .method private constructor <init>(Lorg/microg/wearable/proto/AssetEntry$Builder;)V
     .locals 3
+    .param p1, "builder"    # Lorg/microg/wearable/proto/AssetEntry$Builder;
 
+    .prologue
     .line 32
     iget-object v0, p1, Lorg/microg/wearable/proto/AssetEntry$Builder;->key:Ljava/lang/String;
 
@@ -86,12 +94,16 @@
     .line 33
     invoke-virtual {p0, p1}, Lorg/microg/wearable/proto/AssetEntry;->setBuilder(Lcom/squareup/wire/Message$Builder;)V
 
+    .line 34
     return-void
 .end method
 
 .method synthetic constructor <init>(Lorg/microg/wearable/proto/AssetEntry$Builder;Lorg/microg/wearable/proto/AssetEntry$1;)V
     .locals 0
+    .param p1, "x0"    # Lorg/microg/wearable/proto/AssetEntry$Builder;
+    .param p2, "x1"    # Lorg/microg/wearable/proto/AssetEntry$1;
 
+    .prologue
     .line 11
     invoke-direct {p0, p1}, Lorg/microg/wearable/proto/AssetEntry;-><init>(Lorg/microg/wearable/proto/AssetEntry$Builder;)V
 
@@ -101,103 +113,109 @@
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 4
+    .locals 5
+    .param p1, "other"    # Ljava/lang/Object;
 
-    const/4 v0, 0x1
-
-    if-ne p1, p0, :cond_0
-
-    return v0
-
-    .line 39
-    :cond_0
-    instance-of v1, p1, Lorg/microg/wearable/proto/AssetEntry;
+    .prologue
+    const/4 v1, 0x1
 
     const/4 v2, 0x0
 
-    if-nez v1, :cond_1
-
-    return v2
-
-    .line 40
-    :cond_1
-    check-cast p1, Lorg/microg/wearable/proto/AssetEntry;
-
-    .line 41
-    iget-object v1, p0, Lorg/microg/wearable/proto/AssetEntry;->key:Ljava/lang/String;
-
-    iget-object v3, p1, Lorg/microg/wearable/proto/AssetEntry;->key:Ljava/lang/String;
-
-    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/AssetEntry;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/wearable/proto/AssetEntry;->value:Lorg/microg/wearable/proto/Asset;
-
-    iget-object v3, p1, Lorg/microg/wearable/proto/AssetEntry;->value:Lorg/microg/wearable/proto/Asset;
-
-    .line 42
-    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/AssetEntry;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    iget-object v1, p0, Lorg/microg/wearable/proto/AssetEntry;->unknown3:Ljava/lang/Integer;
-
-    iget-object p1, p1, Lorg/microg/wearable/proto/AssetEntry;->unknown3:Ljava/lang/Integer;
+    .line 38
+    if-ne p1, p0, :cond_1
 
     .line 43
-    invoke-virtual {p0, v1, p1}, Lorg/microg/wearable/proto/AssetEntry;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+    :cond_0
+    :goto_0
+    return v1
 
-    move-result p1
+    .line 39
+    :cond_1
+    instance-of v3, p1, Lorg/microg/wearable/proto/AssetEntry;
 
-    if-eqz p1, :cond_2
+    if-nez v3, :cond_2
+
+    move v1, v2
 
     goto :goto_0
 
     :cond_2
-    move v0, v2
+    move-object v0, p1
 
-    :goto_0
-    return v0
+    .line 40
+    check-cast v0, Lorg/microg/wearable/proto/AssetEntry;
+
+    .line 41
+    .local v0, "o":Lorg/microg/wearable/proto/AssetEntry;
+    iget-object v3, p0, Lorg/microg/wearable/proto/AssetEntry;->key:Ljava/lang/String;
+
+    iget-object v4, v0, Lorg/microg/wearable/proto/AssetEntry;->key:Ljava/lang/String;
+
+    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/AssetEntry;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/wearable/proto/AssetEntry;->value:Lorg/microg/wearable/proto/Asset;
+
+    iget-object v4, v0, Lorg/microg/wearable/proto/AssetEntry;->value:Lorg/microg/wearable/proto/Asset;
+
+    .line 42
+    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/AssetEntry;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    iget-object v3, p0, Lorg/microg/wearable/proto/AssetEntry;->unknown3:Ljava/lang/Integer;
+
+    iget-object v4, v0, Lorg/microg/wearable/proto/AssetEntry;->unknown3:Ljava/lang/Integer;
+
+    .line 43
+    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/AssetEntry;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_0
+
+    :cond_3
+    move v1, v2
+
+    goto :goto_0
 .end method
 
 .method public hashCode()I
-    .locals 3
+    .locals 4
+
+    .prologue
+    const/4 v1, 0x0
 
     .line 48
     iget v0, p0, Lorg/microg/wearable/proto/AssetEntry;->hashCode:I
 
-    if-nez v0, :cond_3
+    .line 49
+    .local v0, "result":I
+    if-nez v0, :cond_1
 
     .line 50
-    iget-object v0, p0, Lorg/microg/wearable/proto/AssetEntry;->key:Ljava/lang/String;
+    iget-object v2, p0, Lorg/microg/wearable/proto/AssetEntry;->key:Ljava/lang/String;
 
-    const/4 v1, 0x0
+    if-eqz v2, :cond_2
 
-    if-eqz v0, :cond_0
+    iget-object v2, p0, Lorg/microg/wearable/proto/AssetEntry;->key:Ljava/lang/String;
 
-    iget-object v0, p0, Lorg/microg/wearable/proto/AssetEntry;->key:Ljava/lang/String;
-
-    invoke-virtual {v0}, Ljava/lang/String;->hashCode()I
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
 
     move-result v0
 
-    goto :goto_0
-
-    :cond_0
-    move v0, v1
-
-    :goto_0
-    mul-int/lit8 v0, v0, 0x25
-
     .line 51
+    :goto_0
+    mul-int/lit8 v3, v0, 0x25
+
     iget-object v2, p0, Lorg/microg/wearable/proto/AssetEntry;->value:Lorg/microg/wearable/proto/Asset;
 
-    if-eqz v2, :cond_1
+    if-eqz v2, :cond_3
 
     iget-object v2, p0, Lorg/microg/wearable/proto/AssetEntry;->value:Lorg/microg/wearable/proto/Asset;
 
@@ -205,20 +223,15 @@
 
     move-result v2
 
-    goto :goto_1
-
-    :cond_1
-    move v2, v1
-
     :goto_1
-    add-int/2addr v0, v2
-
-    mul-int/lit8 v0, v0, 0x25
+    add-int v0, v3, v2
 
     .line 52
-    iget-object v2, p0, Lorg/microg/wearable/proto/AssetEntry;->unknown3:Ljava/lang/Integer;
+    mul-int/lit8 v2, v0, 0x25
 
-    if-eqz v2, :cond_2
+    iget-object v3, p0, Lorg/microg/wearable/proto/AssetEntry;->unknown3:Ljava/lang/Integer;
+
+    if-eqz v3, :cond_0
 
     iget-object v1, p0, Lorg/microg/wearable/proto/AssetEntry;->unknown3:Ljava/lang/Integer;
 
@@ -226,12 +239,25 @@
 
     move-result v1
 
-    :cond_2
-    add-int/2addr v0, v1
+    :cond_0
+    add-int v0, v2, v1
 
     .line 53
     iput v0, p0, Lorg/microg/wearable/proto/AssetEntry;->hashCode:I
 
-    :cond_3
+    .line 55
+    :cond_1
     return v0
+
+    :cond_2
+    move v0, v1
+
+    .line 50
+    goto :goto_0
+
+    :cond_3
+    move v2, v1
+
+    .line 51
+    goto :goto_1
 .end method

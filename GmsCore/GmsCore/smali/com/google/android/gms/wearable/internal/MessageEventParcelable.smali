@@ -2,15 +2,13 @@
 .super Lorg/microg/safeparcel/AutoSafeParcelable;
 .source "MessageEventParcelable.java"
 
-# interfaces
-.implements Lcom/google/android/gms/wearable/MessageEvent;
-
 
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator<",
+            "Landroid/os/Parcelable$Creator",
+            "<",
             "Lcom/google/android/gms/wearable/internal/MessageEventParcelable;",
             ">;"
         }
@@ -54,6 +52,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
+    .prologue
     .line 67
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -69,12 +68,13 @@
 .method public constructor <init>()V
     .locals 1
 
+    .prologue
     .line 24
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
+    .line 26
     const/4 v0, 0x1
 
-    .line 26
     iput v0, p0, Lcom/google/android/gms/wearable/internal/MessageEventParcelable;->versionCode:I
 
     return-void
@@ -82,35 +82,11 @@
 
 
 # virtual methods
-.method public getData()[B
-    .locals 1
-
-    .line 39
-    iget-object v0, p0, Lcom/google/android/gms/wearable/internal/MessageEventParcelable;->data:[B
-
-    return-object v0
-.end method
-
-.method public getPath()Ljava/lang/String;
-    .locals 1
-
-    .line 44
-    iget-object v0, p0, Lcom/google/android/gms/wearable/internal/MessageEventParcelable;->path:Ljava/lang/String;
-
-    return-object v0
-.end method
-
-.method public getSourceNodeId()Ljava/lang/String;
-    .locals 1
-
-    .line 54
-    iget-object v0, p0, Lcom/google/android/gms/wearable/internal/MessageEventParcelable;->sourceNodeId:Ljava/lang/String;
-
-    return-object v0
-.end method
-
 .method public toString()Ljava/lang/String;
     .locals 3
+
+    .prologue
+    const/16 v2, 0x27
 
     .line 59
     new-instance v0, Ljava/lang/StringBuilder;
@@ -121,59 +97,79 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    move-result-object v0
+
     iget v1, p0, Lcom/google/android/gms/wearable/internal/MessageEventParcelable;->requestId:I
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     const-string v1, ", path=\'"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    move-result-object v0
+
     iget-object v1, p0, Lcom/google/android/gms/wearable/internal/MessageEventParcelable;->path:Ljava/lang/String;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const/16 v1, 0x27
+    move-result-object v0
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    const-string v2, ", dataSize="
+    move-result-object v0
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v1, ", dataSize="
 
-    iget-object v2, p0, Lcom/google/android/gms/wearable/internal/MessageEventParcelable;->data:[B
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    if-eqz v2, :cond_0
+    move-result-object v1
 
-    iget-object v2, p0, Lcom/google/android/gms/wearable/internal/MessageEventParcelable;->data:[B
+    iget-object v0, p0, Lcom/google/android/gms/wearable/internal/MessageEventParcelable;->data:[B
 
-    array-length v2, v2
+    if-eqz v0, :cond_0
 
-    goto :goto_0
+    iget-object v0, p0, Lcom/google/android/gms/wearable/internal/MessageEventParcelable;->data:[B
 
-    :cond_0
-    const/4 v2, -0x1
+    array-length v0, v0
 
     :goto_0
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    const-string v2, ", sourceNodeId=\'"
+    move-result-object v0
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v1, ", sourceNodeId=\'"
 
-    iget-object v2, p0, Lcom/google/android/gms/wearable/internal/MessageEventParcelable;->sourceNodeId:Ljava/lang/String;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v0
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    iget-object v1, p0, Lcom/google/android/gms/wearable/internal/MessageEventParcelable;->sourceNodeId:Ljava/lang/String;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     const/16 v1, 0x7d
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0
 
     return-object v0
+
+    :cond_0
+    const/4 v0, -0x1
+
+    goto :goto_0
 .end method

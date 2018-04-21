@@ -7,7 +7,8 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator<",
+            "Landroid/os/Parcelable$Creator",
+            "<",
             "Lcom/google/android/gms/location/internal/FusedLocationProviderResult;",
             ">;"
         }
@@ -35,6 +36,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
+    .prologue
     .line 25
     sget-object v0, Lcom/google/android/gms/common/api/Status;->SUCCESS:Lcom/google/android/gms/common/api/Status;
 
@@ -59,12 +61,13 @@
 .method public constructor <init>()V
     .locals 1
 
+    .prologue
     .line 24
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
+    .line 27
     const/4 v0, 0x1
 
-    .line 27
     iput v0, p0, Lcom/google/android/gms/location/internal/FusedLocationProviderResult;->versionCode:I
 
     return-void
@@ -72,14 +75,18 @@
 
 .method public static create(Lcom/google/android/gms/common/api/Status;)Lcom/google/android/gms/location/internal/FusedLocationProviderResult;
     .locals 1
+    .param p0, "status"    # Lcom/google/android/gms/common/api/Status;
 
+    .prologue
     .line 34
     new-instance v0, Lcom/google/android/gms/location/internal/FusedLocationProviderResult;
 
     invoke-direct {v0}, Lcom/google/android/gms/location/internal/FusedLocationProviderResult;-><init>()V
 
     .line 35
+    .local v0, "result":Lcom/google/android/gms/location/internal/FusedLocationProviderResult;
     iput-object p0, v0, Lcom/google/android/gms/location/internal/FusedLocationProviderResult;->status:Lcom/google/android/gms/common/api/Status;
 
+    .line 36
     return-object v0
 .end method

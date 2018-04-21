@@ -23,7 +23,10 @@
 # direct methods
 .method public constructor <init>(ILcom/squareup/wire/WireType;)V
     .locals 0
+    .param p1, "tag"    # I
+    .param p2, "wireType"    # Lcom/squareup/wire/WireType;
 
+    .prologue
     .line 43
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -33,12 +36,16 @@
     .line 45
     iput-object p2, p0, Lcom/squareup/wire/UnknownFieldMap$FieldValue;->wireType:Lcom/squareup/wire/WireType;
 
+    .line 46
     return-void
 .end method
 
 .method public static fixed32(ILjava/lang/Integer;)Lcom/squareup/wire/UnknownFieldMap$Fixed32FieldValue;
     .locals 1
+    .param p0, "tag"    # I
+    .param p1, "value"    # Ljava/lang/Integer;
 
+    .prologue
     .line 53
     new-instance v0, Lcom/squareup/wire/UnknownFieldMap$Fixed32FieldValue;
 
@@ -49,7 +56,10 @@
 
 .method public static fixed64(ILjava/lang/Long;)Lcom/squareup/wire/UnknownFieldMap$Fixed64FieldValue;
     .locals 1
+    .param p0, "tag"    # I
+    .param p1, "value"    # Ljava/lang/Long;
 
+    .prologue
     .line 57
     new-instance v0, Lcom/squareup/wire/UnknownFieldMap$Fixed64FieldValue;
 
@@ -60,7 +70,10 @@
 
 .method public static lengthDelimited(ILokio/ByteString;)Lcom/squareup/wire/UnknownFieldMap$LengthDelimitedFieldValue;
     .locals 1
+    .param p0, "tag"    # I
+    .param p1, "value"    # Lokio/ByteString;
 
+    .prologue
     .line 61
     new-instance v0, Lcom/squareup/wire/UnknownFieldMap$LengthDelimitedFieldValue;
 
@@ -71,7 +84,10 @@
 
 .method public static varint(ILjava/lang/Long;)Lcom/squareup/wire/UnknownFieldMap$VarintFieldValue;
     .locals 1
+    .param p0, "tag"    # I
+    .param p1, "value"    # Ljava/lang/Long;
 
+    .prologue
     .line 49
     new-instance v0, Lcom/squareup/wire/UnknownFieldMap$VarintFieldValue;
 
@@ -88,6 +104,7 @@
 .method public getWireType()Lcom/squareup/wire/WireType;
     .locals 1
 
+    .prologue
     .line 73
     iget-object v0, p0, Lcom/squareup/wire/UnknownFieldMap$FieldValue;->wireType:Lcom/squareup/wire/WireType;
 

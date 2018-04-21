@@ -7,7 +7,8 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator<",
+            "Landroid/os/Parcelable$Creator",
+            "<",
             "Lcom/google/android/gms/auth/firstparty/dataservice/AccountRemovalRequest;",
             ">;"
         }
@@ -42,6 +43,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
+    .prologue
     .line 45
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 

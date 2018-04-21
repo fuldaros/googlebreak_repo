@@ -18,11 +18,23 @@
 
 
 # direct methods
-.method constructor <init>()V
+.method private constructor <init>()V
     .locals 0
 
-    .line 767
+    .prologue
+    .line 886
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method synthetic constructor <init>(Landroid/support/v7/widget/AppCompatDrawableManager$1;)V
+    .locals 0
+    .param p1, "x0"    # Landroid/support/v7/widget/AppCompatDrawableManager$1;
+
+    .prologue
+    .line 886
+    invoke-direct {p0}, Landroid/support/v7/widget/AppCompatDrawableManager$VdcInflateDelegate;-><init>()V
 
     return-void
 .end method
@@ -30,33 +42,43 @@
 
 # virtual methods
 .method public createFromXmlInner(Landroid/content/Context;Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;Landroid/content/res/Resources$Theme;)Landroid/graphics/drawable/Drawable;
-    .locals 0
+    .locals 3
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "parser"    # Lorg/xmlpull/v1/XmlPullParser;
+    .param p3, "attrs"    # Landroid/util/AttributeSet;
+    .param p4, "theme"    # Landroid/content/res/Resources$Theme;
 
-    .line 775
+    .prologue
+    .line 891
     :try_start_0
     invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    move-result-object p1
+    move-result-object v1
 
-    invoke-static {p1, p2, p3, p4}, Landroid/support/graphics/drawable/VectorDrawableCompat;->createFromXmlInner(Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;Landroid/content/res/Resources$Theme;)Landroid/support/graphics/drawable/VectorDrawableCompat;
-
-    move-result-object p1
+    invoke-static {v1, p2, p3, p4}, Landroid/support/graphics/drawable/VectorDrawableCompat;->createFromXmlInner(Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;Landroid/content/res/Resources$Theme;)Landroid/support/graphics/drawable/VectorDrawableCompat;
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    return-object p1
+    move-result-object v1
 
+    .line 895
+    :goto_0
+    return-object v1
+
+    .line 893
     :catch_0
-    move-exception p1
+    move-exception v0
 
-    const-string p2, "VdcInflateDelegate"
+    .line 894
+    .local v0, "e":Ljava/lang/Exception;
+    const-string v1, "VdcInflateDelegate"
 
-    const-string p3, "Exception while inflating <vector>"
+    const-string v2, "Exception while inflating <vector>"
 
-    .line 777
-    invoke-static {p2, p3, p1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    const/4 p1, 0x0
+    .line 895
+    const/4 v1, 0x0
 
-    return-object p1
+    goto :goto_0
 .end method

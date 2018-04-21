@@ -12,7 +12,10 @@
 # direct methods
 .method public constructor <init>(Lorg/oscim/renderer/bucket/TextureItem;Lorg/oscim/renderer/atlas/TextureAtlas$Rect;)V
     .locals 0
+    .param p1, "texture"    # Lorg/oscim/renderer/bucket/TextureItem;
+    .param p2, "r"    # Lorg/oscim/renderer/atlas/TextureAtlas$Rect;
 
+    .prologue
     .line 24
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -22,5 +25,6 @@
     .line 26
     iput-object p2, p0, Lorg/oscim/renderer/atlas/TextureRegion;->rect:Lorg/oscim/renderer/atlas/TextureAtlas$Rect;
 
+    .line 27
     return-void
 .end method

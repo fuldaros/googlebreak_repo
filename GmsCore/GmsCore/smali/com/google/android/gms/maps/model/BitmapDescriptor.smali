@@ -10,13 +10,16 @@
 # direct methods
 .method public constructor <init>(Lcom/google/android/gms/dynamic/IObjectWrapper;)V
     .locals 0
+    .param p1, "remoteObject"    # Lcom/google/android/gms/dynamic/IObjectWrapper;
 
+    .prologue
     .line 31
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 32
     iput-object p1, p0, Lcom/google/android/gms/maps/model/BitmapDescriptor;->remoteObject:Lcom/google/android/gms/dynamic/IObjectWrapper;
 
+    .line 33
     return-void
 .end method
 
@@ -25,6 +28,7 @@
 .method public getRemoteObject()Lcom/google/android/gms/dynamic/IObjectWrapper;
     .locals 1
 
+    .prologue
     .line 36
     iget-object v0, p0, Lcom/google/android/gms/maps/model/BitmapDescriptor;->remoteObject:Lcom/google/android/gms/dynamic/IObjectWrapper;
 

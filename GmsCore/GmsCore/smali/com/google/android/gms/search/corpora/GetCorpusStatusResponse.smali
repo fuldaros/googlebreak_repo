@@ -7,7 +7,8 @@
 .field public static CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator<",
+            "Landroid/os/Parcelable$Creator",
+            "<",
             "Lcom/google/android/gms/search/corpora/GetCorpusStatusResponse;",
             ">;"
         }
@@ -39,6 +40,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
+    .prologue
     .line 46
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -54,10 +56,11 @@
 .method private constructor <init>()V
     .locals 1
 
+    .prologue
+    const/4 v0, 0x0
+
     .line 36
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
-
-    const/4 v0, 0x0
 
     .line 37
     iput-object v0, p0, Lcom/google/android/gms/search/corpora/GetCorpusStatusResponse;->status:Lcom/google/android/gms/common/api/Status;
@@ -65,12 +68,16 @@
     .line 38
     iput-object v0, p0, Lcom/google/android/gms/search/corpora/GetCorpusStatusResponse;->corpusStatus:Lcom/google/android/gms/appdatasearch/CorpusStatus;
 
+    .line 39
     return-void
 .end method
 
 .method public constructor <init>(Lcom/google/android/gms/common/api/Status;Lcom/google/android/gms/appdatasearch/CorpusStatus;)V
     .locals 0
+    .param p1, "status"    # Lcom/google/android/gms/common/api/Status;
+    .param p2, "corpusStatus"    # Lcom/google/android/gms/appdatasearch/CorpusStatus;
 
+    .prologue
     .line 41
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
@@ -80,5 +87,6 @@
     .line 43
     iput-object p2, p0, Lcom/google/android/gms/search/corpora/GetCorpusStatusResponse;->corpusStatus:Lcom/google/android/gms/appdatasearch/CorpusStatus;
 
+    .line 44
     return-void
 .end method

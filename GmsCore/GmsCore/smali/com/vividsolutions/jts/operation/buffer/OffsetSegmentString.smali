@@ -19,9 +19,10 @@
 .method static constructor <clinit>()V
     .locals 1
 
+    .prologue
+    .line 48
     const/4 v0, 0x0
 
-    .line 48
     new-array v0, v0, [Lcom/vividsolutions/jts/geom/Coordinate;
 
     sput-object v0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->COORDINATE_ARRAY_TYPE:[Lcom/vividsolutions/jts/geom/Coordinate;
@@ -32,17 +33,18 @@
 .method public constructor <init>()V
     .locals 2
 
+    .prologue
     .line 61
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 51
     const/4 v0, 0x0
 
-    .line 51
     iput-object v0, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->precisionModel:Lcom/vividsolutions/jts/geom/PrecisionModel;
 
+    .line 58
     const-wide/16 v0, 0x0
 
-    .line 58
     iput-wide v0, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->minimimVertexDistance:D
 
     .line 62
@@ -52,136 +54,159 @@
 
     iput-object v0, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
 
+    .line 63
     return-void
 .end method
 
 .method private isRedundant(Lcom/vividsolutions/jts/geom/Coordinate;)Z
-    .locals 7
+    .locals 8
+    .param p1, "pt"    # Lcom/vividsolutions/jts/geom/Coordinate;
 
-    .line 110
-    iget-object v0, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
-
-    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
-
-    move-result v0
+    .prologue
+    const/4 v4, 0x1
 
     const/4 v1, 0x0
 
-    const/4 v2, 0x1
+    .line 110
+    iget-object v5, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
 
-    if-ge v0, v2, :cond_0
+    invoke-virtual {v5}, Ljava/util/ArrayList;->size()I
 
+    move-result v5
+
+    if-ge v5, v4, :cond_1
+
+    .line 116
+    :cond_0
+    :goto_0
     return v1
 
     .line 112
-    :cond_0
-    iget-object v0, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
+    :cond_1
+    iget-object v5, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
 
-    iget-object v3, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
+    iget-object v6, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
 
-    invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
+    invoke-virtual {v6}, Ljava/util/ArrayList;->size()I
 
-    move-result v3
+    move-result v6
 
-    sub-int/2addr v3, v2
+    add-int/lit8 v6, v6, -0x1
 
-    invoke-virtual {v0, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    invoke-virtual {v5, v6}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Lcom/vividsolutions/jts/geom/Coordinate;
 
     .line 113
+    .local v0, "lastPt":Lcom/vividsolutions/jts/geom/Coordinate;
     invoke-virtual {p1, v0}, Lcom/vividsolutions/jts/geom/Coordinate;->distance(Lcom/vividsolutions/jts/geom/Coordinate;)D
 
-    move-result-wide v3
+    move-result-wide v2
 
     .line 114
-    iget-wide v5, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->minimimVertexDistance:D
+    .local v2, "ptDist":D
+    iget-wide v6, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->minimimVertexDistance:D
 
-    cmpg-double p1, v3, v5
+    cmpg-double v5, v2, v6
 
-    if-gez p1, :cond_1
+    if-gez v5, :cond_0
 
-    return v2
+    move v1, v4
 
-    :cond_1
-    return v1
+    .line 115
+    goto :goto_0
 .end method
 
 
 # virtual methods
 .method public addPt(Lcom/vividsolutions/jts/geom/Coordinate;)V
-    .locals 1
+    .locals 2
+    .param p1, "pt"    # Lcom/vividsolutions/jts/geom/Coordinate;
 
+    .prologue
     .line 77
     new-instance v0, Lcom/vividsolutions/jts/geom/Coordinate;
 
     invoke-direct {v0, p1}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;)V
 
     .line 78
-    iget-object p1, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->precisionModel:Lcom/vividsolutions/jts/geom/PrecisionModel;
+    .local v0, "bufPt":Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v1, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->precisionModel:Lcom/vividsolutions/jts/geom/PrecisionModel;
 
-    invoke-virtual {p1, v0}, Lcom/vividsolutions/jts/geom/PrecisionModel;->makePrecise(Lcom/vividsolutions/jts/geom/Coordinate;)V
+    invoke-virtual {v1, v0}, Lcom/vividsolutions/jts/geom/PrecisionModel;->makePrecise(Lcom/vividsolutions/jts/geom/Coordinate;)V
 
     .line 80
     invoke-direct {p0, v0}, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->isRedundant(Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
-    move-result p1
+    move-result v1
 
-    if-eqz p1, :cond_0
+    if-eqz v1, :cond_0
 
+    .line 84
+    :goto_0
     return-void
 
     .line 82
     :cond_0
-    iget-object p1, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
+    iget-object v1, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
 
-    invoke-virtual {p1, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    return-void
+    goto :goto_0
 .end method
 
 .method public addPts([Lcom/vividsolutions/jts/geom/Coordinate;Z)V
-    .locals 1
+    .locals 2
+    .param p1, "pt"    # [Lcom/vividsolutions/jts/geom/Coordinate;
+    .param p2, "isForward"    # Z
 
+    .prologue
+    .line 88
     if-eqz p2, :cond_0
 
-    const/4 p2, 0x0
-
     .line 89
-    :goto_0
-    array-length v0, p1
+    const/4 v0, 0x0
 
-    if-ge p2, v0, :cond_1
+    .local v0, "i":I
+    :goto_0
+    array-length v1, p1
+
+    if-ge v0, v1, :cond_1
 
     .line 90
-    aget-object v0, p1, p2
+    aget-object v1, p1, v0
 
-    invoke-virtual {p0, v0}, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->addPt(Lcom/vividsolutions/jts/geom/Coordinate;)V
+    invoke-virtual {p0, v1}, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->addPt(Lcom/vividsolutions/jts/geom/Coordinate;)V
 
-    add-int/lit8 p2, p2, 0x1
+    .line 89
+    add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
     .line 94
+    .end local v0    # "i":I
     :cond_0
-    array-length p2, p1
+    array-length v1, p1
 
-    add-int/lit8 p2, p2, -0x1
+    add-int/lit8 v0, v1, -0x1
 
+    .restart local v0    # "i":I
     :goto_1
-    if-ltz p2, :cond_1
+    if-ltz v0, :cond_1
 
     .line 95
-    aget-object v0, p1, p2
+    aget-object v1, p1, v0
 
-    invoke-virtual {p0, v0}, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->addPt(Lcom/vividsolutions/jts/geom/Coordinate;)V
+    invoke-virtual {p0, v1}, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->addPt(Lcom/vividsolutions/jts/geom/Coordinate;)V
 
-    add-int/lit8 p2, p2, -0x1
+    .line 94
+    add-int/lit8 v0, v0, -0x1
 
     goto :goto_1
 
+    .line 98
     :cond_1
     return-void
 .end method
@@ -189,65 +214,42 @@
 .method public closeRing()V
     .locals 5
 
+    .prologue
     .line 121
-    iget-object v0, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
-
-    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
-
-    move-result v0
-
-    const/4 v1, 0x1
-
-    if-ge v0, v1, :cond_0
-
-    return-void
-
-    .line 122
-    :cond_0
-    new-instance v0, Lcom/vividsolutions/jts/geom/Coordinate;
-
-    iget-object v2, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
-
-    const/4 v3, 0x0
-
-    invoke-virtual {v2, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Lcom/vividsolutions/jts/geom/Coordinate;
-
-    invoke-direct {v0, v2}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;)V
-
-    .line 123
-    iget-object v2, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
-
     iget-object v3, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
 
     invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
 
     move-result v3
 
-    sub-int/2addr v3, v1
+    const/4 v4, 0x1
 
-    invoke-virtual {v2, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    if-ge v3, v4, :cond_1
 
-    move-result-object v1
+    .line 129
+    :cond_0
+    :goto_0
+    return-void
 
-    check-cast v1, Lcom/vividsolutions/jts/geom/Coordinate;
+    .line 122
+    :cond_1
+    new-instance v2, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    .line 125
-    iget-object v2, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
+    iget-object v3, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
 
-    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
+    const/4 v4, 0x0
 
-    move-result v2
+    invoke-virtual {v3, v4}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
-    const/4 v3, 0x2
+    move-result-object v3
 
-    if-lt v2, v3, :cond_1
+    check-cast v3, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    .line 126
-    iget-object v2, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
+    invoke-direct {v2, v3}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(Lcom/vividsolutions/jts/geom/Coordinate;)V
+
+    .line 123
+    .local v2, "startPt":Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v3, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
 
     iget-object v4, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
 
@@ -255,89 +257,137 @@
 
     move-result v4
 
-    sub-int/2addr v4, v3
+    add-int/lit8 v4, v4, -0x1
 
-    invoke-virtual {v2, v4}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    invoke-virtual {v3, v4}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
-    move-result-object v2
+    move-result-object v1
 
-    check-cast v2, Lcom/vividsolutions/jts/geom/Coordinate;
+    check-cast v1, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    .line 127
-    :cond_1
-    invoke-virtual {v0, v1}, Lcom/vividsolutions/jts/geom/Coordinate;->equals(Ljava/lang/Object;)Z
+    .line 124
+    .local v1, "lastPt":Lcom/vividsolutions/jts/geom/Coordinate;
+    const/4 v0, 0x0
 
-    move-result v1
+    .line 125
+    .local v0, "last2Pt":Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v3, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
 
-    if-eqz v1, :cond_2
+    invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
 
-    return-void
+    move-result v3
 
-    .line 128
-    :cond_2
-    iget-object v1, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
+    const/4 v4, 0x2
 
-    invoke-virtual {v1, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    if-lt v3, v4, :cond_2
 
-    return-void
-.end method
+    .line 126
+    iget-object v3, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
 
-.method public getCoordinates()[Lcom/vividsolutions/jts/geom/Coordinate;
-    .locals 2
+    iget-object v4, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
 
-    .line 146
-    iget-object v0, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
+    invoke-virtual {v4}, Ljava/util/ArrayList;->size()I
 
-    sget-object v1, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->COORDINATE_ARRAY_TYPE:[Lcom/vividsolutions/jts/geom/Coordinate;
+    move-result v4
 
-    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+    add-int/lit8 v4, v4, -0x2
+
+    invoke-virtual {v3, v4}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v0
 
+    .end local v0    # "last2Pt":Lcom/vividsolutions/jts/geom/Coordinate;
+    check-cast v0, Lcom/vividsolutions/jts/geom/Coordinate;
+
+    .line 127
+    .restart local v0    # "last2Pt":Lcom/vividsolutions/jts/geom/Coordinate;
+    :cond_2
+    invoke-virtual {v2, v1}, Lcom/vividsolutions/jts/geom/Coordinate;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_0
+
+    .line 128
+    iget-object v3, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
+
+    invoke-virtual {v3, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    goto :goto_0
+.end method
+
+.method public getCoordinates()[Lcom/vividsolutions/jts/geom/Coordinate;
+    .locals 3
+
+    .prologue
+    .line 146
+    iget-object v1, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->ptList:Ljava/util/ArrayList;
+
+    sget-object v2, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->COORDINATE_ARRAY_TYPE:[Lcom/vividsolutions/jts/geom/Coordinate;
+
+    invoke-virtual {v1, v2}, Ljava/util/ArrayList;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, [Lcom/vividsolutions/jts/geom/Coordinate;
+
+    move-object v0, v1
+
     check-cast v0, [Lcom/vividsolutions/jts/geom/Coordinate;
 
+    .line 147
+    .local v0, "coord":[Lcom/vividsolutions/jts/geom/Coordinate;
     return-object v0
 .end method
 
 .method public setMinimumVertexDistance(D)V
-    .locals 0
+    .locals 1
+    .param p1, "minimimVertexDistance"    # D
 
+    .prologue
     .line 72
     iput-wide p1, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->minimimVertexDistance:D
 
+    .line 73
     return-void
 .end method
 
 .method public setPrecisionModel(Lcom/vividsolutions/jts/geom/PrecisionModel;)V
     .locals 0
+    .param p1, "precisionModel"    # Lcom/vividsolutions/jts/geom/PrecisionModel;
 
+    .prologue
     .line 67
     iput-object p1, p0, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->precisionModel:Lcom/vividsolutions/jts/geom/PrecisionModel;
 
+    .line 68
     return-void
 .end method
 
 .method public toString()Ljava/lang/String;
-    .locals 2
+    .locals 3
 
+    .prologue
     .line 152
     new-instance v0, Lcom/vividsolutions/jts/geom/GeometryFactory;
 
     invoke-direct {v0}, Lcom/vividsolutions/jts/geom/GeometryFactory;-><init>()V
 
     .line 153
+    .local v0, "fact":Lcom/vividsolutions/jts/geom/GeometryFactory;
     invoke-virtual {p0}, Lcom/vividsolutions/jts/operation/buffer/OffsetSegmentString;->getCoordinates()[Lcom/vividsolutions/jts/geom/Coordinate;
+
+    move-result-object v2
+
+    invoke-virtual {v0, v2}, Lcom/vividsolutions/jts/geom/GeometryFactory;->createLineString([Lcom/vividsolutions/jts/geom/Coordinate;)Lcom/vividsolutions/jts/geom/LineString;
 
     move-result-object v1
 
-    invoke-virtual {v0, v1}, Lcom/vividsolutions/jts/geom/GeometryFactory;->createLineString([Lcom/vividsolutions/jts/geom/Coordinate;)Lcom/vividsolutions/jts/geom/LineString;
-
-    move-result-object v0
-
     .line 154
-    invoke-virtual {v0}, Lcom/vividsolutions/jts/geom/LineString;->toString()Ljava/lang/String;
+    .local v1, "line":Lcom/vividsolutions/jts/geom/LineString;
+    invoke-virtual {v1}, Lcom/vividsolutions/jts/geom/LineString;->toString()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v2
 
-    return-object v0
+    return-object v2
 .end method

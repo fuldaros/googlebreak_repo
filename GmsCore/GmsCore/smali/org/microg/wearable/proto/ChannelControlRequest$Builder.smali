@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder<",
+        "Lcom/squareup/wire/Message$Builder",
+        "<",
         "Lorg/microg/wearable/proto/ChannelControlRequest;",
         ">;"
     }
@@ -42,20 +43,27 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
     .line 99
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
+    .line 100
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/wearable/proto/ChannelControlRequest;)V
     .locals 1
+    .param p1, "message"    # Lorg/microg/wearable/proto/ChannelControlRequest;
 
+    .prologue
     .line 103
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
+    .line 104
     if-nez p1, :cond_0
 
+    .line 112
+    :goto_0
     return-void
 
     .line 105
@@ -90,11 +98,11 @@
     iput-object v0, p0, Lorg/microg/wearable/proto/ChannelControlRequest$Builder;->path:Ljava/lang/String;
 
     .line 111
-    iget-object p1, p1, Lorg/microg/wearable/proto/ChannelControlRequest;->closeErrorCode:Ljava/lang/Integer;
+    iget-object v0, p1, Lorg/microg/wearable/proto/ChannelControlRequest;->closeErrorCode:Ljava/lang/Integer;
 
-    iput-object p1, p0, Lorg/microg/wearable/proto/ChannelControlRequest$Builder;->closeErrorCode:Ljava/lang/Integer;
+    iput-object v0, p0, Lorg/microg/wearable/proto/ChannelControlRequest$Builder;->closeErrorCode:Ljava/lang/Integer;
 
-    return-void
+    goto :goto_0
 .end method
 
 
@@ -102,6 +110,7 @@
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
+    .prologue
     .line 89
     invoke-virtual {p0}, Lorg/microg/wearable/proto/ChannelControlRequest$Builder;->build()Lorg/microg/wearable/proto/ChannelControlRequest;
 
@@ -113,6 +122,7 @@
 .method public build()Lorg/microg/wearable/proto/ChannelControlRequest;
     .locals 2
 
+    .prologue
     .line 151
     new-instance v0, Lorg/microg/wearable/proto/ChannelControlRequest;
 
