@@ -22,15 +22,14 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
-    .line 17
+    .line 18
     new-instance v0, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequenceFactory;
 
     invoke-direct {v0}, Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequenceFactory;-><init>()V
 
     sput-object v0, Lorg/oscim/layers/vector/geometries/JtsDrawable;->coordFactory:Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequenceFactory;
 
-    .line 18
+    .line 19
     new-instance v0, Lcom/vividsolutions/jts/geom/GeometryFactory;
 
     sget-object v1, Lorg/oscim/layers/vector/geometries/JtsDrawable;->coordFactory:Lcom/vividsolutions/jts/geom/impl/PackedCoordinateSequenceFactory;
@@ -39,78 +38,67 @@
 
     sput-object v0, Lorg/oscim/layers/vector/geometries/JtsDrawable;->geomFactory:Lcom/vividsolutions/jts/geom/GeometryFactory;
 
-    .line 19
     return-void
 .end method
 
 .method public constructor <init>(Lorg/oscim/layers/vector/geometries/Style;)V
     .locals 0
-    .param p1, "style"    # Lorg/oscim/layers/vector/geometries/Style;
-
-    .prologue
-    .line 24
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 25
-    iput-object p1, p0, Lorg/oscim/layers/vector/geometries/JtsDrawable;->style:Lorg/oscim/layers/vector/geometries/Style;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 26
+    iput-object p1, p0, Lorg/oscim/layers/vector/geometries/JtsDrawable;->style:Lorg/oscim/layers/vector/geometries/Style;
+
     return-void
 .end method
 
 .method protected static loadPoints(Lorg/oscim/utils/geom/GeomBuilder;Ljava/util/List;)Lorg/oscim/utils/geom/GeomBuilder;
-    .locals 6
-    .param p0, "gb"    # Lorg/oscim/utils/geom/GeomBuilder;
+    .locals 5
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
             "Lorg/oscim/utils/geom/GeomBuilder;",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lorg/oscim/core/GeoPoint;",
             ">;)",
             "Lorg/oscim/utils/geom/GeomBuilder;"
         }
     .end annotation
 
-    .prologue
-    .line 57
-    .local p1, "points":Ljava/util/List;, "Ljava/util/List<Lorg/oscim/core/GeoPoint;>;"
+    .line 58
     invoke-interface {p1}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
-    move-result-object v1
+    move-result-object p1
 
     :goto_0
-    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+    invoke-interface {p1}, Ljava/util/Iterator;->hasNext()Z
 
-    move-result v2
+    move-result v0
 
-    if-eqz v2, :cond_0
+    if-eqz v0, :cond_0
 
-    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {p1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Lorg/oscim/core/GeoPoint;
 
-    .line 58
-    .local v0, "point":Lorg/oscim/core/GeoPoint;
+    .line 59
     invoke-virtual {v0}, Lorg/oscim/core/GeoPoint;->getLongitude()D
 
-    move-result-wide v2
+    move-result-wide v1
 
-    .line 59
+    .line 60
     invoke-virtual {v0}, Lorg/oscim/core/GeoPoint;->getLatitude()D
 
-    move-result-wide v4
+    move-result-wide v3
 
-    .line 58
-    invoke-virtual {p0, v2, v3, v4, v5}, Lorg/oscim/utils/geom/GeomBuilder;->point(DD)Lorg/oscim/utils/geom/GeomBuilder;
+    .line 59
+    invoke-virtual {p0, v1, v2, v3, v4}, Lorg/oscim/utils/geom/GeomBuilder;->point(DD)Lorg/oscim/utils/geom/GeomBuilder;
 
     goto :goto_0
 
-    .line 61
-    .end local v0    # "point":Lorg/oscim/core/GeoPoint;
     :cond_0
     return-object p0
 .end method
@@ -120,8 +108,7 @@
 .method public getGeometry()Lcom/vividsolutions/jts/geom/Geometry;
     .locals 1
 
-    .prologue
-    .line 53
+    .line 54
     iget-object v0, p0, Lorg/oscim/layers/vector/geometries/JtsDrawable;->geometry:Lcom/vividsolutions/jts/geom/Geometry;
 
     return-object v0
@@ -130,8 +117,7 @@
 .method public getStyle()Lorg/oscim/layers/vector/geometries/Style;
     .locals 1
 
-    .prologue
-    .line 45
+    .line 46
     iget-object v0, p0, Lorg/oscim/layers/vector/geometries/JtsDrawable;->style:Lorg/oscim/layers/vector/geometries/Style;
 
     return-object v0

@@ -23,10 +23,9 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .prologue
-    .line 51
     const-string v0, "UTF-8"
 
+    .line 51
     invoke-static {v0}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
 
     move-result-object v0
@@ -38,76 +37,66 @@
 
 .method private constructor <init>(Lokio/BufferedSource;)V
     .locals 1
-    .param p1, "source"    # Lokio/BufferedSource;
 
-    .prologue
     .line 265
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 251
     const/4 v0, 0x0
 
+    .line 251
     iput v0, p0, Lcom/squareup/wire/WireInput;->pos:I
 
-    .line 254
     const v0, 0x7fffffff
 
+    .line 254
     iput v0, p0, Lcom/squareup/wire/WireInput;->currentLimit:I
 
     .line 266
     iput-object p1, p0, Lcom/squareup/wire/WireInput;->source:Lokio/BufferedSource;
 
-    .line 267
     return-void
 .end method
 
 .method public static decodeZigZag32(I)I
-    .locals 2
-    .param p0, "n"    # I
+    .locals 1
 
-    .prologue
-    .line 226
     ushr-int/lit8 v0, p0, 0x1
 
-    and-int/lit8 v1, p0, 0x1
+    and-int/lit8 p0, p0, 0x1
 
-    neg-int v1, v1
+    neg-int p0, p0
 
-    xor-int/2addr v0, v1
+    xor-int/2addr p0, v0
 
-    return v0
+    return p0
 .end method
 
 .method public static decodeZigZag64(J)J
-    .locals 4
-    .param p0, "n"    # J
+    .locals 6
 
-    .prologue
-    .line 240
     const/4 v0, 0x1
 
     ushr-long v0, p0, v0
 
     const-wide/16 v2, 0x1
 
-    and-long/2addr v2, p0
+    and-long v4, p0, v2
 
-    neg-long v2, v2
+    neg-long p0, v4
 
-    xor-long/2addr v0, v2
+    xor-long v2, v0, p0
 
-    return-wide v0
+    return-wide v2
 .end method
 
 .method private isAtEnd()Z
-    .locals 4
+    .locals 5
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue
     .line 305
     invoke-virtual {p0}, Lcom/squareup/wire/WireInput;->getPosition()J
 
@@ -117,17 +106,15 @@
 
     int-to-long v2, v2
 
-    cmp-long v0, v0, v2
+    cmp-long v4, v0, v2
 
-    if-nez v0, :cond_0
+    if-nez v4, :cond_0
 
-    .line 306
     const/4 v0, 0x1
 
-    .line 308
-    :goto_0
     return v0
 
+    .line 308
     :cond_0
     iget-object v0, p0, Lcom/squareup/wire/WireInput;->source:Lokio/BufferedSource;
 
@@ -135,35 +122,31 @@
 
     move-result v0
 
-    goto :goto_0
+    return v0
 .end method
 
 .method public static newInstance(Ljava/io/InputStream;)Lcom/squareup/wire/WireInput;
-    .locals 2
-    .param p0, "source"    # Ljava/io/InputStream;
+    .locals 1
 
-    .prologue
     .line 79
     new-instance v0, Lcom/squareup/wire/WireInput;
 
     invoke-static {p0}, Lokio/Okio;->source(Ljava/io/InputStream;)Lokio/Source;
 
-    move-result-object v1
+    move-result-object p0
 
-    invoke-static {v1}, Lokio/Okio;->buffer(Lokio/Source;)Lokio/BufferedSource;
+    invoke-static {p0}, Lokio/Okio;->buffer(Lokio/Source;)Lokio/BufferedSource;
 
-    move-result-object v1
+    move-result-object p0
 
-    invoke-direct {v0, v1}, Lcom/squareup/wire/WireInput;-><init>(Lokio/BufferedSource;)V
+    invoke-direct {v0, p0}, Lcom/squareup/wire/WireInput;-><init>(Lokio/BufferedSource;)V
 
     return-object v0
 .end method
 
 .method public static newInstance([B)Lcom/squareup/wire/WireInput;
     .locals 2
-    .param p0, "buf"    # [B
 
-    .prologue
     .line 68
     new-instance v0, Lcom/squareup/wire/WireInput;
 
@@ -173,20 +156,16 @@
 
     invoke-virtual {v1, p0}, Lokio/Buffer;->write([B)Lokio/Buffer;
 
-    move-result-object v1
+    move-result-object p0
 
-    invoke-direct {v0, v1}, Lcom/squareup/wire/WireInput;-><init>(Lokio/BufferedSource;)V
+    invoke-direct {v0, p0}, Lcom/squareup/wire/WireInput;-><init>(Lokio/BufferedSource;)V
 
     return-object v0
 .end method
 
 .method public static newInstance([BII)Lcom/squareup/wire/WireInput;
     .locals 2
-    .param p0, "buf"    # [B
-    .param p1, "offset"    # I
-    .param p2, "count"    # I
 
-    .prologue
     .line 75
     new-instance v0, Lcom/squareup/wire/WireInput;
 
@@ -196,31 +175,29 @@
 
     invoke-virtual {v1, p0, p1, p2}, Lokio/Buffer;->write([BII)Lokio/Buffer;
 
-    move-result-object v1
+    move-result-object p0
 
-    invoke-direct {v0, v1}, Lcom/squareup/wire/WireInput;-><init>(Lokio/BufferedSource;)V
+    invoke-direct {v0, p0}, Lcom/squareup/wire/WireInput;-><init>(Lokio/BufferedSource;)V
 
     return-object v0
 .end method
 
 .method private skip(J)V
-    .locals 3
-    .param p1, "count"    # J
+    .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue
     .line 348
     iget v0, p0, Lcom/squareup/wire/WireInput;->pos:I
 
     int-to-long v0, v0
 
-    add-long/2addr v0, p1
+    add-long v2, v0, p1
 
-    long-to-int v0, v0
+    long-to-int v0, v2
 
     iput v0, p0, Lcom/squareup/wire/WireInput;->pos:I
 
@@ -229,142 +206,132 @@
 
     invoke-interface {v0, p1, p2}, Lokio/BufferedSource;->skip(J)V
 
-    .line 350
     return-void
 .end method
 
 .method private skipField(I)Z
     .locals 4
-    .param p1, "tag"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue
-    const/4 v0, 0x0
-
     .line 330
-    sget-object v1, Lcom/squareup/wire/WireInput$1;->$SwitchMap$com$squareup$wire$WireType:[I
+    sget-object v0, Lcom/squareup/wire/WireInput$1;->$SwitchMap$com$squareup$wire$WireType:[I
 
     invoke-static {p1}, Lcom/squareup/wire/WireType;->valueOf(I)Lcom/squareup/wire/WireType;
 
-    move-result-object v2
+    move-result-object v1
 
-    invoke-virtual {v2}, Lcom/squareup/wire/WireType;->ordinal()I
-
-    move-result v2
-
-    aget v1, v1, v2
-
-    packed-switch v1, :pswitch_data_0
-
-    .line 342
-    new-instance v0, Ljava/lang/AssertionError;
-
-    invoke-direct {v0}, Ljava/lang/AssertionError;-><init>()V
-
-    throw v0
-
-    .line 331
-    :pswitch_0
-    invoke-virtual {p0}, Lcom/squareup/wire/WireInput;->readVarint64()J
-
-    .line 340
-    :goto_0
-    return v0
-
-    .line 332
-    :pswitch_1
-    invoke-virtual {p0}, Lcom/squareup/wire/WireInput;->readFixed32()I
-
-    goto :goto_0
-
-    .line 333
-    :pswitch_2
-    invoke-virtual {p0}, Lcom/squareup/wire/WireInput;->readFixed64()J
-
-    goto :goto_0
-
-    .line 334
-    :pswitch_3
-    invoke-virtual {p0}, Lcom/squareup/wire/WireInput;->readVarint32()I
+    invoke-virtual {v1}, Lcom/squareup/wire/WireType;->ordinal()I
 
     move-result v1
 
-    int-to-long v2, v1
+    aget v0, v0, v1
+
+    const/4 v1, 0x0
+
+    packed-switch v0, :pswitch_data_0
+
+    .line 342
+    new-instance p1, Ljava/lang/AssertionError;
+
+    invoke-direct {p1}, Ljava/lang/AssertionError;-><init>()V
+
+    throw p1
+
+    :pswitch_0
+    const/4 p1, 0x1
+
+    return p1
+
+    .line 336
+    :pswitch_1
+    invoke-virtual {p0}, Lcom/squareup/wire/WireInput;->skipGroup()V
+
+    and-int/lit8 p1, p1, -0x8
+
+    .line 337
+    sget-object v0, Lcom/squareup/wire/WireType;->END_GROUP:Lcom/squareup/wire/WireType;
+
+    invoke-virtual {v0}, Lcom/squareup/wire/WireType;->value()I
+
+    move-result v0
+
+    or-int/2addr p1, v0
+
+    invoke-virtual {p0, p1}, Lcom/squareup/wire/WireInput;->checkLastTagWas(I)V
+
+    return v1
+
+    .line 334
+    :pswitch_2
+    invoke-virtual {p0}, Lcom/squareup/wire/WireInput;->readVarint32()I
+
+    move-result p1
+
+    int-to-long v2, p1
 
     invoke-direct {p0, v2, v3}, Lcom/squareup/wire/WireInput;->skip(J)V
 
-    goto :goto_0
+    return v1
 
-    .line 336
+    .line 333
+    :pswitch_3
+    invoke-virtual {p0}, Lcom/squareup/wire/WireInput;->readFixed64()J
+
+    return v1
+
+    .line 332
     :pswitch_4
-    invoke-virtual {p0}, Lcom/squareup/wire/WireInput;->skipGroup()V
+    invoke-virtual {p0}, Lcom/squareup/wire/WireInput;->readFixed32()I
 
-    .line 337
-    and-int/lit8 v1, p1, -0x8
+    return v1
 
-    sget-object v2, Lcom/squareup/wire/WireType;->END_GROUP:Lcom/squareup/wire/WireType;
-
-    invoke-virtual {v2}, Lcom/squareup/wire/WireType;->value()I
-
-    move-result v2
-
-    or-int/2addr v1, v2
-
-    invoke-virtual {p0, v1}, Lcom/squareup/wire/WireInput;->checkLastTagWas(I)V
-
-    goto :goto_0
-
-    .line 340
+    .line 331
     :pswitch_5
-    const/4 v0, 0x1
+    invoke-virtual {p0}, Lcom/squareup/wire/WireInput;->readVarint64()J
 
-    goto :goto_0
+    return v1
 
-    .line 330
     nop
 
     :pswitch_data_0
     .packed-switch 0x1
-        :pswitch_0
-        :pswitch_1
-        :pswitch_2
-        :pswitch_3
-        :pswitch_4
         :pswitch_5
+        :pswitch_4
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
+        :pswitch_0
     .end packed-switch
 .end method
 
 
 # virtual methods
 .method public checkLastTagWas(I)V
-    .locals 2
-    .param p1, "value"    # I
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue
     .line 115
     iget v0, p0, Lcom/squareup/wire/WireInput;->lastTag:I
 
     if-eq v0, p1, :cond_0
 
     .line 116
-    new-instance v0, Ljava/io/IOException;
+    new-instance p1, Ljava/io/IOException;
 
-    const-string v1, "Protocol message end-group tag did not match expected tag."
+    const-string v0, "Protocol message end-group tag did not match expected tag."
 
-    invoke-direct {v0, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+    invoke-direct {p1, v0}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
-    throw v0
+    throw p1
 
-    .line 118
     :cond_0
     return-void
 .end method
@@ -372,7 +339,6 @@
 .method public getPosition()J
     .locals 2
 
-    .prologue
     .line 315
     iget v0, p0, Lcom/squareup/wire/WireInput;->pos:I
 
@@ -383,101 +349,88 @@
 
 .method public popLimit(I)V
     .locals 0
-    .param p1, "oldLimit"    # I
 
-    .prologue
     .line 294
     iput p1, p0, Lcom/squareup/wire/WireInput;->currentLimit:I
 
-    .line 295
     return-void
 .end method
 
 .method public pushLimit(I)I
-    .locals 3
-    .param p1, "byteLimit"    # I
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue
-    .line 276
     if-gez p1, :cond_0
 
     .line 277
-    new-instance v1, Ljava/io/IOException;
+    new-instance p1, Ljava/io/IOException;
 
-    const-string v2, "Encountered a negative size"
+    const-string v0, "Encountered a negative size"
 
-    invoke-direct {v1, v2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+    invoke-direct {p1, v0}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
-    throw v1
+    throw p1
 
     .line 279
     :cond_0
-    iget v1, p0, Lcom/squareup/wire/WireInput;->pos:I
+    iget v0, p0, Lcom/squareup/wire/WireInput;->pos:I
 
-    add-int/2addr p1, v1
+    add-int/2addr p1, v0
 
     .line 280
     iget v0, p0, Lcom/squareup/wire/WireInput;->currentLimit:I
 
-    .line 281
-    .local v0, "oldLimit":I
     if-le p1, v0, :cond_1
 
     .line 282
-    new-instance v1, Ljava/io/EOFException;
+    new-instance p1, Ljava/io/EOFException;
 
-    const-string v2, "The input ended unexpectedly in the middle of a field"
+    const-string v0, "The input ended unexpectedly in the middle of a field"
 
-    invoke-direct {v1, v2}, Ljava/io/EOFException;-><init>(Ljava/lang/String;)V
+    invoke-direct {p1, v0}, Ljava/io/EOFException;-><init>(Ljava/lang/String;)V
 
-    throw v1
+    throw p1
 
     .line 284
     :cond_1
     iput p1, p0, Lcom/squareup/wire/WireInput;->currentLimit:I
 
-    .line 285
     return v0
 .end method
 
 .method public readBytes()Lokio/ByteString;
-    .locals 2
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue
     .line 132
     invoke-virtual {p0}, Lcom/squareup/wire/WireInput;->readVarint32()I
 
     move-result v0
 
     .line 133
-    .local v0, "count":I
     invoke-virtual {p0, v0}, Lcom/squareup/wire/WireInput;->readBytes(I)Lokio/ByteString;
 
-    move-result-object v1
+    move-result-object v0
 
-    return-object v1
+    return-object v0
 .end method
 
 .method public readBytes(I)Lokio/ByteString;
-    .locals 4
-    .param p1, "count"    # I
+    .locals 3
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue
     .line 138
     iget v0, p0, Lcom/squareup/wire/WireInput;->pos:I
 
@@ -488,20 +441,18 @@
     .line 139
     iget-object v0, p0, Lcom/squareup/wire/WireInput;->source:Lokio/BufferedSource;
 
-    int-to-long v2, p1
+    int-to-long v1, p1
 
-    invoke-interface {v0, v2, v3}, Lokio/BufferedSource;->require(J)V
+    invoke-interface {v0, v1, v2}, Lokio/BufferedSource;->require(J)V
 
     .line 140
-    iget-object v0, p0, Lcom/squareup/wire/WireInput;->source:Lokio/BufferedSource;
+    iget-object p1, p0, Lcom/squareup/wire/WireInput;->source:Lokio/BufferedSource;
 
-    int-to-long v2, p1
+    invoke-interface {p1, v1, v2}, Lokio/BufferedSource;->readByteString(J)Lokio/ByteString;
 
-    invoke-interface {v0, v2, v3}, Lokio/BufferedSource;->readByteString(J)Lokio/ByteString;
+    move-result-object p1
 
-    move-result-object v0
-
-    return-object v0
+    return-object p1
 .end method
 
 .method public readFixed32()I
@@ -512,7 +463,6 @@
         }
     .end annotation
 
-    .prologue
     .line 205
     iget v0, p0, Lcom/squareup/wire/WireInput;->pos:I
 
@@ -538,7 +488,6 @@
         }
     .end annotation
 
-    .prologue
     .line 211
     iget v0, p0, Lcom/squareup/wire/WireInput;->pos:I
 
@@ -557,21 +506,19 @@
 .end method
 
 .method public readString()Ljava/lang/String;
-    .locals 5
+    .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue
     .line 122
     invoke-virtual {p0}, Lcom/squareup/wire/WireInput;->readVarint32()I
 
     move-result v0
 
     .line 123
-    .local v0, "count":I
     iget v1, p0, Lcom/squareup/wire/WireInput;->pos:I
 
     add-int/2addr v1, v0
@@ -583,13 +530,13 @@
 
     int-to-long v2, v0
 
-    sget-object v4, Lcom/squareup/wire/WireInput;->UTF_8:Ljava/nio/charset/Charset;
+    sget-object v0, Lcom/squareup/wire/WireInput;->UTF_8:Ljava/nio/charset/Charset;
 
-    invoke-interface {v1, v2, v3, v4}, Lokio/BufferedSource;->readString(JLjava/nio/charset/Charset;)Ljava/lang/String;
+    invoke-interface {v1, v2, v3, v0}, Lokio/BufferedSource;->readString(JLjava/nio/charset/Charset;)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    return-object v1
+    return-object v0
 .end method
 
 .method public readTag()I
@@ -600,21 +547,18 @@
         }
     .end annotation
 
-    .prologue
-    const/4 v0, 0x0
-
     .line 94
     invoke-direct {p0}, Lcom/squareup/wire/WireInput;->isAtEnd()Z
 
-    move-result v1
+    move-result v0
 
-    if-eqz v1, :cond_0
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x0
 
     .line 95
     iput v0, p0, Lcom/squareup/wire/WireInput;->lastTag:I
 
-    .line 104
-    :goto_0
     return v0
 
     .line 99
@@ -643,303 +587,276 @@
     :cond_1
     iget v0, p0, Lcom/squareup/wire/WireInput;->lastTag:I
 
-    goto :goto_0
+    return v0
 .end method
 
 .method public readVarint32()I
-    .locals 5
+    .locals 3
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue
     .line 148
-    iget v3, p0, Lcom/squareup/wire/WireInput;->pos:I
+    iget v0, p0, Lcom/squareup/wire/WireInput;->pos:I
 
-    add-int/lit8 v3, v3, 0x1
+    add-int/lit8 v0, v0, 0x1
 
-    iput v3, p0, Lcom/squareup/wire/WireInput;->pos:I
+    iput v0, p0, Lcom/squareup/wire/WireInput;->pos:I
 
     .line 149
-    iget-object v3, p0, Lcom/squareup/wire/WireInput;->source:Lokio/BufferedSource;
+    iget-object v0, p0, Lcom/squareup/wire/WireInput;->source:Lokio/BufferedSource;
 
-    invoke-interface {v3}, Lokio/BufferedSource;->readByte()B
+    invoke-interface {v0}, Lokio/BufferedSource;->readByte()B
 
-    move-result v2
+    move-result v0
 
-    .line 150
-    .local v2, "tmp":B
-    if-ltz v2, :cond_1
+    if-ltz v0, :cond_0
 
-    move v1, v2
+    return v0
 
-    .line 184
     :cond_0
-    :goto_0
-    return v1
-
-    .line 153
-    :cond_1
-    and-int/lit8 v1, v2, 0x7f
+    and-int/lit8 v0, v0, 0x7f
 
     .line 154
-    .local v1, "result":I
-    iget v3, p0, Lcom/squareup/wire/WireInput;->pos:I
+    iget v1, p0, Lcom/squareup/wire/WireInput;->pos:I
 
-    add-int/lit8 v3, v3, 0x1
+    add-int/lit8 v1, v1, 0x1
 
-    iput v3, p0, Lcom/squareup/wire/WireInput;->pos:I
+    iput v1, p0, Lcom/squareup/wire/WireInput;->pos:I
 
     .line 155
-    iget-object v3, p0, Lcom/squareup/wire/WireInput;->source:Lokio/BufferedSource;
+    iget-object v1, p0, Lcom/squareup/wire/WireInput;->source:Lokio/BufferedSource;
 
-    invoke-interface {v3}, Lokio/BufferedSource;->readByte()B
+    invoke-interface {v1}, Lokio/BufferedSource;->readByte()B
 
-    move-result v2
+    move-result v1
 
-    if-ltz v2, :cond_2
+    if-ltz v1, :cond_1
 
-    .line 156
-    shl-int/lit8 v3, v2, 0x7
+    shl-int/lit8 v1, v1, 0x7
 
-    or-int/2addr v1, v3
+    or-int/2addr v0, v1
 
-    goto :goto_0
+    goto :goto_1
 
-    .line 158
-    :cond_2
-    and-int/lit8 v3, v2, 0x7f
+    :cond_1
+    and-int/lit8 v1, v1, 0x7f
 
-    shl-int/lit8 v3, v3, 0x7
+    shl-int/lit8 v1, v1, 0x7
 
-    or-int/2addr v1, v3
+    or-int/2addr v0, v1
 
     .line 159
-    iget v3, p0, Lcom/squareup/wire/WireInput;->pos:I
+    iget v1, p0, Lcom/squareup/wire/WireInput;->pos:I
 
-    add-int/lit8 v3, v3, 0x1
+    add-int/lit8 v1, v1, 0x1
 
-    iput v3, p0, Lcom/squareup/wire/WireInput;->pos:I
+    iput v1, p0, Lcom/squareup/wire/WireInput;->pos:I
 
     .line 160
-    iget-object v3, p0, Lcom/squareup/wire/WireInput;->source:Lokio/BufferedSource;
+    iget-object v1, p0, Lcom/squareup/wire/WireInput;->source:Lokio/BufferedSource;
 
-    invoke-interface {v3}, Lokio/BufferedSource;->readByte()B
+    invoke-interface {v1}, Lokio/BufferedSource;->readByte()B
 
-    move-result v2
+    move-result v1
 
-    if-ltz v2, :cond_3
+    if-ltz v1, :cond_2
 
-    .line 161
-    shl-int/lit8 v3, v2, 0xe
+    shl-int/lit8 v1, v1, 0xe
 
-    or-int/2addr v1, v3
+    or-int/2addr v0, v1
 
-    goto :goto_0
+    goto :goto_1
 
-    .line 163
-    :cond_3
-    and-int/lit8 v3, v2, 0x7f
+    :cond_2
+    and-int/lit8 v1, v1, 0x7f
 
-    shl-int/lit8 v3, v3, 0xe
+    shl-int/lit8 v1, v1, 0xe
 
-    or-int/2addr v1, v3
+    or-int/2addr v0, v1
 
     .line 164
-    iget v3, p0, Lcom/squareup/wire/WireInput;->pos:I
+    iget v1, p0, Lcom/squareup/wire/WireInput;->pos:I
 
-    add-int/lit8 v3, v3, 0x1
+    add-int/lit8 v1, v1, 0x1
 
-    iput v3, p0, Lcom/squareup/wire/WireInput;->pos:I
+    iput v1, p0, Lcom/squareup/wire/WireInput;->pos:I
 
     .line 165
-    iget-object v3, p0, Lcom/squareup/wire/WireInput;->source:Lokio/BufferedSource;
+    iget-object v1, p0, Lcom/squareup/wire/WireInput;->source:Lokio/BufferedSource;
 
-    invoke-interface {v3}, Lokio/BufferedSource;->readByte()B
+    invoke-interface {v1}, Lokio/BufferedSource;->readByte()B
+
+    move-result v1
+
+    if-ltz v1, :cond_3
+
+    shl-int/lit8 v1, v1, 0x15
+
+    or-int/2addr v0, v1
+
+    goto :goto_1
+
+    :cond_3
+    and-int/lit8 v1, v1, 0x7f
+
+    shl-int/lit8 v1, v1, 0x15
+
+    or-int/2addr v0, v1
+
+    .line 169
+    iget v1, p0, Lcom/squareup/wire/WireInput;->pos:I
+
+    add-int/lit8 v1, v1, 0x1
+
+    iput v1, p0, Lcom/squareup/wire/WireInput;->pos:I
+
+    .line 170
+    iget-object v1, p0, Lcom/squareup/wire/WireInput;->source:Lokio/BufferedSource;
+
+    invoke-interface {v1}, Lokio/BufferedSource;->readByte()B
+
+    move-result v1
+
+    shl-int/lit8 v2, v1, 0x1c
+
+    or-int/2addr v0, v2
+
+    if-gez v1, :cond_6
+
+    const/4 v1, 0x0
+
+    :goto_0
+    const/4 v2, 0x5
+
+    if-ge v1, v2, :cond_5
+
+    .line 174
+    iget v2, p0, Lcom/squareup/wire/WireInput;->pos:I
+
+    add-int/lit8 v2, v2, 0x1
+
+    iput v2, p0, Lcom/squareup/wire/WireInput;->pos:I
+
+    .line 175
+    iget-object v2, p0, Lcom/squareup/wire/WireInput;->source:Lokio/BufferedSource;
+
+    invoke-interface {v2}, Lokio/BufferedSource;->readByte()B
 
     move-result v2
 
     if-ltz v2, :cond_4
 
-    .line 166
-    shl-int/lit8 v3, v2, 0x15
+    return v0
 
-    or-int/2addr v1, v3
+    :cond_4
+    add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 168
-    :cond_4
-    and-int/lit8 v3, v2, 0x7f
+    .line 179
+    :cond_5
+    new-instance v0, Ljava/io/IOException;
 
-    shl-int/lit8 v3, v3, 0x15
+    const-string v1, "WireInput encountered a malformed varint."
 
-    or-int/2addr v1, v3
+    invoke-direct {v0, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
-    .line 169
-    iget v3, p0, Lcom/squareup/wire/WireInput;->pos:I
+    throw v0
 
-    add-int/lit8 v3, v3, 0x1
+    :cond_6
+    :goto_1
+    return v0
+.end method
 
-    iput v3, p0, Lcom/squareup/wire/WireInput;->pos:I
+.method public readVarint64()J
+    .locals 8
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
 
-    .line 170
-    iget-object v3, p0, Lcom/squareup/wire/WireInput;->source:Lokio/BufferedSource;
-
-    invoke-interface {v3}, Lokio/BufferedSource;->readByte()B
-
-    move-result v2
-
-    shl-int/lit8 v3, v2, 0x1c
-
-    or-int/2addr v1, v3
-
-    .line 171
-    if-gez v2, :cond_0
-
-    .line 173
     const/4 v0, 0x0
 
-    .local v0, "i":I
-    :goto_1
-    const/4 v3, 0x5
+    const-wide/16 v1, 0x0
 
-    if-ge v0, v3, :cond_5
+    :goto_0
+    const/16 v3, 0x40
 
-    .line 174
+    if-ge v0, v3, :cond_1
+
+    .line 192
     iget v3, p0, Lcom/squareup/wire/WireInput;->pos:I
 
     add-int/lit8 v3, v3, 0x1
 
     iput v3, p0, Lcom/squareup/wire/WireInput;->pos:I
 
-    .line 175
+    .line 193
     iget-object v3, p0, Lcom/squareup/wire/WireInput;->source:Lokio/BufferedSource;
 
     invoke-interface {v3}, Lokio/BufferedSource;->readByte()B
 
     move-result v3
 
-    if-gez v3, :cond_0
-
-    .line 173
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_1
-
-    .line 179
-    :cond_5
-    new-instance v3, Ljava/io/IOException;
-
-    const-string v4, "WireInput encountered a malformed varint."
-
-    invoke-direct {v3, v4}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
-
-    throw v3
-.end method
-
-.method public readVarint64()J
-    .locals 6
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/io/IOException;
-        }
-    .end annotation
-
-    .prologue
-    .line 189
-    const/4 v1, 0x0
-
-    .line 190
-    .local v1, "shift":I
-    const-wide/16 v2, 0x0
-
-    .line 191
-    .local v2, "result":J
-    :goto_0
-    const/16 v4, 0x40
-
-    if-ge v1, v4, :cond_1
-
-    .line 192
-    iget v4, p0, Lcom/squareup/wire/WireInput;->pos:I
-
-    add-int/lit8 v4, v4, 0x1
-
-    iput v4, p0, Lcom/squareup/wire/WireInput;->pos:I
-
-    .line 193
-    iget-object v4, p0, Lcom/squareup/wire/WireInput;->source:Lokio/BufferedSource;
-
-    invoke-interface {v4}, Lokio/BufferedSource;->readByte()B
-
-    move-result v0
-
-    .line 194
-    .local v0, "b":B
-    and-int/lit8 v4, v0, 0x7f
+    and-int/lit8 v4, v3, 0x7f
 
     int-to-long v4, v4
 
-    shl-long/2addr v4, v1
+    shl-long/2addr v4, v0
 
-    or-long/2addr v2, v4
+    or-long v6, v1, v4
 
-    .line 195
-    and-int/lit16 v4, v0, 0x80
+    and-int/lit16 v1, v3, 0x80
 
-    if-nez v4, :cond_0
+    if-nez v1, :cond_0
 
-    .line 196
-    return-wide v2
+    return-wide v6
 
-    .line 198
     :cond_0
-    add-int/lit8 v1, v1, 0x7
+    add-int/lit8 v0, v0, 0x7
 
-    .line 199
+    move-wide v1, v6
+
     goto :goto_0
 
     .line 200
-    .end local v0    # "b":B
     :cond_1
-    new-instance v4, Ljava/io/IOException;
+    new-instance v0, Ljava/io/IOException;
 
-    const-string v5, "WireInput encountered a malformed varint."
+    const-string v1, "WireInput encountered a malformed varint."
 
-    invoke-direct {v4, v5}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
-    throw v4
+    throw v0
 .end method
 
 .method public skipGroup()V
-    .locals 2
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue
     .line 321
     :cond_0
     invoke-virtual {p0}, Lcom/squareup/wire/WireInput;->readTag()I
 
     move-result v0
 
-    .line 322
-    .local v0, "tag":I
     if-eqz v0, :cond_1
 
+    .line 322
     invoke-direct {p0, v0}, Lcom/squareup/wire/WireInput;->skipField(I)Z
 
-    move-result v1
+    move-result v0
 
-    if-eqz v1, :cond_0
+    if-eqz v0, :cond_0
 
-    .line 323
     :cond_1
     return-void
 .end method

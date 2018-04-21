@@ -36,11 +36,9 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
-    .line 343
+    .line 444
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 344
     return-void
 .end method
 
@@ -49,9 +47,8 @@
 .method public build()Landroid/support/v4/media/MediaDescriptionCompat;
     .locals 10
 
-    .prologue
-    .line 444
-    new-instance v0, Landroid/support/v4/media/MediaDescriptionCompat;
+    .line 545
+    new-instance v9, Landroid/support/v4/media/MediaDescriptionCompat;
 
     iget-object v1, p0, Landroid/support/v4/media/MediaDescriptionCompat$Builder;->mMediaId:Ljava/lang/String;
 
@@ -69,105 +66,81 @@
 
     iget-object v8, p0, Landroid/support/v4/media/MediaDescriptionCompat$Builder;->mMediaUri:Landroid/net/Uri;
 
-    const/4 v9, 0x0
+    move-object v0, v9
 
-    invoke-direct/range {v0 .. v9}, Landroid/support/v4/media/MediaDescriptionCompat;-><init>(Ljava/lang/String;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Landroid/graphics/Bitmap;Landroid/net/Uri;Landroid/os/Bundle;Landroid/net/Uri;Landroid/support/v4/media/MediaDescriptionCompat$1;)V
+    invoke-direct/range {v0 .. v8}, Landroid/support/v4/media/MediaDescriptionCompat;-><init>(Ljava/lang/String;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Landroid/graphics/Bitmap;Landroid/net/Uri;Landroid/os/Bundle;Landroid/net/Uri;)V
 
-    return-object v0
+    return-object v9
 .end method
 
 .method public setDescription(Ljava/lang/CharSequence;)Landroid/support/v4/media/MediaDescriptionCompat$Builder;
     .locals 0
-    .param p1, "description"    # Ljava/lang/CharSequence;
 
-    .prologue
-    .line 387
+    .line 488
     iput-object p1, p0, Landroid/support/v4/media/MediaDescriptionCompat$Builder;->mDescription:Ljava/lang/CharSequence;
 
-    .line 388
     return-object p0
 .end method
 
 .method public setExtras(Landroid/os/Bundle;)Landroid/support/v4/media/MediaDescriptionCompat$Builder;
     .locals 0
-    .param p1, "extras"    # Landroid/os/Bundle;
 
-    .prologue
-    .line 422
+    .line 523
     iput-object p1, p0, Landroid/support/v4/media/MediaDescriptionCompat$Builder;->mExtras:Landroid/os/Bundle;
 
-    .line 423
     return-object p0
 .end method
 
 .method public setIconBitmap(Landroid/graphics/Bitmap;)Landroid/support/v4/media/MediaDescriptionCompat$Builder;
     .locals 0
-    .param p1, "icon"    # Landroid/graphics/Bitmap;
 
-    .prologue
-    .line 399
+    .line 500
     iput-object p1, p0, Landroid/support/v4/media/MediaDescriptionCompat$Builder;->mIcon:Landroid/graphics/Bitmap;
 
-    .line 400
     return-object p0
 .end method
 
 .method public setIconUri(Landroid/net/Uri;)Landroid/support/v4/media/MediaDescriptionCompat$Builder;
     .locals 0
-    .param p1, "iconUri"    # Landroid/net/Uri;
 
-    .prologue
-    .line 411
+    .line 512
     iput-object p1, p0, Landroid/support/v4/media/MediaDescriptionCompat$Builder;->mIconUri:Landroid/net/Uri;
 
-    .line 412
     return-object p0
 .end method
 
 .method public setMediaId(Ljava/lang/String;)Landroid/support/v4/media/MediaDescriptionCompat$Builder;
     .locals 0
-    .param p1, "mediaId"    # Ljava/lang/String;
 
-    .prologue
-    .line 353
+    .line 454
     iput-object p1, p0, Landroid/support/v4/media/MediaDescriptionCompat$Builder;->mMediaId:Ljava/lang/String;
 
-    .line 354
     return-object p0
 .end method
 
 .method public setMediaUri(Landroid/net/Uri;)Landroid/support/v4/media/MediaDescriptionCompat$Builder;
     .locals 0
-    .param p1, "mediaUri"    # Landroid/net/Uri;
 
-    .prologue
-    .line 433
+    .line 534
     iput-object p1, p0, Landroid/support/v4/media/MediaDescriptionCompat$Builder;->mMediaUri:Landroid/net/Uri;
 
-    .line 434
     return-object p0
 .end method
 
 .method public setSubtitle(Ljava/lang/CharSequence;)Landroid/support/v4/media/MediaDescriptionCompat$Builder;
     .locals 0
-    .param p1, "subtitle"    # Ljava/lang/CharSequence;
 
-    .prologue
-    .line 375
+    .line 476
     iput-object p1, p0, Landroid/support/v4/media/MediaDescriptionCompat$Builder;->mSubtitle:Ljava/lang/CharSequence;
 
-    .line 376
     return-object p0
 .end method
 
 .method public setTitle(Ljava/lang/CharSequence;)Landroid/support/v4/media/MediaDescriptionCompat$Builder;
     .locals 0
-    .param p1, "title"    # Ljava/lang/CharSequence;
 
-    .prologue
-    .line 364
+    .line 465
     iput-object p1, p0, Landroid/support/v4/media/MediaDescriptionCompat$Builder;->mTitle:Ljava/lang/CharSequence;
 
-    .line 365
     return-object p0
 .end method

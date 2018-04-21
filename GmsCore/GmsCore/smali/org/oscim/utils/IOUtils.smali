@@ -11,7 +11,6 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .prologue
     .line 30
     const-class v0, Lorg/oscim/utils/IOUtils;
 
@@ -27,27 +26,20 @@
 .method private constructor <init>()V
     .locals 0
 
-    .prologue
-    .line 63
+    .line 62
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 64
     return-void
 .end method
 
 .method public static closeQuietly(Ljava/io/Closeable;)V
-    .locals 3
-    .param p0, "closeable"    # Ljava/io/Closeable;
+    .locals 1
 
-    .prologue
-    .line 41
     if-nez p0, :cond_0
 
-    .line 49
-    :goto_0
     return-void
 
-    .line 45
+    .line 44
     :cond_0
     :try_start_0
     invoke-interface {p0}, Ljava/io/Closeable;->close()V
@@ -56,36 +48,30 @@
 
     goto :goto_0
 
-    .line 46
     :catch_0
-    move-exception v0
+    move-exception p0
 
-    .line 47
-    .local v0, "e":Ljava/io/IOException;
-    sget-object v1, Lorg/oscim/utils/IOUtils;->log:Lorg/slf4j/Logger;
+    .line 46
+    sget-object v0, Lorg/oscim/utils/IOUtils;->log:Lorg/slf4j/Logger;
 
-    invoke-virtual {v0}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
+    invoke-virtual {p0}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object p0
 
-    invoke-interface {v1, v2}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
+    invoke-interface {v0, p0}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
 
-    goto :goto_0
+    :goto_0
+    return-void
 .end method
 
 .method public static closeQuietly(Ljava/net/Socket;)V
-    .locals 3
-    .param p0, "closeable"    # Ljava/net/Socket;
+    .locals 1
 
-    .prologue
-    .line 53
     if-nez p0, :cond_0
 
-    .line 61
-    :goto_0
     return-void
 
-    .line 57
+    .line 56
     :cond_0
     :try_start_0
     invoke-virtual {p0}, Ljava/net/Socket;->close()V
@@ -94,19 +80,18 @@
 
     goto :goto_0
 
-    .line 58
     :catch_0
-    move-exception v0
+    move-exception p0
 
-    .line 59
-    .local v0, "e":Ljava/io/IOException;
-    sget-object v1, Lorg/oscim/utils/IOUtils;->log:Lorg/slf4j/Logger;
+    .line 58
+    sget-object v0, Lorg/oscim/utils/IOUtils;->log:Lorg/slf4j/Logger;
 
-    invoke-virtual {v0}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
+    invoke-virtual {p0}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object p0
 
-    invoke-interface {v1, v2}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
+    invoke-interface {v0, p0}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
 
-    goto :goto_0
+    :goto_0
+    return-void
 .end method

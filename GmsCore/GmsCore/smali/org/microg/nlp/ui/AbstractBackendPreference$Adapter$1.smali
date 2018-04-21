@@ -28,9 +28,7 @@
 # direct methods
 .method constructor <init>(Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter;Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;Landroid/widget/CheckBox;)V
     .locals 0
-    .param p1, "this$1"    # Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter;
 
-    .prologue
     .line 172
     iput-object p1, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter$1;->this$1:Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter;
 
@@ -46,39 +44,36 @@
 
 # virtual methods
 .method public onClick(Landroid/view/View;)V
-    .locals 2
-    .param p1, "v"    # Landroid/view/View;
+    .locals 1
 
-    .prologue
     .line 175
-    iget-object v0, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter$1;->val$backend:Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;
+    iget-object p1, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter$1;->val$backend:Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;
 
-    iget-object v1, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter$1;->val$checkbox:Landroid/widget/CheckBox;
+    iget-object v0, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter$1;->val$checkbox:Landroid/widget/CheckBox;
 
-    invoke-virtual {v1}, Landroid/widget/CheckBox;->isChecked()Z
-
-    move-result v1
-
-    invoke-static {v0, v1}, Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;->access$002(Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;Z)Z
-
-    .line 176
-    iget-object v0, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter$1;->val$backend:Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;
-
-    invoke-static {v0}, Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;->access$000(Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;)Z
+    invoke-virtual {v0}, Landroid/widget/CheckBox;->isChecked()Z
 
     move-result v0
 
-    if-eqz v0, :cond_0
+    invoke-static {p1, v0}, Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;->access$002(Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;Z)Z
 
-    iget-object v0, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter$1;->this$1:Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter;
+    .line 176
+    iget-object p1, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter$1;->val$backend:Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;
 
-    iget-object v0, v0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter;->this$0:Lorg/microg/nlp/ui/AbstractBackendPreference;
+    invoke-static {p1}, Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;->access$000(Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;)Z
 
-    iget-object v1, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter$1;->val$backend:Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;
+    move-result p1
 
-    invoke-virtual {v0, v1}, Lorg/microg/nlp/ui/AbstractBackendPreference;->enableBackend(Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;)V
+    if-eqz p1, :cond_0
 
-    .line 177
+    iget-object p1, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter$1;->this$1:Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter;
+
+    iget-object p1, p1, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter;->this$0:Lorg/microg/nlp/ui/AbstractBackendPreference;
+
+    iget-object v0, p0, Lorg/microg/nlp/ui/AbstractBackendPreference$Adapter$1;->val$backend:Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;
+
+    invoke-virtual {p1, v0}, Lorg/microg/nlp/ui/AbstractBackendPreference;->enableBackend(Lorg/microg/nlp/ui/AbstractBackendPreference$BackendInfo;)V
+
     :cond_0
     return-void
 .end method

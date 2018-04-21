@@ -17,36 +17,16 @@
 # instance fields
 .field custom:Ljava/lang/Object;
 
-.field fragments:Ljava/util/List;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Ljava/util/List",
-            "<",
-            "Landroid/support/v4/app/Fragment;",
-            ">;"
-        }
-    .end annotation
-.end field
+.field fragments:Landroid/support/v4/app/FragmentManagerNonConfig;
 
-.field loaders:Landroid/support/v4/util/SimpleArrayMap;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Landroid/support/v4/util/SimpleArrayMap",
-            "<",
-            "Ljava/lang/String;",
-            "Landroid/support/v4/app/LoaderManager;",
-            ">;"
-        }
-    .end annotation
-.end field
+.field viewModelStore:Landroid/arch/lifecycle/ViewModelStore;
 
 
 # direct methods
 .method constructor <init>()V
     .locals 0
 
-    .prologue
-    .line 143
+    .line 126
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

@@ -11,7 +11,6 @@
 .method public static get()Landroid/content/res/Resources;
     .locals 2
 
-    .prologue
     .line 29
     sget-object v0, Lorg/microg/gms/maps/ResourcesContainer;->resources:Landroid/content/res/Resources;
 
@@ -35,12 +34,9 @@
 
 .method public static set(Landroid/content/res/Resources;)V
     .locals 0
-    .param p0, "resources"    # Landroid/content/res/Resources;
 
-    .prologue
     .line 25
     sput-object p0, Lorg/microg/gms/maps/ResourcesContainer;->resources:Landroid/content/res/Resources;
 
-    .line 26
     return-void
 .end method

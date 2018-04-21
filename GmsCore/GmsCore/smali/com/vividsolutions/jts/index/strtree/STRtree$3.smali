@@ -21,7 +21,6 @@
 .method constructor <init>()V
     .locals 0
 
-    .prologue
     .line 119
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -31,21 +30,16 @@
 
 # virtual methods
 .method public intersects(Ljava/lang/Object;Ljava/lang/Object;)Z
-    .locals 1
-    .param p1, "aBounds"    # Ljava/lang/Object;
-    .param p2, "bBounds"    # Ljava/lang/Object;
+    .locals 0
 
-    .prologue
     .line 121
     check-cast p1, Lcom/vividsolutions/jts/geom/Envelope;
 
-    .end local p1    # "aBounds":Ljava/lang/Object;
     check-cast p2, Lcom/vividsolutions/jts/geom/Envelope;
 
-    .end local p2    # "bBounds":Ljava/lang/Object;
     invoke-virtual {p1, p2}, Lcom/vividsolutions/jts/geom/Envelope;->intersects(Lcom/vividsolutions/jts/geom/Envelope;)Z
 
-    move-result v0
+    move-result p1
 
-    return v0
+    return p1
 .end method

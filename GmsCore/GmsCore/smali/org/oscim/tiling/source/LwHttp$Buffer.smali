@@ -29,25 +29,22 @@
 # direct methods
 .method public constructor <init>(Ljava/io/InputStream;)V
     .locals 1
-    .param p1, "is"    # Ljava/io/InputStream;
 
-    .prologue
-    .line 128
     const/16 v0, 0x2000
 
+    .line 131
     invoke-direct {p0, p1, v0}, Ljava/io/BufferedInputStream;-><init>(Ljava/io/InputStream;I)V
 
-    .line 122
-    const/4 v0, 0x0
+    const/4 p1, 0x0
 
-    iput v0, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
+    .line 125
+    iput p1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
 
-    .line 124
-    const/4 v0, -0x1
+    const/4 p1, -0x1
 
-    iput v0, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->marked:I
+    .line 127
+    iput p1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->marked:I
 
-    .line 129
     return-void
 .end method
 
@@ -61,100 +58,90 @@
         }
     .end annotation
 
-    .prologue
-    .line 155
     return-void
 .end method
 
 .method public finishedReading()Z
-    .locals 3
+    .locals 2
 
-    .prologue
-    .line 143
-    :cond_0
+    .line 146
+    :goto_0
     :try_start_0
-    iget v1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
+    iget v0, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
 
-    iget v2, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->contentLength:I
+    iget v1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->contentLength:I
 
-    if-ge v1, v2, :cond_1
+    if-ge v0, v1, :cond_0
 
     invoke-virtual {p0}, Lorg/oscim/tiling/source/LwHttp$Buffer;->read()I
+
+    move-result v0
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-result v1
+    if-ltz v0, :cond_0
 
-    if-gez v1, :cond_0
+    goto :goto_0
 
-    .line 148
-    :cond_1
-    :goto_0
-    iget v1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
-
-    iget v2, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->contentLength:I
-
-    if-ne v1, v2, :cond_2
-
-    const/4 v1, 0x1
-
-    :goto_1
-    return v1
-
-    .line 144
     :catch_0
     move-exception v0
 
-    .line 145
-    .local v0, "e":Ljava/io/IOException;
+    .line 148
     sget-object v1, Lorg/oscim/tiling/source/LwHttp;->log:Lorg/slf4j/Logger;
 
     invoke-virtual {v0}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v0
 
-    invoke-interface {v1, v2}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
+    invoke-interface {v1, v0}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
 
-    goto :goto_0
+    .line 151
+    :cond_0
+    iget v0, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
 
-    .line 148
-    .end local v0    # "e":Ljava/io/IOException;
-    :cond_2
-    const/4 v1, 0x0
+    iget v1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->contentLength:I
+
+    if-ne v0, v1, :cond_1
+
+    const/4 v0, 0x1
 
     goto :goto_1
+
+    :cond_1
+    const/4 v0, 0x0
+
+    :goto_1
+    return v0
 .end method
 
 .method public declared-synchronized mark(I)V
     .locals 1
-    .param p1, "readlimit"    # I
 
-    .prologue
-    .line 162
     monitor-enter p0
 
+    .line 165
     :try_start_0
     iget v0, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
 
     iput v0, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->marked:I
 
-    .line 163
+    .line 166
     invoke-super {p0, p1}, Ljava/io/BufferedInputStream;->mark(I)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 164
+    .line 167
     monitor-exit p0
 
     return-void
 
-    .line 162
     :catchall_0
-    move-exception v0
+    move-exception p1
 
+    .line 164
     monitor-exit p0
 
-    throw v0
+    throw p1
 .end method
 
 .method public read()I
@@ -165,142 +152,129 @@
         }
     .end annotation
 
-    .prologue
-    .line 207
-    iget v1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
+    .line 210
+    iget v0, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
 
-    iget v2, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->contentLength:I
+    iget v1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->contentLength:I
 
-    if-lt v1, v2, :cond_1
+    if-lt v0, v1, :cond_0
 
-    .line 208
     const/4 v0, -0x1
 
-    .line 220
-    :cond_0
-    :goto_0
     return v0
 
-    .line 210
-    :cond_1
+    .line 213
+    :cond_0
     invoke-super {p0}, Ljava/io/BufferedInputStream;->read()I
 
     move-result v0
 
-    .line 212
-    .local v0, "data":I
-    if-ltz v0, :cond_2
+    if-ltz v0, :cond_1
 
-    .line 213
+    .line 216
     iget v1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
 
     add-int/lit8 v1, v1, 0x1
 
     iput v1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
 
-    .line 215
-    :cond_2
+    .line 218
+    :cond_1
     iget-object v1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->cache:Ljava/io/OutputStream;
 
-    if-eqz v1, :cond_0
+    if-eqz v1, :cond_2
 
     iget v1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
 
     iget v2, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesWrote:I
 
-    if-le v1, v2, :cond_0
+    if-le v1, v2, :cond_2
 
-    .line 216
+    .line 219
     iget v1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
 
     iput v1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesWrote:I
 
-    .line 217
+    .line 220
     iget-object v1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->cache:Ljava/io/OutputStream;
 
     invoke-virtual {v1, v0}, Ljava/io/OutputStream;->write(I)V
 
-    goto :goto_0
+    :cond_2
+    return v0
 .end method
 
 .method public read([BII)I
-    .locals 4
-    .param p1, "buffer"    # [B
-    .param p2, "offset"    # I
-    .param p3, "byteCount"    # I
+    .locals 3
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue
-    .line 227
-    iget v2, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
-
-    iget v3, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->contentLength:I
-
-    if-lt v2, v3, :cond_1
-
-    .line 228
-    const/4 v1, -0x1
-
-    .line 246
-    :cond_0
-    :goto_0
-    return v1
-
     .line 230
-    :cond_1
+    iget v0, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
+
+    iget v1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->contentLength:I
+
+    if-lt v0, v1, :cond_0
+
+    const/4 p1, -0x1
+
+    return p1
+
+    .line 233
+    :cond_0
     invoke-super {p0, p1, p2, p3}, Ljava/io/BufferedInputStream;->read([BII)I
 
-    move-result v1
+    move-result p3
 
-    .line 235
-    .local v1, "len":I
-    if-lez v1, :cond_0
+    if-gtz p3, :cond_1
 
-    .line 238
-    iget v2, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
-
-    add-int/2addr v2, v1
-
-    iput v2, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
-
-    .line 240
-    iget-object v2, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->cache:Ljava/io/OutputStream;
-
-    if-eqz v2, :cond_0
-
-    iget v2, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
-
-    iget v3, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesWrote:I
-
-    if-le v2, v3, :cond_0
+    return p3
 
     .line 241
-    iget v2, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
+    :cond_1
+    iget v0, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
 
-    iget v3, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesWrote:I
+    add-int/2addr v0, p3
 
-    sub-int v0, v2, v3
-
-    .line 242
-    .local v0, "add":I
-    iget v2, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
-
-    iput v2, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesWrote:I
+    iput v0, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
 
     .line 243
-    iget-object v2, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->cache:Ljava/io/OutputStream;
+    iget-object v0, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->cache:Ljava/io/OutputStream;
 
-    sub-int v3, v1, v0
+    if-eqz v0, :cond_2
 
-    add-int/2addr v3, p2
+    iget v0, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
 
-    invoke-virtual {v2, p1, v3, v0}, Ljava/io/OutputStream;->write([BII)V
+    iget v1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesWrote:I
 
-    goto :goto_0
+    if-le v0, v1, :cond_2
+
+    .line 244
+    iget v0, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
+
+    iget v1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesWrote:I
+
+    sub-int/2addr v0, v1
+
+    .line 245
+    iget v1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
+
+    iput v1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesWrote:I
+
+    .line 246
+    iget-object v1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->cache:Ljava/io/OutputStream;
+
+    sub-int v2, p3, v0
+
+    add-int/2addr p2, v2
+
+    invoke-virtual {v1, p1, p2, v0}, Ljava/io/OutputStream;->write([BII)V
+
+    :cond_2
+    return p3
 .end method
 
 .method public declared-synchronized reset()V
@@ -311,35 +285,34 @@
         }
     .end annotation
 
-    .prologue
-    .line 198
     monitor-enter p0
 
+    .line 201
     :try_start_0
     iget v0, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->marked:I
 
     if-ltz v0, :cond_0
 
-    .line 199
+    .line 202
     iget v0, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->marked:I
 
     iput v0, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
 
-    .line 202
+    .line 205
     :cond_0
     invoke-super {p0}, Ljava/io/BufferedInputStream;->reset()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 203
+    .line 206
     monitor-exit p0
 
     return-void
 
-    .line 198
     :catchall_0
     move-exception v0
 
+    .line 200
     monitor-exit p0
 
     throw v0
@@ -347,133 +320,120 @@
 
 .method public setCache(Ljava/io/OutputStream;)V
     .locals 0
-    .param p1, "cache"    # Ljava/io/OutputStream;
 
-    .prologue
-    .line 132
+    .line 135
     iput-object p1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->cache:Ljava/io/OutputStream;
 
-    .line 133
     return-void
 .end method
 
 .method public declared-synchronized skip(J)J
-    .locals 7
-    .param p1, "n"    # J
+    .locals 8
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue
-    .line 171
     monitor-enter p0
 
-    const-wide/16 v2, 0x0
+    const-wide/16 v0, 0x0
 
-    .line 172
-    .local v2, "sumSkipped":J
+    move-wide v2, v0
+
     :goto_0
     cmp-long v4, v2, p1
 
-    if-gez v4, :cond_1
+    if-gez v4, :cond_2
 
-    .line 173
     sub-long v4, p1, v2
 
+    .line 176
     :try_start_0
     invoke-super {p0, v4, v5}, Ljava/io/BufferedInputStream;->skip(J)J
 
-    move-result-wide v0
+    move-result-wide v4
 
-    .line 174
-    .local v0, "skipped":J
-    const-wide/16 v4, 0x0
+    cmp-long v6, v4, v0
 
-    cmp-long v4, v0, v4
+    if-eqz v6, :cond_0
 
-    if-eqz v4, :cond_0
+    add-long v6, v2, v4
 
-    .line 175
-    add-long/2addr v2, v0
+    :goto_1
+    move-wide v2, v6
 
-    .line 176
     goto :goto_0
 
-    .line 178
+    .line 181
     :cond_0
     invoke-virtual {p0}, Lorg/oscim/tiling/source/LwHttp$Buffer;->read()I
 
     move-result v4
 
-    if-gez v4, :cond_2
+    if-gez v4, :cond_1
 
-    .line 189
-    .end local v0    # "skipped":J
+    goto :goto_2
+
     :cond_1
-    iget v4, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
+    const-wide/16 v4, 0x1
 
-    int-to-long v4, v4
+    add-long v6, v2, v4
 
-    add-long/2addr v4, v2
+    .line 186
+    iget v2, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
 
-    long-to-int v4, v4
+    add-int/lit8 v2, v2, -0x1
 
-    iput v4, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
+    iput v2, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
+
+    goto :goto_1
+
+    :catchall_0
+    move-exception p1
+
+    goto :goto_3
+
+    .line 192
+    :cond_2
+    :goto_2
+    iget p1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
+
+    int-to-long p1, p1
+
+    add-long v0, p1, v2
+
+    long-to-int p1, v0
+
+    iput p1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 190
+    .line 193
     monitor-exit p0
 
     return-wide v2
 
-    .line 181
-    .restart local v0    # "skipped":J
-    :cond_2
-    const-wide/16 v4, 0x1
-
-    add-long/2addr v2, v4
-
-    .line 183
-    :try_start_1
-    iget v4, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
-
-    add-int/lit8 v4, v4, -0x1
-
-    iput v4, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    goto :goto_0
-
-    .line 171
-    .end local v0    # "skipped":J
-    :catchall_0
-    move-exception v4
-
+    .line 173
+    :goto_3
     monitor-exit p0
 
-    throw v4
+    throw p1
 .end method
 
 .method public start(I)V
     .locals 1
-    .param p1, "length"    # I
 
-    .prologue
     const/4 v0, 0x0
 
-    .line 136
+    .line 139
     iput v0, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesRead:I
 
-    .line 137
+    .line 140
     iput v0, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->bytesWrote:I
 
-    .line 138
+    .line 141
     iput p1, p0, Lorg/oscim/tiling/source/LwHttp$Buffer;->contentLength:I
 
-    .line 139
     return-void
 .end method

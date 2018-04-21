@@ -18,8 +18,7 @@
 .method constructor <init>()V
     .locals 0
 
-    .prologue
-    .line 34
+    .line 38
     invoke-direct {p0}, Lorg/oscim/utils/math/Interpolation;-><init>()V
 
     return-void
@@ -29,9 +28,6 @@
 # virtual methods
 .method public apply(F)F
     .locals 0
-    .param p1, "a"    # F
 
-    .prologue
-    .line 37
     return p1
 .end method

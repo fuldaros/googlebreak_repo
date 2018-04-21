@@ -6,24 +6,19 @@
 # direct methods
 .method public constructor <init>(Lcom/vividsolutions/jts/geom/CoordinateSequence;Lcom/vividsolutions/jts/geom/GeometryFactory;)V
     .locals 0
-    .param p1, "points"    # Lcom/vividsolutions/jts/geom/CoordinateSequence;
-    .param p2, "factory"    # Lcom/vividsolutions/jts/geom/GeometryFactory;
 
-    .prologue
     .line 105
     invoke-direct {p0, p1, p2}, Lcom/vividsolutions/jts/geom/LineString;-><init>(Lcom/vividsolutions/jts/geom/CoordinateSequence;Lcom/vividsolutions/jts/geom/GeometryFactory;)V
 
     .line 106
     invoke-direct {p0}, Lcom/vividsolutions/jts/geom/LinearRing;->validateConstruction()V
 
-    .line 107
     return-void
 .end method
 
 .method private validateConstruction()V
     .locals 3
 
-    .prologue
     .line 110
     invoke-virtual {p0}, Lcom/vividsolutions/jts/geom/LinearRing;->isEmpty()Z
 
@@ -83,8 +78,6 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
     invoke-virtual {p0}, Lcom/vividsolutions/jts/geom/LinearRing;->getCoordinateSequence()Lcom/vividsolutions/jts/geom/CoordinateSequence;
 
     move-result-object v2
@@ -95,13 +88,9 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
     const-string v2, " - must be 0 or >= 4)"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
 
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -111,7 +100,6 @@
 
     throw v0
 
-    .line 117
     :cond_1
     return-void
 .end method
@@ -121,7 +109,6 @@
 .method public isClosed()Z
     .locals 1
 
-    .prologue
     .line 136
     invoke-virtual {p0}, Lcom/vividsolutions/jts/geom/LinearRing;->isEmpty()Z
 
@@ -129,17 +116,15 @@
 
     if-eqz v0, :cond_0
 
-    .line 138
     const/4 v0, 0x1
 
-    .line 140
-    :goto_0
     return v0
 
+    .line 140
     :cond_0
     invoke-super {p0}, Lcom/vividsolutions/jts/geom/LineString;->isClosed()Z
 
     move-result v0
 
-    goto :goto_0
+    return v0
 .end method

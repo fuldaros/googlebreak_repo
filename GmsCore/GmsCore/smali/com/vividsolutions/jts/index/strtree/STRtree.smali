@@ -27,7 +27,6 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .prologue
     .line 92
     new-instance v0, Lcom/vividsolutions/jts/index/strtree/STRtree$1;
 
@@ -55,33 +54,26 @@
 .method public constructor <init>()V
     .locals 1
 
-    .prologue
-    .line 182
     const/16 v0, 0xa
 
+    .line 182
     invoke-direct {p0, v0}, Lcom/vividsolutions/jts/index/strtree/STRtree;-><init>(I)V
 
-    .line 183
     return-void
 .end method
 
 .method public constructor <init>(I)V
     .locals 0
-    .param p1, "nodeCapacity"    # I
 
-    .prologue
     .line 193
     invoke-direct {p0, p1}, Lcom/vividsolutions/jts/index/strtree/AbstractSTRtree;-><init>(I)V
 
-    .line 194
     return-void
 .end method
 
 .method static synthetic access$000(Lcom/vividsolutions/jts/geom/Envelope;)D
     .locals 2
-    .param p0, "x0"    # Lcom/vividsolutions/jts/geom/Envelope;
 
-    .prologue
     .line 61
     invoke-static {p0}, Lcom/vividsolutions/jts/index/strtree/STRtree;->centreX(Lcom/vividsolutions/jts/geom/Envelope;)D
 
@@ -92,9 +84,7 @@
 
 .method static synthetic access$100(Lcom/vividsolutions/jts/geom/Envelope;)D
     .locals 2
-    .param p0, "x0"    # Lcom/vividsolutions/jts/geom/Envelope;
 
-    .prologue
     .line 61
     invoke-static {p0}, Lcom/vividsolutions/jts/index/strtree/STRtree;->centreY(Lcom/vividsolutions/jts/geom/Envelope;)D
 
@@ -104,26 +94,20 @@
 .end method
 
 .method private static avg(DD)D
-    .locals 4
-    .param p0, "a"    # D
-    .param p2, "b"    # D
+    .locals 0
 
-    .prologue
-    .line 117
-    add-double v0, p0, p2
+    add-double/2addr p0, p2
 
-    const-wide/high16 v2, 0x4000000000000000L    # 2.0
+    const-wide/high16 p2, 0x4000000000000000L    # 2.0
 
-    div-double/2addr v0, v2
+    div-double/2addr p0, p2
 
-    return-wide v0
+    return-wide p0
 .end method
 
 .method private static centreX(Lcom/vividsolutions/jts/geom/Envelope;)D
     .locals 4
-    .param p0, "e"    # Lcom/vividsolutions/jts/geom/Envelope;
 
-    .prologue
     .line 110
     invoke-virtual {p0}, Lcom/vividsolutions/jts/geom/Envelope;->getMinX()D
 
@@ -142,9 +126,7 @@
 
 .method private static centreY(Lcom/vividsolutions/jts/geom/Envelope;)D
     .locals 4
-    .param p0, "e"    # Lcom/vividsolutions/jts/geom/Envelope;
 
-    .prologue
     .line 114
     invoke-virtual {p0}, Lcom/vividsolutions/jts/geom/Envelope;->getMinY()D
 
@@ -163,19 +145,23 @@
 
 .method private createParentBoundablesFromVerticalSlices([Ljava/util/List;I)Ljava/util/List;
     .locals 3
-    .param p1, "verticalSlices"    # [Ljava/util/List;
-    .param p2, "newLevel"    # I
 
-    .prologue
+    const/4 v0, 0x0
+
     .line 143
-    array-length v2, p1
+    array-length v1, p1
 
-    if-lez v2, :cond_0
+    if-lez v1, :cond_0
 
-    const/4 v2, 0x1
+    const/4 v1, 0x1
+
+    goto :goto_0
+
+    :cond_0
+    move v1, v0
 
     :goto_0
-    invoke-static {v2}, Lcom/vividsolutions/jts/util/Assert;->isTrue(Z)V
+    invoke-static {v1}, Lcom/vividsolutions/jts/util/Assert;->isTrue(Z)V
 
     .line 144
     new-instance v1, Ljava/util/ArrayList;
@@ -183,10 +169,6 @@
     invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
 
     .line 145
-    .local v1, "parentBoundables":Ljava/util/List;
-    const/4 v0, 0x0
-
-    .local v0, "i":I
     :goto_1
     array-length v2, p1
 
@@ -201,22 +183,10 @@
 
     invoke-interface {v1, v2}, Ljava/util/List;->addAll(Ljava/util/Collection;)Z
 
-    .line 145
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_1
 
-    .line 143
-    .end local v0    # "i":I
-    .end local v1    # "parentBoundables":Ljava/util/List;
-    :cond_0
-    const/4 v2, 0x0
-
-    goto :goto_0
-
-    .line 149
-    .restart local v0    # "i":I
-    .restart local v1    # "parentBoundables":Ljava/util/List;
     :cond_1
     return-object v1
 .end method
@@ -225,9 +195,7 @@
 # virtual methods
 .method protected createNode(I)Lcom/vividsolutions/jts/index/strtree/AbstractNode;
     .locals 2
-    .param p1, "level"    # I
 
-    .prologue
     .line 197
     new-instance v0, Lcom/vividsolutions/jts/index/strtree/STRtree$STRtreeNode;
 
@@ -239,109 +207,87 @@
 .end method
 
 .method protected createParentBoundables(Ljava/util/List;I)Ljava/util/List;
-    .locals 8
-    .param p1, "childBoundables"    # Ljava/util/List;
-    .param p2, "newLevel"    # I
+    .locals 4
 
-    .prologue
     .line 133
     invoke-interface {p1}, Ljava/util/List;->isEmpty()Z
 
-    move-result v3
+    move-result v0
 
-    if-nez v3, :cond_0
+    xor-int/lit8 v0, v0, 0x1
 
-    const/4 v3, 0x1
-
-    :goto_0
-    invoke-static {v3}, Lcom/vividsolutions/jts/util/Assert;->isTrue(Z)V
+    invoke-static {v0}, Lcom/vividsolutions/jts/util/Assert;->isTrue(Z)V
 
     .line 134
     invoke-interface {p1}, Ljava/util/List;->size()I
 
-    move-result v3
+    move-result v0
 
-    int-to-double v4, v3
+    int-to-double v0, v0
 
     invoke-virtual {p0}, Lcom/vividsolutions/jts/index/strtree/STRtree;->getNodeCapacity()I
 
-    move-result v3
+    move-result v2
 
-    int-to-double v6, v3
+    int-to-double v2, v2
 
-    div-double/2addr v4, v6
+    div-double/2addr v0, v2
 
-    invoke-static {v4, v5}, Ljava/lang/Math;->ceil(D)D
+    invoke-static {v0, v1}, Ljava/lang/Math;->ceil(D)D
 
-    move-result-wide v4
+    move-result-wide v0
 
-    double-to-int v0, v4
+    double-to-int v0, v0
 
     .line 135
-    .local v0, "minLeafCount":I
     new-instance v1, Ljava/util/ArrayList;
 
     invoke-direct {v1, p1}, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
 
     .line 136
-    .local v1, "sortedChildBoundables":Ljava/util/ArrayList;
-    sget-object v3, Lcom/vividsolutions/jts/index/strtree/STRtree;->xComparator:Ljava/util/Comparator;
+    sget-object p1, Lcom/vividsolutions/jts/index/strtree/STRtree;->xComparator:Ljava/util/Comparator;
 
-    invoke-static {v1, v3}, Ljava/util/Collections;->sort(Ljava/util/List;Ljava/util/Comparator;)V
+    invoke-static {v1, p1}, Ljava/util/Collections;->sort(Ljava/util/List;Ljava/util/Comparator;)V
+
+    int-to-double v2, v0
 
     .line 137
-    int-to-double v4, v0
+    invoke-static {v2, v3}, Ljava/lang/Math;->sqrt(D)D
 
-    invoke-static {v4, v5}, Ljava/lang/Math;->sqrt(D)D
+    move-result-wide v2
 
-    move-result-wide v4
+    invoke-static {v2, v3}, Ljava/lang/Math;->ceil(D)D
 
-    invoke-static {v4, v5}, Ljava/lang/Math;->ceil(D)D
+    move-result-wide v2
 
-    move-result-wide v4
+    double-to-int p1, v2
 
-    double-to-int v3, v4
+    invoke-virtual {p0, v1, p1}, Lcom/vividsolutions/jts/index/strtree/STRtree;->verticalSlices(Ljava/util/List;I)[Ljava/util/List;
 
-    invoke-virtual {p0, v1, v3}, Lcom/vividsolutions/jts/index/strtree/STRtree;->verticalSlices(Ljava/util/List;I)[Ljava/util/List;
-
-    move-result-object v2
+    move-result-object p1
 
     .line 139
-    .local v2, "verticalSlices":[Ljava/util/List;
-    invoke-direct {p0, v2, p2}, Lcom/vividsolutions/jts/index/strtree/STRtree;->createParentBoundablesFromVerticalSlices([Ljava/util/List;I)Ljava/util/List;
+    invoke-direct {p0, p1, p2}, Lcom/vividsolutions/jts/index/strtree/STRtree;->createParentBoundablesFromVerticalSlices([Ljava/util/List;I)Ljava/util/List;
 
-    move-result-object v3
+    move-result-object p1
 
-    return-object v3
-
-    .line 133
-    .end local v0    # "minLeafCount":I
-    .end local v1    # "sortedChildBoundables":Ljava/util/ArrayList;
-    .end local v2    # "verticalSlices":[Ljava/util/List;
-    :cond_0
-    const/4 v3, 0x0
-
-    goto :goto_0
+    return-object p1
 .end method
 
 .method protected createParentBoundablesFromVerticalSlice(Ljava/util/List;I)Ljava/util/List;
-    .locals 1
-    .param p1, "childBoundables"    # Ljava/util/List;
-    .param p2, "newLevel"    # I
+    .locals 0
 
-    .prologue
     .line 153
     invoke-super {p0, p1, p2}, Lcom/vividsolutions/jts/index/strtree/AbstractSTRtree;->createParentBoundables(Ljava/util/List;I)Ljava/util/List;
 
-    move-result-object v0
+    move-result-object p1
 
-    return-object v0
+    return-object p1
 .end method
 
 .method protected getComparator()Ljava/util/Comparator;
     .locals 1
 
-    .prologue
     .line 262
     sget-object v0, Lcom/vividsolutions/jts/index/strtree/STRtree;->yComparator:Ljava/util/Comparator;
 
@@ -351,7 +297,6 @@
 .method protected getIntersectsOp()Lcom/vividsolutions/jts/index/strtree/AbstractSTRtree$IntersectsOp;
     .locals 1
 
-    .prologue
     .line 201
     sget-object v0, Lcom/vividsolutions/jts/index/strtree/STRtree;->intersectsOp:Lcom/vividsolutions/jts/index/strtree/AbstractSTRtree$IntersectsOp;
 
@@ -360,10 +305,7 @@
 
 .method public insert(Lcom/vividsolutions/jts/geom/Envelope;Ljava/lang/Object;)V
     .locals 1
-    .param p1, "itemEnv"    # Lcom/vividsolutions/jts/geom/Envelope;
-    .param p2, "item"    # Ljava/lang/Object;
 
-    .prologue
     .line 208
     invoke-virtual {p1}, Lcom/vividsolutions/jts/geom/Envelope;->isNull()Z
 
@@ -371,133 +313,110 @@
 
     if-eqz v0, :cond_0
 
-    .line 210
-    :goto_0
     return-void
 
     .line 209
     :cond_0
     invoke-super {p0, p1, p2}, Lcom/vividsolutions/jts/index/strtree/AbstractSTRtree;->insert(Ljava/lang/Object;Ljava/lang/Object;)V
 
-    goto :goto_0
+    return-void
 .end method
 
 .method public query(Lcom/vividsolutions/jts/geom/Envelope;)Ljava/util/List;
-    .locals 1
-    .param p1, "searchEnv"    # Lcom/vividsolutions/jts/geom/Envelope;
+    .locals 0
 
-    .prologue
     .line 218
     invoke-super {p0, p1}, Lcom/vividsolutions/jts/index/strtree/AbstractSTRtree;->query(Ljava/lang/Object;)Ljava/util/List;
 
-    move-result-object v0
+    move-result-object p1
 
-    return-object v0
+    return-object p1
 .end method
 
 .method public query(Lcom/vividsolutions/jts/geom/Envelope;Lcom/vividsolutions/jts/index/ItemVisitor;)V
     .locals 0
-    .param p1, "searchEnv"    # Lcom/vividsolutions/jts/geom/Envelope;
-    .param p2, "visitor"    # Lcom/vividsolutions/jts/index/ItemVisitor;
 
-    .prologue
     .line 227
     invoke-super {p0, p1, p2}, Lcom/vividsolutions/jts/index/strtree/AbstractSTRtree;->query(Ljava/lang/Object;Lcom/vividsolutions/jts/index/ItemVisitor;)V
 
-    .line 228
     return-void
 .end method
 
 .method protected verticalSlices(Ljava/util/List;I)[Ljava/util/List;
-    .locals 10
-    .param p1, "childBoundables"    # Ljava/util/List;
-    .param p2, "sliceCount"    # I
+    .locals 7
 
-    .prologue
     .line 160
     invoke-interface {p1}, Ljava/util/List;->size()I
 
-    move-result v6
+    move-result v0
 
-    int-to-double v6, v6
+    int-to-double v0, v0
 
-    int-to-double v8, p2
+    int-to-double v2, p2
 
-    div-double/2addr v6, v8
+    div-double/2addr v0, v2
 
-    invoke-static {v6, v7}, Ljava/lang/Math;->ceil(D)D
+    invoke-static {v0, v1}, Ljava/lang/Math;->ceil(D)D
 
-    move-result-wide v6
+    move-result-wide v0
 
-    double-to-int v4, v6
+    double-to-int v0, v0
 
     .line 161
-    .local v4, "sliceCapacity":I
-    new-array v5, p2, [Ljava/util/List;
+    new-array v1, p2, [Ljava/util/List;
 
     .line 162
-    .local v5, "slices":[Ljava/util/List;
     invoke-interface {p1}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
-    move-result-object v2
+    move-result-object p1
 
-    .line 163
-    .local v2, "i":Ljava/util/Iterator;
-    const/4 v3, 0x0
+    const/4 v2, 0x0
 
-    .local v3, "j":I
+    move v3, v2
+
     :goto_0
     if-ge v3, p2, :cond_1
 
     .line 164
-    new-instance v6, Ljava/util/ArrayList;
+    new-instance v4, Ljava/util/ArrayList;
 
-    invoke-direct {v6}, Ljava/util/ArrayList;-><init>()V
+    invoke-direct {v4}, Ljava/util/ArrayList;-><init>()V
 
-    aput-object v6, v5, v3
+    aput-object v4, v1, v3
 
-    .line 165
-    const/4 v0, 0x0
+    move v4, v2
 
     .line 166
-    .local v0, "boundablesAddedToSlice":I
     :goto_1
-    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
+    invoke-interface {p1}, Ljava/util/Iterator;->hasNext()Z
 
-    move-result v6
+    move-result v5
 
-    if-eqz v6, :cond_0
+    if-eqz v5, :cond_0
 
-    if-ge v0, v4, :cond_0
+    if-ge v4, v0, :cond_0
 
     .line 167
-    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {p1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    move-result-object v1
+    move-result-object v5
 
-    check-cast v1, Lcom/vividsolutions/jts/index/strtree/Boundable;
+    check-cast v5, Lcom/vividsolutions/jts/index/strtree/Boundable;
 
     .line 168
-    .local v1, "childBoundable":Lcom/vividsolutions/jts/index/strtree/Boundable;
-    aget-object v6, v5, v3
+    aget-object v6, v1, v3
 
-    invoke-interface {v6, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    invoke-interface {v6, v5}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 169
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v4, v4, 0x1
 
-    .line 170
     goto :goto_1
 
-    .line 163
-    .end local v1    # "childBoundable":Lcom/vividsolutions/jts/index/strtree/Boundable;
     :cond_0
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_0
 
-    .line 172
-    .end local v0    # "boundablesAddedToSlice":I
     :cond_1
-    return-object v5
+    return-object v1
 .end method

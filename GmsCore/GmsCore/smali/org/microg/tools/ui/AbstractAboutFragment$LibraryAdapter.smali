@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Landroid/widget/ArrayAdapter",
-        "<",
+        "Landroid/widget/ArrayAdapter<",
         "Lorg/microg/tools/ui/AbstractAboutFragment$Library;",
         ">;"
     }
@@ -29,143 +28,130 @@
 
 # direct methods
 .method public constructor <init>(Lorg/microg/tools/ui/AbstractAboutFragment;Landroid/content/Context;[Lorg/microg/tools/ui/AbstractAboutFragment$Library;)V
-    .locals 2
-    .param p2, "context"    # Landroid/content/Context;
-    .param p3, "libraries"    # [Lorg/microg/tools/ui/AbstractAboutFragment$Library;
+    .locals 1
 
-    .prologue
-    .line 109
+    .line 118
     iput-object p1, p0, Lorg/microg/tools/ui/AbstractAboutFragment$LibraryAdapter;->this$0:Lorg/microg/tools/ui/AbstractAboutFragment;
 
-    .line 110
-    const v0, 0x1090004
+    const p1, 0x1090004
 
-    const v1, 0x1020014
+    const v0, 0x1020014
 
-    invoke-direct {p0, p2, v0, v1, p3}, Landroid/widget/ArrayAdapter;-><init>(Landroid/content/Context;II[Ljava/lang/Object;)V
+    .line 119
+    invoke-direct {p0, p2, p1, v0, p3}, Landroid/widget/ArrayAdapter;-><init>(Landroid/content/Context;II[Ljava/lang/Object;)V
 
-    .line 111
     return-void
 .end method
 
 
 # virtual methods
 .method public getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
-    .locals 8
-    .param p1, "position"    # I
-    .param p2, "convertView"    # Landroid/view/View;
-    .param p3, "parent"    # Landroid/view/ViewGroup;
+    .locals 5
 
-    .prologue
-    .line 115
+    .line 124
     invoke-super {p0, p1, p2, p3}, Landroid/widget/ArrayAdapter;->getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
 
-    move-result-object v0
+    move-result-object p2
 
-    .line 116
-    .local v0, "v":Landroid/view/View;
-    const v1, 0x1020014
+    const p3, 0x1020014
 
-    invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    .line 125
+    invoke-virtual {p2, p3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
-    move-result-object v1
+    move-result-object p3
 
-    check-cast v1, Landroid/widget/TextView;
+    check-cast p3, Landroid/widget/TextView;
 
-    iget-object v3, p0, Lorg/microg/tools/ui/AbstractAboutFragment$LibraryAdapter;->this$0:Lorg/microg/tools/ui/AbstractAboutFragment;
+    iget-object v0, p0, Lorg/microg/tools/ui/AbstractAboutFragment$LibraryAdapter;->this$0:Lorg/microg/tools/ui/AbstractAboutFragment;
 
-    sget v4, Lorg/microg/tools/ui/R$string;->about_name_version_str:I
+    sget v1, Lorg/microg/tools/ui/R$string;->about_name_version_str:I
 
     const/4 v2, 0x2
 
-    new-array v5, v2, [Ljava/lang/Object;
-
-    const/4 v6, 0x0
+    new-array v2, v2, [Ljava/lang/Object;
 
     invoke-virtual {p0, p1}, Lorg/microg/tools/ui/AbstractAboutFragment$LibraryAdapter;->getItem(I)Ljava/lang/Object;
 
-    move-result-object v2
+    move-result-object v3
 
-    check-cast v2, Lorg/microg/tools/ui/AbstractAboutFragment$Library;
+    check-cast v3, Lorg/microg/tools/ui/AbstractAboutFragment$Library;
 
-    invoke-static {v2}, Lorg/microg/tools/ui/AbstractAboutFragment$Library;->access$000(Lorg/microg/tools/ui/AbstractAboutFragment$Library;)Ljava/lang/String;
+    invoke-static {v3}, Lorg/microg/tools/ui/AbstractAboutFragment$Library;->access$000(Lorg/microg/tools/ui/AbstractAboutFragment$Library;)Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v3
 
-    aput-object v2, v5, v6
+    const/4 v4, 0x0
 
-    const/4 v6, 0x1
-
-    iget-object v7, p0, Lorg/microg/tools/ui/AbstractAboutFragment$LibraryAdapter;->this$0:Lorg/microg/tools/ui/AbstractAboutFragment;
+    aput-object v3, v2, v4
 
     invoke-virtual {p0, p1}, Lorg/microg/tools/ui/AbstractAboutFragment$LibraryAdapter;->getItem(I)Ljava/lang/Object;
 
-    move-result-object v2
+    move-result-object v3
 
-    check-cast v2, Lorg/microg/tools/ui/AbstractAboutFragment$Library;
+    check-cast v3, Lorg/microg/tools/ui/AbstractAboutFragment$Library;
 
-    invoke-static {v2}, Lorg/microg/tools/ui/AbstractAboutFragment$Library;->access$100(Lorg/microg/tools/ui/AbstractAboutFragment$Library;)Ljava/lang/String;
+    invoke-static {v3}, Lorg/microg/tools/ui/AbstractAboutFragment$Library;->access$100(Lorg/microg/tools/ui/AbstractAboutFragment$Library;)Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v3
 
-    invoke-virtual {v7, v2}, Lorg/microg/tools/ui/AbstractAboutFragment;->getLibVersion(Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v3}, Lorg/microg/tools/ui/AbstractAboutFragment;->getLibVersion(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v3
 
-    aput-object v2, v5, v6
+    const/4 v4, 0x1
 
-    invoke-virtual {v3, v4, v5}, Lorg/microg/tools/ui/AbstractAboutFragment;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
+    aput-object v3, v2, v4
 
-    move-result-object v2
+    invoke-virtual {v0, v1, v2}, Lorg/microg/tools/ui/AbstractAboutFragment;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
 
-    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    move-result-object v0
 
-    .line 117
-    const v1, 0x1020015
+    invoke-virtual {p3, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    const p3, 0x1020015
 
-    move-result-object v1
+    .line 126
+    invoke-virtual {p2, p3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
-    check-cast v1, Landroid/widget/TextView;
+    move-result-object p3
 
-    invoke-virtual {p0, p1}, Lorg/microg/tools/ui/AbstractAboutFragment$LibraryAdapter;->getItem(I)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Lorg/microg/tools/ui/AbstractAboutFragment$Library;
-
-    invoke-static {v2}, Lorg/microg/tools/ui/AbstractAboutFragment$Library;->access$200(Lorg/microg/tools/ui/AbstractAboutFragment$Library;)Ljava/lang/String;
-
-    move-result-object v2
-
-    if-eqz v2, :cond_0
+    check-cast p3, Landroid/widget/TextView;
 
     invoke-virtual {p0, p1}, Lorg/microg/tools/ui/AbstractAboutFragment$LibraryAdapter;->getItem(I)Ljava/lang/Object;
 
-    move-result-object v2
+    move-result-object v0
 
-    check-cast v2, Lorg/microg/tools/ui/AbstractAboutFragment$Library;
+    check-cast v0, Lorg/microg/tools/ui/AbstractAboutFragment$Library;
 
-    invoke-static {v2}, Lorg/microg/tools/ui/AbstractAboutFragment$Library;->access$200(Lorg/microg/tools/ui/AbstractAboutFragment$Library;)Ljava/lang/String;
+    invoke-static {v0}, Lorg/microg/tools/ui/AbstractAboutFragment$Library;->access$200(Lorg/microg/tools/ui/AbstractAboutFragment$Library;)Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v0
 
-    :goto_0
-    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    if-eqz v0, :cond_0
 
-    .line 118
-    return-object v0
+    invoke-virtual {p0, p1}, Lorg/microg/tools/ui/AbstractAboutFragment$LibraryAdapter;->getItem(I)Ljava/lang/Object;
 
-    .line 117
-    :cond_0
-    iget-object v2, p0, Lorg/microg/tools/ui/AbstractAboutFragment$LibraryAdapter;->this$0:Lorg/microg/tools/ui/AbstractAboutFragment;
+    move-result-object p1
 
-    sget v3, Lorg/microg/tools/ui/R$string;->about_default_license:I
+    check-cast p1, Lorg/microg/tools/ui/AbstractAboutFragment$Library;
 
-    invoke-virtual {v2, v3}, Lorg/microg/tools/ui/AbstractAboutFragment;->getString(I)Ljava/lang/String;
+    invoke-static {p1}, Lorg/microg/tools/ui/AbstractAboutFragment$Library;->access$200(Lorg/microg/tools/ui/AbstractAboutFragment$Library;)Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object p1
 
     goto :goto_0
+
+    :cond_0
+    iget-object p1, p0, Lorg/microg/tools/ui/AbstractAboutFragment$LibraryAdapter;->this$0:Lorg/microg/tools/ui/AbstractAboutFragment;
+
+    sget v0, Lorg/microg/tools/ui/R$string;->about_default_license:I
+
+    invoke-virtual {p1, v0}, Lorg/microg/tools/ui/AbstractAboutFragment;->getString(I)Ljava/lang/String;
+
+    move-result-object p1
+
+    :goto_0
+    invoke-virtual {p3, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    return-object p2
 .end method

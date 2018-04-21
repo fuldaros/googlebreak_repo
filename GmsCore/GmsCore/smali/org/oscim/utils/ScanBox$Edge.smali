@@ -32,7 +32,6 @@
 .method constructor <init>()V
     .locals 0
 
-    .prologue
     .line 63
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -42,14 +41,8 @@
 
 # virtual methods
 .method set(FFFF)V
-    .locals 2
-    .param p1, "x0"    # F
-    .param p2, "y0"    # F
-    .param p3, "x1"    # F
-    .param p4, "y1"    # F
+    .locals 1
 
-    .prologue
-    .line 67
     cmpg-float v0, p2, p4
 
     if-gtz v0, :cond_0
@@ -66,27 +59,7 @@
     .line 71
     iput p4, p0, Lorg/oscim/utils/ScanBox$Edge;->y1:F
 
-    .line 78
-    :goto_0
-    iget v0, p0, Lorg/oscim/utils/ScanBox$Edge;->x1:F
-
-    iget v1, p0, Lorg/oscim/utils/ScanBox$Edge;->x0:F
-
-    sub-float/2addr v0, v1
-
-    iput v0, p0, Lorg/oscim/utils/ScanBox$Edge;->dx:F
-
-    .line 79
-    iget v0, p0, Lorg/oscim/utils/ScanBox$Edge;->y1:F
-
-    iget v1, p0, Lorg/oscim/utils/ScanBox$Edge;->y0:F
-
-    sub-float/2addr v0, v1
-
-    iput v0, p0, Lorg/oscim/utils/ScanBox$Edge;->dy:F
-
-    .line 80
-    return-void
+    goto :goto_0
 
     .line 73
     :cond_0
@@ -101,5 +74,24 @@
     .line 76
     iput p2, p0, Lorg/oscim/utils/ScanBox$Edge;->y1:F
 
-    goto :goto_0
+    .line 78
+    :goto_0
+    iget p1, p0, Lorg/oscim/utils/ScanBox$Edge;->x1:F
+
+    iget p2, p0, Lorg/oscim/utils/ScanBox$Edge;->x0:F
+
+    sub-float/2addr p1, p2
+
+    iput p1, p0, Lorg/oscim/utils/ScanBox$Edge;->dx:F
+
+    .line 79
+    iget p1, p0, Lorg/oscim/utils/ScanBox$Edge;->y1:F
+
+    iget p2, p0, Lorg/oscim/utils/ScanBox$Edge;->y0:F
+
+    sub-float/2addr p1, p2
+
+    iput p1, p0, Lorg/oscim/utils/ScanBox$Edge;->dy:F
+
+    return-void
 .end method

@@ -27,9 +27,7 @@
 # direct methods
 .method constructor <init>(Ljava/lang/String;)V
     .locals 1
-    .param p1, "shaderFile"    # Ljava/lang/String;
 
-    .prologue
     .line 145
     invoke-direct {p0}, Lorg/oscim/renderer/GLShader;-><init>()V
 
@@ -38,54 +36,56 @@
 
     move-result v0
 
-    if-nez v0, :cond_1
+    if-nez v0, :cond_0
 
-    .line 154
-    :cond_0
-    :goto_0
     return-void
 
-    .line 149
-    :cond_1
+    :cond_0
     const-string v0, "u_mvp"
 
+    .line 149
     invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/PolygonBucket$Shader;->getUniform(Ljava/lang/String;)I
 
     move-result v0
 
     iput v0, p0, Lorg/oscim/renderer/bucket/PolygonBucket$Shader;->uMVP:I
 
-    .line 150
     const-string v0, "a_pos"
 
+    .line 150
     invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/PolygonBucket$Shader;->getAttrib(Ljava/lang/String;)I
 
     move-result v0
 
     iput v0, p0, Lorg/oscim/renderer/bucket/PolygonBucket$Shader;->aPos:I
 
-    .line 151
     const-string v0, "u_color"
 
+    .line 151
     invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/PolygonBucket$Shader;->getUniform(Ljava/lang/String;)I
 
     move-result v0
 
     iput v0, p0, Lorg/oscim/renderer/bucket/PolygonBucket$Shader;->uColor:I
 
-    .line 152
     const-string v0, "polygon_layer_tex"
 
-    if-ne p1, v0, :cond_0
+    .line 152
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result p1
+
+    if-eqz p1, :cond_1
+
+    const-string p1, "u_scale"
 
     .line 153
-    const-string v0, "u_scale"
+    invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/PolygonBucket$Shader;->getUniform(Ljava/lang/String;)I
 
-    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/PolygonBucket$Shader;->getUniform(Ljava/lang/String;)I
+    move-result p1
 
-    move-result v0
+    iput p1, p0, Lorg/oscim/renderer/bucket/PolygonBucket$Shader;->uScale:I
 
-    iput v0, p0, Lorg/oscim/renderer/bucket/PolygonBucket$Shader;->uScale:I
-
-    goto :goto_0
+    :cond_1
+    return-void
 .end method

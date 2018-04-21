@@ -10,7 +10,6 @@
         Landroid/support/v7/appcompat/R$style;,
         Landroid/support/v7/appcompat/R$string;,
         Landroid/support/v7/appcompat/R$layout;,
-        Landroid/support/v7/appcompat/R$integer;,
         Landroid/support/v7/appcompat/R$id;,
         Landroid/support/v7/appcompat/R$drawable;,
         Landroid/support/v7/appcompat/R$dimen;,

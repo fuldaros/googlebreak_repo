@@ -27,46 +27,37 @@
 .method public constructor <init>()V
     .locals 1
 
-    .prologue
     .line 14
     invoke-direct {p0}, Landroid/os/Binder;-><init>()V
 
-    .line 15
     const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
 
+    .line 15
     invoke-virtual {p0, p0, v0}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->attachInterface(Landroid/os/IInterface;Ljava/lang/String;)V
 
-    .line 16
     return-void
 .end method
 
 .method public static asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsServiceBroker;
     .locals 2
-    .param p0, "obj"    # Landroid/os/IBinder;
 
-    .prologue
-    .line 23
     if-nez p0, :cond_0
 
-    .line 24
-    const/4 v0, 0x0
+    const/4 p0, 0x0
 
-    .line 30
-    :goto_0
-    return-object v0
+    return-object p0
+
+    :cond_0
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
 
     .line 26
-    :cond_0
-    const-string v1, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-interface {p0, v1}, Landroid/os/IBinder;->queryLocalInterface(Ljava/lang/String;)Landroid/os/IInterface;
+    invoke-interface {p0, v0}, Landroid/os/IBinder;->queryLocalInterface(Ljava/lang/String;)Landroid/os/IInterface;
 
     move-result-object v0
 
-    .line 27
-    .local v0, "iin":Landroid/os/IInterface;
     if-eqz v0, :cond_1
 
+    .line 27
     instance-of v1, v0, Lcom/google/android/gms/common/internal/IGmsServiceBroker;
 
     if-eqz v1, :cond_1
@@ -74,16 +65,15 @@
     .line 28
     check-cast v0, Lcom/google/android/gms/common/internal/IGmsServiceBroker;
 
-    goto :goto_0
+    return-object v0
 
     .line 30
     :cond_1
     new-instance v0, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub$Proxy;
 
-    .end local v0    # "iin":Landroid/os/IInterface;
     invoke-direct {v0, p0}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub$Proxy;-><init>(Landroid/os/IBinder;)V
 
-    goto :goto_0
+    return-object v0
 .end method
 
 
@@ -91,1818 +81,1496 @@
 .method public asBinder()Landroid/os/IBinder;
     .locals 0
 
-    .prologue
-    .line 34
     return-object p0
 .end method
 
 .method public onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-    .locals 11
-    .param p1, "code"    # I
-    .param p2, "data"    # Landroid/os/Parcel;
-    .param p3, "reply"    # Landroid/os/Parcel;
-    .param p4, "flags"    # I
+    .locals 14
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    const/4 v10, 0x1
+    move-object v10, p0
 
-    .line 38
-    sparse-switch p1, :sswitch_data_0
+    move v0, p1
+
+    move-object/from16 v1, p2
+
+    const/16 v2, 0x2a
+
+    const/4 v11, 0x1
+
+    if-eq v0, v2, :cond_15
+
+    const v2, 0x5f4e5446
+
+    if-eq v0, v2, :cond_14
+
+    const/4 v2, 0x0
+
+    packed-switch v0, :pswitch_data_0
+
+    packed-switch v0, :pswitch_data_1
 
     .line 553
-    invoke-super {p0, p1, p2, p3, p4}, Landroid/os/Binder;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
+    invoke-super/range {p0 .. p4}, Landroid/os/Binder;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
     move-result v0
 
-    :goto_0
     return v0
 
-    .line 42
-    :sswitch_0
+    :pswitch_0
     const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
 
-    invoke-virtual {p3, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+    .line 538
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    move v0, v10
-
-    .line 43
-    goto :goto_0
-
-    .line 47
-    :sswitch_1
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 49
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+    .line 540
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
     move-result-object v0
 
     invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
 
+    move-result-object v0
+
+    .line 542
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    if-eqz v3, :cond_0
+
+    .line 543
+    sget-object v2, Lcom/google/android/gms/common/internal/ValidateAccountRequest;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v2, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
     move-result-object v1
 
-    .line 51
-    .local v1, "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
+    move-object v2, v1
+
+    check-cast v2, Lcom/google/android/gms/common/internal/ValidateAccountRequest;
+
+    .line 548
+    :cond_0
+    invoke-virtual {v10, v0, v2}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->validateAccount(Lcom/google/android/gms/common/internal/IGmsCallbacks;Lcom/google/android/gms/common/internal/ValidateAccountRequest;)V
+
+    .line 549
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_1
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 522
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 524
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v0
+
+    .line 526
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    if-eqz v3, :cond_1
+
+    .line 527
+    sget-object v2, Lcom/google/android/gms/common/internal/GetServiceRequest;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v2, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    move-object v2, v1
+
+    check-cast v2, Lcom/google/android/gms/common/internal/GetServiceRequest;
+
+    .line 532
+    :cond_1
+    invoke-virtual {v10, v0, v2}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getService(Lcom/google/android/gms/common/internal/IGmsCallbacks;Lcom/google/android/gms/common/internal/GetServiceRequest;)V
+
+    .line 533
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_2
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 496
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 498
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v0
+
+    .line 500
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v2
 
-    .line 53
-    .local v2, "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+    .line 502
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v1
 
-    .line 55
-    .local v3, "_arg2":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+    .line 503
+    invoke-virtual {v10, v0, v2, v1}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getAddressService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
+
+    .line 504
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_3
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 476
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 478
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v0
+
+    .line 480
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    .line 482
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v4
 
-    .line 57
-    .local v4, "_arg3":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->createStringArray()[Ljava/lang/String;
+    .line 484
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v5
+
+    if-eqz v5, :cond_2
+
+    .line 485
+    sget-object v2, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v2, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    move-object v2, v1
+
+    check-cast v2, Landroid/os/Bundle;
+
+    .line 490
+    :cond_2
+    invoke-virtual {v10, v0, v3, v4, v2}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getAutoBackupService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
+
+    .line 491
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_4
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 463
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 465
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v0
+
+    .line 467
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v2
+
+    .line 469
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v1
+
+    .line 470
+    invoke-virtual {v10, v0, v2, v1}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getSearchAdministrationService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
+
+    .line 471
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_5
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 450
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 452
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v0
+
+    .line 454
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v2
+
+    .line 456
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v1
+
+    .line 457
+    invoke-virtual {v10, v0, v2, v1}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getLightweightAppDataSearchService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
+
+    .line 458
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_6
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 426
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 428
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v3
+
+    .line 430
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v4
+
+    .line 432
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v5
 
-    .line 59
-    .local v5, "_arg4":[Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+    .line 434
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->createStringArray()[Ljava/lang/String;
 
     move-result-object v6
 
-    .line 61
-    .local v6, "_arg5":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 62
-    sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+    .line 436
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v7
 
-    check-cast v7, Landroid/os/Bundle;
-
-    .local v7, "_arg6":Landroid/os/Bundle;
-    :goto_1
-    move-object v0, p0
-
-    .line 67
-    invoke-virtual/range {v0 .. v7}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getPlusService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)V
-
-    .line 68
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 69
-    goto :goto_0
-
-    .line 65
-    .end local v7    # "_arg6":Landroid/os/Bundle;
-    :cond_0
-    const/4 v7, 0x0
-
-    .restart local v7    # "_arg6":Landroid/os/Bundle;
-    goto :goto_1
-
-    .line 73
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    .end local v4    # "_arg3":Ljava/lang/String;
-    .end local v5    # "_arg4":[Ljava/lang/String;
-    .end local v6    # "_arg5":Ljava/lang/String;
-    .end local v7    # "_arg6":Landroid/os/Bundle;
-    :sswitch_2
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 75
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 77
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 79
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 81
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    .line 82
-    sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Landroid/os/Bundle;
-
-    .line 87
-    .local v4, "_arg3":Landroid/os/Bundle;
-    :goto_2
-    invoke-virtual {p0, v1, v2, v3, v4}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getPanoramaService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
-
-    .line 88
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 89
-    goto :goto_0
-
-    .line 85
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :cond_1
-    const/4 v4, 0x0
-
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    goto :goto_2
-
-    .line 93
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :sswitch_3
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 95
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 97
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 99
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 100
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p0, v1, v2, v3}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getAppDataSearchService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
-
-    .line 101
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 102
-    goto/16 :goto_0
-
-    .line 106
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    :sswitch_4
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 108
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 110
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 111
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p0, v1, v2}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getWalletService(Lcom/google/android/gms/common/internal/IGmsCallbacks;I)V
-
-    .line 112
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 113
-    goto/16 :goto_0
-
-    .line 117
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    :sswitch_5
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 119
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 121
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 123
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 125
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    if-eqz v0, :cond_2
-
-    .line 126
-    sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Landroid/os/Bundle;
-
-    .line 131
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    :goto_3
-    invoke-virtual {p0, v1, v2, v3, v4}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getPeopleService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
-
-    .line 132
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 133
-    goto/16 :goto_0
-
-    .line 129
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :cond_2
-    const/4 v4, 0x0
-
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    goto :goto_3
-
-    .line 137
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :sswitch_6
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 139
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 141
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 143
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 145
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
+    .line 438
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     if-eqz v0, :cond_3
 
-    .line 146
-    sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Landroid/os/Bundle;
-
-    .line 151
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    :goto_4
-    invoke-virtual {p0, v1, v2, v3, v4}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getReportingService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
-
-    .line 152
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 153
-    goto/16 :goto_0
-
-    .line 149
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :cond_3
-    const/4 v4, 0x0
-
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    goto :goto_4
-
-    .line 157
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :sswitch_7
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 159
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 161
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 163
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 165
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    if-eqz v0, :cond_4
-
-    .line 166
-    sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Landroid/os/Bundle;
-
-    .line 171
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    :goto_5
-    invoke-virtual {p0, v1, v2, v3, v4}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getLocationService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
-
-    .line 172
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 173
-    goto/16 :goto_0
-
-    .line 169
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :cond_4
-    const/4 v4, 0x0
-
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    goto :goto_5
-
-    .line 177
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :sswitch_8
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 179
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 181
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 183
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 185
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    if-eqz v0, :cond_5
-
-    .line 186
-    sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Landroid/os/Bundle;
-
-    .line 191
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    :goto_6
-    invoke-virtual {p0, v1, v2, v3, v4}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getGoogleLocationManagerService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
-
-    .line 192
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 193
-    goto/16 :goto_0
-
-    .line 189
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :cond_5
-    const/4 v4, 0x0
-
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    goto :goto_6
-
-    .line 197
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :sswitch_9
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 199
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 201
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 203
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 205
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v4
-
-    .line 207
-    .local v4, "_arg3":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->createStringArray()[Ljava/lang/String;
-
-    move-result-object v5
-
-    .line 209
-    .restart local v5    # "_arg4":[Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v6
-
-    .line 211
-    .restart local v6    # "_arg5":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v7
-
-    .line 213
-    .local v7, "_arg6":Landroid/os/IBinder;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v8
-
-    .line 215
-    .local v8, "_arg7":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    if-eqz v0, :cond_6
-
-    .line 216
-    sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v9
-
-    check-cast v9, Landroid/os/Bundle;
-
-    .local v9, "_arg8":Landroid/os/Bundle;
-    :goto_7
-    move-object v0, p0
-
-    .line 221
-    invoke-virtual/range {v0 .. v9}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getGamesService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/os/IBinder;Ljava/lang/String;Landroid/os/Bundle;)V
-
-    .line 222
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 223
-    goto/16 :goto_0
-
-    .line 219
-    .end local v9    # "_arg8":Landroid/os/Bundle;
-    :cond_6
-    const/4 v9, 0x0
-
-    .restart local v9    # "_arg8":Landroid/os/Bundle;
-    goto :goto_7
-
-    .line 227
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    .end local v4    # "_arg3":Ljava/lang/String;
-    .end local v5    # "_arg4":[Ljava/lang/String;
-    .end local v6    # "_arg5":Ljava/lang/String;
-    .end local v7    # "_arg6":Landroid/os/IBinder;
-    .end local v8    # "_arg7":Ljava/lang/String;
-    .end local v9    # "_arg8":Landroid/os/Bundle;
-    :sswitch_a
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 229
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 231
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 233
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 235
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v4
-
-    .line 237
-    .restart local v4    # "_arg3":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->createStringArray()[Ljava/lang/String;
-
-    move-result-object v5
-
-    .restart local v5    # "_arg4":[Ljava/lang/String;
-    move-object v0, p0
-
-    .line 238
-    invoke-virtual/range {v0 .. v5}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getAppStateService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
-
-    .line 239
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 240
-    goto/16 :goto_0
-
-    .line 244
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    .end local v4    # "_arg3":Ljava/lang/String;
-    .end local v5    # "_arg4":[Ljava/lang/String;
-    :sswitch_b
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 246
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 248
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 250
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 252
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    if-eqz v0, :cond_7
-
-    .line 253
-    sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Landroid/os/Bundle;
-
-    .line 258
-    .local v4, "_arg3":Landroid/os/Bundle;
-    :goto_8
-    invoke-virtual {p0, v1, v2, v3, v4}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getPlayLogService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
-
-    .line 259
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 260
-    goto/16 :goto_0
-
-    .line 256
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :cond_7
-    const/4 v4, 0x0
-
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    goto :goto_8
-
-    .line 264
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :sswitch_c
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 266
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 268
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 270
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 272
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    if-eqz v0, :cond_8
-
-    .line 273
-    sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Landroid/os/Bundle;
-
-    .line 278
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    :goto_9
-    invoke-virtual {p0, v1, v2, v3, v4}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getAdMobService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
-
-    .line 279
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 280
-    goto/16 :goto_0
-
-    .line 276
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :cond_8
-    const/4 v4, 0x0
-
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    goto :goto_9
-
-    .line 284
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :sswitch_d
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 286
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 288
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 290
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 292
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    if-eqz v0, :cond_9
-
-    .line 293
-    sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Landroid/os/Bundle;
-
-    .line 298
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    :goto_a
-    invoke-virtual {p0, v1, v2, v3, v4}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getDroidGuardService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
-
-    .line 299
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 300
-    goto/16 :goto_0
-
-    .line 296
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :cond_9
-    const/4 v4, 0x0
-
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    goto :goto_a
-
-    .line 304
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :sswitch_e
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 306
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 308
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 310
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 312
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    if-eqz v0, :cond_a
-
-    .line 313
-    sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Landroid/os/Bundle;
-
-    .line 318
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    :goto_b
-    invoke-virtual {p0, v1, v2, v3, v4}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getLockboxService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
-
-    .line 319
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 320
-    goto/16 :goto_0
-
-    .line 316
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :cond_a
-    const/4 v4, 0x0
-
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    goto :goto_b
-
-    .line 324
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :sswitch_f
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 326
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 328
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 330
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 332
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    if-eqz v0, :cond_b
-
-    .line 333
-    sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Landroid/os/Bundle;
-
-    .line 338
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    :goto_c
-    invoke-virtual {p0, v1, v2, v3, v4}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getCastMirroringService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
-
-    .line 339
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 340
-    goto/16 :goto_0
-
-    .line 336
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :cond_b
-    const/4 v4, 0x0
-
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    goto :goto_c
-
-    .line 344
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :sswitch_10
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 346
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 348
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 350
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 352
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    if-eqz v0, :cond_c
-
-    .line 353
-    sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Landroid/os/Bundle;
-
-    .line 358
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    :goto_d
-    invoke-virtual {p0, v1, v2, v3, v4}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getNetworkQualityService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
-
-    .line 359
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 360
-    goto/16 :goto_0
-
-    .line 356
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :cond_c
-    const/4 v4, 0x0
-
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    goto :goto_d
-
-    .line 364
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :sswitch_11
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 366
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 368
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 370
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 372
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    if-eqz v0, :cond_d
-
-    .line 373
-    sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Landroid/os/Bundle;
-
-    .line 378
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    :goto_e
-    invoke-virtual {p0, v1, v2, v3, v4}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getGoogleIdentityService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
-
-    .line 379
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 380
-    goto/16 :goto_0
-
-    .line 376
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :cond_d
-    const/4 v4, 0x0
-
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    goto :goto_e
-
-    .line 384
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :sswitch_12
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 386
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 388
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 390
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 392
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    if-eqz v0, :cond_e
-
-    .line 393
-    sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Landroid/os/Bundle;
-
-    .line 398
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    :goto_f
-    invoke-virtual {p0, v1, v2, v3, v4}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getGoogleFeedbackService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
-
-    .line 399
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 400
-    goto/16 :goto_0
-
-    .line 396
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :cond_e
-    const/4 v4, 0x0
-
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    goto :goto_f
-
-    .line 404
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :sswitch_13
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 406
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 408
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 410
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 412
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v4
-
-    .line 414
-    .local v4, "_arg3":Landroid/os/IBinder;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    if-eqz v0, :cond_f
-
-    .line 415
-    sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v5
-
-    check-cast v5, Landroid/os/Bundle;
-
-    .local v5, "_arg4":Landroid/os/Bundle;
-    :goto_10
-    move-object v0, p0
-
-    .line 420
-    invoke-virtual/range {v0 .. v5}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getCastService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/IBinder;Landroid/os/Bundle;)V
-
-    .line 421
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 422
-    goto/16 :goto_0
-
-    .line 418
-    .end local v5    # "_arg4":Landroid/os/Bundle;
-    :cond_f
-    const/4 v5, 0x0
-
-    .restart local v5    # "_arg4":Landroid/os/Bundle;
-    goto :goto_10
-
-    .line 426
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    .end local v4    # "_arg3":Landroid/os/IBinder;
-    .end local v5    # "_arg4":Landroid/os/Bundle;
-    :sswitch_14
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 428
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 430
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 432
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 434
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->createStringArray()[Ljava/lang/String;
-
-    move-result-object v4
-
-    .line 436
-    .local v4, "_arg3":[Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v5
-
-    .line 438
-    .local v5, "_arg4":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    if-eqz v0, :cond_10
-
     .line 439
     sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
 
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+    invoke-interface {v0, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
 
-    move-result-object v6
+    move-result-object v0
 
-    check-cast v6, Landroid/os/Bundle;
+    check-cast v0, Landroid/os/Bundle;
 
-    .local v6, "_arg5":Landroid/os/Bundle;
-    :goto_11
-    move-object v0, p0
+    move-object v8, v0
+
+    goto :goto_0
+
+    :cond_3
+    move-object v8, v2
+
+    :goto_0
+    move-object v0, v10
+
+    move-object v1, v3
+
+    move v2, v4
+
+    move-object v3, v5
+
+    move-object v4, v6
+
+    move-object v5, v7
+
+    move-object v6, v8
 
     .line 444
     invoke-virtual/range {v0 .. v6}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getDriveService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)V
 
     .line 445
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
 
-    move v0, v10
+    return v11
 
-    .line 446
-    goto/16 :goto_0
-
-    .line 442
-    .end local v6    # "_arg5":Landroid/os/Bundle;
-    :cond_10
-    const/4 v6, 0x0
-
-    .restart local v6    # "_arg5":Landroid/os/Bundle;
-    goto :goto_11
-
-    .line 450
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    .end local v4    # "_arg3":[Ljava/lang/String;
-    .end local v5    # "_arg4":Ljava/lang/String;
-    .end local v6    # "_arg5":Landroid/os/Bundle;
-    :sswitch_15
+    :pswitch_7
     const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
 
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+    .line 404
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 452
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+    .line 406
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
     move-result-object v0
 
     invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
 
-    move-result-object v1
-
-    .line 454
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 456
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
     move-result-object v3
 
-    .line 457
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p0, v1, v2, v3}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getLightweightAppDataSearchService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
+    .line 408
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
 
-    .line 458
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+    move-result v4
 
-    move v0, v10
+    .line 410
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
-    .line 459
-    goto/16 :goto_0
+    move-result-object v5
 
-    .line 463
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    :sswitch_16
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+    .line 412
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+    move-result-object v6
 
-    .line 465
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 467
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 469
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 470
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p0, v1, v2, v3}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getSearchAdministrationService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
-
-    .line 471
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 472
-    goto/16 :goto_0
-
-    .line 476
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    :sswitch_17
-    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
-
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 478
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
-
-    move-result-object v1
-
-    .line 480
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
-
-    .line 482
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 484
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
+    .line 414
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    if-eqz v0, :cond_11
+    if-eqz v0, :cond_4
 
-    .line 485
+    .line 415
     sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
 
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+    invoke-interface {v0, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/os/Bundle;
+
+    move-object v7, v0
+
+    goto :goto_1
+
+    :cond_4
+    move-object v7, v2
+
+    :goto_1
+    move-object v0, v10
+
+    move-object v1, v3
+
+    move v2, v4
+
+    move-object v3, v5
+
+    move-object v4, v6
+
+    move-object v5, v7
+
+    .line 420
+    invoke-virtual/range {v0 .. v5}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getCastService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/IBinder;Landroid/os/Bundle;)V
+
+    .line 421
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_8
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 384
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 386
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v0
+
+    .line 388
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    .line 390
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v4
 
-    check-cast v4, Landroid/os/Bundle;
+    .line 392
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
 
-    .line 490
-    .local v4, "_arg3":Landroid/os/Bundle;
-    :goto_12
-    invoke-virtual {p0, v1, v2, v3, v4}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getAutoBackupService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
+    move-result v5
 
-    .line 491
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+    if-eqz v5, :cond_5
 
-    move v0, v10
+    .line 393
+    sget-object v2, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
 
-    .line 492
-    goto/16 :goto_0
+    invoke-interface {v2, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
 
-    .line 488
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :cond_11
-    const/4 v4, 0x0
+    move-result-object v1
 
-    .restart local v4    # "_arg3":Landroid/os/Bundle;
-    goto :goto_12
+    move-object v2, v1
 
-    .line 496
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    .end local v4    # "_arg3":Landroid/os/Bundle;
-    :sswitch_18
+    check-cast v2, Landroid/os/Bundle;
+
+    .line 398
+    :cond_5
+    invoke-virtual {v10, v0, v3, v4, v2}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getGoogleFeedbackService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
+
+    .line 399
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_9
     const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
 
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+    .line 364
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 498
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+    .line 366
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
     move-result-object v0
 
     invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
 
+    move-result-object v0
+
+    .line 368
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    .line 370
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 372
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v5
+
+    if-eqz v5, :cond_6
+
+    .line 373
+    sget-object v2, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v2, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
     move-result-object v1
 
-    .line 500
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
+    move-object v2, v1
 
-    move-result v2
+    check-cast v2, Landroid/os/Bundle;
 
-    .line 502
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+    .line 378
+    :cond_6
+    invoke-virtual {v10, v0, v3, v4, v2}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getGoogleIdentityService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
 
-    move-result-object v3
+    .line 379
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
 
-    .line 503
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p0, v1, v2, v3}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getAddressService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
+    return v11
 
-    .line 504
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 505
-    goto/16 :goto_0
-
-    .line 509
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    :sswitch_19
+    :pswitch_a
     const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
 
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+    .line 344
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 511
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+    .line 346
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
     move-result-object v0
 
     invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
 
+    move-result-object v0
+
+    .line 348
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    .line 350
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 352
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v5
+
+    if-eqz v5, :cond_7
+
+    .line 353
+    sget-object v2, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v2, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
     move-result-object v1
 
-    .line 513
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
+    move-object v2, v1
 
-    move-result v2
+    check-cast v2, Landroid/os/Bundle;
 
-    .line 515
-    .restart local v2    # "_arg1":I
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+    .line 358
+    :cond_7
+    invoke-virtual {v10, v0, v3, v4, v2}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getNetworkQualityService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
 
-    move-result-object v3
+    .line 359
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
 
-    .line 516
-    .restart local v3    # "_arg2":Ljava/lang/String;
-    invoke-virtual {p0, v1, v2, v3}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getWalletServiceWithPackageName(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
+    return v11
 
-    .line 517
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    move v0, v10
-
-    .line 518
-    goto/16 :goto_0
-
-    .line 522
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":I
-    .end local v3    # "_arg2":Ljava/lang/String;
-    :sswitch_1a
+    :pswitch_b
     const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
 
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+    .line 324
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 524
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+    .line 326
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
     move-result-object v0
 
     invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
 
+    move-result-object v0
+
+    .line 328
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    .line 330
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 332
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v5
+
+    if-eqz v5, :cond_8
+
+    .line 333
+    sget-object v2, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v2, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
     move-result-object v1
 
-    .line 526
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
+    move-object v2, v1
 
-    move-result v0
+    check-cast v2, Landroid/os/Bundle;
 
-    if-eqz v0, :cond_12
+    .line 338
+    :cond_8
+    invoke-virtual {v10, v0, v3, v4, v2}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getCastMirroringService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
 
-    .line 527
-    sget-object v0, Lcom/google/android/gms/common/internal/GetServiceRequest;->CREATOR:Landroid/os/Parcelable$Creator;
+    .line 339
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
 
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+    return v11
+
+    :pswitch_c
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 304
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 306
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v0
+
+    .line 308
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    .line 310
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 312
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v5
+
+    if-eqz v5, :cond_9
+
+    .line 313
+    sget-object v2, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v2, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    move-object v2, v1
+
+    check-cast v2, Landroid/os/Bundle;
+
+    .line 318
+    :cond_9
+    invoke-virtual {v10, v0, v3, v4, v2}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getLockboxService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
+
+    .line 319
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_d
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 284
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 286
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v0
+
+    .line 288
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    .line 290
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 292
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v5
+
+    if-eqz v5, :cond_a
+
+    .line 293
+    sget-object v2, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v2, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    move-object v2, v1
+
+    check-cast v2, Landroid/os/Bundle;
+
+    .line 298
+    :cond_a
+    invoke-virtual {v10, v0, v3, v4, v2}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getDroidGuardService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
+
+    .line 299
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_e
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 264
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 266
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v0
+
+    .line 268
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    .line 270
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 272
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v5
+
+    if-eqz v5, :cond_b
+
+    .line 273
+    sget-object v2, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v2, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    move-object v2, v1
+
+    check-cast v2, Landroid/os/Bundle;
+
+    .line 278
+    :cond_b
+    invoke-virtual {v10, v0, v3, v4, v2}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getAdMobService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
+
+    .line 279
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_f
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 244
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 246
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v0
+
+    .line 248
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    .line 250
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 252
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v5
+
+    if-eqz v5, :cond_c
+
+    .line 253
+    sget-object v2, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v2, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    move-object v2, v1
+
+    check-cast v2, Landroid/os/Bundle;
+
+    .line 258
+    :cond_c
+    invoke-virtual {v10, v0, v3, v4, v2}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getPlayLogService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
+
+    .line 259
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_10
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 227
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 229
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
 
     move-result-object v2
 
-    check-cast v2, Lcom/google/android/gms/common/internal/GetServiceRequest;
+    .line 231
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
 
-    .line 532
-    .local v2, "_arg1":Lcom/google/android/gms/common/internal/GetServiceRequest;
-    :goto_13
-    invoke-virtual {p0, v1, v2}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getService(Lcom/google/android/gms/common/internal/IGmsCallbacks;Lcom/google/android/gms/common/internal/GetServiceRequest;)V
+    move-result v3
 
-    .line 533
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+    .line 233
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
-    move v0, v10
+    move-result-object v4
 
-    .line 534
-    goto/16 :goto_0
+    .line 235
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
-    .line 530
-    .end local v2    # "_arg1":Lcom/google/android/gms/common/internal/GetServiceRequest;
-    :cond_12
-    const/4 v2, 0x0
+    move-result-object v5
 
-    .restart local v2    # "_arg1":Lcom/google/android/gms/common/internal/GetServiceRequest;
-    goto :goto_13
+    .line 237
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->createStringArray()[Ljava/lang/String;
 
-    .line 538
-    .end local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .end local v2    # "_arg1":Lcom/google/android/gms/common/internal/GetServiceRequest;
-    :sswitch_1b
+    move-result-object v6
+
+    move-object v0, v10
+
+    move-object v1, v2
+
+    move v2, v3
+
+    move-object v3, v4
+
+    move-object v4, v5
+
+    move-object v5, v6
+
+    .line 238
+    invoke-virtual/range {v0 .. v5}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getAppStateService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
+
+    .line 239
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_11
     const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
 
-    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+    .line 197
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 540
-    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+    .line 199
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
     move-result-object v0
 
     invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
 
+    move-result-object v3
+
+    .line 201
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v4
+
+    .line 203
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v5
+
+    .line 205
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v6
+
+    .line 207
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->createStringArray()[Ljava/lang/String;
+
+    move-result-object v7
+
+    .line 209
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v8
+
+    .line 211
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v9
+
+    .line 213
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v12
+
+    .line 215
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v0
+
+    if-eqz v0, :cond_d
+
+    .line 216
+    sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v0, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/os/Bundle;
+
+    move-object v13, v0
+
+    goto :goto_2
+
+    :cond_d
+    move-object v13, v2
+
+    :goto_2
+    move-object v0, v10
+
+    move-object v1, v3
+
+    move v2, v4
+
+    move-object v3, v5
+
+    move-object v4, v6
+
+    move-object v5, v7
+
+    move-object v6, v8
+
+    move-object v7, v9
+
+    move-object v8, v12
+
+    move-object v9, v13
+
+    .line 221
+    invoke-virtual/range {v0 .. v9}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getGamesService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/os/IBinder;Ljava/lang/String;Landroid/os/Bundle;)V
+
+    .line 222
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_12
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 177
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 179
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v0
+
+    .line 181
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    .line 183
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 185
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v5
+
+    if-eqz v5, :cond_e
+
+    .line 186
+    sget-object v2, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v2, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
     move-result-object v1
 
-    .line 542
-    .restart local v1    # "_arg0":Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
+    move-object v2, v1
+
+    check-cast v2, Landroid/os/Bundle;
+
+    .line 191
+    :cond_e
+    invoke-virtual {v10, v0, v3, v4, v2}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getGoogleLocationManagerService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
+
+    .line 192
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_13
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 157
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 159
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v0
+
+    .line 161
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    .line 163
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 165
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v5
+
+    if-eqz v5, :cond_f
+
+    .line 166
+    sget-object v2, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v2, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    move-object v2, v1
+
+    check-cast v2, Landroid/os/Bundle;
+
+    .line 171
+    :cond_f
+    invoke-virtual {v10, v0, v3, v4, v2}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getLocationService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
+
+    .line 172
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_14
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 137
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 139
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v0
+
+    .line 141
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    .line 143
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 145
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v5
+
+    if-eqz v5, :cond_10
+
+    .line 146
+    sget-object v2, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v2, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    move-object v2, v1
+
+    check-cast v2, Landroid/os/Bundle;
+
+    .line 151
+    :cond_10
+    invoke-virtual {v10, v0, v3, v4, v2}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getReportingService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
+
+    .line 152
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_15
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 117
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 119
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v0
+
+    .line 121
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    .line 123
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 125
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v5
+
+    if-eqz v5, :cond_11
+
+    .line 126
+    sget-object v2, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v2, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    move-object v2, v1
+
+    check-cast v2, Landroid/os/Bundle;
+
+    .line 131
+    :cond_11
+    invoke-virtual {v10, v0, v3, v4, v2}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getPeopleService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
+
+    .line 132
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_16
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 106
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 108
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v0
+
+    .line 110
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v1
+
+    .line 111
+    invoke-virtual {v10, v0, v1}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getWalletService(Lcom/google/android/gms/common/internal/IGmsCallbacks;I)V
+
+    .line 112
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_17
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 93
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 95
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v0
+
+    .line 97
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v2
+
+    .line 99
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v1
+
+    .line 100
+    invoke-virtual {v10, v0, v2, v1}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getAppDataSearchService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
+
+    .line 101
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_18
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 73
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 75
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v0
+
+    .line 77
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    .line 79
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 81
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v5
+
+    if-eqz v5, :cond_12
+
+    .line 82
+    sget-object v2, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v2, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    move-object v2, v1
+
+    check-cast v2, Landroid/os/Bundle;
+
+    .line 87
+    :cond_12
+    invoke-virtual {v10, v0, v3, v4, v2}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getPanoramaService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Landroid/os/Bundle;)V
+
+    .line 88
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :pswitch_19
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 47
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 49
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v3
+
+    .line 51
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v4
+
+    .line 53
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v5
+
+    .line 55
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v6
+
+    .line 57
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->createStringArray()[Ljava/lang/String;
+
+    move-result-object v7
+
+    .line 59
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v8
+
+    .line 61
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     if-eqz v0, :cond_13
 
-    .line 543
-    sget-object v0, Lcom/google/android/gms/common/internal/ValidateAccountRequest;->CREATOR:Landroid/os/Parcelable$Creator;
+    .line 62
+    sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
 
-    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+    invoke-interface {v0, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
 
-    move-result-object v2
+    move-result-object v0
 
-    check-cast v2, Lcom/google/android/gms/common/internal/ValidateAccountRequest;
+    check-cast v0, Landroid/os/Bundle;
 
-    .line 548
-    .local v2, "_arg1":Lcom/google/android/gms/common/internal/ValidateAccountRequest;
-    :goto_14
-    invoke-virtual {p0, v1, v2}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->validateAccount(Lcom/google/android/gms/common/internal/IGmsCallbacks;Lcom/google/android/gms/common/internal/ValidateAccountRequest;)V
+    move-object v9, v0
 
-    .line 549
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+    goto :goto_3
 
-    move v0, v10
-
-    .line 550
-    goto/16 :goto_0
-
-    .line 546
-    .end local v2    # "_arg1":Lcom/google/android/gms/common/internal/ValidateAccountRequest;
     :cond_13
-    const/4 v2, 0x0
+    move-object v9, v2
 
-    .restart local v2    # "_arg1":Lcom/google/android/gms/common/internal/ValidateAccountRequest;
-    goto :goto_14
+    :goto_3
+    move-object v0, v10
 
-    .line 38
+    move-object v1, v3
+
+    move v2, v4
+
+    move-object v3, v5
+
+    move-object v4, v6
+
+    move-object v5, v7
+
+    move-object v6, v8
+
+    move-object v7, v9
+
+    .line 67
+    invoke-virtual/range {v0 .. v7}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getPlusService(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)V
+
+    .line 68
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
+    :cond_14
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    move-object/from16 v2, p3
+
+    .line 42
+    invoke-virtual {v2, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    return v11
+
+    :cond_15
+    move-object/from16 v2, p3
+
+    const-string v0, "com.google.android.gms.common.internal.IGmsServiceBroker"
+
+    .line 509
+    invoke-virtual {v1, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 511
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks$Stub;->asInterface(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/IGmsCallbacks;
+
+    move-result-object v0
+
+    .line 513
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    .line 515
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v1
+
+    .line 516
+    invoke-virtual {v10, v0, v3, v1}, Lcom/google/android/gms/common/internal/IGmsServiceBroker$Stub;->getWalletServiceWithPackageName(Lcom/google/android/gms/common/internal/IGmsCallbacks;ILjava/lang/String;)V
+
+    .line 517
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    return v11
+
     nop
 
-    :sswitch_data_0
-    .sparse-switch
-        0x1 -> :sswitch_1
-        0x2 -> :sswitch_2
-        0x3 -> :sswitch_3
-        0x4 -> :sswitch_4
-        0x5 -> :sswitch_5
-        0x6 -> :sswitch_6
-        0x7 -> :sswitch_7
-        0x8 -> :sswitch_8
-        0x9 -> :sswitch_9
-        0xa -> :sswitch_a
-        0xb -> :sswitch_b
-        0xc -> :sswitch_c
-        0xd -> :sswitch_d
-        0xe -> :sswitch_e
-        0xf -> :sswitch_f
-        0x10 -> :sswitch_10
-        0x11 -> :sswitch_11
-        0x12 -> :sswitch_12
-        0x13 -> :sswitch_13
-        0x14 -> :sswitch_14
-        0x15 -> :sswitch_15
-        0x16 -> :sswitch_16
-        0x17 -> :sswitch_17
-        0x18 -> :sswitch_18
-        0x2a -> :sswitch_19
-        0x2e -> :sswitch_1a
-        0x2f -> :sswitch_1b
-        0x5f4e5446 -> :sswitch_0
-    .end sparse-switch
+    :pswitch_data_0
+    .packed-switch 0x1
+        :pswitch_19
+        :pswitch_18
+        :pswitch_17
+        :pswitch_16
+        :pswitch_15
+        :pswitch_14
+        :pswitch_13
+        :pswitch_12
+        :pswitch_11
+        :pswitch_10
+        :pswitch_f
+        :pswitch_e
+        :pswitch_d
+        :pswitch_c
+        :pswitch_b
+        :pswitch_a
+        :pswitch_9
+        :pswitch_8
+        :pswitch_7
+        :pswitch_6
+        :pswitch_5
+        :pswitch_4
+        :pswitch_3
+        :pswitch_2
+    .end packed-switch
+
+    :pswitch_data_1
+    .packed-switch 0x2e
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
 .end method

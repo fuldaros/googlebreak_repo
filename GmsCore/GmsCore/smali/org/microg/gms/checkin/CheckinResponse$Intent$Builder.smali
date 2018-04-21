@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder",
-        "<",
+        "Lcom/squareup/wire/Message$Builder<",
         "Lorg/microg/gms/checkin/CheckinResponse$Intent;",
         ">;"
     }
@@ -31,8 +30,7 @@
 .field public extra:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lorg/microg/gms/checkin/CheckinResponse$Intent$Extra;",
             ">;"
         }
@@ -48,27 +46,20 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
     .line 300
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
-    .line 301
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/gms/checkin/CheckinResponse$Intent;)V
     .locals 1
-    .param p1, "message"    # Lorg/microg/gms/checkin/CheckinResponse$Intent;
 
-    .prologue
     .line 304
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
-    .line 305
     if-nez p1, :cond_0
 
-    .line 311
-    :goto_0
     return-void
 
     .line 306
@@ -93,15 +84,15 @@
     iput-object v0, p0, Lorg/microg/gms/checkin/CheckinResponse$Intent$Builder;->javaClass:Ljava/lang/String;
 
     .line 310
-    iget-object v0, p1, Lorg/microg/gms/checkin/CheckinResponse$Intent;->extra:Ljava/util/List;
+    iget-object p1, p1, Lorg/microg/gms/checkin/CheckinResponse$Intent;->extra:Ljava/util/List;
 
-    invoke-static {v0}, Lorg/microg/gms/checkin/CheckinResponse$Intent;->access$400(Ljava/util/List;)Ljava/util/List;
+    invoke-static {p1}, Lorg/microg/gms/checkin/CheckinResponse$Intent;->access$400(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object v0
+    move-result-object p1
 
-    iput-object v0, p0, Lorg/microg/gms/checkin/CheckinResponse$Intent$Builder;->extra:Ljava/util/List;
+    iput-object p1, p0, Lorg/microg/gms/checkin/CheckinResponse$Intent$Builder;->extra:Ljava/util/List;
 
-    goto :goto_0
+    return-void
 .end method
 
 
@@ -109,7 +100,6 @@
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
-    .prologue
     .line 292
     invoke-virtual {p0}, Lorg/microg/gms/checkin/CheckinResponse$Intent$Builder;->build()Lorg/microg/gms/checkin/CheckinResponse$Intent;
 
@@ -121,7 +111,6 @@
 .method public build()Lorg/microg/gms/checkin/CheckinResponse$Intent;
     .locals 2
 
-    .prologue
     .line 340
     new-instance v0, Lorg/microg/gms/checkin/CheckinResponse$Intent;
 

@@ -15,20 +15,20 @@
 
 
 # virtual methods
-.method public abstract expandActionView(Landroid/view/MenuItem;)Z
+.method public abstract setAlphabeticShortcut(Landroid/view/MenuItem;CI)V
 .end method
 
-.method public abstract getActionView(Landroid/view/MenuItem;)Landroid/view/View;
+.method public abstract setContentDescription(Landroid/view/MenuItem;Ljava/lang/CharSequence;)V
 .end method
 
-.method public abstract isActionViewExpanded(Landroid/view/MenuItem;)Z
+.method public abstract setIconTintList(Landroid/view/MenuItem;Landroid/content/res/ColorStateList;)V
 .end method
 
-.method public abstract setActionView(Landroid/view/MenuItem;I)Landroid/view/MenuItem;
+.method public abstract setIconTintMode(Landroid/view/MenuItem;Landroid/graphics/PorterDuff$Mode;)V
 .end method
 
-.method public abstract setActionView(Landroid/view/MenuItem;Landroid/view/View;)Landroid/view/MenuItem;
+.method public abstract setNumericShortcut(Landroid/view/MenuItem;CI)V
 .end method
 
-.method public abstract setShowAsAction(Landroid/view/MenuItem;I)V
+.method public abstract setTooltipText(Landroid/view/MenuItem;Ljava/lang/CharSequence;)V
 .end method

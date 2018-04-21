@@ -23,16 +23,14 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 2
-    .param p1, "key"    # Ljava/lang/String;
 
-    .prologue
-    .line 165
+    .line 177
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 166
+    .line 178
     iput-object p1, p0, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;->key:Ljava/lang/String;
 
-    .line 167
+    .line 179
     new-instance v0, Lorg/oscim/core/Tag;
 
     const/4 v1, 0x0
@@ -41,6 +39,5 @@
 
     iput-object v0, p0, Lorg/oscim/layers/tile/vector/VectorTileLoader$TagReplacement;->tag:Lorg/oscim/core/Tag;
 
-    .line 168
     return-void
 .end method

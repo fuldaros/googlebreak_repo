@@ -4,11 +4,15 @@
 
 
 # static fields
-.field public static SIZE:I
+.field public static SIZE:I = 0x200
+
+.field public static TILE_SIZE_MULTIPLE:I = 0x40
 
 
 # instance fields
 .field private mHash:I
+
+.field public final mapSize:J
 
 .field public final tileX:I
 
@@ -19,210 +23,214 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 1
-
-    .prologue
-    .line 30
-    const/16 v0, 0x190
-
-    sput v0, Lorg/oscim/core/Tile;->SIZE:I
+    .locals 0
 
     return-void
 .end method
 
 .method public constructor <init>(IIB)V
     .locals 1
-    .param p1, "tileX"    # I
-    .param p2, "tileY"    # I
-    .param p3, "zoomLevel"    # B
 
-    .prologue
-    .line 55
+    .line 73
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 91
     const/4 v0, 0x0
 
+    .line 110
     iput v0, p0, Lorg/oscim/core/Tile;->mHash:I
 
-    .line 56
+    .line 74
     iput p1, p0, Lorg/oscim/core/Tile;->tileX:I
 
-    .line 57
+    .line 75
     iput p2, p0, Lorg/oscim/core/Tile;->tileY:I
 
-    .line 58
+    .line 76
     iput-byte p3, p0, Lorg/oscim/core/Tile;->zoomLevel:B
 
-    .line 59
+    .line 77
+    invoke-static {p3}, Lorg/oscim/core/MercatorProjection;->getMapSize(B)J
+
+    move-result-wide p1
+
+    iput-wide p1, p0, Lorg/oscim/core/Tile;->mapSize:J
+
     return-void
+.end method
+
+.method public static calculateTileSize()I
+    .locals 3
+
+    .line 129
+    invoke-static {}, Lorg/oscim/backend/CanvasAdapter;->getScale()F
+
+    move-result v0
+
+    const/high16 v1, 0x43800000    # 256.0f
+
+    mul-float/2addr v1, v0
+
+    .line 130
+    sget v0, Lorg/oscim/core/Tile;->TILE_SIZE_MULTIPLE:I
+
+    sget v2, Lorg/oscim/core/Tile;->TILE_SIZE_MULTIPLE:I
+
+    int-to-float v2, v2
+
+    div-float/2addr v1, v2
+
+    .line 131
+    invoke-static {v1}, Ljava/lang/Math;->round(F)I
+
+    move-result v1
+
+    sget v2, Lorg/oscim/core/Tile;->TILE_SIZE_MULTIPLE:I
+
+    mul-int/2addr v1, v2
+
+    .line 130
+    invoke-static {v0, v1}, Ljava/lang/Math;->max(II)I
+
+    move-result v0
+
+    return v0
 .end method
 
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 5
-    .param p1, "obj"    # Ljava/lang/Object;
+    .locals 4
 
-    .prologue
-    const/4 v1, 0x1
+    const/4 v0, 0x1
+
+    if-ne p0, p1, :cond_0
+
+    return v0
+
+    .line 98
+    :cond_0
+    instance-of v1, p1, Lorg/oscim/core/Tile;
 
     const/4 v2, 0x0
 
-    .line 76
-    if-ne p0, p1, :cond_1
+    if-nez v1, :cond_1
 
-    .line 88
-    :cond_0
-    :goto_0
-    return v1
+    return v2
 
-    .line 79
+    .line 101
     :cond_1
-    instance-of v3, p1, Lorg/oscim/core/Tile;
+    check-cast p1, Lorg/oscim/core/Tile;
 
-    if-nez v3, :cond_2
+    .line 103
+    iget v1, p1, Lorg/oscim/core/Tile;->tileX:I
 
-    move v1, v2
+    iget v3, p0, Lorg/oscim/core/Tile;->tileX:I
 
-    .line 80
-    goto :goto_0
+    if-ne v1, v3, :cond_2
+
+    iget v1, p1, Lorg/oscim/core/Tile;->tileY:I
+
+    iget v3, p0, Lorg/oscim/core/Tile;->tileY:I
+
+    if-ne v1, v3, :cond_2
+
+    iget-byte p1, p1, Lorg/oscim/core/Tile;->zoomLevel:B
+
+    iget-byte v1, p0, Lorg/oscim/core/Tile;->zoomLevel:B
+
+    if-ne p1, v1, :cond_2
+
+    return v0
 
     :cond_2
-    move-object v0, p1
-
-    .line 82
-    check-cast v0, Lorg/oscim/core/Tile;
-
-    .line 84
-    .local v0, "o":Lorg/oscim/core/Tile;
-    iget v3, v0, Lorg/oscim/core/Tile;->tileX:I
-
-    iget v4, p0, Lorg/oscim/core/Tile;->tileX:I
-
-    if-ne v3, v4, :cond_3
-
-    iget v3, v0, Lorg/oscim/core/Tile;->tileY:I
-
-    iget v4, p0, Lorg/oscim/core/Tile;->tileY:I
-
-    if-ne v3, v4, :cond_3
-
-    iget-byte v3, v0, Lorg/oscim/core/Tile;->zoomLevel:B
-
-    iget-byte v4, p0, Lorg/oscim/core/Tile;->zoomLevel:B
-
-    if-eq v3, v4, :cond_0
-
-    :cond_3
-    move v1, v2
-
-    .line 88
-    goto :goto_0
+    return v2
 .end method
 
 .method public hashCode()I
     .locals 3
 
-    .prologue
-    .line 95
-    iget v1, p0, Lorg/oscim/core/Tile;->mHash:I
+    .line 114
+    iget v0, p0, Lorg/oscim/core/Tile;->mHash:I
 
-    if-nez v1, :cond_0
+    if-nez v0, :cond_0
 
-    .line 96
-    const/4 v0, 0x7
+    const/16 v0, 0xd9
 
-    .line 97
-    .local v0, "result":I
+    .line 116
     iget v1, p0, Lorg/oscim/core/Tile;->tileX:I
 
-    add-int/lit16 v0, v1, 0xd9
+    add-int/2addr v0, v1
 
-    .line 98
-    mul-int/lit8 v1, v0, 0x1f
+    const/16 v1, 0x1f
 
+    mul-int/2addr v0, v1
+
+    .line 117
     iget v2, p0, Lorg/oscim/core/Tile;->tileY:I
 
-    add-int v0, v1, v2
+    add-int/2addr v0, v2
 
-    .line 99
-    mul-int/lit8 v1, v0, 0x1f
+    mul-int/2addr v1, v0
 
-    iget-byte v2, p0, Lorg/oscim/core/Tile;->zoomLevel:B
+    .line 118
+    iget-byte v0, p0, Lorg/oscim/core/Tile;->zoomLevel:B
 
-    add-int v0, v1, v2
+    add-int/2addr v1, v0
 
-    .line 100
-    iput v0, p0, Lorg/oscim/core/Tile;->mHash:I
+    .line 119
+    iput v1, p0, Lorg/oscim/core/Tile;->mHash:I
 
-    .line 102
-    .end local v0    # "result":I
+    .line 121
     :cond_0
-    iget v1, p0, Lorg/oscim/core/Tile;->mHash:I
+    iget v0, p0, Lorg/oscim/core/Tile;->mHash:I
 
-    return v1
+    return v0
 .end method
 
 .method public toString()Ljava/lang/String;
     .locals 2
 
-    .prologue
-    .line 63
+    .line 82
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
     const-string v1, "[X:"
 
-    .line 64
+    .line 83
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget v1, p0, Lorg/oscim/core/Tile;->tileX:I
 
-    .line 65
+    .line 84
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     const-string v1, ", Y:"
 
-    .line 66
+    .line 85
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget v1, p0, Lorg/oscim/core/Tile;->tileY:I
 
-    .line 67
+    .line 86
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     const-string v1, ", Z:"
 
-    .line 68
+    .line 87
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget-byte v1, p0, Lorg/oscim/core/Tile;->zoomLevel:B
 
-    .line 69
+    .line 88
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     const-string v1, "]"
 
-    .line 70
+    .line 89
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
-    .line 71
+    .line 90
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0

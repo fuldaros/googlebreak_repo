@@ -7,10 +7,9 @@
 .method public constructor <init>()V
     .locals 3
 
-    .prologue
-    .line 30
     const-string v0, "GmsPlcDtctSvc"
 
+    .line 30
     sget-object v1, Lorg/microg/gms/common/GmsService;->PLACE_DETECTION:Lorg/microg/gms/common/GmsService;
 
     const/4 v2, 0x0
@@ -19,31 +18,33 @@
 
     invoke-direct {p0, v0, v1, v2}, Lorg/microg/gms/BaseService;-><init>(Ljava/lang/String;Lorg/microg/gms/common/GmsService;[Lorg/microg/gms/common/GmsService;)V
 
-    .line 31
     return-void
 .end method
 
 
 # virtual methods
 .method public handleServiceRequest(Lcom/google/android/gms/common/internal/IGmsCallbacks;Lcom/google/android/gms/common/internal/GetServiceRequest;Lorg/microg/gms/common/GmsService;)V
-    .locals 2
-    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .param p2, "request"    # Lcom/google/android/gms/common/internal/GetServiceRequest;
-    .param p3, "service"    # Lorg/microg/gms/common/GmsService;
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
     .line 35
-    iget-object v0, p0, Lorg/microg/gms/places/PlaceDetectionService;->TAG:Ljava/lang/String;
+    new-instance p2, Lorg/microg/gms/places/PlaceDetectionServiceImpl;
 
-    const-string v1, "unimplemented Method: handleServiceRequest"
+    invoke-direct {p2}, Lorg/microg/gms/places/PlaceDetectionServiceImpl;-><init>()V
 
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {p2}, Lorg/microg/gms/places/PlaceDetectionServiceImpl;->asBinder()Landroid/os/IBinder;
 
-    .line 36
+    move-result-object p2
+
+    const/4 p3, 0x0
+
+    const/4 v0, 0x0
+
+    invoke-interface {p1, p3, p2, v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks;->onPostInitComplete(ILandroid/os/IBinder;Landroid/os/Bundle;)V
+
     return-void
 .end method

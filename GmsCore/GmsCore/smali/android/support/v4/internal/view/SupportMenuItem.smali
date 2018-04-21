@@ -16,7 +16,25 @@
 .method public abstract getActionView()Landroid/view/View;
 .end method
 
+.method public abstract getAlphabeticModifiers()I
+.end method
+
+.method public abstract getContentDescription()Ljava/lang/CharSequence;
+.end method
+
+.method public abstract getIconTintList()Landroid/content/res/ColorStateList;
+.end method
+
+.method public abstract getIconTintMode()Landroid/graphics/PorterDuff$Mode;
+.end method
+
+.method public abstract getNumericModifiers()I
+.end method
+
 .method public abstract getSupportActionProvider()Landroid/support/v4/view/ActionProvider;
+.end method
+
+.method public abstract getTooltipText()Ljava/lang/CharSequence;
 .end method
 
 .method public abstract isActionViewExpanded()Z
@@ -28,6 +46,24 @@
 .method public abstract setActionView(Landroid/view/View;)Landroid/view/MenuItem;
 .end method
 
+.method public abstract setAlphabeticShortcut(CI)Landroid/view/MenuItem;
+.end method
+
+.method public abstract setContentDescription(Ljava/lang/CharSequence;)Landroid/support/v4/internal/view/SupportMenuItem;
+.end method
+
+.method public abstract setIconTintList(Landroid/content/res/ColorStateList;)Landroid/view/MenuItem;
+.end method
+
+.method public abstract setIconTintMode(Landroid/graphics/PorterDuff$Mode;)Landroid/view/MenuItem;
+.end method
+
+.method public abstract setNumericShortcut(CI)Landroid/view/MenuItem;
+.end method
+
+.method public abstract setShortcut(CCII)Landroid/view/MenuItem;
+.end method
+
 .method public abstract setShowAsAction(I)V
 .end method
 
@@ -37,5 +73,5 @@
 .method public abstract setSupportActionProvider(Landroid/support/v4/view/ActionProvider;)Landroid/support/v4/internal/view/SupportMenuItem;
 .end method
 
-.method public abstract setSupportOnActionExpandListener(Landroid/support/v4/view/MenuItemCompat$OnActionExpandListener;)Landroid/support/v4/internal/view/SupportMenuItem;
+.method public abstract setTooltipText(Ljava/lang/CharSequence;)Landroid/support/v4/internal/view/SupportMenuItem;
 .end method

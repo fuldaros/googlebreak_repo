@@ -1,5 +1,5 @@
 .class public Lorg/oscim/layers/MapEventLayer;
-.super Lorg/oscim/layers/Layer;
+.super Lorg/oscim/layers/AbstractMapEventLayer;
 .source "MapEventLayer.java"
 
 # interfaces
@@ -13,10 +13,6 @@
         Lorg/oscim/layers/MapEventLayer$VelocityTracker;
     }
 .end annotation
-
-
-# static fields
-.field static final log:Lorg/slf4j/Logger;
 
 
 # instance fields
@@ -64,1523 +60,1136 @@
 
 .field private final mTracker:Lorg/oscim/layers/MapEventLayer$VelocityTracker;
 
+.field private mTwoFingersDone:Z
+
+.field private final mapPosition:Lorg/oscim/core/MapPosition;
+
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 1
-
-    .prologue
-    .line 41
-    const-class v0, Lorg/oscim/layers/MapEventLayer;
-
-    invoke-static {v0}, Lorg/slf4j/LoggerFactory;->getLogger(Ljava/lang/Class;)Lorg/slf4j/Logger;
-
-    move-result-object v0
-
-    sput-object v0, Lorg/oscim/layers/MapEventLayer;->log:Lorg/slf4j/Logger;
-
-    return-void
-.end method
-
 .method public constructor <init>(Lorg/oscim/map/Map;)V
     .locals 1
-    .param p1, "map"    # Lorg/oscim/map/Map;
 
-    .prologue
-    const/4 v0, 0x1
+    .line 94
+    invoke-direct {p0, p1}, Lorg/oscim/layers/AbstractMapEventLayer;-><init>(Lorg/oscim/map/Map;)V
 
-    .line 87
-    invoke-direct {p0, p1}, Lorg/oscim/layers/Layer;-><init>(Lorg/oscim/map/Map;)V
+    const/4 p1, 0x1
 
     .line 43
-    iput-boolean v0, p0, Lorg/oscim/layers/MapEventLayer;->mEnableRotate:Z
+    iput-boolean p1, p0, Lorg/oscim/layers/MapEventLayer;->mEnableRotate:Z
 
     .line 44
-    iput-boolean v0, p0, Lorg/oscim/layers/MapEventLayer;->mEnableTilt:Z
+    iput-boolean p1, p0, Lorg/oscim/layers/MapEventLayer;->mEnableTilt:Z
 
     .line 45
-    iput-boolean v0, p0, Lorg/oscim/layers/MapEventLayer;->mEnableMove:Z
+    iput-boolean p1, p0, Lorg/oscim/layers/MapEventLayer;->mEnableMove:Z
 
     .line 46
-    iput-boolean v0, p0, Lorg/oscim/layers/MapEventLayer;->mEnableScale:Z
+    iput-boolean p1, p0, Lorg/oscim/layers/MapEventLayer;->mEnableScale:Z
+
+    const/4 p1, 0x0
 
     .line 47
+    iput-boolean p1, p0, Lorg/oscim/layers/MapEventLayer;->mFixOnCenter:Z
+
+    .line 91
+    new-instance p1, Lorg/oscim/core/MapPosition;
+
+    invoke-direct {p1}, Lorg/oscim/core/MapPosition;-><init>()V
+
+    iput-object p1, p0, Lorg/oscim/layers/MapEventLayer;->mapPosition:Lorg/oscim/core/MapPosition;
+
+    .line 95
+    new-instance p1, Lorg/oscim/layers/MapEventLayer$VelocityTracker;
+
     const/4 v0, 0x0
 
-    iput-boolean v0, p0, Lorg/oscim/layers/MapEventLayer;->mFixOnCenter:Z
+    invoke-direct {p1, v0}, Lorg/oscim/layers/MapEventLayer$VelocityTracker;-><init>(Lorg/oscim/layers/MapEventLayer$1;)V
 
-    .line 88
-    new-instance v0, Lorg/oscim/layers/MapEventLayer$VelocityTracker;
+    iput-object p1, p0, Lorg/oscim/layers/MapEventLayer;->mTracker:Lorg/oscim/layers/MapEventLayer$VelocityTracker;
 
-    invoke-direct {v0}, Lorg/oscim/layers/MapEventLayer$VelocityTracker;-><init>()V
-
-    iput-object v0, p0, Lorg/oscim/layers/MapEventLayer;->mTracker:Lorg/oscim/layers/MapEventLayer$VelocityTracker;
-
-    .line 89
     return-void
 .end method
 
 .method private doFling(FF)Z
-    .locals 7
-    .param p1, "velocityX"    # F
-    .param p2, "velocityY"    # F
+    .locals 8
 
-    .prologue
-    const/high16 v2, 0x40000000    # 2.0f
-
-    .line 412
+    .line 461
     sget v0, Lorg/oscim/core/Tile;->SIZE:I
 
-    mul-int/lit8 v4, v0, 0x5
+    mul-int/lit8 v5, v0, 0x5
 
-    .line 413
-    .local v4, "w":I
+    .line 462
     sget v0, Lorg/oscim/core/Tile;->SIZE:I
 
-    mul-int/lit8 v6, v0, 0x5
+    mul-int/lit8 v7, v0, 0x5
 
-    .line 415
-    .local v6, "h":I
+    .line 464
     iget-object v0, p0, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
 
     invoke-virtual {v0}, Lorg/oscim/map/Map;->animator()Lorg/oscim/map/Animator;
 
-    move-result-object v0
+    move-result-object v1
 
-    mul-float v1, p1, v2
+    const/high16 v0, 0x40000000    # 2.0f
 
-    mul-float/2addr v2, p2
+    mul-float v2, p1, v0
 
-    neg-int v3, v4
+    mul-float v3, p2, v0
 
-    neg-int v5, v6
+    neg-int v4, v5
 
-    invoke-virtual/range {v0 .. v6}, Lorg/oscim/map/Animator;->animateFling(FFIIII)V
+    neg-int v6, v7
 
-    .line 417
-    const/4 v0, 0x1
+    invoke-virtual/range {v1 .. v7}, Lorg/oscim/map/Animator;->animateFling(FFIIII)V
 
-    return v0
+    const/4 p1, 0x1
+
+    return p1
 .end method
 
 .method private static getAction(Lorg/oscim/event/MotionEvent;)I
-    .locals 1
-    .param p0, "e"    # Lorg/oscim/event/MotionEvent;
+    .locals 0
 
-    .prologue
-    .line 195
+    .line 229
     invoke-virtual {p0}, Lorg/oscim/event/MotionEvent;->getAction()I
 
-    move-result v0
+    move-result p0
 
-    and-int/lit16 v0, v0, 0xff
+    and-int/lit16 p0, p0, 0xff
 
-    return v0
+    return p0
 .end method
 
 .method private isMinimalMove(FF)Z
-    .locals 3
-    .param p1, "mx"    # F
-    .param p2, "my"    # F
+    .locals 2
 
-    .prologue
-    .line 406
-    sget v1, Lorg/oscim/backend/CanvasAdapter;->dpi:F
+    .line 455
+    sget v0, Lorg/oscim/backend/CanvasAdapter;->dpi:F
 
-    const v2, 0x414b3333    # 12.7f
+    const v1, 0x414b3333    # 12.7f
 
-    div-float v0, v1, v2
+    div-float/2addr v0, v1
 
-    .line 407
-    .local v0, "minSlop":F
-    mul-float v1, v0, v0
+    mul-float/2addr v0, v0
 
-    invoke-static {p1, p2, v1}, Lorg/oscim/utils/FastMath;->withinSquaredDist(FFF)Z
+    .line 456
+    invoke-static {p1, p2, v0}, Lorg/oscim/utils/FastMath;->withinSquaredDist(FFF)Z
 
-    move-result v1
+    move-result p1
 
-    if-nez v1, :cond_0
+    xor-int/lit8 p1, p1, 0x1
 
-    const/4 v1, 0x1
-
-    :goto_0
-    return v1
-
-    :cond_0
-    const/4 v1, 0x0
-
-    goto :goto_0
+    return p1
 .end method
 
 .method private onActionMove(Lorg/oscim/event/MotionEvent;)V
-    .locals 38
-    .param p1, "e"    # Lorg/oscim/event/MotionEvent;
-
-    .prologue
-    .line 199
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
-
-    move-object/from16 v34, v0
-
-    invoke-virtual/range {v34 .. v34}, Lorg/oscim/map/Map;->viewport()Lorg/oscim/map/ViewController;
-
-    move-result-object v13
-
-    .line 200
-    .local v13, "mViewport":Lorg/oscim/map/ViewController;
-    const/16 v34, 0x0
-
-    move-object/from16 v0, p1
-
-    move/from16 v1, v34
-
-    invoke-virtual {v0, v1}, Lorg/oscim/event/MotionEvent;->getX(I)F
-
-    move-result v30
-
-    .line 201
-    .local v30, "x1":F
-    const/16 v34, 0x0
-
-    move-object/from16 v0, p1
-
-    move/from16 v1, v34
-
-    invoke-virtual {v0, v1}, Lorg/oscim/event/MotionEvent;->getY(I)F
-
-    move-result v32
-
-    .line 203
-    .local v32, "y1":F
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
-
-    move/from16 v34, v0
-
-    sub-float v14, v30, v34
-
-    .line 204
-    .local v14, "mx":F
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
-
-    move/from16 v34, v0
-
-    sub-float v15, v32, v34
-
-    .line 206
-    .local v15, "my":F
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
-
-    move-object/from16 v34, v0
-
-    invoke-virtual/range {v34 .. v34}, Lorg/oscim/map/Map;->getWidth()I
-
-    move-result v34
-
-    move/from16 v0, v34
-
-    int-to-float v0, v0
-
-    move/from16 v29, v0
-
-    .line 207
-    .local v29, "width":F
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
-
-    move-object/from16 v34, v0
-
-    invoke-virtual/range {v34 .. v34}, Lorg/oscim/map/Map;->getHeight()I
-
-    move-result v34
-
-    move/from16 v0, v34
-
-    int-to-float v12, v0
-
-    .line 209
-    .local v12, "height":F
-    invoke-virtual/range {p1 .. p1}, Lorg/oscim/event/MotionEvent;->getPointerCount()I
-
-    move-result v34
-
-    const/16 v35, 0x2
-
-    move/from16 v0, v34
-
-    move/from16 v1, v35
-
-    if-ge v0, v1, :cond_6
-
-    .line 210
-    move/from16 v0, v30
+    .locals 31
 
     move-object/from16 v1, p0
 
-    iput v0, v1, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
+    move-object/from16 v2, p1
 
-    .line 211
-    move/from16 v0, v32
+    .line 233
+    iget-object v3, v1, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
 
-    move-object/from16 v1, p0
+    invoke-virtual {v3}, Lorg/oscim/map/Map;->viewport()Lorg/oscim/map/ViewController;
 
-    iput v0, v1, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
+    move-result-object v3
 
-    .line 214
-    move-object/from16 v0, p0
+    const/4 v4, 0x0
 
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mDoubleTap:Z
+    .line 234
+    invoke-virtual {v2, v4}, Lorg/oscim/event/MotionEvent;->getX(I)F
 
-    move/from16 v34, v0
-
-    if-eqz v34, :cond_3
-
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mEnableScale:Z
-
-    move/from16 v34, v0
-
-    if-eqz v34, :cond_3
-
-    .line 216
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mDown:Z
-
-    move/from16 v34, v0
-
-    if-nez v34, :cond_1
-
-    .line 217
-    const/16 v34, 0x1
-
-    move/from16 v0, v34
-
-    move-object/from16 v1, p0
-
-    iput-boolean v0, v1, Lorg/oscim/layers/MapEventLayer;->mDown:Z
-
-    .line 379
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 220
-    :cond_1
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mDragZoom:Z
-
-    move/from16 v34, v0
-
-    if-nez v34, :cond_2
-
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v14, v15}, Lorg/oscim/layers/MapEventLayer;->isMinimalMove(FF)Z
-
-    move-result v34
-
-    if-nez v34, :cond_2
-
-    .line 221
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
-
-    move/from16 v34, v0
-
-    sub-float v34, v34, v14
-
-    move/from16 v0, v34
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
-
-    .line 222
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
-
-    move/from16 v34, v0
-
-    sub-float v34, v34, v15
-
-    move/from16 v0, v34
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
-
-    goto :goto_0
-
-    .line 227
-    :cond_2
-    const/16 v34, 0x1
-
-    move/from16 v0, v34
-
-    move-object/from16 v1, p0
-
-    iput-boolean v0, v1, Lorg/oscim/layers/MapEventLayer;->mDragZoom:Z
-
-    .line 228
-    const/high16 v34, 0x3f800000    # 1.0f
-
-    const/high16 v35, 0x40c00000    # 6.0f
-
-    div-float v35, v12, v35
-
-    div-float v35, v15, v35
-
-    add-float v34, v34, v35
-
-    const/16 v35, 0x0
-
-    const/16 v36, 0x0
-
-    move/from16 v0, v34
-
-    move/from16 v1, v35
-
-    move/from16 v2, v36
-
-    invoke-virtual {v13, v0, v1, v2}, Lorg/oscim/map/ViewController;->scaleMap(FFF)Z
-
-    .line 229
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
-
-    move-object/from16 v34, v0
-
-    const/16 v35, 0x1
-
-    invoke-virtual/range {v34 .. v35}, Lorg/oscim/map/Map;->updateMap(Z)V
-
-    .line 230
-    const-wide/16 v34, -0x1
-
-    move-wide/from16 v0, v34
-
-    move-object/from16 v2, p0
-
-    iput-wide v0, v2, Lorg/oscim/layers/MapEventLayer;->mStartMove:J
-
-    goto :goto_0
+    move-result v5
 
     .line 235
-    :cond_3
-    move-object/from16 v0, p0
+    invoke-virtual {v2, v4}, Lorg/oscim/event/MotionEvent;->getY(I)F
 
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mEnableMove:Z
+    move-result v6
 
-    move/from16 v34, v0
+    .line 237
+    iget v7, v1, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
 
-    if-eqz v34, :cond_0
+    sub-float v7, v5, v7
 
     .line 238
-    move-object/from16 v0, p0
+    iget v8, v1, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
 
-    iget-wide v0, v0, Lorg/oscim/layers/MapEventLayer;->mStartMove:J
-
-    move-wide/from16 v34, v0
-
-    const-wide/16 v36, 0x0
-
-    cmp-long v34, v34, v36
-
-    if-gez v34, :cond_5
-
-    .line 239
-    move-object/from16 v0, p0
-
-    invoke-direct {v0, v14, v15}, Lorg/oscim/layers/MapEventLayer;->isMinimalMove(FF)Z
-
-    move-result v34
-
-    if-nez v34, :cond_4
+    sub-float v8, v6, v8
 
     .line 240
-    move-object/from16 v0, p0
+    iget-object v9, v1, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
 
-    iget v0, v0, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
+    invoke-virtual {v9}, Lorg/oscim/map/Map;->getWidth()I
 
-    move/from16 v34, v0
+    move-result v9
 
-    sub-float v34, v34, v14
-
-    move/from16 v0, v34
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
+    int-to-float v9, v9
 
     .line 241
-    move-object/from16 v0, p0
+    iget-object v10, v1, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
 
-    iget v0, v0, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
+    invoke-virtual {v10}, Lorg/oscim/map/Map;->getHeight()I
 
-    move/from16 v34, v0
+    move-result v10
 
-    sub-float v34, v34, v15
+    int-to-float v10, v10
 
-    move/from16 v0, v34
+    .line 243
+    invoke-virtual/range {p1 .. p1}, Lorg/oscim/event/MotionEvent;->getPointerCount()I
 
-    move-object/from16 v1, p0
+    move-result v11
 
-    iput v0, v1, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
+    const/high16 v14, 0x3f800000    # 1.0f
 
-    goto/16 :goto_0
+    const/4 v15, 0x0
+
+    const/4 v4, 0x1
+
+    const/4 v12, 0x2
+
+    if-ge v11, v12, :cond_7
+
+    .line 244
+    iput v5, v1, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
 
     .line 245
+    iput v6, v1, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
+
+    .line 248
+    iget-boolean v9, v1, Lorg/oscim/layers/MapEventLayer;->mDoubleTap:Z
+
+    if-eqz v9, :cond_2
+
+    .line 250
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mDown:Z
+
+    if-nez v2, :cond_0
+
+    .line 251
+    iput-boolean v4, v1, Lorg/oscim/layers/MapEventLayer;->mDown:Z
+
+    return-void
+
+    .line 254
+    :cond_0
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mDragZoom:Z
+
+    if-nez v2, :cond_1
+
+    invoke-direct {v1, v7, v8}, Lorg/oscim/layers/MapEventLayer;->isMinimalMove(FF)Z
+
+    move-result v2
+
+    if-nez v2, :cond_1
+
+    .line 255
+    iget v2, v1, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
+
+    sub-float/2addr v2, v7
+
+    iput v2, v1, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
+
+    .line 256
+    iget v2, v1, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
+
+    sub-float/2addr v2, v8
+
+    iput v2, v1, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
+
+    return-void
+
+    .line 261
+    :cond_1
+    iput-boolean v4, v1, Lorg/oscim/layers/MapEventLayer;->mDragZoom:Z
+
+    const/high16 v2, 0x40c00000    # 6.0f
+
+    div-float/2addr v10, v2
+
+    div-float/2addr v8, v10
+
+    add-float/2addr v14, v8
+
+    .line 262
+    invoke-virtual {v3, v14, v15, v15}, Lorg/oscim/map/ViewController;->scaleMap(FFF)Z
+
+    .line 263
+    iget-object v2, v1, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
+
+    invoke-virtual {v2, v4}, Lorg/oscim/map/Map;->updateMap(Z)V
+
+    const-wide/16 v2, -0x1
+
+    .line 264
+    iput-wide v2, v1, Lorg/oscim/layers/MapEventLayer;->mStartMove:J
+
+    return-void
+
+    .line 269
+    :cond_2
+    iget-boolean v9, v1, Lorg/oscim/layers/MapEventLayer;->mEnableMove:Z
+
+    if-nez v9, :cond_3
+
+    return-void
+
+    .line 272
+    :cond_3
+    iget-wide v9, v1, Lorg/oscim/layers/MapEventLayer;->mStartMove:J
+
+    const-wide/16 v11, 0x0
+
+    cmp-long v13, v9, v11
+
+    if-gez v13, :cond_5
+
+    .line 273
+    invoke-direct {v1, v7, v8}, Lorg/oscim/layers/MapEventLayer;->isMinimalMove(FF)Z
+
+    move-result v3
+
+    if-nez v3, :cond_4
+
+    .line 274
+    iget v2, v1, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
+
+    sub-float/2addr v2, v7
+
+    iput v2, v1, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
+
+    .line 275
+    iget v2, v1, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
+
+    sub-float/2addr v2, v8
+
+    iput v2, v1, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
+
+    return-void
+
+    .line 279
     :cond_4
     invoke-virtual/range {p1 .. p1}, Lorg/oscim/event/MotionEvent;->getTime()J
 
-    move-result-wide v34
+    move-result-wide v2
 
-    move-wide/from16 v0, v34
+    iput-wide v2, v1, Lorg/oscim/layers/MapEventLayer;->mStartMove:J
 
-    move-object/from16 v2, p0
+    .line 280
+    iget-object v2, v1, Lorg/oscim/layers/MapEventLayer;->mTracker:Lorg/oscim/layers/MapEventLayer$VelocityTracker;
 
-    iput-wide v0, v2, Lorg/oscim/layers/MapEventLayer;->mStartMove:J
+    iget-wide v3, v1, Lorg/oscim/layers/MapEventLayer;->mStartMove:J
 
-    .line 246
-    move-object/from16 v0, p0
+    invoke-virtual {v2, v5, v6, v3, v4}, Lorg/oscim/layers/MapEventLayer$VelocityTracker;->start(FFJ)V
 
-    iget-object v0, v0, Lorg/oscim/layers/MapEventLayer;->mTracker:Lorg/oscim/layers/MapEventLayer$VelocityTracker;
+    return-void
 
-    move-object/from16 v34, v0
-
-    move-object/from16 v0, p0
-
-    iget-wide v0, v0, Lorg/oscim/layers/MapEventLayer;->mStartMove:J
-
-    move-wide/from16 v36, v0
-
-    move-object/from16 v0, v34
-
-    move/from16 v1, v30
-
-    move/from16 v2, v32
-
-    move-wide/from16 v3, v36
-
-    invoke-virtual {v0, v1, v2, v3, v4}, Lorg/oscim/layers/MapEventLayer$VelocityTracker;->start(FFJ)V
-
-    goto/16 :goto_0
-
-    .line 249
+    .line 283
     :cond_5
-    invoke-virtual {v13, v14, v15}, Lorg/oscim/map/ViewController;->moveMap(FF)V
+    invoke-virtual {v3, v7, v8}, Lorg/oscim/map/ViewController;->moveMap(FF)V
 
-    .line 250
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lorg/oscim/layers/MapEventLayer;->mTracker:Lorg/oscim/layers/MapEventLayer$VelocityTracker;
-
-    move-object/from16 v34, v0
+    .line 284
+    iget-object v3, v1, Lorg/oscim/layers/MapEventLayer;->mTracker:Lorg/oscim/layers/MapEventLayer$VelocityTracker;
 
     invoke-virtual/range {p1 .. p1}, Lorg/oscim/event/MotionEvent;->getTime()J
 
-    move-result-wide v36
+    move-result-wide v7
 
-    move-object/from16 v0, v34
-
-    move/from16 v1, v30
-
-    move/from16 v2, v32
-
-    move-wide/from16 v3, v36
-
-    invoke-virtual {v0, v1, v2, v3, v4}, Lorg/oscim/layers/MapEventLayer$VelocityTracker;->update(FFJ)V
-
-    .line 251
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
-
-    move-object/from16 v34, v0
-
-    const/16 v35, 0x1
-
-    invoke-virtual/range {v34 .. v35}, Lorg/oscim/map/Map;->updateMap(Z)V
-
-    goto/16 :goto_0
-
-    .line 254
-    :cond_6
-    const-wide/16 v34, -0x1
-
-    move-wide/from16 v0, v34
-
-    move-object/from16 v2, p0
-
-    iput-wide v0, v2, Lorg/oscim/layers/MapEventLayer;->mStartMove:J
-
-    .line 256
-    const/16 v34, 0x1
-
-    move-object/from16 v0, p1
-
-    move/from16 v1, v34
-
-    invoke-virtual {v0, v1}, Lorg/oscim/event/MotionEvent;->getX(I)F
-
-    move-result v31
-
-    .line 257
-    .local v31, "x2":F
-    const/16 v34, 0x1
-
-    move-object/from16 v0, p1
-
-    move/from16 v1, v34
-
-    invoke-virtual {v0, v1}, Lorg/oscim/event/MotionEvent;->getY(I)F
-
-    move-result v33
-
-    .line 258
-    .local v33, "y2":F
-    sub-float v10, v30, v31
-
-    .line 259
-    .local v10, "dx":F
-    sub-float v11, v32, v33
-
-    .line 261
-    .local v11, "dy":F
-    const-wide/16 v24, 0x0
-
-    .line 262
-    .local v24, "rotateBy":D
-    const/high16 v26, 0x3f800000    # 1.0f
-
-    .line 263
-    .local v26, "scaleBy":F
-    const/16 v28, 0x0
-
-    .line 265
-    .local v28, "tiltBy":F
-    add-float v34, v30, v31
-
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
-
-    move/from16 v35, v0
-
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lorg/oscim/layers/MapEventLayer;->mPrevX2:F
-
-    move/from16 v36, v0
-
-    add-float v35, v35, v36
-
-    sub-float v34, v34, v35
-
-    const/high16 v35, 0x40000000    # 2.0f
-
-    div-float v14, v34, v35
-
-    .line 266
-    add-float v34, v32, v33
-
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
-
-    move/from16 v35, v0
-
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lorg/oscim/layers/MapEventLayer;->mPrevY2:F
-
-    move/from16 v36, v0
-
-    add-float v35, v35, v36
-
-    sub-float v34, v34, v35
-
-    const/high16 v35, 0x40000000    # 2.0f
-
-    div-float v15, v34, v35
-
-    .line 268
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mCanTilt:Z
-
-    move/from16 v34, v0
-
-    if-eqz v34, :cond_7
-
-    .line 269
-    const/16 v34, 0x0
-
-    cmpl-float v34, v10, v34
-
-    if-nez v34, :cond_13
-
-    const/16 v27, 0x0
-
-    .line 271
-    .local v27, "slope":F
-    :goto_1
-    invoke-static/range {v27 .. v27}, Ljava/lang/Math;->abs(F)F
-
-    move-result v34
-
-    const/high16 v35, 0x3f400000    # 0.75f
-
-    cmpg-float v34, v34, v35
-
-    if-gez v34, :cond_7
-
-    .line 273
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mDoTilt:Z
-
-    move/from16 v34, v0
-
-    if-eqz v34, :cond_14
-
-    .line 274
-    const/high16 v34, 0x40a00000    # 5.0f
-
-    div-float v28, v15, v34
-
-    .line 284
-    .end local v27    # "slope":F
-    :cond_7
-    :goto_2
-    mul-float v34, v10, v10
-
-    mul-float v35, v11, v11
-
-    add-float v34, v34, v35
-
-    move/from16 v0, v34
-
-    float-to-double v0, v0
-
-    move-wide/from16 v34, v0
-
-    invoke-static/range {v34 .. v35}, Ljava/lang/Math;->sqrt(D)D
-
-    move-result-wide v16
+    invoke-virtual {v3, v5, v6, v7, v8}, Lorg/oscim/layers/MapEventLayer$VelocityTracker;->update(FFJ)V
 
     .line 285
-    .local v16, "pinchWidth":D
-    move-object/from16 v0, p0
+    iget-object v2, v1, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
 
-    iget-wide v0, v0, Lorg/oscim/layers/MapEventLayer;->mPrevPinchWidth:D
+    invoke-virtual {v2, v4}, Lorg/oscim/map/Map;->updateMap(Z)V
 
-    move-wide/from16 v34, v0
+    .line 286
+    iget-object v2, v1, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
 
-    sub-double v8, v16, v34
+    invoke-virtual {v2}, Lorg/oscim/map/Map;->viewport()Lorg/oscim/map/ViewController;
+
+    move-result-object v2
+
+    iget-object v3, v1, Lorg/oscim/layers/MapEventLayer;->mapPosition:Lorg/oscim/core/MapPosition;
+
+    invoke-virtual {v2, v3}, Lorg/oscim/map/ViewController;->getMapPosition(Lorg/oscim/core/MapPosition;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_6
 
     .line 287
-    .local v8, "deltaPinch":D
-    move-object/from16 v0, p0
+    iget-object v2, v1, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
 
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mCanRotate:Z
+    iget-object v2, v2, Lorg/oscim/map/Map;->events:Lorg/oscim/event/EventDispatcher;
 
-    move/from16 v34, v0
+    sget-object v3, Lorg/oscim/map/Map;->MOVE_EVENT:Lorg/oscim/event/Event;
 
-    if-eqz v34, :cond_18
+    iget-object v4, v1, Lorg/oscim/layers/MapEventLayer;->mapPosition:Lorg/oscim/core/MapPosition;
 
-    .line 288
-    float-to-double v0, v11
+    invoke-virtual {v2, v3, v4}, Lorg/oscim/event/EventDispatcher;->fire(Lorg/oscim/event/Event;Ljava/lang/Object;)V
 
-    move-wide/from16 v34, v0
+    :cond_6
+    return-void
 
-    float-to-double v0, v10
+    :cond_7
+    const-wide/16 v7, -0x1
 
-    move-wide/from16 v36, v0
-
-    invoke-static/range {v34 .. v37}, Ljava/lang/Math;->atan2(DD)D
-
-    move-result-wide v22
-
-    .line 289
-    .local v22, "rad":D
-    move-object/from16 v0, p0
-
-    iget-wide v0, v0, Lorg/oscim/layers/MapEventLayer;->mAngle:D
-
-    move-wide/from16 v34, v0
-
-    sub-double v20, v22, v34
-
-    .line 291
-    .local v20, "r":D
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mDoRotate:Z
-
-    move/from16 v34, v0
-
-    if-eqz v34, :cond_15
+    .line 290
+    iput-wide v7, v1, Lorg/oscim/layers/MapEventLayer;->mStartMove:J
 
     .line 292
-    move-object/from16 v0, p0
+    invoke-virtual {v2, v4}, Lorg/oscim/event/MotionEvent;->getX(I)F
 
-    iget-wide v0, v0, Lorg/oscim/layers/MapEventLayer;->mAngle:D
+    move-result v7
 
-    move-wide/from16 v34, v0
+    .line 293
+    invoke-virtual {v2, v4}, Lorg/oscim/event/MotionEvent;->getY(I)F
 
-    sub-double v6, v22, v34
+    move-result v2
 
-    .line 294
-    .local v6, "da":D
-    invoke-static {v6, v7}, Ljava/lang/Math;->abs(D)D
+    sub-float v8, v5, v7
 
-    move-result-wide v34
+    sub-float v11, v6, v2
 
-    const-wide v36, 0x3f1a36e2eb1c432dL    # 1.0E-4
+    add-float v12, v5, v7
 
-    cmpl-double v34, v34, v36
+    .line 301
+    iget v13, v1, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
 
-    if-lez v34, :cond_8
+    iget v14, v1, Lorg/oscim/layers/MapEventLayer;->mPrevX2:F
 
-    .line 295
-    move-wide/from16 v24, v6
+    add-float/2addr v13, v14
 
-    .line 296
-    move-wide/from16 v0, v22
+    sub-float v13, v12, v13
 
-    move-object/from16 v2, p0
+    const/high16 v14, 0x40000000    # 2.0f
 
-    iput-wide v0, v2, Lorg/oscim/layers/MapEventLayer;->mAngle:D
+    div-float/2addr v13, v14
 
-    .line 298
-    const-wide/16 v8, 0x0
+    add-float v16, v6, v2
+
+    .line 302
+    iget v4, v1, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
+
+    iget v15, v1, Lorg/oscim/layers/MapEventLayer;->mPrevY2:F
+
+    add-float/2addr v4, v15
+
+    sub-float v4, v16, v4
+
+    div-float/2addr v4, v14
+
+    .line 304
+    iget-boolean v15, v1, Lorg/oscim/layers/MapEventLayer;->mCanTilt:Z
+
+    const v17, 0x40cb3333    # 6.35f
+
+    if-eqz v15, :cond_a
+
+    const/4 v15, 0x0
+
+    cmpl-float v18, v8, v15
+
+    if-nez v18, :cond_8
+
+    const/4 v15, 0x0
+
+    goto :goto_0
+
+    :cond_8
+    div-float v15, v11, v8
+
+    .line 307
+    :goto_0
+    invoke-static {v15}, Ljava/lang/Math;->abs(F)F
+
+    move-result v15
+
+    const/high16 v18, 0x3f400000    # 0.75f
+
+    cmpg-float v15, v15, v18
+
+    if-gez v15, :cond_a
+
+    .line 309
+    iget-boolean v15, v1, Lorg/oscim/layers/MapEventLayer;->mDoTilt:Z
+
+    if-eqz v15, :cond_9
+
+    const/high16 v15, 0x40a00000    # 5.0f
+
+    div-float v15, v4, v15
+
+    goto :goto_1
+
+    .line 311
+    :cond_9
+    invoke-static {v4}, Ljava/lang/Math;->abs(F)F
+
+    move-result v15
+
+    sget v18, Lorg/oscim/backend/CanvasAdapter;->dpi:F
+
+    div-float v18, v18, v17
+
+    cmpl-float v15, v15, v18
+
+    if-lez v15, :cond_a
+
+    const/4 v15, 0x0
+
+    .line 313
+    iput-boolean v15, v1, Lorg/oscim/layers/MapEventLayer;->mCanScale:Z
+
+    .line 314
+    iput-boolean v15, v1, Lorg/oscim/layers/MapEventLayer;->mCanRotate:Z
+
+    const/4 v15, 0x1
+
+    .line 315
+    iput-boolean v15, v1, Lorg/oscim/layers/MapEventLayer;->mDoTilt:Z
+
+    .line 316
+    iput-boolean v15, v1, Lorg/oscim/layers/MapEventLayer;->mTwoFingersDone:Z
+
+    :cond_a
+    const/4 v15, 0x0
+
+    :goto_1
+    mul-float v18, v8, v8
+
+    mul-float v19, v11, v11
+
+    add-float v14, v18, v19
+
+    move/from16 v20, v6
+
+    move/from16 v21, v7
+
+    float-to-double v6, v14
+
+    .line 321
+    invoke-static {v6, v7}, Ljava/lang/Math;->sqrt(D)D
+
+    move-result-wide v6
+
+    move/from16 v22, v15
+
+    .line 322
+    iget-wide v14, v1, Lorg/oscim/layers/MapEventLayer;->mPrevPinchWidth:D
+
+    sub-double v14, v6, v14
+
+    move/from16 v23, v2
+
+    .line 324
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mCanRotate:Z
+
+    const-wide/16 v18, 0x0
+
+    if-eqz v2, :cond_e
+
+    move/from16 v25, v4
+
+    move/from16 v24, v5
+
+    float-to-double v4, v11
+
+    move-object/from16 v26, v3
+
+    float-to-double v2, v8
+
+    .line 325
+    invoke-static {v4, v5, v2, v3}, Ljava/lang/Math;->atan2(DD)D
+
+    move-result-wide v2
+
+    .line 326
+    iget-wide v4, v1, Lorg/oscim/layers/MapEventLayer;->mAngle:D
+
+    sub-double v4, v2, v4
 
     .line 328
-    .end local v6    # "da":D
-    .end local v20    # "r":D
-    .end local v22    # "rad":D
-    :cond_8
-    :goto_3
-    move-object/from16 v0, p0
+    iget-boolean v8, v1, Lorg/oscim/layers/MapEventLayer;->mDoRotate:Z
 
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mCanScale:Z
-
-    move/from16 v34, v0
-
-    if-nez v34, :cond_9
-
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mDoRotate:Z
-
-    move/from16 v34, v0
-
-    if-eqz v34, :cond_d
+    if-eqz v8, :cond_b
 
     .line 329
-    :cond_9
-    move-object/from16 v0, p0
+    iget-wide v4, v1, Lorg/oscim/layers/MapEventLayer;->mAngle:D
 
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mDoScale:Z
-
-    move/from16 v34, v0
-
-    if-nez v34, :cond_b
-
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mDoRotate:Z
-
-    move/from16 v34, v0
-
-    if-nez v34, :cond_b
+    sub-double v4, v2, v4
 
     .line 331
-    invoke-static {v8, v9}, Ljava/lang/Math;->abs(D)D
+    invoke-static {v4, v5}, Ljava/lang/Math;->abs(D)D
 
-    move-result-wide v34
+    move-result-wide v27
 
-    sget v36, Lorg/oscim/backend/CanvasAdapter;->dpi:F
+    const-wide v29, 0x3f1a36e2eb1c432dL    # 1.0E-4
 
-    const v37, 0x40cb3333    # 6.35f
+    cmpl-double v8, v27, v29
 
-    div-float v36, v36, v37
-
-    move/from16 v0, v36
-
-    float-to-double v0, v0
-
-    move-wide/from16 v36, v0
-
-    cmpl-double v34, v34, v36
-
-    if-lez v34, :cond_b
+    if-lez v8, :cond_f
 
     .line 333
-    move-object/from16 v0, p0
+    iput-wide v2, v1, Lorg/oscim/layers/MapEventLayer;->mAngle:D
 
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mDoRotate:Z
+    move-wide/from16 v14, v18
 
-    move/from16 v34, v0
-
-    if-nez v34, :cond_a
-
-    .line 334
-    move-wide/from16 v0, v16
-
-    move-object/from16 v2, p0
-
-    iput-wide v0, v2, Lorg/oscim/layers/MapEventLayer;->mPrevPinchWidth:D
-
-    .line 335
-    const/16 v34, 0x0
-
-    move/from16 v0, v34
-
-    move-object/from16 v1, p0
-
-    iput-boolean v0, v1, Lorg/oscim/layers/MapEventLayer;->mCanRotate:Z
+    goto :goto_3
 
     .line 338
-    :cond_a
-    const/16 v34, 0x0
+    :cond_b
+    invoke-static {v4, v5}, Ljava/lang/Math;->abs(D)D
 
-    move/from16 v0, v34
+    move-result-wide v4
 
-    move-object/from16 v1, p0
+    const-wide v27, 0x3fc99999a0000000L    # 0.20000000298023224
 
-    iput-boolean v0, v1, Lorg/oscim/layers/MapEventLayer;->mCanTilt:Z
+    cmpl-double v8, v4, v27
 
-    .line 339
-    const/16 v34, 0x1
+    if-lez v8, :cond_c
 
-    move/from16 v0, v34
+    const/4 v8, 0x1
 
-    move-object/from16 v1, p0
+    .line 341
+    iput-boolean v8, v1, Lorg/oscim/layers/MapEventLayer;->mDoRotate:Z
 
-    iput-boolean v0, v1, Lorg/oscim/layers/MapEventLayer;->mDoScale:Z
+    const/4 v4, 0x0
 
     .line 342
-    :cond_b
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mDoScale:Z
-
-    move/from16 v34, v0
-
-    if-nez v34, :cond_c
-
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mDoRotate:Z
-
-    move/from16 v34, v0
-
-    if-eqz v34, :cond_d
-
-    :cond_c
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mEnableScale:Z
-
-    move/from16 v34, v0
-
-    if-eqz v34, :cond_d
+    iput-boolean v4, v1, Lorg/oscim/layers/MapEventLayer;->mCanTilt:Z
 
     .line 343
-    move-object/from16 v0, p0
+    iput-boolean v8, v1, Lorg/oscim/layers/MapEventLayer;->mTwoFingersDone:Z
 
-    iget-wide v0, v0, Lorg/oscim/layers/MapEventLayer;->mPrevPinchWidth:D
+    .line 345
+    iput-wide v2, v1, Lorg/oscim/layers/MapEventLayer;->mAngle:D
 
-    move-wide/from16 v34, v0
+    goto :goto_2
 
-    div-double v34, v16, v34
+    .line 346
+    :cond_c
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mDoScale:Z
 
-    move-wide/from16 v0, v34
+    if-nez v2, :cond_d
 
-    double-to-float v0, v0
+    const-wide/high16 v2, 0x3ff0000000000000L    # 1.0
 
-    move/from16 v26, v0
+    div-double v4, v4, v27
 
-    .line 344
-    move-wide/from16 v0, v16
+    sub-double/2addr v2, v4
 
-    move-object/from16 v2, p0
+    mul-double/2addr v14, v2
 
-    iput-wide v0, v2, Lorg/oscim/layers/MapEventLayer;->mPrevPinchWidth:D
+    goto :goto_2
 
-    .line 348
+    .line 350
     :cond_d
-    move-object/from16 v0, p0
+    iput-wide v6, v1, Lorg/oscim/layers/MapEventLayer;->mPrevPinchWidth:D
 
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mDoRotate:Z
+    goto :goto_2
 
-    move/from16 v34, v0
-
-    if-nez v34, :cond_e
-
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mDoScale:Z
-
-    move/from16 v34, v0
-
-    if-nez v34, :cond_e
-
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mDoTilt:Z
-
-    move/from16 v34, v0
-
-    if-eqz v34, :cond_0
-
-    .line 351
     :cond_e
-    const/16 v18, 0x0
+    move-object/from16 v26, v3
 
-    .local v18, "pivotX":F
-    const/16 v19, 0x0
+    move/from16 v25, v4
+
+    move/from16 v24, v5
 
     .line 353
-    .local v19, "pivotY":F
-    move-object/from16 v0, p0
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mDoScale:Z
 
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mFixOnCenter:Z
+    if-eqz v2, :cond_f
 
-    move/from16 v34, v0
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mEnableRotate:Z
 
-    if-nez v34, :cond_f
+    if-eqz v2, :cond_f
 
-    .line 354
-    add-float v34, v31, v30
+    float-to-double v2, v11
 
-    const/high16 v35, 0x40000000    # 2.0f
-
-    div-float v34, v34, v35
-
-    const/high16 v35, 0x40000000    # 2.0f
-
-    div-float v35, v29, v35
-
-    sub-float v18, v34, v35
+    float-to-double v4, v8
 
     .line 355
-    add-float v34, v33, v32
+    invoke-static {v2, v3, v4, v5}, Ljava/lang/Math;->atan2(DD)D
 
-    const/high16 v35, 0x40000000    # 2.0f
+    move-result-wide v2
 
-    div-float v34, v34, v35
+    .line 356
+    iget-wide v4, v1, Lorg/oscim/layers/MapEventLayer;->mAngle:D
 
-    const/high16 v35, 0x40000000    # 2.0f
+    sub-double v4, v2, v4
 
-    div-float v35, v12, v35
+    const-wide/high16 v27, 0x3fe0000000000000L    # 0.5
 
-    sub-float v19, v34, v35
+    cmpl-double v8, v4, v27
 
-    .line 358
-    :cond_f
-    monitor-enter v13
+    if-lez v8, :cond_f
 
-    .line 359
-    :try_start_0
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mDoTilt:Z
-
-    move/from16 v34, v0
-
-    if-nez v34, :cond_19
+    const/4 v4, 0x1
 
     .line 360
-    const-wide/16 v34, 0x0
-
-    cmpl-double v34, v24, v34
-
-    if-eqz v34, :cond_10
+    iput-boolean v4, v1, Lorg/oscim/layers/MapEventLayer;->mDoRotate:Z
 
     .line 361
-    move-wide/from16 v0, v24
-
-    move/from16 v2, v18
-
-    move/from16 v3, v19
-
-    invoke-virtual {v13, v0, v1, v2, v3}, Lorg/oscim/map/ViewController;->rotateMap(DFF)V
+    iput-boolean v4, v1, Lorg/oscim/layers/MapEventLayer;->mCanRotate:Z
 
     .line 362
-    :cond_10
-    const/high16 v34, 0x3f800000    # 1.0f
-
-    cmpl-float v34, v26, v34
-
-    if-eqz v34, :cond_11
+    iput-wide v2, v1, Lorg/oscim/layers/MapEventLayer;->mAngle:D
 
     .line 363
-    move/from16 v0, v26
+    iput-boolean v4, v1, Lorg/oscim/layers/MapEventLayer;->mTwoFingersDone:Z
 
-    move/from16 v1, v18
+    :cond_f
+    :goto_2
+    move-wide/from16 v4, v18
 
-    move/from16 v2, v19
+    .line 367
+    :goto_3
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mCanScale:Z
 
-    invoke-virtual {v13, v0, v1, v2}, Lorg/oscim/map/ViewController;->scaleMap(FFF)Z
+    if-nez v2, :cond_10
 
-    .line 365
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mDoRotate:Z
+
+    if-eqz v2, :cond_13
+
+    .line 368
+    :cond_10
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mDoScale:Z
+
+    if-nez v2, :cond_12
+
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mDoRotate:Z
+
+    if-nez v2, :cond_12
+
+    .line 370
+    invoke-static {v14, v15}, Ljava/lang/Math;->abs(D)D
+
+    move-result-wide v2
+
+    sget v8, Lorg/oscim/backend/CanvasAdapter;->dpi:F
+
+    div-float v8, v8, v17
+
+    float-to-double v14, v8
+
+    cmpl-double v8, v2, v14
+
+    if-lez v8, :cond_12
+
+    .line 372
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mDoRotate:Z
+
+    if-nez v2, :cond_11
+
+    .line 373
+    iput-wide v6, v1, Lorg/oscim/layers/MapEventLayer;->mPrevPinchWidth:D
+
+    const/4 v2, 0x0
+
+    .line 374
+    iput-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mCanRotate:Z
+
+    goto :goto_4
+
     :cond_11
-    move-object/from16 v0, p0
+    const/4 v2, 0x0
 
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mFixOnCenter:Z
-
-    move/from16 v34, v0
-
-    if-nez v34, :cond_12
-
-    .line 366
-    invoke-virtual {v13, v14, v15}, Lorg/oscim/map/ViewController;->moveMap(FF)V
-
-    .line 371
-    :cond_12
+    .line 377
     :goto_4
-    monitor-exit v13
+    iput-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mCanTilt:Z
+
+    const/4 v2, 0x1
+
+    .line 378
+    iput-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mDoScale:Z
+
+    .line 379
+    iput-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mTwoFingersDone:Z
+
+    .line 382
+    :cond_12
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mDoScale:Z
+
+    if-nez v2, :cond_14
+
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mDoRotate:Z
+
+    if-eqz v2, :cond_13
+
+    goto :goto_5
+
+    :cond_13
+    const/high16 v14, 0x3f800000    # 1.0f
+
+    goto :goto_6
+
+    .line 383
+    :cond_14
+    :goto_5
+    iget-wide v2, v1, Lorg/oscim/layers/MapEventLayer;->mPrevPinchWidth:D
+
+    div-double v2, v6, v2
+
+    double-to-float v14, v2
+
+    .line 384
+    iput-wide v6, v1, Lorg/oscim/layers/MapEventLayer;->mPrevPinchWidth:D
+
+    .line 388
+    :goto_6
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mDoRotate:Z
+
+    if-nez v2, :cond_15
+
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mDoScale:Z
+
+    if-nez v2, :cond_15
+
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mDoTilt:Z
+
+    if-nez v2, :cond_15
+
+    return-void
+
+    .line 393
+    :cond_15
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mFixOnCenter:Z
+
+    if-nez v2, :cond_16
+
+    const/high16 v2, 0x40000000    # 2.0f
+
+    div-float/2addr v12, v2
+
+    div-float/2addr v9, v2
+
+    sub-float v15, v12, v9
+
+    div-float v16, v16, v2
+
+    div-float/2addr v10, v2
+
+    sub-float v2, v16, v10
+
+    goto :goto_7
+
+    :cond_16
+    const/4 v2, 0x0
+
+    const/4 v15, 0x0
+
+    .line 398
+    :goto_7
+    monitor-enter v26
+
+    .line 399
+    :try_start_0
+    iget-boolean v3, v1, Lorg/oscim/layers/MapEventLayer;->mDoTilt:Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 373
-    move/from16 v0, v30
+    if-nez v3, :cond_19
 
-    move-object/from16 v1, p0
+    cmpl-double v3, v4, v18
 
-    iput v0, v1, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
+    if-eqz v3, :cond_17
 
-    .line 374
-    move/from16 v0, v32
+    move-object/from16 v3, v26
 
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
-
-    .line 375
-    move/from16 v0, v31
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lorg/oscim/layers/MapEventLayer;->mPrevX2:F
-
-    .line 376
-    move/from16 v0, v33
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lorg/oscim/layers/MapEventLayer;->mPrevY2:F
-
-    .line 378
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
-
-    move-object/from16 v34, v0
-
-    const/16 v35, 0x1
-
-    invoke-virtual/range {v34 .. v35}, Lorg/oscim/map/Map;->updateMap(Z)V
-
-    goto/16 :goto_0
-
-    .line 269
-    .end local v8    # "deltaPinch":D
-    .end local v16    # "pinchWidth":D
-    .end local v18    # "pivotX":F
-    .end local v19    # "pivotY":F
-    :cond_13
-    div-float v27, v11, v10
-
-    goto/16 :goto_1
-
-    .line 275
-    .restart local v27    # "slope":F
-    :cond_14
-    invoke-static {v15}, Ljava/lang/Math;->abs(F)F
-
-    move-result v34
-
-    sget v35, Lorg/oscim/backend/CanvasAdapter;->dpi:F
-
-    const v36, 0x40cb3333    # 6.35f
-
-    div-float v35, v35, v36
-
-    cmpl-float v34, v34, v35
-
-    if-lez v34, :cond_7
-
-    .line 277
-    const/16 v34, 0x0
-
-    move/from16 v0, v34
-
-    move-object/from16 v1, p0
-
-    iput-boolean v0, v1, Lorg/oscim/layers/MapEventLayer;->mCanScale:Z
-
-    .line 278
-    const/16 v34, 0x0
-
-    move/from16 v0, v34
-
-    move-object/from16 v1, p0
-
-    iput-boolean v0, v1, Lorg/oscim/layers/MapEventLayer;->mCanRotate:Z
-
-    .line 279
-    const/16 v34, 0x1
-
-    move/from16 v0, v34
-
-    move-object/from16 v1, p0
-
-    iput-boolean v0, v1, Lorg/oscim/layers/MapEventLayer;->mDoTilt:Z
-
-    goto/16 :goto_2
-
-    .line 301
-    .end local v27    # "slope":F
-    .restart local v8    # "deltaPinch":D
-    .restart local v16    # "pinchWidth":D
-    .restart local v20    # "r":D
-    .restart local v22    # "rad":D
-    :cond_15
-    invoke-static/range {v20 .. v21}, Ljava/lang/Math;->abs(D)D
-
-    move-result-wide v20
-
-    .line 302
-    const-wide v34, 0x3fc99999a0000000L    # 0.20000000298023224
-
-    cmpl-double v34, v20, v34
-
-    if-lez v34, :cond_16
-
-    .line 304
-    const/16 v34, 0x1
-
-    move/from16 v0, v34
-
-    move-object/from16 v1, p0
-
-    iput-boolean v0, v1, Lorg/oscim/layers/MapEventLayer;->mDoRotate:Z
-
-    .line 305
-    const/16 v34, 0x0
-
-    move/from16 v0, v34
-
-    move-object/from16 v1, p0
-
-    iput-boolean v0, v1, Lorg/oscim/layers/MapEventLayer;->mCanTilt:Z
-
-    .line 307
-    move-wide/from16 v0, v22
-
-    move-object/from16 v2, p0
-
-    iput-wide v0, v2, Lorg/oscim/layers/MapEventLayer;->mAngle:D
-
-    goto/16 :goto_3
-
-    .line 308
-    :cond_16
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mDoScale:Z
-
-    move/from16 v34, v0
-
-    if-nez v34, :cond_17
-
-    .line 310
-    const-wide/high16 v34, 0x3ff0000000000000L    # 1.0
-
-    const-wide v36, 0x3fc99999a0000000L    # 0.20000000298023224
-
-    div-double v36, v20, v36
-
-    sub-double v34, v34, v36
-
-    mul-double v8, v8, v34
-
-    goto/16 :goto_3
-
-    .line 312
-    :cond_17
-    move-wide/from16 v0, v16
-
-    move-object/from16 v2, p0
-
-    iput-wide v0, v2, Lorg/oscim/layers/MapEventLayer;->mPrevPinchWidth:D
-
-    goto/16 :goto_3
-
-    .line 315
-    .end local v20    # "r":D
-    .end local v22    # "rad":D
-    :cond_18
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mDoScale:Z
-
-    move/from16 v34, v0
-
-    if-eqz v34, :cond_8
-
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lorg/oscim/layers/MapEventLayer;->mEnableRotate:Z
-
-    move/from16 v34, v0
-
-    if-eqz v34, :cond_8
-
-    .line 317
-    float-to-double v0, v11
-
-    move-wide/from16 v34, v0
-
-    float-to-double v0, v10
-
-    move-wide/from16 v36, v0
-
-    invoke-static/range {v34 .. v37}, Ljava/lang/Math;->atan2(DD)D
-
-    move-result-wide v22
-
-    .line 318
-    .restart local v22    # "rad":D
-    move-object/from16 v0, p0
-
-    iget-wide v0, v0, Lorg/oscim/layers/MapEventLayer;->mAngle:D
-
-    move-wide/from16 v34, v0
-
-    sub-double v20, v22, v34
-
-    .line 320
-    .restart local v20    # "r":D
-    const-wide/high16 v34, 0x3fe0000000000000L    # 0.5
-
-    cmpl-double v34, v20, v34
-
-    if-lez v34, :cond_8
-
-    .line 322
-    const/16 v34, 0x1
-
-    move/from16 v0, v34
-
-    move-object/from16 v1, p0
-
-    iput-boolean v0, v1, Lorg/oscim/layers/MapEventLayer;->mDoRotate:Z
-
-    .line 323
-    const/16 v34, 0x1
-
-    move/from16 v0, v34
-
-    move-object/from16 v1, p0
-
-    iput-boolean v0, v1, Lorg/oscim/layers/MapEventLayer;->mCanRotate:Z
-
-    .line 324
-    move-wide/from16 v0, v22
-
-    move-object/from16 v2, p0
-
-    iput-wide v0, v2, Lorg/oscim/layers/MapEventLayer;->mAngle:D
-
-    goto/16 :goto_3
-
-    .line 368
-    .end local v20    # "r":D
-    .end local v22    # "rad":D
-    .restart local v18    # "pivotX":F
-    .restart local v19    # "pivotY":F
-    :cond_19
-    const/16 v34, 0x0
-
-    cmpl-float v34, v28, v34
-
-    if-eqz v34, :cond_12
-
-    move/from16 v0, v28
-
-    neg-float v0, v0
-
-    move/from16 v34, v0
-
+    .line 401
     :try_start_1
-    move/from16 v0, v34
+    invoke-virtual {v3, v4, v5, v15, v2}, Lorg/oscim/map/ViewController;->rotateMap(DFF)V
 
-    invoke-virtual {v13, v0}, Lorg/oscim/map/ViewController;->tiltMap(F)Z
+    goto :goto_8
 
-    move-result v34
+    :cond_17
+    move-object/from16 v3, v26
 
-    if-eqz v34, :cond_12
+    :goto_8
+    const/high16 v4, 0x3f800000    # 1.0f
 
-    .line 369
-    const/16 v34, 0x0
+    cmpl-float v4, v14, v4
 
-    const/high16 v35, 0x40000000    # 2.0f
+    if-eqz v4, :cond_18
 
-    div-float v35, v15, v35
+    .line 403
+    invoke-virtual {v3, v14, v15, v2}, Lorg/oscim/map/ViewController;->scaleMap(FFF)Z
 
-    move/from16 v0, v34
+    .line 405
+    :cond_18
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mFixOnCenter:Z
 
-    move/from16 v1, v35
+    if-nez v2, :cond_1a
 
-    invoke-virtual {v13, v0, v1}, Lorg/oscim/map/ViewController;->moveMap(FF)V
+    move/from16 v4, v25
 
-    goto/16 :goto_4
+    .line 406
+    invoke-virtual {v3, v13, v4}, Lorg/oscim/map/ViewController;->moveMap(FF)V
 
-    .line 371
-    :catchall_0
-    move-exception v34
+    goto :goto_9
 
-    monitor-exit v13
+    :cond_19
+    move/from16 v4, v25
+
+    move-object/from16 v3, v26
+
+    const/4 v2, 0x0
+
+    cmpl-float v5, v22, v2
+
+    if-eqz v5, :cond_1a
+
+    move/from16 v15, v22
+
+    neg-float v5, v15
+
+    .line 408
+    invoke-virtual {v3, v5}, Lorg/oscim/map/ViewController;->tiltMap(F)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_1a
+
+    const/high16 v5, 0x40000000    # 2.0f
+
+    div-float/2addr v4, v5
+
+    .line 409
+    invoke-virtual {v3, v2, v4}, Lorg/oscim/map/ViewController;->moveMap(FF)V
+
+    .line 411
+    :cond_1a
+    :goto_9
+    monitor-exit v3
     :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    .catchall {:try_start_1 .. :try_end_1} :catchall_1
 
-    throw v34
+    move/from16 v2, v24
+
+    .line 413
+    iput v2, v1, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
+
+    move/from16 v2, v20
+
+    .line 414
+    iput v2, v1, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
+
+    move/from16 v2, v21
+
+    .line 415
+    iput v2, v1, Lorg/oscim/layers/MapEventLayer;->mPrevX2:F
+
+    move/from16 v2, v23
+
+    .line 416
+    iput v2, v1, Lorg/oscim/layers/MapEventLayer;->mPrevY2:F
+
+    .line 418
+    iget-object v2, v1, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
+
+    const/4 v3, 0x1
+
+    invoke-virtual {v2, v3}, Lorg/oscim/map/Map;->updateMap(Z)V
+
+    .line 420
+    iget-object v2, v1, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
+
+    invoke-virtual {v2}, Lorg/oscim/map/Map;->viewport()Lorg/oscim/map/ViewController;
+
+    move-result-object v2
+
+    iget-object v3, v1, Lorg/oscim/layers/MapEventLayer;->mapPosition:Lorg/oscim/core/MapPosition;
+
+    invoke-virtual {v2, v3}, Lorg/oscim/map/ViewController;->getMapPosition(Lorg/oscim/core/MapPosition;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_1d
+
+    .line 421
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mDoScale:Z
+
+    if-eqz v2, :cond_1b
+
+    .line 422
+    iget-object v2, v1, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
+
+    iget-object v2, v2, Lorg/oscim/map/Map;->events:Lorg/oscim/event/EventDispatcher;
+
+    sget-object v3, Lorg/oscim/map/Map;->SCALE_EVENT:Lorg/oscim/event/Event;
+
+    iget-object v4, v1, Lorg/oscim/layers/MapEventLayer;->mapPosition:Lorg/oscim/core/MapPosition;
+
+    invoke-virtual {v2, v3, v4}, Lorg/oscim/event/EventDispatcher;->fire(Lorg/oscim/event/Event;Ljava/lang/Object;)V
+
+    .line 423
+    :cond_1b
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mDoRotate:Z
+
+    if-eqz v2, :cond_1c
+
+    .line 424
+    iget-object v2, v1, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
+
+    iget-object v2, v2, Lorg/oscim/map/Map;->events:Lorg/oscim/event/EventDispatcher;
+
+    sget-object v3, Lorg/oscim/map/Map;->ROTATE_EVENT:Lorg/oscim/event/Event;
+
+    iget-object v4, v1, Lorg/oscim/layers/MapEventLayer;->mapPosition:Lorg/oscim/core/MapPosition;
+
+    invoke-virtual {v2, v3, v4}, Lorg/oscim/event/EventDispatcher;->fire(Lorg/oscim/event/Event;Ljava/lang/Object;)V
+
+    .line 425
+    :cond_1c
+    iget-boolean v2, v1, Lorg/oscim/layers/MapEventLayer;->mDoTilt:Z
+
+    if-eqz v2, :cond_1d
+
+    .line 426
+    iget-object v2, v1, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
+
+    iget-object v2, v2, Lorg/oscim/map/Map;->events:Lorg/oscim/event/EventDispatcher;
+
+    sget-object v3, Lorg/oscim/map/Map;->TILT_EVENT:Lorg/oscim/event/Event;
+
+    iget-object v4, v1, Lorg/oscim/layers/MapEventLayer;->mapPosition:Lorg/oscim/core/MapPosition;
+
+    invoke-virtual {v2, v3, v4}, Lorg/oscim/event/EventDispatcher;->fire(Lorg/oscim/event/Event;Ljava/lang/Object;)V
+
+    :cond_1d
+    return-void
+
+    :catchall_0
+    move-exception v0
+
+    move-object/from16 v3, v26
+
+    :goto_a
+    move-object v2, v0
+
+    .line 411
+    :try_start_2
+    monitor-exit v3
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_1
+
+    throw v2
+
+    :catchall_1
+    move-exception v0
+
+    goto :goto_a
 .end method
 
 .method private updateMulti(Lorg/oscim/event/MotionEvent;)V
-    .locals 10
-    .param p1, "e"    # Lorg/oscim/event/MotionEvent;
+    .locals 6
 
-    .prologue
-    const/4 v7, 0x1
-
-    const/4 v6, 0x0
-
-    .line 382
+    .line 431
     invoke-virtual {p1}, Lorg/oscim/event/MotionEvent;->getPointerCount()I
 
     move-result v0
 
-    .line 384
-    .local v0, "cnt":I
-    invoke-virtual {p1, v6}, Lorg/oscim/event/MotionEvent;->getX(I)F
+    const/4 v1, 0x0
 
-    move-result v1
+    .line 433
+    invoke-virtual {p1, v1}, Lorg/oscim/event/MotionEvent;->getX(I)F
 
-    iput v1, p0, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
+    move-result v2
 
-    .line 385
-    invoke-virtual {p1, v6}, Lorg/oscim/event/MotionEvent;->getY(I)F
+    iput v2, p0, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
 
-    move-result v1
+    .line 434
+    invoke-virtual {p1, v1}, Lorg/oscim/event/MotionEvent;->getY(I)F
 
-    iput v1, p0, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
+    move-result v2
 
-    .line 387
-    const/4 v1, 0x2
+    iput v2, p0, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
 
-    if-ne v0, v1, :cond_0
+    const/4 v2, 0x2
 
-    .line 388
-    iput-boolean v6, p0, Lorg/oscim/layers/MapEventLayer;->mDoScale:Z
+    if-ne v0, v2, :cond_0
 
-    .line 389
-    iput-boolean v6, p0, Lorg/oscim/layers/MapEventLayer;->mDoRotate:Z
+    .line 437
+    iput-boolean v1, p0, Lorg/oscim/layers/MapEventLayer;->mDoScale:Z
 
-    .line 390
-    iput-boolean v6, p0, Lorg/oscim/layers/MapEventLayer;->mDoTilt:Z
+    .line 438
+    iput-boolean v1, p0, Lorg/oscim/layers/MapEventLayer;->mDoRotate:Z
 
-    .line 391
-    iget-boolean v1, p0, Lorg/oscim/layers/MapEventLayer;->mEnableScale:Z
+    .line 439
+    iput-boolean v1, p0, Lorg/oscim/layers/MapEventLayer;->mDoTilt:Z
 
-    iput-boolean v1, p0, Lorg/oscim/layers/MapEventLayer;->mCanScale:Z
+    .line 440
+    iget-boolean v0, p0, Lorg/oscim/layers/MapEventLayer;->mEnableScale:Z
 
-    .line 392
-    iget-boolean v1, p0, Lorg/oscim/layers/MapEventLayer;->mEnableRotate:Z
+    iput-boolean v0, p0, Lorg/oscim/layers/MapEventLayer;->mCanScale:Z
 
-    iput-boolean v1, p0, Lorg/oscim/layers/MapEventLayer;->mCanRotate:Z
+    .line 441
+    iget-boolean v0, p0, Lorg/oscim/layers/MapEventLayer;->mEnableRotate:Z
 
-    .line 393
-    iget-boolean v1, p0, Lorg/oscim/layers/MapEventLayer;->mEnableTilt:Z
+    iput-boolean v0, p0, Lorg/oscim/layers/MapEventLayer;->mCanRotate:Z
 
-    iput-boolean v1, p0, Lorg/oscim/layers/MapEventLayer;->mCanTilt:Z
+    .line 442
+    iget-boolean v0, p0, Lorg/oscim/layers/MapEventLayer;->mEnableTilt:Z
 
-    .line 395
-    invoke-virtual {p1, v7}, Lorg/oscim/event/MotionEvent;->getX(I)F
+    iput-boolean v0, p0, Lorg/oscim/layers/MapEventLayer;->mCanTilt:Z
+
+    const/4 v0, 0x1
+
+    .line 444
+    invoke-virtual {p1, v0}, Lorg/oscim/event/MotionEvent;->getX(I)F
 
     move-result v1
 
     iput v1, p0, Lorg/oscim/layers/MapEventLayer;->mPrevX2:F
 
-    .line 396
-    invoke-virtual {p1, v7}, Lorg/oscim/event/MotionEvent;->getY(I)F
+    .line 445
+    invoke-virtual {p1, v0}, Lorg/oscim/event/MotionEvent;->getY(I)F
 
-    move-result v1
+    move-result p1
 
-    iput v1, p0, Lorg/oscim/layers/MapEventLayer;->mPrevY2:F
+    iput p1, p0, Lorg/oscim/layers/MapEventLayer;->mPrevY2:F
 
-    .line 397
-    iget v1, p0, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
+    .line 446
+    iget p1, p0, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
 
-    iget v6, p0, Lorg/oscim/layers/MapEventLayer;->mPrevX2:F
+    iget v0, p0, Lorg/oscim/layers/MapEventLayer;->mPrevX2:F
 
-    sub-float/2addr v1, v6
+    sub-float/2addr p1, v0
 
-    float-to-double v2, v1
+    float-to-double v0, p1
 
-    .line 398
-    .local v2, "dx":D
-    iget v1, p0, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
+    .line 447
+    iget p1, p0, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
 
-    iget v6, p0, Lorg/oscim/layers/MapEventLayer;->mPrevY2:F
+    iget v2, p0, Lorg/oscim/layers/MapEventLayer;->mPrevY2:F
 
-    sub-float/2addr v1, v6
+    sub-float/2addr p1, v2
 
-    float-to-double v4, v1
+    float-to-double v2, p1
 
-    .line 400
-    .local v4, "dy":D
-    invoke-static {v4, v5, v2, v3}, Ljava/lang/Math;->atan2(DD)D
+    .line 449
+    invoke-static {v2, v3, v0, v1}, Ljava/lang/Math;->atan2(DD)D
 
-    move-result-wide v6
+    move-result-wide v4
 
-    iput-wide v6, p0, Lorg/oscim/layers/MapEventLayer;->mAngle:D
+    iput-wide v4, p0, Lorg/oscim/layers/MapEventLayer;->mAngle:D
 
-    .line 401
-    mul-double v6, v2, v2
+    mul-double/2addr v0, v0
 
-    mul-double v8, v4, v4
+    mul-double/2addr v2, v2
 
-    add-double/2addr v6, v8
+    add-double/2addr v0, v2
 
-    invoke-static {v6, v7}, Ljava/lang/Math;->sqrt(D)D
+    .line 450
+    invoke-static {v0, v1}, Ljava/lang/Math;->sqrt(D)D
 
-    move-result-wide v6
+    move-result-wide v0
 
-    iput-wide v6, p0, Lorg/oscim/layers/MapEventLayer;->mPrevPinchWidth:D
+    iput-wide v0, p0, Lorg/oscim/layers/MapEventLayer;->mPrevPinchWidth:D
 
-    .line 403
-    .end local v2    # "dx":D
-    .end local v4    # "dy":D
     :cond_0
     return-void
 .end method
@@ -1589,379 +1198,371 @@
 # virtual methods
 .method public enableMove(Z)V
     .locals 0
-    .param p1, "enable"    # Z
 
-    .prologue
-    .line 109
+    .line 125
     iput-boolean p1, p0, Lorg/oscim/layers/MapEventLayer;->mEnableMove:Z
 
-    .line 110
     return-void
 .end method
 
 .method public enableRotation(Z)V
     .locals 0
-    .param p1, "enable"    # Z
 
-    .prologue
-    .line 97
+    .line 105
     iput-boolean p1, p0, Lorg/oscim/layers/MapEventLayer;->mEnableRotate:Z
 
-    .line 98
     return-void
 .end method
 
 .method public enableTilt(Z)V
     .locals 0
-    .param p1, "enable"    # Z
 
-    .prologue
-    .line 105
+    .line 115
     iput-boolean p1, p0, Lorg/oscim/layers/MapEventLayer;->mEnableTilt:Z
 
-    .line 106
     return-void
 .end method
 
 .method public enableZoom(Z)V
     .locals 0
-    .param p1, "enable"    # Z
 
-    .prologue
-    .line 113
+    .line 135
     iput-boolean p1, p0, Lorg/oscim/layers/MapEventLayer;->mEnableScale:Z
 
-    .line 114
     return-void
 .end method
 
 .method public onGesture(Lorg/oscim/event/Gesture;Lorg/oscim/event/MotionEvent;)Z
-    .locals 2
-    .param p1, "g"    # Lorg/oscim/event/Gesture;
-    .param p2, "e"    # Lorg/oscim/event/MotionEvent;
+    .locals 0
 
-    .prologue
-    const/4 v0, 0x1
+    .line 471
+    sget-object p2, Lorg/oscim/event/Gesture;->DOUBLE_TAP:Lorg/oscim/event/Gesture;
 
-    .line 422
-    sget-object v1, Lorg/oscim/event/Gesture;->DOUBLE_TAP:Lorg/oscim/event/Gesture;
+    if-ne p1, p2, :cond_0
 
-    if-ne p1, v1, :cond_0
+    const/4 p1, 0x1
 
-    .line 423
-    iput-boolean v0, p0, Lorg/oscim/layers/MapEventLayer;->mDoubleTap:Z
+    .line 472
+    iput-boolean p1, p0, Lorg/oscim/layers/MapEventLayer;->mDoubleTap:Z
 
-    .line 426
-    :goto_0
-    return v0
+    return p1
 
     :cond_0
-    const/4 v0, 0x0
+    const/4 p1, 0x0
 
-    goto :goto_0
+    return p1
 .end method
 
 .method public onInputEvent(Lorg/oscim/event/Event;Lorg/oscim/event/MotionEvent;)V
     .locals 0
-    .param p1, "e"    # Lorg/oscim/event/Event;
-    .param p2, "motionEvent"    # Lorg/oscim/event/MotionEvent;
 
-    .prologue
-    .line 93
+    .line 100
     invoke-virtual {p0, p2}, Lorg/oscim/layers/MapEventLayer;->onTouchEvent(Lorg/oscim/event/MotionEvent;)Z
 
-    .line 94
     return-void
 .end method
 
-.method public onTouchEvent(Lorg/oscim/event/MotionEvent;)Z
-    .locals 13
-    .param p1, "e"    # Lorg/oscim/event/MotionEvent;
+.method onTouchEvent(Lorg/oscim/event/MotionEvent;)Z
+    .locals 11
 
-    .prologue
-    const-wide/16 v4, -0x1
-
-    const/high16 v12, 0x42c80000    # 100.0f
-
-    const/4 v11, 0x1
-
-    const/4 v1, 0x0
-
-    .line 125
+    .line 153
     invoke-static {p1}, Lorg/oscim/layers/MapEventLayer;->getAction(Lorg/oscim/event/MotionEvent;)I
 
     move-result v0
 
-    .line 127
-    .local v0, "action":I
-    if-nez v0, :cond_1
+    const-wide/16 v1, -0x1
 
-    .line 128
-    iget-object v2, p0, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
+    const/4 v3, 0x1
 
-    invoke-virtual {v2}, Lorg/oscim/map/Map;->animator()Lorg/oscim/map/Animator;
+    const/4 v4, 0x0
 
-    move-result-object v2
+    if-nez v0, :cond_0
 
-    invoke-virtual {v2}, Lorg/oscim/map/Animator;->cancel()V
+    .line 156
+    iget-object v0, p0, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
 
-    .line 130
-    iput-wide v4, p0, Lorg/oscim/layers/MapEventLayer;->mStartMove:J
+    invoke-virtual {v0}, Lorg/oscim/map/Map;->animator()Lorg/oscim/map/Animator;
 
-    .line 131
-    iput-boolean v1, p0, Lorg/oscim/layers/MapEventLayer;->mDoubleTap:Z
+    move-result-object v0
 
-    .line 132
-    iput-boolean v1, p0, Lorg/oscim/layers/MapEventLayer;->mDragZoom:Z
+    invoke-virtual {v0}, Lorg/oscim/map/Animator;->cancel()V
 
-    .line 134
-    invoke-virtual {p1, v1}, Lorg/oscim/event/MotionEvent;->getX(I)F
+    .line 158
+    iput-wide v1, p0, Lorg/oscim/layers/MapEventLayer;->mStartMove:J
 
-    move-result v2
+    .line 159
+    iput-boolean v4, p0, Lorg/oscim/layers/MapEventLayer;->mDoubleTap:Z
 
-    iput v2, p0, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
+    .line 160
+    iput-boolean v4, p0, Lorg/oscim/layers/MapEventLayer;->mDragZoom:Z
 
-    .line 135
-    invoke-virtual {p1, v1}, Lorg/oscim/event/MotionEvent;->getY(I)F
+    .line 161
+    iput-boolean v4, p0, Lorg/oscim/layers/MapEventLayer;->mTwoFingersDone:Z
+
+    .line 163
+    invoke-virtual {p1, v4}, Lorg/oscim/event/MotionEvent;->getX(I)F
+
+    move-result v0
+
+    iput v0, p0, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
+
+    .line 164
+    invoke-virtual {p1, v4}, Lorg/oscim/event/MotionEvent;->getY(I)F
+
+    move-result p1
+
+    iput p1, p0, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
+
+    .line 166
+    iput-boolean v3, p0, Lorg/oscim/layers/MapEventLayer;->mDown:Z
+
+    return v3
+
+    .line 169
+    :cond_0
+    iget-boolean v5, p0, Lorg/oscim/layers/MapEventLayer;->mDown:Z
+
+    if-nez v5, :cond_1
+
+    iget-boolean v5, p0, Lorg/oscim/layers/MapEventLayer;->mDoubleTap:Z
+
+    if-nez v5, :cond_1
+
+    return v4
+
+    :cond_1
+    const/4 v5, 0x2
+
+    if-ne v0, v5, :cond_2
+
+    .line 175
+    invoke-direct {p0, p1}, Lorg/oscim/layers/MapEventLayer;->onActionMove(Lorg/oscim/event/MotionEvent;)V
+
+    return v3
+
+    :cond_2
+    if-ne v0, v3, :cond_7
+
+    .line 179
+    iput-boolean v4, p0, Lorg/oscim/layers/MapEventLayer;->mDown:Z
+
+    .line 180
+    iget-boolean v0, p0, Lorg/oscim/layers/MapEventLayer;->mDoubleTap:Z
+
+    if-eqz v0, :cond_4
+
+    iget-boolean v0, p0, Lorg/oscim/layers/MapEventLayer;->mDragZoom:Z
+
+    if-nez v0, :cond_4
+
+    .line 182
+    iget-boolean p1, p0, Lorg/oscim/layers/MapEventLayer;->mFixOnCenter:Z
+
+    const/4 v0, 0x0
+
+    if-nez p1, :cond_3
+
+    .line 183
+    iget p1, p0, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
+
+    iget-object v0, p0, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
+
+    invoke-virtual {v0}, Lorg/oscim/map/Map;->getWidth()I
+
+    move-result v0
+
+    div-int/2addr v0, v5
+
+    int-to-float v0, v0
+
+    sub-float v0, p1, v0
+
+    .line 184
+    iget p1, p0, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
+
+    iget-object v1, p0, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
+
+    invoke-virtual {v1}, Lorg/oscim/map/Map;->getHeight()I
 
     move-result v1
 
-    iput v1, p0, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
+    div-int/2addr v1, v5
 
-    .line 137
-    iput-boolean v11, p0, Lorg/oscim/layers/MapEventLayer;->mDown:Z
+    int-to-float v1, v1
 
-    move v1, v11
+    sub-float/2addr p1, v1
 
-    .line 191
-    :cond_0
-    :goto_0
-    return v1
+    move v10, p1
 
-    .line 140
-    :cond_1
-    iget-boolean v2, p0, Lorg/oscim/layers/MapEventLayer;->mDown:Z
+    move v9, v0
 
-    if-nez v2, :cond_2
-
-    iget-boolean v2, p0, Lorg/oscim/layers/MapEventLayer;->mDoubleTap:Z
-
-    if-eqz v2, :cond_0
-
-    .line 145
-    :cond_2
-    const/4 v2, 0x2
-
-    if-ne v0, v2, :cond_3
-
-    .line 146
-    invoke-direct {p0, p1}, Lorg/oscim/layers/MapEventLayer;->onActionMove(Lorg/oscim/event/MotionEvent;)V
-
-    move v1, v11
-
-    .line 147
     goto :goto_0
 
-    .line 149
     :cond_3
-    if-ne v0, v11, :cond_8
+    move v9, v0
 
-    .line 150
-    iput-boolean v1, p0, Lorg/oscim/layers/MapEventLayer;->mDown:Z
+    move v10, v9
 
-    .line 151
-    iget-boolean v1, p0, Lorg/oscim/layers/MapEventLayer;->mDoubleTap:Z
+    .line 188
+    :goto_0
+    iget-object p1, p0, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
 
-    if-eqz v1, :cond_6
+    invoke-virtual {p1}, Lorg/oscim/map/Map;->animator()Lorg/oscim/map/Animator;
 
-    iget-boolean v1, p0, Lorg/oscim/layers/MapEventLayer;->mDragZoom:Z
+    move-result-object v4
 
-    if-nez v1, :cond_6
+    const-wide/16 v5, 0x12c
 
-    iget-boolean v1, p0, Lorg/oscim/layers/MapEventLayer;->mEnableScale:Z
+    const-wide/high16 v7, 0x4000000000000000L    # 2.0
 
-    if-eqz v1, :cond_6
+    invoke-virtual/range {v4 .. v10}, Lorg/oscim/map/Animator;->animateZoom(JDFF)V
 
-    .line 152
-    const/4 v6, 0x0
+    goto :goto_1
 
-    .local v6, "pivotX":F
-    const/4 v7, 0x0
-
-    .line 153
-    .local v7, "pivotY":F
-    iget-boolean v1, p0, Lorg/oscim/layers/MapEventLayer;->mFixOnCenter:Z
-
-    if-nez v1, :cond_4
-
-    .line 154
-    iget v1, p0, Lorg/oscim/layers/MapEventLayer;->mPrevX1:F
-
-    iget-object v2, p0, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
-
-    invoke-virtual {v2}, Lorg/oscim/map/Map;->getWidth()I
-
-    move-result v2
-
-    div-int/lit8 v2, v2, 0x2
-
-    int-to-float v2, v2
-
-    sub-float v6, v1, v2
-
-    .line 155
-    iget v1, p0, Lorg/oscim/layers/MapEventLayer;->mPrevY1:F
-
-    iget-object v2, p0, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
-
-    invoke-virtual {v2}, Lorg/oscim/map/Map;->getHeight()I
-
-    move-result v2
-
-    div-int/lit8 v2, v2, 0x2
-
-    int-to-float v2, v2
-
-    sub-float v7, v1, v2
-
-    .line 159
+    .line 190
     :cond_4
-    iget-object v1, p0, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
-
-    invoke-virtual {v1}, Lorg/oscim/map/Map;->animator()Lorg/oscim/map/Animator;
-
-    move-result-object v1
-
-    const-wide/16 v2, 0x12c
-
-    const-wide/high16 v4, 0x4000000000000000L    # 2.0
-
-    invoke-virtual/range {v1 .. v7}, Lorg/oscim/map/Animator;->animateZoom(JDFF)V
-
-    .end local v6    # "pivotX":F
-    .end local v7    # "pivotY":F
-    :cond_5
-    :goto_1
-    move v1, v11
-
-    .line 176
-    goto :goto_0
-
-    .line 161
-    :cond_6
-    iget-wide v2, p0, Lorg/oscim/layers/MapEventLayer;->mStartMove:J
+    iget-wide v0, p0, Lorg/oscim/layers/MapEventLayer;->mStartMove:J
 
     const-wide/16 v4, 0x0
 
-    cmp-long v1, v2, v4
+    cmp-long v2, v0, v4
 
-    if-lez v1, :cond_5
+    if-lez v2, :cond_6
 
-    .line 163
-    iget-object v1, p0, Lorg/oscim/layers/MapEventLayer;->mTracker:Lorg/oscim/layers/MapEventLayer$VelocityTracker;
+    .line 192
+    iget-object v0, p0, Lorg/oscim/layers/MapEventLayer;->mTracker:Lorg/oscim/layers/MapEventLayer$VelocityTracker;
 
     invoke-virtual {p1}, Lorg/oscim/event/MotionEvent;->getX()F
 
-    move-result v2
+    move-result v1
 
     invoke-virtual {p1}, Lorg/oscim/event/MotionEvent;->getY()F
 
-    move-result v3
+    move-result v2
 
     invoke-virtual {p1}, Lorg/oscim/event/MotionEvent;->getTime()J
 
     move-result-wide v4
 
-    invoke-virtual {v1, v2, v3, v4, v5}, Lorg/oscim/layers/MapEventLayer$VelocityTracker;->update(FFJ)V
+    invoke-virtual {v0, v1, v2, v4, v5}, Lorg/oscim/layers/MapEventLayer$VelocityTracker;->update(FFJ)V
 
-    .line 164
-    iget-object v1, p0, Lorg/oscim/layers/MapEventLayer;->mTracker:Lorg/oscim/layers/MapEventLayer$VelocityTracker;
+    .line 193
+    iget-object v0, p0, Lorg/oscim/layers/MapEventLayer;->mTracker:Lorg/oscim/layers/MapEventLayer$VelocityTracker;
 
-    invoke-virtual {v1}, Lorg/oscim/layers/MapEventLayer$VelocityTracker;->getVelocityX()F
+    invoke-virtual {v0}, Lorg/oscim/layers/MapEventLayer$VelocityTracker;->getVelocityX()F
 
-    move-result v9
+    move-result v0
 
-    .line 165
-    .local v9, "vx":F
+    .line 194
     iget-object v1, p0, Lorg/oscim/layers/MapEventLayer;->mTracker:Lorg/oscim/layers/MapEventLayer$VelocityTracker;
 
     invoke-virtual {v1}, Lorg/oscim/layers/MapEventLayer$VelocityTracker;->getVelocityY()F
 
-    move-result v10
+    move-result v1
 
-    .line 168
-    .local v10, "vy":F
+    .line 197
     invoke-virtual {p1}, Lorg/oscim/event/MotionEvent;->getTime()J
 
-    move-result-wide v2
+    move-result-wide v4
 
-    iget-wide v4, p0, Lorg/oscim/layers/MapEventLayer;->mStartMove:J
+    iget-wide v6, p0, Lorg/oscim/layers/MapEventLayer;->mStartMove:J
 
-    sub-long/2addr v2, v4
+    sub-long v8, v4, v6
 
-    long-to-float v8, v2
+    long-to-float p1, v8
 
-    .line 169
-    .local v8, "t":F
-    cmpg-float v1, v8, v12
+    const/high16 v2, 0x42c80000    # 100.0f
 
-    if-gez v1, :cond_7
+    cmpg-float v4, p1, v2
 
-    .line 170
-    div-float/2addr v8, v12
+    if-gez v4, :cond_5
 
-    .line 171
-    mul-float v1, v8, v8
+    div-float/2addr p1, v2
 
-    mul-float/2addr v10, v1
+    mul-float/2addr p1, p1
 
-    .line 172
-    mul-float v1, v8, v8
+    mul-float/2addr v1, p1
 
-    mul-float/2addr v9, v1
+    mul-float/2addr v0, p1
 
-    .line 174
+    .line 203
+    :cond_5
+    invoke-direct {p0, v0, v1}, Lorg/oscim/layers/MapEventLayer;->doFling(FF)Z
+
+    :cond_6
+    :goto_1
+    return v3
+
     :cond_7
-    invoke-direct {p0, v9, v10}, Lorg/oscim/layers/MapEventLayer;->doFling(FF)Z
+    const/4 v6, 0x3
 
-    goto :goto_1
+    if-ne v0, v6, :cond_8
 
-    .line 178
-    .end local v8    # "t":F
-    .end local v9    # "vx":F
-    .end local v10    # "vy":F
+    return v4
+
     :cond_8
-    const/4 v2, 0x3
+    const/4 v6, 0x5
 
-    if-eq v0, v2, :cond_0
+    if-ne v0, v6, :cond_9
 
-    .line 181
-    const/4 v2, 0x5
+    .line 211
+    iput-wide v1, p0, Lorg/oscim/layers/MapEventLayer;->mStartMove:J
 
-    if-ne v0, v2, :cond_9
-
-    .line 182
-    iput-wide v4, p0, Lorg/oscim/layers/MapEventLayer;->mStartMove:J
-
-    .line 183
+    .line 212
     invoke-direct {p0, p1}, Lorg/oscim/layers/MapEventLayer;->updateMulti(Lorg/oscim/event/MotionEvent;)V
 
-    move v1, v11
+    return v3
 
-    .line 184
-    goto/16 :goto_0
-
-    .line 186
     :cond_9
-    const/4 v2, 0x6
+    const/4 v1, 0x6
 
-    if-ne v0, v2, :cond_0
+    if-ne v0, v1, :cond_b
 
-    .line 187
+    .line 216
+    invoke-virtual {p1}, Lorg/oscim/event/MotionEvent;->getPointerCount()I
+
+    move-result v0
+
+    if-ne v0, v5, :cond_a
+
+    iget-boolean v0, p0, Lorg/oscim/layers/MapEventLayer;->mTwoFingersDone:Z
+
+    if-nez v0, :cond_a
+
+    .line 217
+    iget-object v0, p0, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
+
+    sget-object v1, Lorg/oscim/event/Gesture;->TWO_FINGER_TAP:Lorg/oscim/event/Gesture;
+
+    invoke-virtual {v0, v1, p1}, Lorg/oscim/map/Map;->handleGesture(Lorg/oscim/event/Gesture;Lorg/oscim/event/MotionEvent;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_a
+
+    .line 218
+    iget-object v0, p0, Lorg/oscim/layers/MapEventLayer;->mMap:Lorg/oscim/map/Map;
+
+    invoke-virtual {v0}, Lorg/oscim/map/Map;->animator()Lorg/oscim/map/Animator;
+
+    move-result-object v4
+
+    const-wide/16 v5, 0x12c
+
+    const-wide/high16 v7, 0x3fe0000000000000L    # 0.5
+
+    const/4 v9, 0x0
+
+    const/4 v10, 0x0
+
+    invoke-virtual/range {v4 .. v10}, Lorg/oscim/map/Animator;->animateZoom(JDFF)V
+
+    .line 221
+    :cond_a
     invoke-direct {p0, p1}, Lorg/oscim/layers/MapEventLayer;->updateMulti(Lorg/oscim/event/MotionEvent;)V
 
-    move v1, v11
+    return v3
 
-    .line 188
-    goto/16 :goto_0
+    :cond_b
+    return v4
 .end method

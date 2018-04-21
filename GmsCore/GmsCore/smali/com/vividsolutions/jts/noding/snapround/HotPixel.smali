@@ -31,25 +31,21 @@
 
 # direct methods
 .method public constructor <init>(Lcom/vividsolutions/jts/geom/Coordinate;DLcom/vividsolutions/jts/algorithm/LineIntersector;)V
-    .locals 6
-    .param p1, "pt"    # Lcom/vividsolutions/jts/geom/Coordinate;
-    .param p2, "scaleFactor"    # D
-    .param p4, "li"    # Lcom/vividsolutions/jts/algorithm/LineIntersector;
+    .locals 2
 
-    .prologue
     .line 91
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 78
     const/4 v0, 0x4
 
+    .line 78
     new-array v0, v0, [Lcom/vividsolutions/jts/geom/Coordinate;
 
     iput-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    .line 80
     const/4 v0, 0x0
 
+    .line 80
     iput-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->safeEnv:Lcom/vividsolutions/jts/geom/Envelope;
 
     .line 92
@@ -64,79 +60,73 @@
     .line 95
     iput-object p4, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
 
-    .line 97
     const-wide/16 v0, 0x0
 
-    cmpg-double v0, p2, v0
+    cmpg-double p4, p2, v0
 
-    if-gtz v0, :cond_0
+    if-gtz p4, :cond_0
 
     .line 98
-    new-instance v0, Ljava/lang/IllegalArgumentException;
+    new-instance p1, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "Scale factor must be non-zero"
+    const-string p2, "Scale factor must be non-zero"
 
-    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw v0
+    throw p1
 
-    .line 99
     :cond_0
     const-wide/high16 v0, 0x3ff0000000000000L    # 1.0
 
-    cmpl-double v0, p2, v0
+    cmpl-double p4, p2, v0
 
-    if-eqz v0, :cond_1
+    if-eqz p4, :cond_1
 
     .line 100
-    new-instance v0, Lcom/vividsolutions/jts/geom/Coordinate;
+    new-instance p2, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    iget-wide v2, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide p3, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    invoke-direct {p0, v2, v3}, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->scale(D)D
+    invoke-direct {p0, p3, p4}, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->scale(D)D
 
-    move-result-wide v2
+    move-result-wide p3
 
-    iget-wide v4, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v0, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    invoke-direct {p0, v4, v5}, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->scale(D)D
+    invoke-direct {p0, v0, v1}, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->scale(D)D
 
-    move-result-wide v4
+    move-result-wide v0
 
-    invoke-direct {v0, v2, v3, v4, v5}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(DD)V
+    invoke-direct {p2, p3, p4, v0, v1}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(DD)V
 
-    iput-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->pt:Lcom/vividsolutions/jts/geom/Coordinate;
+    iput-object p2, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->pt:Lcom/vividsolutions/jts/geom/Coordinate;
 
     .line 101
-    new-instance v0, Lcom/vividsolutions/jts/geom/Coordinate;
+    new-instance p1, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-direct {v0}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>()V
+    invoke-direct {p1}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>()V
 
-    iput-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->p0Scaled:Lcom/vividsolutions/jts/geom/Coordinate;
+    iput-object p1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->p0Scaled:Lcom/vividsolutions/jts/geom/Coordinate;
 
     .line 102
-    new-instance v0, Lcom/vividsolutions/jts/geom/Coordinate;
+    new-instance p1, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-direct {v0}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>()V
+    invoke-direct {p1}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>()V
 
-    iput-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->p1Scaled:Lcom/vividsolutions/jts/geom/Coordinate;
+    iput-object p1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->p1Scaled:Lcom/vividsolutions/jts/geom/Coordinate;
 
     .line 104
     :cond_1
-    iget-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->pt:Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object p1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->pt:Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-direct {p0, v0}, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->initCorners(Lcom/vividsolutions/jts/geom/Coordinate;)V
+    invoke-direct {p0, p1}, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->initCorners(Lcom/vividsolutions/jts/geom/Coordinate;)V
 
-    .line 105
     return-void
 .end method
 
 .method private copyScaled(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
     .locals 2
-    .param p1, "p"    # Lcom/vividsolutions/jts/geom/Coordinate;
-    .param p2, "pScaled"    # Lcom/vividsolutions/jts/geom/Coordinate;
 
-    .prologue
     .line 175
     iget-wide v0, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
@@ -155,499 +145,434 @@
 
     iput-wide v0, p2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    .line 177
     return-void
 .end method
 
 .method private initCorners(Lcom/vividsolutions/jts/geom/Coordinate;)V
-    .locals 10
-    .param p1, "pt"    # Lcom/vividsolutions/jts/geom/Coordinate;
-
-    .prologue
-    .line 138
-    const-wide/high16 v0, 0x3fe0000000000000L    # 0.5
+    .locals 5
 
     .line 139
-    .local v0, "tolerance":D
-    iget-wide v2, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v0, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    sub-double/2addr v2, v0
+    const-wide/high16 v2, 0x3fe0000000000000L    # 0.5
 
-    iput-wide v2, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->minx:D
+    sub-double/2addr v0, v2
+
+    iput-wide v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->minx:D
 
     .line 140
-    iget-wide v2, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v0, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    add-double/2addr v2, v0
+    add-double/2addr v0, v2
 
-    iput-wide v2, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->maxx:D
+    iput-wide v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->maxx:D
 
     .line 141
-    iget-wide v2, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v0, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    sub-double/2addr v2, v0
+    sub-double/2addr v0, v2
 
-    iput-wide v2, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->miny:D
+    iput-wide v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->miny:D
 
     .line 142
-    iget-wide v2, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v0, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    add-double/2addr v2, v0
+    add-double/2addr v0, v2
 
-    iput-wide v2, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->maxy:D
+    iput-wide v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->maxy:D
 
     .line 144
-    iget-object v2, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object p1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    const/4 v3, 0x0
+    new-instance v0, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    new-instance v4, Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-wide v1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->maxx:D
 
-    iget-wide v6, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->maxx:D
+    iget-wide v3, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->maxy:D
 
-    iget-wide v8, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->maxy:D
+    invoke-direct {v0, v1, v2, v3, v4}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(DD)V
 
-    invoke-direct {v4, v6, v7, v8, v9}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(DD)V
+    const/4 v1, 0x0
 
-    aput-object v4, v2, v3
+    aput-object v0, p1, v1
 
     .line 145
-    iget-object v2, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object p1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    const/4 v3, 0x1
+    new-instance v0, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    new-instance v4, Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-wide v1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->minx:D
 
-    iget-wide v6, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->minx:D
+    iget-wide v3, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->maxy:D
 
-    iget-wide v8, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->maxy:D
+    invoke-direct {v0, v1, v2, v3, v4}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(DD)V
 
-    invoke-direct {v4, v6, v7, v8, v9}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(DD)V
+    const/4 v1, 0x1
 
-    aput-object v4, v2, v3
+    aput-object v0, p1, v1
 
     .line 146
-    iget-object v2, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object p1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    const/4 v3, 0x2
+    new-instance v0, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    new-instance v4, Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-wide v1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->minx:D
 
-    iget-wide v6, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->minx:D
+    iget-wide v3, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->miny:D
 
-    iget-wide v8, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->miny:D
+    invoke-direct {v0, v1, v2, v3, v4}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(DD)V
 
-    invoke-direct {v4, v6, v7, v8, v9}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(DD)V
+    const/4 v1, 0x2
 
-    aput-object v4, v2, v3
+    aput-object v0, p1, v1
 
     .line 147
-    iget-object v2, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object p1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    const/4 v3, 0x3
+    new-instance v0, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    new-instance v4, Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-wide v1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->maxx:D
 
-    iget-wide v6, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->maxx:D
+    iget-wide v3, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->miny:D
 
-    iget-wide v8, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->miny:D
+    invoke-direct {v0, v1, v2, v3, v4}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(DD)V
 
-    invoke-direct {v4, v6, v7, v8, v9}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(DD)V
+    const/4 v1, 0x3
 
-    aput-object v4, v2, v3
+    aput-object v0, p1, v1
 
-    .line 148
     return-void
 .end method
 
 .method private intersectsScaled(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Z
-    .locals 16
-    .param p1, "p0"    # Lcom/vividsolutions/jts/geom/Coordinate;
-    .param p2, "p1"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .locals 11
 
-    .prologue
     .line 181
-    move-object/from16 v0, p1
+    iget-wide v0, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    iget-wide v12, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v2, p2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    move-object/from16 v0, p2
+    invoke-static {v0, v1, v2, v3}, Ljava/lang/Math;->min(DD)D
 
-    iget-wide v14, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    invoke-static {v12, v13, v14, v15}, Ljava/lang/Math;->min(DD)D
-
-    move-result-wide v8
+    move-result-wide v0
 
     .line 182
-    .local v8, "segMinx":D
-    move-object/from16 v0, p1
+    iget-wide v2, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    iget-wide v12, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v4, p2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    move-object/from16 v0, p2
+    invoke-static {v2, v3, v4, v5}, Ljava/lang/Math;->max(DD)D
 
-    iget-wide v14, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    move-result-wide v2
 
-    invoke-static {v12, v13, v14, v15}, Ljava/lang/Math;->max(DD)D
+    .line 183
+    iget-wide v4, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    iget-wide v6, p2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+
+    invoke-static {v4, v5, v6, v7}, Ljava/lang/Math;->min(DD)D
 
     move-result-wide v4
 
-    .line 183
-    .local v4, "segMaxx":D
-    move-object/from16 v0, p1
-
-    iget-wide v12, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    move-object/from16 v0, p2
-
-    iget-wide v14, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    invoke-static {v12, v13, v14, v15}, Ljava/lang/Math;->min(DD)D
-
-    move-result-wide v10
-
     .line 184
-    .local v10, "segMiny":D
-    move-object/from16 v0, p1
+    iget-wide v6, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    iget-wide v12, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v8, p2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    move-object/from16 v0, p2
-
-    iget-wide v14, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    invoke-static {v12, v13, v14, v15}, Ljava/lang/Math;->max(DD)D
+    invoke-static {v6, v7, v8, v9}, Ljava/lang/Math;->max(DD)D
 
     move-result-wide v6
 
     .line 186
-    .local v6, "segMaxy":D
-    move-object/from16 v0, p0
+    iget-wide v8, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->maxx:D
 
-    iget-wide v12, v0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->maxx:D
+    cmpg-double v10, v8, v0
 
-    cmpg-double v12, v12, v8
+    const/4 v0, 0x1
 
-    if-ltz v12, :cond_0
+    const/4 v1, 0x0
 
-    move-object/from16 v0, p0
+    if-ltz v10, :cond_1
 
-    iget-wide v12, v0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->minx:D
+    iget-wide v8, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->minx:D
 
-    cmpl-double v12, v12, v4
+    cmpl-double v10, v8, v2
 
-    if-gtz v12, :cond_0
+    if-gtz v10, :cond_1
 
-    move-object/from16 v0, p0
+    iget-wide v2, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->maxy:D
 
-    iget-wide v12, v0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->maxy:D
+    cmpg-double v8, v2, v4
 
-    cmpg-double v12, v12, v10
+    if-ltz v8, :cond_1
 
-    if-ltz v12, :cond_0
+    iget-wide v2, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->miny:D
 
-    move-object/from16 v0, p0
+    cmpl-double v4, v2, v6
 
-    iget-wide v12, v0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->miny:D
-
-    cmpl-double v12, v12, v6
-
-    if-lez v12, :cond_1
-
-    :cond_0
-    const/4 v3, 0x1
-
-    .line 190
-    .local v3, "isOutsidePixelEnv":Z
-    :goto_0
-    if-eqz v3, :cond_2
-
-    .line 191
-    const/4 v2, 0x0
-
-    .line 217
-    :goto_1
-    return v2
-
-    .line 186
-    .end local v3    # "isOutsidePixelEnv":Z
-    :cond_1
-    const/4 v3, 0x0
+    if-lez v4, :cond_0
 
     goto :goto_0
 
-    .line 192
-    .restart local v3    # "isOutsidePixelEnv":Z
-    :cond_2
-    invoke-direct/range {p0 .. p2}, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->intersectsToleranceSquare(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Z
-
-    move-result v2
-
-    .line 212
-    .local v2, "intersects":Z
-    if-eqz v3, :cond_3
-
-    if-nez v2, :cond_4
-
-    :cond_3
-    const/4 v12, 0x1
-
-    :goto_2
-    const-string v13, "Found bad envelope test"
-
-    invoke-static {v12, v13}, Lcom/vividsolutions/jts/util/Assert;->isTrue(ZLjava/lang/String;)V
+    :cond_0
+    move v2, v1
 
     goto :goto_1
 
-    :cond_4
-    const/4 v12, 0x0
+    :cond_1
+    :goto_0
+    move v2, v0
+
+    :goto_1
+    if-eqz v2, :cond_2
+
+    return v1
+
+    .line 192
+    :cond_2
+    invoke-direct {p0, p1, p2}, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->intersectsToleranceSquare(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Z
+
+    move-result p1
+
+    if-eqz v2, :cond_4
+
+    if-nez p1, :cond_3
 
     goto :goto_2
+
+    :cond_3
+    move v0, v1
+
+    :cond_4
+    :goto_2
+    const-string p2, "Found bad envelope test"
+
+    .line 212
+    invoke-static {v0, p2}, Lcom/vividsolutions/jts/util/Assert;->isTrue(ZLjava/lang/String;)V
+
+    return p1
 .end method
 
 .method private intersectsToleranceSquare(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Z
-    .locals 9
-    .param p1, "p0"    # Lcom/vividsolutions/jts/geom/Coordinate;
-    .param p2, "p1"    # Lcom/vividsolutions/jts/geom/Coordinate;
-
-    .prologue
-    const/4 v8, 0x3
-
-    const/4 v7, 0x2
-
-    const/4 v3, 0x0
-
-    const/4 v2, 0x1
-
-    .line 241
-    const/4 v1, 0x0
-
-    .line 242
-    .local v1, "intersectsLeft":Z
-    const/4 v0, 0x0
+    .locals 7
 
     .line 244
-    .local v0, "intersectsBottom":Z
-    iget-object v4, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
+    iget-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
+
+    iget-object v1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
+
+    const/4 v2, 0x0
+
+    aget-object v1, v1, v2
+
+    iget-object v3, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
+
+    const/4 v4, 0x1
+
+    aget-object v3, v3, v4
+
+    invoke-virtual {v0, p1, p2, v1, v3}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->computeIntersection(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
+
+    .line 245
+    iget-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
+
+    invoke-virtual {v0}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->isProper()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    return v4
+
+    .line 247
+    :cond_0
+    iget-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
+
+    iget-object v1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
+
+    aget-object v1, v1, v4
+
+    iget-object v3, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
+
+    const/4 v5, 0x2
+
+    aget-object v3, v3, v5
+
+    invoke-virtual {v0, p1, p2, v1, v3}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->computeIntersection(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
+
+    .line 248
+    iget-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
+
+    invoke-virtual {v0}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->isProper()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    return v4
+
+    .line 249
+    :cond_1
+    iget-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
+
+    invoke-virtual {v0}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->hasIntersection()Z
+
+    move-result v0
+
+    .line 251
+    iget-object v1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
+
+    iget-object v3, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
+
+    aget-object v3, v3, v5
 
     iget-object v5, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
 
-    aget-object v5, v5, v3
+    const/4 v6, 0x3
+
+    aget-object v5, v5, v6
+
+    invoke-virtual {v1, p1, p2, v3, v5}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->computeIntersection(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
+
+    .line 252
+    iget-object v1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
+
+    invoke-virtual {v1}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->isProper()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    return v4
+
+    .line 253
+    :cond_2
+    iget-object v1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
+
+    invoke-virtual {v1}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->hasIntersection()Z
+
+    move-result v1
+
+    .line 255
+    iget-object v3, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
+
+    iget-object v5, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
+
+    aget-object v5, v5, v6
 
     iget-object v6, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
 
     aget-object v6, v6, v2
 
-    invoke-virtual {v4, p1, p2, v5, v6}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->computeIntersection(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
-
-    .line 245
-    iget-object v4, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
-
-    invoke-virtual {v4}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->isProper()Z
-
-    move-result v4
-
-    if-eqz v4, :cond_1
-
-    .line 263
-    :cond_0
-    :goto_0
-    return v2
-
-    .line 247
-    :cond_1
-    iget-object v4, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
-
-    iget-object v5, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
-
-    aget-object v5, v5, v2
-
-    iget-object v6, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
-
-    aget-object v6, v6, v7
-
-    invoke-virtual {v4, p1, p2, v5, v6}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->computeIntersection(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
-
-    .line 248
-    iget-object v4, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
-
-    invoke-virtual {v4}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->isProper()Z
-
-    move-result v4
-
-    if-nez v4, :cond_0
-
-    .line 249
-    iget-object v4, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
-
-    invoke-virtual {v4}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->hasIntersection()Z
-
-    move-result v4
-
-    if-eqz v4, :cond_2
-
-    const/4 v1, 0x1
-
-    .line 251
-    :cond_2
-    iget-object v4, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
-
-    iget-object v5, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
-
-    aget-object v5, v5, v7
-
-    iget-object v6, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
-
-    aget-object v6, v6, v8
-
-    invoke-virtual {v4, p1, p2, v5, v6}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->computeIntersection(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
-
-    .line 252
-    iget-object v4, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
-
-    invoke-virtual {v4}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->isProper()Z
-
-    move-result v4
-
-    if-nez v4, :cond_0
-
-    .line 253
-    iget-object v4, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
-
-    invoke-virtual {v4}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->hasIntersection()Z
-
-    move-result v4
-
-    if-eqz v4, :cond_3
-
-    const/4 v0, 0x1
-
-    .line 255
-    :cond_3
-    iget-object v4, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
-
-    iget-object v5, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
-
-    aget-object v5, v5, v8
-
-    iget-object v6, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->corner:[Lcom/vividsolutions/jts/geom/Coordinate;
-
-    aget-object v6, v6, v3
-
-    invoke-virtual {v4, p1, p2, v5, v6}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->computeIntersection(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
+    invoke-virtual {v3, p1, p2, v5, v6}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->computeIntersection(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
 
     .line 256
-    iget-object v4, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
+    iget-object v3, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->li:Lcom/vividsolutions/jts/algorithm/LineIntersector;
 
-    invoke-virtual {v4}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->isProper()Z
+    invoke-virtual {v3}, Lcom/vividsolutions/jts/algorithm/LineIntersector;->isProper()Z
 
-    move-result v4
+    move-result v3
 
-    if-nez v4, :cond_0
+    if-eqz v3, :cond_3
 
-    .line 258
+    return v4
+
+    :cond_3
+    if-eqz v0, :cond_4
+
     if-eqz v1, :cond_4
 
-    if-nez v0, :cond_0
+    return v4
 
     .line 260
     :cond_4
-    iget-object v4, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->pt:Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->pt:Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-virtual {p1, v4}, Lcom/vividsolutions/jts/geom/Coordinate;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p1, v0}, Lcom/vividsolutions/jts/geom/Coordinate;->equals(Ljava/lang/Object;)Z
 
-    move-result v4
+    move-result p1
 
-    if-nez v4, :cond_0
+    if-eqz p1, :cond_5
+
+    return v4
 
     .line 261
-    iget-object v4, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->pt:Lcom/vividsolutions/jts/geom/Coordinate;
+    :cond_5
+    iget-object p1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->pt:Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-virtual {p2, v4}, Lcom/vividsolutions/jts/geom/Coordinate;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, p1}, Lcom/vividsolutions/jts/geom/Coordinate;->equals(Ljava/lang/Object;)Z
 
-    move-result v4
+    move-result p1
 
-    if-nez v4, :cond_0
+    if-eqz p1, :cond_6
 
-    move v2, v3
+    return v4
 
-    .line 263
-    goto :goto_0
+    :cond_6
+    return v2
 .end method
 
 .method private scale(D)D
-    .locals 3
-    .param p1, "val"    # D
+    .locals 2
 
-    .prologue
     .line 152
     iget-wide v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->scaleFactor:D
 
-    mul-double/2addr v0, p1
+    mul-double/2addr p1, v0
 
-    invoke-static {v0, v1}, Ljava/lang/Math;->round(D)J
+    invoke-static {p1, p2}, Ljava/lang/Math;->round(D)J
 
-    move-result-wide v0
+    move-result-wide p1
 
-    long-to-double v0, v0
+    long-to-double p1, p1
 
-    return-wide v0
+    return-wide p1
 .end method
 
 
 # virtual methods
 .method public addSnappedNode(Lcom/vividsolutions/jts/noding/NodedSegmentString;I)Z
-    .locals 3
-    .param p1, "segStr"    # Lcom/vividsolutions/jts/noding/NodedSegmentString;
-    .param p2, "segIndex"    # I
+    .locals 2
 
-    .prologue
     .line 304
     invoke-virtual {p1, p2}, Lcom/vividsolutions/jts/noding/NodedSegmentString;->getCoordinate(I)Lcom/vividsolutions/jts/geom/Coordinate;
 
     move-result-object v0
 
-    .line 305
-    .local v0, "p0":Lcom/vividsolutions/jts/geom/Coordinate;
-    add-int/lit8 v2, p2, 0x1
+    add-int/lit8 v1, p2, 0x1
 
-    invoke-virtual {p1, v2}, Lcom/vividsolutions/jts/noding/NodedSegmentString;->getCoordinate(I)Lcom/vividsolutions/jts/geom/Coordinate;
+    .line 305
+    invoke-virtual {p1, v1}, Lcom/vividsolutions/jts/noding/NodedSegmentString;->getCoordinate(I)Lcom/vividsolutions/jts/geom/Coordinate;
 
     move-result-object v1
 
     .line 307
-    .local v1, "p1":Lcom/vividsolutions/jts/geom/Coordinate;
     invoke-virtual {p0, v0, v1}, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->intersects(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
-    move-result v2
+    move-result v0
 
-    if-eqz v2, :cond_0
+    if-eqz v0, :cond_0
 
     .line 310
     invoke-virtual {p0}, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->getCoordinate()Lcom/vividsolutions/jts/geom/Coordinate;
 
-    move-result-object v2
+    move-result-object v0
 
-    invoke-virtual {p1, v2, p2}, Lcom/vividsolutions/jts/noding/NodedSegmentString;->addIntersection(Lcom/vividsolutions/jts/geom/Coordinate;I)V
+    invoke-virtual {p1, v0, p2}, Lcom/vividsolutions/jts/noding/NodedSegmentString;->addIntersection(Lcom/vividsolutions/jts/geom/Coordinate;I)V
 
-    .line 312
-    const/4 v2, 0x1
+    const/4 p1, 0x1
 
-    .line 314
-    :goto_0
-    return v2
+    return p1
 
     :cond_0
-    const/4 v2, 0x0
+    const/4 p1, 0x0
 
-    goto :goto_0
+    return p1
 .end method
 
 .method public getCoordinate()Lcom/vividsolutions/jts/geom/Coordinate;
     .locals 1
 
-    .prologue
     .line 112
     iget-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->originalPt:Lcom/vividsolutions/jts/geom/Coordinate;
 
@@ -657,53 +582,52 @@
 .method public getSafeEnvelope()Lcom/vividsolutions/jts/geom/Envelope;
     .locals 12
 
-    .prologue
     .line 125
     iget-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->safeEnv:Lcom/vividsolutions/jts/geom/Envelope;
 
     if-nez v0, :cond_0
 
-    .line 126
     const-wide/high16 v0, 0x3fe8000000000000L    # 0.75
 
+    .line 126
     iget-wide v2, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->scaleFactor:D
 
-    div-double v10, v0, v2
+    div-double/2addr v0, v2
 
     .line 127
-    .local v10, "safeTolerance":D
-    new-instance v1, Lcom/vividsolutions/jts/geom/Envelope;
+    new-instance v11, Lcom/vividsolutions/jts/geom/Envelope;
 
-    iget-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->originalPt:Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v2, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->originalPt:Lcom/vividsolutions/jts/geom/Coordinate;
 
-    iget-wide v2, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v2, v2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    sub-double/2addr v2, v10
+    sub-double v3, v2, v0
 
-    iget-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->originalPt:Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v2, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->originalPt:Lcom/vividsolutions/jts/geom/Coordinate;
 
-    iget-wide v4, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    iget-wide v5, v2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    add-double/2addr v4, v10
+    add-double/2addr v5, v0
 
-    iget-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->originalPt:Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v2, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->originalPt:Lcom/vividsolutions/jts/geom/Coordinate;
 
-    iget-wide v6, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v7, v2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    sub-double/2addr v6, v10
+    sub-double/2addr v7, v0
 
-    iget-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->originalPt:Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v2, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->originalPt:Lcom/vividsolutions/jts/geom/Coordinate;
 
-    iget-wide v8, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    iget-wide v9, v2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    add-double/2addr v8, v10
+    add-double/2addr v9, v0
 
-    invoke-direct/range {v1 .. v9}, Lcom/vividsolutions/jts/geom/Envelope;-><init>(DDDD)V
+    move-object v2, v11
 
-    iput-object v1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->safeEnv:Lcom/vividsolutions/jts/geom/Envelope;
+    invoke-direct/range {v2 .. v10}, Lcom/vividsolutions/jts/geom/Envelope;-><init>(DDDD)V
+
+    iput-object v11, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->safeEnv:Lcom/vividsolutions/jts/geom/Envelope;
 
     .line 133
-    .end local v10    # "safeTolerance":D
     :cond_0
     iget-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->safeEnv:Lcom/vividsolutions/jts/geom/Envelope;
 
@@ -711,28 +635,23 @@
 .end method
 
 .method public intersects(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Z
-    .locals 4
-    .param p1, "p0"    # Lcom/vividsolutions/jts/geom/Coordinate;
-    .param p2, "p1"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .locals 5
 
-    .prologue
     .line 165
     iget-wide v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->scaleFactor:D
 
     const-wide/high16 v2, 0x3ff0000000000000L    # 1.0
 
-    cmpl-double v0, v0, v2
+    cmpl-double v4, v0, v2
 
-    if-nez v0, :cond_0
+    if-nez v4, :cond_0
 
     .line 166
     invoke-direct {p0, p1, p2}, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->intersectsScaled(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
-    move-result v0
+    move-result p1
 
-    .line 170
-    :goto_0
-    return v0
+    return p1
 
     .line 168
     :cond_0
@@ -741,18 +660,18 @@
     invoke-direct {p0, p1, v0}, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->copyScaled(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
 
     .line 169
-    iget-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->p1Scaled:Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object p1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->p1Scaled:Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-direct {p0, p2, v0}, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->copyScaled(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
+    invoke-direct {p0, p2, p1}, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->copyScaled(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
 
     .line 170
-    iget-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->p0Scaled:Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object p1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->p0Scaled:Lcom/vividsolutions/jts/geom/Coordinate;
 
-    iget-object v1, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->p1Scaled:Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object p2, p0, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->p1Scaled:Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-direct {p0, v0, v1}, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->intersectsScaled(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Z
+    invoke-direct {p0, p1, p2}, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->intersectsScaled(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
-    move-result v0
+    move-result p1
 
-    goto :goto_0
+    return p1
 .end method

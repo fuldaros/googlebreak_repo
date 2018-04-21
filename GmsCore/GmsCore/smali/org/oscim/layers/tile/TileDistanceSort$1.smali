@@ -19,8 +19,7 @@
 .annotation system Ldalvik/annotation/Signature;
     value = {
         "Ljava/lang/Object;",
-        "Ljava/util/Comparator",
-        "<",
+        "Ljava/util/Comparator<",
         "Lorg/oscim/layers/tile/MapTile;",
         ">;"
     }
@@ -31,7 +30,6 @@
 .method constructor <init>()V
     .locals 0
 
-    .prologue
     .line 42
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -41,9 +39,8 @@
 
 # virtual methods
 .method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
-    .locals 1
+    .locals 0
 
-    .prologue
     .line 42
     check-cast p1, Lorg/oscim/layers/tile/MapTile;
 
@@ -51,76 +48,58 @@
 
     invoke-virtual {p0, p1, p2}, Lorg/oscim/layers/tile/TileDistanceSort$1;->compare(Lorg/oscim/layers/tile/MapTile;Lorg/oscim/layers/tile/MapTile;)I
 
-    move-result v0
+    move-result p1
 
-    return v0
+    return p1
 .end method
 
 .method public compare(Lorg/oscim/layers/tile/MapTile;Lorg/oscim/layers/tile/MapTile;)I
     .locals 5
-    .param p1, "a"    # Lorg/oscim/layers/tile/MapTile;
-    .param p2, "b"    # Lorg/oscim/layers/tile/MapTile;
 
-    .prologue
-    const/4 v1, 0x1
+    const/4 v0, 0x1
 
-    const/4 v0, 0x0
+    const/4 v1, 0x0
 
-    const/4 v2, -0x1
+    if-nez p1, :cond_1
 
-    .line 45
-    if-nez p1, :cond_2
+    if-nez p2, :cond_0
 
-    .line 46
-    if-nez p2, :cond_1
+    return v1
 
-    .line 60
     :cond_0
-    :goto_0
     return v0
 
     :cond_1
-    move v0, v1
+    const/4 v2, -0x1
 
-    .line 49
-    goto :goto_0
+    if-nez p2, :cond_2
 
-    .line 51
-    :cond_2
-    if-nez p2, :cond_3
-
-    move v0, v2
-
-    .line 52
-    goto :goto_0
+    return v2
 
     .line 54
-    :cond_3
+    :cond_2
     iget v3, p1, Lorg/oscim/layers/tile/MapTile;->distance:F
 
     iget v4, p2, Lorg/oscim/layers/tile/MapTile;->distance:F
 
     cmpg-float v3, v3, v4
 
-    if-gez v3, :cond_4
+    if-gez v3, :cond_3
 
-    move v0, v2
-
-    .line 55
-    goto :goto_0
+    return v2
 
     .line 57
+    :cond_3
+    iget p1, p1, Lorg/oscim/layers/tile/MapTile;->distance:F
+
+    iget p2, p2, Lorg/oscim/layers/tile/MapTile;->distance:F
+
+    cmpl-float p1, p1, p2
+
+    if-lez p1, :cond_4
+
+    return v0
+
     :cond_4
-    iget v2, p1, Lorg/oscim/layers/tile/MapTile;->distance:F
-
-    iget v3, p2, Lorg/oscim/layers/tile/MapTile;->distance:F
-
-    cmpl-float v2, v2, v3
-
-    if-lez v2, :cond_0
-
-    move v0, v1
-
-    .line 58
-    goto :goto_0
+    return v1
 .end method

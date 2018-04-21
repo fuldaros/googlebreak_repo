@@ -9,3 +9,6 @@
 
 .method public abstract getId()Ljava/lang/String;
 .end method
+
+.method public abstract isNearby()Z
+.end method

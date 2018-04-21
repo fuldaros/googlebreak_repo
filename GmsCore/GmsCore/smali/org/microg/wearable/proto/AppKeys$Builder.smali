@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder",
-        "<",
+        "Lcom/squareup/wire/Message$Builder<",
         "Lorg/microg/wearable/proto/AppKeys;",
         ">;"
     }
@@ -27,8 +26,7 @@
 .field public appKeys:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lorg/microg/wearable/proto/AppKey;",
             ">;"
         }
@@ -40,40 +38,33 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
     .line 45
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
-    .line 46
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/wearable/proto/AppKeys;)V
-    .locals 1
-    .param p1, "message"    # Lorg/microg/wearable/proto/AppKeys;
+    .locals 0
 
-    .prologue
     .line 49
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
-    .line 50
     if-nez p1, :cond_0
 
-    .line 52
-    :goto_0
     return-void
 
     .line 51
     :cond_0
-    iget-object v0, p1, Lorg/microg/wearable/proto/AppKeys;->appKeys:Ljava/util/List;
+    iget-object p1, p1, Lorg/microg/wearable/proto/AppKeys;->appKeys:Ljava/util/List;
 
-    invoke-static {v0}, Lorg/microg/wearable/proto/AppKeys;->access$000(Ljava/util/List;)Ljava/util/List;
+    invoke-static {p1}, Lorg/microg/wearable/proto/AppKeys;->access$000(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object v0
+    move-result-object p1
 
-    iput-object v0, p0, Lorg/microg/wearable/proto/AppKeys$Builder;->appKeys:Ljava/util/List;
+    iput-object p1, p0, Lorg/microg/wearable/proto/AppKeys$Builder;->appKeys:Ljava/util/List;
 
-    goto :goto_0
+    return-void
 .end method
 
 
@@ -81,7 +72,6 @@
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
-    .prologue
     .line 41
     invoke-virtual {p0}, Lorg/microg/wearable/proto/AppKeys$Builder;->build()Lorg/microg/wearable/proto/AppKeys;
 
@@ -93,7 +83,6 @@
 .method public build()Lorg/microg/wearable/proto/AppKeys;
     .locals 2
 
-    .prologue
     .line 61
     new-instance v0, Lorg/microg/wearable/proto/AppKeys;
 

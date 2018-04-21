@@ -7,8 +7,7 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator",
-            "<",
+            "Landroid/os/Parcelable$Creator<",
             "Lcom/google/android/gms/location/LocationSettingsRequest;",
             ">;"
         }
@@ -26,8 +25,7 @@
 .field public requests:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/android/gms/location/LocationRequest;",
             ">;"
         }
@@ -50,8 +48,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
-    .line 41
+    .line 108
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
     const-class v1, Lcom/google/android/gms/location/LocationSettingsRequest;
@@ -63,16 +60,15 @@
     return-void
 .end method
 
-.method public constructor <init>()V
+.method private constructor <init>()V
     .locals 1
 
-    .prologue
-    .line 26
+    .line 43
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    .line 27
     const/4 v0, 0x2
 
+    .line 29
     iput v0, p0, Lcom/google/android/gms/location/LocationSettingsRequest;->versionCode:I
 
     return-void

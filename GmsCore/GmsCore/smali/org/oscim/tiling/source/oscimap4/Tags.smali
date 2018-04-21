@@ -15,1972 +15,1951 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 8
+    .locals 257
 
-    .prologue
-    const/4 v7, 0x4
+    const/16 v0, 0x44
 
-    const/4 v6, 0x3
+    .line 25
+    new-array v1, v0, [Ljava/lang/String;
 
-    const/4 v5, 0x2
-
-    const/4 v4, 0x1
+    const-string v2, "access"
 
     const/4 v3, 0x0
 
-    .line 25
-    const/16 v0, 0x44
+    aput-object v2, v1, v3
 
-    new-array v0, v0, [Ljava/lang/String;
+    const-string v2, "addr:housename"
 
-    const-string v1, "access"
+    const/4 v4, 0x1
 
-    aput-object v1, v0, v3
+    aput-object v2, v1, v4
 
-    const-string v1, "addr:housename"
+    const-string v2, "addr:housenumber"
 
-    aput-object v1, v0, v4
+    const/4 v5, 0x2
 
-    const-string v1, "addr:housenumber"
+    aput-object v2, v1, v5
 
-    aput-object v1, v0, v5
+    const-string v2, "addr:interpolation"
 
-    const-string v1, "addr:interpolation"
+    const/4 v6, 0x3
 
-    aput-object v1, v0, v6
+    aput-object v2, v1, v6
 
-    const-string v1, "admin_level"
+    const-string v2, "admin_level"
 
-    aput-object v1, v0, v7
+    const/4 v7, 0x4
 
-    const/4 v1, 0x5
+    aput-object v2, v1, v7
 
     const-string v2, "aerialway"
 
-    aput-object v2, v0, v1
+    const/4 v8, 0x5
 
-    const/4 v1, 0x6
+    aput-object v2, v1, v8
 
     const-string v2, "aeroway"
 
-    aput-object v2, v0, v1
+    const/4 v9, 0x6
 
-    const/4 v1, 0x7
+    aput-object v2, v1, v9
 
     const-string v2, "amenity"
 
-    aput-object v2, v0, v1
+    const/4 v10, 0x7
 
-    const/16 v1, 0x8
+    aput-object v2, v1, v10
 
     const-string v2, "area"
 
-    aput-object v2, v0, v1
+    const/16 v11, 0x8
 
-    const/16 v1, 0x9
+    aput-object v2, v1, v11
 
     const-string v2, "barrier"
 
-    aput-object v2, v0, v1
+    const/16 v12, 0x9
 
-    const/16 v1, 0xa
+    aput-object v2, v1, v12
 
     const-string v2, "bicycle"
 
-    aput-object v2, v0, v1
+    const/16 v13, 0xa
 
-    const/16 v1, 0xb
+    aput-object v2, v1, v13
 
     const-string v2, "brand"
 
-    aput-object v2, v0, v1
+    const/16 v14, 0xb
 
-    const/16 v1, 0xc
+    aput-object v2, v1, v14
 
     const-string v2, "bridge"
 
-    aput-object v2, v0, v1
+    const/16 v15, 0xc
 
-    const/16 v1, 0xd
+    aput-object v2, v1, v15
 
     const-string v2, "boundary"
 
-    aput-object v2, v0, v1
+    const/16 v16, 0xd
 
-    const/16 v1, 0xe
+    aput-object v2, v1, v16
 
     const-string v2, "building"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0xe
 
-    const/16 v1, 0xf
+    aput-object v2, v1, v17
 
     const-string v2, "construction"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0xf
 
-    const/16 v1, 0x10
+    aput-object v2, v1, v17
 
     const-string v2, "covered"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x10
 
-    const/16 v1, 0x11
+    aput-object v2, v1, v17
 
     const-string v2, "culvert"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x11
 
-    const/16 v1, 0x12
+    aput-object v2, v1, v17
 
     const-string v2, "cutting"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x12
 
-    const/16 v1, 0x13
+    aput-object v2, v1, v17
 
     const-string v2, "denomination"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x13
 
-    const/16 v1, 0x14
+    aput-object v2, v1, v17
 
     const-string v2, "disused"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x14
 
-    const/16 v1, 0x15
+    aput-object v2, v1, v17
 
     const-string v2, "embankment"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x15
 
-    const/16 v1, 0x16
+    aput-object v2, v1, v17
 
     const-string v2, "foot"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x16
 
-    const/16 v1, 0x17
+    aput-object v2, v1, v17
 
     const-string v2, "generator:source"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x17
 
-    const/16 v1, 0x18
+    aput-object v2, v1, v17
 
     const-string v2, "harbour"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x18
 
-    const/16 v1, 0x19
+    aput-object v2, v1, v17
 
     const-string v2, "highway"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x19
 
-    const/16 v1, 0x1a
+    aput-object v2, v1, v17
 
     const-string v2, "historic"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x1a
 
-    const/16 v1, 0x1b
+    aput-object v2, v1, v17
 
     const-string v2, "horse"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x1b
 
-    const/16 v1, 0x1c
+    aput-object v2, v1, v17
 
     const-string v2, "intermittent"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x1c
 
-    const/16 v1, 0x1d
+    aput-object v2, v1, v17
 
     const-string v2, "junction"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x1d
 
-    const/16 v1, 0x1e
+    aput-object v2, v1, v17
 
     const-string v2, "landuse"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x1e
 
-    const/16 v1, 0x1f
+    aput-object v2, v1, v17
 
     const-string v2, "layer"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x1f
 
-    const/16 v1, 0x20
+    aput-object v2, v1, v17
 
     const-string v2, "leisure"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x20
 
-    const/16 v1, 0x21
+    aput-object v2, v1, v17
 
     const-string v2, "lock"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x21
 
-    const/16 v1, 0x22
+    aput-object v2, v1, v17
 
     const-string v2, "man_made"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x22
 
-    const/16 v1, 0x23
+    aput-object v2, v1, v17
 
     const-string v2, "military"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x23
 
-    const/16 v1, 0x24
+    aput-object v2, v1, v17
 
     const-string v2, "motorcar"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x24
 
-    const/16 v1, 0x25
+    aput-object v2, v1, v17
 
     const-string v2, "name"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x25
 
-    const/16 v1, 0x26
+    aput-object v2, v1, v17
 
     const-string v2, "natural"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x26
 
-    const/16 v1, 0x27
+    aput-object v2, v1, v17
 
     const-string v2, "oneway"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x27
 
-    const/16 v1, 0x28
+    aput-object v2, v1, v17
 
     const-string v2, "operator"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x28
 
-    const/16 v1, 0x29
+    aput-object v2, v1, v17
 
     const-string v2, "population"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x29
 
-    const/16 v1, 0x2a
+    aput-object v2, v1, v17
 
     const-string v2, "power"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x2a
 
-    const/16 v1, 0x2b
+    aput-object v2, v1, v17
 
     const-string v2, "power_source"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x2b
 
-    const/16 v1, 0x2c
+    aput-object v2, v1, v17
 
     const-string v2, "place"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x2c
 
-    const/16 v1, 0x2d
+    aput-object v2, v1, v17
 
     const-string v2, "railway"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x2d
 
-    const/16 v1, 0x2e
+    aput-object v2, v1, v17
 
     const-string v2, "ref"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x2e
 
-    const/16 v1, 0x2f
+    aput-object v2, v1, v17
 
     const-string v2, "religion"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x2f
 
-    const/16 v1, 0x30
+    aput-object v2, v1, v17
 
     const-string v2, "route"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x30
 
-    const/16 v1, 0x31
+    aput-object v2, v1, v17
 
     const-string v2, "service"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x31
 
-    const/16 v1, 0x32
+    aput-object v2, v1, v17
 
     const-string v2, "shop"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x32
 
-    const/16 v1, 0x33
+    aput-object v2, v1, v17
 
     const-string v2, "sport"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x33
 
-    const/16 v1, 0x34
+    aput-object v2, v1, v17
 
     const-string v2, "surface"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x34
 
-    const/16 v1, 0x35
+    aput-object v2, v1, v17
 
     const-string v2, "toll"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x35
 
-    const/16 v1, 0x36
+    aput-object v2, v1, v17
 
     const-string v2, "tourism"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x36
 
-    const/16 v1, 0x37
+    aput-object v2, v1, v17
 
     const-string v2, "tower:type"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x37
 
-    const/16 v1, 0x38
+    aput-object v2, v1, v17
 
     const-string v2, "tracktype"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x38
 
-    const/16 v1, 0x39
+    aput-object v2, v1, v17
 
     const-string v2, "tunnel"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x39
 
-    const/16 v1, 0x3a
+    aput-object v2, v1, v17
 
     const-string v2, "water"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x3a
 
-    const/16 v1, 0x3b
+    aput-object v2, v1, v17
 
     const-string v2, "waterway"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x3b
 
-    const/16 v1, 0x3c
+    aput-object v2, v1, v17
 
     const-string v2, "wetland"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x3c
 
-    const/16 v1, 0x3d
+    aput-object v2, v1, v17
 
     const-string v2, "width"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x3d
 
-    const/16 v1, 0x3e
+    aput-object v2, v1, v17
 
     const-string v2, "wood"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x3e
 
-    const/16 v1, 0x3f
+    aput-object v2, v1, v17
 
     const-string v2, "height"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x3f
 
-    const/16 v1, 0x40
+    aput-object v2, v1, v17
 
     const-string v2, "min_height"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x40
 
-    const/16 v1, 0x41
+    aput-object v2, v1, v17
 
     const-string v2, "roof:shape"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x41
 
-    const/16 v1, 0x42
+    aput-object v2, v1, v17
 
     const-string v2, "roof:height"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x42
 
-    const/16 v1, 0x43
+    aput-object v2, v1, v17
 
     const-string v2, "rank"
 
-    aput-object v2, v0, v1
+    const/16 v17, 0x43
 
-    sput-object v0, Lorg/oscim/tiling/source/oscimap4/Tags;->keys:[Ljava/lang/String;
+    aput-object v2, v1, v17
+
+    sput-object v1, Lorg/oscim/tiling/source/oscimap4/Tags;->keys:[Ljava/lang/String;
 
     .line 96
-    sget-object v0, Lorg/oscim/tiling/source/oscimap4/Tags;->keys:[Ljava/lang/String;
+    sget-object v1, Lorg/oscim/tiling/source/oscimap4/Tags;->keys:[Ljava/lang/String;
 
-    array-length v0, v0
+    const/16 v2, 0x100
 
-    add-int/lit8 v0, v0, -0x1
+    const/16 v17, 0xe
 
-    sput v0, Lorg/oscim/tiling/source/oscimap4/Tags;->MAX_KEY:I
+    const/16 v18, 0xf
+
+    const/16 v19, 0x10
+
+    const/16 v20, 0x11
+
+    const/16 v21, 0x12
+
+    const/16 v22, 0x13
+
+    const/16 v23, 0x14
+
+    const/16 v24, 0x15
+
+    const/16 v25, 0x16
+
+    const/16 v26, 0x17
+
+    const/16 v27, 0x18
+
+    const/16 v28, 0x19
+
+    const/16 v29, 0x1a
+
+    const/16 v30, 0x1b
+
+    const/16 v31, 0x1c
+
+    const/16 v32, 0x1d
+
+    const/16 v33, 0x1e
+
+    const/16 v34, 0x1f
+
+    const/16 v35, 0x20
+
+    const/16 v36, 0x21
+
+    const/16 v37, 0x22
+
+    const/16 v38, 0x23
+
+    const/16 v39, 0x24
+
+    const/16 v40, 0x25
+
+    const/16 v41, 0x26
+
+    const/16 v42, 0x27
+
+    const/16 v43, 0x28
+
+    const/16 v44, 0x29
+
+    const/16 v45, 0x2a
+
+    const/16 v46, 0x2b
+
+    const/16 v47, 0x2c
+
+    const/16 v48, 0x2d
+
+    const/16 v49, 0x2e
+
+    const/16 v50, 0x2f
+
+    const/16 v51, 0x30
+
+    const/16 v52, 0x31
+
+    const/16 v53, 0x32
+
+    const/16 v54, 0x33
+
+    const/16 v55, 0x34
+
+    const/16 v56, 0x35
+
+    const/16 v57, 0x36
+
+    const/16 v58, 0x37
+
+    const/16 v59, 0x38
+
+    const/16 v60, 0x39
+
+    const/16 v61, 0x3a
+
+    const/16 v62, 0x3b
+
+    const/16 v63, 0x3c
+
+    const/16 v64, 0x3d
+
+    const/16 v65, 0x3e
+
+    const/16 v66, 0x3f
+
+    const/16 v67, 0x40
+
+    const/16 v68, 0x41
+
+    const/16 v69, 0x42
+
+    const/16 v70, 0x43
+
+    const/16 v71, 0x45
+
+    const/16 v72, 0x46
+
+    const/16 v73, 0x47
+
+    const/16 v74, 0x48
+
+    const/16 v75, 0x49
+
+    const/16 v76, 0x4a
+
+    const/16 v77, 0x4b
+
+    const/16 v78, 0x4c
+
+    const/16 v79, 0x4d
+
+    const/16 v80, 0x4e
+
+    const/16 v81, 0x4f
+
+    const/16 v82, 0x50
+
+    const/16 v83, 0x51
+
+    const/16 v84, 0x52
+
+    const/16 v85, 0x53
+
+    const/16 v86, 0x54
+
+    const/16 v87, 0x55
+
+    const/16 v88, 0x56
+
+    const/16 v89, 0x57
+
+    const/16 v90, 0x58
+
+    const/16 v91, 0x59
+
+    const/16 v92, 0x5a
+
+    const/16 v93, 0x5b
+
+    const/16 v94, 0x5c
+
+    const/16 v95, 0x5d
+
+    const/16 v96, 0x5e
+
+    const/16 v97, 0x5f
+
+    const/16 v98, 0x60
+
+    const/16 v99, 0x61
+
+    const/16 v100, 0x62
+
+    const/16 v101, 0x63
+
+    const/16 v102, 0x64
+
+    const/16 v103, 0x65
+
+    const/16 v104, 0x66
+
+    const/16 v105, 0x67
+
+    const/16 v106, 0x68
+
+    const/16 v107, 0x69
+
+    const/16 v108, 0x6a
+
+    const/16 v109, 0x6b
+
+    const/16 v110, 0x6c
+
+    const/16 v111, 0x6d
+
+    const/16 v112, 0x6e
+
+    const/16 v113, 0x6f
+
+    const/16 v114, 0x70
+
+    const/16 v115, 0x71
+
+    const/16 v116, 0x72
+
+    const/16 v117, 0x73
+
+    const/16 v118, 0x74
+
+    const/16 v119, 0x75
+
+    const/16 v120, 0x76
+
+    const/16 v121, 0x77
+
+    const/16 v122, 0x78
+
+    const/16 v123, 0x79
+
+    const/16 v124, 0x7a
+
+    const/16 v125, 0x7b
+
+    const/16 v126, 0x7c
+
+    const/16 v127, 0x7d
+
+    const/16 v128, 0x7e
+
+    const/16 v129, 0x7f
+
+    const/16 v130, 0x80
+
+    const/16 v131, 0x81
+
+    const/16 v132, 0x82
+
+    const/16 v133, 0x83
+
+    const/16 v134, 0x84
+
+    const/16 v135, 0x85
+
+    const/16 v136, 0x86
+
+    const/16 v137, 0x87
+
+    const/16 v138, 0x88
+
+    const/16 v139, 0x89
+
+    const/16 v140, 0x8a
+
+    const/16 v141, 0x8b
+
+    const/16 v142, 0x8c
+
+    const/16 v143, 0x8d
+
+    const/16 v144, 0x8e
+
+    const/16 v145, 0x8f
+
+    const/16 v146, 0x90
+
+    const/16 v147, 0x91
+
+    const/16 v148, 0x92
+
+    const/16 v149, 0x93
+
+    const/16 v150, 0x94
+
+    const/16 v151, 0x95
+
+    const/16 v152, 0x96
+
+    const/16 v153, 0x97
+
+    const/16 v154, 0x98
+
+    const/16 v155, 0x99
+
+    const/16 v156, 0x9a
+
+    const/16 v157, 0x9b
+
+    const/16 v158, 0x9c
+
+    const/16 v159, 0x9d
+
+    const/16 v160, 0x9e
+
+    const/16 v161, 0x9f
+
+    const/16 v162, 0xa0
+
+    const/16 v163, 0xa1
+
+    const/16 v164, 0xa2
+
+    const/16 v165, 0xa3
+
+    const/16 v166, 0xa4
+
+    const/16 v167, 0xa5
+
+    const/16 v168, 0xa6
+
+    const/16 v169, 0xa7
+
+    const/16 v170, 0xa8
+
+    const/16 v171, 0xa9
+
+    const/16 v172, 0xaa
+
+    const/16 v173, 0xab
+
+    const/16 v174, 0xac
+
+    const/16 v175, 0xad
+
+    const/16 v176, 0xae
+
+    const/16 v177, 0xaf
+
+    const/16 v178, 0xb0
+
+    const/16 v179, 0xb1
+
+    const/16 v180, 0xb2
+
+    const/16 v181, 0xb3
+
+    const/16 v182, 0xb4
+
+    const/16 v183, 0xb5
+
+    const/16 v184, 0xb6
+
+    const/16 v185, 0xb7
+
+    const/16 v186, 0xb8
+
+    const/16 v187, 0xb9
+
+    const/16 v188, 0xba
+
+    const/16 v189, 0xbb
+
+    const/16 v190, 0xbc
+
+    const/16 v191, 0xbd
+
+    const/16 v192, 0xbe
+
+    const/16 v193, 0xbf
+
+    const/16 v194, 0xc0
+
+    const/16 v195, 0xc1
+
+    const/16 v196, 0xc2
+
+    const/16 v197, 0xc3
+
+    const/16 v198, 0xc4
+
+    const/16 v199, 0xc5
+
+    const/16 v200, 0xc6
+
+    const/16 v201, 0xc7
+
+    const/16 v202, 0xc8
+
+    const/16 v203, 0xc9
+
+    const/16 v204, 0xca
+
+    const/16 v205, 0xcb
+
+    const/16 v206, 0xcc
+
+    const/16 v207, 0xcd
+
+    const/16 v208, 0xce
+
+    const/16 v209, 0xcf
+
+    const/16 v210, 0xd0
+
+    const/16 v211, 0xd1
+
+    const/16 v212, 0xd2
+
+    const/16 v213, 0xd3
+
+    const/16 v214, 0xd4
+
+    const/16 v215, 0xd5
+
+    const/16 v216, 0xd6
+
+    const/16 v217, 0xd7
+
+    const/16 v218, 0xd8
+
+    const/16 v219, 0xd9
+
+    const/16 v220, 0xda
+
+    const/16 v221, 0xdb
+
+    const/16 v222, 0xdc
+
+    const/16 v223, 0xdd
+
+    const/16 v224, 0xde
+
+    const/16 v225, 0xdf
+
+    const/16 v226, 0xe0
+
+    const/16 v227, 0xe1
+
+    const/16 v228, 0xe2
+
+    const/16 v229, 0xe3
+
+    const/16 v230, 0xe4
+
+    const/16 v231, 0xe5
+
+    const/16 v232, 0xe6
+
+    const/16 v233, 0xe7
+
+    const/16 v234, 0xe8
+
+    const/16 v235, 0xe9
+
+    const/16 v236, 0xea
+
+    const/16 v237, 0xeb
+
+    const/16 v238, 0xec
+
+    const/16 v239, 0xed
+
+    const/16 v240, 0xee
+
+    const/16 v241, 0xef
+
+    const/16 v242, 0xf0
+
+    const/16 v243, 0xf1
+
+    const/16 v244, 0xf2
+
+    const/16 v245, 0xf3
+
+    const/16 v246, 0xf4
+
+    const/16 v247, 0xf5
+
+    const/16 v248, 0xf6
+
+    const/16 v249, 0xf7
+
+    const/16 v250, 0xf8
+
+    const/16 v251, 0xf9
+
+    const/16 v252, 0xfa
+
+    const/16 v253, 0xfb
+
+    const/16 v254, 0xfc
+
+    const/16 v255, 0xff
+
+    array-length v1, v1
+
+    sub-int/2addr v1, v4
+
+    sput v1, Lorg/oscim/tiling/source/oscimap4/Tags;->MAX_KEY:I
 
     .line 99
-    const/16 v0, 0x100
+    new-array v1, v2, [Ljava/lang/String;
 
-    new-array v0, v0, [Ljava/lang/String;
+    const-string v2, "yes"
 
-    const-string v1, "yes"
+    aput-object v2, v1, v3
 
-    aput-object v1, v0, v3
+    const-string v2, "residential"
 
-    const-string v1, "residential"
+    aput-object v2, v1, v4
 
-    aput-object v1, v0, v4
+    const-string v2, "service"
 
-    const-string v1, "service"
+    aput-object v2, v1, v5
 
-    aput-object v1, v0, v5
+    const-string v2, "unclassified"
 
-    const-string v1, "unclassified"
+    aput-object v2, v1, v6
 
-    aput-object v1, v0, v6
+    const-string v2, "stream"
 
-    const-string v1, "stream"
-
-    aput-object v1, v0, v7
-
-    const/4 v1, 0x5
+    aput-object v2, v1, v7
 
     const-string v2, "track"
 
-    aput-object v2, v0, v1
-
-    const/4 v1, 0x6
+    aput-object v2, v1, v8
 
     const-string v2, "water"
 
-    aput-object v2, v0, v1
-
-    const/4 v1, 0x7
+    aput-object v2, v1, v9
 
     const-string v2, "footway"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x8
+    aput-object v2, v1, v10
 
     const-string v2, "tertiary"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x9
+    aput-object v2, v1, v11
 
     const-string v2, "private"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xa
+    aput-object v2, v1, v12
 
     const-string v2, "tree"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xb
+    aput-object v2, v1, v13
 
     const-string v2, "path"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xc
+    aput-object v2, v1, v14
 
     const-string v2, "forest"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xd
+    aput-object v2, v1, v15
 
     const-string v2, "secondary"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xe
+    aput-object v2, v1, v16
 
     const-string v2, "house"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xf
+    aput-object v2, v1, v17
 
     const-string v2, "no"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x10
+    aput-object v2, v1, v18
 
     const-string v2, "asphalt"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x11
+    aput-object v2, v1, v19
 
     const-string v2, "wood"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x12
+    aput-object v2, v1, v20
 
     const-string v2, "grass"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x13
+    aput-object v2, v1, v21
 
     const-string v2, "paved"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x14
+    aput-object v2, v1, v22
 
     const-string v2, "primary"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x15
+    aput-object v2, v1, v23
 
     const-string v2, "unpaved"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x16
+    aput-object v2, v1, v24
 
     const-string v2, "bus_stop"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x17
+    aput-object v2, v1, v25
 
     const-string v2, "parking"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x18
+    aput-object v2, v1, v26
 
     const-string v2, "parking_aisle"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x19
+    aput-object v2, v1, v27
 
     const-string v2, "rail"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x1a
+    aput-object v2, v1, v28
 
     const-string v2, "driveway"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x1b
+    aput-object v2, v1, v29
 
     const-string v2, "8"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x1c
+    aput-object v2, v1, v30
 
     const-string v2, "administrative"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x1d
+    aput-object v2, v1, v31
 
     const-string v2, "locality"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x1e
+    aput-object v2, v1, v32
 
     const-string v2, "turning_circle"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x1f
+    aput-object v2, v1, v33
 
     const-string v2, "crossing"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x20
+    aput-object v2, v1, v34
 
     const-string v2, "village"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x21
+    aput-object v2, v1, v35
 
     const-string v2, "fence"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x22
+    aput-object v2, v1, v36
 
     const-string v2, "grade2"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x23
+    aput-object v2, v1, v37
 
     const-string v2, "coastline"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x24
+    aput-object v2, v1, v38
 
     const-string v2, "grade3"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x25
+    aput-object v2, v1, v39
 
     const-string v2, "farmland"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x26
+    aput-object v2, v1, v40
 
     const-string v2, "hamlet"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x27
+    aput-object v2, v1, v41
 
     const-string v2, "hut"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x28
+    aput-object v2, v1, v42
 
     const-string v2, "meadow"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x29
+    aput-object v2, v1, v43
 
     const-string v2, "wetland"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x2a
+    aput-object v2, v1, v44
 
     const-string v2, "cycleway"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x2b
+    aput-object v2, v1, v45
 
     const-string v2, "river"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x2c
+    aput-object v2, v1, v46
 
     const-string v2, "school"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x2d
+    aput-object v2, v1, v47
 
     const-string v2, "trunk"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x2e
+    aput-object v2, v1, v48
 
     const-string v2, "gravel"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x2f
+    aput-object v2, v1, v49
 
     const-string v2, "place_of_worship"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x30
+    aput-object v2, v1, v50
 
     const-string v2, "farm"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x31
+    aput-object v2, v1, v51
 
     const-string v2, "grade1"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x32
+    aput-object v2, v1, v52
 
     const-string v2, "traffic_signals"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x33
+    aput-object v2, v1, v53
 
     const-string v2, "wall"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x34
+    aput-object v2, v1, v54
 
     const-string v2, "garage"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x35
+    aput-object v2, v1, v55
 
     const-string v2, "gate"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x36
+    aput-object v2, v1, v56
 
     const-string v2, "motorway"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x37
+    aput-object v2, v1, v57
 
     const-string v2, "living_street"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x38
+    aput-object v2, v1, v58
 
     const-string v2, "pitch"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x39
+    aput-object v2, v1, v59
 
     const-string v2, "grade4"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x3a
+    aput-object v2, v1, v60
 
     const-string v2, "industrial"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x3b
+    aput-object v2, v1, v61
 
     const-string v2, "road"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x3c
+    aput-object v2, v1, v62
 
     const-string v2, "ground"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x3d
+    aput-object v2, v1, v63
 
     const-string v2, "scrub"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x3e
+    aput-object v2, v1, v64
 
     const-string v2, "motorway_link"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x3f
+    aput-object v2, v1, v65
 
     const-string v2, "steps"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x40
+    aput-object v2, v1, v66
 
     const-string v2, "ditch"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x41
+    aput-object v2, v1, v67
 
     const-string v2, "swimming_pool"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x42
+    aput-object v2, v1, v68
 
     const-string v2, "grade5"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x43
+    aput-object v2, v1, v69
 
     const-string v2, "park"
 
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x44
+    aput-object v2, v1, v70
 
     const-string v2, "apartments"
 
-    aput-object v2, v0, v1
+    aput-object v2, v1, v0
 
-    const/16 v1, 0x45
+    const-string v0, "restaurant"
 
-    const-string v2, "restaurant"
+    aput-object v0, v1, v71
 
-    aput-object v2, v0, v1
+    const-string v0, "designated"
 
-    const/16 v1, 0x46
+    aput-object v0, v1, v72
 
-    const-string v2, "designated"
+    const-string v0, "bench"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v73
 
-    const/16 v1, 0x47
+    const-string v0, "survey_point"
 
-    const-string v2, "bench"
+    aput-object v0, v1, v74
 
-    aput-object v2, v0, v1
+    const-string v0, "pedestrian"
 
-    const/16 v1, 0x48
+    aput-object v0, v1, v75
 
-    const-string v2, "survey_point"
+    const-string v0, "hedge"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v76
 
-    const/16 v1, 0x49
+    const-string v0, "reservoir"
 
-    const-string v2, "pedestrian"
+    aput-object v0, v1, v77
 
-    aput-object v2, v0, v1
+    const-string v0, "riverbank"
 
-    const/16 v1, 0x4a
+    aput-object v0, v1, v78
 
-    const-string v2, "hedge"
+    const-string v0, "alley"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v79
 
-    const/16 v1, 0x4b
+    const-string v0, "farmyard"
 
-    const-string v2, "reservoir"
+    aput-object v0, v1, v80
 
-    aput-object v2, v0, v1
+    const-string v0, "peak"
 
-    const/16 v1, 0x4c
+    aput-object v0, v1, v81
 
-    const-string v2, "riverbank"
+    const-string v0, "level_crossing"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v82
 
-    const/16 v1, 0x4d
+    const-string v0, "roof"
 
-    const-string v2, "alley"
+    aput-object v0, v1, v83
 
-    aput-object v2, v0, v1
+    const-string v0, "dirt"
 
-    const/16 v1, 0x4e
+    aput-object v0, v1, v84
 
-    const-string v2, "farmyard"
+    const-string v0, "drain"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v85
 
-    const/16 v1, 0x4f
+    const-string v0, "garages"
 
-    const-string v2, "peak"
+    aput-object v0, v1, v86
 
-    aput-object v2, v0, v1
+    const-string v0, "entrance"
 
-    const/16 v1, 0x50
+    aput-object v0, v1, v87
 
-    const-string v2, "level_crossing"
+    const-string v0, "street_lamp"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v88
 
-    const/16 v1, 0x51
+    const-string v0, "deciduous"
 
-    const-string v2, "roof"
+    aput-object v0, v1, v89
 
-    aput-object v2, v0, v1
+    const-string v0, "fuel"
 
-    const/16 v1, 0x52
+    aput-object v0, v1, v90
 
-    const-string v2, "dirt"
+    const-string v0, "trunk_link"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v91
 
-    const/16 v1, 0x53
+    const-string v0, "information"
 
-    const-string v2, "drain"
+    aput-object v0, v1, v92
 
-    aput-object v2, v0, v1
+    const-string v0, "playground"
 
-    const/16 v1, 0x54
+    aput-object v0, v1, v93
 
-    const-string v2, "garages"
+    const-string v0, "supermarket"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v94
 
-    const/16 v1, 0x55
+    const-string v0, "primary_link"
 
-    const-string v2, "entrance"
+    aput-object v0, v1, v95
 
-    aput-object v2, v0, v1
+    const-string v0, "concrete"
 
-    const/16 v1, 0x56
+    aput-object v0, v1, v96
 
-    const-string v2, "street_lamp"
+    const-string v0, "mixed"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v97
 
-    const/16 v1, 0x57
+    const-string v0, "permissive"
 
-    const-string v2, "deciduous"
+    aput-object v0, v1, v98
 
-    aput-object v2, v0, v1
+    const-string v0, "orchard"
 
-    const/16 v1, 0x58
+    aput-object v0, v1, v99
 
-    const-string v2, "fuel"
+    const-string v0, "grave_yard"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v100
 
-    const/16 v1, 0x59
+    const-string v0, "canal"
 
-    const-string v2, "trunk_link"
+    aput-object v0, v1, v101
 
-    aput-object v2, v0, v1
+    const-string v0, "garden"
 
-    const/16 v1, 0x5a
+    aput-object v0, v1, v102
 
-    const-string v2, "information"
+    const-string v0, "spur"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v103
 
-    const/16 v1, 0x5b
+    const-string v0, "paving_stones"
 
-    const-string v2, "playground"
+    aput-object v0, v1, v104
 
-    aput-object v2, v0, v1
+    const-string v0, "rock"
 
-    const/16 v1, 0x5c
+    aput-object v0, v1, v105
 
-    const-string v2, "supermarket"
+    const-string v0, "bollard"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v106
 
-    const/16 v1, 0x5d
+    const-string v0, "convenience"
 
-    const-string v2, "primary_link"
+    aput-object v0, v1, v107
 
-    aput-object v2, v0, v1
+    const-string v0, "cemetery"
 
-    const/16 v1, 0x5e
+    aput-object v0, v1, v108
 
-    const-string v2, "concrete"
+    const-string v0, "post_box"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v109
 
-    const/16 v1, 0x5f
+    const-string v0, "commercial"
 
-    const-string v2, "mixed"
+    aput-object v0, v1, v110
 
-    aput-object v2, v0, v1
+    const-string v0, "pier"
 
-    const/16 v1, 0x60
+    aput-object v0, v1, v111
 
-    const-string v2, "permissive"
+    const-string v0, "bank"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v112
 
-    const/16 v1, 0x61
+    const-string v0, "hotel"
 
-    const-string v2, "orchard"
+    aput-object v0, v1, v113
 
-    aput-object v2, v0, v1
+    const-string v0, "cliff"
 
-    const/16 v1, 0x62
+    aput-object v0, v1, v114
 
-    const-string v2, "grave_yard"
+    const-string v0, "retail"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v115
 
-    const/16 v1, 0x63
+    const-string v0, "construction"
 
-    const-string v2, "canal"
+    aput-object v0, v1, v116
 
-    aput-object v2, v0, v1
+    const-string v0, "-1"
 
-    const/16 v1, 0x64
+    aput-object v0, v1, v117
 
-    const-string v2, "garden"
+    const-string v0, "fast_food"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v118
 
-    const/16 v1, 0x65
+    const-string v0, "coniferous"
 
-    const-string v2, "spur"
+    aput-object v0, v1, v119
 
-    aput-object v2, v0, v1
+    const-string v0, "cafe"
 
-    const/16 v1, 0x66
+    aput-object v0, v1, v120
 
-    const-string v2, "paving_stones"
+    const-string v0, "6"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v121
 
-    const/16 v1, 0x67
+    const-string v0, "kindergarten"
 
-    const-string v2, "rock"
+    aput-object v0, v1, v122
 
-    aput-object v2, v0, v1
+    const-string v0, "tower"
 
-    const/16 v1, 0x68
+    aput-object v0, v1, v123
 
-    const-string v2, "bollard"
+    const-string v0, "hospital"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v124
 
-    const/16 v1, 0x69
+    const-string v0, "yard"
 
-    const-string v2, "convenience"
+    aput-object v0, v1, v125
 
-    aput-object v2, v0, v1
+    const-string v0, "sand"
 
-    const/16 v1, 0x6a
+    aput-object v0, v1, v126
 
-    const-string v2, "cemetery"
+    const-string v0, "public_building"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v127
 
-    const/16 v1, 0x6b
+    const-string v0, "cobblestone"
 
-    const-string v2, "post_box"
+    aput-object v0, v1, v128
 
-    aput-object v2, v0, v1
+    const-string v0, "destination"
 
-    const/16 v1, 0x6c
+    aput-object v0, v1, v129
 
-    const-string v2, "commercial"
+    const-string v0, "island"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v130
 
-    const/16 v1, 0x6d
+    const-string v0, "abandoned"
 
-    const-string v2, "pier"
+    aput-object v0, v1, v131
 
-    aput-object v2, v0, v1
+    const-string v0, "vineyard"
 
-    const/16 v1, 0x6e
+    aput-object v0, v1, v132
 
-    const-string v2, "bank"
+    const-string v0, "recycling"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v133
 
-    const/16 v1, 0x6f
+    const-string v0, "agricultural"
 
-    const-string v2, "hotel"
+    aput-object v0, v1, v134
 
-    aput-object v2, v0, v1
+    const-string v0, "isolated_dwelling"
 
-    const/16 v1, 0x70
+    aput-object v0, v1, v135
 
-    const-string v2, "cliff"
+    const-string v0, "pharmacy"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v136
 
-    const/16 v1, 0x71
+    const-string v0, "post_office"
 
-    const-string v2, "retail"
+    aput-object v0, v1, v137
 
-    aput-object v2, v0, v1
+    const-string v0, "motorway_junction"
 
-    const/16 v1, 0x72
+    aput-object v0, v1, v138
 
-    const-string v2, "construction"
+    const-string v0, "pub"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v139
 
-    const/16 v1, 0x73
+    const-string v0, "allotments"
 
-    const-string v2, "-1"
+    aput-object v0, v1, v140
 
-    aput-object v2, v0, v1
+    const-string v0, "dam"
 
-    const/16 v1, 0x74
+    aput-object v0, v1, v141
 
-    const-string v2, "fast_food"
+    const-string v0, "secondary_link"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v142
 
-    const/16 v1, 0x75
+    const-string v0, "lift_gate"
 
-    const-string v2, "coniferous"
+    aput-object v0, v1, v143
 
-    aput-object v2, v0, v1
+    const-string v0, "siding"
 
-    const/16 v1, 0x76
+    aput-object v0, v1, v144
 
-    const-string v2, "cafe"
+    const-string v0, "stop"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v145
 
-    const/16 v1, 0x77
+    const-string v0, "main"
 
-    const-string v2, "6"
+    aput-object v0, v1, v146
 
-    aput-object v2, v0, v1
+    const-string v0, "farm_auxiliary"
 
-    const/16 v1, 0x78
+    aput-object v0, v1, v147
 
-    const-string v2, "kindergarten"
+    const-string v0, "quarry"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v148
 
-    const/16 v1, 0x79
+    const-string v0, "10"
 
-    const-string v2, "tower"
+    aput-object v0, v1, v149
 
-    aput-object v2, v0, v1
+    const-string v0, "station"
 
-    const/16 v1, 0x7a
+    aput-object v0, v1, v150
 
-    const-string v2, "hospital"
+    const-string v0, "platform"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v151
 
-    const/16 v1, 0x7b
+    const-string v0, "taxiway"
 
-    const-string v2, "yard"
+    aput-object v0, v1, v152
 
-    aput-object v2, v0, v1
+    const-string v0, "limited"
 
-    const/16 v1, 0x7c
+    aput-object v0, v1, v153
 
-    const-string v2, "sand"
+    const-string v0, "sports_centre"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v154
 
-    const/16 v1, 0x7d
+    const-string v0, "cutline"
 
-    const-string v2, "public_building"
+    aput-object v0, v1, v155
 
-    aput-object v2, v0, v1
+    const-string v0, "detached"
 
-    const/16 v1, 0x7e
+    aput-object v0, v1, v156
 
-    const-string v2, "cobblestone"
+    const-string v0, "storage_tank"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v157
 
-    const/16 v1, 0x7f
+    const-string v0, "basin"
 
-    const-string v2, "destination"
+    aput-object v0, v1, v158
 
-    aput-object v2, v0, v1
+    const-string v0, "bicycle_parking"
 
-    const/16 v1, 0x80
+    aput-object v0, v1, v159
 
-    const-string v2, "island"
+    const-string v0, "telephone"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v160
 
-    const/16 v1, 0x81
+    const-string v0, "terrace"
 
-    const-string v2, "abandoned"
+    aput-object v0, v1, v161
 
-    aput-object v2, v0, v1
+    const-string v0, "town"
 
-    const/16 v1, 0x82
+    aput-object v0, v1, v162
 
-    const-string v2, "vineyard"
+    const-string v0, "suburb"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v163
 
-    const/16 v1, 0x83
+    const-string v0, "bus"
 
-    const-string v2, "recycling"
+    aput-object v0, v1, v164
 
-    aput-object v2, v0, v1
+    const-string v0, "compacted"
 
-    const/16 v1, 0x84
+    aput-object v0, v1, v165
 
-    const-string v2, "agricultural"
+    const-string v0, "toilets"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v166
 
-    const/16 v1, 0x85
+    const-string v0, "heath"
 
-    const-string v2, "isolated_dwelling"
+    aput-object v0, v1, v167
 
-    aput-object v2, v0, v1
+    const-string v0, "works"
 
-    const/16 v1, 0x86
+    aput-object v0, v1, v168
 
-    const-string v2, "pharmacy"
+    const-string v0, "tram"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v169
 
-    const/16 v1, 0x87
+    const-string v0, "beach"
 
-    const-string v2, "post_office"
+    aput-object v0, v1, v170
 
-    aput-object v2, v0, v1
+    const-string v0, "culvert"
 
-    const/16 v1, 0x88
+    aput-object v0, v1, v171
 
-    const-string v2, "motorway_junction"
+    const-string v0, "fire_station"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v172
 
-    const/16 v1, 0x89
+    const-string v0, "recreation_ground"
 
-    const-string v2, "pub"
+    aput-object v0, v1, v173
 
-    aput-object v2, v0, v1
+    const-string v0, "bakery"
 
-    const/16 v1, 0x8a
+    aput-object v0, v1, v174
 
-    const-string v2, "allotments"
+    const-string v0, "police"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v175
 
-    const/16 v1, 0x8b
+    const-string v0, "atm"
 
-    const-string v2, "dam"
+    aput-object v0, v1, v176
 
-    aput-object v2, v0, v1
+    const-string v0, "clothes"
 
-    const/16 v1, 0x8c
+    aput-object v0, v1, v177
 
-    const-string v2, "secondary_link"
+    const-string v0, "tertiary_link"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v178
 
-    const/16 v1, 0x8d
+    const-string v0, "waste_basket"
 
-    const-string v2, "lift_gate"
+    aput-object v0, v1, v179
 
-    aput-object v2, v0, v1
+    const-string v0, "attraction"
 
-    const/16 v1, 0x8e
+    aput-object v0, v1, v180
 
-    const-string v2, "siding"
+    const-string v0, "viewpoint"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v181
 
-    const/16 v1, 0x8f
+    const-string v0, "bicycle"
 
-    const-string v2, "stop"
+    aput-object v0, v1, v182
 
-    aput-object v2, v0, v1
+    const-string v0, "church"
 
-    const/16 v1, 0x90
+    aput-object v0, v1, v183
 
-    const-string v2, "main"
+    const-string v0, "shelter"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v184
 
-    const/16 v1, 0x91
+    const-string v0, "drinking_water"
 
-    const-string v2, "farm_auxiliary"
+    aput-object v0, v1, v185
 
-    aput-object v2, v0, v1
+    const-string v0, "marsh"
 
-    const/16 v1, 0x92
+    aput-object v0, v1, v186
 
-    const-string v2, "quarry"
+    const-string v0, "picnic_site"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v187
 
-    const/16 v1, 0x93
+    const-string v0, "hairdresser"
 
-    const-string v2, "10"
+    aput-object v0, v1, v188
 
-    aput-object v2, v0, v1
+    const-string v0, "bridleway"
 
-    const/16 v1, 0x94
+    aput-object v0, v1, v189
 
-    const-string v2, "station"
+    const-string v0, "retaining_wall"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v190
 
-    const/16 v1, 0x95
+    const-string v0, "buffer_stop"
 
-    const-string v2, "platform"
+    aput-object v0, v1, v191
 
-    aput-object v2, v0, v1
+    const-string v0, "nature_reserve"
 
-    const/16 v1, 0x96
+    aput-object v0, v1, v192
 
-    const-string v2, "taxiway"
+    const-string v0, "village_green"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v193
 
-    const/16 v1, 0x97
+    const-string v0, "university"
 
-    const-string v2, "limited"
+    aput-object v0, v1, v194
 
-    aput-object v2, v0, v1
+    const-string v0, "1"
 
-    const/16 v1, 0x98
+    aput-object v0, v1, v195
 
-    const-string v2, "sports_centre"
+    const-string v0, "bar"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v196
 
-    const/16 v1, 0x99
+    const-string v0, "townhall"
 
-    const-string v2, "cutline"
+    aput-object v0, v1, v197
 
-    aput-object v2, v0, v1
+    const-string v0, "mini_roundabout"
 
-    const/16 v1, 0x9a
+    aput-object v0, v1, v198
 
-    const-string v2, "detached"
+    const-string v0, "camp_site"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v199
 
-    const/16 v1, 0x9b
+    const-string v0, "aerodrome"
 
-    const-string v2, "storage_tank"
+    aput-object v0, v1, v200
 
-    aput-object v2, v0, v1
+    const-string v0, "stile"
 
-    const/16 v1, 0x9c
+    aput-object v0, v1, v201
 
-    const-string v2, "basin"
+    const-string v0, "9"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v202
 
-    const/16 v1, 0x9d
+    const-string v0, "car_repair"
 
-    const-string v2, "bicycle_parking"
+    aput-object v0, v1, v203
 
-    aput-object v2, v0, v1
+    const-string v0, "parking_space"
 
-    const/16 v1, 0x9e
+    aput-object v0, v1, v204
 
-    const-string v2, "telephone"
+    const-string v0, "library"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v205
 
-    const/16 v1, 0x9f
+    const-string v0, "pipeline"
 
-    const-string v2, "terrace"
+    aput-object v0, v1, v206
 
-    aput-object v2, v0, v1
+    const-string v0, "true"
 
-    const/16 v1, 0xa0
+    aput-object v0, v1, v207
 
-    const-string v2, "town"
+    const-string v0, "cycle_barrier"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v208
 
-    const/16 v1, 0xa1
+    const-string v0, "4"
 
-    const-string v2, "suburb"
+    aput-object v0, v1, v209
 
-    aput-object v2, v0, v1
+    const-string v0, "museum"
 
-    const/16 v1, 0xa2
+    aput-object v0, v1, v210
 
-    const-string v2, "bus"
+    const-string v0, "spring"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v211
 
-    const/16 v1, 0xa3
+    const-string v0, "hunting_stand"
 
-    const-string v2, "compacted"
+    aput-object v0, v1, v212
 
-    aput-object v2, v0, v1
+    const-string v0, "disused"
 
-    const/16 v1, 0xa4
+    aput-object v0, v1, v213
 
-    const-string v2, "toilets"
+    const-string v0, "car"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v214
 
-    const/16 v1, 0xa5
+    const-string v0, "tram_stop"
 
-    const-string v2, "heath"
+    aput-object v0, v1, v215
 
-    aput-object v2, v0, v1
+    const-string v0, "land"
 
-    const/16 v1, 0xa6
+    aput-object v0, v1, v216
 
-    const-string v2, "works"
+    const-string v0, "fountain"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v217
 
-    const/16 v1, 0xa7
+    const-string v0, "hiking"
 
-    const-string v2, "tram"
+    aput-object v0, v1, v218
 
-    aput-object v2, v0, v1
+    const-string v0, "manufacture"
 
-    const/16 v1, 0xa8
+    aput-object v0, v1, v219
 
-    const-string v2, "beach"
+    const-string v0, "vending_machine"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v220
 
-    const/16 v1, 0xa9
+    const-string v0, "kiosk"
 
-    const-string v2, "culvert"
+    aput-object v0, v1, v221
 
-    aput-object v2, v0, v1
+    const-string v0, "swamp"
 
-    const/16 v1, 0xaa
+    aput-object v0, v1, v222
 
-    const-string v2, "fire_station"
+    const-string v0, "unknown"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v223
 
-    const/16 v1, 0xab
+    const-string v0, "7"
 
-    const-string v2, "recreation_ground"
+    aput-object v0, v1, v224
 
-    aput-object v2, v0, v1
+    const-string v0, "islet"
 
-    const/16 v1, 0xac
+    aput-object v0, v1, v225
 
-    const-string v2, "bakery"
+    const-string v0, "shed"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v226
 
-    const/16 v1, 0xad
+    const-string v0, "switch"
 
-    const-string v2, "police"
+    aput-object v0, v1, v227
 
-    aput-object v2, v0, v1
+    const-string v0, "rapids"
 
-    const/16 v1, 0xae
+    aput-object v0, v1, v228
 
-    const-string v2, "atm"
+    const-string v0, "office"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v229
 
-    const/16 v1, 0xaf
+    const-string v0, "bay"
 
-    const-string v2, "clothes"
+    aput-object v0, v1, v230
 
-    aput-object v2, v0, v1
+    const-string v0, "proposed"
 
-    const/16 v1, 0xb0
+    aput-object v0, v1, v231
 
-    const-string v2, "tertiary_link"
+    const-string v0, "common"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v232
 
-    const/16 v1, 0xb1
+    const-string v0, "weir"
 
-    const-string v2, "waste_basket"
+    aput-object v0, v1, v233
 
-    aput-object v2, v0, v1
+    const-string v0, "grassland"
 
-    const/16 v1, 0xb2
+    aput-object v0, v1, v234
 
-    const-string v2, "attraction"
+    const-string v0, "customers"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v235
 
-    const/16 v1, 0xb3
+    const-string v0, "social_facility"
 
-    const-string v2, "viewpoint"
+    aput-object v0, v1, v236
 
-    aput-object v2, v0, v1
+    const-string v0, "hangar"
 
-    const/16 v1, 0xb4
+    aput-object v0, v1, v237
 
-    const-string v2, "bicycle"
+    const-string v0, "doctors"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v238
 
-    const/16 v1, 0xb5
+    const-string v0, "stadium"
 
-    const-string v2, "church"
+    aput-object v0, v1, v239
 
-    aput-object v2, v0, v1
+    const-string v0, "give_way"
 
-    const/16 v1, 0xb6
+    aput-object v0, v1, v240
 
-    const-string v2, "shelter"
+    const-string v0, "greenhouse"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v241
 
-    const/16 v1, 0xb7
+    const-string v0, "guest_house"
 
-    const-string v2, "drinking_water"
+    aput-object v0, v1, v242
 
-    aput-object v2, v0, v1
+    const-string v0, "viaduct"
 
-    const/16 v1, 0xb8
+    aput-object v0, v1, v243
 
-    const-string v2, "marsh"
+    const-string v0, "doityourself"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v244
 
-    const/16 v1, 0xb9
+    const-string v0, "runway"
 
-    const-string v2, "picnic_site"
+    aput-object v0, v1, v245
 
-    aput-object v2, v0, v1
+    const-string v0, "bus_station"
 
-    const/16 v1, 0xba
+    aput-object v0, v1, v246
 
-    const-string v2, "hairdresser"
+    const-string v0, "water_tower"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v247
 
-    const/16 v1, 0xbb
+    const-string v0, "golf_course"
 
-    const-string v2, "bridleway"
+    aput-object v0, v1, v248
 
-    aput-object v2, v0, v1
+    const-string v0, "conservation"
 
-    const/16 v1, 0xbc
+    aput-object v0, v1, v249
 
-    const-string v2, "retaining_wall"
+    const-string v0, "block"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v250
 
-    const/16 v1, 0xbd
+    const-string v0, "college"
 
-    const-string v2, "buffer_stop"
+    aput-object v0, v1, v251
 
-    aput-object v2, v0, v1
+    const-string v0, "wastewater_plant"
 
-    const/16 v1, 0xbe
+    aput-object v0, v1, v252
 
-    const-string v2, "nature_reserve"
+    const-string v0, "subway"
 
-    aput-object v2, v0, v1
+    aput-object v0, v1, v253
 
-    const/16 v1, 0xbf
+    const-string v0, "halt"
 
-    const-string v2, "village_green"
+    aput-object v0, v1, v254
 
-    aput-object v2, v0, v1
+    const-string v0, "forestry"
 
-    const/16 v1, 0xc0
+    const/16 v2, 0xfd
 
-    const-string v2, "university"
+    aput-object v0, v1, v2
 
-    aput-object v2, v0, v1
+    const-string v0, "florist"
 
-    const/16 v1, 0xc1
+    const/16 v2, 0xfe
 
-    const-string v2, "1"
+    aput-object v0, v1, v2
 
-    aput-object v2, v0, v1
+    const-string v0, "butcher"
 
-    const/16 v1, 0xc2
+    aput-object v0, v1, v255
 
-    const-string v2, "bar"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xc3
-
-    const-string v2, "townhall"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xc4
-
-    const-string v2, "mini_roundabout"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xc5
-
-    const-string v2, "camp_site"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xc6
-
-    const-string v2, "aerodrome"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xc7
-
-    const-string v2, "stile"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xc8
-
-    const-string v2, "9"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xc9
-
-    const-string v2, "car_repair"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xca
-
-    const-string v2, "parking_space"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xcb
-
-    const-string v2, "library"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xcc
-
-    const-string v2, "pipeline"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xcd
-
-    const-string v2, "true"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xce
-
-    const-string v2, "cycle_barrier"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xcf
-
-    const-string v2, "4"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xd0
-
-    const-string v2, "museum"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xd1
-
-    const-string v2, "spring"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xd2
-
-    const-string v2, "hunting_stand"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xd3
-
-    const-string v2, "disused"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xd4
-
-    const-string v2, "car"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xd5
-
-    const-string v2, "tram_stop"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xd6
-
-    const-string v2, "land"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xd7
-
-    const-string v2, "fountain"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xd8
-
-    const-string v2, "hiking"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xd9
-
-    const-string v2, "manufacture"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xda
-
-    const-string v2, "vending_machine"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xdb
-
-    const-string v2, "kiosk"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xdc
-
-    const-string v2, "swamp"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xdd
-
-    const-string v2, "unknown"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xde
-
-    const-string v2, "7"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xdf
-
-    const-string v2, "islet"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xe0
-
-    const-string v2, "shed"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xe1
-
-    const-string v2, "switch"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xe2
-
-    const-string v2, "rapids"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xe3
-
-    const-string v2, "office"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xe4
-
-    const-string v2, "bay"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xe5
-
-    const-string v2, "proposed"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xe6
-
-    const-string v2, "common"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xe7
-
-    const-string v2, "weir"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xe8
-
-    const-string v2, "grassland"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xe9
-
-    const-string v2, "customers"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xea
-
-    const-string v2, "social_facility"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xeb
-
-    const-string v2, "hangar"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xec
-
-    const-string v2, "doctors"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xed
-
-    const-string v2, "stadium"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xee
-
-    const-string v2, "give_way"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xef
-
-    const-string v2, "greenhouse"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xf0
-
-    const-string v2, "guest_house"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xf1
-
-    const-string v2, "viaduct"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xf2
-
-    const-string v2, "doityourself"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xf3
-
-    const-string v2, "runway"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xf4
-
-    const-string v2, "bus_station"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xf5
-
-    const-string v2, "water_tower"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xf6
-
-    const-string v2, "golf_course"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xf7
-
-    const-string v2, "conservation"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xf8
-
-    const-string v2, "block"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xf9
-
-    const-string v2, "college"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xfa
-
-    const-string v2, "wastewater_plant"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xfb
-
-    const-string v2, "subway"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xfc
-
-    const-string v2, "halt"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xfd
-
-    const-string v2, "forestry"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xfe
-
-    const-string v2, "florist"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xff
-
-    const-string v2, "butcher"
-
-    aput-object v2, v0, v1
-
-    sput-object v0, Lorg/oscim/tiling/source/oscimap4/Tags;->values:[Ljava/lang/String;
+    sput-object v1, Lorg/oscim/tiling/source/oscimap4/Tags;->values:[Ljava/lang/String;
 
     .line 357
     sget-object v0, Lorg/oscim/tiling/source/oscimap4/Tags;->values:[Ljava/lang/String;
 
     array-length v0, v0
 
-    add-int/lit8 v0, v0, -0x1
+    sub-int/2addr v0, v4
 
     sput v0, Lorg/oscim/tiling/source/oscimap4/Tags;->MAX_VALUE:I
 

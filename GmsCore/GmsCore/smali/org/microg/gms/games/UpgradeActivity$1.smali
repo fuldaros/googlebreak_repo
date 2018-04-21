@@ -24,9 +24,7 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/games/UpgradeActivity;)V
     .locals 0
-    .param p1, "this$0"    # Lorg/microg/gms/games/UpgradeActivity;
 
-    .prologue
     .line 66
     iput-object p1, p0, Lorg/microg/gms/games/UpgradeActivity$1;->this$0:Lorg/microg/gms/games/UpgradeActivity;
 
@@ -38,15 +36,12 @@
 
 # virtual methods
 .method public onClick(Landroid/view/View;)V
-    .locals 1
-    .param p1, "v"    # Landroid/view/View;
+    .locals 0
 
-    .prologue
     .line 69
-    iget-object v0, p0, Lorg/microg/gms/games/UpgradeActivity$1;->this$0:Lorg/microg/gms/games/UpgradeActivity;
+    iget-object p1, p0, Lorg/microg/gms/games/UpgradeActivity$1;->this$0:Lorg/microg/gms/games/UpgradeActivity;
 
-    invoke-virtual {v0}, Lorg/microg/gms/games/UpgradeActivity;->finish()V
+    invoke-virtual {p1}, Lorg/microg/gms/games/UpgradeActivity;->finish()V
 
-    .line 70
     return-void
 .end method

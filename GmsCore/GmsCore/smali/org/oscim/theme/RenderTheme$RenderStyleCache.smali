@@ -18,8 +18,7 @@
 .field final cache:Lorg/oscim/utils/LRUCache;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Lorg/oscim/utils/LRUCache",
-            "<",
+            "Lorg/oscim/utils/LRUCache<",
             "Lorg/oscim/theme/MatchingCacheKey;",
             "Lorg/oscim/theme/RenderTheme$RenderStyleItem;",
             ">;"
@@ -32,8 +31,7 @@
 .field final instructionList:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/ArrayList",
-            "<",
+            "Ljava/util/ArrayList<",
             "Lorg/oscim/theme/styles/RenderStyle;",
             ">;"
         }
@@ -49,45 +47,41 @@
 
 # direct methods
 .method public constructor <init>(Lorg/oscim/theme/RenderTheme;I)V
-    .locals 2
-    .param p1, "this$0"    # Lorg/oscim/theme/RenderTheme;
-    .param p2, "type"    # I
+    .locals 1
 
-    .prologue
-    .line 54
+    .line 57
     iput-object p1, p0, Lorg/oscim/theme/RenderTheme$RenderStyleCache;->this$0:Lorg/oscim/theme/RenderTheme;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 55
-    new-instance v0, Lorg/oscim/utils/LRUCache;
-
-    const/16 v1, 0x200
-
-    invoke-direct {v0, v1}, Lorg/oscim/utils/LRUCache;-><init>(I)V
-
-    iput-object v0, p0, Lorg/oscim/theme/RenderTheme$RenderStyleCache;->cache:Lorg/oscim/utils/LRUCache;
-
-    .line 56
-    new-instance v0, Ljava/util/ArrayList;
-
-    const/4 v1, 0x4
-
-    invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(I)V
-
-    iput-object v0, p0, Lorg/oscim/theme/RenderTheme$RenderStyleCache;->instructionList:Ljava/util/ArrayList;
-
-    .line 57
-    new-instance v0, Lorg/oscim/theme/MatchingCacheKey;
-
-    invoke-direct {v0}, Lorg/oscim/theme/MatchingCacheKey;-><init>()V
-
-    iput-object v0, p0, Lorg/oscim/theme/RenderTheme$RenderStyleCache;->cacheKey:Lorg/oscim/theme/MatchingCacheKey;
-
     .line 58
-    iput p2, p0, Lorg/oscim/theme/RenderTheme$RenderStyleCache;->matchType:I
+    new-instance p1, Lorg/oscim/utils/LRUCache;
+
+    const/16 v0, 0x200
+
+    invoke-direct {p1, v0}, Lorg/oscim/utils/LRUCache;-><init>(I)V
+
+    iput-object p1, p0, Lorg/oscim/theme/RenderTheme$RenderStyleCache;->cache:Lorg/oscim/utils/LRUCache;
 
     .line 59
+    new-instance p1, Ljava/util/ArrayList;
+
+    const/4 v0, 0x4
+
+    invoke-direct {p1, v0}, Ljava/util/ArrayList;-><init>(I)V
+
+    iput-object p1, p0, Lorg/oscim/theme/RenderTheme$RenderStyleCache;->instructionList:Ljava/util/ArrayList;
+
+    .line 60
+    new-instance p1, Lorg/oscim/theme/MatchingCacheKey;
+
+    invoke-direct {p1}, Lorg/oscim/theme/MatchingCacheKey;-><init>()V
+
+    iput-object p1, p0, Lorg/oscim/theme/RenderTheme$RenderStyleCache;->cacheKey:Lorg/oscim/theme/MatchingCacheKey;
+
+    .line 61
+    iput p2, p0, Lorg/oscim/theme/RenderTheme$RenderStyleCache;->matchType:I
+
     return-void
 .end method
 
@@ -96,8 +90,7 @@
 .method getRenderInstructions()Lorg/oscim/theme/RenderTheme$RenderStyleItem;
     .locals 2
 
-    .prologue
-    .line 62
+    .line 65
     iget-object v0, p0, Lorg/oscim/theme/RenderTheme$RenderStyleCache;->cache:Lorg/oscim/utils/LRUCache;
 
     iget-object v1, p0, Lorg/oscim/theme/RenderTheme$RenderStyleCache;->cacheKey:Lorg/oscim/theme/MatchingCacheKey;

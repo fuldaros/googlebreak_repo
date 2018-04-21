@@ -11,10 +11,9 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .prologue
-    .line 22
     const-string v0, "UTF-8"
 
+    .line 22
     invoke-static {v0}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
 
     move-result-object v0
@@ -25,33 +24,34 @@
 .end method
 
 .method public static checkOffsetAndCount(JJJ)V
-    .locals 6
-    .param p0, "size"    # J
-    .param p2, "offset"    # J
-    .param p4, "byteCount"    # J
+    .locals 5
 
-    .prologue
-    .line 28
     or-long v0, p2, p4
 
     const-wide/16 v2, 0x0
 
-    cmp-long v0, v0, v2
+    cmp-long v4, v0, v2
 
-    if-ltz v0, :cond_0
+    if-ltz v4, :cond_1
 
     cmp-long v0, p2, p0
 
-    if-gtz v0, :cond_0
+    if-gtz v0, :cond_1
 
     sub-long v0, p0, p2
 
-    cmp-long v0, v0, p4
+    cmp-long v2, v0, p4
 
-    if-gez v0, :cond_1
+    if-gez v2, :cond_0
+
+    goto :goto_0
+
+    :cond_0
+    return-void
 
     .line 29
-    :cond_0
+    :cond_1
+    :goto_0
     new-instance v0, Ljava/lang/ArrayIndexOutOfBoundsException;
 
     const-string v1, "size=%s offset=%s byteCount=%s"
@@ -64,45 +64,38 @@
 
     invoke-static {p0, p1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
-    move-result-object v4
+    move-result-object p0
 
-    aput-object v4, v2, v3
+    aput-object p0, v2, v3
 
-    const/4 v3, 0x1
+    const/4 p0, 0x1
 
     invoke-static {p2, p3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
-    move-result-object v4
+    move-result-object p1
 
-    aput-object v4, v2, v3
+    aput-object p1, v2, p0
 
-    const/4 v3, 0x2
+    const/4 p0, 0x2
 
     invoke-static {p4, p5}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
-    move-result-object v4
+    move-result-object p1
 
-    aput-object v4, v2, v3
+    aput-object p1, v2, p0
 
     invoke-static {v1, v2}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object p0
 
-    invoke-direct {v0, v1}, Ljava/lang/ArrayIndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, p0}, Ljava/lang/ArrayIndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
 
     throw v0
-
-    .line 32
-    :cond_1
-    return-void
 .end method
 
 .method public static reverseBytesInt(I)I
     .locals 2
-    .param p0, "i"    # I
 
-    .prologue
-    .line 42
     const/high16 v0, -0x1000000
 
     and-int/2addr v0, p0
@@ -125,90 +118,87 @@
 
     or-int/2addr v0, v1
 
-    and-int/lit16 v1, p0, 0xff
+    and-int/lit16 p0, p0, 0xff
 
-    shl-int/lit8 v1, v1, 0x18
+    shl-int/lit8 p0, p0, 0x18
 
-    or-int/2addr v0, v1
+    or-int/2addr p0, v0
 
-    return v0
+    return p0
 .end method
 
 .method public static reverseBytesLong(J)J
-    .locals 8
-    .param p0, "v"    # J
+    .locals 10
 
-    .prologue
-    const/16 v7, 0x38
-
-    const/16 v6, 0x28
-
-    const/16 v5, 0x18
-
-    const/16 v4, 0x8
-
-    .line 49
     const-wide/high16 v0, -0x100000000000000L
 
-    and-long/2addr v0, p0
+    and-long v2, p0, v0
 
-    ushr-long/2addr v0, v7
+    const/16 v0, 0x38
 
-    const-wide/high16 v2, 0xff000000000000L
+    ushr-long v1, v2, v0
 
-    and-long/2addr v2, p0
+    const-wide/high16 v3, 0xff000000000000L
 
-    ushr-long/2addr v2, v6
+    and-long v5, p0, v3
 
-    or-long/2addr v0, v2
+    const/16 v3, 0x28
 
-    const-wide v2, 0xff0000000000L
+    ushr-long v4, v5, v3
 
-    and-long/2addr v2, p0
+    or-long v6, v1, v4
 
-    ushr-long/2addr v2, v5
+    const-wide v1, 0xff0000000000L
 
-    or-long/2addr v0, v2
+    and-long v4, p0, v1
 
-    const-wide v2, 0xff00000000L
+    const/16 v1, 0x18
 
-    and-long/2addr v2, p0
+    ushr-long/2addr v4, v1
 
-    ushr-long/2addr v2, v4
+    or-long v8, v6, v4
 
-    or-long/2addr v0, v2
+    const-wide v4, 0xff00000000L
 
-    const-wide v2, 0xff000000L
+    and-long v6, p0, v4
 
-    and-long/2addr v2, p0
+    const/16 v2, 0x8
 
-    shl-long/2addr v2, v4
+    ushr-long v4, v6, v2
 
-    or-long/2addr v0, v2
+    or-long v6, v8, v4
 
-    const-wide/32 v2, 0xff0000
+    const-wide v4, 0xff000000L
 
-    and-long/2addr v2, p0
+    and-long v8, p0, v4
 
-    shl-long/2addr v2, v5
+    shl-long v4, v8, v2
 
-    or-long/2addr v0, v2
+    or-long v8, v6, v4
 
-    const-wide/32 v2, 0xff00
+    const-wide/32 v4, 0xff0000
 
-    and-long/2addr v2, p0
+    and-long v6, p0, v4
 
-    shl-long/2addr v2, v6
+    shl-long v1, v6, v1
 
-    or-long/2addr v0, v2
+    or-long v4, v8, v1
 
-    const-wide/16 v2, 0xff
+    const-wide/32 v1, 0xff00
 
-    and-long/2addr v2, p0
+    and-long v6, p0, v1
 
-    shl-long/2addr v2, v7
+    shl-long v1, v6, v3
 
-    or-long/2addr v0, v2
+    or-long v6, v4, v1
+
+    const-wide/16 v1, 0xff
+
+    and-long v3, p0, v1
+
+    shl-long p0, v3, v0
+
+    or-long v0, v6, p0
 
     return-wide v0
 .end method

@@ -16,10 +16,10 @@
 .annotation system Ldalvik/annotation/Signature;
     value = {
         "<T:",
-        "Lorg/oscim/theme/styles/LineStyle$LineBuilder",
-        "<TT;>;>",
-        "Lorg/oscim/theme/styles/RenderStyle$StyleBuilder",
-        "<TT;>;"
+        "Lorg/oscim/theme/styles/LineStyle$LineBuilder<",
+        "TT;>;>",
+        "Lorg/oscim/theme/styles/RenderStyle$StyleBuilder<",
+        "TT;>;"
     }
 .end annotation
 
@@ -29,11 +29,21 @@
 
 .field public cap:Lorg/oscim/backend/canvas/Paint$Cap;
 
+.field public dashArray:[F
+
 .field public fadeScale:I
 
 .field public fixed:Z
 
+.field public heightOffset:F
+
 .field public outline:Z
+
+.field public randomOffset:Z
+
+.field public repeatGap:F
+
+.field public repeatStart:F
 
 .field public stipple:I
 
@@ -41,16 +51,20 @@
 
 .field public stippleWidth:F
 
-.field public style:Ljava/lang/String;
+.field public symbolHeight:I
+
+.field public symbolPercent:I
+
+.field public symbolWidth:I
+
+.field public texture:Lorg/oscim/renderer/bucket/TextureItem;
 
 
 # direct methods
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
-    .line 100
-    .local p0, "this":Lorg/oscim/theme/styles/LineStyle$LineBuilder;, "Lorg/oscim/theme/styles/LineStyle$LineBuilder<TT;>;"
+    .line 168
     invoke-direct {p0}, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;-><init>()V
 
     return-void
@@ -61,9 +75,7 @@
 .method public build()Lorg/oscim/theme/styles/LineStyle;
     .locals 2
 
-    .prologue
-    .line 180
-    .local p0, "this":Lorg/oscim/theme/styles/LineStyle$LineBuilder;, "Lorg/oscim/theme/styles/LineStyle$LineBuilder<TT;>;"
+    .line 327
     new-instance v0, Lorg/oscim/theme/styles/LineStyle;
 
     const/4 v1, 0x0
@@ -76,9 +88,7 @@
 .method public bridge synthetic build()Lorg/oscim/theme/styles/RenderStyle;
     .locals 1
 
-    .prologue
-    .line 100
-    .local p0, "this":Lorg/oscim/theme/styles/LineStyle$LineBuilder;, "Lorg/oscim/theme/styles/LineStyle$LineBuilder<TT;>;"
+    .line 144
     invoke-virtual {p0}, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->build()Lorg/oscim/theme/styles/LineStyle;
 
     move-result-object v0
@@ -86,28 +96,111 @@
     return-object v0
 .end method
 
-.method public isOutline(Z)Lorg/oscim/theme/styles/LineStyle$LineBuilder;
-    .locals 1
-    .param p1, "outline"    # Z
+.method public cap(Lorg/oscim/backend/canvas/Paint$Cap;)Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lorg/oscim/backend/canvas/Paint$Cap;",
+            ")TT;"
+        }
+    .end annotation
+
+    .line 240
+    iput-object p1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->cap:Lorg/oscim/backend/canvas/Paint$Cap;
+
+    .line 241
+    invoke-virtual {p0}, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+
+    move-result-object p1
+
+    check-cast p1, Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+
+    return-object p1
+.end method
+
+.method public fixed(Z)Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(Z)TT;"
         }
     .end annotation
 
-    .prologue
-    .line 175
-    .local p0, "this":Lorg/oscim/theme/styles/LineStyle$LineBuilder;, "Lorg/oscim/theme/styles/LineStyle$LineBuilder<TT;>;"
-    iput-boolean p1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->outline:Z
+    .line 245
+    iput-boolean p1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->fixed:Z
 
-    .line 176
+    .line 246
     invoke-virtual {p0}, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
 
-    move-result-object v0
+    move-result-object p1
 
-    check-cast v0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+    check-cast p1, Lorg/oscim/theme/styles/LineStyle$LineBuilder;
 
-    return-object v0
+    return-object p1
+.end method
+
+.method public heightOffset(F)Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(F)TT;"
+        }
+    .end annotation
+
+    .line 255
+    iput p1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->heightOffset:F
+
+    .line 256
+    invoke-virtual {p0}, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+
+    move-result-object p1
+
+    check-cast p1, Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+
+    return-object p1
+.end method
+
+.method public isOutline(Z)Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(Z)TT;"
+        }
+    .end annotation
+
+    .line 235
+    iput-boolean p1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->outline:Z
+
+    .line 236
+    invoke-virtual {p0}, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+
+    move-result-object p1
+
+    check-cast p1, Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+
+    return-object p1
+.end method
+
+.method public randomOffset(Z)Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(Z)TT;"
+        }
+    .end annotation
+
+    .line 260
+    iput-boolean p1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->randomOffset:Z
+
+    .line 261
+    invoke-virtual {p0}, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+
+    move-result-object p1
+
+    check-cast p1, Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+
+    return-object p1
 .end method
 
 .method public reset()Lorg/oscim/theme/styles/LineStyle$LineBuilder;
@@ -118,56 +211,95 @@
         }
     .end annotation
 
-    .prologue
-    .local p0, "this":Lorg/oscim/theme/styles/LineStyle$LineBuilder;, "Lorg/oscim/theme/styles/LineStyle$LineBuilder<TT;>;"
-    const/4 v4, 0x0
+    const/4 v0, 0x0
 
-    const/4 v3, -0x1
+    .line 295
+    iput-object v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->cat:Ljava/lang/String;
+
+    const/4 v1, -0x1
+
+    .line 296
+    iput v1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->level:I
+
+    .line 297
+    iput-object v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->style:Ljava/lang/String;
 
     const/high16 v2, -0x1000000
 
-    const/high16 v1, 0x3f800000    # 1.0f
-
-    .line 132
-    iput v3, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->level:I
-
-    .line 133
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->style:Ljava/lang/String;
-
-    .line 134
+    .line 298
     iput v2, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->fillColor:I
 
-    .line 135
-    sget-object v0, Lorg/oscim/backend/canvas/Paint$Cap;->ROUND:Lorg/oscim/backend/canvas/Paint$Cap;
+    .line 299
+    sget-object v3, Lorg/oscim/backend/canvas/Paint$Cap;->ROUND:Lorg/oscim/backend/canvas/Paint$Cap;
 
-    iput-object v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->cap:Lorg/oscim/backend/canvas/Paint$Cap;
+    iput-object v3, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->cap:Lorg/oscim/backend/canvas/Paint$Cap;
 
-    .line 136
-    iput v1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->strokeWidth:F
+    const/4 v3, 0x0
 
-    .line 137
-    iput-boolean v4, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->fixed:Z
+    .line 300
+    iput-boolean v3, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->outline:Z
 
-    .line 139
-    iput v3, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->fadeScale:I
+    const/high16 v4, 0x3f800000    # 1.0f
 
-    .line 140
-    const/4 v0, 0x0
+    .line 301
+    iput v4, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->strokeWidth:F
 
-    iput v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->blur:F
+    .line 302
+    iput-boolean v3, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->fixed:Z
 
-    .line 142
-    iput v4, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->stipple:I
+    .line 304
+    iput v1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->fadeScale:I
 
-    .line 143
-    iput v1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->stippleWidth:F
+    const/4 v1, 0x0
 
-    .line 144
+    .line 305
+    iput v1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->blur:F
+
+    .line 307
+    iput v3, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->stipple:I
+
+    .line 308
+    iput v4, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->stippleWidth:F
+
+    .line 309
     iput v2, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->stippleColor:I
 
-    .line 146
+    .line 310
+    iput-object v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->texture:Lorg/oscim/renderer/bucket/TextureItem;
+
+    .line 312
+    iput v1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->heightOffset:F
+
+    const/4 v1, 0x1
+
+    .line 313
+    iput-boolean v1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->randomOffset:Z
+
+    .line 315
+    iput v3, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->symbolWidth:I
+
+    .line 316
+    iput v3, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->symbolHeight:I
+
+    const/16 v1, 0x64
+
+    .line 317
+    iput v1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->symbolPercent:I
+
+    .line 319
+    iput-object v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->dashArray:[F
+
+    const/high16 v0, 0x41f00000    # 30.0f
+
+    .line 320
+    iput v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->repeatStart:F
+
+    const/high16 v0, 0x43480000    # 200.0f
+
+    .line 321
+    iput v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->repeatGap:F
+
+    .line 323
     invoke-virtual {p0}, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
 
     move-result-object v0
@@ -178,8 +310,7 @@
 .end method
 
 .method public set(Lorg/oscim/theme/styles/LineStyle;)Lorg/oscim/theme/styles/LineStyle$LineBuilder;
-    .locals 1
-    .param p1, "line"    # Lorg/oscim/theme/styles/LineStyle;
+    .locals 2
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -188,94 +319,214 @@
         }
     .end annotation
 
-    .prologue
-    .line 114
-    .local p0, "this":Lorg/oscim/theme/styles/LineStyle$LineBuilder;, "Lorg/oscim/theme/styles/LineStyle$LineBuilder<TT;>;"
     if-nez p1, :cond_0
 
-    .line 115
+    .line 173
     invoke-virtual {p0}, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->reset()Lorg/oscim/theme/styles/LineStyle$LineBuilder;
 
-    move-result-object v0
+    move-result-object p1
 
-    .line 128
-    :goto_0
-    return-object v0
+    return-object p1
 
-    .line 116
+    .line 175
     :cond_0
-    iget v0, p1, Lorg/oscim/theme/styles/LineStyle;->level:I
+    iget-object v0, p1, Lorg/oscim/theme/styles/LineStyle;->cat:Ljava/lang/String;
+
+    iput-object v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->cat:Ljava/lang/String;
+
+    .line 176
+    invoke-static {p1}, Lorg/oscim/theme/styles/LineStyle;->access$000(Lorg/oscim/theme/styles/LineStyle;)I
+
+    move-result v0
 
     iput v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->level:I
 
-    .line 117
+    .line 177
     iget-object v0, p1, Lorg/oscim/theme/styles/LineStyle;->style:Ljava/lang/String;
 
     iput-object v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->style:Ljava/lang/String;
 
-    .line 118
+    .line 178
     iget v0, p1, Lorg/oscim/theme/styles/LineStyle;->width:F
 
     iput v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->strokeWidth:F
 
-    .line 119
+    .line 179
+    iget-object v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->themeCallback:Lorg/oscim/theme/ThemeCallback;
+
+    if-eqz v0, :cond_1
+
+    iget-object v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->themeCallback:Lorg/oscim/theme/ThemeCallback;
+
+    iget v1, p1, Lorg/oscim/theme/styles/LineStyle;->color:I
+
+    invoke-interface {v0, v1}, Lorg/oscim/theme/ThemeCallback;->getColor(I)I
+
+    move-result v0
+
+    goto :goto_0
+
+    :cond_1
     iget v0, p1, Lorg/oscim/theme/styles/LineStyle;->color:I
 
+    :goto_0
     iput v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->fillColor:I
 
-    .line 120
+    .line 180
     iget-object v0, p1, Lorg/oscim/theme/styles/LineStyle;->cap:Lorg/oscim/backend/canvas/Paint$Cap;
 
     iput-object v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->cap:Lorg/oscim/backend/canvas/Paint$Cap;
 
-    .line 121
+    .line 181
     iget-boolean v0, p1, Lorg/oscim/theme/styles/LineStyle;->outline:Z
 
     iput-boolean v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->outline:Z
 
-    .line 122
+    .line 182
     iget-boolean v0, p1, Lorg/oscim/theme/styles/LineStyle;->fixed:Z
 
     iput-boolean v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->fixed:Z
 
-    .line 123
+    .line 183
     iget v0, p1, Lorg/oscim/theme/styles/LineStyle;->fadeScale:I
 
     iput v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->fadeScale:I
 
-    .line 124
+    .line 184
     iget v0, p1, Lorg/oscim/theme/styles/LineStyle;->blur:F
 
     iput v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->blur:F
 
-    .line 125
+    .line 185
     iget v0, p1, Lorg/oscim/theme/styles/LineStyle;->stipple:I
 
     iput v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->stipple:I
 
-    .line 126
+    .line 186
+    iget-object v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->themeCallback:Lorg/oscim/theme/ThemeCallback;
+
+    if-eqz v0, :cond_2
+
+    iget-object v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->themeCallback:Lorg/oscim/theme/ThemeCallback;
+
+    iget v1, p1, Lorg/oscim/theme/styles/LineStyle;->stippleColor:I
+
+    invoke-interface {v0, v1}, Lorg/oscim/theme/ThemeCallback;->getColor(I)I
+
+    move-result v0
+
+    goto :goto_1
+
+    :cond_2
     iget v0, p1, Lorg/oscim/theme/styles/LineStyle;->stippleColor:I
 
+    :goto_1
     iput v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->stippleColor:I
 
-    .line 127
+    .line 187
     iget v0, p1, Lorg/oscim/theme/styles/LineStyle;->stippleWidth:F
 
     iput v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->stippleWidth:F
 
-    .line 128
+    .line 188
+    iget-object v0, p1, Lorg/oscim/theme/styles/LineStyle;->texture:Lorg/oscim/renderer/bucket/TextureItem;
+
+    iput-object v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->texture:Lorg/oscim/renderer/bucket/TextureItem;
+
+    .line 190
+    iget v0, p1, Lorg/oscim/theme/styles/LineStyle;->heightOffset:F
+
+    iput v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->heightOffset:F
+
+    .line 191
+    iget-boolean v0, p1, Lorg/oscim/theme/styles/LineStyle;->randomOffset:Z
+
+    iput-boolean v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->randomOffset:Z
+
+    .line 193
+    iget v0, p1, Lorg/oscim/theme/styles/LineStyle;->symbolWidth:I
+
+    iput v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->symbolWidth:I
+
+    .line 194
+    iget v0, p1, Lorg/oscim/theme/styles/LineStyle;->symbolHeight:I
+
+    iput v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->symbolHeight:I
+
+    .line 195
+    iget v0, p1, Lorg/oscim/theme/styles/LineStyle;->symbolPercent:I
+
+    iput v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->symbolPercent:I
+
+    .line 197
+    iget-object v0, p1, Lorg/oscim/theme/styles/LineStyle;->dashArray:[F
+
+    iput-object v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->dashArray:[F
+
+    .line 198
+    iget v0, p1, Lorg/oscim/theme/styles/LineStyle;->repeatStart:F
+
+    iput v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->repeatStart:F
+
+    .line 199
+    iget p1, p1, Lorg/oscim/theme/styles/LineStyle;->repeatGap:F
+
+    iput p1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->repeatGap:F
+
+    .line 201
     invoke-virtual {p0}, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
 
-    move-result-object v0
+    move-result-object p1
 
-    check-cast v0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+    check-cast p1, Lorg/oscim/theme/styles/LineStyle$LineBuilder;
 
-    goto :goto_0
+    return-object p1
+.end method
+
+.method public stipple(I)Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(I)TT;"
+        }
+    .end annotation
+
+    .line 215
+    iput p1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->stipple:I
+
+    .line 216
+    invoke-virtual {p0}, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+
+    move-result-object p1
+
+    check-cast p1, Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+
+    return-object p1
+.end method
+
+.method public stippleColor(I)Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(I)TT;"
+        }
+    .end annotation
+
+    .line 220
+    iput p1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->stippleColor:I
+
+    .line 221
+    invoke-virtual {p0}, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+
+    move-result-object p1
+
+    check-cast p1, Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+
+    return-object p1
 .end method
 
 .method public stippleColor(Ljava/lang/String;)Lorg/oscim/theme/styles/LineStyle$LineBuilder;
-    .locals 1
-    .param p1, "color"    # Ljava/lang/String;
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -284,21 +535,63 @@
         }
     .end annotation
 
-    .prologue
-    .line 170
-    .local p0, "this":Lorg/oscim/theme/styles/LineStyle$LineBuilder;, "Lorg/oscim/theme/styles/LineStyle$LineBuilder<TT;>;"
+    .line 225
     invoke-static {p1}, Lorg/oscim/backend/canvas/Color;->parseColor(Ljava/lang/String;)I
 
-    move-result v0
+    move-result p1
 
-    iput v0, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->stippleColor:I
+    iput p1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->stippleColor:I
 
-    .line 171
+    .line 226
     invoke-virtual {p0}, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
 
-    move-result-object v0
+    move-result-object p1
 
-    check-cast v0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+    check-cast p1, Lorg/oscim/theme/styles/LineStyle$LineBuilder;
 
-    return-object v0
+    return-object p1
+.end method
+
+.method public stippleWidth(F)Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(F)TT;"
+        }
+    .end annotation
+
+    .line 230
+    iput p1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->stippleWidth:F
+
+    .line 231
+    invoke-virtual {p0}, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+
+    move-result-object p1
+
+    check-cast p1, Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+
+    return-object p1
+.end method
+
+.method public texture(Lorg/oscim/renderer/bucket/TextureItem;)Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lorg/oscim/renderer/bucket/TextureItem;",
+            ")TT;"
+        }
+    .end annotation
+
+    .line 250
+    iput-object p1, p0, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->texture:Lorg/oscim/renderer/bucket/TextureItem;
+
+    .line 251
+    invoke-virtual {p0}, Lorg/oscim/theme/styles/LineStyle$LineBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+
+    move-result-object p1
+
+    check-cast p1, Lorg/oscim/theme/styles/LineStyle$LineBuilder;
+
+    return-object p1
 .end method

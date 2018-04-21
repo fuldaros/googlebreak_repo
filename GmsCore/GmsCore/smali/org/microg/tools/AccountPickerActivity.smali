@@ -11,7 +11,6 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .prologue
     .line 29
     const-class v0, Lorg/microg/tools/AccountPickerActivity;
 
@@ -27,7 +26,6 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
     .line 28
     invoke-direct {p0}, Landroid/app/Activity;-><init>()V
 
@@ -38,11 +36,7 @@
 # virtual methods
 .method protected onActivityResult(IILandroid/content/Intent;)V
     .locals 1
-    .param p1, "requestCode"    # I
-    .param p2, "resultCode"    # I
-    .param p3, "data"    # Landroid/content/Intent;
 
-    .prologue
     .line 45
     sget v0, Lorg/microg/tools/AccountPickerActivity;->REQUEST_CODE:I
 
@@ -54,69 +48,61 @@
     .line 47
     invoke-virtual {p0}, Lorg/microg/tools/AccountPickerActivity;->finish()V
 
-    .line 51
-    :goto_0
-    return-void
+    goto :goto_0
 
     .line 49
     :cond_0
     invoke-super {p0, p1, p2, p3}, Landroid/app/Activity;->onActivityResult(IILandroid/content/Intent;)V
 
-    goto :goto_0
+    :goto_0
+    return-void
 .end method
 
 .method protected onCreate(Landroid/os/Bundle;)V
-    .locals 5
-    .param p1, "savedInstanceState"    # Landroid/os/Bundle;
+    .locals 3
 
-    .prologue
     .line 33
     invoke-super {p0, p1}, Landroid/app/Activity;->onCreate(Landroid/os/Bundle;)V
 
     .line 34
     invoke-virtual {p0}, Lorg/microg/tools/AccountPickerActivity;->getIntent()Landroid/content/Intent;
 
-    move-result-object v3
+    move-result-object p1
 
-    invoke-virtual {v3}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+    invoke-virtual {p1}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+
+    move-result-object p1
+
+    .line 35
+    new-instance v0, Landroid/content/Intent;
+
+    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
+
+    const-string v1, "android/.accounts.ChooseTypeAndAccountActivity"
+
+    .line 37
+    invoke-static {v1}, Landroid/content/ComponentName;->unflattenFromString(Ljava/lang/String;)Landroid/content/ComponentName;
 
     move-result-object v1
 
-    .line 35
-    .local v1, "extras":Landroid/os/Bundle;
-    new-instance v2, Landroid/content/Intent;
-
-    invoke-direct {v2}, Landroid/content/Intent;-><init>()V
-
-    .line 36
-    .local v2, "intent":Landroid/content/Intent;
-    const-string v3, "android/.accounts.ChooseTypeAndAccountActivity"
-
-    .line 37
-    invoke-static {v3}, Landroid/content/ComponentName;->unflattenFromString(Ljava/lang/String;)Landroid/content/ComponentName;
-
-    move-result-object v0
-
     .line 38
-    .local v0, "componentName":Landroid/content/ComponentName;
-    invoke-virtual {v0}, Landroid/content/ComponentName;->getPackageName()Ljava/lang/String;
+    invoke-virtual {v1}, Landroid/content/ComponentName;->getPackageName()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v2
 
-    invoke-virtual {v0}, Landroid/content/ComponentName;->getClassName()Ljava/lang/String;
+    invoke-virtual {v1}, Landroid/content/ComponentName;->getClassName()Ljava/lang/String;
 
-    move-result-object v4
+    move-result-object v1
 
-    invoke-virtual {v2, v3, v4}, Landroid/content/Intent;->setClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    invoke-virtual {v0, v2, v1}, Landroid/content/Intent;->setClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
     .line 39
-    invoke-virtual {v2, v1}, Landroid/content/Intent;->putExtras(Landroid/os/Bundle;)Landroid/content/Intent;
+    invoke-virtual {v0, p1}, Landroid/content/Intent;->putExtras(Landroid/os/Bundle;)Landroid/content/Intent;
 
     .line 40
-    sget v3, Lorg/microg/tools/AccountPickerActivity;->REQUEST_CODE:I
+    sget p1, Lorg/microg/tools/AccountPickerActivity;->REQUEST_CODE:I
 
-    invoke-virtual {p0, v2, v3}, Lorg/microg/tools/AccountPickerActivity;->startActivityForResult(Landroid/content/Intent;I)V
+    invoke-virtual {p0, v0, p1}, Lorg/microg/tools/AccountPickerActivity;->startActivityForResult(Landroid/content/Intent;I)V
 
-    .line 41
     return-void
 .end method

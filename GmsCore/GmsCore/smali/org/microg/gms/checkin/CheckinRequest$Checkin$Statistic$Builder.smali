@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder",
-        "<",
+        "Lcom/squareup/wire/Message$Builder<",
         "Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;",
         ">;"
     }
@@ -35,27 +34,20 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
     .line 1227
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
-    .line 1228
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;)V
     .locals 1
-    .param p1, "message"    # Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;
 
-    .prologue
     .line 1231
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
-    .line 1232
     if-nez p1, :cond_0
 
-    .line 1236
-    :goto_0
     return-void
 
     .line 1233
@@ -70,11 +62,11 @@
     iput-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic$Builder;->count:Ljava/lang/Integer;
 
     .line 1235
-    iget-object v0, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->sum:Ljava/lang/Float;
+    iget-object p1, p1, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;->sum:Ljava/lang/Float;
 
-    iput-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic$Builder;->sum:Ljava/lang/Float;
+    iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic$Builder;->sum:Ljava/lang/Float;
 
-    goto :goto_0
+    return-void
 .end method
 
 
@@ -82,7 +74,6 @@
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
-    .prologue
     .line 1221
     invoke-virtual {p0}, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic$Builder;->build()Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;
 
@@ -94,7 +85,6 @@
 .method public build()Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic;
     .locals 2
 
-    .prologue
     .line 1255
     invoke-virtual {p0}, Lorg/microg/gms/checkin/CheckinRequest$Checkin$Statistic$Builder;->checkRequiredFields()V
 

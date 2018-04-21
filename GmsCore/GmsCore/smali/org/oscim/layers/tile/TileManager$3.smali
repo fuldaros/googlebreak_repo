@@ -21,10 +21,8 @@
 # direct methods
 .method constructor <init>(Lorg/oscim/layers/tile/TileManager;)V
     .locals 0
-    .param p1, "this$0"    # Lorg/oscim/layers/tile/TileManager;
 
-    .prologue
-    .line 662
+    .line 679
     iput-object p1, p0, Lorg/oscim/layers/tile/TileManager$3;->this$0:Lorg/oscim/layers/tile/TileManager;
 
     invoke-direct {p0}, Lorg/oscim/utils/ScanBox;-><init>()V
@@ -35,184 +33,146 @@
 
 # virtual methods
 .method protected setVisible(III)V
-    .locals 12
-    .param p1, "y"    # I
-    .param p2, "x1"    # I
-    .param p3, "x2"    # I
+    .locals 8
 
-    .prologue
-    .line 666
-    iget-object v9, p0, Lorg/oscim/layers/tile/TileManager$3;->this$0:Lorg/oscim/layers/tile/TileManager;
+    .line 683
+    iget-object v0, p0, Lorg/oscim/layers/tile/TileManager$3;->this$0:Lorg/oscim/layers/tile/TileManager;
 
-    iget-object v9, v9, Lorg/oscim/layers/tile/TileManager;->mNewTiles:Lorg/oscim/layers/tile/TileSet;
+    iget-object v0, v0, Lorg/oscim/layers/tile/TileManager;->mNewTiles:Lorg/oscim/layers/tile/TileSet;
 
-    iget-object v5, v9, Lorg/oscim/layers/tile/TileSet;->tiles:[Lorg/oscim/layers/tile/MapTile;
+    iget-object v0, v0, Lorg/oscim/layers/tile/TileSet;->tiles:[Lorg/oscim/layers/tile/MapTile;
 
-    .line 667
-    .local v5, "tiles":[Lorg/oscim/layers/tile/MapTile;
-    iget-object v9, p0, Lorg/oscim/layers/tile/TileManager$3;->this$0:Lorg/oscim/layers/tile/TileManager;
+    .line 684
+    iget-object v1, p0, Lorg/oscim/layers/tile/TileManager$3;->this$0:Lorg/oscim/layers/tile/TileManager;
 
-    iget-object v9, v9, Lorg/oscim/layers/tile/TileManager;->mNewTiles:Lorg/oscim/layers/tile/TileSet;
+    iget-object v1, v1, Lorg/oscim/layers/tile/TileManager;->mNewTiles:Lorg/oscim/layers/tile/TileSet;
 
-    iget v0, v9, Lorg/oscim/layers/tile/TileSet;->cnt:I
+    iget v1, v1, Lorg/oscim/layers/tile/TileSet;->cnt:I
 
-    .line 668
-    .local v0, "cnt":I
-    array-length v3, v5
+    const/4 v2, 0x1
 
-    .line 670
-    .local v3, "maxTiles":I
-    const/4 v9, 0x1
+    .line 685
+    array-length v3, v0
 
-    iget v10, p0, Lorg/oscim/layers/tile/TileManager$3;->mZoom:I
+    .line 687
+    iget v4, p0, Lorg/oscim/layers/tile/TileManager$3;->mZoom:I
 
-    shl-int v7, v9, v10
+    shl-int/2addr v2, v4
 
-    .line 672
-    .local v7, "xmax":I
-    move v6, p2
-
-    .local v6, "x":I
-    move v1, v0
-
-    .end local v0    # "cnt":I
-    .local v1, "cnt":I
     :goto_0
-    if-ge v6, p3, :cond_0
+    if-ge p2, p3, :cond_8
 
-    .line 673
     const/4 v4, 0x0
 
-    .line 675
-    .local v4, "tile":Lorg/oscim/layers/tile/MapTile;
-    if-ne v1, v3, :cond_1
+    if-ne v1, v3, :cond_0
 
-    .line 676
-    sget-object v9, Lorg/oscim/layers/tile/TileManager;->log:Lorg/slf4j/Logger;
+    .line 693
+    sget-object p1, Lorg/oscim/layers/tile/TileManager;->log:Lorg/slf4j/Logger;
 
-    const-string v10, "too many tiles {}"
+    const-string p2, "too many tiles {}"
 
     invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v11
+    move-result-object p3
 
-    invoke-interface {v9, v10, v11}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;)V
+    invoke-interface {p1, p2, p3}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;)V
 
-    .line 704
-    .end local v4    # "tile":Lorg/oscim/layers/tile/MapTile;
+    goto :goto_7
+
     :cond_0
-    iget-object v9, p0, Lorg/oscim/layers/tile/TileManager$3;->this$0:Lorg/oscim/layers/tile/TileManager;
+    if-ltz p2, :cond_2
 
-    iget-object v9, v9, Lorg/oscim/layers/tile/TileManager;->mNewTiles:Lorg/oscim/layers/tile/TileSet;
-
-    iput v1, v9, Lorg/oscim/layers/tile/TileSet;->cnt:I
-
-    .line 705
-    return-void
-
-    .line 679
-    .restart local v4    # "tile":Lorg/oscim/layers/tile/MapTile;
-    :cond_1
-    move v8, v6
-
-    .line 681
-    .local v8, "xx":I
-    if-ltz v6, :cond_2
-
-    if-lt v6, v7, :cond_4
-
-    .line 683
-    :cond_2
-    if-gez v6, :cond_3
-
-    .line 684
-    add-int v8, v7, v6
-
-    .line 688
-    :goto_1
-    if-ltz v8, :cond_7
-
-    if-lt v8, v7, :cond_4
-
-    move v0, v1
-
-    .line 672
-    .end local v1    # "cnt":I
-    .restart local v0    # "cnt":I
-    :goto_2
-    add-int/lit8 v6, v6, 0x1
-
-    move v1, v0
-
-    .end local v0    # "cnt":I
-    .restart local v1    # "cnt":I
-    goto :goto_0
-
-    .line 686
-    :cond_3
-    sub-int v8, v6, v7
+    if-lt p2, v2, :cond_1
 
     goto :goto_1
 
-    .line 693
-    :cond_4
-    const/4 v2, 0x0
-
-    .local v2, "i":I
-    :goto_3
-    if-ge v2, v1, :cond_5
-
-    .line 694
-    aget-object v9, v5, v2
-
-    iget v9, v9, Lorg/oscim/layers/tile/MapTile;->tileX:I
-
-    if-ne v9, v8, :cond_6
-
-    aget-object v9, v5, v2
-
-    iget v9, v9, Lorg/oscim/layers/tile/MapTile;->tileY:I
-
-    if-ne v9, p1, :cond_6
-
-    .line 695
-    aget-object v4, v5, v2
-
-    .line 699
-    :cond_5
-    if-nez v4, :cond_7
-
-    .line 700
-    iget-object v9, p0, Lorg/oscim/layers/tile/TileManager$3;->this$0:Lorg/oscim/layers/tile/TileManager;
-
-    iget v10, p0, Lorg/oscim/layers/tile/TileManager$3;->mZoom:I
-
-    invoke-virtual {v9, v8, p1, v10}, Lorg/oscim/layers/tile/TileManager;->addTile(III)Lorg/oscim/layers/tile/MapTile;
-
-    move-result-object v4
-
-    .line 701
-    add-int/lit8 v0, v1, 0x1
-
-    .end local v1    # "cnt":I
-    .restart local v0    # "cnt":I
-    aput-object v4, v5, v1
-
-    goto :goto_2
-
-    .line 693
-    .end local v0    # "cnt":I
-    .restart local v1    # "cnt":I
-    :cond_6
-    add-int/lit8 v2, v2, 0x1
+    :cond_1
+    move v5, p2
 
     goto :goto_3
 
-    .end local v2    # "i":I
-    :cond_7
-    move v0, v1
+    :cond_2
+    :goto_1
+    if-gez p2, :cond_3
 
-    .end local v1    # "cnt":I
-    .restart local v0    # "cnt":I
+    add-int v5, v2, p2
+
     goto :goto_2
+
+    :cond_3
+    sub-int v5, p2, v2
+
+    :goto_2
+    if-ltz v5, :cond_7
+
+    if-lt v5, v2, :cond_4
+
+    goto :goto_6
+
+    :cond_4
+    :goto_3
+    const/4 v6, 0x0
+
+    :goto_4
+    if-ge v6, v1, :cond_6
+
+    .line 711
+    aget-object v7, v0, v6
+
+    iget v7, v7, Lorg/oscim/layers/tile/MapTile;->tileX:I
+
+    if-ne v7, v5, :cond_5
+
+    aget-object v7, v0, v6
+
+    iget v7, v7, Lorg/oscim/layers/tile/MapTile;->tileY:I
+
+    if-ne v7, p1, :cond_5
+
+    .line 712
+    aget-object v4, v0, v6
+
+    goto :goto_5
+
+    :cond_5
+    add-int/lit8 v6, v6, 0x1
+
+    goto :goto_4
+
+    :cond_6
+    :goto_5
+    if-nez v4, :cond_7
+
+    .line 717
+    iget-object v4, p0, Lorg/oscim/layers/tile/TileManager$3;->this$0:Lorg/oscim/layers/tile/TileManager;
+
+    iget v6, p0, Lorg/oscim/layers/tile/TileManager$3;->mZoom:I
+
+    invoke-virtual {v4, v5, p1, v6}, Lorg/oscim/layers/tile/TileManager;->addTile(III)Lorg/oscim/layers/tile/MapTile;
+
+    move-result-object v4
+
+    add-int/lit8 v5, v1, 0x1
+
+    .line 718
+    aput-object v4, v0, v1
+
+    move v1, v5
+
+    :cond_7
+    :goto_6
+    add-int/lit8 p2, p2, 0x1
+
+    goto :goto_0
+
+    .line 721
+    :cond_8
+    :goto_7
+    iget-object p1, p0, Lorg/oscim/layers/tile/TileManager$3;->this$0:Lorg/oscim/layers/tile/TileManager;
+
+    iget-object p1, p1, Lorg/oscim/layers/tile/TileManager;->mNewTiles:Lorg/oscim/layers/tile/TileSet;
+
+    iput v1, p1, Lorg/oscim/layers/tile/TileSet;->cnt:I
+
+    return-void
 .end method

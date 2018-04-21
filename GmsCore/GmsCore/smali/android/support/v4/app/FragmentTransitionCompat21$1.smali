@@ -1,4 +1,4 @@
-.class final Landroid/support/v4/app/FragmentTransitionCompat21$1;
+.class Landroid/support/v4/app/FragmentTransitionCompat21$1;
 .super Landroid/transition/Transition$EpicenterCallback;
 .source "FragmentTransitionCompat21.java"
 
@@ -9,22 +9,25 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x8
+    accessFlags = 0x0
     name = null
 .end annotation
 
 
 # instance fields
+.field final synthetic this$0:Landroid/support/v4/app/FragmentTransitionCompat21;
+
 .field final synthetic val$epicenter:Landroid/graphics/Rect;
 
 
 # direct methods
-.method constructor <init>(Landroid/graphics/Rect;)V
+.method constructor <init>(Landroid/support/v4/app/FragmentTransitionCompat21;Landroid/graphics/Rect;)V
     .locals 0
 
-    .prologue
-    .line 74
-    iput-object p1, p0, Landroid/support/v4/app/FragmentTransitionCompat21$1;->val$epicenter:Landroid/graphics/Rect;
+    .line 80
+    iput-object p1, p0, Landroid/support/v4/app/FragmentTransitionCompat21$1;->this$0:Landroid/support/v4/app/FragmentTransitionCompat21;
+
+    iput-object p2, p0, Landroid/support/v4/app/FragmentTransitionCompat21$1;->val$epicenter:Landroid/graphics/Rect;
 
     invoke-direct {p0}, Landroid/transition/Transition$EpicenterCallback;-><init>()V
 
@@ -34,12 +37,10 @@
 
 # virtual methods
 .method public onGetEpicenter(Landroid/transition/Transition;)Landroid/graphics/Rect;
-    .locals 1
-    .param p1, "transition"    # Landroid/transition/Transition;
+    .locals 0
 
-    .prologue
-    .line 77
-    iget-object v0, p0, Landroid/support/v4/app/FragmentTransitionCompat21$1;->val$epicenter:Landroid/graphics/Rect;
+    .line 83
+    iget-object p1, p0, Landroid/support/v4/app/FragmentTransitionCompat21$1;->val$epicenter:Landroid/graphics/Rect;
 
-    return-object v0
+    return-object p1
 .end method

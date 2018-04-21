@@ -35,11 +35,10 @@
 .method public constructor <init>()V
     .locals 1
 
-    .prologue
-    const/4 v0, 0x1
-
     .line 34
     invoke-direct {p0}, Lcom/google/android/gms/maps/internal/IUiSettingsDelegate$Stub;-><init>()V
+
+    const/4 v0, 0x1
 
     .line 26
     iput-boolean v0, p0, Lorg/microg/gms/maps/UiSettingsImpl;->scrollGesturesEnabled:Z
@@ -56,19 +55,16 @@
     .line 30
     iput-boolean v0, p0, Lorg/microg/gms/maps/UiSettingsImpl;->allGesturesEnabled:Z
 
-    .line 35
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;)V
     .locals 1
-    .param p1, "listener"    # Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;
-
-    .prologue
-    const/4 v0, 0x1
 
     .line 37
     invoke-direct {p0}, Lcom/google/android/gms/maps/internal/IUiSettingsDelegate$Stub;-><init>()V
+
+    const/4 v0, 0x1
 
     .line 26
     iput-boolean v0, p0, Lorg/microg/gms/maps/UiSettingsImpl;->scrollGesturesEnabled:Z
@@ -88,7 +84,6 @@
     .line 38
     iput-object p1, p0, Lorg/microg/gms/maps/UiSettingsImpl;->listener:Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;
 
-    .line 39
     return-void
 .end method
 
@@ -102,7 +97,6 @@
         }
     .end annotation
 
-    .prologue
     .line 103
     iget-boolean v0, p0, Lorg/microg/gms/maps/UiSettingsImpl;->compassEnabled:Z
 
@@ -117,7 +111,6 @@
         }
     .end annotation
 
-    .prologue
     .line 108
     iget-boolean v0, p0, Lorg/microg/gms/maps/UiSettingsImpl;->myLocationButtonEnabled:Z
 
@@ -132,7 +125,6 @@
         }
     .end annotation
 
-    .prologue
     .line 128
     iget-boolean v0, p0, Lorg/microg/gms/maps/UiSettingsImpl;->rotateGesturesEnabled:Z
 
@@ -147,7 +139,6 @@
         }
     .end annotation
 
-    .prologue
     .line 113
     iget-boolean v0, p0, Lorg/microg/gms/maps/UiSettingsImpl;->scrollGesturesEnabled:Z
 
@@ -162,7 +153,6 @@
         }
     .end annotation
 
-    .prologue
     .line 123
     iget-boolean v0, p0, Lorg/microg/gms/maps/UiSettingsImpl;->tiltGesturesEnabled:Z
 
@@ -177,7 +167,6 @@
         }
     .end annotation
 
-    .prologue
     .line 98
     iget-boolean v0, p0, Lorg/microg/gms/maps/UiSettingsImpl;->zoomControlsEnabled:Z
 
@@ -192,7 +181,6 @@
         }
     .end annotation
 
-    .prologue
     .line 118
     iget-boolean v0, p0, Lorg/microg/gms/maps/UiSettingsImpl;->zoomGesturesEnabled:Z
 
@@ -200,15 +188,13 @@
 .end method
 
 .method public setAllGesturesEnabled(Z)V
-    .locals 1
-    .param p1, "gestures"    # Z
+    .locals 0
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
     .line 89
     iput-boolean p1, p0, Lorg/microg/gms/maps/UiSettingsImpl;->scrollGesturesEnabled:Z
 
@@ -222,164 +208,142 @@
     iput-boolean p1, p0, Lorg/microg/gms/maps/UiSettingsImpl;->rotateGesturesEnabled:Z
 
     .line 93
-    iget-object v0, p0, Lorg/microg/gms/maps/UiSettingsImpl;->listener:Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;
+    iget-object p1, p0, Lorg/microg/gms/maps/UiSettingsImpl;->listener:Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;
 
-    invoke-interface {v0, p0}, Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;->onUiSettingsChanged(Lorg/microg/gms/maps/UiSettingsImpl;)V
+    invoke-interface {p1, p0}, Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;->onUiSettingsChanged(Lorg/microg/gms/maps/UiSettingsImpl;)V
 
-    .line 94
     return-void
 .end method
 
 .method public setCompassEnabled(Z)V
-    .locals 1
-    .param p1, "compassEnabled"    # Z
+    .locals 0
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
     .line 53
     iput-boolean p1, p0, Lorg/microg/gms/maps/UiSettingsImpl;->compassEnabled:Z
 
     .line 54
-    iget-object v0, p0, Lorg/microg/gms/maps/UiSettingsImpl;->listener:Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;
+    iget-object p1, p0, Lorg/microg/gms/maps/UiSettingsImpl;->listener:Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;
 
-    invoke-interface {v0, p0}, Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;->onUiSettingsChanged(Lorg/microg/gms/maps/UiSettingsImpl;)V
+    invoke-interface {p1, p0}, Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;->onUiSettingsChanged(Lorg/microg/gms/maps/UiSettingsImpl;)V
 
-    .line 55
     return-void
 .end method
 
 .method public setMyLocationButtonEnabled(Z)V
-    .locals 1
-    .param p1, "myLocationButtonEnabled"    # Z
+    .locals 0
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
     .line 59
     iput-boolean p1, p0, Lorg/microg/gms/maps/UiSettingsImpl;->myLocationButtonEnabled:Z
 
     .line 60
-    iget-object v0, p0, Lorg/microg/gms/maps/UiSettingsImpl;->listener:Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;
+    iget-object p1, p0, Lorg/microg/gms/maps/UiSettingsImpl;->listener:Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;
 
-    invoke-interface {v0, p0}, Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;->onUiSettingsChanged(Lorg/microg/gms/maps/UiSettingsImpl;)V
+    invoke-interface {p1, p0}, Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;->onUiSettingsChanged(Lorg/microg/gms/maps/UiSettingsImpl;)V
 
-    .line 61
     return-void
 .end method
 
 .method public setRotateGesturesEnabled(Z)V
-    .locals 1
-    .param p1, "rotateGesturesEnabled"    # Z
+    .locals 0
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
     .line 83
     iput-boolean p1, p0, Lorg/microg/gms/maps/UiSettingsImpl;->rotateGesturesEnabled:Z
 
     .line 84
-    iget-object v0, p0, Lorg/microg/gms/maps/UiSettingsImpl;->listener:Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;
+    iget-object p1, p0, Lorg/microg/gms/maps/UiSettingsImpl;->listener:Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;
 
-    invoke-interface {v0, p0}, Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;->onUiSettingsChanged(Lorg/microg/gms/maps/UiSettingsImpl;)V
+    invoke-interface {p1, p0}, Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;->onUiSettingsChanged(Lorg/microg/gms/maps/UiSettingsImpl;)V
 
-    .line 85
     return-void
 .end method
 
 .method public setScrollGesturesEnabled(Z)V
-    .locals 1
-    .param p1, "scrollGesturesEnabled"    # Z
+    .locals 0
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
     .line 65
     iput-boolean p1, p0, Lorg/microg/gms/maps/UiSettingsImpl;->scrollGesturesEnabled:Z
 
     .line 66
-    iget-object v0, p0, Lorg/microg/gms/maps/UiSettingsImpl;->listener:Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;
+    iget-object p1, p0, Lorg/microg/gms/maps/UiSettingsImpl;->listener:Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;
 
-    invoke-interface {v0, p0}, Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;->onUiSettingsChanged(Lorg/microg/gms/maps/UiSettingsImpl;)V
+    invoke-interface {p1, p0}, Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;->onUiSettingsChanged(Lorg/microg/gms/maps/UiSettingsImpl;)V
 
-    .line 67
     return-void
 .end method
 
 .method public setTiltGesturesEnabled(Z)V
-    .locals 1
-    .param p1, "tiltGesturesEnabled"    # Z
+    .locals 0
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
     .line 77
     iput-boolean p1, p0, Lorg/microg/gms/maps/UiSettingsImpl;->tiltGesturesEnabled:Z
 
     .line 78
-    iget-object v0, p0, Lorg/microg/gms/maps/UiSettingsImpl;->listener:Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;
+    iget-object p1, p0, Lorg/microg/gms/maps/UiSettingsImpl;->listener:Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;
 
-    invoke-interface {v0, p0}, Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;->onUiSettingsChanged(Lorg/microg/gms/maps/UiSettingsImpl;)V
+    invoke-interface {p1, p0}, Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;->onUiSettingsChanged(Lorg/microg/gms/maps/UiSettingsImpl;)V
 
-    .line 79
     return-void
 .end method
 
 .method public setZoomControlsEnabled(Z)V
-    .locals 1
-    .param p1, "zoomControlsEnabled"    # Z
+    .locals 0
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
     .line 47
     iput-boolean p1, p0, Lorg/microg/gms/maps/UiSettingsImpl;->zoomControlsEnabled:Z
 
     .line 48
-    iget-object v0, p0, Lorg/microg/gms/maps/UiSettingsImpl;->listener:Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;
+    iget-object p1, p0, Lorg/microg/gms/maps/UiSettingsImpl;->listener:Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;
 
-    invoke-interface {v0, p0}, Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;->onUiSettingsChanged(Lorg/microg/gms/maps/UiSettingsImpl;)V
+    invoke-interface {p1, p0}, Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;->onUiSettingsChanged(Lorg/microg/gms/maps/UiSettingsImpl;)V
 
-    .line 49
     return-void
 .end method
 
 .method public setZoomGesturesEnabled(Z)V
-    .locals 1
-    .param p1, "zoomGestures"    # Z
+    .locals 0
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
     .line 71
     iput-boolean p1, p0, Lorg/microg/gms/maps/UiSettingsImpl;->zoomGesturesEnabled:Z
 
     .line 72
-    iget-object v0, p0, Lorg/microg/gms/maps/UiSettingsImpl;->listener:Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;
+    iget-object p1, p0, Lorg/microg/gms/maps/UiSettingsImpl;->listener:Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;
 
-    invoke-interface {v0, p0}, Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;->onUiSettingsChanged(Lorg/microg/gms/maps/UiSettingsImpl;)V
+    invoke-interface {p1, p0}, Lorg/microg/gms/maps/UiSettingsImpl$UiSettingsListener;->onUiSettingsChanged(Lorg/microg/gms/maps/UiSettingsImpl;)V
 
-    .line 73
     return-void
 .end method

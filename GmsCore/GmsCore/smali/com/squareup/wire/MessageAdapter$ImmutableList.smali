@@ -23,8 +23,8 @@
         "<T:",
         "Ljava/lang/Object;",
         ">",
-        "Ljava/util/AbstractList",
-        "<TT;>;",
+        "Ljava/util/AbstractList<",
+        "TT;>;",
         "Ljava/io/Serializable;",
         "Ljava/lang/Cloneable;",
         "Ljava/util/RandomAccess;"
@@ -36,8 +36,8 @@
 .field private final list:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<TT;>;"
+            "Ljava/util/List<",
+            "TT;>;"
         }
     .end annotation
 .end field
@@ -47,9 +47,7 @@
 .method constructor <init>()V
     .locals 1
 
-    .prologue
     .line 766
-    .local p0, "this":Lcom/squareup/wire/MessageAdapter$ImmutableList;, "Lcom/squareup/wire/MessageAdapter$ImmutableList<TT;>;"
     invoke-direct {p0}, Ljava/util/AbstractList;-><init>()V
 
     .line 769
@@ -63,14 +61,12 @@
 .end method
 
 .method static synthetic access$400(Lcom/squareup/wire/MessageAdapter$ImmutableList;)Ljava/util/List;
-    .locals 1
-    .param p0, "x0"    # Lcom/squareup/wire/MessageAdapter$ImmutableList;
+    .locals 0
 
-    .prologue
     .line 766
-    iget-object v0, p0, Lcom/squareup/wire/MessageAdapter$ImmutableList;->list:Ljava/util/List;
+    iget-object p0, p0, Lcom/squareup/wire/MessageAdapter$ImmutableList;->list:Ljava/util/List;
 
-    return-object v0
+    return-object p0
 .end method
 
 
@@ -78,39 +74,31 @@
 .method public clone()Ljava/lang/Object;
     .locals 0
 
-    .prologue
-    .line 772
-    .local p0, "this":Lcom/squareup/wire/MessageAdapter$ImmutableList;, "Lcom/squareup/wire/MessageAdapter$ImmutableList<TT;>;"
     return-object p0
 .end method
 
 .method public get(I)Ljava/lang/Object;
     .locals 1
-    .param p1, "i"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I)TT;"
         }
     .end annotation
 
-    .prologue
     .line 780
-    .local p0, "this":Lcom/squareup/wire/MessageAdapter$ImmutableList;, "Lcom/squareup/wire/MessageAdapter$ImmutableList<TT;>;"
     iget-object v0, p0, Lcom/squareup/wire/MessageAdapter$ImmutableList;->list:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    move-result-object v0
+    move-result-object p1
 
-    return-object v0
+    return-object p1
 .end method
 
 .method public size()I
     .locals 1
 
-    .prologue
     .line 776
-    .local p0, "this":Lcom/squareup/wire/MessageAdapter$ImmutableList;, "Lcom/squareup/wire/MessageAdapter$ImmutableList<TT;>;"
     iget-object v0, p0, Lcom/squareup/wire/MessageAdapter$ImmutableList;->list:Ljava/util/List;
 
     invoke-interface {v0}, Ljava/util/List;->size()I

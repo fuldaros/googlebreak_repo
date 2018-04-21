@@ -13,6 +13,8 @@
 
 
 # static fields
+.field public static enableTexture:Z = true
+
 .field static final log:Lorg/slf4j/Logger;
 
 
@@ -34,8 +36,7 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .prologue
-    .line 47
+    .line 49
     const-class v0, Lorg/oscim/renderer/bucket/PolygonBucket;
 
     invoke-static {v0}, Lorg/slf4j/LoggerFactory;->getLogger(Ljava/lang/Class;)Lorg/slf4j/Logger;
@@ -48,38 +49,36 @@
 .end method
 
 .method constructor <init>(I)V
-    .locals 5
-    .param p1, "layer"    # I
+    .locals 3
 
-    .prologue
-    const v4, 0x46fffe00    # 32767.0f
-
-    const/high16 v3, -0x39000000    # -32768.0f
-
-    .line 60
     const/4 v0, 0x2
 
     const/4 v1, 0x1
 
     const/4 v2, 0x0
 
-    invoke-direct {p0, v0, v1, v2}, Lorg/oscim/renderer/bucket/RenderBucket;-><init>(IZZ)V
+    .line 60
+    invoke-direct {p0, v0, v1, v2}, Lorg/oscim/renderer/bucket/RenderBucket;-><init>(BZZ)V
+
+    const v0, 0x46fffe00    # 32767.0f
 
     .line 68
-    iput v4, p0, Lorg/oscim/renderer/bucket/PolygonBucket;->xmin:F
+    iput v0, p0, Lorg/oscim/renderer/bucket/PolygonBucket;->xmin:F
 
     .line 69
-    iput v4, p0, Lorg/oscim/renderer/bucket/PolygonBucket;->ymin:F
+    iput v0, p0, Lorg/oscim/renderer/bucket/PolygonBucket;->ymin:F
+
+    const/high16 v0, -0x39000000    # -32768.0f
 
     .line 70
-    iput v3, p0, Lorg/oscim/renderer/bucket/PolygonBucket;->xmax:F
+    iput v0, p0, Lorg/oscim/renderer/bucket/PolygonBucket;->xmax:F
 
     .line 71
-    iput v3, p0, Lorg/oscim/renderer/bucket/PolygonBucket;->ymax:F
+    iput v0, p0, Lorg/oscim/renderer/bucket/PolygonBucket;->ymax:F
 
-    .line 73
     const/16 v0, 0x8
 
+    .line 73
     new-array v0, v0, [F
 
     iput-object v0, p0, Lorg/oscim/renderer/bucket/PolygonBucket;->bbox:[F
@@ -87,7 +86,6 @@
     .line 61
     iput p1, p0, Lorg/oscim/renderer/bucket/PolygonBucket;->level:I
 
-    .line 62
     return-void
 .end method
 
@@ -95,354 +93,263 @@
 # virtual methods
 .method public addPolygon([F[I)V
     .locals 16
-    .param p1, "points"    # [F
-    .param p2, "index"    # [I
 
-    .prologue
-    .line 76
-    sget v12, Lorg/oscim/core/Tile;->SIZE:I
-
-    shr-int/lit8 v12, v12, 0x1
-
-    int-to-float v12, v12
-
-    const/high16 v13, 0x41000000    # 8.0f
-
-    mul-float/2addr v12, v13
-
-    float-to-int v12, v12
-
-    int-to-short v1, v12
-
-    .line 78
-    .local v1, "center":S
     move-object/from16 v0, p0
 
-    iget-object v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->area:Lorg/oscim/theme/styles/AreaStyle;
+    move-object/from16 v1, p2
 
-    iget v12, v12, Lorg/oscim/theme/styles/AreaStyle;->strokeWidth:F
+    .line 76
+    sget v2, Lorg/oscim/core/Tile;->SIZE:I
 
-    const/4 v13, 0x0
+    const/4 v3, 0x1
 
-    cmpl-float v12, v12, v13
+    shr-int/2addr v2, v3
 
-    if-lez v12, :cond_1
+    int-to-float v2, v2
 
-    const/4 v8, 0x1
+    sget v4, Lorg/oscim/renderer/MapRenderer;->COORD_SCALE:F
 
-    .line 80
-    .local v8, "outline":Z
-    :goto_0
-    const/4 v2, 0x0
+    mul-float/2addr v2, v4
 
-    .local v2, "i":I
-    const/4 v9, 0x0
+    float-to-int v2, v2
 
-    .local v9, "pos":I
-    move-object/from16 v0, p2
-
-    array-length v7, v0
-
-    .local v7, "n":I
-    :goto_1
-    if-ge v2, v7, :cond_0
-
-    .line 81
-    aget v6, p2, v2
-
-    .line 82
-    .local v6, "length":I
-    if-gez v6, :cond_2
-
-    .line 124
-    .end local v6    # "length":I
-    :cond_0
-    return-void
+    int-to-short v2, v2
 
     .line 78
-    .end local v2    # "i":I
-    .end local v7    # "n":I
-    .end local v8    # "outline":Z
-    .end local v9    # "pos":I
-    :cond_1
-    const/4 v8, 0x0
+    iget-object v4, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->area:Lorg/oscim/theme/styles/AreaStyle;
+
+    iget v4, v4, Lorg/oscim/theme/styles/AreaStyle;->strokeWidth:F
+
+    const/4 v5, 0x0
+
+    cmpl-float v4, v4, v5
+
+    if-lez v4, :cond_0
+
+    move v4, v3
 
     goto :goto_0
 
-    .line 86
-    .restart local v2    # "i":I
-    .restart local v6    # "length":I
-    .restart local v7    # "n":I
-    .restart local v8    # "outline":Z
-    .restart local v9    # "pos":I
-    :cond_2
-    const/4 v12, 0x6
-
-    if-ge v6, v12, :cond_3
-
-    .line 87
-    add-int/2addr v9, v6
+    :cond_0
+    const/4 v4, 0x0
 
     .line 80
-    :goto_2
-    add-int/lit8 v2, v2, 0x1
+    :goto_0
+    array-length v6, v1
 
-    goto :goto_1
+    const/4 v7, 0x0
 
-    .line 91
-    :cond_3
-    move-object/from16 v0, p0
+    const/4 v8, 0x0
 
-    iget-object v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->vertexItems:Lorg/oscim/renderer/bucket/VertexData;
+    :goto_1
+    if-ge v7, v6, :cond_6
 
-    invoke-virtual {v12, v1, v1}, Lorg/oscim/renderer/bucket/VertexData;->add(SS)V
+    .line 81
+    aget v9, v1, v7
 
-    .line 92
-    move-object/from16 v0, p0
+    if-gez v9, :cond_1
 
-    iget v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numVertices:I
+    goto/16 :goto_4
 
-    add-int/lit8 v12, v12, 0x1
+    :cond_1
+    const/4 v10, 0x6
 
-    move-object/from16 v0, p0
+    if-ge v9, v10, :cond_2
 
-    iput v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numVertices:I
-
-    .line 94
-    move v3, v9
-
-    .line 96
-    .local v3, "inPos":I
-    const/4 v5, 0x0
-
-    .local v5, "j":I
-    move v4, v3
-
-    .end local v3    # "inPos":I
-    .local v4, "inPos":I
-    :goto_3
-    if-ge v5, v6, :cond_6
-
-    .line 97
-    add-int/lit8 v3, v4, 0x1
-
-    .end local v4    # "inPos":I
-    .restart local v3    # "inPos":I
-    aget v12, p1, v4
-
-    const/high16 v13, 0x41000000    # 8.0f
-
-    mul-float v10, v12, v13
-
-    .line 98
-    .local v10, "x":F
-    add-int/lit8 v4, v3, 0x1
-
-    .end local v3    # "inPos":I
-    .restart local v4    # "inPos":I
-    aget v12, p1, v3
-
-    const/high16 v13, 0x41000000    # 8.0f
-
-    mul-float v11, v12, v13
-
-    .line 99
-    .local v11, "y":F
-    move-object/from16 v0, p0
-
-    iget v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->xmax:F
-
-    invoke-static {v12, v10}, Ljava/lang/Math;->max(FF)F
-
-    move-result v12
-
-    move-object/from16 v0, p0
-
-    iput v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->xmax:F
-
-    .line 100
-    move-object/from16 v0, p0
-
-    iget v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->xmin:F
-
-    invoke-static {v12, v10}, Ljava/lang/Math;->min(FF)F
-
-    move-result v12
-
-    move-object/from16 v0, p0
-
-    iput v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->xmin:F
-
-    .line 101
-    move-object/from16 v0, p0
-
-    iget v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->ymax:F
-
-    invoke-static {v12, v11}, Ljava/lang/Math;->max(FF)F
-
-    move-result v12
-
-    move-object/from16 v0, p0
-
-    iput v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->ymax:F
-
-    .line 102
-    move-object/from16 v0, p0
-
-    iget v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->ymin:F
-
-    invoke-static {v12, v11}, Ljava/lang/Math;->min(FF)F
-
-    move-result v12
-
-    move-object/from16 v0, p0
-
-    iput v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->ymin:F
-
-    .line 104
-    if-eqz v8, :cond_4
-
-    .line 105
-    move-object/from16 v0, p0
-
-    iget-object v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->indiceItems:Lorg/oscim/renderer/bucket/VertexData;
-
-    move-object/from16 v0, p0
-
-    iget v13, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numVertices:I
-
-    int-to-short v13, v13
-
-    invoke-virtual {v12, v13}, Lorg/oscim/renderer/bucket/VertexData;->add(S)V
-
-    .line 106
-    move-object/from16 v0, p0
-
-    iget v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numIndices:I
-
-    add-int/lit8 v12, v12, 0x1
-
-    move-object/from16 v0, p0
-
-    iput v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numIndices:I
-
-    .line 109
-    :cond_4
-    move-object/from16 v0, p0
-
-    iget-object v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->vertexItems:Lorg/oscim/renderer/bucket/VertexData;
-
-    float-to-int v13, v10
-
-    int-to-short v13, v13
-
-    float-to-int v14, v11
-
-    int-to-short v14, v14
-
-    invoke-virtual {v12, v13, v14}, Lorg/oscim/renderer/bucket/VertexData;->add(SS)V
-
-    .line 110
-    move-object/from16 v0, p0
-
-    iget v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numVertices:I
-
-    add-int/lit8 v12, v12, 0x1
-
-    move-object/from16 v0, p0
-
-    iput v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numVertices:I
-
-    .line 112
-    if-eqz v8, :cond_5
-
-    .line 113
-    move-object/from16 v0, p0
-
-    iget-object v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->indiceItems:Lorg/oscim/renderer/bucket/VertexData;
-
-    move-object/from16 v0, p0
-
-    iget v13, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numVertices:I
-
-    int-to-short v13, v13
-
-    invoke-virtual {v12, v13}, Lorg/oscim/renderer/bucket/VertexData;->add(S)V
-
-    .line 114
-    move-object/from16 v0, p0
-
-    iget v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numIndices:I
-
-    add-int/lit8 v12, v12, 0x1
-
-    move-object/from16 v0, p0
-
-    iput v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numIndices:I
-
-    .line 96
-    :cond_5
-    add-int/lit8 v5, v5, 0x2
+    add-int/2addr v8, v9
 
     goto/16 :goto_3
 
+    .line 91
+    :cond_2
+    iget-object v10, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->vertexItems:Lorg/oscim/renderer/bucket/VertexData;
+
+    invoke-virtual {v10, v2, v2}, Lorg/oscim/renderer/bucket/VertexData;->add(SS)V
+
+    .line 92
+    iget v10, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numVertices:I
+
+    add-int/2addr v10, v3
+
+    iput v10, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numVertices:I
+
+    move v11, v8
+
+    const/4 v10, 0x0
+
+    :goto_2
+    if-ge v10, v9, :cond_5
+
+    add-int/lit8 v12, v11, 0x1
+
+    .line 97
+    aget v11, p1, v11
+
+    sget v13, Lorg/oscim/renderer/MapRenderer;->COORD_SCALE:F
+
+    mul-float/2addr v11, v13
+
+    add-int/lit8 v13, v12, 0x1
+
+    .line 98
+    aget v12, p1, v12
+
+    sget v14, Lorg/oscim/renderer/MapRenderer;->COORD_SCALE:F
+
+    mul-float/2addr v12, v14
+
+    .line 99
+    iget v14, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->xmax:F
+
+    invoke-static {v14, v11}, Ljava/lang/Math;->max(FF)F
+
+    move-result v14
+
+    iput v14, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->xmax:F
+
+    .line 100
+    iget v14, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->xmin:F
+
+    invoke-static {v14, v11}, Ljava/lang/Math;->min(FF)F
+
+    move-result v14
+
+    iput v14, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->xmin:F
+
+    .line 101
+    iget v14, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->ymax:F
+
+    invoke-static {v14, v12}, Ljava/lang/Math;->max(FF)F
+
+    move-result v14
+
+    iput v14, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->ymax:F
+
+    .line 102
+    iget v14, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->ymin:F
+
+    invoke-static {v14, v12}, Ljava/lang/Math;->min(FF)F
+
+    move-result v14
+
+    iput v14, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->ymin:F
+
+    if-eqz v4, :cond_3
+
+    .line 105
+    iget-object v14, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->indiceItems:Lorg/oscim/renderer/bucket/VertexData;
+
+    iget v5, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numVertices:I
+
+    int-to-short v5, v5
+
+    invoke-virtual {v14, v5}, Lorg/oscim/renderer/bucket/VertexData;->add(S)V
+
+    .line 106
+    iget v5, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numIndices:I
+
+    add-int/2addr v5, v3
+
+    iput v5, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numIndices:I
+
+    .line 109
+    :cond_3
+    iget-object v5, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->vertexItems:Lorg/oscim/renderer/bucket/VertexData;
+
+    float-to-int v11, v11
+
+    int-to-short v11, v11
+
+    float-to-int v12, v12
+
+    int-to-short v12, v12
+
+    invoke-virtual {v5, v11, v12}, Lorg/oscim/renderer/bucket/VertexData;->add(SS)V
+
+    .line 110
+    iget v5, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numVertices:I
+
+    add-int/2addr v5, v3
+
+    iput v5, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numVertices:I
+
+    if-eqz v4, :cond_4
+
+    .line 113
+    iget-object v5, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->indiceItems:Lorg/oscim/renderer/bucket/VertexData;
+
+    iget v11, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numVertices:I
+
+    int-to-short v11, v11
+
+    invoke-virtual {v5, v11}, Lorg/oscim/renderer/bucket/VertexData;->add(S)V
+
+    .line 114
+    iget v5, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numIndices:I
+
+    add-int/2addr v5, v3
+
+    iput v5, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numIndices:I
+
+    :cond_4
+    add-int/lit8 v10, v10, 0x2
+
+    move v11, v13
+
+    goto :goto_2
+
     .line 118
-    .end local v10    # "x":F
-    .end local v11    # "y":F
-    :cond_6
-    move-object/from16 v0, p0
+    :cond_5
+    iget-object v5, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->vertexItems:Lorg/oscim/renderer/bucket/VertexData;
 
-    iget-object v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->vertexItems:Lorg/oscim/renderer/bucket/VertexData;
+    add-int/lit8 v10, v8, 0x0
 
-    add-int/lit8 v13, v9, 0x0
+    aget v10, p1, v10
 
-    aget v13, p1, v13
+    sget v11, Lorg/oscim/renderer/MapRenderer;->COORD_SCALE:F
 
-    const/high16 v14, 0x41000000    # 8.0f
+    mul-float/2addr v10, v11
 
-    mul-float/2addr v13, v14
+    float-to-int v10, v10
 
-    float-to-int v13, v13
+    int-to-short v10, v10
 
-    int-to-short v13, v13
+    add-int/lit8 v11, v8, 0x1
 
-    add-int/lit8 v14, v9, 0x1
+    aget v11, p1, v11
 
-    aget v14, p1, v14
+    sget v12, Lorg/oscim/renderer/MapRenderer;->COORD_SCALE:F
 
-    const/high16 v15, 0x41000000    # 8.0f
+    mul-float/2addr v11, v12
 
-    mul-float/2addr v14, v15
+    float-to-int v11, v11
 
-    float-to-int v14, v14
+    int-to-short v11, v11
 
-    int-to-short v14, v14
-
-    invoke-virtual {v12, v13, v14}, Lorg/oscim/renderer/bucket/VertexData;->add(SS)V
+    invoke-virtual {v5, v10, v11}, Lorg/oscim/renderer/bucket/VertexData;->add(SS)V
 
     .line 120
-    move-object/from16 v0, p0
+    iget v5, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numVertices:I
 
-    iget v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numVertices:I
+    add-int/2addr v5, v3
 
-    add-int/lit8 v12, v12, 0x1
+    iput v5, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numVertices:I
 
-    move-object/from16 v0, p0
+    add-int/2addr v8, v9
 
-    iput v12, v0, Lorg/oscim/renderer/bucket/PolygonBucket;->numVertices:I
+    :goto_3
+    add-int/lit8 v7, v7, 0x1
 
-    .line 122
-    add-int/2addr v9, v6
+    goto/16 :goto_1
 
-    goto/16 :goto_2
+    :cond_6
+    :goto_4
+    return-void
 .end method
 
 .method protected compile(Ljava/nio/ShortBuffer;Ljava/nio/ShortBuffer;)V
     .locals 2
-    .param p1, "vboData"    # Ljava/nio/ShortBuffer;
-    .param p2, "iboData"    # Ljava/nio/ShortBuffer;
 
-    .prologue
     .line 133
     iget-object v0, p0, Lorg/oscim/renderer/bucket/PolygonBucket;->area:Lorg/oscim/theme/styles/AreaStyle;
 
@@ -457,21 +364,19 @@
     .line 135
     invoke-virtual {p0, p1}, Lorg/oscim/renderer/bucket/PolygonBucket;->compileVertexItems(Ljava/nio/ShortBuffer;)V
 
-    .line 140
-    :goto_0
-    return-void
+    goto :goto_0
 
     .line 138
     :cond_0
     invoke-super {p0, p1, p2}, Lorg/oscim/renderer/bucket/RenderBucket;->compile(Ljava/nio/ShortBuffer;Ljava/nio/ShortBuffer;)V
 
-    goto :goto_0
+    :goto_0
+    return-void
 .end method
 
 .method protected prepare()V
     .locals 5
 
-    .prologue
     .line 128
     iget-object v0, p0, Lorg/oscim/renderer/bucket/PolygonBucket;->bbox:[F
 
@@ -485,6 +390,5 @@
 
     invoke-static {v0, v1, v2, v3, v4}, Lorg/oscim/utils/ArrayUtils;->setBox2D([FFFFF)V
 
-    .line 129
     return-void
 .end method

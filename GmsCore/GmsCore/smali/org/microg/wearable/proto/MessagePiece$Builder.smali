@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder",
-        "<",
+        "Lcom/squareup/wire/Message$Builder<",
         "Lorg/microg/wearable/proto/MessagePiece;",
         ">;"
     }
@@ -39,27 +38,20 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
     .line 83
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
-    .line 84
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/wearable/proto/MessagePiece;)V
     .locals 1
-    .param p1, "message"    # Lorg/microg/wearable/proto/MessagePiece;
 
-    .prologue
     .line 87
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
-    .line 88
     if-nez p1, :cond_0
 
-    .line 94
-    :goto_0
     return-void
 
     .line 89
@@ -84,11 +76,11 @@
     iput-object v0, p0, Lorg/microg/wearable/proto/MessagePiece$Builder;->totalPieces:Ljava/lang/Integer;
 
     .line 93
-    iget-object v0, p1, Lorg/microg/wearable/proto/MessagePiece;->queueId:Ljava/lang/Integer;
+    iget-object p1, p1, Lorg/microg/wearable/proto/MessagePiece;->queueId:Ljava/lang/Integer;
 
-    iput-object v0, p0, Lorg/microg/wearable/proto/MessagePiece$Builder;->queueId:Ljava/lang/Integer;
+    iput-object p1, p0, Lorg/microg/wearable/proto/MessagePiece$Builder;->queueId:Ljava/lang/Integer;
 
-    goto :goto_0
+    return-void
 .end method
 
 
@@ -96,7 +88,6 @@
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
-    .prologue
     .line 75
     invoke-virtual {p0}, Lorg/microg/wearable/proto/MessagePiece$Builder;->build()Lorg/microg/wearable/proto/MessagePiece;
 
@@ -108,7 +99,6 @@
 .method public build()Lorg/microg/wearable/proto/MessagePiece;
     .locals 2
 
-    .prologue
     .line 123
     new-instance v0, Lorg/microg/wearable/proto/MessagePiece;
 
@@ -121,48 +111,36 @@
 
 .method public data(Lokio/ByteString;)Lorg/microg/wearable/proto/MessagePiece$Builder;
     .locals 0
-    .param p1, "data"    # Lokio/ByteString;
 
-    .prologue
     .line 97
     iput-object p1, p0, Lorg/microg/wearable/proto/MessagePiece$Builder;->data:Lokio/ByteString;
 
-    .line 98
     return-object p0
 .end method
 
 .method public digest(Ljava/lang/String;)Lorg/microg/wearable/proto/MessagePiece$Builder;
     .locals 0
-    .param p1, "digest"    # Ljava/lang/String;
 
-    .prologue
     .line 102
     iput-object p1, p0, Lorg/microg/wearable/proto/MessagePiece$Builder;->digest:Ljava/lang/String;
 
-    .line 103
     return-object p0
 .end method
 
 .method public thisPiece(Ljava/lang/Integer;)Lorg/microg/wearable/proto/MessagePiece$Builder;
     .locals 0
-    .param p1, "thisPiece"    # Ljava/lang/Integer;
 
-    .prologue
     .line 107
     iput-object p1, p0, Lorg/microg/wearable/proto/MessagePiece$Builder;->thisPiece:Ljava/lang/Integer;
 
-    .line 108
     return-object p0
 .end method
 
 .method public totalPieces(Ljava/lang/Integer;)Lorg/microg/wearable/proto/MessagePiece$Builder;
     .locals 0
-    .param p1, "totalPieces"    # Ljava/lang/Integer;
 
-    .prologue
     .line 112
     iput-object p1, p0, Lorg/microg/wearable/proto/MessagePiece$Builder;->totalPieces:Ljava/lang/Integer;
 
-    .line 113
     return-object p0
 .end method

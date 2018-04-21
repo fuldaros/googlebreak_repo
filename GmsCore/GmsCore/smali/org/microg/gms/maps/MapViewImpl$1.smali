@@ -26,9 +26,7 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/maps/MapViewImpl;Lcom/google/android/gms/maps/internal/IOnMapReadyCallback;)V
     .locals 0
-    .param p1, "this$0"    # Lorg/microg/gms/maps/MapViewImpl;
 
-    .prologue
     .line 113
     iput-object p1, p0, Lorg/microg/gms/maps/MapViewImpl$1;->this$0:Lorg/microg/gms/maps/MapViewImpl;
 
@@ -42,36 +40,32 @@
 
 # virtual methods
 .method public run()V
-    .locals 3
+    .locals 2
 
-    .prologue
     .line 117
     :try_start_0
-    iget-object v1, p0, Lorg/microg/gms/maps/MapViewImpl$1;->val$callback:Lcom/google/android/gms/maps/internal/IOnMapReadyCallback;
+    iget-object v0, p0, Lorg/microg/gms/maps/MapViewImpl$1;->val$callback:Lcom/google/android/gms/maps/internal/IOnMapReadyCallback;
 
-    iget-object v2, p0, Lorg/microg/gms/maps/MapViewImpl$1;->this$0:Lorg/microg/gms/maps/MapViewImpl;
+    iget-object v1, p0, Lorg/microg/gms/maps/MapViewImpl$1;->this$0:Lorg/microg/gms/maps/MapViewImpl;
 
-    invoke-static {v2}, Lorg/microg/gms/maps/MapViewImpl;->access$000(Lorg/microg/gms/maps/MapViewImpl;)Lorg/microg/gms/maps/GoogleMapImpl;
+    invoke-static {v1}, Lorg/microg/gms/maps/MapViewImpl;->access$000(Lorg/microg/gms/maps/MapViewImpl;)Lorg/microg/gms/maps/GoogleMapImpl;
 
-    move-result-object v2
+    move-result-object v1
 
-    invoke-interface {v1, v2}, Lcom/google/android/gms/maps/internal/IOnMapReadyCallback;->onMapReady(Lcom/google/android/gms/maps/internal/IGoogleMapDelegate;)V
+    invoke-interface {v0, v1}, Lcom/google/android/gms/maps/internal/IOnMapReadyCallback;->onMapReady(Lcom/google/android/gms/maps/internal/IGoogleMapDelegate;)V
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 121
-    :goto_0
-    return-void
+    goto :goto_0
 
-    .line 118
     :catch_0
     move-exception v0
 
-    .line 119
-    .local v0, "e":Landroid/os/RemoteException;
     const-string v1, "GmsMapViewImpl"
 
+    .line 119
     invoke-static {v1, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    goto :goto_0
+    :goto_0
+    return-void
 .end method

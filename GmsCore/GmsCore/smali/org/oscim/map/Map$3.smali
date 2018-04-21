@@ -26,10 +26,8 @@
 # direct methods
 .method constructor <init>(Lorg/oscim/map/Map;Lorg/oscim/core/MapPosition;)V
     .locals 0
-    .param p1, "this$0"    # Lorg/oscim/map/Map;
 
-    .prologue
-    .line 250
+    .line 294
     iput-object p1, p0, Lorg/oscim/map/Map$3;->this$0:Lorg/oscim/map/Map;
 
     iput-object p2, p0, Lorg/oscim/map/Map$3;->val$mapPosition:Lorg/oscim/core/MapPosition;
@@ -44,8 +42,7 @@
 .method public run()V
     .locals 2
 
-    .prologue
-    .line 253
+    .line 297
     iget-object v0, p0, Lorg/oscim/map/Map$3;->this$0:Lorg/oscim/map/Map;
 
     invoke-static {v0}, Lorg/oscim/map/Map;->access$000(Lorg/oscim/map/Map;)Lorg/oscim/map/ViewController;
@@ -56,13 +53,12 @@
 
     invoke-virtual {v0, v1}, Lorg/oscim/map/ViewController;->setMapPosition(Lorg/oscim/core/MapPosition;)V
 
-    .line 254
+    .line 298
     iget-object v0, p0, Lorg/oscim/map/Map$3;->this$0:Lorg/oscim/map/Map;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Lorg/oscim/map/Map;->updateMap(Z)V
 
-    .line 255
     return-void
 .end method

@@ -15,7 +15,6 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .prologue
     .line 47
     new-instance v0, Lcom/vividsolutions/jts/geom/impl/CoordinateArraySequenceFactory;
 
@@ -29,18 +28,15 @@
 .method private constructor <init>()V
     .locals 0
 
-    .prologue
     .line 49
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 50
     return-void
 .end method
 
 .method public static instance()Lcom/vividsolutions/jts/geom/impl/CoordinateArraySequenceFactory;
     .locals 1
 
-    .prologue
     .line 61
     sget-object v0, Lcom/vividsolutions/jts/geom/impl/CoordinateArraySequenceFactory;->instanceObject:Lcom/vividsolutions/jts/geom/impl/CoordinateArraySequenceFactory;
 
@@ -51,9 +47,7 @@
 # virtual methods
 .method public create([Lcom/vividsolutions/jts/geom/Coordinate;)Lcom/vividsolutions/jts/geom/CoordinateSequence;
     .locals 1
-    .param p1, "coordinates"    # [Lcom/vividsolutions/jts/geom/Coordinate;
 
-    .prologue
     .line 73
     new-instance v0, Lcom/vividsolutions/jts/geom/impl/CoordinateArraySequence;
 

@@ -59,8 +59,6 @@
 # direct methods
 .method public constructor <init>(Lorg/oscim/map/Map;JLjava/lang/Object;Ljava/lang/Object;)V
     .locals 0
-    .param p1, "map"    # Lorg/oscim/map/Map;
-    .param p2, "minDelay"    # J
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -69,85 +67,79 @@
         }
     .end annotation
 
-    .prologue
-    .line 29
-    .local p0, "this":Lorg/oscim/utils/async/SimpleWorker;, "Lorg/oscim/utils/async/SimpleWorker<TT;>;"
-    .local p4, "t1":Ljava/lang/Object;, "TT;"
-    .local p5, "t2":Ljava/lang/Object;, "TT;"
+    .line 35
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 30
+    .line 36
     iput-object p1, p0, Lorg/oscim/utils/async/SimpleWorker;->mMap:Lorg/oscim/map/Map;
 
-    .line 31
+    .line 37
     iput-wide p2, p0, Lorg/oscim/utils/async/SimpleWorker;->mMinDelay:J
 
-    .line 33
+    .line 39
     iput-object p4, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
 
-    .line 34
+    .line 40
     iput-object p5, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskLocked:Ljava/lang/Object;
 
-    .line 35
     return-void
 .end method
 
 
 # virtual methods
 .method public declared-synchronized cancel(Z)V
-    .locals 1
-    .param p1, "clear"    # Z
+    .locals 0
 
-    .prologue
-    .line 144
-    .local p0, "this":Lorg/oscim/utils/async/SimpleWorker;, "Lorg/oscim/utils/async/SimpleWorker<TT;>;"
     monitor-enter p0
 
+    .line 152
     :try_start_0
-    iget-boolean v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mRunning:Z
+    iget-boolean p1, p0, Lorg/oscim/utils/async/SimpleWorker;->mRunning:Z
 
-    if-eqz v0, :cond_0
+    if-eqz p1, :cond_0
 
-    .line 145
-    const/4 v0, 0x1
+    const/4 p1, 0x1
 
-    iput-boolean v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mCancel:Z
+    .line 153
+    iput-boolean p1, p0, Lorg/oscim/utils/async/SimpleWorker;->mCancel:Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 152
-    :goto_0
+    .line 154
     monitor-exit p0
 
     return-void
 
-    .line 149
+    .line 157
     :cond_0
     :try_start_1
-    iget-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
+    iget-object p1, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
 
-    if-eqz v0, :cond_1
+    if-eqz p1, :cond_1
 
-    .line 150
-    iget-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
+    .line 158
+    iget-object p1, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
 
-    invoke-virtual {p0, v0}, Lorg/oscim/utils/async/SimpleWorker;->cleanup(Ljava/lang/Object;)V
+    invoke-virtual {p0, p1}, Lorg/oscim/utils/async/SimpleWorker;->cleanup(Ljava/lang/Object;)V
 
-    .line 151
+    .line 159
     :cond_1
     invoke-virtual {p0}, Lorg/oscim/utils/async/SimpleWorker;->finish()V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    goto :goto_0
-
-    .line 144
-    :catchall_0
-    move-exception v0
-
+    .line 160
     monitor-exit p0
 
-    throw v0
+    return-void
+
+    :catchall_0
+    move-exception p1
+
+    .line 151
+    monitor-exit p0
+
+    throw p1
 .end method
 
 .method public abstract cleanup(Ljava/lang/Object;)V
@@ -169,20 +161,15 @@
 .method public finish()V
     .locals 0
 
-    .prologue
-    .line 95
-    .local p0, "this":Lorg/oscim/utils/async/SimpleWorker;, "Lorg/oscim/utils/async/SimpleWorker<TT;>;"
     return-void
 .end method
 
 .method public declared-synchronized isRunning()Z
     .locals 1
 
-    .prologue
-    .line 155
-    .local p0, "this":Lorg/oscim/utils/async/SimpleWorker;, "Lorg/oscim/utils/async/SimpleWorker<TT;>;"
     monitor-enter p0
 
+    .line 163
     :try_start_0
     iget-boolean v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mRunning:Z
     :try_end_0
@@ -208,10 +195,6 @@
         }
     .end annotation
 
-    .prologue
-    .line 100
-    .local p0, "this":Lorg/oscim/utils/async/SimpleWorker;, "Lorg/oscim/utils/async/SimpleWorker<TT;>;"
-    .local p1, "task":Ljava/lang/Object;, "TT;"
     return-void
 .end method
 
@@ -223,75 +206,72 @@
         }
     .end annotation
 
-    .prologue
-    .local p0, "this":Lorg/oscim/utils/async/SimpleWorker;, "Lorg/oscim/utils/async/SimpleWorker<TT;>;"
-    const/4 v0, 0x0
-
-    .line 126
     monitor-enter p0
 
+    .line 134
     :try_start_0
-    iget-object v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskDone:Ljava/lang/Object;
+    iget-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskDone:Ljava/lang/Object;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    if-nez v1, :cond_0
+    const/4 v1, 0x0
 
-    .line 140
-    :goto_0
+    if-nez v0, :cond_0
+
+    .line 135
     monitor-exit p0
 
-    return-object v0
+    return-object v1
 
-    .line 129
+    .line 137
     :cond_0
     :try_start_1
     iget-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskLocked:Ljava/lang/Object;
 
     invoke-virtual {p0, v0}, Lorg/oscim/utils/async/SimpleWorker;->cleanup(Ljava/lang/Object;)V
 
-    .line 130
+    .line 138
     iget-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskLocked:Ljava/lang/Object;
 
     iput-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
 
-    .line 132
+    .line 140
     iget-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskDone:Ljava/lang/Object;
 
     iput-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskLocked:Ljava/lang/Object;
 
-    .line 133
-    const/4 v0, 0x0
+    .line 141
+    iput-object v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskDone:Ljava/lang/Object;
 
-    iput-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskDone:Ljava/lang/Object;
-
-    .line 135
+    .line 143
     iget-boolean v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mWait:Z
 
     if-eqz v0, :cond_1
 
-    .line 136
+    .line 144
     iget-wide v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mMinDelay:J
 
     invoke-virtual {p0, v0, v1}, Lorg/oscim/utils/async/SimpleWorker;->submit(J)V
 
-    .line 137
     const/4 v0, 0x0
 
+    .line 145
     iput-boolean v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mWait:Z
 
-    .line 140
+    .line 148
     :cond_1
     iget-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskLocked:Ljava/lang/Object;
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    goto :goto_0
+    monitor-exit p0
 
-    .line 126
+    return-object v0
+
     :catchall_0
     move-exception v0
 
+    .line 133
     monitor-exit p0
 
     throw v0
@@ -300,286 +280,262 @@
 .method public run()V
     .locals 4
 
-    .prologue
-    .line 40
-    .local p0, "this":Lorg/oscim/utils/async/SimpleWorker;, "Lorg/oscim/utils/async/SimpleWorker<TT;>;"
+    .line 46
     monitor-enter p0
 
-    .line 41
-    :try_start_0
-    iget-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mCancel:Z
-
-    if-eqz v1, :cond_1
-
-    .line 42
-    const/4 v1, 0x0
-
-    iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mCancel:Z
-
-    .line 43
-    const/4 v1, 0x0
-
-    iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mRunning:Z
-
-    .line 44
-    const/4 v1, 0x0
-
-    iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mDelayed:Z
-
-    .line 45
-    const/4 v1, 0x0
-
-    iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mWait:Z
-
-    .line 46
-    iget-object v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
-
-    if-eqz v1, :cond_0
-
     .line 47
-    iget-object v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
+    :try_start_0
+    iget-boolean v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mCancel:Z
 
-    invoke-virtual {p0, v1}, Lorg/oscim/utils/async/SimpleWorker;->cleanup(Ljava/lang/Object;)V
+    const/4 v1, 0x0
+
+    if-eqz v0, :cond_1
 
     .line 48
+    iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mCancel:Z
+
+    .line 49
+    iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mRunning:Z
+
+    .line 50
+    iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mDelayed:Z
+
+    .line 51
+    iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mWait:Z
+
+    .line 52
+    iget-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
+
+    if-eqz v0, :cond_0
+
+    .line 53
+    iget-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
+
+    invoke-virtual {p0, v0}, Lorg/oscim/utils/async/SimpleWorker;->cleanup(Ljava/lang/Object;)V
+
+    .line 54
     :cond_0
     invoke-virtual {p0}, Lorg/oscim/utils/async/SimpleWorker;->finish()V
 
-    .line 49
+    .line 55
     monitor-exit p0
 
-    .line 87
-    :goto_0
     return-void
 
-    .line 53
-    :cond_1
-    iget-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mDelayed:Z
-
-    if-nez v1, :cond_2
-
-    iget-object v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
-
-    if-nez v1, :cond_4
-
-    .line 55
-    :cond_2
-    iget-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mDelayed:Z
-
-    if-eqz v1, :cond_3
-
-    iget-object v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
-
-    if-eqz v1, :cond_3
-
-    .line 56
-    iget-object v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
-
-    invoke-virtual {p0, v1}, Lorg/oscim/utils/async/SimpleWorker;->onMainLoop(Ljava/lang/Object;)V
-
     .line 59
-    :cond_3
-    const/4 v1, 0x0
+    :cond_1
+    iget-boolean v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mDelayed:Z
 
-    iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mDelayed:Z
+    if-nez v0, :cond_6
 
-    .line 61
-    const/4 v1, 0x0
+    iget-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
 
-    iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mRunning:Z
-
-    .line 62
-    const-wide/16 v2, 0x0
-
-    invoke-virtual {p0, v2, v3}, Lorg/oscim/utils/async/SimpleWorker;->submit(J)V
-
-    .line 63
-    monitor-exit p0
-
-    goto :goto_0
-
-    .line 65
-    :catchall_0
-    move-exception v1
-
-    monitor-exit p0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    throw v1
-
-    :cond_4
-    :try_start_1
-    monitor-exit p0
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    .line 67
-    iget-object v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
-
-    invoke-virtual {p0, v1}, Lorg/oscim/utils/async/SimpleWorker;->doWork(Ljava/lang/Object;)Z
-
-    move-result v0
-
-    .line 69
-    .local v0, "done":Z
-    monitor-enter p0
-
-    .line 70
-    const/4 v1, 0x0
-
-    :try_start_2
-    iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mRunning:Z
-
-    .line 72
-    iget-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mCancel:Z
-
-    if-eqz v1, :cond_6
-
-    .line 73
-    iget-object v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
-
-    invoke-virtual {p0, v1}, Lorg/oscim/utils/async/SimpleWorker;->cleanup(Ljava/lang/Object;)V
-
-    .line 74
-    invoke-virtual {p0}, Lorg/oscim/utils/async/SimpleWorker;->finish()V
-
-    .line 75
-    const/4 v1, 0x0
-
-    iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mCancel:Z
-
-    .line 86
-    :cond_5
-    :goto_1
-    monitor-exit p0
-
-    goto :goto_0
-
-    :catchall_1
-    move-exception v1
-
-    monitor-exit p0
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_1
-
-    throw v1
-
-    .line 76
-    :cond_6
-    if-eqz v0, :cond_7
-
-    .line 77
-    :try_start_3
-    iget-object v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
-
-    iput-object v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskDone:Ljava/lang/Object;
-
-    .line 78
-    const/4 v1, 0x0
-
-    iput-object v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
+    if-nez v0, :cond_2
 
     goto :goto_1
 
-    .line 79
-    :cond_7
-    iget-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mWait:Z
+    .line 71
+    :cond_2
+    monitor-exit p0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    if-eqz v1, :cond_5
+    .line 73
+    iget-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
+
+    invoke-virtual {p0, v0}, Lorg/oscim/utils/async/SimpleWorker;->doWork(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    .line 75
+    monitor-enter p0
+
+    .line 76
+    :try_start_1
+    iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mRunning:Z
+
+    .line 78
+    iget-boolean v2, p0, Lorg/oscim/utils/async/SimpleWorker;->mCancel:Z
+
+    if-eqz v2, :cond_3
+
+    .line 79
+    iget-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
+
+    invoke-virtual {p0, v0}, Lorg/oscim/utils/async/SimpleWorker;->cleanup(Ljava/lang/Object;)V
+
+    .line 80
+    invoke-virtual {p0}, Lorg/oscim/utils/async/SimpleWorker;->finish()V
+
+    .line 81
+    iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mCancel:Z
+
+    goto :goto_0
+
+    :cond_3
+    if-eqz v0, :cond_4
 
     .line 83
+    iget-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
+
+    iput-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskDone:Ljava/lang/Object;
+
+    const/4 v0, 0x0
+
+    .line 84
+    iput-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
+
+    goto :goto_0
+
+    .line 85
+    :cond_4
+    iget-boolean v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mWait:Z
+
+    if-eqz v0, :cond_5
+
+    .line 89
     iget-wide v2, p0, Lorg/oscim/utils/async/SimpleWorker;->mMinDelay:J
 
     invoke-virtual {p0, v2, v3}, Lorg/oscim/utils/async/SimpleWorker;->submit(J)V
 
-    .line 84
-    const/4 v1, 0x0
-
+    .line 90
     iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mWait:Z
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_1
 
-    goto :goto_1
-.end method
-
-.method public declared-synchronized submit(J)V
-    .locals 3
-    .param p1, "delay"    # J
-
-    .prologue
-    .line 108
-    .local p0, "this":Lorg/oscim/utils/async/SimpleWorker;, "Lorg/oscim/utils/async/SimpleWorker<TT;>;"
-    monitor-enter p0
-
-    :try_start_0
-    iget-boolean v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mRunning:Z
-
-    if-eqz v0, :cond_1
-
-    .line 109
-    const/4 v0, 0x1
-
-    iput-boolean v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mWait:Z
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    .line 123
-    :cond_0
+    .line 92
+    :cond_5
     :goto_0
     monitor-exit p0
 
     return-void
 
-    .line 113
-    :cond_1
-    const/4 v0, 0x1
-
-    :try_start_1
-    iput-boolean v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mRunning:Z
-
-    .line 114
-    const-wide/16 v0, 0x0
-
-    cmp-long v0, p1, v0
-
-    if-gtz v0, :cond_2
-
-    .line 115
-    iget-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mMap:Lorg/oscim/map/Map;
-
-    invoke-virtual {v0, p0}, Lorg/oscim/map/Map;->addTask(Ljava/lang/Runnable;)V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    goto :goto_0
-
-    .line 108
     :catchall_0
     move-exception v0
 
     monitor-exit p0
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v0
 
-    .line 119
-    :cond_2
+    .line 61
+    :cond_6
+    :goto_1
     :try_start_2
     iget-boolean v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mDelayed:Z
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_7
 
-    .line 120
-    const/4 v0, 0x1
+    iget-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
 
-    iput-boolean v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mDelayed:Z
+    if-eqz v0, :cond_7
+
+    .line 62
+    iget-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mTaskTodo:Ljava/lang/Object;
+
+    invoke-virtual {p0, v0}, Lorg/oscim/utils/async/SimpleWorker;->onMainLoop(Ljava/lang/Object;)V
+
+    .line 65
+    :cond_7
+    iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mDelayed:Z
+
+    .line 67
+    iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mRunning:Z
+
+    const-wide/16 v0, 0x0
+
+    .line 68
+    invoke-virtual {p0, v0, v1}, Lorg/oscim/utils/async/SimpleWorker;->submit(J)V
+
+    .line 69
+    monitor-exit p0
+
+    return-void
+
+    :catchall_1
+    move-exception v0
+
+    .line 71
+    monitor-exit p0
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_1
+
+    throw v0
+.end method
+
+.method public declared-synchronized submit(J)V
+    .locals 4
+
+    monitor-enter p0
+
+    .line 116
+    :try_start_0
+    iget-boolean v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mRunning:Z
+
+    const/4 v1, 0x1
+
+    if-eqz v0, :cond_0
+
+    .line 117
+    iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mWait:Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 118
+    monitor-exit p0
+
+    return-void
 
     .line 121
+    :cond_0
+    :try_start_1
+    iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mRunning:Z
+
+    const-wide/16 v2, 0x0
+
+    cmp-long v0, p1, v2
+
+    if-gtz v0, :cond_1
+
+    .line 123
+    iget-object p1, p0, Lorg/oscim/utils/async/SimpleWorker;->mMap:Lorg/oscim/map/Map;
+
+    invoke-virtual {p1, p0}, Lorg/oscim/map/Map;->addTask(Ljava/lang/Runnable;)V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 124
+    monitor-exit p0
+
+    return-void
+
+    .line 127
+    :cond_1
+    :try_start_2
+    iget-boolean v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mDelayed:Z
+
+    if-nez v0, :cond_2
+
+    .line 128
+    iput-boolean v1, p0, Lorg/oscim/utils/async/SimpleWorker;->mDelayed:Z
+
+    .line 129
     iget-object v0, p0, Lorg/oscim/utils/async/SimpleWorker;->mMap:Lorg/oscim/map/Map;
 
     invoke-virtual {v0, p0, p1, p2}, Lorg/oscim/map/Map;->postDelayed(Ljava/lang/Runnable;J)Z
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    goto :goto_0
+    .line 131
+    :cond_2
+    monitor-exit p0
+
+    return-void
+
+    :catchall_0
+    move-exception p1
+
+    .line 115
+    monitor-exit p0
+
+    throw p1
 .end method

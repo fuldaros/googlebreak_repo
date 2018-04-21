@@ -23,122 +23,110 @@
 # direct methods
 .method public constructor <init>(FF)V
     .locals 0
-    .param p1, "value"    # F
-    .param p2, "power"    # F
 
-    .prologue
-    .line 219
+    .line 223
     invoke-direct {p0}, Lorg/oscim/utils/math/Interpolation;-><init>()V
 
-    .line 220
+    .line 224
     iput p1, p0, Lorg/oscim/utils/math/Interpolation$Elastic;->value:F
 
-    .line 221
+    .line 225
     iput p2, p0, Lorg/oscim/utils/math/Interpolation$Elastic;->power:F
 
-    .line 222
     return-void
 .end method
 
 
 # virtual methods
 .method public apply(F)F
-    .locals 8
-    .param p1, "a"    # F
+    .locals 9
 
-    .prologue
-    const/high16 v7, 0x41a00000    # 20.0f
-
-    const v6, 0x3f8c3958    # 1.0955f
-
-    const/high16 v5, 0x40000000    # 2.0f
-
-    const/high16 v4, 0x3f800000    # 1.0f
-
-    .line 226
     const/high16 v0, 0x3f000000    # 0.5f
 
     cmpg-float v0, p1, v0
 
+    const v1, 0x3f8c3958    # 1.0955f
+
+    const/high16 v2, 0x41a00000    # 20.0f
+
+    const/high16 v3, 0x3f800000    # 1.0f
+
+    const/high16 v4, 0x40000000    # 2.0f
+
     if-gtz v0, :cond_0
 
-    .line 227
-    mul-float/2addr p1, v5
-
-    .line 228
-    iget v0, p0, Lorg/oscim/utils/math/Interpolation$Elastic;->value:F
-
-    float-to-double v0, v0
-
-    iget v2, p0, Lorg/oscim/utils/math/Interpolation$Elastic;->power:F
-
-    sub-float v3, p1, v4
-
-    mul-float/2addr v2, v3
-
-    float-to-double v2, v2
-
-    invoke-static {v0, v1, v2, v3}, Ljava/lang/Math;->pow(DD)D
-
-    move-result-wide v0
-
-    double-to-float v0, v0
-
-    mul-float v1, p1, v7
-
-    invoke-static {v1}, Lorg/oscim/utils/math/MathUtils;->sin(F)F
-
-    move-result v1
-
-    mul-float/2addr v0, v1
-
-    mul-float/2addr v0, v6
-
-    div-float/2addr v0, v5
-
-    .line 233
-    :goto_0
-    return v0
-
-    .line 231
-    :cond_0
-    sub-float p1, v4, p1
+    mul-float/2addr p1, v4
 
     .line 232
-    mul-float/2addr p1, v5
-
-    .line 233
     iget v0, p0, Lorg/oscim/utils/math/Interpolation$Elastic;->value:F
 
-    float-to-double v0, v0
+    float-to-double v5, v0
 
-    iget v2, p0, Lorg/oscim/utils/math/Interpolation$Elastic;->power:F
+    iget v0, p0, Lorg/oscim/utils/math/Interpolation$Elastic;->power:F
 
-    sub-float v3, p1, v4
+    sub-float v3, p1, v3
 
-    mul-float/2addr v2, v3
+    mul-float/2addr v0, v3
 
-    float-to-double v2, v2
+    float-to-double v7, v0
 
-    invoke-static {v0, v1, v2, v3}, Ljava/lang/Math;->pow(DD)D
+    invoke-static {v5, v6, v7, v8}, Ljava/lang/Math;->pow(DD)D
 
-    move-result-wide v0
+    move-result-wide v5
 
-    double-to-float v0, v0
+    double-to-float v0, v5
 
-    mul-float v1, p1, v7
+    mul-float/2addr p1, v2
 
-    invoke-static {v1}, Lorg/oscim/utils/math/MathUtils;->sin(F)F
+    invoke-static {p1}, Lorg/oscim/utils/math/MathUtils;->sin(F)F
 
-    move-result v1
+    move-result p1
+
+    mul-float/2addr v0, p1
 
     mul-float/2addr v0, v1
 
-    mul-float/2addr v0, v6
+    div-float/2addr v0, v4
 
-    div-float/2addr v0, v5
+    return v0
 
-    sub-float v0, v4, v0
+    :cond_0
+    sub-float p1, v3, p1
 
-    goto :goto_0
+    mul-float/2addr p1, v4
+
+    .line 237
+    iget v0, p0, Lorg/oscim/utils/math/Interpolation$Elastic;->value:F
+
+    float-to-double v5, v0
+
+    iget v0, p0, Lorg/oscim/utils/math/Interpolation$Elastic;->power:F
+
+    sub-float v7, p1, v3
+
+    mul-float/2addr v0, v7
+
+    float-to-double v7, v0
+
+    invoke-static {v5, v6, v7, v8}, Ljava/lang/Math;->pow(DD)D
+
+    move-result-wide v5
+
+    double-to-float v0, v5
+
+    mul-float/2addr p1, v2
+
+    invoke-static {p1}, Lorg/oscim/utils/math/MathUtils;->sin(F)F
+
+    move-result p1
+
+    mul-float/2addr v0, p1
+
+    mul-float/2addr v0, v1
+
+    div-float/2addr v0, v4
+
+    sub-float/2addr v3, v0
+
+    return v3
 .end method

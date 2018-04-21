@@ -7,8 +7,7 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator",
-            "<",
+            "Landroid/os/Parcelable$Creator<",
             "Lcom/google/android/gms/wearable/internal/GetConnectedNodesResponse;",
             ">;"
         }
@@ -20,8 +19,7 @@
 .field public final nodes:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/android/gms/wearable/internal/NodeParcelable;",
             ">;"
         }
@@ -50,7 +48,6 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
     .line 42
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -66,50 +63,44 @@
 .method private constructor <init>()V
     .locals 1
 
-    .prologue
     .line 32
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    .line 25
     const/4 v0, 0x1
 
+    .line 25
     iput v0, p0, Lcom/google/android/gms/wearable/internal/GetConnectedNodesResponse;->versionCode:I
 
-    .line 33
     const/4 v0, 0x0
 
+    .line 33
     iput v0, p0, Lcom/google/android/gms/wearable/internal/GetConnectedNodesResponse;->statusCode:I
 
-    .line 34
     const/4 v0, 0x0
 
+    .line 34
     iput-object v0, p0, Lcom/google/android/gms/wearable/internal/GetConnectedNodesResponse;->nodes:Ljava/util/List;
 
-    .line 35
     return-void
 .end method
 
 .method public constructor <init>(ILjava/util/List;)V
     .locals 1
-    .param p1, "statusCode"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/android/gms/wearable/internal/NodeParcelable;",
             ">;)V"
         }
     .end annotation
 
-    .prologue
     .line 37
-    .local p2, "nodes":Ljava/util/List;, "Ljava/util/List<Lcom/google/android/gms/wearable/internal/NodeParcelable;>;"
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    .line 25
     const/4 v0, 0x1
 
+    .line 25
     iput v0, p0, Lcom/google/android/gms/wearable/internal/GetConnectedNodesResponse;->versionCode:I
 
     .line 38
@@ -118,6 +109,5 @@
     .line 39
     iput-object p2, p0, Lcom/google/android/gms/wearable/internal/GetConnectedNodesResponse;->nodes:Ljava/util/List;
 
-    .line 40
     return-void
 .end method

@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder",
-        "<",
+        "Lcom/squareup/wire/Message$Builder<",
         "Lorg/microg/wearable/proto/AssetEntry;",
         ">;"
     }
@@ -35,27 +34,20 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
     .line 64
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
-    .line 65
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/wearable/proto/AssetEntry;)V
     .locals 1
-    .param p1, "message"    # Lorg/microg/wearable/proto/AssetEntry;
 
-    .prologue
     .line 68
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
-    .line 69
     if-nez p1, :cond_0
 
-    .line 73
-    :goto_0
     return-void
 
     .line 70
@@ -70,11 +62,11 @@
     iput-object v0, p0, Lorg/microg/wearable/proto/AssetEntry$Builder;->value:Lorg/microg/wearable/proto/Asset;
 
     .line 72
-    iget-object v0, p1, Lorg/microg/wearable/proto/AssetEntry;->unknown3:Ljava/lang/Integer;
+    iget-object p1, p1, Lorg/microg/wearable/proto/AssetEntry;->unknown3:Ljava/lang/Integer;
 
-    iput-object v0, p0, Lorg/microg/wearable/proto/AssetEntry$Builder;->unknown3:Ljava/lang/Integer;
+    iput-object p1, p0, Lorg/microg/wearable/proto/AssetEntry$Builder;->unknown3:Ljava/lang/Integer;
 
-    goto :goto_0
+    return-void
 .end method
 
 
@@ -82,7 +74,6 @@
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
-    .prologue
     .line 58
     invoke-virtual {p0}, Lorg/microg/wearable/proto/AssetEntry$Builder;->build()Lorg/microg/wearable/proto/AssetEntry;
 
@@ -94,7 +85,6 @@
 .method public build()Lorg/microg/wearable/proto/AssetEntry;
     .locals 2
 
-    .prologue
     .line 92
     new-instance v0, Lorg/microg/wearable/proto/AssetEntry;
 
@@ -107,36 +97,27 @@
 
 .method public key(Ljava/lang/String;)Lorg/microg/wearable/proto/AssetEntry$Builder;
     .locals 0
-    .param p1, "key"    # Ljava/lang/String;
 
-    .prologue
     .line 76
     iput-object p1, p0, Lorg/microg/wearable/proto/AssetEntry$Builder;->key:Ljava/lang/String;
 
-    .line 77
     return-object p0
 .end method
 
 .method public unknown3(Ljava/lang/Integer;)Lorg/microg/wearable/proto/AssetEntry$Builder;
     .locals 0
-    .param p1, "unknown3"    # Ljava/lang/Integer;
 
-    .prologue
     .line 86
     iput-object p1, p0, Lorg/microg/wearable/proto/AssetEntry$Builder;->unknown3:Ljava/lang/Integer;
 
-    .line 87
     return-object p0
 .end method
 
 .method public value(Lorg/microg/wearable/proto/Asset;)Lorg/microg/wearable/proto/AssetEntry$Builder;
     .locals 0
-    .param p1, "value"    # Lorg/microg/wearable/proto/Asset;
 
-    .prologue
     .line 81
     iput-object p1, p0, Lorg/microg/wearable/proto/AssetEntry$Builder;->value:Lorg/microg/wearable/proto/Asset;
 
-    .line 82
     return-object p0
 .end method

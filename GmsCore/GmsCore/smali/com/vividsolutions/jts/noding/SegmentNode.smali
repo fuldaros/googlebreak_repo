@@ -21,12 +21,7 @@
 # direct methods
 .method public constructor <init>(Lcom/vividsolutions/jts/noding/NodedSegmentString;Lcom/vividsolutions/jts/geom/Coordinate;II)V
     .locals 1
-    .param p1, "segString"    # Lcom/vividsolutions/jts/noding/NodedSegmentString;
-    .param p2, "coord"    # Lcom/vividsolutions/jts/geom/Coordinate;
-    .param p3, "segmentIndex"    # I
-    .param p4, "segmentOctant"    # I
 
-    .prologue
     .line 52
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -49,102 +44,84 @@
     .line 57
     invoke-virtual {p1, p3}, Lcom/vividsolutions/jts/noding/NodedSegmentString;->getCoordinate(I)Lcom/vividsolutions/jts/geom/Coordinate;
 
-    move-result-object v0
+    move-result-object p1
 
-    invoke-virtual {p2, v0}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
+    invoke-virtual {p2, p1}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
-    move-result v0
+    move-result p1
 
-    if-nez v0, :cond_0
+    xor-int/lit8 p1, p1, 0x1
 
-    const/4 v0, 0x1
+    iput-boolean p1, p0, Lcom/vividsolutions/jts/noding/SegmentNode;->isInterior:Z
 
-    :goto_0
-    iput-boolean v0, p0, Lcom/vividsolutions/jts/noding/SegmentNode;->isInterior:Z
-
-    .line 58
     return-void
-
-    .line 57
-    :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
 .end method
 
 
 # virtual methods
 .method public compareTo(Ljava/lang/Object;)I
-    .locals 4
-    .param p1, "obj"    # Ljava/lang/Object;
+    .locals 2
 
-    .prologue
     .line 86
-    move-object v0, p1
-
-    check-cast v0, Lcom/vividsolutions/jts/noding/SegmentNode;
+    check-cast p1, Lcom/vividsolutions/jts/noding/SegmentNode;
 
     .line 88
-    .local v0, "other":Lcom/vividsolutions/jts/noding/SegmentNode;
-    iget v1, p0, Lcom/vividsolutions/jts/noding/SegmentNode;->segmentIndex:I
+    iget v0, p0, Lcom/vividsolutions/jts/noding/SegmentNode;->segmentIndex:I
 
-    iget v2, v0, Lcom/vividsolutions/jts/noding/SegmentNode;->segmentIndex:I
+    iget v1, p1, Lcom/vividsolutions/jts/noding/SegmentNode;->segmentIndex:I
 
-    if-ge v1, v2, :cond_0
+    if-ge v0, v1, :cond_0
 
-    const/4 v1, -0x1
+    const/4 p1, -0x1
 
-    .line 93
-    :goto_0
-    return v1
+    return p1
 
     .line 89
     :cond_0
-    iget v1, p0, Lcom/vividsolutions/jts/noding/SegmentNode;->segmentIndex:I
+    iget v0, p0, Lcom/vividsolutions/jts/noding/SegmentNode;->segmentIndex:I
 
-    iget v2, v0, Lcom/vividsolutions/jts/noding/SegmentNode;->segmentIndex:I
+    iget v1, p1, Lcom/vividsolutions/jts/noding/SegmentNode;->segmentIndex:I
 
-    if-le v1, v2, :cond_1
+    if-le v0, v1, :cond_1
 
-    const/4 v1, 0x1
+    const/4 p1, 0x1
 
-    goto :goto_0
+    return p1
 
     .line 91
     :cond_1
-    iget-object v1, p0, Lcom/vividsolutions/jts/noding/SegmentNode;->coord:Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v0, p0, Lcom/vividsolutions/jts/noding/SegmentNode;->coord:Lcom/vividsolutions/jts/geom/Coordinate;
 
-    iget-object v2, v0, Lcom/vividsolutions/jts/noding/SegmentNode;->coord:Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v1, p1, Lcom/vividsolutions/jts/noding/SegmentNode;->coord:Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-virtual {v1, v2}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
+    invoke-virtual {v0, v1}, Lcom/vividsolutions/jts/geom/Coordinate;->equals2D(Lcom/vividsolutions/jts/geom/Coordinate;)Z
 
-    move-result v1
+    move-result v0
 
-    if-eqz v1, :cond_2
+    if-eqz v0, :cond_2
 
-    const/4 v1, 0x0
+    const/4 p1, 0x0
 
-    goto :goto_0
+    return p1
 
     .line 93
     :cond_2
-    iget v1, p0, Lcom/vividsolutions/jts/noding/SegmentNode;->segmentOctant:I
+    iget v0, p0, Lcom/vividsolutions/jts/noding/SegmentNode;->segmentOctant:I
 
-    iget-object v2, p0, Lcom/vividsolutions/jts/noding/SegmentNode;->coord:Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object v1, p0, Lcom/vividsolutions/jts/noding/SegmentNode;->coord:Lcom/vividsolutions/jts/geom/Coordinate;
 
-    iget-object v3, v0, Lcom/vividsolutions/jts/noding/SegmentNode;->coord:Lcom/vividsolutions/jts/geom/Coordinate;
+    iget-object p1, p1, Lcom/vividsolutions/jts/noding/SegmentNode;->coord:Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-static {v1, v2, v3}, Lcom/vividsolutions/jts/noding/SegmentPointComparator;->compare(ILcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)I
+    invoke-static {v0, v1, p1}, Lcom/vividsolutions/jts/noding/SegmentPointComparator;->compare(ILcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)I
 
-    move-result v1
+    move-result p1
 
-    goto :goto_0
+    return p1
 .end method
 
 .method public isInterior()Z
     .locals 1
 
-    .prologue
     .line 70
     iget-boolean v0, p0, Lcom/vividsolutions/jts/noding/SegmentNode;->isInterior:Z
 

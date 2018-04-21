@@ -17,13 +17,10 @@
 # direct methods
 .method public constructor <init>(I)V
     .locals 0
-    .param p1, "power"    # I
 
-    .prologue
-    .line 163
+    .line 167
     invoke-direct {p0, p1}, Lorg/oscim/utils/math/Interpolation$Pow;-><init>(I)V
 
-    .line 164
     return-void
 .end method
 
@@ -31,45 +28,43 @@
 # virtual methods
 .method public apply(F)F
     .locals 5
-    .param p1, "a"    # F
 
-    .prologue
-    const/high16 v4, 0x3f800000    # 1.0f
+    const/high16 v0, 0x3f800000    # 1.0f
 
-    .line 168
-    sub-float v0, p1, v4
+    sub-float/2addr p1, v0
 
-    float-to-double v0, v0
+    float-to-double v1, p1
 
-    iget v2, p0, Lorg/oscim/utils/math/Interpolation$PowOut;->power:I
+    .line 172
+    iget p1, p0, Lorg/oscim/utils/math/Interpolation$PowOut;->power:I
 
-    int-to-double v2, v2
+    int-to-double v3, p1
 
-    invoke-static {v0, v1, v2, v3}, Ljava/lang/Math;->pow(DD)D
+    invoke-static {v1, v2, v3, v4}, Ljava/lang/Math;->pow(DD)D
 
-    move-result-wide v0
+    move-result-wide v1
 
-    double-to-float v1, v0
+    double-to-float p1, v1
 
-    iget v0, p0, Lorg/oscim/utils/math/Interpolation$PowOut;->power:I
+    iget v1, p0, Lorg/oscim/utils/math/Interpolation$PowOut;->power:I
 
-    rem-int/lit8 v0, v0, 0x2
+    rem-int/lit8 v1, v1, 0x2
 
-    if-nez v0, :cond_0
+    if-nez v1, :cond_0
 
-    const/4 v0, -0x1
-
-    :goto_0
-    int-to-float v0, v0
-
-    mul-float/2addr v0, v1
-
-    add-float/2addr v0, v4
-
-    return v0
-
-    :cond_0
-    const/4 v0, 0x1
+    const/4 v1, -0x1
 
     goto :goto_0
+
+    :cond_0
+    const/4 v1, 0x1
+
+    :goto_0
+    int-to-float v1, v1
+
+    mul-float/2addr p1, v1
+
+    add-float/2addr p1, v0
+
+    return p1
 .end method

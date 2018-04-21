@@ -7,8 +7,7 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator",
-            "<",
+            "Landroid/os/Parcelable$Creator<",
             "Lcom/google/android/gms/location/internal/LocationRequestInternal;",
             ">;"
         }
@@ -20,8 +19,7 @@
 .field public clients:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/android/gms/location/internal/ClientIdentity;",
             ">;"
         }
@@ -30,6 +28,12 @@
     .annotation runtime Lorg/microg/safeparcel/SafeParceled;
         subClass = Lcom/google/android/gms/location/internal/ClientIdentity;
         value = 0x5
+    .end annotation
+.end field
+
+.field public forceCoarseLocation:Z
+    .annotation runtime Lorg/microg/safeparcel/SafeParceled;
+        value = 0x8
     .end annotation
 .end field
 
@@ -80,8 +84,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
-    .line 65
+    .line 69
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
     const-class v1, Lcom/google/android/gms/location/internal/LocationRequestInternal;
@@ -96,13 +99,12 @@
 .method public constructor <init>()V
     .locals 1
 
-    .prologue
     .line 26
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    .line 28
     const/4 v0, 0x1
 
+    .line 28
     iput v0, p0, Lcom/google/android/gms/location/internal/LocationRequestInternal;->versionCode:I
 
     return-void
@@ -113,8 +115,7 @@
 .method public toString()Ljava/lang/String;
     .locals 2
 
-    .prologue
-    .line 54
+    .line 57
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -123,97 +124,73 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     iget-object v1, p0, Lcom/google/android/gms/location/internal/LocationRequestInternal;->request:Lcom/google/android/gms/location/LocationRequest;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     const-string v1, ", requestNlpDebugInfo="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     iget-boolean v1, p0, Lcom/google/android/gms/location/internal/LocationRequestInternal;->requestNlpDebugInfo:Z
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     const-string v1, ", restorePendingIntentListeners="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     iget-boolean v1, p0, Lcom/google/android/gms/location/internal/LocationRequestInternal;->restorePendingIntentListeners:Z
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     const-string v1, ", triggerUpdate="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     iget-boolean v1, p0, Lcom/google/android/gms/location/internal/LocationRequestInternal;->triggerUpdate:Z
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     const-string v1, ", clients="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     iget-object v1, p0, Lcom/google/android/gms/location/internal/LocationRequestInternal;->clients:Ljava/util/List;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     const-string v1, ", tag=\'"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     iget-object v1, p0, Lcom/google/android/gms/location/internal/LocationRequestInternal;->tag:Ljava/lang/String;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     const/16 v1, 0x27
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     const-string v1, ", hideFromAppOps="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget-boolean v1, p0, Lcom/google/android/gms/location/internal/LocationRequestInternal;->hideFromAppOps:Z
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    const-string v1, ", forceCoarseLocation="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-boolean v1, p0, Lcom/google/android/gms/location/internal/LocationRequestInternal;->forceCoarseLocation:Z
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
     const/16 v1, 0x7d
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 

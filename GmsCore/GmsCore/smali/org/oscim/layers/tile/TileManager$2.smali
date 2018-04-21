@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lorg/oscim/event/EventDispatcher",
-        "<",
+        "Lorg/oscim/event/EventDispatcher<",
         "Lorg/oscim/layers/tile/TileManager$Listener;",
         "Lorg/oscim/layers/tile/MapTile;",
         ">;"
@@ -31,10 +30,8 @@
 # direct methods
 .method constructor <init>(Lorg/oscim/layers/tile/TileManager;)V
     .locals 0
-    .param p1, "this$0"    # Lorg/oscim/layers/tile/TileManager;
 
-    .prologue
-    .line 127
+    .line 145
     iput-object p1, p0, Lorg/oscim/layers/tile/TileManager$2;->this$0:Lorg/oscim/layers/tile/TileManager;
 
     invoke-direct {p0}, Lorg/oscim/event/EventDispatcher;-><init>()V
@@ -47,8 +44,7 @@
 .method public bridge synthetic tell(Lorg/oscim/event/EventListener;Lorg/oscim/event/Event;Ljava/lang/Object;)V
     .locals 0
 
-    .prologue
-    .line 127
+    .line 145
     check-cast p1, Lorg/oscim/layers/tile/TileManager$Listener;
 
     check-cast p3, Lorg/oscim/layers/tile/MapTile;
@@ -60,14 +56,9 @@
 
 .method public tell(Lorg/oscim/layers/tile/TileManager$Listener;Lorg/oscim/event/Event;Lorg/oscim/layers/tile/MapTile;)V
     .locals 0
-    .param p1, "l"    # Lorg/oscim/layers/tile/TileManager$Listener;
-    .param p2, "event"    # Lorg/oscim/event/Event;
-    .param p3, "tile"    # Lorg/oscim/layers/tile/MapTile;
 
-    .prologue
-    .line 130
+    .line 148
     invoke-interface {p1, p2, p3}, Lorg/oscim/layers/tile/TileManager$Listener;->onTileManagerEvent(Lorg/oscim/event/Event;Lorg/oscim/layers/tile/MapTile;)V
 
-    .line 131
     return-void
 .end method

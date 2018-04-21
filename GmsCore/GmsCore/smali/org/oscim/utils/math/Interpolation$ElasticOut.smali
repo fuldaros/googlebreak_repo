@@ -17,14 +17,10 @@
 # direct methods
 .method public constructor <init>(FF)V
     .locals 0
-    .param p1, "value"    # F
-    .param p2, "power"    # F
 
-    .prologue
-    .line 251
+    .line 255
     invoke-direct {p0, p1, p2}, Lorg/oscim/utils/math/Interpolation$Elastic;-><init>(FF)V
 
-    .line 252
     return-void
 .end method
 
@@ -32,48 +28,45 @@
 # virtual methods
 .method public apply(F)F
     .locals 5
-    .param p1, "a"    # F
 
-    .prologue
-    const/high16 v4, 0x3f800000    # 1.0f
+    const/high16 v0, 0x3f800000    # 1.0f
 
-    .line 256
-    sub-float p1, v4, p1
+    sub-float p1, v0, p1
 
-    .line 257
-    iget v0, p0, Lorg/oscim/utils/math/Interpolation$ElasticOut;->value:F
+    .line 261
+    iget v1, p0, Lorg/oscim/utils/math/Interpolation$ElasticOut;->value:F
 
-    float-to-double v0, v0
+    float-to-double v1, v1
 
-    iget v2, p0, Lorg/oscim/utils/math/Interpolation$ElasticOut;->power:F
+    iget v3, p0, Lorg/oscim/utils/math/Interpolation$ElasticOut;->power:F
 
-    sub-float v3, p1, v4
+    sub-float v4, p1, v0
 
-    mul-float/2addr v2, v3
+    mul-float/2addr v3, v4
 
-    float-to-double v2, v2
+    float-to-double v3, v3
 
-    invoke-static {v0, v1, v2, v3}, Ljava/lang/Math;->pow(DD)D
+    invoke-static {v1, v2, v3, v4}, Ljava/lang/Math;->pow(DD)D
 
-    move-result-wide v0
+    move-result-wide v1
 
-    double-to-float v0, v0
+    double-to-float v1, v1
 
-    const/high16 v1, 0x41a00000    # 20.0f
+    const/high16 v2, 0x41a00000    # 20.0f
+
+    mul-float/2addr p1, v2
+
+    invoke-static {p1}, Lorg/oscim/utils/math/MathUtils;->sin(F)F
+
+    move-result p1
 
     mul-float/2addr v1, p1
 
-    invoke-static {v1}, Lorg/oscim/utils/math/MathUtils;->sin(F)F
+    const p1, 0x3f8c3958    # 1.0955f
 
-    move-result v1
+    mul-float/2addr v1, p1
 
-    mul-float/2addr v0, v1
-
-    const v1, 0x3f8c3958    # 1.0955f
-
-    mul-float/2addr v0, v1
-
-    sub-float v0, v4, v0
+    sub-float/2addr v0, v1
 
     return v0
 .end method

@@ -3,8 +3,18 @@
 .source "WearableServiceImpl.java"
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lorg/microg/gms/wearable/WearableServiceImpl$CallbackRunnable;
+    }
+.end annotation
+
+
 # instance fields
 .field private final context:Landroid/content/Context;
+
+.field private final handler:Landroid/os/Handler;
 
 .field private final packageName:Ljava/lang/String;
 
@@ -14,242 +24,433 @@
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Lorg/microg/gms/wearable/WearableImpl;Ljava/lang/String;)V
     .locals 0
-    .param p1, "context"    # Landroid/content/Context;
-    .param p2, "wearable"    # Lorg/microg/gms/wearable/WearableImpl;
-    .param p3, "packageName"    # Ljava/lang/String;
 
-    .prologue
-    .line 49
+    .line 60
     invoke-direct {p0}, Lcom/google/android/gms/wearable/internal/IWearableService$Stub;-><init>()V
 
-    .line 50
+    .line 61
     iput-object p1, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->context:Landroid/content/Context;
 
-    .line 51
+    .line 62
     iput-object p2, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->wearable:Lorg/microg/gms/wearable/WearableImpl;
 
-    .line 52
+    .line 63
     iput-object p3, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->packageName:Ljava/lang/String;
 
-    .line 53
+    .line 64
+    new-instance p2, Landroid/os/Handler;
+
+    invoke-virtual {p1}, Landroid/content/Context;->getMainLooper()Landroid/os/Looper;
+
+    move-result-object p1
+
+    invoke-direct {p2, p1}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
+
+    iput-object p2, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->handler:Landroid/os/Handler;
+
     return-void
+.end method
+
+.method static synthetic access$000(Lorg/microg/gms/wearable/WearableServiceImpl;)Lorg/microg/gms/wearable/WearableImpl;
+    .locals 0
+
+    .line 52
+    iget-object p0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->wearable:Lorg/microg/gms/wearable/WearableImpl;
+
+    return-object p0
+.end method
+
+.method static synthetic access$100(Lorg/microg/gms/wearable/WearableServiceImpl;)Ljava/lang/String;
+    .locals 0
+
+    .line 52
+    iget-object p0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->packageName:Ljava/lang/String;
+
+    return-object p0
 .end method
 
 
 # virtual methods
-.method public addListener(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Lcom/google/android/gms/wearable/internal/AddListenerRequest;)V
-    .locals 3
-    .param p1, "callbacks"    # Lcom/google/android/gms/wearable/internal/IWearableCallbacks;
-    .param p2, "request"    # Lcom/google/android/gms/wearable/internal/AddListenerRequest;
+.method public acceptRingingCall(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 115
-    const-string v0, "GmsWearSvcImpl"
+    const-string p1, "GmsWearSvcImpl"
 
-    new-instance v1, Ljava/lang/StringBuilder;
+    const-string v0, "unimplemented Method: acceptRingingCall"
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    .line 354
+    invoke-static {p1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    const-string v2, "addListener[nyp]: "
+    return-void
+.end method
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+.method public addListener(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Lcom/google/android/gms/wearable/internal/AddListenerRequest;)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
 
-    move-result-object v1
-
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 116
+    .line 325
     iget-object v0, p2, Lcom/google/android/gms/wearable/internal/AddListenerRequest;->listener:Lcom/google/android/gms/wearable/internal/IWearableListener;
 
     if-eqz v0, :cond_0
 
-    .line 117
+    .line 326
     iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->wearable:Lorg/microg/gms/wearable/WearableImpl;
 
     iget-object v1, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->packageName:Ljava/lang/String;
 
-    iget-object v2, p2, Lcom/google/android/gms/wearable/internal/AddListenerRequest;->listener:Lcom/google/android/gms/wearable/internal/IWearableListener;
+    iget-object p2, p2, Lcom/google/android/gms/wearable/internal/AddListenerRequest;->listener:Lcom/google/android/gms/wearable/internal/IWearableListener;
 
-    invoke-virtual {v0, v1, v2}, Lorg/microg/gms/wearable/WearableImpl;->addListener(Ljava/lang/String;Lcom/google/android/gms/wearable/internal/IWearableListener;)V
+    invoke-virtual {v0, v1, p2}, Lorg/microg/gms/wearable/WearableImpl;->addListener(Ljava/lang/String;Lcom/google/android/gms/wearable/internal/IWearableListener;)V
 
-    .line 119
+    .line 328
     :cond_0
-    sget-object v0, Lcom/google/android/gms/common/api/Status;->SUCCESS:Lcom/google/android/gms/common/api/Status;
+    sget-object p2, Lcom/google/android/gms/common/api/Status;->SUCCESS:Lcom/google/android/gms/common/api/Status;
 
-    invoke-interface {p1, v0}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onStatus(Lcom/google/android/gms/common/api/Status;)V
+    invoke-interface {p1, p2}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onStatus(Lcom/google/android/gms/common/api/Status;)V
 
-    .line 120
+    return-void
+.end method
+
+.method public addLocalCapability(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Ljava/lang/String;)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    .line 315
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "unimplemented Method: addLocalCapability: "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p2
+
+    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
+.end method
+
+.method public clearStorage(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    const-string v0, "unimplemented Method: clearStorage"
+
+    .line 344
+    invoke-static {p1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
+.end method
+
+.method public closeChannel(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Ljava/lang/String;)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    .line 392
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "unimplemented Method: closeChannel: "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p2
+
+    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
+.end method
+
+.method public closeChannelWithError(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Ljava/lang/String;I)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    .line 397
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "unimplemented Method: closeChannelWithError:"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string p2, ", "
+
+    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p2
+
+    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
     return-void
 .end method
 
 .method public deleteConfig(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Ljava/lang/String;)V
-    .locals 1
-    .param p1, "callbacks"    # Lcom/google/android/gms/wearable/internal/IWearableCallbacks;
-    .param p2, "name"    # Ljava/lang/String;
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 137
-    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->wearable:Lorg/microg/gms/wearable/WearableImpl;
+    .line 84
+    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->handler:Landroid/os/Handler;
 
-    invoke-virtual {v0, p2}, Lorg/microg/gms/wearable/WearableImpl;->deleteConnection(Ljava/lang/String;)V
+    new-instance v1, Lorg/microg/gms/wearable/WearableServiceImpl$2;
 
-    .line 138
-    sget-object v0, Lcom/google/android/gms/common/api/Status;->SUCCESS:Lcom/google/android/gms/common/api/Status;
+    invoke-direct {v1, p0, p1, p2}, Lorg/microg/gms/wearable/WearableServiceImpl$2;-><init>(Lorg/microg/gms/wearable/WearableServiceImpl;Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Ljava/lang/String;)V
 
-    invoke-interface {p1, v0}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onStatus(Lcom/google/android/gms/common/api/Status;)V
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 139
     return-void
 .end method
 
 .method public deleteDataItems(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Landroid/net/Uri;)V
-    .locals 4
-    .param p1, "callbacks"    # Lcom/google/android/gms/wearable/internal/IWearableCallbacks;
-    .param p2, "uri"    # Landroid/net/Uri;
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 89
-    const-string v0, "GmsWearSvcImpl"
+    const/4 v0, 0x0
 
-    new-instance v1, Ljava/lang/StringBuilder;
+    .line 194
+    invoke-virtual {p0, p1, p2, v0}, Lorg/microg/gms/wearable/WearableServiceImpl;->deleteDataItemsWithFilter(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Landroid/net/Uri;I)V
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, "deleteDataItems: "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 90
-    new-instance v0, Lcom/google/android/gms/wearable/internal/DeleteDataItemsResponse;
-
-    const/4 v1, 0x0
-
-    iget-object v2, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->wearable:Lorg/microg/gms/wearable/WearableImpl;
-
-    iget-object v3, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->packageName:Ljava/lang/String;
-
-    invoke-virtual {v2, p2, v3}, Lorg/microg/gms/wearable/WearableImpl;->deleteDataItems(Landroid/net/Uri;Ljava/lang/String;)I
-
-    move-result v2
-
-    invoke-direct {v0, v1, v2}, Lcom/google/android/gms/wearable/internal/DeleteDataItemsResponse;-><init>(II)V
-
-    invoke-interface {p1, v0}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onDeleteDataItemsResponse(Lcom/google/android/gms/wearable/internal/DeleteDataItemsResponse;)V
-
-    .line 91
     return-void
 .end method
 
-.method public disableConnection(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Ljava/lang/String;)V
-    .locals 3
-    .param p1, "callbacks"    # Lcom/google/android/gms/wearable/internal/IWearableCallbacks;
-    .param p2, "name"    # Ljava/lang/String;
+.method public deleteDataItemsWithFilter(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Landroid/net/Uri;I)V
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 172
+    const-string p3, "GmsWearSvcImpl"
+
+    .line 199
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "deleteDataItems: "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {p3, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 200
+    iget-object p3, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->handler:Landroid/os/Handler;
+
+    new-instance v0, Lorg/microg/gms/wearable/WearableServiceImpl$10;
+
+    invoke-direct {v0, p0, p1, p2}, Lorg/microg/gms/wearable/WearableServiceImpl$10;-><init>(Lorg/microg/gms/wearable/WearableServiceImpl;Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Landroid/net/Uri;)V
+
+    invoke-virtual {p3, v0}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    return-void
+.end method
+
+.method public disableConfig(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Ljava/lang/String;)V
+    .locals 3
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
     const-string v0, "GmsWearSvcImpl"
 
+    .line 123
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "disableConnection: "
+    const-string v2, "disableConfig: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
 
     invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 173
-    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->wearable:Lorg/microg/gms/wearable/WearableImpl;
+    .line 124
+    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->handler:Landroid/os/Handler;
 
-    invoke-virtual {v0, p2}, Lorg/microg/gms/wearable/WearableImpl;->disableConnection(Ljava/lang/String;)V
+    new-instance v1, Lorg/microg/gms/wearable/WearableServiceImpl$5;
 
-    .line 174
-    sget-object v0, Lcom/google/android/gms/common/api/Status;->SUCCESS:Lcom/google/android/gms/common/api/Status;
+    invoke-direct {v1, p0, p1, p2}, Lorg/microg/gms/wearable/WearableServiceImpl$5;-><init>(Lorg/microg/gms/wearable/WearableServiceImpl;Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Ljava/lang/String;)V
 
-    invoke-interface {p1, v0}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onStatus(Lcom/google/android/gms/common/api/Status;)V
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 175
     return-void
 .end method
 
-.method public enableConnection(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Ljava/lang/String;)V
-    .locals 3
-    .param p1, "callbacks"    # Lcom/google/android/gms/wearable/internal/IWearableCallbacks;
-    .param p2, "name"    # Ljava/lang/String;
+.method public disableConnection(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 165
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+
+    .line 470
+    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->handler:Landroid/os/Handler;
+
+    new-instance v1, Lorg/microg/gms/wearable/WearableServiceImpl$17;
+
+    invoke-direct {v1, p0, p1}, Lorg/microg/gms/wearable/WearableServiceImpl$17;-><init>(Lorg/microg/gms/wearable/WearableServiceImpl;Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    return-void
+.end method
+
+.method public doAncsNegativeAction(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;I)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    .line 378
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "unimplemented Method: doAncsNegativeAction: "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p2
+
+    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
+.end method
+
+.method public doAncsPositiveAction(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;I)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    .line 373
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "unimplemented Method: doAncsPositiveAction: "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p2
+
+    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
+.end method
+
+.method public enableConfig(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Ljava/lang/String;)V
+    .locals 3
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
     const-string v0, "GmsWearSvcImpl"
 
+    .line 111
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "enableConnection: "
+    const-string v2, "enableConfig: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
     invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
 
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -257,267 +458,371 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 166
-    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->wearable:Lorg/microg/gms/wearable/WearableImpl;
+    .line 112
+    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->handler:Landroid/os/Handler;
 
-    invoke-virtual {v0, p2}, Lorg/microg/gms/wearable/WearableImpl;->enableConnection(Ljava/lang/String;)V
+    new-instance v1, Lorg/microg/gms/wearable/WearableServiceImpl$4;
 
-    .line 167
-    sget-object v0, Lcom/google/android/gms/common/api/Status;->SUCCESS:Lcom/google/android/gms/common/api/Status;
+    invoke-direct {v1, p0, p1, p2}, Lorg/microg/gms/wearable/WearableServiceImpl$4;-><init>(Lorg/microg/gms/wearable/WearableServiceImpl;Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Ljava/lang/String;)V
 
-    invoke-interface {p1, v0}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onStatus(Lcom/google/android/gms/common/api/Status;)V
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 168
     return-void
 .end method
 
-.method public getConfig(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
-    .locals 9
-    .param p1, "callbacks"    # Lcom/google/android/gms/wearable/internal/IWearableCallbacks;
+.method public enableConnection(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+
+    .line 456
+    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->handler:Landroid/os/Handler;
+
+    new-instance v1, Lorg/microg/gms/wearable/WearableServiceImpl$16;
+
+    invoke-direct {v1, p0, p1}, Lorg/microg/gms/wearable/WearableServiceImpl$16;-><init>(Lorg/microg/gms/wearable/WearableServiceImpl;Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    return-void
+.end method
+
+.method public endCall(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    const-string v0, "unimplemented Method: endCall"
+
+    .line 349
+    invoke-static {p1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
+.end method
+
+.method public getChannelInputStream(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Lcom/google/android/gms/wearable/internal/IChannelStreamCallbacks;Ljava/lang/String;)V
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    .line 403
+    new-instance p2, Ljava/lang/StringBuilder;
+
+    invoke-direct {p2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v0, "unimplemented Method: getChannelInputStream: "
+
+    invoke-virtual {p2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p2
+
+    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
+.end method
+
+.method public getChannelOutputStream(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Lcom/google/android/gms/wearable/internal/IChannelStreamCallbacks;Ljava/lang/String;)V
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    .line 408
+    new-instance p2, Ljava/lang/StringBuilder;
+
+    invoke-direct {p2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v0, "unimplemented Method: getChannelOutputStream: "
+
+    invoke-virtual {p2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p2
+
+    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
+.end method
+
+.method public getCloudSyncOptInDone(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    const-string v0, "unimplemented Method: getCloudSyncOptInDone"
+
+    .line 252
+    invoke-static {p1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
+.end method
+
+.method public getCloudSyncOptInStatus(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    const-string v0, "unimplemented Method: getCloudSyncOptInStatus"
+
+    .line 267
+    invoke-static {p1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
+.end method
+
+.method public getCloudSyncSetting(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .line 262
+    new-instance v0, Lcom/google/android/gms/wearable/internal/GetCloudSyncSettingResponse;
+
     const/4 v1, 0x0
 
-    const/4 v3, 0x0
+    invoke-direct {v0, v1, v1}, Lcom/google/android/gms/wearable/internal/GetCloudSyncSettingResponse;-><init>(IZ)V
 
-    .line 143
-    const-string v0, "GmsWearSvcImpl"
+    invoke-interface {p1, v0}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onGetCloudSyncSettingResponse(Lcom/google/android/gms/wearable/internal/GetCloudSyncSettingResponse;)V
 
-    const-string v2, "getConfig"
-
-    invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 144
-    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->wearable:Lorg/microg/gms/wearable/WearableImpl;
-
-    invoke-virtual {v0}, Lorg/microg/gms/wearable/WearableImpl;->getConfigurations()[Lcom/google/android/gms/wearable/ConnectionConfiguration;
-
-    move-result-object v6
-
-    .line 145
-    .local v6, "configurations":[Lcom/google/android/gms/wearable/ConnectionConfiguration;
-    if-eqz v6, :cond_0
-
-    array-length v0, v6
-
-    if-nez v0, :cond_1
-
-    .line 146
-    :cond_0
-    new-instance v7, Lcom/google/android/gms/wearable/internal/GetConfigResponse;
-
-    const/4 v8, 0x1
-
-    new-instance v0, Lcom/google/android/gms/wearable/ConnectionConfiguration;
-
-    move-object v2, v1
-
-    move v4, v3
-
-    move v5, v3
-
-    invoke-direct/range {v0 .. v5}, Lcom/google/android/gms/wearable/ConnectionConfiguration;-><init>(Ljava/lang/String;Ljava/lang/String;IIZ)V
-
-    invoke-direct {v7, v8, v0}, Lcom/google/android/gms/wearable/internal/GetConfigResponse;-><init>(ILcom/google/android/gms/wearable/ConnectionConfiguration;)V
-
-    invoke-interface {p1, v7}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onGetConfigResponse(Lcom/google/android/gms/wearable/internal/GetConfigResponse;)V
-
-    .line 150
-    :goto_0
     return-void
-
-    .line 148
-    :cond_1
-    new-instance v0, Lcom/google/android/gms/wearable/internal/GetConfigResponse;
-
-    aget-object v1, v6, v3
-
-    invoke-direct {v0, v3, v1}, Lcom/google/android/gms/wearable/internal/GetConfigResponse;-><init>(ILcom/google/android/gms/wearable/ConnectionConfiguration;)V
-
-    invoke-interface {p1, v0}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onGetConfigResponse(Lcom/google/android/gms/wearable/internal/GetConfigResponse;)V
-
-    goto :goto_0
 .end method
 
 .method public getConfigs(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
-    .locals 5
-    .param p1, "callbacks"    # Lcom/google/android/gms/wearable/internal/IWearableCallbacks;
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    const/4 v4, 0x0
+    const-string v0, "GmsWearSvcImpl"
 
-    .line 154
-    const-string v1, "GmsWearSvcImpl"
+    const-string v1, "getConfigs"
 
-    const-string v2, "getConfigs"
+    .line 95
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    .line 96
+    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->handler:Landroid/os/Handler;
 
-    .line 156
-    :try_start_0
-    new-instance v1, Lcom/google/android/gms/wearable/internal/GetConfigsResponse;
+    new-instance v1, Lorg/microg/gms/wearable/WearableServiceImpl$3;
 
-    const/4 v2, 0x0
+    invoke-direct {v1, p0, p1}, Lorg/microg/gms/wearable/WearableServiceImpl$3;-><init>(Lorg/microg/gms/wearable/WearableServiceImpl;Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
 
-    iget-object v3, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->wearable:Lorg/microg/gms/wearable/WearableImpl;
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    invoke-virtual {v3}, Lorg/microg/gms/wearable/WearableImpl;->getConfigurations()[Lcom/google/android/gms/wearable/ConnectionConfiguration;
-
-    move-result-object v3
-
-    invoke-direct {v1, v2, v3}, Lcom/google/android/gms/wearable/internal/GetConfigsResponse;-><init>(I[Lcom/google/android/gms/wearable/ConnectionConfiguration;)V
-
-    invoke-interface {p1, v1}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onGetConfigsResponse(Lcom/google/android/gms/wearable/internal/GetConfigsResponse;)V
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 160
-    :goto_0
     return-void
+.end method
 
-    .line 157
-    :catch_0
-    move-exception v0
+.method public getConnectedCapability(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Ljava/lang/String;I)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
 
-    .line 158
-    .local v0, "e":Ljava/lang/Exception;
-    new-instance v1, Lcom/google/android/gms/wearable/internal/GetConfigsResponse;
+    const-string p1, "GmsWearSvcImpl"
 
-    const/16 v2, 0x8
+    .line 305
+    new-instance v0, Ljava/lang/StringBuilder;
 
-    new-array v3, v4, [Lcom/google/android/gms/wearable/ConnectionConfiguration;
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v1, v2, v3}, Lcom/google/android/gms/wearable/internal/GetConfigsResponse;-><init>(I[Lcom/google/android/gms/wearable/ConnectionConfiguration;)V
+    const-string v1, "unimplemented Method: getConnectedCapability "
 
-    invoke-interface {p1, v1}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onGetConfigsResponse(Lcom/google/android/gms/wearable/internal/GetConfigsResponse;)V
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    goto :goto_0
+    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string p2, ", "
+
+    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p2
+
+    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
+.end method
+
+.method public getConnectedCapaibilties(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;I)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    .line 310
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "unimplemented Method: getConnectedCapaibilties: "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p2
+
+    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
 .end method
 
 .method public getConnectedNodes(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
-    .locals 3
-    .param p1, "callbacks"    # Lcom/google/android/gms/wearable/internal/IWearableCallbacks;
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 109
+    .line 291
+    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->handler:Landroid/os/Handler;
+
+    new-instance v1, Lorg/microg/gms/wearable/WearableServiceImpl$14;
+
+    invoke-direct {v1, p0, p1}, Lorg/microg/gms/wearable/WearableServiceImpl$14;-><init>(Lorg/microg/gms/wearable/WearableServiceImpl;Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    return-void
+.end method
+
+.method public getConnection(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+
     const-string v0, "GmsWearSvcImpl"
 
-    const-string v1, "getConnectedNodes"
+    const-string v1, "getConfig"
 
+    .line 439
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 110
-    new-instance v0, Lcom/google/android/gms/wearable/internal/GetConnectedNodesResponse;
+    .line 440
+    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->handler:Landroid/os/Handler;
 
-    const/4 v1, 0x0
+    new-instance v1, Lorg/microg/gms/wearable/WearableServiceImpl$15;
 
-    iget-object v2, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->wearable:Lorg/microg/gms/wearable/WearableImpl;
+    invoke-direct {v1, p0, p1}, Lorg/microg/gms/wearable/WearableServiceImpl$15;-><init>(Lorg/microg/gms/wearable/WearableServiceImpl;Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
 
-    invoke-virtual {v2}, Lorg/microg/gms/wearable/WearableImpl;->getConnectedNodesParcelableList()Ljava/util/List;
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    move-result-object v2
-
-    invoke-direct {v0, v1, v2}, Lcom/google/android/gms/wearable/internal/GetConnectedNodesResponse;-><init>(ILjava/util/List;)V
-
-    invoke-interface {p1, v0}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onGetConnectedNodesResponse(Lcom/google/android/gms/wearable/internal/GetConnectedNodesResponse;)V
-
-    .line 111
     return-void
 .end method
 
 .method public getDataItem(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Landroid/net/Uri;)V
-    .locals 4
-    .param p1, "callbacks"    # Lcom/google/android/gms/wearable/internal/IWearableCallbacks;
-    .param p2, "uri"    # Landroid/net/Uri;
+    .locals 3
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 65
-    const-string v1, "GmsWearSvcImpl"
+    const-string v0, "GmsWearSvcImpl"
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    .line 151
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "getDataItem: "
+    const-string v2, "getDataItem: "
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v1
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    move-result-object v2
+    .line 152
+    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->handler:Landroid/os/Handler;
 
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    new-instance v1, Lorg/microg/gms/wearable/WearableServiceImpl$7;
 
-    .line 67
-    iget-object v1, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->wearable:Lorg/microg/gms/wearable/WearableImpl;
+    invoke-direct {v1, p0, p1, p2}, Lorg/microg/gms/wearable/WearableServiceImpl$7;-><init>(Lorg/microg/gms/wearable/WearableServiceImpl;Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Landroid/net/Uri;)V
 
-    iget-object v2, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->packageName:Ljava/lang/String;
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    invoke-virtual {v1, p2, v2}, Lorg/microg/gms/wearable/WearableImpl;->getDataItemByUri(Landroid/net/Uri;Ljava/lang/String;)Lorg/microg/gms/wearable/DataItemRecord;
-
-    move-result-object v0
-
-    .line 68
-    .local v0, "record":Lorg/microg/gms/wearable/DataItemRecord;
-    if-eqz v0, :cond_0
-
-    .line 69
-    new-instance v1, Lcom/google/android/gms/wearable/internal/GetDataItemResponse;
-
-    const/4 v2, 0x0
-
-    invoke-virtual {v0}, Lorg/microg/gms/wearable/DataItemRecord;->toParcelable()Lcom/google/android/gms/wearable/internal/DataItemParcelable;
-
-    move-result-object v3
-
-    invoke-direct {v1, v2, v3}, Lcom/google/android/gms/wearable/internal/GetDataItemResponse;-><init>(ILcom/google/android/gms/wearable/internal/DataItemParcelable;)V
-
-    invoke-interface {p1, v1}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onGetDataItemResponse(Lcom/google/android/gms/wearable/internal/GetDataItemResponse;)V
-
-    .line 73
-    :cond_0
     return-void
 .end method
 
 .method public getDataItems(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
     .locals 3
-    .param p1, "callbacks"    # Lcom/google/android/gms/wearable/internal/IWearableCallbacks;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 77
     const-string v0, "GmsWearSvcImpl"
 
+    .line 167
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -526,11 +831,7 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
     invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
 
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -538,49 +839,93 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 78
-    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->wearable:Lorg/microg/gms/wearable/WearableImpl;
+    .line 168
+    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->handler:Landroid/os/Handler;
 
-    iget-object v1, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->packageName:Ljava/lang/String;
+    new-instance v1, Lorg/microg/gms/wearable/WearableServiceImpl$8;
 
-    invoke-virtual {v0, v1}, Lorg/microg/gms/wearable/WearableImpl;->getDataItems(Ljava/lang/String;)Lcom/google/android/gms/common/data/DataHolder;
+    invoke-direct {v1, p0, p1}, Lorg/microg/gms/wearable/WearableServiceImpl$8;-><init>(Lorg/microg/gms/wearable/WearableServiceImpl;Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
 
-    move-result-object v0
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    invoke-interface {p1, v0}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onDataHolder(Lcom/google/android/gms/common/data/DataHolder;)V
-
-    .line 79
     return-void
 .end method
 
-.method public getDataItemsByUri(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Landroid/net/Uri;I)V
-    .locals 3
-    .param p1, "callbacks"    # Lcom/google/android/gms/wearable/internal/IWearableCallbacks;
-    .param p2, "uri"    # Landroid/net/Uri;
-    .param p3, "i"    # I
+.method public getDataItemsByUri(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Landroid/net/Uri;)V
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 83
+    const/4 v0, 0x0
+
+    .line 178
+    invoke-virtual {p0, p1, p2, v0}, Lorg/microg/gms/wearable/WearableServiceImpl;->getDataItemsByUriWithFilter(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Landroid/net/Uri;I)V
+
+    return-void
+.end method
+
+.method public getDataItemsByUriWithFilter(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Landroid/net/Uri;I)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string p3, "GmsWearSvcImpl"
+
+    .line 183
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "getDataItemsByUri: "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {p3, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 184
+    iget-object p3, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->handler:Landroid/os/Handler;
+
+    new-instance v0, Lorg/microg/gms/wearable/WearableServiceImpl$9;
+
+    invoke-direct {v0, p0, p1, p2}, Lorg/microg/gms/wearable/WearableServiceImpl$9;-><init>(Lorg/microg/gms/wearable/WearableServiceImpl;Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Landroid/net/Uri;)V
+
+    invoke-virtual {p3, v0}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    return-void
+.end method
+
+.method public getFdForAsset(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Lcom/google/android/gms/wearable/Asset;)V
+    .locals 3
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
     const-string v0, "GmsWearSvcImpl"
 
+    .line 230
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "getDataItemsByUri: "
+    const-string v2, "getFdForAsset "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
     invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
 
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -588,297 +933,261 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 84
-    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->wearable:Lorg/microg/gms/wearable/WearableImpl;
+    .line 231
+    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->handler:Landroid/os/Handler;
 
-    iget-object v1, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->packageName:Ljava/lang/String;
+    new-instance v1, Lorg/microg/gms/wearable/WearableServiceImpl$12;
 
-    invoke-virtual {v0, p2, v1}, Lorg/microg/gms/wearable/WearableImpl;->getDataItemsByUri(Landroid/net/Uri;Ljava/lang/String;)Lcom/google/android/gms/common/data/DataHolder;
+    invoke-direct {v1, p0, p1, p2}, Lorg/microg/gms/wearable/WearableServiceImpl$12;-><init>(Lorg/microg/gms/wearable/WearableServiceImpl;Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Lcom/google/android/gms/wearable/Asset;)V
 
-    move-result-object v0
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    invoke-interface {p1, v0}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onDataHolder(Lcom/google/android/gms/common/data/DataHolder;)V
-
-    .line 85
     return-void
 .end method
 
 .method public getLocalNode(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
-    .locals 6
-    .param p1, "callbacks"    # Lcom/google/android/gms/wearable/internal/IWearableCallbacks;
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 101
-    :try_start_0
-    new-instance v1, Lcom/google/android/gms/wearable/internal/GetLocalNodeResponse;
+    .line 277
+    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->handler:Landroid/os/Handler;
 
-    const/4 v2, 0x0
+    new-instance v1, Lorg/microg/gms/wearable/WearableServiceImpl$13;
 
-    new-instance v3, Lcom/google/android/gms/wearable/internal/NodeParcelable;
+    invoke-direct {v1, p0, p1}, Lorg/microg/gms/wearable/WearableServiceImpl$13;-><init>(Lorg/microg/gms/wearable/WearableServiceImpl;Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
 
-    iget-object v4, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->wearable:Lorg/microg/gms/wearable/WearableImpl;
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    invoke-virtual {v4}, Lorg/microg/gms/wearable/WearableImpl;->getLocalNodeId()Ljava/lang/String;
-
-    move-result-object v4
-
-    iget-object v5, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->wearable:Lorg/microg/gms/wearable/WearableImpl;
-
-    invoke-virtual {v5}, Lorg/microg/gms/wearable/WearableImpl;->getLocalNodeId()Ljava/lang/String;
-
-    move-result-object v5
-
-    invoke-direct {v3, v4, v5}, Lcom/google/android/gms/wearable/internal/NodeParcelable;-><init>(Ljava/lang/String;Ljava/lang/String;)V
-
-    invoke-direct {v1, v2, v3}, Lcom/google/android/gms/wearable/internal/GetLocalNodeResponse;-><init>(ILcom/google/android/gms/wearable/internal/NodeParcelable;)V
-
-    invoke-interface {p1, v1}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onGetLocalNodeResponse(Lcom/google/android/gms/wearable/internal/GetLocalNodeResponse;)V
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 105
-    :goto_0
     return-void
+.end method
 
-    .line 102
-    :catch_0
-    move-exception v0
+.method public getStorageInformation(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
 
-    .line 103
-    .local v0, "e":Ljava/lang/Exception;
-    new-instance v1, Lcom/google/android/gms/wearable/internal/GetLocalNodeResponse;
+    const-string p1, "GmsWearSvcImpl"
 
-    const/16 v2, 0x8
+    const-string v0, "unimplemented Method: getStorageInformation"
 
-    const/4 v3, 0x0
+    .line 339
+    invoke-static {p1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    invoke-direct {v1, v2, v3}, Lcom/google/android/gms/wearable/internal/GetLocalNodeResponse;-><init>(ILcom/google/android/gms/wearable/internal/NodeParcelable;)V
+    return-void
+.end method
 
-    invoke-interface {p1, v1}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onGetLocalNodeResponse(Lcom/google/android/gms/wearable/internal/GetLocalNodeResponse;)V
+.method public injectAncsNotificationForTesting(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Lcom/google/android/gms/wearable/internal/AncsNotificationParcelable;)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
 
-    goto :goto_0
+    const-string p1, "GmsWearSvcImpl"
+
+    .line 368
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "unimplemented Method: injectAncsNotificationForTesting: "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p2
+
+    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
 .end method
 
 .method public onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-    .locals 3
-    .param p1, "code"    # I
-    .param p2, "data"    # Landroid/os/Parcel;
-    .param p3, "reply"    # Landroid/os/Parcel;
-    .param p4, "flags"    # I
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 179
+    .line 483
     invoke-super {p0, p1, p2, p3, p4}, Lcom/google/android/gms/wearable/internal/IWearableService$Stub;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    move-result v0
+    move-result p3
 
-    if-eqz v0, :cond_0
+    if-eqz p3, :cond_0
 
-    const/4 v0, 0x1
+    const/4 p1, 0x1
 
-    .line 181
-    :goto_0
-    return v0
+    return p1
 
-    .line 180
     :cond_0
-    const-string v0, "GmsWearSvcImpl"
+    const-string p3, "GmsWearSvcImpl"
 
-    new-instance v1, Ljava/lang/StringBuilder;
+    .line 484
+    new-instance v0, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "onTransact [unknown]: "
+    const-string v1, "onTransact [unknown]: "
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    const-string p1, ", "
 
-    move-result-object v1
+    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v2, ", "
+    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string p1, ", "
 
-    move-result-object v1
+    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, p4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    const-string v2, ", "
+    move-result-object p1
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-static {p3, p1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    move-result-object v1
+    const/4 p1, 0x0
 
-    invoke-virtual {v1, p4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    return p1
+.end method
 
-    move-result-object v1
+.method public openChannel(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Ljava/lang/String;Ljava/lang/String;)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    const-string p1, "GmsWearSvcImpl"
 
-    move-result-object v1
+    .line 383
+    new-instance v0, Ljava/lang/StringBuilder;
 
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 181
-    const/4 v0, 0x0
+    const-string v1, "unimplemented Method: openChannel; "
 
-    goto :goto_0
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string p2, ", "
+
+    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p2
+
+    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
 .end method
 
 .method public optInCloudSync(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Z)V
-    .locals 1
-    .param p1, "callbacks"    # Lcom/google/android/gms/wearable/internal/IWearableCallbacks;
-    .param p2, "enable"    # Z
+    .locals 0
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 95
-    sget-object v0, Lcom/google/android/gms/common/api/Status;->SUCCESS:Lcom/google/android/gms/common/api/Status;
+    .line 246
+    sget-object p2, Lcom/google/android/gms/common/api/Status;->SUCCESS:Lcom/google/android/gms/common/api/Status;
 
-    invoke-interface {p1, v0}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onStatus(Lcom/google/android/gms/common/api/Status;)V
+    invoke-interface {p1, p2}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onStatus(Lcom/google/android/gms/common/api/Status;)V
 
-    .line 96
     return-void
 .end method
 
 .method public putConfig(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Lcom/google/android/gms/wearable/ConnectionConfiguration;)V
-    .locals 1
-    .param p1, "callbacks"    # Lcom/google/android/gms/wearable/internal/IWearableCallbacks;
-    .param p2, "config"    # Lcom/google/android/gms/wearable/ConnectionConfiguration;
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 131
-    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->wearable:Lorg/microg/gms/wearable/WearableImpl;
+    .line 73
+    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->handler:Landroid/os/Handler;
 
-    invoke-virtual {v0, p2}, Lorg/microg/gms/wearable/WearableImpl;->createConnection(Lcom/google/android/gms/wearable/ConnectionConfiguration;)V
+    new-instance v1, Lorg/microg/gms/wearable/WearableServiceImpl$1;
 
-    .line 132
-    sget-object v0, Lcom/google/android/gms/common/api/Status;->SUCCESS:Lcom/google/android/gms/common/api/Status;
+    invoke-direct {v1, p0, p1, p2}, Lorg/microg/gms/wearable/WearableServiceImpl$1;-><init>(Lorg/microg/gms/wearable/WearableServiceImpl;Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Lcom/google/android/gms/wearable/ConnectionConfiguration;)V
 
-    invoke-interface {p1, v0}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onStatus(Lcom/google/android/gms/common/api/Status;)V
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 133
+    return-void
+.end method
+
+.method public putConnection(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Lcom/google/android/gms/wearable/ConnectionConfiguration;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    const-string p2, "unimplemented Method: putConnection"
+
+    .line 433
+    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
     return-void
 .end method
 
 .method public putData(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Lcom/google/android/gms/wearable/internal/PutDataRequest;)V
-    .locals 4
-    .param p1, "callbacks"    # Lcom/google/android/gms/wearable/internal/IWearableCallbacks;
-    .param p2, "request"    # Lcom/google/android/gms/wearable/internal/PutDataRequest;
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-
-    .prologue
-    .line 58
-    const-string v1, "GmsWearSvcImpl"
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, "putData: "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const/4 v3, 0x1
-
-    invoke-virtual {p2, v3}, Lcom/google/android/gms/wearable/internal/PutDataRequest;->toString(Z)Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 59
-    iget-object v1, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->wearable:Lorg/microg/gms/wearable/WearableImpl;
-
-    iget-object v2, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->packageName:Ljava/lang/String;
-
-    invoke-virtual {v1, p2, v2}, Lorg/microg/gms/wearable/WearableImpl;->putData(Lcom/google/android/gms/wearable/internal/PutDataRequest;Ljava/lang/String;)Lorg/microg/gms/wearable/DataItemRecord;
-
-    move-result-object v0
-
-    .line 60
-    .local v0, "record":Lorg/microg/gms/wearable/DataItemRecord;
-    new-instance v1, Lcom/google/android/gms/wearable/internal/PutDataResponse;
-
-    const/4 v2, 0x0
-
-    invoke-virtual {v0}, Lorg/microg/gms/wearable/DataItemRecord;->toParcelable()Lcom/google/android/gms/wearable/internal/DataItemParcelable;
-
-    move-result-object v3
-
-    invoke-direct {v1, v2, v3}, Lcom/google/android/gms/wearable/internal/PutDataResponse;-><init>(ILcom/google/android/gms/wearable/internal/DataItemParcelable;)V
-
-    invoke-interface {p1, v1}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onPutDataResponse(Lcom/google/android/gms/wearable/internal/PutDataResponse;)V
-
-    .line 61
-    return-void
-.end method
-
-.method public removeListener(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Lcom/google/android/gms/wearable/internal/RemoveListenerRequest;)V
     .locals 3
-    .param p1, "callbacks"    # Lcom/google/android/gms/wearable/internal/IWearableCallbacks;
-    .param p2, "request"    # Lcom/google/android/gms/wearable/internal/RemoveListenerRequest;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 124
     const-string v0, "GmsWearSvcImpl"
 
+    .line 139
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "removeListener[nyp]: "
+    const-string v2, "putData: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    const/4 v2, 0x1
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {p2, v2}, Lcom/google/android/gms/wearable/internal/PutDataRequest;->toString(Z)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -886,18 +1195,300 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 125
+    .line 140
+    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->handler:Landroid/os/Handler;
+
+    new-instance v1, Lorg/microg/gms/wearable/WearableServiceImpl$6;
+
+    invoke-direct {v1, p0, p1, p2}, Lorg/microg/gms/wearable/WearableServiceImpl$6;-><init>(Lorg/microg/gms/wearable/WearableServiceImpl;Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Lcom/google/android/gms/wearable/internal/PutDataRequest;)V
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    return-void
+.end method
+
+.method public readChannelOutputFromFd(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Ljava/lang/String;Landroid/os/ParcelFileDescriptor;JJ)V
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    .line 418
+    new-instance p3, Ljava/lang/StringBuilder;
+
+    invoke-direct {p3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v0, "unimplemented Method: readChannelOutputFromFd: "
+
+    invoke-virtual {p3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p3, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string p2, ", "
+
+    invoke-virtual {p3, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p3, p4, p5}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    const-string p2, ", "
+
+    invoke-virtual {p3, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p3, p6, p7}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p2
+
+    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
+.end method
+
+.method public removeListener(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Lcom/google/android/gms/wearable/internal/RemoveListenerRequest;)V
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .line 333
     iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->wearable:Lorg/microg/gms/wearable/WearableImpl;
 
-    iget-object v1, p2, Lcom/google/android/gms/wearable/internal/RemoveListenerRequest;->listener:Lcom/google/android/gms/wearable/internal/IWearableListener;
+    iget-object p2, p2, Lcom/google/android/gms/wearable/internal/RemoveListenerRequest;->listener:Lcom/google/android/gms/wearable/internal/IWearableListener;
 
-    invoke-virtual {v0, v1}, Lorg/microg/gms/wearable/WearableImpl;->removeListener(Lcom/google/android/gms/wearable/internal/IWearableListener;)V
+    invoke-virtual {v0, p2}, Lorg/microg/gms/wearable/WearableImpl;->removeListener(Lcom/google/android/gms/wearable/internal/IWearableListener;)V
 
-    .line 126
-    sget-object v0, Lcom/google/android/gms/common/api/Status;->SUCCESS:Lcom/google/android/gms/common/api/Status;
+    .line 334
+    sget-object p2, Lcom/google/android/gms/common/api/Status;->SUCCESS:Lcom/google/android/gms/common/api/Status;
 
-    invoke-interface {p1, v0}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onStatus(Lcom/google/android/gms/common/api/Status;)V
+    invoke-interface {p1, p2}, Lcom/google/android/gms/wearable/internal/IWearableCallbacks;->onStatus(Lcom/google/android/gms/common/api/Status;)V
 
-    .line 127
+    return-void
+.end method
+
+.method public removeLocalCapability(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Ljava/lang/String;)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    .line 320
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "unimplemented Method: removeLocalCapability: "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p2
+
+    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
+.end method
+
+.method public sendMessage(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Ljava/lang/String;Ljava/lang/String;[B)V
+    .locals 8
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string v0, "GmsWearSvcImpl"
+
+    .line 210
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "sendMessage: "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v2, " / "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v2, ": "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    if-nez p4, :cond_0
+
+    const/4 v2, 0x0
+
+    goto :goto_0
+
+    :cond_0
+    const/4 v2, 0x2
+
+    invoke-static {p4, v2}, Landroid/util/Base64;->encodeToString([BI)Ljava/lang/String;
+
+    move-result-object v2
+
+    :goto_0
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 211
+    iget-object v0, p0, Lorg/microg/gms/wearable/WearableServiceImpl;->handler:Landroid/os/Handler;
+
+    new-instance v7, Lorg/microg/gms/wearable/WearableServiceImpl$11;
+
+    move-object v1, v7
+
+    move-object v2, p0
+
+    move-object v3, p1
+
+    move-object v4, p2
+
+    move-object v5, p3
+
+    move-object v6, p4
+
+    invoke-direct/range {v1 .. v6}, Lorg/microg/gms/wearable/WearableServiceImpl$11;-><init>(Lorg/microg/gms/wearable/WearableServiceImpl;Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Ljava/lang/String;Ljava/lang/String;[B)V
+
+    invoke-virtual {v0, v7}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    return-void
+.end method
+
+.method public sendRemoteCommand(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;B)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    .line 272
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "unimplemented Method: sendRemoteCommand: "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p2
+
+    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
+.end method
+
+.method public setCloudSyncSetting(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Z)V
+    .locals 0
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    const-string p2, "unimplemented Method: setCloudSyncSetting"
+
+    .line 257
+    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
+.end method
+
+.method public silenceRinger(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    const-string v0, "unimplemented Method: silenceRinger"
+
+    .line 359
+    invoke-static {p1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
+.end method
+
+.method public syncWifiCredentials(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;)V
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    const-string v0, "unimplemented Method: syncWifiCredentials"
+
+    .line 423
+    invoke-static {p1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    return-void
+.end method
+
+.method public writeChannelInputToFd(Lcom/google/android/gms/wearable/internal/IWearableCallbacks;Ljava/lang/String;Landroid/os/ParcelFileDescriptor;)V
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const-string p1, "GmsWearSvcImpl"
+
+    .line 413
+    new-instance p3, Ljava/lang/StringBuilder;
+
+    invoke-direct {p3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v0, "unimplemented Method: writeChannelInputToFd: "
+
+    invoke-virtual {p3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p3, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p2
+
+    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
     return-void
 .end method

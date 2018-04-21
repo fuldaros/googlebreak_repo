@@ -24,10 +24,8 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/auth/login/LoginActivity$3;)V
     .locals 0
-    .param p1, "this$1"    # Lorg/microg/gms/auth/login/LoginActivity$3;
 
-    .prologue
-    .line 179
+    .line 222
     iput-object p1, p0, Lorg/microg/gms/auth/login/LoginActivity$3$1;->this$1:Lorg/microg/gms/auth/login/LoginActivity$3;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -40,14 +38,12 @@
 .method public run()V
     .locals 1
 
-    .prologue
-    .line 182
+    .line 225
     iget-object v0, p0, Lorg/microg/gms/auth/login/LoginActivity$3$1;->this$1:Lorg/microg/gms/auth/login/LoginActivity$3;
 
     iget-object v0, v0, Lorg/microg/gms/auth/login/LoginActivity$3;->this$0:Lorg/microg/gms/auth/login/LoginActivity;
 
     invoke-static {v0}, Lorg/microg/gms/auth/login/LoginActivity;->access$500(Lorg/microg/gms/auth/login/LoginActivity;)V
 
-    .line 183
     return-void
 .end method

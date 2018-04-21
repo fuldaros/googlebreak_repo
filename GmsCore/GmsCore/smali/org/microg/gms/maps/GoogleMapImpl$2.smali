@@ -26,10 +26,8 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/maps/GoogleMapImpl;Lcom/google/android/gms/maps/internal/IOnMapLoadedCallback;)V
     .locals 0
-    .param p1, "this$0"    # Lorg/microg/gms/maps/GoogleMapImpl;
 
-    .prologue
-    .line 536
+    .line 544
     iput-object p1, p0, Lorg/microg/gms/maps/GoogleMapImpl$2;->this$0:Lorg/microg/gms/maps/GoogleMapImpl;
 
     iput-object p2, p0, Lorg/microg/gms/maps/GoogleMapImpl$2;->val$callback:Lcom/google/android/gms/maps/internal/IOnMapLoadedCallback;
@@ -42,37 +40,39 @@
 
 # virtual methods
 .method public run()V
-    .locals 3
+    .locals 2
 
-    .prologue
-    .line 539
-    const-string v1, "GmsMapImpl"
+    const-string v0, "GmsMapImpl"
 
-    const-string v2, "Announce map loaded"
+    const-string v1, "Announce map loaded"
 
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    .line 547
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 541
+    .line 548
+    iget-object v0, p0, Lorg/microg/gms/maps/GoogleMapImpl$2;->val$callback:Lcom/google/android/gms/maps/internal/IOnMapLoadedCallback;
+
+    if-eqz v0, :cond_0
+
+    .line 550
     :try_start_0
-    iget-object v1, p0, Lorg/microg/gms/maps/GoogleMapImpl$2;->val$callback:Lcom/google/android/gms/maps/internal/IOnMapLoadedCallback;
+    iget-object v0, p0, Lorg/microg/gms/maps/GoogleMapImpl$2;->val$callback:Lcom/google/android/gms/maps/internal/IOnMapLoadedCallback;
 
-    invoke-interface {v1}, Lcom/google/android/gms/maps/internal/IOnMapLoadedCallback;->onMapLoaded()V
+    invoke-interface {v0}, Lcom/google/android/gms/maps/internal/IOnMapLoadedCallback;->onMapLoaded()V
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 545
-    :goto_0
-    return-void
+    goto :goto_0
 
-    .line 542
     :catch_0
     move-exception v0
 
-    .line 543
-    .local v0, "e":Landroid/os/RemoteException;
     const-string v1, "GmsMapImpl"
 
+    .line 552
     invoke-static {v1, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    goto :goto_0
+    :cond_0
+    :goto_0
+    return-void
 .end method

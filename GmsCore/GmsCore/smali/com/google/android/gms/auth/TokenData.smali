@@ -7,8 +7,7 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator",
-            "<",
+            "Landroid/os/Parcelable$Creator<",
             "Lcom/google/android/gms/auth/TokenData;",
             ">;"
         }
@@ -32,8 +31,7 @@
 .field public final scopes:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/android/gms/common/api/Scope;",
             ">;"
         }
@@ -62,7 +60,6 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
     .line 63
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -78,61 +75,53 @@
 .method public constructor <init>()V
     .locals 2
 
-    .prologue
-    const/4 v1, 0x0
-
     .line 42
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    .line 27
     const/4 v0, 0x1
 
+    .line 27
     iput v0, p0, Lcom/google/android/gms/auth/TokenData;->versionCode:I
 
-    .line 43
-    iput-object v1, p0, Lcom/google/android/gms/auth/TokenData;->token:Ljava/lang/String;
-
-    .line 44
-    iput-object v1, p0, Lcom/google/android/gms/auth/TokenData;->expiry:Ljava/lang/Long;
-
-    .line 45
     const/4 v0, 0x0
 
-    iput-boolean v0, p0, Lcom/google/android/gms/auth/TokenData;->isOAuth:Z
+    .line 43
+    iput-object v0, p0, Lcom/google/android/gms/auth/TokenData;->token:Ljava/lang/String;
+
+    .line 44
+    iput-object v0, p0, Lcom/google/android/gms/auth/TokenData;->expiry:Ljava/lang/Long;
+
+    const/4 v1, 0x0
+
+    .line 45
+    iput-boolean v1, p0, Lcom/google/android/gms/auth/TokenData;->isOAuth:Z
 
     .line 46
-    iput-object v1, p0, Lcom/google/android/gms/auth/TokenData;->scopes:Ljava/util/List;
+    iput-object v0, p0, Lcom/google/android/gms/auth/TokenData;->scopes:Ljava/util/List;
 
-    .line 47
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/Long;ZLjava/util/List;)V
     .locals 1
-    .param p1, "token"    # Ljava/lang/String;
-    .param p2, "expiry"    # Ljava/lang/Long;
-    .param p3, "isOAuth"    # Z
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
             "Ljava/lang/String;",
             "Ljava/lang/Long;",
             "Z",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/android/gms/common/api/Scope;",
             ">;)V"
         }
     .end annotation
 
-    .prologue
     .line 49
-    .local p4, "scopes":Ljava/util/List;, "Ljava/util/List<Lcom/google/android/gms/common/api/Scope;>;"
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    .line 27
     const/4 v0, 0x1
 
+    .line 27
     iput v0, p0, Lcom/google/android/gms/auth/TokenData;->versionCode:I
 
     .line 50
@@ -147,6 +136,5 @@
     .line 53
     iput-object p4, p0, Lcom/google/android/gms/auth/TokenData;->scopes:Ljava/util/List;
 
-    .line 54
     return-void
 .end method

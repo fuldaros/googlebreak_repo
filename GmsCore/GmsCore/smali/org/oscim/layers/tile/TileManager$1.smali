@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lorg/oscim/utils/quadtree/TileIndex",
-        "<",
+        "Lorg/oscim/utils/quadtree/TileIndex<",
         "Lorg/oscim/layers/tile/MapTile$TileNode;",
         "Lorg/oscim/layers/tile/MapTile;",
         ">;"
@@ -31,10 +30,8 @@
 # direct methods
 .method constructor <init>(Lorg/oscim/layers/tile/TileManager;)V
     .locals 0
-    .param p1, "this$0"    # Lorg/oscim/layers/tile/TileManager;
 
-    .prologue
-    .line 110
+    .line 128
     iput-object p1, p0, Lorg/oscim/layers/tile/TileManager$1;->this$0:Lorg/oscim/layers/tile/TileManager;
 
     invoke-direct {p0}, Lorg/oscim/utils/quadtree/TileIndex;-><init>()V
@@ -47,8 +44,7 @@
 .method public create()Lorg/oscim/layers/tile/MapTile$TileNode;
     .locals 1
 
-    .prologue
-    .line 122
+    .line 140
     new-instance v0, Lorg/oscim/layers/tile/MapTile$TileNode;
 
     invoke-direct {v0}, Lorg/oscim/layers/tile/MapTile$TileNode;-><init>()V
@@ -59,8 +55,7 @@
 .method public bridge synthetic create()Lorg/oscim/utils/quadtree/TreeNode;
     .locals 1
 
-    .prologue
-    .line 110
+    .line 128
     invoke-virtual {p0}, Lorg/oscim/layers/tile/TileManager$1;->create()Lorg/oscim/layers/tile/MapTile$TileNode;
 
     move-result-object v0
@@ -71,8 +66,7 @@
 .method public bridge synthetic removeItem(Ljava/lang/Object;)V
     .locals 0
 
-    .prologue
-    .line 110
+    .line 128
     check-cast p1, Lorg/oscim/layers/tile/MapTile;
 
     invoke-virtual {p0, p1}, Lorg/oscim/layers/tile/TileManager$1;->removeItem(Lorg/oscim/layers/tile/MapTile;)V
@@ -82,15 +76,13 @@
 
 .method public removeItem(Lorg/oscim/layers/tile/MapTile;)V
     .locals 3
-    .param p1, "t"    # Lorg/oscim/layers/tile/MapTile;
 
-    .prologue
-    .line 113
+    .line 131
     iget-object v0, p1, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
 
     if-nez v0, :cond_0
 
-    .line 114
+    .line 132
     new-instance v0, Ljava/lang/IllegalStateException;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -101,33 +93,28 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
     invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
 
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object p1
 
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, p1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 116
+    .line 134
     :cond_0
     iget-object v0, p1, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
 
     invoke-super {p0, v0}, Lorg/oscim/utils/quadtree/TileIndex;->remove(Lorg/oscim/utils/quadtree/TreeNode;)Z
 
-    .line 117
-    iget-object v0, p1, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
+    .line 135
+    iget-object p1, p1, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
 
-    const/4 v1, 0x0
+    const/4 v0, 0x0
 
-    iput-object v1, v0, Lorg/oscim/layers/tile/MapTile$TileNode;->item:Ljava/lang/Object;
+    iput-object v0, p1, Lorg/oscim/layers/tile/MapTile$TileNode;->item:Ljava/lang/Object;
 
-    .line 118
     return-void
 .end method

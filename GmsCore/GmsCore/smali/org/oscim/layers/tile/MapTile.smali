@@ -48,8 +48,7 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .prologue
-    .line 44
+    .line 46
     const-class v0, Lorg/oscim/layers/tile/MapTile;
 
     invoke-static {v0}, Lorg/slf4j/LoggerFactory;->getLogger(Ljava/lang/Class;)Lorg/slf4j/Logger;
@@ -63,120 +62,105 @@
 
 .method public constructor <init>(Lorg/oscim/layers/tile/MapTile$TileNode;III)V
     .locals 5
-    .param p1, "node"    # Lorg/oscim/layers/tile/MapTile$TileNode;
-    .param p2, "tileX"    # I
-    .param p3, "tileY"    # I
-    .param p4, "zoomLevel"    # I
 
-    .prologue
-    const/4 v4, 0x1
+    int-to-byte v0, p4
+
+    .line 168
+    invoke-direct {p0, p2, p3, v0}, Lorg/oscim/core/Tile;-><init>(IIB)V
+
+    const/4 v0, 0x1
+
+    .line 95
+    iput-byte v0, p0, Lorg/oscim/layers/tile/MapTile;->state:B
 
     const/4 v1, 0x0
 
-    .line 156
-    int-to-byte v0, p4
-
-    invoke-direct {p0, p2, p3, v0}, Lorg/oscim/core/Tile;-><init>(IIB)V
-
-    .line 91
-    iput-byte v4, p0, Lorg/oscim/layers/tile/MapTile;->state:B
-
-    .line 129
+    .line 133
     iput v1, p0, Lorg/oscim/layers/tile/MapTile;->lastDraw:I
 
-    .line 132
+    .line 138
     iput v1, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
 
-    .line 135
+    .line 143
     iput v1, p0, Lorg/oscim/layers/tile/MapTile;->locked:I
 
-    .line 137
+    .line 145
     iput v1, p0, Lorg/oscim/layers/tile/MapTile;->refs:I
 
-    .line 157
-    int-to-double v0, p2
+    int-to-double v1, p2
 
-    shl-int v2, v4, p4
+    shl-int p2, v0, p4
 
-    int-to-double v2, v2
+    int-to-double v3, p2
 
-    div-double/2addr v0, v2
+    div-double/2addr v1, v3
 
-    iput-wide v0, p0, Lorg/oscim/layers/tile/MapTile;->x:D
+    .line 169
+    iput-wide v1, p0, Lorg/oscim/layers/tile/MapTile;->x:D
 
-    .line 158
-    int-to-double v0, p3
+    int-to-double p2, p3
 
-    shl-int v2, v4, p4
+    div-double/2addr p2, v3
 
-    int-to-double v2, v2
+    .line 170
+    iput-wide p2, p0, Lorg/oscim/layers/tile/MapTile;->y:D
 
-    div-double/2addr v0, v2
-
-    iput-wide v0, p0, Lorg/oscim/layers/tile/MapTile;->y:D
-
-    .line 159
+    .line 171
     iput-object p1, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
 
-    .line 160
     return-void
 .end method
 
 
 # virtual methods
 .method public addData(Ljava/lang/Object;Lorg/oscim/layers/tile/MapTile$TileData;)V
-    .locals 1
-    .param p1, "id"    # Ljava/lang/Object;
-    .param p2, "td"    # Lorg/oscim/layers/tile/MapTile$TileData;
+    .locals 0
 
-    .prologue
-    .line 300
+    .line 312
     iput-object p1, p2, Lorg/oscim/layers/tile/MapTile$TileData;->id:Ljava/lang/Object;
 
-    .line 301
-    iget-object v0, p0, Lorg/oscim/layers/tile/MapTile;->data:Lorg/oscim/layers/tile/MapTile$TileData;
+    .line 313
+    iget-object p1, p0, Lorg/oscim/layers/tile/MapTile;->data:Lorg/oscim/layers/tile/MapTile$TileData;
 
-    if-eqz v0, :cond_0
+    if-eqz p1, :cond_0
 
-    .line 302
-    iget-object v0, p0, Lorg/oscim/layers/tile/MapTile;->data:Lorg/oscim/layers/tile/MapTile$TileData;
+    .line 314
+    iget-object p1, p0, Lorg/oscim/layers/tile/MapTile;->data:Lorg/oscim/layers/tile/MapTile$TileData;
 
-    iget-object v0, v0, Lorg/oscim/layers/tile/MapTile$TileData;->next:Lorg/oscim/utils/pool/Inlist;
+    iget-object p1, p1, Lorg/oscim/layers/tile/MapTile$TileData;->next:Lorg/oscim/utils/pool/Inlist;
 
-    iput-object v0, p2, Lorg/oscim/layers/tile/MapTile$TileData;->next:Lorg/oscim/utils/pool/Inlist;
+    iput-object p1, p2, Lorg/oscim/layers/tile/MapTile$TileData;->next:Lorg/oscim/utils/pool/Inlist;
 
-    .line 303
-    iget-object v0, p0, Lorg/oscim/layers/tile/MapTile;->data:Lorg/oscim/layers/tile/MapTile$TileData;
+    .line 315
+    iget-object p1, p0, Lorg/oscim/layers/tile/MapTile;->data:Lorg/oscim/layers/tile/MapTile$TileData;
 
-    iput-object p2, v0, Lorg/oscim/layers/tile/MapTile$TileData;->next:Lorg/oscim/utils/pool/Inlist;
+    iput-object p2, p1, Lorg/oscim/layers/tile/MapTile$TileData;->next:Lorg/oscim/utils/pool/Inlist;
 
-    .line 307
-    :goto_0
-    return-void
+    goto :goto_0
 
-    .line 305
+    .line 317
     :cond_0
     iput-object p2, p0, Lorg/oscim/layers/tile/MapTile;->data:Lorg/oscim/layers/tile/MapTile$TileData;
 
-    goto :goto_0
+    :goto_0
+    return-void
 .end method
 
 .method protected clear()V
     .locals 1
 
-    .prologue
-    .line 273
+    .line 285
     :goto_0
     iget-object v0, p0, Lorg/oscim/layers/tile/MapTile;->data:Lorg/oscim/layers/tile/MapTile$TileData;
 
     if-eqz v0, :cond_0
 
-    .line 274
+    .line 286
     iget-object v0, p0, Lorg/oscim/layers/tile/MapTile;->data:Lorg/oscim/layers/tile/MapTile$TileData;
 
     invoke-virtual {v0}, Lorg/oscim/layers/tile/MapTile$TileData;->dispose()V
 
-    .line 275
+    .line 287
     iget-object v0, p0, Lorg/oscim/layers/tile/MapTile;->data:Lorg/oscim/layers/tile/MapTile$TileData;
 
     iget-object v0, v0, Lorg/oscim/layers/tile/MapTile$TileData;->next:Lorg/oscim/utils/pool/Inlist;
@@ -187,617 +171,616 @@
 
     goto :goto_0
 
-    .line 277
     :cond_0
     const/4 v0, 0x1
 
+    .line 289
     invoke-virtual {p0, v0}, Lorg/oscim/layers/tile/MapTile;->setState(B)V
 
-    .line 278
     return-void
 .end method
 
 .method public getBuckets()Lorg/oscim/renderer/bucket/RenderBuckets;
     .locals 1
 
-    .prologue
-    .line 285
+    .line 297
     iget-object v0, p0, Lorg/oscim/layers/tile/MapTile;->data:Lorg/oscim/layers/tile/MapTile$TileData;
 
     instance-of v0, v0, Lorg/oscim/renderer/bucket/RenderBuckets;
 
     if-nez v0, :cond_0
 
-    .line 286
     const/4 v0, 0x0
 
-    .line 288
-    :goto_0
     return-object v0
 
+    .line 300
     :cond_0
     iget-object v0, p0, Lorg/oscim/layers/tile/MapTile;->data:Lorg/oscim/layers/tile/MapTile$TileData;
 
     check-cast v0, Lorg/oscim/renderer/bucket/RenderBuckets;
 
-    goto :goto_0
+    return-object v0
 .end method
 
 .method public getData(Ljava/lang/Object;)Lorg/oscim/layers/tile/MapTile$TileData;
     .locals 2
-    .param p1, "id"    # Ljava/lang/Object;
 
-    .prologue
-    .line 292
+    .line 304
     iget-object v0, p0, Lorg/oscim/layers/tile/MapTile;->data:Lorg/oscim/layers/tile/MapTile$TileData;
 
-    .local v0, "d":Lorg/oscim/layers/tile/MapTile$TileData;
     :goto_0
     if-eqz v0, :cond_1
 
-    .line 293
+    .line 305
     iget-object v1, v0, Lorg/oscim/layers/tile/MapTile$TileData;->id:Ljava/lang/Object;
 
     if-ne v1, p1, :cond_0
 
-    .line 295
-    .end local v0    # "d":Lorg/oscim/layers/tile/MapTile$TileData;
-    :goto_1
     return-object v0
 
-    .line 292
-    .restart local v0    # "d":Lorg/oscim/layers/tile/MapTile$TileData;
+    .line 304
     :cond_0
     iget-object v0, v0, Lorg/oscim/layers/tile/MapTile$TileData;->next:Lorg/oscim/utils/pool/Inlist;
 
-    .end local v0    # "d":Lorg/oscim/layers/tile/MapTile$TileData;
     check-cast v0, Lorg/oscim/layers/tile/MapTile$TileData;
 
-    .restart local v0    # "d":Lorg/oscim/layers/tile/MapTile$TileData;
     goto :goto_0
 
-    .line 295
     :cond_1
-    const/4 v0, 0x0
+    const/4 p1, 0x0
 
-    goto :goto_1
+    return-object p1
+.end method
+
+.method public getGroundScale()F
+    .locals 4
+
+    .line 348
+    iget-wide v0, p0, Lorg/oscim/layers/tile/MapTile;->y:D
+
+    invoke-static {v0, v1}, Lorg/oscim/core/MercatorProjection;->toLatitude(D)D
+
+    move-result-wide v0
+
+    .line 349
+    iget-byte v2, p0, Lorg/oscim/layers/tile/MapTile;->zoomLevel:B
+
+    const/4 v3, 0x1
+
+    shl-int v2, v3, v2
+
+    int-to-double v2, v2
+
+    .line 350
+    invoke-static {v0, v1, v2, v3}, Lorg/oscim/core/MercatorProjection;->groundResolutionWithScale(DD)D
+
+    move-result-wide v0
+
+    double-to-float v0, v0
+
+    return v0
 .end method
 
 .method public getProxy(IB)Lorg/oscim/layers/tile/MapTile;
-    .locals 4
-    .param p1, "proxy"    # I
-    .param p2, "state"    # B
-
-    .prologue
-    const/4 v2, 0x0
-
-    .line 352
-    iget v1, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
-
-    and-int/2addr v1, p1
-
-    if-nez v1, :cond_1
-
-    move-object v0, v2
-
-    .line 383
-    :cond_0
-    :goto_0
-    return-object v0
-
-    .line 355
-    :cond_1
-    const/4 v0, 0x0
-
-    .line 356
-    .local v0, "p":Lorg/oscim/layers/tile/MapTile;
-    sparse-switch p1, :sswitch_data_0
-
-    .line 380
-    :goto_1
-    if-eqz v0, :cond_2
-
-    iget-byte v1, v0, Lorg/oscim/layers/tile/MapTile;->state:B
-
-    and-int/2addr v1, p2
-
-    if-nez v1, :cond_0
-
-    :cond_2
-    move-object v0, v2
-
-    .line 381
-    goto :goto_0
-
-    .line 358
-    :sswitch_0
-    iget-object v1, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
-
-    const/4 v3, 0x0
-
-    invoke-virtual {v1, v3}, Lorg/oscim/layers/tile/MapTile$TileNode;->child(I)Ljava/lang/Object;
-
-    move-result-object v0
-
-    .end local v0    # "p":Lorg/oscim/layers/tile/MapTile;
-    check-cast v0, Lorg/oscim/layers/tile/MapTile;
-
-    .line 359
-    .restart local v0    # "p":Lorg/oscim/layers/tile/MapTile;
-    goto :goto_1
-
-    .line 361
-    :sswitch_1
-    iget-object v1, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
-
-    const/4 v3, 0x1
-
-    invoke-virtual {v1, v3}, Lorg/oscim/layers/tile/MapTile$TileNode;->child(I)Ljava/lang/Object;
-
-    move-result-object v0
-
-    .end local v0    # "p":Lorg/oscim/layers/tile/MapTile;
-    check-cast v0, Lorg/oscim/layers/tile/MapTile;
-
-    .line 362
-    .restart local v0    # "p":Lorg/oscim/layers/tile/MapTile;
-    goto :goto_1
-
-    .line 364
-    :sswitch_2
-    iget-object v1, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
-
-    const/4 v3, 0x2
-
-    invoke-virtual {v1, v3}, Lorg/oscim/layers/tile/MapTile$TileNode;->child(I)Ljava/lang/Object;
-
-    move-result-object v0
-
-    .end local v0    # "p":Lorg/oscim/layers/tile/MapTile;
-    check-cast v0, Lorg/oscim/layers/tile/MapTile;
-
-    .line 365
-    .restart local v0    # "p":Lorg/oscim/layers/tile/MapTile;
-    goto :goto_1
-
-    .line 367
-    :sswitch_3
-    iget-object v1, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
-
-    const/4 v3, 0x3
-
-    invoke-virtual {v1, v3}, Lorg/oscim/layers/tile/MapTile$TileNode;->child(I)Ljava/lang/Object;
-
-    move-result-object v0
-
-    .end local v0    # "p":Lorg/oscim/layers/tile/MapTile;
-    check-cast v0, Lorg/oscim/layers/tile/MapTile;
-
-    .line 368
-    .restart local v0    # "p":Lorg/oscim/layers/tile/MapTile;
-    goto :goto_1
-
-    .line 370
-    :sswitch_4
-    iget-object v1, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
-
-    invoke-virtual {v1}, Lorg/oscim/layers/tile/MapTile$TileNode;->parent()Ljava/lang/Object;
-
-    move-result-object v0
-
-    .end local v0    # "p":Lorg/oscim/layers/tile/MapTile;
-    check-cast v0, Lorg/oscim/layers/tile/MapTile;
-
-    .line 371
-    .restart local v0    # "p":Lorg/oscim/layers/tile/MapTile;
-    goto :goto_1
+    .locals 2
 
     .line 373
-    :sswitch_5
-    iget-object v1, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
-
-    iget-object v1, v1, Lorg/oscim/layers/tile/MapTile$TileNode;->parent:Lorg/oscim/utils/quadtree/TreeNode;
-
-    check-cast v1, Lorg/oscim/layers/tile/MapTile$TileNode;
-
-    invoke-virtual {v1}, Lorg/oscim/layers/tile/MapTile$TileNode;->parent()Ljava/lang/Object;
-
-    move-result-object v0
-
-    .end local v0    # "p":Lorg/oscim/layers/tile/MapTile;
-    check-cast v0, Lorg/oscim/layers/tile/MapTile;
-
-    .line 374
-    .restart local v0    # "p":Lorg/oscim/layers/tile/MapTile;
-    goto :goto_1
-
-    .line 376
-    :sswitch_6
-    iget-object v0, p0, Lorg/oscim/layers/tile/MapTile;->holder:Lorg/oscim/layers/tile/MapTile;
-
-    goto :goto_1
-
-    .line 356
-    :sswitch_data_0
-    .sparse-switch
-        0x1 -> :sswitch_0
-        0x2 -> :sswitch_1
-        0x4 -> :sswitch_2
-        0x8 -> :sswitch_3
-        0x10 -> :sswitch_4
-        0x20 -> :sswitch_5
-        0x40 -> :sswitch_6
-    .end sparse-switch
-.end method
-
-.method public getProxyChild(IB)Lorg/oscim/layers/tile/MapTile;
-    .locals 4
-    .param p1, "id"    # I
-    .param p2, "state"    # B
-
-    .prologue
-    const/4 v1, 0x0
-
-    .line 333
-    iget v2, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
-
-    const/4 v3, 0x1
-
-    shl-int/2addr v3, p1
-
-    and-int/2addr v2, v3
-
-    if-nez v2, :cond_1
-
-    move-object v0, v1
-
-    .line 340
-    :cond_0
-    :goto_0
-    return-object v0
-
-    .line 336
-    :cond_1
-    iget-object v2, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
-
-    invoke-virtual {v2, p1}, Lorg/oscim/layers/tile/MapTile$TileNode;->child(I)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Lorg/oscim/layers/tile/MapTile;
-
-    .line 337
-    .local v0, "child":Lorg/oscim/layers/tile/MapTile;
-    if-eqz v0, :cond_2
-
-    iget-byte v2, v0, Lorg/oscim/layers/tile/MapTile;->state:B
-
-    and-int/2addr v2, p2
-
-    if-nez v2, :cond_0
-
-    :cond_2
-    move-object v0, v1
-
-    .line 338
-    goto :goto_0
-.end method
-
-.method public hasProxy(I)Z
-    .locals 1
-    .param p1, "proxy"    # I
-
-    .prologue
-    .line 265
     iget v0, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
 
     and-int/2addr v0, p1
 
-    if-eqz v0, :cond_0
+    const/4 v1, 0x0
+
+    if-nez v0, :cond_0
+
+    return-object v1
+
+    :cond_0
+    const/4 v0, 0x4
+
+    if-eq p1, v0, :cond_5
+
+    const/16 v0, 0x8
+
+    if-eq p1, v0, :cond_4
+
+    const/16 v0, 0x10
+
+    if-eq p1, v0, :cond_3
+
+    const/16 v0, 0x20
+
+    if-eq p1, v0, :cond_2
+
+    const/16 v0, 0x40
+
+    if-eq p1, v0, :cond_1
+
+    packed-switch p1, :pswitch_data_0
+
+    move-object p1, v1
+
+    goto :goto_0
+
+    .line 382
+    :pswitch_0
+    iget-object p1, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
+    invoke-virtual {p1, v0}, Lorg/oscim/layers/tile/MapTile$TileNode;->child(I)Ljava/lang/Object;
 
-    :cond_0
-    const/4 v0, 0x0
+    move-result-object p1
+
+    check-cast p1, Lorg/oscim/layers/tile/MapTile;
 
     goto :goto_0
+
+    .line 379
+    :pswitch_1
+    iget-object p1, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
+
+    const/4 v0, 0x0
+
+    invoke-virtual {p1, v0}, Lorg/oscim/layers/tile/MapTile$TileNode;->child(I)Ljava/lang/Object;
+
+    move-result-object p1
+
+    check-cast p1, Lorg/oscim/layers/tile/MapTile;
+
+    goto :goto_0
+
+    .line 397
+    :cond_1
+    iget-object p1, p0, Lorg/oscim/layers/tile/MapTile;->holder:Lorg/oscim/layers/tile/MapTile;
+
+    goto :goto_0
+
+    .line 394
+    :cond_2
+    iget-object p1, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
+
+    iget-object p1, p1, Lorg/oscim/layers/tile/MapTile$TileNode;->parent:Lorg/oscim/utils/quadtree/TreeNode;
+
+    check-cast p1, Lorg/oscim/layers/tile/MapTile$TileNode;
+
+    invoke-virtual {p1}, Lorg/oscim/layers/tile/MapTile$TileNode;->parent()Ljava/lang/Object;
+
+    move-result-object p1
+
+    check-cast p1, Lorg/oscim/layers/tile/MapTile;
+
+    goto :goto_0
+
+    .line 391
+    :cond_3
+    iget-object p1, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
+
+    invoke-virtual {p1}, Lorg/oscim/layers/tile/MapTile$TileNode;->parent()Ljava/lang/Object;
+
+    move-result-object p1
+
+    check-cast p1, Lorg/oscim/layers/tile/MapTile;
+
+    goto :goto_0
+
+    .line 388
+    :cond_4
+    iget-object p1, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
+
+    const/4 v0, 0x3
+
+    invoke-virtual {p1, v0}, Lorg/oscim/layers/tile/MapTile$TileNode;->child(I)Ljava/lang/Object;
+
+    move-result-object p1
+
+    check-cast p1, Lorg/oscim/layers/tile/MapTile;
+
+    goto :goto_0
+
+    .line 385
+    :cond_5
+    iget-object p1, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
+
+    const/4 v0, 0x2
+
+    invoke-virtual {p1, v0}, Lorg/oscim/layers/tile/MapTile$TileNode;->child(I)Ljava/lang/Object;
+
+    move-result-object p1
+
+    check-cast p1, Lorg/oscim/layers/tile/MapTile;
+
+    :goto_0
+    if-eqz p1, :cond_7
+
+    .line 401
+    iget-byte v0, p1, Lorg/oscim/layers/tile/MapTile;->state:B
+
+    and-int/2addr p2, v0
+
+    if-nez p2, :cond_6
+
+    goto :goto_1
+
+    :cond_6
+    return-object p1
+
+    :cond_7
+    :goto_1
+    return-object v1
+
+    nop
+
+    :pswitch_data_0
+    .packed-switch 0x1
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public getProxyChild(IB)Lorg/oscim/layers/tile/MapTile;
+    .locals 2
+
+    .line 354
+    iget v0, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
+
+    const/4 v1, 0x1
+
+    shl-int/2addr v1, p1
+
+    and-int/2addr v0, v1
+
+    const/4 v1, 0x0
+
+    if-nez v0, :cond_0
+
+    return-object v1
+
+    .line 357
+    :cond_0
+    iget-object v0, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
+
+    invoke-virtual {v0, p1}, Lorg/oscim/layers/tile/MapTile$TileNode;->child(I)Ljava/lang/Object;
+
+    move-result-object p1
+
+    check-cast p1, Lorg/oscim/layers/tile/MapTile;
+
+    if-eqz p1, :cond_2
+
+    .line 358
+    iget-byte v0, p1, Lorg/oscim/layers/tile/MapTile;->state:B
+
+    and-int/2addr p2, v0
+
+    if-nez p2, :cond_1
+
+    goto :goto_0
+
+    :cond_1
+    return-object p1
+
+    :cond_2
+    :goto_0
+    return-object v1
+.end method
+
+.method public hasProxy(I)Z
+    .locals 1
+
+    .line 277
+    iget v0, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
+
+    and-int/2addr p1, v0
+
+    if-eqz p1, :cond_0
+
+    const/4 p1, 0x1
+
+    goto :goto_0
+
+    :cond_0
+    const/4 p1, 0x0
+
+    :goto_0
+    return p1
 .end method
 
 .method public isActive()Z
     .locals 2
 
-    .prologue
-    const/4 v0, 0x1
+    .line 269
+    iget-byte v0, p0, Lorg/oscim/layers/tile/MapTile;->state:B
 
-    .line 257
-    iget-byte v1, p0, Lorg/oscim/layers/tile/MapTile;->state:B
+    const/4 v1, 0x1
 
-    if-le v1, v0, :cond_0
-
-    :goto_0
-    return v0
-
-    :cond_0
-    const/4 v0, 0x0
+    if-le v0, v1, :cond_0
 
     goto :goto_0
+
+    :cond_0
+    const/4 v1, 0x0
+
+    :goto_0
+    return v1
 .end method
 
 .method isLocked()Z
     .locals 1
 
-    .prologue
-    .line 174
+    .line 186
     iget v0, p0, Lorg/oscim/layers/tile/MapTile;->locked:I
 
-    if-gtz v0, :cond_0
+    if-gtz v0, :cond_1
 
     iget v0, p0, Lorg/oscim/layers/tile/MapTile;->refs:I
 
-    if-lez v0, :cond_1
-
-    :cond_0
-    const/4 v0, 0x1
-
-    :goto_0
-    return v0
-
-    :cond_1
-    const/4 v0, 0x0
+    if-lez v0, :cond_0
 
     goto :goto_0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_1
+
+    :cond_1
+    :goto_0
+    const/4 v0, 0x1
+
+    :goto_1
+    return v0
 .end method
 
 .method lock()V
     .locals 5
 
-    .prologue
-    const/16 v4, 0xc
+    .line 196
+    iget-byte v0, p0, Lorg/oscim/layers/tile/MapTile;->state:B
 
-    .line 184
-    iget-byte v2, p0, Lorg/oscim/layers/tile/MapTile;->state:B
+    const/16 v1, 0x40
 
-    const/16 v3, 0x40
+    if-ne v0, v1, :cond_0
 
-    if-ne v2, v3, :cond_1
+    .line 197
+    sget-object v0, Lorg/oscim/layers/tile/MapTile;->log:Lorg/slf4j/Logger;
 
-    .line 185
-    sget-object v2, Lorg/oscim/layers/tile/MapTile;->log:Lorg/slf4j/Logger;
+    const-string v1, "Locking dead tile {}"
 
-    const-string v3, "Locking dead tile {}"
+    invoke-interface {v0, v1, p0}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;)V
 
-    invoke-interface {v2, v3, p0}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;)V
-
-    .line 222
-    :cond_0
-    :goto_0
     return-void
 
-    .line 189
+    .line 201
+    :cond_0
+    iget v0, p0, Lorg/oscim/layers/tile/MapTile;->locked:I
+
+    add-int/lit8 v1, v0, 0x1
+
+    iput v1, p0, Lorg/oscim/layers/tile/MapTile;->locked:I
+
+    if-lez v0, :cond_1
+
+    return-void
+
     :cond_1
-    iget v2, p0, Lorg/oscim/layers/tile/MapTile;->locked:I
-
-    add-int/lit8 v3, v2, 0x1
-
-    iput v3, p0, Lorg/oscim/layers/tile/MapTile;->locked:I
-
-    if-gtz v2, :cond_0
-
-    .line 194
     const/4 v0, 0x0
 
-    .local v0, "i":I
-    :goto_1
-    const/4 v2, 0x4
+    :goto_0
+    const/4 v1, 0x4
 
-    if-ge v0, v2, :cond_4
-
-    .line 195
-    iget-object v2, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
-
-    invoke-virtual {v2, v0}, Lorg/oscim/layers/tile/MapTile$TileNode;->child(I)Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Lorg/oscim/layers/tile/MapTile;
-
-    .line 196
-    .local v1, "p":Lorg/oscim/layers/tile/MapTile;
-    if-nez v1, :cond_3
-
-    .line 194
-    :cond_2
-    :goto_2
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_1
-
-    .line 199
-    :cond_3
-    invoke-virtual {v1, v4}, Lorg/oscim/layers/tile/MapTile;->state(I)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_2
-
-    .line 200
-    iget v2, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
+    const/16 v2, 0xc
 
     const/4 v3, 0x1
 
-    shl-int/2addr v3, v0
+    if-ge v0, v1, :cond_4
 
-    or-int/2addr v2, v3
+    .line 207
+    iget-object v1, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
 
-    iput v2, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
-
-    .line 201
-    iget v2, v1, Lorg/oscim/layers/tile/MapTile;->refs:I
-
-    add-int/lit8 v2, v2, 0x1
-
-    iput v2, v1, Lorg/oscim/layers/tile/MapTile;->refs:I
-
-    goto :goto_2
-
-    .line 205
-    .end local v1    # "p":Lorg/oscim/layers/tile/MapTile;
-    :cond_4
-    iget-object v2, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
-
-    invoke-virtual {v2}, Lorg/oscim/layers/tile/MapTile$TileNode;->isRoot()Z
-
-    move-result v2
-
-    if-nez v2, :cond_0
-
-    .line 208
-    iget-object v2, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
-
-    invoke-virtual {v2}, Lorg/oscim/layers/tile/MapTile$TileNode;->parent()Ljava/lang/Object;
+    invoke-virtual {v1, v0}, Lorg/oscim/layers/tile/MapTile$TileNode;->child(I)Ljava/lang/Object;
 
     move-result-object v1
 
     check-cast v1, Lorg/oscim/layers/tile/MapTile;
 
-    .line 209
-    .restart local v1    # "p":Lorg/oscim/layers/tile/MapTile;
-    if-eqz v1, :cond_5
+    if-nez v1, :cond_2
 
-    invoke-virtual {v1, v4}, Lorg/oscim/layers/tile/MapTile;->state(I)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_5
-
-    .line 210
-    iget v2, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
-
-    or-int/lit8 v2, v2, 0x10
-
-    iput v2, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
+    goto :goto_1
 
     .line 211
-    iget v2, v1, Lorg/oscim/layers/tile/MapTile;->refs:I
-
-    add-int/lit8 v2, v2, 0x1
-
-    iput v2, v1, Lorg/oscim/layers/tile/MapTile;->refs:I
-
-    .line 214
-    :cond_5
-    iget-object v2, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
-
-    iget-object v2, v2, Lorg/oscim/layers/tile/MapTile$TileNode;->parent:Lorg/oscim/utils/quadtree/TreeNode;
-
-    check-cast v2, Lorg/oscim/layers/tile/MapTile$TileNode;
-
-    invoke-virtual {v2}, Lorg/oscim/layers/tile/MapTile$TileNode;->isRoot()Z
+    :cond_2
+    invoke-virtual {v1, v2}, Lorg/oscim/layers/tile/MapTile;->state(I)Z
 
     move-result v2
 
-    if-nez v2, :cond_0
+    if-eqz v2, :cond_3
 
-    .line 217
-    iget-object v2, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
-
-    iget-object v2, v2, Lorg/oscim/layers/tile/MapTile$TileNode;->parent:Lorg/oscim/utils/quadtree/TreeNode;
-
-    check-cast v2, Lorg/oscim/layers/tile/MapTile$TileNode;
-
-    invoke-virtual {v2}, Lorg/oscim/layers/tile/MapTile$TileNode;->parent()Ljava/lang/Object;
-
-    move-result-object v1
-
-    .end local v1    # "p":Lorg/oscim/layers/tile/MapTile;
-    check-cast v1, Lorg/oscim/layers/tile/MapTile;
-
-    .line 218
-    .restart local v1    # "p":Lorg/oscim/layers/tile/MapTile;
-    if-eqz v1, :cond_0
-
-    invoke-virtual {v1, v4}, Lorg/oscim/layers/tile/MapTile;->state(I)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_0
-
-    .line 219
+    .line 212
     iget v2, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
 
-    or-int/lit8 v2, v2, 0x20
+    shl-int v4, v3, v0
+
+    or-int/2addr v2, v4
 
     iput v2, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
 
-    .line 220
+    .line 213
     iget v2, v1, Lorg/oscim/layers/tile/MapTile;->refs:I
 
-    add-int/lit8 v2, v2, 0x1
+    add-int/2addr v2, v3
 
     iput v2, v1, Lorg/oscim/layers/tile/MapTile;->refs:I
 
+    :cond_3
+    :goto_1
+    add-int/lit8 v0, v0, 0x1
+
     goto :goto_0
+
+    .line 217
+    :cond_4
+    iget-object v0, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
+
+    invoke-virtual {v0}, Lorg/oscim/layers/tile/MapTile$TileNode;->isRoot()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_5
+
+    return-void
+
+    .line 220
+    :cond_5
+    iget-object v0, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
+
+    invoke-virtual {v0}, Lorg/oscim/layers/tile/MapTile$TileNode;->parent()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lorg/oscim/layers/tile/MapTile;
+
+    if-eqz v0, :cond_6
+
+    .line 221
+    invoke-virtual {v0, v2}, Lorg/oscim/layers/tile/MapTile;->state(I)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_6
+
+    .line 222
+    iget v1, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
+
+    or-int/lit8 v1, v1, 0x10
+
+    iput v1, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
+
+    .line 223
+    iget v1, v0, Lorg/oscim/layers/tile/MapTile;->refs:I
+
+    add-int/2addr v1, v3
+
+    iput v1, v0, Lorg/oscim/layers/tile/MapTile;->refs:I
+
+    .line 226
+    :cond_6
+    iget-object v0, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
+
+    iget-object v0, v0, Lorg/oscim/layers/tile/MapTile$TileNode;->parent:Lorg/oscim/utils/quadtree/TreeNode;
+
+    check-cast v0, Lorg/oscim/layers/tile/MapTile$TileNode;
+
+    invoke-virtual {v0}, Lorg/oscim/layers/tile/MapTile$TileNode;->isRoot()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_7
+
+    return-void
+
+    .line 229
+    :cond_7
+    iget-object v0, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
+
+    iget-object v0, v0, Lorg/oscim/layers/tile/MapTile$TileNode;->parent:Lorg/oscim/utils/quadtree/TreeNode;
+
+    check-cast v0, Lorg/oscim/layers/tile/MapTile$TileNode;
+
+    invoke-virtual {v0}, Lorg/oscim/layers/tile/MapTile$TileNode;->parent()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lorg/oscim/layers/tile/MapTile;
+
+    if-eqz v0, :cond_8
+
+    .line 230
+    invoke-virtual {v0, v2}, Lorg/oscim/layers/tile/MapTile;->state(I)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_8
+
+    .line 231
+    iget v1, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
+
+    or-int/lit8 v1, v1, 0x20
+
+    iput v1, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
+
+    .line 232
+    iget v1, v0, Lorg/oscim/layers/tile/MapTile;->refs:I
+
+    add-int/2addr v1, v3
+
+    iput v1, v0, Lorg/oscim/layers/tile/MapTile;->refs:I
+
+    :cond_8
+    return-void
 .end method
 
 .method public declared-synchronized setState(B)V
-    .locals 3
-    .param p1, "newState"    # B
+    .locals 4
 
-    .prologue
-    const/4 v2, 0x2
-
-    .line 405
     monitor-enter p0
 
+    .line 426
     :try_start_0
     iget-byte v0, p0, Lorg/oscim/layers/tile/MapTile;->state:B
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    if-ne v0, p1, :cond_1
+    if-ne v0, p1, :cond_0
 
-    .line 453
-    :cond_0
-    :goto_0
+    .line 427
     monitor-exit p0
 
     return-void
 
-    .line 411
-    :cond_1
+    .line 432
+    :cond_0
     :try_start_1
     iget-byte v0, p0, Lorg/oscim/layers/tile/MapTile;->state:B
-
-    const/16 v1, 0x40
-
-    if-eq v0, v1, :cond_0
-
-    .line 414
-    sparse-switch p1, :sswitch_data_0
-
-    goto :goto_0
-
-    .line 416
-    :sswitch_0
-    iput-byte p1, p0, Lorg/oscim/layers/tile/MapTile;->state:B
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    goto :goto_0
+    const/16 v1, 0x40
 
-    .line 405
-    :catchall_0
-    move-exception v0
+    if-ne v0, v1, :cond_1
 
+    .line 433
     monitor-exit p0
 
-    throw v0
+    return-void
 
-    .line 420
-    :sswitch_1
+    :cond_1
+    const/4 v0, 0x2
+
+    const/4 v2, 0x4
+
+    if-eq p1, v2, :cond_8
+
+    const/16 v3, 0x8
+
+    if-eq p1, v3, :cond_6
+
+    const/16 v2, 0x10
+
+    if-eq p1, v2, :cond_4
+
+    if-eq p1, v1, :cond_3
+
+    packed-switch p1, :pswitch_data_0
+
+    .line 474
+    monitor-exit p0
+
+    return-void
+
+    .line 441
+    :pswitch_0
     :try_start_2
     iget-byte v0, p0, Lorg/oscim/layers/tile/MapTile;->state:B
 
@@ -805,453 +788,455 @@
 
     if-ne v0, v1, :cond_2
 
-    .line 421
-    iput-byte p1, p0, Lorg/oscim/layers/tile/MapTile;->state:B
-
-    goto :goto_0
-
-    .line 424
-    :cond_2
-    new-instance v0, Ljava/lang/IllegalStateException;
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, "Loading <= "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    .line 425
-    invoke-virtual {p0}, Lorg/oscim/layers/tile/MapTile;->state()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    const-string v2, " "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    throw v0
-
-    .line 427
-    :sswitch_2
-    iget-byte v0, p0, Lorg/oscim/layers/tile/MapTile;->state:B
-
-    if-ne v0, v2, :cond_3
-
-    .line 428
-    iput-byte p1, p0, Lorg/oscim/layers/tile/MapTile;->state:B
-
-    goto :goto_0
-
-    .line 431
-    :cond_3
-    new-instance v0, Ljava/lang/IllegalStateException;
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, "NewData <= "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    .line 432
-    invoke-virtual {p0}, Lorg/oscim/layers/tile/MapTile;->state()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    const-string v2, " "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    throw v0
-
-    .line 435
-    :sswitch_3
-    iget-byte v0, p0, Lorg/oscim/layers/tile/MapTile;->state:B
-
-    const/4 v1, 0x4
-
-    if-ne v0, v1, :cond_4
-
-    .line 436
-    iput-byte p1, p0, Lorg/oscim/layers/tile/MapTile;->state:B
-
-    goto :goto_0
-
-    .line 439
-    :cond_4
-    new-instance v0, Ljava/lang/IllegalStateException;
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, "Ready <= "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    .line 440
-    invoke-virtual {p0}, Lorg/oscim/layers/tile/MapTile;->state()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    const-string v2, " "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    throw v0
-
-    .line 443
-    :sswitch_4
-    iget-byte v0, p0, Lorg/oscim/layers/tile/MapTile;->state:B
-
-    if-ne v0, v2, :cond_5
-
-    .line 444
-    iput-byte p1, p0, Lorg/oscim/layers/tile/MapTile;->state:B
-
-    goto/16 :goto_0
-
-    .line 447
-    :cond_5
-    new-instance v0, Ljava/lang/IllegalStateException;
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, "Cancel <= "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    .line 448
-    invoke-virtual {p0}, Lorg/oscim/layers/tile/MapTile;->state()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    const-string v2, " "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    throw v0
-
-    .line 450
-    :sswitch_5
+    .line 442
     iput-byte p1, p0, Lorg/oscim/layers/tile/MapTile;->state:B
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    goto/16 :goto_0
+    .line 443
+    monitor-exit p0
 
-    .line 414
-    nop
+    return-void
 
-    :sswitch_data_0
-    .sparse-switch
-        0x1 -> :sswitch_0
-        0x2 -> :sswitch_1
-        0x4 -> :sswitch_2
-        0x8 -> :sswitch_3
-        0x10 -> :sswitch_4
-        0x40 -> :sswitch_5
-    .end sparse-switch
+    .line 445
+    :cond_2
+    :try_start_3
+    new-instance p1, Ljava/lang/IllegalStateException;
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "Loading <= "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 446
+    invoke-virtual {p0}, Lorg/oscim/layers/tile/MapTile;->state()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v1, " "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw p1
+
+    .line 437
+    :pswitch_1
+    iput-byte p1, p0, Lorg/oscim/layers/tile/MapTile;->state:B
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
+
+    .line 438
+    monitor-exit p0
+
+    return-void
+
+    .line 471
+    :cond_3
+    :try_start_4
+    iput-byte p1, p0, Lorg/oscim/layers/tile/MapTile;->state:B
+    :try_end_4
+    .catchall {:try_start_4 .. :try_end_4} :catchall_0
+
+    .line 472
+    monitor-exit p0
+
+    return-void
+
+    .line 464
+    :cond_4
+    :try_start_5
+    iget-byte v1, p0, Lorg/oscim/layers/tile/MapTile;->state:B
+
+    if-ne v1, v0, :cond_5
+
+    .line 465
+    iput-byte p1, p0, Lorg/oscim/layers/tile/MapTile;->state:B
+    :try_end_5
+    .catchall {:try_start_5 .. :try_end_5} :catchall_0
+
+    .line 466
+    monitor-exit p0
+
+    return-void
+
+    .line 468
+    :cond_5
+    :try_start_6
+    new-instance p1, Ljava/lang/IllegalStateException;
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "Cancel <= "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 469
+    invoke-virtual {p0}, Lorg/oscim/layers/tile/MapTile;->state()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v1, " "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw p1
+
+    .line 456
+    :cond_6
+    iget-byte v0, p0, Lorg/oscim/layers/tile/MapTile;->state:B
+
+    if-ne v0, v2, :cond_7
+
+    .line 457
+    iput-byte p1, p0, Lorg/oscim/layers/tile/MapTile;->state:B
+    :try_end_6
+    .catchall {:try_start_6 .. :try_end_6} :catchall_0
+
+    .line 458
+    monitor-exit p0
+
+    return-void
+
+    .line 460
+    :cond_7
+    :try_start_7
+    new-instance p1, Ljava/lang/IllegalStateException;
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "Ready <= "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 461
+    invoke-virtual {p0}, Lorg/oscim/layers/tile/MapTile;->state()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v1, " "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw p1
+
+    .line 448
+    :cond_8
+    iget-byte v1, p0, Lorg/oscim/layers/tile/MapTile;->state:B
+
+    if-ne v1, v0, :cond_9
+
+    .line 449
+    iput-byte p1, p0, Lorg/oscim/layers/tile/MapTile;->state:B
+    :try_end_7
+    .catchall {:try_start_7 .. :try_end_7} :catchall_0
+
+    .line 450
+    monitor-exit p0
+
+    return-void
+
+    .line 452
+    :cond_9
+    :try_start_8
+    new-instance p1, Ljava/lang/IllegalStateException;
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "NewData <= "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 453
+    invoke-virtual {p0}, Lorg/oscim/layers/tile/MapTile;->state()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v1, " "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw p1
+    :try_end_8
+    .catchall {:try_start_8 .. :try_end_8} :catchall_0
+
+    :catchall_0
+    move-exception p1
+
+    .line 425
+    monitor-exit p0
+
+    throw p1
+
+    :pswitch_data_0
+    .packed-switch 0x1
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
 .end method
 
 .method public state()Ljava/lang/String;
-    .locals 1
+    .locals 2
 
-    .prologue
-    .line 387
+    .line 408
     iget-byte v0, p0, Lorg/oscim/layers/tile/MapTile;->state:B
 
-    sparse-switch v0, :sswitch_data_0
+    const/4 v1, 0x4
 
-    .line 401
+    if-eq v0, v1, :cond_3
+
+    const/16 v1, 0x8
+
+    if-eq v0, v1, :cond_2
+
+    const/16 v1, 0x10
+
+    if-eq v0, v1, :cond_1
+
+    const/16 v1, 0x40
+
+    if-eq v0, v1, :cond_0
+
+    packed-switch v0, :pswitch_data_0
+
     const-string v0, ""
 
-    :goto_0
     return-object v0
 
-    .line 389
-    :sswitch_0
-    const-string v0, "None"
-
-    goto :goto_0
-
-    .line 391
-    :sswitch_1
+    :pswitch_0
     const-string v0, "Loading"
 
-    goto :goto_0
+    return-object v0
 
-    .line 393
-    :sswitch_2
-    const-string v0, "Data"
+    :pswitch_1
+    const-string v0, "None"
 
-    goto :goto_0
+    return-object v0
 
-    .line 395
-    :sswitch_3
-    const-string v0, "Ready"
-
-    goto :goto_0
-
-    .line 397
-    :sswitch_4
-    const-string v0, "Cancel"
-
-    goto :goto_0
-
-    .line 399
-    :sswitch_5
+    :cond_0
     const-string v0, "Dead"
 
-    goto :goto_0
+    return-object v0
 
-    .line 387
-    :sswitch_data_0
-    .sparse-switch
-        0x1 -> :sswitch_0
-        0x2 -> :sswitch_1
-        0x4 -> :sswitch_2
-        0x8 -> :sswitch_3
-        0x10 -> :sswitch_4
-        0x40 -> :sswitch_5
-    .end sparse-switch
+    :cond_1
+    const-string v0, "Cancel"
+
+    return-object v0
+
+    :cond_2
+    const-string v0, "Ready"
+
+    return-object v0
+
+    :cond_3
+    const-string v0, "Data"
+
+    return-object v0
+
+    nop
+
+    :pswitch_data_0
+    .packed-switch 0x1
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
 .end method
 
 .method public state(I)Z
     .locals 1
-    .param p1, "testState"    # I
 
-    .prologue
-    .line 163
+    .line 175
     iget-byte v0, p0, Lorg/oscim/layers/tile/MapTile;->state:B
 
-    and-int/2addr v0, p1
+    and-int/2addr p1, v0
 
-    if-eqz v0, :cond_0
+    if-eqz p1, :cond_0
 
-    const/4 v0, 0x1
-
-    :goto_0
-    return v0
-
-    :cond_0
-    const/4 v0, 0x0
+    const/4 p1, 0x1
 
     goto :goto_0
+
+    :cond_0
+    const/4 p1, 0x0
+
+    :goto_0
+    return p1
 .end method
 
 .method unlock()V
-    .locals 4
+    .locals 5
 
-    .prologue
-    .line 228
-    iget v2, p0, Lorg/oscim/layers/tile/MapTile;->locked:I
+    .line 240
+    iget v0, p0, Lorg/oscim/layers/tile/MapTile;->locked:I
 
-    add-int/lit8 v2, v2, -0x1
+    const/4 v1, 0x1
 
-    iput v2, p0, Lorg/oscim/layers/tile/MapTile;->locked:I
+    sub-int/2addr v0, v1
 
-    if-lez v2, :cond_1
+    iput v0, p0, Lorg/oscim/layers/tile/MapTile;->locked:I
 
-    .line 251
-    :cond_0
-    :goto_0
+    if-lez v0, :cond_0
+
     return-void
 
-    .line 231
-    :cond_1
-    iget-object v2, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
+    .line 243
+    :cond_0
+    iget-object v0, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
 
-    iget-object v1, v2, Lorg/oscim/layers/tile/MapTile$TileNode;->parent:Lorg/oscim/utils/quadtree/TreeNode;
+    iget-object v0, v0, Lorg/oscim/layers/tile/MapTile$TileNode;->parent:Lorg/oscim/utils/quadtree/TreeNode;
 
-    check-cast v1, Lorg/oscim/layers/tile/MapTile$TileNode;
+    check-cast v0, Lorg/oscim/layers/tile/MapTile$TileNode;
 
-    .line 232
-    .local v1, "parent":Lorg/oscim/layers/tile/MapTile$TileNode;
+    .line 244
     iget v2, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
 
     and-int/lit8 v2, v2, 0x10
 
-    if-eqz v2, :cond_2
+    if-eqz v2, :cond_1
 
-    .line 233
-    iget-object v2, v1, Lorg/oscim/layers/tile/MapTile$TileNode;->item:Ljava/lang/Object;
+    .line 245
+    iget-object v2, v0, Lorg/oscim/layers/tile/MapTile$TileNode;->item:Ljava/lang/Object;
 
     check-cast v2, Lorg/oscim/layers/tile/MapTile;
 
     iget v3, v2, Lorg/oscim/layers/tile/MapTile;->refs:I
 
-    add-int/lit8 v3, v3, -0x1
+    sub-int/2addr v3, v1
 
     iput v3, v2, Lorg/oscim/layers/tile/MapTile;->refs:I
 
-    .line 235
-    :cond_2
+    .line 247
+    :cond_1
     iget v2, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
 
     and-int/lit8 v2, v2, 0x20
 
-    if-eqz v2, :cond_3
-
-    .line 236
-    iget-object v1, v1, Lorg/oscim/layers/tile/MapTile$TileNode;->parent:Lorg/oscim/utils/quadtree/TreeNode;
-
-    .end local v1    # "parent":Lorg/oscim/layers/tile/MapTile$TileNode;
-    check-cast v1, Lorg/oscim/layers/tile/MapTile$TileNode;
-
-    .line 237
-    .restart local v1    # "parent":Lorg/oscim/layers/tile/MapTile$TileNode;
-    iget-object v2, v1, Lorg/oscim/layers/tile/MapTile$TileNode;->item:Ljava/lang/Object;
-
-    check-cast v2, Lorg/oscim/layers/tile/MapTile;
-
-    iget v3, v2, Lorg/oscim/layers/tile/MapTile;->refs:I
-
-    add-int/lit8 v3, v3, -0x1
-
-    iput v3, v2, Lorg/oscim/layers/tile/MapTile;->refs:I
-
-    .line 239
-    :cond_3
-    const/4 v0, 0x0
-
-    .local v0, "i":I
-    :goto_1
-    const/4 v2, 0x4
-
-    if-ge v0, v2, :cond_5
-
-    .line 240
-    iget v2, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
-
-    const/4 v3, 0x1
-
-    shl-int/2addr v3, v0
-
-    and-int/2addr v2, v3
-
-    if-eqz v2, :cond_4
-
-    .line 241
-    iget-object v2, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
-
-    invoke-virtual {v2, v0}, Lorg/oscim/layers/tile/MapTile$TileNode;->child(I)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Lorg/oscim/layers/tile/MapTile;
-
-    iget v3, v2, Lorg/oscim/layers/tile/MapTile;->refs:I
-
-    add-int/lit8 v3, v3, -0x1
-
-    iput v3, v2, Lorg/oscim/layers/tile/MapTile;->refs:I
-
-    .line 239
-    :cond_4
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_1
-
-    .line 245
-    :cond_5
-    const/4 v2, 0x0
-
-    iput v2, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
-
-    .line 247
-    iget-byte v2, p0, Lorg/oscim/layers/tile/MapTile;->state:B
-
-    const/16 v3, 0x40
-
-    if-ne v2, v3, :cond_0
+    if-eqz v2, :cond_2
 
     .line 248
-    sget-object v2, Lorg/oscim/layers/tile/MapTile;->log:Lorg/slf4j/Logger;
+    iget-object v0, v0, Lorg/oscim/layers/tile/MapTile$TileNode;->parent:Lorg/oscim/utils/quadtree/TreeNode;
 
-    const-string v3, "Unlock dead tile {}"
-
-    invoke-interface {v2, v3, p0}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;)V
+    check-cast v0, Lorg/oscim/layers/tile/MapTile$TileNode;
 
     .line 249
-    invoke-virtual {p0}, Lorg/oscim/layers/tile/MapTile;->clear()V
+    iget-object v0, v0, Lorg/oscim/layers/tile/MapTile$TileNode;->item:Ljava/lang/Object;
+
+    check-cast v0, Lorg/oscim/layers/tile/MapTile;
+
+    iget v2, v0, Lorg/oscim/layers/tile/MapTile;->refs:I
+
+    sub-int/2addr v2, v1
+
+    iput v2, v0, Lorg/oscim/layers/tile/MapTile;->refs:I
+
+    :cond_2
+    const/4 v0, 0x0
+
+    move v2, v0
+
+    :goto_0
+    const/4 v3, 0x4
+
+    if-ge v2, v3, :cond_4
+
+    .line 252
+    iget v3, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
+
+    shl-int v4, v1, v2
+
+    and-int/2addr v3, v4
+
+    if-eqz v3, :cond_3
+
+    .line 253
+    iget-object v3, p0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
+
+    invoke-virtual {v3, v2}, Lorg/oscim/layers/tile/MapTile$TileNode;->child(I)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lorg/oscim/layers/tile/MapTile;
+
+    iget v4, v3, Lorg/oscim/layers/tile/MapTile;->refs:I
+
+    sub-int/2addr v4, v1
+
+    iput v4, v3, Lorg/oscim/layers/tile/MapTile;->refs:I
+
+    :cond_3
+    add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
+
+    .line 257
+    :cond_4
+    iput v0, p0, Lorg/oscim/layers/tile/MapTile;->proxy:I
+
+    .line 259
+    iget-byte v0, p0, Lorg/oscim/layers/tile/MapTile;->state:B
+
+    const/16 v1, 0x40
+
+    if-ne v0, v1, :cond_5
+
+    .line 260
+    sget-object v0, Lorg/oscim/layers/tile/MapTile;->log:Lorg/slf4j/Logger;
+
+    const-string v1, "Unlock dead tile {}"
+
+    invoke-interface {v0, v1, p0}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 261
+    invoke-virtual {p0}, Lorg/oscim/layers/tile/MapTile;->clear()V
+
+    :cond_5
+    return-void
 .end method

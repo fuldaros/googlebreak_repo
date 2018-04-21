@@ -22,8 +22,8 @@
 .field enumAdapter:Lcom/squareup/wire/EnumAdapter;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Lcom/squareup/wire/EnumAdapter",
-            "<+",
+            "Lcom/squareup/wire/EnumAdapter<",
+            "+",
             "Lcom/squareup/wire/ProtoEnum;",
             ">;"
         }
@@ -33,8 +33,8 @@
 .field final enumType:Ljava/lang/Class;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/lang/Class",
-            "<+",
+            "Ljava/lang/Class<",
+            "+",
             "Lcom/squareup/wire/ProtoEnum;",
             ">;"
         }
@@ -46,8 +46,8 @@
 .field messageAdapter:Lcom/squareup/wire/MessageAdapter;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Lcom/squareup/wire/MessageAdapter",
-            "<+",
+            "Lcom/squareup/wire/MessageAdapter<",
+            "+",
             "Lcom/squareup/wire/Message;",
             ">;"
         }
@@ -59,8 +59,8 @@
 .field final messageType:Ljava/lang/Class;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/lang/Class",
-            "<+",
+            "Ljava/lang/Class<",
+            "+",
             "Lcom/squareup/wire/Message;",
             ">;"
         }
@@ -76,14 +76,7 @@
 
 # direct methods
 .method private constructor <init>(ILjava/lang/String;Lcom/squareup/wire/Message$Datatype;Lcom/squareup/wire/Message$Label;ZLjava/lang/Class;Ljava/lang/reflect/Field;Ljava/lang/reflect/Field;)V
-    .locals 2
-    .param p1, "tag"    # I
-    .param p2, "name"    # Ljava/lang/String;
-    .param p3, "datatype"    # Lcom/squareup/wire/Message$Datatype;
-    .param p4, "label"    # Lcom/squareup/wire/Message$Label;
-    .param p5, "redacted"    # Z
-    .param p7, "messageField"    # Ljava/lang/reflect/Field;
-    .param p8, "builderField"    # Ljava/lang/reflect/Field;
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I",
@@ -91,17 +84,13 @@
             "Lcom/squareup/wire/Message$Datatype;",
             "Lcom/squareup/wire/Message$Label;",
             "Z",
-            "Ljava/lang/Class",
-            "<*>;",
+            "Ljava/lang/Class<",
+            "*>;",
             "Ljava/lang/reflect/Field;",
             "Ljava/lang/reflect/Field;",
             ")V"
         }
     .end annotation
-
-    .prologue
-    .local p6, "enumOrMessageType":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
-    const/4 v1, 0x0
 
     .line 66
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -122,15 +111,40 @@
     iput-boolean p5, p0, Lcom/squareup/wire/MessageAdapter$FieldInfo;->redacted:Z
 
     .line 72
-    sget-object v0, Lcom/squareup/wire/Message$Datatype;->ENUM:Lcom/squareup/wire/Message$Datatype;
+    sget-object p1, Lcom/squareup/wire/Message$Datatype;->ENUM:Lcom/squareup/wire/Message$Datatype;
 
-    if-ne p3, v0, :cond_0
+    const/4 p2, 0x0
+
+    if-ne p3, p1, :cond_0
 
     .line 73
     iput-object p6, p0, Lcom/squareup/wire/MessageAdapter$FieldInfo;->enumType:Ljava/lang/Class;
 
     .line 74
-    iput-object v1, p0, Lcom/squareup/wire/MessageAdapter$FieldInfo;->messageType:Ljava/lang/Class;
+    iput-object p2, p0, Lcom/squareup/wire/MessageAdapter$FieldInfo;->messageType:Ljava/lang/Class;
+
+    goto :goto_0
+
+    .line 75
+    :cond_0
+    sget-object p1, Lcom/squareup/wire/Message$Datatype;->MESSAGE:Lcom/squareup/wire/Message$Datatype;
+
+    if-ne p3, p1, :cond_1
+
+    .line 76
+    iput-object p6, p0, Lcom/squareup/wire/MessageAdapter$FieldInfo;->messageType:Ljava/lang/Class;
+
+    .line 77
+    iput-object p2, p0, Lcom/squareup/wire/MessageAdapter$FieldInfo;->enumType:Ljava/lang/Class;
+
+    goto :goto_0
+
+    .line 79
+    :cond_1
+    iput-object p2, p0, Lcom/squareup/wire/MessageAdapter$FieldInfo;->enumType:Ljava/lang/Class;
+
+    .line 80
+    iput-object p2, p0, Lcom/squareup/wire/MessageAdapter$FieldInfo;->messageType:Ljava/lang/Class;
 
     .line 84
     :goto_0
@@ -139,46 +153,12 @@
     .line 85
     iput-object p8, p0, Lcom/squareup/wire/MessageAdapter$FieldInfo;->builderField:Ljava/lang/reflect/Field;
 
-    .line 86
     return-void
-
-    .line 75
-    :cond_0
-    sget-object v0, Lcom/squareup/wire/Message$Datatype;->MESSAGE:Lcom/squareup/wire/Message$Datatype;
-
-    if-ne p3, v0, :cond_1
-
-    .line 76
-    iput-object p6, p0, Lcom/squareup/wire/MessageAdapter$FieldInfo;->messageType:Ljava/lang/Class;
-
-    .line 77
-    iput-object v1, p0, Lcom/squareup/wire/MessageAdapter$FieldInfo;->enumType:Ljava/lang/Class;
-
-    goto :goto_0
-
-    .line 79
-    :cond_1
-    iput-object v1, p0, Lcom/squareup/wire/MessageAdapter$FieldInfo;->enumType:Ljava/lang/Class;
-
-    .line 80
-    iput-object v1, p0, Lcom/squareup/wire/MessageAdapter$FieldInfo;->messageType:Ljava/lang/Class;
-
-    goto :goto_0
 .end method
 
 .method synthetic constructor <init>(ILjava/lang/String;Lcom/squareup/wire/Message$Datatype;Lcom/squareup/wire/Message$Label;ZLjava/lang/Class;Ljava/lang/reflect/Field;Ljava/lang/reflect/Field;Lcom/squareup/wire/MessageAdapter$1;)V
     .locals 0
-    .param p1, "x0"    # I
-    .param p2, "x1"    # Ljava/lang/String;
-    .param p3, "x2"    # Lcom/squareup/wire/Message$Datatype;
-    .param p4, "x3"    # Lcom/squareup/wire/Message$Label;
-    .param p5, "x4"    # Z
-    .param p6, "x5"    # Ljava/lang/Class;
-    .param p7, "x6"    # Ljava/lang/reflect/Field;
-    .param p8, "x7"    # Ljava/lang/reflect/Field;
-    .param p9, "x8"    # Lcom/squareup/wire/MessageAdapter$1;
 
-    .prologue
     .line 48
     invoke-direct/range {p0 .. p8}, Lcom/squareup/wire/MessageAdapter$FieldInfo;-><init>(ILjava/lang/String;Lcom/squareup/wire/Message$Datatype;Lcom/squareup/wire/Message$Label;ZLjava/lang/Class;Ljava/lang/reflect/Field;Ljava/lang/reflect/Field;)V
 
@@ -186,23 +166,19 @@
 .end method
 
 .method static synthetic access$000(Lcom/squareup/wire/MessageAdapter$FieldInfo;)Ljava/lang/reflect/Field;
-    .locals 1
-    .param p0, "x0"    # Lcom/squareup/wire/MessageAdapter$FieldInfo;
+    .locals 0
 
-    .prologue
     .line 48
-    iget-object v0, p0, Lcom/squareup/wire/MessageAdapter$FieldInfo;->messageField:Ljava/lang/reflect/Field;
+    iget-object p0, p0, Lcom/squareup/wire/MessageAdapter$FieldInfo;->messageField:Ljava/lang/reflect/Field;
 
-    return-object v0
+    return-object p0
 .end method
 
 .method static synthetic access$100(Lcom/squareup/wire/MessageAdapter$FieldInfo;)Ljava/lang/reflect/Field;
-    .locals 1
-    .param p0, "x0"    # Lcom/squareup/wire/MessageAdapter$FieldInfo;
+    .locals 0
 
-    .prologue
     .line 48
-    iget-object v0, p0, Lcom/squareup/wire/MessageAdapter$FieldInfo;->builderField:Ljava/lang/reflect/Field;
+    iget-object p0, p0, Lcom/squareup/wire/MessageAdapter$FieldInfo;->builderField:Ljava/lang/reflect/Field;
 
-    return-object v0
+    return-object p0
 .end method

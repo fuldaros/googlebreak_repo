@@ -7,8 +7,7 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator",
-            "<",
+            "Landroid/os/Parcelable$Creator<",
             "Lcom/google/android/gms/wearable/internal/DeleteDataItemsResponse;",
             ">;"
         }
@@ -40,7 +39,6 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
     .line 39
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -56,31 +54,26 @@
 .method private constructor <init>()V
     .locals 1
 
-    .prologue
     .line 31
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    .line 24
     const/4 v0, 0x1
 
+    .line 24
     iput v0, p0, Lcom/google/android/gms/wearable/internal/DeleteDataItemsResponse;->versionCode:I
 
-    .line 32
     return-void
 .end method
 
 .method public constructor <init>(II)V
     .locals 1
-    .param p1, "status"    # I
-    .param p2, "count"    # I
 
-    .prologue
     .line 34
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    .line 24
     const/4 v0, 0x1
 
+    .line 24
     iput v0, p0, Lcom/google/android/gms/wearable/internal/DeleteDataItemsResponse;->versionCode:I
 
     .line 35
@@ -89,6 +82,5 @@
     .line 36
     iput p2, p0, Lcom/google/android/gms/wearable/internal/DeleteDataItemsResponse;->count:I
 
-    .line 37
     return-void
 .end method

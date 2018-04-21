@@ -28,11 +28,7 @@
 # direct methods
 .method public constructor <init>(Lorg/microg/gms/maps/data/SharedTileCache;Lorg/oscim/core/Tile;Ljava/io/InputStream;)V
     .locals 0
-    .param p1, "this$0"    # Lorg/microg/gms/maps/data/SharedTileCache;
-    .param p2, "tile"    # Lorg/oscim/core/Tile;
-    .param p3, "is"    # Ljava/io/InputStream;
 
-    .prologue
     .line 126
     iput-object p1, p0, Lorg/microg/gms/maps/data/SharedTileCache$CacheTileReader;->this$0:Lorg/microg/gms/maps/data/SharedTileCache;
 
@@ -44,7 +40,6 @@
     .line 128
     iput-object p3, p0, Lorg/microg/gms/maps/data/SharedTileCache$CacheTileReader;->is:Ljava/io/InputStream;
 
-    .line 129
     return-void
 .end method
 
@@ -53,7 +48,6 @@
 .method public getInputStream()Ljava/io/InputStream;
     .locals 1
 
-    .prologue
     .line 136
     iget-object v0, p0, Lorg/microg/gms/maps/data/SharedTileCache$CacheTileReader;->is:Ljava/io/InputStream;
 

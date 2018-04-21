@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder",
-        "<",
+        "Lcom/squareup/wire/Message$Builder<",
         "Lorg/microg/gms/gcm/mcs/ErrorInfo;",
         ">;"
     }
@@ -37,27 +36,20 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
     .line 73
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
-    .line 74
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/gms/gcm/mcs/ErrorInfo;)V
     .locals 1
-    .param p1, "message"    # Lorg/microg/gms/gcm/mcs/ErrorInfo;
 
-    .prologue
     .line 77
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
-    .line 78
     if-nez p1, :cond_0
 
-    .line 83
-    :goto_0
     return-void
 
     .line 79
@@ -77,11 +69,11 @@
     iput-object v0, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo$Builder;->type:Ljava/lang/String;
 
     .line 82
-    iget-object v0, p1, Lorg/microg/gms/gcm/mcs/ErrorInfo;->extension:Lorg/microg/gms/gcm/mcs/Extension;
+    iget-object p1, p1, Lorg/microg/gms/gcm/mcs/ErrorInfo;->extension:Lorg/microg/gms/gcm/mcs/Extension;
 
-    iput-object v0, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo$Builder;->extension:Lorg/microg/gms/gcm/mcs/Extension;
+    iput-object p1, p0, Lorg/microg/gms/gcm/mcs/ErrorInfo$Builder;->extension:Lorg/microg/gms/gcm/mcs/Extension;
 
-    goto :goto_0
+    return-void
 .end method
 
 
@@ -89,7 +81,6 @@
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
-    .prologue
     .line 66
     invoke-virtual {p0}, Lorg/microg/gms/gcm/mcs/ErrorInfo$Builder;->build()Lorg/microg/gms/gcm/mcs/ErrorInfo;
 
@@ -101,7 +92,6 @@
 .method public build()Lorg/microg/gms/gcm/mcs/ErrorInfo;
     .locals 2
 
-    .prologue
     .line 107
     invoke-virtual {p0}, Lorg/microg/gms/gcm/mcs/ErrorInfo$Builder;->checkRequiredFields()V
 

@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lorg/oscim/utils/pool/Inlist",
-        "<",
+        "Lorg/oscim/utils/pool/Inlist<",
         "Lorg/oscim/renderer/NativeBufferPool$BufferItem;",
         ">;"
     }
@@ -39,7 +38,6 @@
 .method constructor <init>()V
     .locals 0
 
-    .prologue
     .line 24
     invoke-direct {p0}, Lorg/oscim/utils/pool/Inlist;-><init>()V
 
@@ -49,19 +47,13 @@
 
 # virtual methods
 .method growBuffer(I)V
-    .locals 3
-    .param p1, "size"    # I
+    .locals 2
 
-    .prologue
-    const/4 v2, 0x0
-
-    .line 35
     const v0, 0x8000
 
     if-ge p1, v0, :cond_0
 
-    .line 36
-    const p1, 0x8000
+    move p1, v0
 
     .line 39
     :cond_0
@@ -83,15 +75,16 @@
     .line 41
     iput p1, p0, Lorg/oscim/renderer/NativeBufferPool$BufferItem;->size:I
 
+    const/4 p1, 0x0
+
     .line 43
-    iput-object v2, p0, Lorg/oscim/renderer/NativeBufferPool$BufferItem;->sBuffer:Ljava/nio/ShortBuffer;
+    iput-object p1, p0, Lorg/oscim/renderer/NativeBufferPool$BufferItem;->sBuffer:Ljava/nio/ShortBuffer;
 
     .line 44
-    iput-object v2, p0, Lorg/oscim/renderer/NativeBufferPool$BufferItem;->iBuffer:Ljava/nio/IntBuffer;
+    iput-object p1, p0, Lorg/oscim/renderer/NativeBufferPool$BufferItem;->iBuffer:Ljava/nio/IntBuffer;
 
     .line 45
-    iput-object v2, p0, Lorg/oscim/renderer/NativeBufferPool$BufferItem;->fBuffer:Ljava/nio/FloatBuffer;
+    iput-object p1, p0, Lorg/oscim/renderer/NativeBufferPool$BufferItem;->fBuffer:Ljava/nio/FloatBuffer;
 
-    .line 46
     return-void
 .end method

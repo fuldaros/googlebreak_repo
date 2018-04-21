@@ -18,8 +18,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Landroid/support/v7/view/menu/BaseWrapper",
-        "<",
+        "Landroid/support/v7/view/menu/BaseWrapper<",
         "Landroid/view/MenuItem$OnMenuItemClickListener;",
         ">;",
         "Landroid/view/MenuItem$OnMenuItemClickListener;"
@@ -34,16 +33,13 @@
 # direct methods
 .method constructor <init>(Landroid/support/v7/view/menu/MenuItemWrapperICS;Landroid/view/MenuItem$OnMenuItemClickListener;)V
     .locals 0
-    .param p2, "object"    # Landroid/view/MenuItem$OnMenuItemClickListener;
 
-    .prologue
-    .line 315
+    .line 392
     iput-object p1, p0, Landroid/support/v7/view/menu/MenuItemWrapperICS$OnMenuItemClickListenerWrapper;->this$0:Landroid/support/v7/view/menu/MenuItemWrapperICS;
 
-    .line 316
+    .line 393
     invoke-direct {p0, p2}, Landroid/support/v7/view/menu/BaseWrapper;-><init>(Ljava/lang/Object;)V
 
-    .line 317
     return-void
 .end method
 
@@ -51,10 +47,8 @@
 # virtual methods
 .method public onMenuItemClick(Landroid/view/MenuItem;)Z
     .locals 2
-    .param p1, "item"    # Landroid/view/MenuItem;
 
-    .prologue
-    .line 321
+    .line 398
     iget-object v0, p0, Landroid/support/v7/view/menu/MenuItemWrapperICS$OnMenuItemClickListenerWrapper;->mWrappedObject:Ljava/lang/Object;
 
     check-cast v0, Landroid/view/MenuItem$OnMenuItemClickListener;
@@ -63,11 +57,11 @@
 
     invoke-virtual {v1, p1}, Landroid/support/v7/view/menu/MenuItemWrapperICS;->getMenuItemWrapper(Landroid/view/MenuItem;)Landroid/view/MenuItem;
 
-    move-result-object v1
+    move-result-object p1
 
-    invoke-interface {v0, v1}, Landroid/view/MenuItem$OnMenuItemClickListener;->onMenuItemClick(Landroid/view/MenuItem;)Z
+    invoke-interface {v0, p1}, Landroid/view/MenuItem$OnMenuItemClickListener;->onMenuItemClick(Landroid/view/MenuItem;)Z
 
-    move-result v0
+    move-result p1
 
-    return v0
+    return p1
 .end method

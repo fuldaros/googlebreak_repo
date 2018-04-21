@@ -7,8 +7,7 @@
 .field public static CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator",
-            "<",
+            "Landroid/os/Parcelable$Creator<",
             "Lcom/google/android/gms/search/queries/QueryResponse;",
             ">;"
         }
@@ -40,7 +39,6 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
     .line 46
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -54,41 +52,36 @@
 .end method
 
 .method private constructor <init>()V
-    .locals 2
-
-    .prologue
-    const/4 v1, 0x0
+    .locals 1
 
     .line 36
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    .line 27
     const/4 v0, 0x1
 
+    .line 27
     iput v0, p0, Lcom/google/android/gms/search/queries/QueryResponse;->versionCode:I
 
+    const/4 v0, 0x0
+
     .line 37
-    iput-object v1, p0, Lcom/google/android/gms/search/queries/QueryResponse;->status:Lcom/google/android/gms/common/api/Status;
+    iput-object v0, p0, Lcom/google/android/gms/search/queries/QueryResponse;->status:Lcom/google/android/gms/common/api/Status;
 
     .line 38
-    iput-object v1, p0, Lcom/google/android/gms/search/queries/QueryResponse;->results:Lcom/google/android/gms/appdatasearch/SearchResults;
+    iput-object v0, p0, Lcom/google/android/gms/search/queries/QueryResponse;->results:Lcom/google/android/gms/appdatasearch/SearchResults;
 
-    .line 39
     return-void
 .end method
 
 .method public constructor <init>(Lcom/google/android/gms/common/api/Status;Lcom/google/android/gms/appdatasearch/SearchResults;)V
     .locals 1
-    .param p1, "status"    # Lcom/google/android/gms/common/api/Status;
-    .param p2, "results"    # Lcom/google/android/gms/appdatasearch/SearchResults;
 
-    .prologue
     .line 41
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    .line 27
     const/4 v0, 0x1
 
+    .line 27
     iput v0, p0, Lcom/google/android/gms/search/queries/QueryResponse;->versionCode:I
 
     .line 42
@@ -97,6 +90,5 @@
     .line 43
     iput-object p2, p0, Lcom/google/android/gms/search/queries/QueryResponse;->results:Lcom/google/android/gms/appdatasearch/SearchResults;
 
-    .line 44
     return-void
 .end method

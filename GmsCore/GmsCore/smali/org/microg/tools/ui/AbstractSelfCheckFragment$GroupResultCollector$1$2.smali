@@ -24,9 +24,7 @@
 # direct methods
 .method constructor <init>(Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;)V
     .locals 0
-    .param p1, "this$2"    # Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;
 
-    .prologue
     .line 114
     iput-object p1, p0, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1$2;->this$2:Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;
 
@@ -38,23 +36,20 @@
 
 # virtual methods
 .method public onClick(Landroid/view/View;)V
-    .locals 2
-    .param p1, "v"    # Landroid/view/View;
+    .locals 1
 
-    .prologue
     .line 117
+    iget-object p1, p0, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1$2;->this$2:Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;
+
+    iget-object p1, p1, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;->val$resolver:Lorg/microg/tools/selfcheck/SelfCheckGroup$CheckResolver;
+
     iget-object v0, p0, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1$2;->this$2:Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;
 
-    iget-object v0, v0, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;->val$resolver:Lorg/microg/tools/selfcheck/SelfCheckGroup$CheckResolver;
+    iget-object v0, v0, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;->this$1:Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;
 
-    iget-object v1, p0, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1$2;->this$2:Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;
+    iget-object v0, v0, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;->this$0:Lorg/microg/tools/ui/AbstractSelfCheckFragment;
 
-    iget-object v1, v1, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector$1;->this$1:Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;
+    invoke-interface {p1, v0}, Lorg/microg/tools/selfcheck/SelfCheckGroup$CheckResolver;->tryResolve(Landroid/support/v4/app/Fragment;)V
 
-    iget-object v1, v1, Lorg/microg/tools/ui/AbstractSelfCheckFragment$GroupResultCollector;->this$0:Lorg/microg/tools/ui/AbstractSelfCheckFragment;
-
-    invoke-interface {v0, v1}, Lorg/microg/tools/selfcheck/SelfCheckGroup$CheckResolver;->tryResolve(Landroid/support/v4/app/Fragment;)V
-
-    .line 118
     return-void
 .end method

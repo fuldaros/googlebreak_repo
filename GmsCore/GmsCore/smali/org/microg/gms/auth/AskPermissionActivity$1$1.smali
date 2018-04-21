@@ -26,9 +26,7 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/auth/AskPermissionActivity$1;Landroid/graphics/Bitmap;)V
     .locals 0
-    .param p1, "this$1"    # Lorg/microg/gms/auth/AskPermissionActivity$1;
 
-    .prologue
     .line 124
     iput-object p1, p0, Lorg/microg/gms/auth/AskPermissionActivity$1$1;->this$1:Lorg/microg/gms/auth/AskPermissionActivity$1;
 
@@ -44,13 +42,12 @@
 .method public run()V
     .locals 2
 
-    .prologue
     .line 127
     iget-object v0, p0, Lorg/microg/gms/auth/AskPermissionActivity$1$1;->this$1:Lorg/microg/gms/auth/AskPermissionActivity$1;
 
     iget-object v0, v0, Lorg/microg/gms/auth/AskPermissionActivity$1;->this$0:Lorg/microg/gms/auth/AskPermissionActivity;
 
-    const v1, 0x7f0d0056
+    const v1, 0x7f080007
 
     invoke-virtual {v0, v1}, Lorg/microg/gms/auth/AskPermissionActivity;->findViewById(I)Landroid/view/View;
 
@@ -62,6 +59,5 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
 
-    .line 128
     return-void
 .end method

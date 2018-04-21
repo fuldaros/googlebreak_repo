@@ -18,8 +18,7 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
-    .line 110
+    .line 109
     invoke-direct {p0}, Lorg/microg/tools/ui/AbstractAboutFragment;-><init>()V
 
     return-void
@@ -32,16 +31,13 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lorg/microg/tools/ui/AbstractAboutFragment$Library;",
             ">;)V"
         }
     .end annotation
 
-    .prologue
-    .line 132
-    .local p1, "libraries":Ljava/util/List;, "Ljava/util/List<Lorg/microg/tools/ui/AbstractAboutFragment$Library;>;"
+    .line 131
     new-instance v0, Lorg/microg/tools/ui/AbstractAboutFragment$Library;
 
     const-string v1, "org.microg.nlp.api"
@@ -54,16 +50,13 @@
 
     invoke-interface {p1, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 133
     return-void
 .end method
 
 .method protected getSelfVersion()Ljava/lang/String;
     .locals 1
 
-    .prologue
-    .line 127
-    const-string v0, "1.6.7"
+    const-string v0, "1.6.8-35-gb331309"
 
     return-object v0
 .end method
@@ -71,78 +64,73 @@
 .method protected getSummary()Ljava/lang/String;
     .locals 2
 
-    .prologue
-    .line 114
+    .line 113
     invoke-virtual {p0}, Lorg/microg/nlp/ui/SettingsActivity$MyAboutFragment;->getContext()Landroid/content/Context;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 115
-    .local v0, "packageName":Ljava/lang/String;
+    invoke-virtual {v0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+
+    move-result-object v0
+
     const-string v1, "com.google.android.gms"
 
+    .line 114
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
     if-eqz v1, :cond_0
 
-    .line 116
-    sget v1, Lorg/microg/nlp/R$string;->nlp_version_default:I
+    .line 115
+    sget v0, Lorg/microg/nlp/R$string;->nlp_version_default:I
 
-    invoke-virtual {p0, v1}, Lorg/microg/nlp/ui/SettingsActivity$MyAboutFragment;->getString(I)Ljava/lang/String;
+    invoke-virtual {p0, v0}, Lorg/microg/nlp/ui/SettingsActivity$MyAboutFragment;->getString(I)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    .line 122
-    :goto_0
-    return-object v1
+    return-object v0
 
-    .line 117
     :cond_0
     const-string v1, "com.google.android.location"
 
+    .line 116
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
     if-eqz v1, :cond_1
 
-    .line 118
-    sget v1, Lorg/microg/nlp/R$string;->nlp_version_legacy:I
+    .line 117
+    sget v0, Lorg/microg/nlp/R$string;->nlp_version_legacy:I
 
-    invoke-virtual {p0, v1}, Lorg/microg/nlp/ui/SettingsActivity$MyAboutFragment;->getString(I)Ljava/lang/String;
+    invoke-virtual {p0, v0}, Lorg/microg/nlp/ui/SettingsActivity$MyAboutFragment;->getString(I)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    goto :goto_0
+    return-object v0
 
-    .line 119
     :cond_1
     const-string v1, "org.microg.nlp"
 
+    .line 118
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v1
+    move-result v0
 
-    if-eqz v1, :cond_2
+    if-eqz v0, :cond_2
 
-    .line 120
-    sget v1, Lorg/microg/nlp/R$string;->nlp_version_custom:I
+    .line 119
+    sget v0, Lorg/microg/nlp/R$string;->nlp_version_custom:I
 
-    invoke-virtual {p0, v1}, Lorg/microg/nlp/ui/SettingsActivity$MyAboutFragment;->getString(I)Ljava/lang/String;
+    invoke-virtual {p0, v0}, Lorg/microg/nlp/ui/SettingsActivity$MyAboutFragment;->getString(I)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    goto :goto_0
+    return-object v0
 
-    .line 122
     :cond_2
-    const/4 v1, 0x0
+    const/4 v0, 0x0
 
-    goto :goto_0
+    return-object v0
 .end method

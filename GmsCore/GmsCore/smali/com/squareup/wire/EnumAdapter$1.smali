@@ -19,8 +19,7 @@
 .annotation system Ldalvik/annotation/Signature;
     value = {
         "Ljava/lang/Object;",
-        "Ljava/util/Comparator",
-        "<",
+        "Ljava/util/Comparator<",
         "Lcom/squareup/wire/ProtoEnum;",
         ">;"
     }
@@ -31,7 +30,6 @@
 .method constructor <init>()V
     .locals 0
 
-    .prologue
     .line 25
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -41,29 +39,25 @@
 
 # virtual methods
 .method public compare(Lcom/squareup/wire/ProtoEnum;Lcom/squareup/wire/ProtoEnum;)I
-    .locals 2
-    .param p1, "o1"    # Lcom/squareup/wire/ProtoEnum;
-    .param p2, "o2"    # Lcom/squareup/wire/ProtoEnum;
+    .locals 0
 
-    .prologue
     .line 27
     invoke-interface {p1}, Lcom/squareup/wire/ProtoEnum;->getValue()I
 
-    move-result v0
+    move-result p1
 
     invoke-interface {p2}, Lcom/squareup/wire/ProtoEnum;->getValue()I
 
-    move-result v1
+    move-result p2
 
-    sub-int/2addr v0, v1
+    sub-int/2addr p1, p2
 
-    return v0
+    return p1
 .end method
 
 .method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
-    .locals 1
+    .locals 0
 
-    .prologue
     .line 25
     check-cast p1, Lcom/squareup/wire/ProtoEnum;
 
@@ -71,7 +65,7 @@
 
     invoke-virtual {p0, p1, p2}, Lcom/squareup/wire/EnumAdapter$1;->compare(Lcom/squareup/wire/ProtoEnum;Lcom/squareup/wire/ProtoEnum;)I
 
-    move-result v0
+    move-result p1
 
-    return v0
+    return p1
 .end method

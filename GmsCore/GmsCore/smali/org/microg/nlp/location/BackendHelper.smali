@@ -25,51 +25,40 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Lorg/microg/nlp/location/BackendFuser;Landroid/content/Intent;Ljava/lang/String;)V
-    .locals 2
-    .param p1, "context"    # Landroid/content/Context;
-    .param p2, "backendFuser"    # Lorg/microg/nlp/location/BackendFuser;
-    .param p3, "serviceIntent"    # Landroid/content/Intent;
-    .param p4, "signatureDigest"    # Ljava/lang/String;
+    .locals 1
 
-    .prologue
-    .line 49
     const-string v0, "NlpLocBackendHelper"
 
+    .line 49
     invoke-direct {p0, v0, p1, p3, p4}, Lorg/microg/nlp/AbstractBackendHelper;-><init>(Ljava/lang/String;Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;)V
 
     .line 43
-    new-instance v0, Lorg/microg/nlp/location/BackendHelper$Callback;
+    new-instance p1, Lorg/microg/nlp/location/BackendHelper$Callback;
 
-    const/4 v1, 0x0
+    const/4 p3, 0x0
 
-    invoke-direct {v0, p0, v1}, Lorg/microg/nlp/location/BackendHelper$Callback;-><init>(Lorg/microg/nlp/location/BackendHelper;Lorg/microg/nlp/location/BackendHelper$1;)V
+    invoke-direct {p1, p0, p3}, Lorg/microg/nlp/location/BackendHelper$Callback;-><init>(Lorg/microg/nlp/location/BackendHelper;Lorg/microg/nlp/location/BackendHelper$1;)V
 
-    iput-object v0, p0, Lorg/microg/nlp/location/BackendHelper;->callback:Lorg/microg/nlp/location/BackendHelper$Callback;
+    iput-object p1, p0, Lorg/microg/nlp/location/BackendHelper;->callback:Lorg/microg/nlp/location/BackendHelper$Callback;
 
     .line 50
     iput-object p2, p0, Lorg/microg/nlp/location/BackendHelper;->backendFuser:Lorg/microg/nlp/location/BackendFuser;
 
-    .line 51
     return-void
 .end method
 
 .method static synthetic access$100(Lorg/microg/nlp/location/BackendHelper;)Landroid/location/Location;
-    .locals 1
-    .param p0, "x0"    # Lorg/microg/nlp/location/BackendHelper;
+    .locals 0
 
-    .prologue
     .line 40
-    iget-object v0, p0, Lorg/microg/nlp/location/BackendHelper;->lastLocation:Landroid/location/Location;
+    iget-object p0, p0, Lorg/microg/nlp/location/BackendHelper;->lastLocation:Landroid/location/Location;
 
-    return-object v0
+    return-object p0
 .end method
 
 .method static synthetic access$200(Lorg/microg/nlp/location/BackendHelper;Landroid/location/Location;)V
     .locals 0
-    .param p0, "x0"    # Lorg/microg/nlp/location/BackendHelper;
-    .param p1, "x1"    # Landroid/location/Location;
 
-    .prologue
     .line 40
     invoke-direct {p0, p1}, Lorg/microg/nlp/location/BackendHelper;->setLastLocation(Landroid/location/Location;)V
 
@@ -77,142 +66,134 @@
 .end method
 
 .method static synthetic access$300(Lorg/microg/nlp/location/BackendHelper;)Lorg/microg/nlp/location/BackendFuser;
-    .locals 1
-    .param p0, "x0"    # Lorg/microg/nlp/location/BackendHelper;
+    .locals 0
 
-    .prologue
     .line 40
-    iget-object v0, p0, Lorg/microg/nlp/location/BackendHelper;->backendFuser:Lorg/microg/nlp/location/BackendFuser;
+    iget-object p0, p0, Lorg/microg/nlp/location/BackendHelper;->backendFuser:Lorg/microg/nlp/location/BackendFuser;
 
-    return-object v0
+    return-object p0
 .end method
 
 .method private setLastLocation(Landroid/location/Location;)V
-    .locals 6
-    .param p1, "location"    # Landroid/location/Location;
+    .locals 5
 
-    .prologue
+    if-eqz p1, :cond_5
+
     .line 85
-    if-eqz p1, :cond_0
-
     invoke-virtual {p1}, Landroid/location/Location;->hasAccuracy()Z
 
-    move-result v1
+    move-result v0
 
-    if-nez v1, :cond_1
+    if-nez v0, :cond_0
 
-    .line 108
-    :cond_0
-    :goto_0
-    return-void
+    goto :goto_0
 
     .line 88
+    :cond_0
+    invoke-virtual {p1}, Landroid/location/Location;->getExtras()Landroid/os/Bundle;
+
+    move-result-object v0
+
+    if-nez v0, :cond_1
+
+    .line 89
+    new-instance v0, Landroid/os/Bundle;
+
+    invoke-direct {v0}, Landroid/os/Bundle;-><init>()V
+
+    invoke-virtual {p1, v0}, Landroid/location/Location;->setExtras(Landroid/os/Bundle;)V
+
+    .line 91
     :cond_1
     invoke-virtual {p1}, Landroid/location/Location;->getExtras()Landroid/os/Bundle;
 
-    move-result-object v1
+    move-result-object v0
 
-    if-nez v1, :cond_2
-
-    .line 89
-    new-instance v1, Landroid/os/Bundle;
-
-    invoke-direct {v1}, Landroid/os/Bundle;-><init>()V
-
-    invoke-virtual {p1, v1}, Landroid/location/Location;->setExtras(Landroid/os/Bundle;)V
-
-    .line 91
-    :cond_2
-    invoke-virtual {p1}, Landroid/location/Location;->getExtras()Landroid/os/Bundle;
-
-    move-result-object v1
-
-    const-string v2, "SERVICE_BACKEND_PROVIDER"
+    const-string v1, "SERVICE_BACKEND_PROVIDER"
 
     invoke-virtual {p1}, Landroid/location/Location;->getProvider()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v2
 
-    invoke-virtual {v1, v2, v3}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v0, v1, v2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 92
     invoke-virtual {p1}, Landroid/location/Location;->getExtras()Landroid/os/Bundle;
 
-    move-result-object v1
+    move-result-object v0
 
-    const-string v2, "SERVICE_BACKEND_COMPONENT"
+    const-string v1, "SERVICE_BACKEND_COMPONENT"
 
-    iget-object v3, p0, Lorg/microg/nlp/location/BackendHelper;->serviceIntent:Landroid/content/Intent;
+    iget-object v2, p0, Lorg/microg/nlp/location/BackendHelper;->serviceIntent:Landroid/content/Intent;
 
     .line 93
-    invoke-virtual {v3}, Landroid/content/Intent;->getComponent()Landroid/content/ComponentName;
+    invoke-virtual {v2}, Landroid/content/Intent;->getComponent()Landroid/content/ComponentName;
 
-    move-result-object v3
+    move-result-object v2
 
-    invoke-virtual {v3}, Landroid/content/ComponentName;->flattenToShortString()Ljava/lang/String;
+    invoke-virtual {v2}, Landroid/content/ComponentName;->flattenToShortString()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v2
 
     .line 92
-    invoke-virtual {v1, v2, v3}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v0, v1, v2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+
+    const-string v0, "network"
 
     .line 94
-    const-string v1, "network"
-
-    invoke-virtual {p1, v1}, Landroid/location/Location;->setProvider(Ljava/lang/String;)V
+    invoke-virtual {p1, v0}, Landroid/location/Location;->setProvider(Ljava/lang/String;)V
 
     .line 95
     invoke-virtual {p1}, Landroid/location/Location;->hasAccuracy()Z
 
-    move-result v1
+    move-result v0
 
-    if-nez v1, :cond_3
+    if-nez v0, :cond_2
+
+    const v0, 0x47435000    # 50000.0f
 
     .line 96
-    const v1, 0x47435000    # 50000.0f
-
-    invoke-virtual {p1, v1}, Landroid/location/Location;->setAccuracy(F)V
+    invoke-virtual {p1, v0}, Landroid/location/Location;->setAccuracy(F)V
 
     .line 98
-    :cond_3
+    :cond_2
     invoke-virtual {p1}, Landroid/location/Location;->getTime()J
 
-    move-result-wide v2
+    move-result-wide v0
 
-    const-wide/16 v4, 0x0
+    const-wide/16 v2, 0x0
 
-    cmp-long v1, v2, v4
+    cmp-long v4, v0, v2
 
-    if-gtz v1, :cond_4
+    if-gtz v4, :cond_3
 
     .line 99
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
-    move-result-wide v2
+    move-result-wide v0
 
-    invoke-virtual {p1, v2, v3}, Landroid/location/Location;->setTime(J)V
+    invoke-virtual {p1, v0, v1}, Landroid/location/Location;->setTime(J)V
 
     .line 101
-    :cond_4
-    sget v1, Landroid/os/Build$VERSION;->SDK_INT:I
+    :cond_3
+    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
 
-    const/16 v2, 0x11
+    const/16 v1, 0x11
 
-    if-lt v1, v2, :cond_5
+    if-lt v0, v1, :cond_4
 
     .line 102
     invoke-direct {p0, p1}, Lorg/microg/nlp/location/BackendHelper;->updateElapsedRealtimeNanos(Landroid/location/Location;)V
 
     .line 104
-    :cond_5
+    :cond_4
     new-instance v0, Landroid/location/Location;
 
     invoke-direct {v0, p1}, Landroid/location/Location;-><init>(Landroid/location/Location;)V
 
-    .line 105
-    .local v0, "noGpsLocation":Landroid/location/Location;
     const/4 v1, 0x0
 
+    .line 105
     invoke-virtual {v0, v1}, Landroid/location/Location;->setExtras(Landroid/os/Bundle;)V
 
     .line 106
@@ -227,17 +208,19 @@
     .line 107
     iput-object p1, p0, Lorg/microg/nlp/location/BackendHelper;->lastLocation:Landroid/location/Location;
 
-    goto :goto_0
+    return-void
+
+    :cond_5
+    :goto_0
+    return-void
 .end method
 
 .method private updateElapsedRealtimeNanos(Landroid/location/Location;)V
-    .locals 4
-    .param p1, "location"    # Landroid/location/Location;
+    .locals 5
     .annotation build Landroid/annotation/TargetApi;
         value = 0x11
     .end annotation
 
-    .prologue
     .line 112
     invoke-virtual {p1}, Landroid/location/Location;->getElapsedRealtimeNanos()J
 
@@ -245,9 +228,9 @@
 
     const-wide/16 v2, 0x0
 
-    cmp-long v0, v0, v2
+    cmp-long v4, v0, v2
 
-    if-gtz v0, :cond_0
+    if-gtz v4, :cond_0
 
     .line 113
     invoke-static {}, Landroid/os/SystemClock;->elapsedRealtimeNanos()J
@@ -256,7 +239,6 @@
 
     invoke-virtual {p1, v0, v1}, Landroid/location/Location;->setElapsedRealtimeNanos(J)V
 
-    .line 115
     :cond_0
     return-void
 .end method
@@ -271,20 +253,17 @@
         }
     .end annotation
 
-    .prologue
     .line 119
     iget-object v0, p0, Lorg/microg/nlp/location/BackendHelper;->backend:Lorg/microg/nlp/api/LocationBackend;
 
     invoke-interface {v0}, Lorg/microg/nlp/api/LocationBackend;->close()V
 
-    .line 120
     return-void
 .end method
 
 .method public getLastLocation()Landroid/location/Location;
     .locals 1
 
-    .prologue
     .line 54
     iget-object v0, p0, Lorg/microg/nlp/location/BackendHelper;->lastLocation:Landroid/location/Location;
 
@@ -294,7 +273,6 @@
 .method public hasBackend()Z
     .locals 1
 
-    .prologue
     .line 124
     iget-object v0, p0, Lorg/microg/nlp/location/BackendHelper;->backend:Lorg/microg/nlp/api/LocationBackend;
 
@@ -302,182 +280,184 @@
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
+    goto :goto_0
 
     :cond_0
     const/4 v0, 0x0
 
-    goto :goto_0
+    :goto_0
+    return v0
 .end method
 
 .method public onServiceConnected(Landroid/content/ComponentName;Landroid/os/IBinder;)V
-    .locals 3
-    .param p1, "name"    # Landroid/content/ComponentName;
-    .param p2, "service"    # Landroid/os/IBinder;
+    .locals 0
 
-    .prologue
     .line 129
     invoke-super {p0, p1, p2}, Lorg/microg/nlp/AbstractBackendHelper;->onServiceConnected(Landroid/content/ComponentName;Landroid/os/IBinder;)V
 
     .line 130
     invoke-static {p2}, Lorg/microg/nlp/api/LocationBackend$Stub;->asInterface(Landroid/os/IBinder;)Lorg/microg/nlp/api/LocationBackend;
 
-    move-result-object v1
+    move-result-object p1
 
-    iput-object v1, p0, Lorg/microg/nlp/location/BackendHelper;->backend:Lorg/microg/nlp/api/LocationBackend;
+    iput-object p1, p0, Lorg/microg/nlp/location/BackendHelper;->backend:Lorg/microg/nlp/api/LocationBackend;
 
     .line 131
-    iget-object v1, p0, Lorg/microg/nlp/location/BackendHelper;->backend:Lorg/microg/nlp/api/LocationBackend;
+    iget-object p1, p0, Lorg/microg/nlp/location/BackendHelper;->backend:Lorg/microg/nlp/api/LocationBackend;
 
-    if-eqz v1, :cond_0
+    if-eqz p1, :cond_0
 
     .line 133
     :try_start_0
-    iget-object v1, p0, Lorg/microg/nlp/location/BackendHelper;->backend:Lorg/microg/nlp/api/LocationBackend;
+    iget-object p1, p0, Lorg/microg/nlp/location/BackendHelper;->backend:Lorg/microg/nlp/api/LocationBackend;
 
-    iget-object v2, p0, Lorg/microg/nlp/location/BackendHelper;->callback:Lorg/microg/nlp/location/BackendHelper$Callback;
+    iget-object p2, p0, Lorg/microg/nlp/location/BackendHelper;->callback:Lorg/microg/nlp/location/BackendHelper$Callback;
 
-    invoke-interface {v1, v2}, Lorg/microg/nlp/api/LocationBackend;->open(Lorg/microg/nlp/api/LocationCallback;)V
+    invoke-interface {p1, p2}, Lorg/microg/nlp/api/LocationBackend;->open(Lorg/microg/nlp/api/LocationCallback;)V
 
     .line 134
-    iget-boolean v1, p0, Lorg/microg/nlp/location/BackendHelper;->updateWaiting:Z
+    iget-boolean p1, p0, Lorg/microg/nlp/location/BackendHelper;->updateWaiting:Z
 
-    if-eqz v1, :cond_0
+    if-eqz p1, :cond_0
 
     .line 135
     invoke-virtual {p0}, Lorg/microg/nlp/location/BackendHelper;->update()Landroid/location/Location;
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 142
-    :cond_0
-    :goto_0
-    return-void
+    goto :goto_0
 
-    .line 137
     :catch_0
-    move-exception v0
+    move-exception p1
+
+    const-string p2, "NlpLocBackendHelper"
 
     .line 138
-    .local v0, "e":Ljava/lang/Exception;
-    const-string v1, "NlpLocBackendHelper"
-
-    invoke-static {v1, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-static {p2, p1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
 
     .line 139
     invoke-virtual {p0}, Lorg/microg/nlp/location/BackendHelper;->unbind()V
 
-    goto :goto_0
+    :cond_0
+    :goto_0
+    return-void
 .end method
 
 .method public onServiceDisconnected(Landroid/content/ComponentName;)V
-    .locals 1
-    .param p1, "name"    # Landroid/content/ComponentName;
+    .locals 0
 
-    .prologue
     .line 146
     invoke-super {p0, p1}, Lorg/microg/nlp/AbstractBackendHelper;->onServiceDisconnected(Landroid/content/ComponentName;)V
 
+    const/4 p1, 0x0
+
     .line 147
-    const/4 v0, 0x0
+    iput-object p1, p0, Lorg/microg/nlp/location/BackendHelper;->backend:Lorg/microg/nlp/api/LocationBackend;
 
-    iput-object v0, p0, Lorg/microg/nlp/location/BackendHelper;->backend:Lorg/microg/nlp/api/LocationBackend;
-
-    .line 148
     return-void
 .end method
 
 .method public update()Landroid/location/Location;
-    .locals 6
-
-    .prologue
-    .line 64
-    const/4 v1, 0x0
+    .locals 7
 
     .line 65
-    .local v1, "result":Landroid/location/Location;
-    iget-object v2, p0, Lorg/microg/nlp/location/BackendHelper;->backend:Lorg/microg/nlp/api/LocationBackend;
+    iget-object v0, p0, Lorg/microg/nlp/location/BackendHelper;->backend:Lorg/microg/nlp/api/LocationBackend;
 
-    if-nez v2, :cond_1
+    const/4 v1, 0x0
+
+    if-nez v0, :cond_0
+
+    const-string v0, "NlpLocBackendHelper"
+
+    const-string v2, "Not (yet) bound."
 
     .line 66
-    const-string v2, "NlpLocBackendHelper"
+    invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    const-string v3, "Not (yet) bound."
-
-    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    const/4 v0, 0x1
 
     .line 67
-    const/4 v2, 0x1
+    iput-boolean v0, p0, Lorg/microg/nlp/location/BackendHelper;->updateWaiting:Z
 
-    iput-boolean v2, p0, Lorg/microg/nlp/location/BackendHelper;->updateWaiting:Z
+    move-object v0, v1
 
-    .line 81
+    goto :goto_1
+
     :cond_0
-    :goto_0
-    return-object v1
+    const/4 v0, 0x0
 
     .line 69
-    :cond_1
-    const/4 v2, 0x0
-
-    iput-boolean v2, p0, Lorg/microg/nlp/location/BackendHelper;->updateWaiting:Z
+    iput-boolean v0, p0, Lorg/microg/nlp/location/BackendHelper;->updateWaiting:Z
 
     .line 71
     :try_start_0
-    iget-object v2, p0, Lorg/microg/nlp/location/BackendHelper;->backend:Lorg/microg/nlp/api/LocationBackend;
+    iget-object v0, p0, Lorg/microg/nlp/location/BackendHelper;->backend:Lorg/microg/nlp/api/LocationBackend;
 
-    invoke-interface {v2}, Lorg/microg/nlp/api/LocationBackend;->update()Landroid/location/Location;
+    invoke-interface {v0}, Lorg/microg/nlp/api/LocationBackend;->update()Landroid/location/Location;
 
-    move-result-object v1
+    move-result-object v0
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1
+
+    if-eqz v0, :cond_2
 
     .line 72
-    if-eqz v1, :cond_0
+    :try_start_1
+    iget-object v1, p0, Lorg/microg/nlp/location/BackendHelper;->lastLocation:Landroid/location/Location;
 
-    iget-object v2, p0, Lorg/microg/nlp/location/BackendHelper;->lastLocation:Landroid/location/Location;
+    if-eqz v1, :cond_1
 
-    if-eqz v2, :cond_2
+    invoke-virtual {v0}, Landroid/location/Location;->getTime()J
 
-    invoke-virtual {v1}, Landroid/location/Location;->getTime()J
+    move-result-wide v1
 
-    move-result-wide v2
+    iget-object v3, p0, Lorg/microg/nlp/location/BackendHelper;->lastLocation:Landroid/location/Location;
 
-    iget-object v4, p0, Lorg/microg/nlp/location/BackendHelper;->lastLocation:Landroid/location/Location;
+    invoke-virtual {v3}, Landroid/location/Location;->getTime()J
 
-    invoke-virtual {v4}, Landroid/location/Location;->getTime()J
+    move-result-wide v3
 
-    move-result-wide v4
+    cmp-long v5, v1, v3
 
-    cmp-long v2, v2, v4
-
-    if-lez v2, :cond_0
+    if-lez v5, :cond_2
 
     .line 73
-    :cond_2
-    invoke-direct {p0, v1}, Lorg/microg/nlp/location/BackendHelper;->setLastLocation(Landroid/location/Location;)V
+    :cond_1
+    invoke-direct {p0, v0}, Lorg/microg/nlp/location/BackendHelper;->setLastLocation(Landroid/location/Location;)V
 
     .line 74
-    iget-object v2, p0, Lorg/microg/nlp/location/BackendHelper;->backendFuser:Lorg/microg/nlp/location/BackendFuser;
+    iget-object v1, p0, Lorg/microg/nlp/location/BackendHelper;->backendFuser:Lorg/microg/nlp/location/BackendFuser;
 
-    invoke-virtual {v2}, Lorg/microg/nlp/location/BackendFuser;->reportLocation()V
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    invoke-virtual {v1}, Lorg/microg/nlp/location/BackendFuser;->reportLocation()V
+    :try_end_1
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
+
+    goto :goto_1
+
+    :catch_0
+    move-exception v1
 
     goto :goto_0
 
-    .line 76
-    :catch_0
+    :catch_1
     move-exception v0
 
-    .line 77
-    .local v0, "e":Ljava/lang/Exception;
+    move-object v6, v1
+
+    move-object v1, v0
+
+    move-object v0, v6
+
+    :goto_0
     const-string v2, "NlpLocBackendHelper"
 
-    invoke-static {v2, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
+    .line 77
+    invoke-static {v2, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
 
     .line 78
     invoke-virtual {p0}, Lorg/microg/nlp/location/BackendHelper;->unbind()V
 
-    goto :goto_0
+    :cond_2
+    :goto_1
+    return-object v0
 .end method

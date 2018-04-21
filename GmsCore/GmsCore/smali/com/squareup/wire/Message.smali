@@ -31,7 +31,6 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
     .line 34
     new-instance v0, Lcom/squareup/wire/Wire;
 
@@ -49,34 +48,29 @@
 .method protected constructor <init>()V
     .locals 1
 
-    .prologue
     .line 147
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 145
     const/4 v0, 0x0
 
+    .line 145
     iput v0, p0, Lcom/squareup/wire/Message;->hashCode:I
 
-    .line 148
     return-void
 .end method
 
 .method static synthetic access$000(Lcom/squareup/wire/Message;)Lcom/squareup/wire/UnknownFieldMap;
-    .locals 1
-    .param p0, "x0"    # Lcom/squareup/wire/Message;
+    .locals 0
 
-    .prologue
     .line 31
-    iget-object v0, p0, Lcom/squareup/wire/Message;->unknownFields:Lcom/squareup/wire/UnknownFieldMap;
+    iget-object p0, p0, Lcom/squareup/wire/Message;->unknownFields:Lcom/squareup/wire/UnknownFieldMap;
 
-    return-object v0
+    return-object p0
 .end method
 
 .method static synthetic access$100()Lcom/squareup/wire/Wire;
     .locals 1
 
-    .prologue
     .line 31
     sget-object v0, Lcom/squareup/wire/Message;->WIRE:Lcom/squareup/wire/Wire;
 
@@ -90,29 +84,29 @@
             "<T:",
             "Ljava/lang/Object;",
             ">(",
-            "Ljava/util/List",
-            "<TT;>;)",
-            "Ljava/util/List",
-            "<TT;>;"
+            "Ljava/util/List<",
+            "TT;>;)",
+            "Ljava/util/List<",
+            "TT;>;"
         }
     .end annotation
 
-    .prologue
-    .line 169
-    .local p0, "source":Ljava/util/List;, "Ljava/util/List<TT;>;"
     if-nez p0, :cond_0
 
-    const/4 v0, 0x0
+    const/4 p0, 0x0
 
-    :goto_0
-    return-object v0
+    goto :goto_0
 
+    .line 169
     :cond_0
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0, p0}, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
 
-    goto :goto_0
+    move-object p0, v0
+
+    :goto_0
+    return-object p0
 .end method
 
 .method protected static immutableCopyOf(Ljava/util/List;)Ljava/util/List;
@@ -122,37 +116,32 @@
             "<T:",
             "Ljava/lang/Object;",
             ">(",
-            "Ljava/util/List",
-            "<TT;>;)",
-            "Ljava/util/List",
-            "<TT;>;"
+            "Ljava/util/List<",
+            "TT;>;)",
+            "Ljava/util/List<",
+            "TT;>;"
         }
     .end annotation
 
-    .prologue
-    .line 177
-    .local p0, "source":Ljava/util/List;, "Ljava/util/List<TT;>;"
-    if-nez p0, :cond_1
+    if-nez p0, :cond_0
 
     .line 178
     invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;
 
     move-result-object p0
 
-    .line 182
-    .end local p0    # "source":Ljava/util/List;, "Ljava/util/List<TT;>;"
-    :cond_0
-    :goto_0
     return-object p0
 
     .line 179
-    .restart local p0    # "source":Ljava/util/List;, "Ljava/util/List<TT;>;"
-    :cond_1
+    :cond_0
     instance-of v0, p0, Lcom/squareup/wire/MessageAdapter$ImmutableList;
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_1
+
+    return-object p0
 
     .line 182
+    :cond_1
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0, p0}, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
@@ -161,147 +150,145 @@
 
     move-result-object p0
 
-    goto :goto_0
+    return-object p0
 .end method
 
 
 # virtual methods
 .method protected equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-    .locals 1
-    .param p1, "a"    # Ljava/lang/Object;
-    .param p2, "b"    # Ljava/lang/Object;
+    .locals 0
 
-    .prologue
+    if-eq p1, p2, :cond_1
+
+    if-eqz p1, :cond_0
+
     .line 254
-    if-eq p1, p2, :cond_0
-
-    if-eqz p1, :cond_1
-
     invoke-virtual {p1, p2}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
 
-    move-result v0
+    move-result p1
 
-    if-eqz v0, :cond_1
-
-    :cond_0
-    const/4 v0, 0x1
-
-    :goto_0
-    return v0
-
-    :cond_1
-    const/4 v0, 0x0
+    if-eqz p1, :cond_0
 
     goto :goto_0
+
+    :cond_0
+    const/4 p1, 0x0
+
+    goto :goto_1
+
+    :cond_1
+    :goto_0
+    const/4 p1, 0x1
+
+    :goto_1
+    return p1
 .end method
 
 .method protected equals(Ljava/util/List;Ljava/util/List;)Z
-    .locals 1
+    .locals 2
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Ljava/util/List",
-            "<*>;",
-            "Ljava/util/List",
-            "<*>;)Z"
+            "Ljava/util/List<",
+            "*>;",
+            "Ljava/util/List<",
+            "*>;)Z"
         }
     .end annotation
 
-    .prologue
-    .line 259
-    .local p1, "a":Ljava/util/List;, "Ljava/util/List<*>;"
-    .local p2, "b":Ljava/util/List;, "Ljava/util/List<*>;"
+    const/4 v0, 0x0
+
     if-eqz p1, :cond_0
 
+    .line 259
     invoke-interface {p1}, Ljava/util/List;->isEmpty()Z
 
-    move-result v0
+    move-result v1
 
-    if-eqz v0, :cond_0
+    if-eqz v1, :cond_0
 
-    const/4 p1, 0x0
+    move-object p1, v0
 
-    .line 260
     :cond_0
     if-eqz p2, :cond_1
 
+    .line 260
     invoke-interface {p2}, Ljava/util/List;->isEmpty()Z
 
-    move-result v0
+    move-result v1
 
-    if-eqz v0, :cond_1
+    if-eqz v1, :cond_1
 
-    const/4 p2, 0x0
+    move-object p2, v0
+
+    :cond_1
+    if-eq p1, p2, :cond_3
+
+    if-eqz p1, :cond_2
 
     .line 261
-    :cond_1
-    if-eq p1, p2, :cond_2
-
-    if-eqz p1, :cond_3
-
     invoke-interface {p1, p2}, Ljava/util/List;->equals(Ljava/lang/Object;)Z
 
-    move-result v0
+    move-result p1
 
-    if-eqz v0, :cond_3
-
-    :cond_2
-    const/4 v0, 0x1
-
-    :goto_0
-    return v0
-
-    :cond_3
-    const/4 v0, 0x0
+    if-eqz p1, :cond_2
 
     goto :goto_0
+
+    :cond_2
+    const/4 p1, 0x0
+
+    goto :goto_1
+
+    :cond_3
+    :goto_0
+    const/4 p1, 0x1
+
+    :goto_1
+    return p1
 .end method
 
 .method public getSerializedSize()I
-    .locals 3
+    .locals 2
 
-    .prologue
     .line 241
-    iget-boolean v1, p0, Lcom/squareup/wire/Message;->haveCachedSerializedSize:Z
+    iget-boolean v0, p0, Lcom/squareup/wire/Message;->haveCachedSerializedSize:Z
 
-    if-nez v1, :cond_0
+    if-nez v0, :cond_0
 
     .line 242
-    sget-object v1, Lcom/squareup/wire/Message;->WIRE:Lcom/squareup/wire/Wire;
+    sget-object v0, Lcom/squareup/wire/Message;->WIRE:Lcom/squareup/wire/Wire;
 
     invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    move-result-object v2
+    move-result-object v1
 
-    invoke-virtual {v1, v2}, Lcom/squareup/wire/Wire;->messageAdapter(Ljava/lang/Class;)Lcom/squareup/wire/MessageAdapter;
+    invoke-virtual {v0, v1}, Lcom/squareup/wire/Wire;->messageAdapter(Ljava/lang/Class;)Lcom/squareup/wire/MessageAdapter;
 
     move-result-object v0
 
     .line 243
-    .local v0, "adapter":Lcom/squareup/wire/MessageAdapter;, "Lcom/squareup/wire/MessageAdapter<Lcom/squareup/wire/Message;>;"
     invoke-virtual {v0, p0}, Lcom/squareup/wire/MessageAdapter;->getSerializedSize(Lcom/squareup/wire/Message;)I
 
-    move-result v1
+    move-result v0
 
-    iput v1, p0, Lcom/squareup/wire/Message;->cachedSerializedSize:I
+    iput v0, p0, Lcom/squareup/wire/Message;->cachedSerializedSize:I
+
+    const/4 v0, 0x1
 
     .line 244
-    const/4 v1, 0x1
-
-    iput-boolean v1, p0, Lcom/squareup/wire/Message;->haveCachedSerializedSize:Z
+    iput-boolean v0, p0, Lcom/squareup/wire/Message;->haveCachedSerializedSize:Z
 
     .line 246
-    .end local v0    # "adapter":Lcom/squareup/wire/MessageAdapter;, "Lcom/squareup/wire/MessageAdapter<Lcom/squareup/wire/Message;>;"
     :cond_0
-    iget v1, p0, Lcom/squareup/wire/Message;->cachedSerializedSize:I
+    iget v0, p0, Lcom/squareup/wire/Message;->cachedSerializedSize:I
 
-    return v1
+    return v0
 .end method
 
 .method public getUnknownFieldsSerializedSize()I
     .locals 1
 
-    .prologue
     .line 250
     iget-object v0, p0, Lcom/squareup/wire/Message;->unknownFields:Lcom/squareup/wire/UnknownFieldMap;
 
@@ -309,8 +296,7 @@
 
     const/4 v0, 0x0
 
-    :goto_0
-    return v0
+    goto :goto_0
 
     :cond_0
     iget-object v0, p0, Lcom/squareup/wire/Message;->unknownFields:Lcom/squareup/wire/UnknownFieldMap;
@@ -319,14 +305,13 @@
 
     move-result v0
 
-    goto :goto_0
+    :goto_0
+    return v0
 .end method
 
 .method protected setBuilder(Lcom/squareup/wire/Message$Builder;)V
-    .locals 2
-    .param p1, "builder"    # Lcom/squareup/wire/Message$Builder;
+    .locals 1
 
-    .prologue
     .line 154
     iget-object v0, p1, Lcom/squareup/wire/Message$Builder;->unknownFieldMap:Lcom/squareup/wire/UnknownFieldMap;
 
@@ -335,13 +320,12 @@
     .line 155
     new-instance v0, Lcom/squareup/wire/UnknownFieldMap;
 
-    iget-object v1, p1, Lcom/squareup/wire/Message$Builder;->unknownFieldMap:Lcom/squareup/wire/UnknownFieldMap;
+    iget-object p1, p1, Lcom/squareup/wire/Message$Builder;->unknownFieldMap:Lcom/squareup/wire/UnknownFieldMap;
 
-    invoke-direct {v0, v1}, Lcom/squareup/wire/UnknownFieldMap;-><init>(Lcom/squareup/wire/UnknownFieldMap;)V
+    invoke-direct {v0, p1}, Lcom/squareup/wire/UnknownFieldMap;-><init>(Lcom/squareup/wire/UnknownFieldMap;)V
 
     iput-object v0, p0, Lcom/squareup/wire/Message;->unknownFields:Lcom/squareup/wire/UnknownFieldMap;
 
-    .line 157
     :cond_0
     return-void
 .end method
@@ -349,7 +333,6 @@
 .method public toByteArray()[B
     .locals 2
 
-    .prologue
     .line 212
     sget-object v0, Lcom/squareup/wire/Message;->WIRE:Lcom/squareup/wire/Wire;
 
@@ -371,7 +354,6 @@
 .method public toString()Ljava/lang/String;
     .locals 2
 
-    .prologue
     .line 266
     sget-object v0, Lcom/squareup/wire/Message;->WIRE:Lcom/squareup/wire/Wire;
 
@@ -392,14 +374,12 @@
 
 .method public writeUnknownFieldMap(Lcom/squareup/wire/WireOutput;)V
     .locals 1
-    .param p1, "output"    # Lcom/squareup/wire/WireOutput;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue
     .line 234
     iget-object v0, p0, Lcom/squareup/wire/Message;->unknownFields:Lcom/squareup/wire/UnknownFieldMap;
 
@@ -410,7 +390,6 @@
 
     invoke-virtual {v0, p1}, Lcom/squareup/wire/UnknownFieldMap;->write(Lcom/squareup/wire/WireOutput;)V
 
-    .line 237
     :cond_0
     return-void
 .end method

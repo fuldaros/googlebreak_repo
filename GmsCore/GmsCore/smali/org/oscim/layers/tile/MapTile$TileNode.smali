@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lorg/oscim/utils/quadtree/TreeNode",
-        "<",
+        "Lorg/oscim/utils/quadtree/TreeNode<",
         "Lorg/oscim/layers/tile/MapTile$TileNode;",
         "Lorg/oscim/layers/tile/MapTile;",
         ">;"
@@ -28,8 +27,7 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
-    .line 46
+    .line 48
     invoke-direct {p0}, Lorg/oscim/utils/quadtree/TreeNode;-><init>()V
 
     return-void

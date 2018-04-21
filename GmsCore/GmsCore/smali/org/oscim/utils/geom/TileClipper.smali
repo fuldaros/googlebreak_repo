@@ -20,12 +20,7 @@
 # direct methods
 .method public constructor <init>(FFFF)V
     .locals 3
-    .param p1, "xmin"    # F
-    .param p2, "ymin"    # F
-    .param p3, "xmax"    # F
-    .param p4, "ymax"    # F
 
-    .prologue
     .line 34
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -59,748 +54,625 @@
 
     iput-object v0, p0, Lorg/oscim/utils/geom/TileClipper;->mLineClipper:Lorg/oscim/utils/geom/LineClipper;
 
-    .line 40
     return-void
 .end method
 
 .method private clipEdge(Lorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;I)Z
-    .locals 6
-    .param p1, "in"    # Lorg/oscim/core/GeometryBuffer;
-    .param p2, "out"    # Lorg/oscim/core/GeometryBuffer;
-    .param p3, "edge"    # I
+    .locals 8
 
-    .prologue
-    .line 99
+    .line 97
     invoke-virtual {p2}, Lorg/oscim/core/GeometryBuffer;->startPolygon()Lorg/oscim/core/GeometryBuffer;
-
-    .line 100
-    const/4 v3, 0x1
 
     .line 102
-    .local v3, "outer":Z
-    const/4 v4, 0x0
+    iget-object v0, p1, Lorg/oscim/core/GeometryBuffer;->index:[I
 
-    .line 104
-    .local v4, "pointPos":I
-    const/4 v0, 0x0
+    const/4 v1, 0x0
 
-    .local v0, "indexPos":I
-    iget-object v5, p1, Lorg/oscim/core/GeometryBuffer;->index:[I
+    const/4 v2, 0x1
 
-    array-length v2, v5
+    array-length v0, v0
 
-    .local v2, "n":I
+    move v3, v1
+
+    move v4, v3
+
+    move v5, v2
+
     :goto_0
-    if-ge v0, v2, :cond_0
+    if-ge v3, v0, :cond_6
 
-    .line 105
-    iget-object v5, p1, Lorg/oscim/core/GeometryBuffer;->index:[I
+    .line 103
+    iget-object v6, p1, Lorg/oscim/core/GeometryBuffer;->index:[I
 
-    aget v1, v5, v0
+    aget v6, v6, v3
 
-    .line 106
-    .local v1, "len":I
-    if-gez v1, :cond_1
+    if-gez v6, :cond_0
 
-    .line 149
-    .end local v1    # "len":I
+    goto :goto_3
+
     :cond_0
-    const/4 v5, 0x1
+    if-nez v6, :cond_1
 
-    return v5
-
-    .line 109
-    .restart local v1    # "len":I
-    :cond_1
-    if-nez v1, :cond_2
-
-    .line 110
+    .line 108
     invoke-virtual {p2}, Lorg/oscim/core/GeometryBuffer;->startPolygon()Lorg/oscim/core/GeometryBuffer;
 
-    .line 111
-    const/4 v3, 0x1
+    move v5, v2
 
-    .line 104
+    goto :goto_2
+
+    :cond_1
+    const/4 v7, 0x6
+
+    if-ge v6, v7, :cond_2
+
+    add-int/2addr v4, v6
+
+    goto :goto_2
+
+    :cond_2
+    if-nez v5, :cond_3
+
+    .line 119
+    invoke-virtual {p2}, Lorg/oscim/core/GeometryBuffer;->startHole()V
+
+    :cond_3
+    const/4 v5, 0x4
+
+    if-eq p3, v5, :cond_5
+
+    const/16 v5, 0x8
+
+    if-eq p3, v5, :cond_4
+
+    packed-switch p3, :pswitch_data_0
+
+    goto :goto_1
+
+    .line 126
+    :pswitch_0
+    invoke-direct {p0, v3, v4, p1, p2}, Lorg/oscim/utils/geom/TileClipper;->clipRingRight(IILorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;)V
+
+    goto :goto_1
+
+    .line 123
+    :pswitch_1
+    invoke-direct {p0, v3, v4, p1, p2}, Lorg/oscim/utils/geom/TileClipper;->clipRingLeft(IILorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;)V
+
+    goto :goto_1
+
+    .line 129
+    :cond_4
+    invoke-direct {p0, v3, v4, p1, p2}, Lorg/oscim/utils/geom/TileClipper;->clipRingTop(IILorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;)V
+
+    goto :goto_1
+
+    .line 132
+    :cond_5
+    invoke-direct {p0, v3, v4, p1, p2}, Lorg/oscim/utils/geom/TileClipper;->clipRingBottom(IILorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;)V
+
     :goto_1
-    add-int/lit8 v0, v0, 0x1
+    add-int/2addr v4, v6
+
+    move v5, v1
+
+    :goto_2
+    add-int/lit8 v3, v3, 0x1
 
     goto :goto_0
 
-    .line 115
-    :cond_2
-    const/4 v5, 0x6
+    :cond_6
+    :goto_3
+    return v2
 
-    if-ge v1, v5, :cond_3
+    nop
 
-    .line 116
-    add-int/2addr v4, v1
-
-    .line 117
-    goto :goto_1
-
-    .line 120
-    :cond_3
-    if-nez v3, :cond_4
-
-    .line 121
-    invoke-virtual {p2}, Lorg/oscim/core/GeometryBuffer;->startHole()V
-
-    .line 123
-    :cond_4
-    packed-switch p3, :pswitch_data_0
-
-    .line 145
-    :goto_2
-    :pswitch_0
-    add-int/2addr v4, v1
-
-    .line 147
-    const/4 v3, 0x0
-
-    goto :goto_1
-
-    .line 125
-    :pswitch_1
-    invoke-direct {p0, v0, v4, p1, p2}, Lorg/oscim/utils/geom/TileClipper;->clipRingLeft(IILorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;)V
-
-    goto :goto_2
-
-    .line 128
-    :pswitch_2
-    invoke-direct {p0, v0, v4, p1, p2}, Lorg/oscim/utils/geom/TileClipper;->clipRingRight(IILorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;)V
-
-    goto :goto_2
-
-    .line 131
-    :pswitch_3
-    invoke-direct {p0, v0, v4, p1, p2}, Lorg/oscim/utils/geom/TileClipper;->clipRingTop(IILorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;)V
-
-    goto :goto_2
-
-    .line 134
-    :pswitch_4
-    invoke-direct {p0, v0, v4, p1, p2}, Lorg/oscim/utils/geom/TileClipper;->clipRingBottom(IILorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;)V
-
-    goto :goto_2
-
-    .line 123
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_1
-        :pswitch_2
         :pswitch_0
-        :pswitch_4
-        :pswitch_0
-        :pswitch_0
-        :pswitch_0
-        :pswitch_3
     .end packed-switch
 .end method
 
 .method private clipRingBottom(IILorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;)V
-    .locals 9
-    .param p1, "indexPos"    # I
-    .param p2, "pointPos"    # I
-    .param p3, "in"    # Lorg/oscim/core/GeometryBuffer;
-    .param p4, "out"    # Lorg/oscim/core/GeometryBuffer;
+    .locals 6
 
-    .prologue
+    .line 233
+    iget-object v0, p3, Lorg/oscim/core/GeometryBuffer;->index:[I
+
+    aget p1, v0, p1
+
+    add-int/2addr p1, p2
+
+    .line 234
+    iget-object v0, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
+
+    add-int/lit8 v1, p1, -0x2
+
+    aget v0, v0, v1
+
     .line 235
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->index:[I
+    iget-object v1, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
 
-    aget v7, v7, p1
+    add-int/lit8 v2, p1, -0x1
 
-    add-int v4, v7, p2
+    aget v1, v1, v2
 
-    .line 236
-    .local v4, "len":I
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
+    :goto_0
+    if-ge p2, p1, :cond_3
 
-    add-int/lit8 v8, v4, -0x2
+    .line 238
+    iget-object v2, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
 
-    aget v5, v7, v8
+    add-int/lit8 v3, p2, 0x1
 
-    .line 237
-    .local v5, "px":F
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
-
-    add-int/lit8 v8, v4, -0x1
-
-    aget v6, v7, v8
+    aget p2, v2, p2
 
     .line 239
-    .local v6, "py":F
-    move v2, p2
+    iget-object v2, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
 
-    .local v2, "i":I
-    move v3, v2
+    add-int/lit8 v4, v3, 0x1
 
-    .end local v2    # "i":I
-    .local v3, "i":I
-    :goto_0
-    if-ge v3, v4, :cond_3
+    aget v2, v2, v3
 
     .line 240
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
+    iget v3, p0, Lorg/oscim/utils/geom/TileClipper;->ymin:F
 
-    add-int/lit8 v2, v3, 0x1
+    cmpl-float v3, v2, v3
 
-    .end local v3    # "i":I
-    .restart local v2    # "i":I
-    aget v0, v7, v3
+    if-lez v3, :cond_1
 
     .line 241
-    .local v0, "cx":F
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
+    iget v3, p0, Lorg/oscim/utils/geom/TileClipper;->ymin:F
 
-    add-int/lit8 v3, v2, 0x1
+    cmpl-float v3, v1, v3
 
-    .end local v2    # "i":I
-    .restart local v3    # "i":I
-    aget v1, v7, v2
+    if-lez v3, :cond_0
 
     .line 242
-    .local v1, "cy":F
-    iget v7, p0, Lorg/oscim/utils/geom/TileClipper;->ymin:F
+    invoke-virtual {p4, p2, v2}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
 
-    cmpl-float v7, v1, v7
+    goto :goto_1
 
-    if-lez v7, :cond_2
-
-    .line 243
-    iget v7, p0, Lorg/oscim/utils/geom/TileClipper;->ymin:F
-
-    cmpl-float v7, v6, v7
-
-    if-lez v7, :cond_1
+    :cond_0
+    sub-float v3, p2, v0
 
     .line 244
+    iget v5, p0, Lorg/oscim/utils/geom/TileClipper;->ymin:F
+
+    sub-float/2addr v5, v1
+
+    mul-float/2addr v3, v5
+
+    sub-float v1, v2, v1
+
+    div-float/2addr v3, v1
+
+    add-float/2addr v0, v3
+
+    iget v1, p0, Lorg/oscim/utils/geom/TileClipper;->ymin:F
+
     invoke-virtual {p4, v0, v1}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
 
-    .line 254
-    :cond_0
+    .line 245
+    invoke-virtual {p4, p2, v2}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
+
+    goto :goto_1
+
+    .line 248
+    :cond_1
+    iget v3, p0, Lorg/oscim/utils/geom/TileClipper;->ymin:F
+
+    cmpl-float v3, v1, v3
+
+    if-lez v3, :cond_2
+
+    sub-float v3, p2, v0
+
+    .line 249
+    iget v5, p0, Lorg/oscim/utils/geom/TileClipper;->ymin:F
+
+    sub-float/2addr v5, v1
+
+    mul-float/2addr v3, v5
+
+    sub-float v1, v2, v1
+
+    div-float/2addr v3, v1
+
+    add-float/2addr v0, v3
+
+    iget v1, p0, Lorg/oscim/utils/geom/TileClipper;->ymin:F
+
+    invoke-virtual {p4, v0, v1}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
+
+    :cond_2
     :goto_1
-    move v5, v0
+    move v0, p2
 
-    .line 255
-    move v6, v1
+    move v1, v2
 
-    .line 256
+    move p2, v4
+
     goto :goto_0
 
-    .line 246
-    :cond_1
-    sub-float v7, v0, v5
-
-    iget v8, p0, Lorg/oscim/utils/geom/TileClipper;->ymin:F
-
-    sub-float/2addr v8, v6
-
-    mul-float/2addr v7, v8
-
-    sub-float v8, v1, v6
-
-    div-float/2addr v7, v8
-
-    add-float/2addr v7, v5
-
-    iget v8, p0, Lorg/oscim/utils/geom/TileClipper;->ymin:F
-
-    invoke-virtual {p4, v7, v8}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
-
-    .line 247
-    invoke-virtual {p4, v0, v1}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
-
-    goto :goto_1
-
-    .line 250
-    :cond_2
-    iget v7, p0, Lorg/oscim/utils/geom/TileClipper;->ymin:F
-
-    cmpl-float v7, v6, v7
-
-    if-lez v7, :cond_0
-
-    .line 251
-    sub-float v7, v0, v5
-
-    iget v8, p0, Lorg/oscim/utils/geom/TileClipper;->ymin:F
-
-    sub-float/2addr v8, v6
-
-    mul-float/2addr v7, v8
-
-    sub-float v8, v1, v6
-
-    div-float/2addr v7, v8
-
-    add-float/2addr v7, v5
-
-    iget v8, p0, Lorg/oscim/utils/geom/TileClipper;->ymin:F
-
-    invoke-virtual {p4, v7, v8}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
-
-    goto :goto_1
-
-    .line 257
-    .end local v0    # "cx":F
-    .end local v1    # "cy":F
     :cond_3
     return-void
 .end method
 
 .method private clipRingLeft(IILorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;)V
-    .locals 10
-    .param p1, "indexPos"    # I
-    .param p2, "pointPos"    # I
-    .param p3, "in"    # Lorg/oscim/core/GeometryBuffer;
-    .param p4, "out"    # Lorg/oscim/core/GeometryBuffer;
+    .locals 7
 
-    .prologue
+    .line 151
+    iget-object v0, p3, Lorg/oscim/core/GeometryBuffer;->index:[I
+
+    aget p1, v0, p1
+
+    add-int/2addr p1, p2
+
+    .line 152
+    iget-object v0, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
+
+    add-int/lit8 v1, p1, -0x2
+
+    aget v0, v0, v1
+
     .line 153
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->index:[I
+    iget-object v1, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
 
-    aget v7, v7, p1
+    add-int/lit8 v2, p1, -0x1
 
-    add-int v2, v7, p2
+    aget v1, v1, v2
 
-    .line 154
-    .local v2, "end":I
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
+    :goto_0
+    if-ge p2, p1, :cond_3
 
-    add-int/lit8 v8, v2, -0x2
+    .line 156
+    iget-object v2, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
 
-    aget v5, v7, v8
+    add-int/lit8 v3, p2, 0x1
 
-    .line 155
-    .local v5, "px":F
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
-
-    add-int/lit8 v8, v2, -0x1
-
-    aget v6, v7, v8
+    aget p2, v2, p2
 
     .line 157
-    .local v6, "py":F
-    move v3, p2
-
-    .local v3, "i":I
-    move v4, v3
-
-    .end local v3    # "i":I
-    .local v4, "i":I
-    :goto_0
-    if-ge v4, v2, :cond_3
-
-    .line 158
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
-
-    add-int/lit8 v3, v4, 0x1
-
-    .end local v4    # "i":I
-    .restart local v3    # "i":I
-    aget v0, v7, v4
-
-    .line 159
-    .local v0, "cx":F
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
+    iget-object v2, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
 
     add-int/lit8 v4, v3, 0x1
 
-    .end local v3    # "i":I
-    .restart local v4    # "i":I
-    aget v1, v7, v3
+    aget v2, v2, v3
+
+    .line 158
+    iget v3, p0, Lorg/oscim/utils/geom/TileClipper;->xmin:F
+
+    cmpl-float v3, p2, v3
+
+    if-lez v3, :cond_1
 
     .line 160
-    .local v1, "cy":F
-    iget v7, p0, Lorg/oscim/utils/geom/TileClipper;->xmin:F
+    iget v3, p0, Lorg/oscim/utils/geom/TileClipper;->xmin:F
 
-    cmpl-float v7, v0, v7
+    cmpl-float v3, v0, v3
 
-    if-lez v7, :cond_2
+    if-lez v3, :cond_0
 
     .line 162
-    iget v7, p0, Lorg/oscim/utils/geom/TileClipper;->xmin:F
-
-    cmpl-float v7, v5, v7
-
-    if-lez v7, :cond_1
-
-    .line 164
-    invoke-virtual {p4, v0, v1}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
-
-    .line 177
-    :cond_0
-    :goto_1
-    move v5, v0
-
-    .line 178
-    move v6, v1
-
-    .line 179
-    goto :goto_0
-
-    .line 167
-    :cond_1
-    iget v7, p0, Lorg/oscim/utils/geom/TileClipper;->xmin:F
-
-    sub-float v8, v1, v6
-
-    iget v9, p0, Lorg/oscim/utils/geom/TileClipper;->xmin:F
-
-    sub-float/2addr v9, v5
-
-    mul-float/2addr v8, v9
-
-    sub-float v9, v0, v5
-
-    div-float/2addr v8, v9
-
-    add-float/2addr v8, v6
-
-    invoke-virtual {p4, v7, v8}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
-
-    .line 168
-    invoke-virtual {p4, v0, v1}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
+    invoke-virtual {p4, p2, v2}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
 
     goto :goto_1
+
+    .line 165
+    :cond_0
+    iget v3, p0, Lorg/oscim/utils/geom/TileClipper;->xmin:F
+
+    sub-float v5, v2, v1
+
+    iget v6, p0, Lorg/oscim/utils/geom/TileClipper;->xmin:F
+
+    sub-float/2addr v6, v0
+
+    mul-float/2addr v5, v6
+
+    sub-float v0, p2, v0
+
+    div-float/2addr v5, v0
+
+    add-float/2addr v1, v5
+
+    invoke-virtual {p4, v3, v1}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
+
+    .line 166
+    invoke-virtual {p4, p2, v2}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
+
+    goto :goto_1
+
+    .line 169
+    :cond_1
+    iget v3, p0, Lorg/oscim/utils/geom/TileClipper;->xmin:F
+
+    cmpl-float v3, v0, v3
+
+    if-lez v3, :cond_2
 
     .line 171
+    iget v3, p0, Lorg/oscim/utils/geom/TileClipper;->xmin:F
+
+    sub-float v5, v2, v1
+
+    iget v6, p0, Lorg/oscim/utils/geom/TileClipper;->xmin:F
+
+    sub-float/2addr v6, v0
+
+    mul-float/2addr v5, v6
+
+    sub-float v0, p2, v0
+
+    div-float/2addr v5, v0
+
+    add-float/2addr v1, v5
+
+    invoke-virtual {p4, v3, v1}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
+
     :cond_2
-    iget v7, p0, Lorg/oscim/utils/geom/TileClipper;->xmin:F
+    :goto_1
+    move v0, p2
 
-    cmpl-float v7, v5, v7
+    move v1, v2
 
-    if-lez v7, :cond_0
+    move p2, v4
 
-    .line 173
-    iget v7, p0, Lorg/oscim/utils/geom/TileClipper;->xmin:F
+    goto :goto_0
 
-    sub-float v8, v1, v6
-
-    iget v9, p0, Lorg/oscim/utils/geom/TileClipper;->xmin:F
-
-    sub-float/2addr v9, v5
-
-    mul-float/2addr v8, v9
-
-    sub-float v9, v0, v5
-
-    div-float/2addr v8, v9
-
-    add-float/2addr v8, v6
-
-    invoke-virtual {p4, v7, v8}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
-
-    goto :goto_1
-
-    .line 180
-    .end local v0    # "cx":F
-    .end local v1    # "cy":F
     :cond_3
     return-void
 .end method
 
 .method private clipRingRight(IILorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;)V
-    .locals 10
-    .param p1, "indexPos"    # I
-    .param p2, "pointPos"    # I
-    .param p3, "in"    # Lorg/oscim/core/GeometryBuffer;
-    .param p4, "out"    # Lorg/oscim/core/GeometryBuffer;
+    .locals 7
 
-    .prologue
+    .line 181
+    iget-object v0, p3, Lorg/oscim/core/GeometryBuffer;->index:[I
+
+    aget p1, v0, p1
+
+    add-int/2addr p1, p2
+
+    .line 182
+    iget-object v0, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
+
+    add-int/lit8 v1, p1, -0x2
+
+    aget v0, v0, v1
+
     .line 183
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->index:[I
+    iget-object v1, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
 
-    aget v7, v7, p1
+    add-int/lit8 v2, p1, -0x1
 
-    add-int v4, v7, p2
+    aget v1, v1, v2
 
-    .line 184
-    .local v4, "len":I
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
+    :goto_0
+    if-ge p2, p1, :cond_3
 
-    add-int/lit8 v8, v4, -0x2
+    .line 186
+    iget-object v2, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
 
-    aget v5, v7, v8
+    add-int/lit8 v3, p2, 0x1
 
-    .line 185
-    .local v5, "px":F
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
-
-    add-int/lit8 v8, v4, -0x1
-
-    aget v6, v7, v8
+    aget p2, v2, p2
 
     .line 187
-    .local v6, "py":F
-    move v2, p2
+    iget-object v2, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
 
-    .local v2, "i":I
-    move v3, v2
+    add-int/lit8 v4, v3, 0x1
 
-    .end local v2    # "i":I
-    .local v3, "i":I
-    :goto_0
-    if-ge v3, v4, :cond_3
-
-    .line 188
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
-
-    add-int/lit8 v2, v3, 0x1
-
-    .end local v3    # "i":I
-    .restart local v2    # "i":I
-    aget v0, v7, v3
+    aget v2, v2, v3
 
     .line 189
-    .local v0, "cx":F
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
+    iget v3, p0, Lorg/oscim/utils/geom/TileClipper;->xmax:F
 
-    add-int/lit8 v3, v2, 0x1
+    cmpg-float v3, p2, v3
 
-    .end local v2    # "i":I
-    .restart local v3    # "i":I
-    aget v1, v7, v2
+    if-gez v3, :cond_1
+
+    .line 190
+    iget v3, p0, Lorg/oscim/utils/geom/TileClipper;->xmax:F
+
+    cmpg-float v3, v0, v3
+
+    if-gez v3, :cond_0
 
     .line 191
-    .local v1, "cy":F
-    iget v7, p0, Lorg/oscim/utils/geom/TileClipper;->xmax:F
+    invoke-virtual {p4, p2, v2}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
 
-    cmpg-float v7, v0, v7
-
-    if-gez v7, :cond_2
-
-    .line 192
-    iget v7, p0, Lorg/oscim/utils/geom/TileClipper;->xmax:F
-
-    cmpg-float v7, v5, v7
-
-    if-gez v7, :cond_1
+    goto :goto_1
 
     .line 193
-    invoke-virtual {p4, v0, v1}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
-
-    .line 203
     :cond_0
+    iget v3, p0, Lorg/oscim/utils/geom/TileClipper;->xmax:F
+
+    sub-float v5, v2, v1
+
+    iget v6, p0, Lorg/oscim/utils/geom/TileClipper;->xmax:F
+
+    sub-float/2addr v6, v0
+
+    mul-float/2addr v5, v6
+
+    sub-float v0, p2, v0
+
+    div-float/2addr v5, v0
+
+    add-float/2addr v1, v5
+
+    invoke-virtual {p4, v3, v1}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
+
+    .line 194
+    invoke-virtual {p4, p2, v2}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
+
+    goto :goto_1
+
+    .line 197
+    :cond_1
+    iget v3, p0, Lorg/oscim/utils/geom/TileClipper;->xmax:F
+
+    cmpg-float v3, v0, v3
+
+    if-gez v3, :cond_2
+
+    .line 198
+    iget v3, p0, Lorg/oscim/utils/geom/TileClipper;->xmax:F
+
+    sub-float v5, v2, v1
+
+    iget v6, p0, Lorg/oscim/utils/geom/TileClipper;->xmax:F
+
+    sub-float/2addr v6, v0
+
+    mul-float/2addr v5, v6
+
+    sub-float v0, p2, v0
+
+    div-float/2addr v5, v0
+
+    add-float/2addr v1, v5
+
+    invoke-virtual {p4, v3, v1}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
+
+    :cond_2
     :goto_1
-    move v5, v0
+    move v0, p2
 
-    .line 204
-    move v6, v1
+    move v1, v2
 
-    .line 205
+    move p2, v4
+
     goto :goto_0
 
-    .line 195
-    :cond_1
-    iget v7, p0, Lorg/oscim/utils/geom/TileClipper;->xmax:F
-
-    sub-float v8, v1, v6
-
-    iget v9, p0, Lorg/oscim/utils/geom/TileClipper;->xmax:F
-
-    sub-float/2addr v9, v5
-
-    mul-float/2addr v8, v9
-
-    sub-float v9, v0, v5
-
-    div-float/2addr v8, v9
-
-    add-float/2addr v8, v6
-
-    invoke-virtual {p4, v7, v8}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
-
-    .line 196
-    invoke-virtual {p4, v0, v1}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
-
-    goto :goto_1
-
-    .line 199
-    :cond_2
-    iget v7, p0, Lorg/oscim/utils/geom/TileClipper;->xmax:F
-
-    cmpg-float v7, v5, v7
-
-    if-gez v7, :cond_0
-
-    .line 200
-    iget v7, p0, Lorg/oscim/utils/geom/TileClipper;->xmax:F
-
-    sub-float v8, v1, v6
-
-    iget v9, p0, Lorg/oscim/utils/geom/TileClipper;->xmax:F
-
-    sub-float/2addr v9, v5
-
-    mul-float/2addr v8, v9
-
-    sub-float v9, v0, v5
-
-    div-float/2addr v8, v9
-
-    add-float/2addr v8, v6
-
-    invoke-virtual {p4, v7, v8}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
-
-    goto :goto_1
-
-    .line 206
-    .end local v0    # "cx":F
-    .end local v1    # "cy":F
     :cond_3
     return-void
 .end method
 
 .method private clipRingTop(IILorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;)V
-    .locals 9
-    .param p1, "indexPos"    # I
-    .param p2, "pointPos"    # I
-    .param p3, "in"    # Lorg/oscim/core/GeometryBuffer;
-    .param p4, "out"    # Lorg/oscim/core/GeometryBuffer;
+    .locals 6
 
-    .prologue
+    .line 207
+    iget-object v0, p3, Lorg/oscim/core/GeometryBuffer;->index:[I
+
+    aget p1, v0, p1
+
+    add-int/2addr p1, p2
+
+    .line 208
+    iget-object v0, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
+
+    add-int/lit8 v1, p1, -0x2
+
+    aget v0, v0, v1
+
     .line 209
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->index:[I
+    iget-object v1, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
 
-    aget v7, v7, p1
+    add-int/lit8 v2, p1, -0x1
 
-    add-int v4, v7, p2
+    aget v1, v1, v2
 
-    .line 210
-    .local v4, "len":I
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
+    :goto_0
+    if-ge p2, p1, :cond_3
 
-    add-int/lit8 v8, v4, -0x2
+    .line 212
+    iget-object v2, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
 
-    aget v5, v7, v8
+    add-int/lit8 v3, p2, 0x1
 
-    .line 211
-    .local v5, "px":F
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
-
-    add-int/lit8 v8, v4, -0x1
-
-    aget v6, v7, v8
+    aget p2, v2, p2
 
     .line 213
-    .local v6, "py":F
-    move v2, p2
+    iget-object v2, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
 
-    .local v2, "i":I
-    move v3, v2
+    add-int/lit8 v4, v3, 0x1
 
-    .end local v2    # "i":I
-    .local v3, "i":I
-    :goto_0
-    if-ge v3, v4, :cond_3
-
-    .line 214
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
-
-    add-int/lit8 v2, v3, 0x1
-
-    .end local v3    # "i":I
-    .restart local v2    # "i":I
-    aget v0, v7, v3
+    aget v2, v2, v3
 
     .line 215
-    .local v0, "cx":F
-    iget-object v7, p3, Lorg/oscim/core/GeometryBuffer;->points:[F
+    iget v3, p0, Lorg/oscim/utils/geom/TileClipper;->ymax:F
 
-    add-int/lit8 v3, v2, 0x1
+    cmpg-float v3, v2, v3
 
-    .end local v2    # "i":I
-    .restart local v3    # "i":I
-    aget v1, v7, v2
+    if-gez v3, :cond_1
+
+    .line 216
+    iget v3, p0, Lorg/oscim/utils/geom/TileClipper;->ymax:F
+
+    cmpg-float v3, v1, v3
+
+    if-gez v3, :cond_0
 
     .line 217
-    .local v1, "cy":F
-    iget v7, p0, Lorg/oscim/utils/geom/TileClipper;->ymax:F
+    invoke-virtual {p4, p2, v2}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
 
-    cmpg-float v7, v1, v7
+    goto :goto_1
 
-    if-gez v7, :cond_2
-
-    .line 218
-    iget v7, p0, Lorg/oscim/utils/geom/TileClipper;->ymax:F
-
-    cmpg-float v7, v6, v7
-
-    if-gez v7, :cond_1
+    :cond_0
+    sub-float v3, p2, v0
 
     .line 219
+    iget v5, p0, Lorg/oscim/utils/geom/TileClipper;->ymax:F
+
+    sub-float/2addr v5, v1
+
+    mul-float/2addr v3, v5
+
+    sub-float v1, v2, v1
+
+    div-float/2addr v3, v1
+
+    add-float/2addr v0, v3
+
+    iget v1, p0, Lorg/oscim/utils/geom/TileClipper;->ymax:F
+
     invoke-virtual {p4, v0, v1}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
 
-    .line 229
-    :cond_0
+    .line 220
+    invoke-virtual {p4, p2, v2}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
+
+    goto :goto_1
+
+    .line 223
+    :cond_1
+    iget v3, p0, Lorg/oscim/utils/geom/TileClipper;->ymax:F
+
+    cmpg-float v3, v1, v3
+
+    if-gez v3, :cond_2
+
+    sub-float v3, p2, v0
+
+    .line 224
+    iget v5, p0, Lorg/oscim/utils/geom/TileClipper;->ymax:F
+
+    sub-float/2addr v5, v1
+
+    mul-float/2addr v3, v5
+
+    sub-float v1, v2, v1
+
+    div-float/2addr v3, v1
+
+    add-float/2addr v0, v3
+
+    iget v1, p0, Lorg/oscim/utils/geom/TileClipper;->ymax:F
+
+    invoke-virtual {p4, v0, v1}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
+
+    :cond_2
     :goto_1
-    move v5, v0
+    move v0, p2
 
-    .line 230
-    move v6, v1
+    move v1, v2
 
-    .line 231
+    move p2, v4
+
     goto :goto_0
 
-    .line 221
-    :cond_1
-    sub-float v7, v0, v5
-
-    iget v8, p0, Lorg/oscim/utils/geom/TileClipper;->ymax:F
-
-    sub-float/2addr v8, v6
-
-    mul-float/2addr v7, v8
-
-    sub-float v8, v1, v6
-
-    div-float/2addr v7, v8
-
-    add-float/2addr v7, v5
-
-    iget v8, p0, Lorg/oscim/utils/geom/TileClipper;->ymax:F
-
-    invoke-virtual {p4, v7, v8}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
-
-    .line 222
-    invoke-virtual {p4, v0, v1}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
-
-    goto :goto_1
-
-    .line 225
-    :cond_2
-    iget v7, p0, Lorg/oscim/utils/geom/TileClipper;->ymax:F
-
-    cmpg-float v7, v6, v7
-
-    if-gez v7, :cond_0
-
-    .line 226
-    sub-float v7, v0, v5
-
-    iget v8, p0, Lorg/oscim/utils/geom/TileClipper;->ymax:F
-
-    sub-float/2addr v8, v6
-
-    mul-float/2addr v7, v8
-
-    sub-float v8, v1, v6
-
-    div-float/2addr v7, v8
-
-    add-float/2addr v7, v5
-
-    iget v8, p0, Lorg/oscim/utils/geom/TileClipper;->ymax:F
-
-    invoke-virtual {p4, v7, v8}, Lorg/oscim/core/GeometryBuffer;->addPoint(FF)Lorg/oscim/core/GeometryBuffer;
-
-    goto :goto_1
-
-    .line 232
-    .end local v0    # "cx":F
-    .end local v1    # "cy":F
     :cond_3
     return-void
 .end method
@@ -808,162 +680,146 @@
 
 # virtual methods
 .method public clip(Lorg/oscim/core/GeometryBuffer;)Z
-    .locals 9
-    .param p1, "geom"    # Lorg/oscim/core/GeometryBuffer;
-
-    .prologue
-    const/4 v8, 0x4
-
-    const/4 v5, 0x1
-
-    const/4 v4, 0x0
+    .locals 7
 
     .line 55
     invoke-virtual {p1}, Lorg/oscim/core/GeometryBuffer;->isPoly()Z
 
-    move-result v6
+    move-result v0
 
-    if-eqz v6, :cond_1
+    const/4 v1, 0x4
+
+    const/4 v2, 0x1
+
+    const/4 v3, 0x0
+
+    if-eqz v0, :cond_0
 
     .line 57
-    iget-object v2, p0, Lorg/oscim/utils/geom/TileClipper;->mGeomOut:Lorg/oscim/core/GeometryBuffer;
+    iget-object v0, p0, Lorg/oscim/utils/geom/TileClipper;->mGeomOut:Lorg/oscim/core/GeometryBuffer;
 
     .line 58
-    .local v2, "out":Lorg/oscim/core/GeometryBuffer;
-    invoke-virtual {v2}, Lorg/oscim/core/GeometryBuffer;->clear()Lorg/oscim/core/GeometryBuffer;
+    invoke-virtual {v0}, Lorg/oscim/core/GeometryBuffer;->clear()Lorg/oscim/core/GeometryBuffer;
 
     .line 60
-    invoke-direct {p0, p1, v2, v5}, Lorg/oscim/utils/geom/TileClipper;->clipEdge(Lorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;I)Z
+    invoke-direct {p0, p1, v0, v2}, Lorg/oscim/utils/geom/TileClipper;->clipEdge(Lorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;I)Z
 
     .line 61
     invoke-virtual {p1}, Lorg/oscim/core/GeometryBuffer;->clear()Lorg/oscim/core/GeometryBuffer;
 
-    .line 63
-    const/16 v6, 0x8
+    const/16 v4, 0x8
 
-    invoke-direct {p0, v2, p1, v6}, Lorg/oscim/utils/geom/TileClipper;->clipEdge(Lorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;I)Z
+    .line 63
+    invoke-direct {p0, v0, p1, v4}, Lorg/oscim/utils/geom/TileClipper;->clipEdge(Lorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;I)Z
 
     .line 64
-    invoke-virtual {v2}, Lorg/oscim/core/GeometryBuffer;->clear()Lorg/oscim/core/GeometryBuffer;
+    invoke-virtual {v0}, Lorg/oscim/core/GeometryBuffer;->clear()Lorg/oscim/core/GeometryBuffer;
+
+    const/4 v4, 0x2
 
     .line 66
-    const/4 v6, 0x2
-
-    invoke-direct {p0, p1, v2, v6}, Lorg/oscim/utils/geom/TileClipper;->clipEdge(Lorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;I)Z
+    invoke-direct {p0, p1, v0, v4}, Lorg/oscim/utils/geom/TileClipper;->clipEdge(Lorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;I)Z
 
     .line 67
     invoke-virtual {p1}, Lorg/oscim/core/GeometryBuffer;->clear()Lorg/oscim/core/GeometryBuffer;
 
     .line 69
-    invoke-direct {p0, v2, p1, v8}, Lorg/oscim/utils/geom/TileClipper;->clipEdge(Lorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;I)Z
+    invoke-direct {p0, v0, p1, v1}, Lorg/oscim/utils/geom/TileClipper;->clipEdge(Lorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;I)Z
 
     .line 71
-    iget v6, p1, Lorg/oscim/core/GeometryBuffer;->indexPos:I
+    iget v0, p1, Lorg/oscim/core/GeometryBuffer;->indexCurrentPos:I
 
-    if-nez v6, :cond_2
+    if-nez v0, :cond_1
 
-    iget-object v6, p1, Lorg/oscim/core/GeometryBuffer;->index:[I
+    iget-object p1, p1, Lorg/oscim/core/GeometryBuffer;->index:[I
 
-    aget v6, v6, v4
+    aget p1, p1, v3
 
-    const/4 v7, 0x6
+    const/4 v0, 0x6
 
-    if-ge v6, v7, :cond_2
+    if-ge p1, v0, :cond_1
 
-    .line 94
-    .end local v2    # "out":Lorg/oscim/core/GeometryBuffer;
+    return v3
+
+    .line 73
     :cond_0
-    :goto_0
-    return v4
-
-    .line 75
-    :cond_1
     invoke-virtual {p1}, Lorg/oscim/core/GeometryBuffer;->isLine()Z
 
-    move-result v6
+    move-result v0
 
-    if-eqz v6, :cond_2
+    if-eqz v0, :cond_1
 
-    .line 77
-    iget-object v2, p0, Lorg/oscim/utils/geom/TileClipper;->mGeomOut:Lorg/oscim/core/GeometryBuffer;
+    .line 75
+    iget-object v0, p0, Lorg/oscim/utils/geom/TileClipper;->mGeomOut:Lorg/oscim/core/GeometryBuffer;
+
+    .line 76
+    invoke-virtual {v0}, Lorg/oscim/core/GeometryBuffer;->clear()Lorg/oscim/core/GeometryBuffer;
 
     .line 78
-    .restart local v2    # "out":Lorg/oscim/core/GeometryBuffer;
-    invoke-virtual {v2}, Lorg/oscim/core/GeometryBuffer;->clear()Lorg/oscim/core/GeometryBuffer;
+    iget-object v4, p0, Lorg/oscim/utils/geom/TileClipper;->mLineClipper:Lorg/oscim/utils/geom/LineClipper;
+
+    invoke-virtual {v4, p1, v0}, Lorg/oscim/utils/geom/LineClipper;->clipLine(Lorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;)I
+
+    move-result v4
+
+    add-int/lit8 v5, v4, 0x1
 
     .line 80
-    iget-object v6, p0, Lorg/oscim/utils/geom/TileClipper;->mLineClipper:Lorg/oscim/utils/geom/LineClipper;
+    invoke-virtual {p1, v5, v3}, Lorg/oscim/core/GeometryBuffer;->ensureIndexSize(IZ)[I
 
-    invoke-virtual {v6, p1, v2}, Lorg/oscim/utils/geom/LineClipper;->clipLine(Lorg/oscim/core/GeometryBuffer;Lorg/oscim/core/GeometryBuffer;)I
+    move-result-object v5
 
-    move-result v1
+    .line 81
+    iget-object v6, v0, Lorg/oscim/core/GeometryBuffer;->index:[I
+
+    invoke-static {v6, v3, v5, v3, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 82
-    .local v1, "numLines":I
-    add-int/lit8 v6, v1, 0x1
+    iget-object v5, p1, Lorg/oscim/core/GeometryBuffer;->index:[I
 
-    invoke-virtual {p1, v6, v4}, Lorg/oscim/core/GeometryBuffer;->ensureIndexSize(IZ)[I
+    const/4 v6, -0x1
 
-    move-result-object v0
-
-    .line 83
-    .local v0, "idx":[I
-    iget-object v6, v2, Lorg/oscim/core/GeometryBuffer;->index:[I
-
-    invoke-static {v6, v4, v0, v4, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    aput v6, v5, v4
 
     .line 84
-    iget-object v6, p1, Lorg/oscim/core/GeometryBuffer;->index:[I
+    iget v4, v0, Lorg/oscim/core/GeometryBuffer;->pointNextPos:I
 
-    const/4 v7, -0x1
+    shr-int/2addr v4, v2
 
-    aput v7, v6, v1
+    invoke-virtual {p1, v4, v3}, Lorg/oscim/core/GeometryBuffer;->ensurePointSize(IZ)[F
+
+    move-result-object v4
+
+    .line 85
+    iget-object v5, v0, Lorg/oscim/core/GeometryBuffer;->points:[F
+
+    iget v6, v0, Lorg/oscim/core/GeometryBuffer;->pointNextPos:I
+
+    invoke-static {v5, v3, v4, v3, v6}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 86
-    iget v6, v2, Lorg/oscim/core/GeometryBuffer;->pointPos:I
+    iget v4, v0, Lorg/oscim/core/GeometryBuffer;->indexCurrentPos:I
 
-    shr-int/lit8 v6, v6, 0x1
-
-    invoke-virtual {p1, v6, v4}, Lorg/oscim/core/GeometryBuffer;->ensurePointSize(IZ)[F
-
-    move-result-object v3
+    iput v4, p1, Lorg/oscim/core/GeometryBuffer;->indexCurrentPos:I
 
     .line 87
-    .local v3, "pts":[F
-    iget-object v6, v2, Lorg/oscim/core/GeometryBuffer;->points:[F
+    iget v0, v0, Lorg/oscim/core/GeometryBuffer;->pointNextPos:I
 
-    iget v7, v2, Lorg/oscim/core/GeometryBuffer;->pointPos:I
-
-    invoke-static {v6, v4, v3, v4, v7}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    .line 88
-    iget v6, v2, Lorg/oscim/core/GeometryBuffer;->indexPos:I
-
-    iput v6, p1, Lorg/oscim/core/GeometryBuffer;->indexPos:I
+    iput v0, p1, Lorg/oscim/core/GeometryBuffer;->pointNextPos:I
 
     .line 89
-    iget v6, v2, Lorg/oscim/core/GeometryBuffer;->pointPos:I
+    iget v0, p1, Lorg/oscim/core/GeometryBuffer;->indexCurrentPos:I
 
-    iput v6, p1, Lorg/oscim/core/GeometryBuffer;->pointPos:I
+    if-nez v0, :cond_1
 
-    .line 91
-    iget v6, p1, Lorg/oscim/core/GeometryBuffer;->indexPos:I
+    iget-object p1, p1, Lorg/oscim/core/GeometryBuffer;->index:[I
 
-    if-nez v6, :cond_2
+    aget p1, p1, v3
 
-    iget-object v6, p1, Lorg/oscim/core/GeometryBuffer;->index:[I
+    if-ge p1, v1, :cond_1
 
-    aget v6, v6, v4
+    return v3
 
-    if-lt v6, v8, :cond_0
-
-    .end local v0    # "idx":[I
-    .end local v1    # "numLines":I
-    .end local v2    # "out":Lorg/oscim/core/GeometryBuffer;
-    .end local v3    # "pts":[F
-    :cond_2
-    move v4, v5
-
-    .line 94
-    goto :goto_0
+    :cond_1
+    return v2
 .end method

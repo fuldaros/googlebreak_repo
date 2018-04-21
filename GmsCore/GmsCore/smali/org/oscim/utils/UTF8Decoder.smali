@@ -13,13 +13,12 @@
 .method public constructor <init>()V
     .locals 1
 
-    .prologue
     .line 22
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 26
     const/4 v0, 0x0
 
+    .line 26
     iput v0, p0, Lorg/oscim/utils/UTF8Decoder;->mBufferSize:I
 
     return-void
@@ -28,685 +27,369 @@
 
 # virtual methods
 .method public decode([BII)Ljava/lang/String;
-    .locals 22
-    .param p1, "data"    # [B
-    .param p2, "offset"    # I
-    .param p3, "byteCount"    # I
+    .locals 17
 
-    .prologue
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p1
+
+    move/from16 v2, p2
+
+    move/from16 v3, p3
+
+    or-int v4, v2, v3
+
+    if-ltz v4, :cond_10
+
     .line 29
-    or-int v19, p2, p3
+    array-length v4, v1
 
-    if-ltz v19, :cond_0
+    sub-int/2addr v4, v2
 
-    move-object/from16 v0, p1
+    if-le v3, v4, :cond_0
 
-    array-length v0, v0
-
-    move/from16 v19, v0
-
-    sub-int v19, v19, p2
-
-    move/from16 v0, p3
-
-    move/from16 v1, v19
-
-    if-le v0, v1, :cond_1
-
-    .line 30
-    :cond_0
-    new-instance v19, Ljava/lang/IllegalArgumentException;
-
-    new-instance v20, Ljava/lang/StringBuilder;
-
-    invoke-direct/range {v20 .. v20}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v21, "Brrr "
-
-    invoke-virtual/range {v20 .. v21}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v20
-
-    move-object/from16 v0, p1
-
-    array-length v0, v0
-
-    move/from16 v21, v0
-
-    invoke-virtual/range {v20 .. v21}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v20
-
-    const-string v21, " "
-
-    invoke-virtual/range {v20 .. v21}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v20
-
-    move-object/from16 v0, v20
-
-    move/from16 v1, p2
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v20
-
-    const-string v21, " "
-
-    invoke-virtual/range {v20 .. v21}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v20
-
-    move-object/from16 v0, v20
-
-    move/from16 v1, p3
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v20
-
-    invoke-virtual/range {v20 .. v20}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v20
-
-    invoke-direct/range {v19 .. v20}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    throw v19
-
-    .line 34
-    :cond_1
-    move-object/from16 v4, p1
+    goto/16 :goto_7
 
     .line 37
-    .local v4, "d":[B
-    move-object/from16 v0, p0
+    :cond_0
+    iget v4, v0, Lorg/oscim/utils/UTF8Decoder;->mBufferSize:I
 
-    iget v0, v0, Lorg/oscim/utils/UTF8Decoder;->mBufferSize:I
-
-    move/from16 v19, v0
-
-    move/from16 v0, v19
-
-    move/from16 v1, p3
-
-    if-ge v0, v1, :cond_2
+    if-ge v4, v3, :cond_1
 
     .line 38
-    move/from16 v0, p3
+    new-array v4, v3, [C
 
-    new-array v15, v0, [C
+    iput-object v4, v0, Lorg/oscim/utils/UTF8Decoder;->mBuffer:[C
 
-    move-object/from16 v0, p0
-
-    iput-object v15, v0, Lorg/oscim/utils/UTF8Decoder;->mBuffer:[C
-
-    .line 42
-    .local v15, "v":[C
-    :goto_0
-    move/from16 v7, p2
-
-    .line 43
-    .local v7, "idx":I
-    add-int v9, p2, p3
-
-    .line 44
-    .local v9, "last":I
-    const/4 v11, 0x0
-
-    .local v11, "s":I
-    move v12, v11
-
-    .end local v11    # "s":I
-    .local v12, "s":I
-    move v8, v7
-
-    .line 45
-    .end local v7    # "idx":I
-    .local v8, "idx":I
-    :goto_1
-    if-ge v8, v9, :cond_10
-
-    .line 46
-    add-int/lit8 v7, v8, 0x1
-
-    .end local v8    # "idx":I
-    .restart local v7    # "idx":I
-    aget-byte v3, v4, v8
-
-    .line 47
-    .local v3, "b0":B
-    and-int/lit16 v0, v3, 0x80
-
-    move/from16 v19, v0
-
-    if-nez v19, :cond_3
-
-    .line 50
-    and-int/lit16 v0, v3, 0xff
-
-    move/from16 v16, v0
-
-    .line 51
-    .local v16, "val":I
-    add-int/lit8 v11, v12, 0x1
-
-    .end local v12    # "s":I
-    .restart local v11    # "s":I
-    move/from16 v0, v16
-
-    int-to-char v0, v0
-
-    move/from16 v19, v0
-
-    aput-char v19, v15, v12
-
-    .end local v16    # "val":I
-    :goto_2
-    move v12, v11
-
-    .end local v11    # "s":I
-    .restart local v12    # "s":I
-    move v8, v7
-
-    .line 132
-    .end local v7    # "idx":I
-    .restart local v8    # "idx":I
-    goto :goto_1
-
-    .line 40
-    .end local v3    # "b0":B
-    .end local v8    # "idx":I
-    .end local v9    # "last":I
-    .end local v12    # "s":I
-    .end local v15    # "v":[C
-    :cond_2
-    move-object/from16 v0, p0
-
-    iget-object v15, v0, Lorg/oscim/utils/UTF8Decoder;->mBuffer:[C
-
-    .restart local v15    # "v":[C
     goto :goto_0
 
-    .line 52
-    .restart local v3    # "b0":B
-    .restart local v7    # "idx":I
-    .restart local v9    # "last":I
-    .restart local v12    # "s":I
-    :cond_3
-    and-int/lit16 v0, v3, 0xe0
+    .line 40
+    :cond_1
+    iget-object v4, v0, Lorg/oscim/utils/UTF8Decoder;->mBuffer:[C
 
-    move/from16 v19, v0
+    :goto_0
+    add-int/2addr v3, v2
 
-    const/16 v20, 0xc0
-
-    move/from16 v0, v19
-
-    move/from16 v1, v20
-
-    if-eq v0, v1, :cond_4
-
-    and-int/lit16 v0, v3, 0xf0
-
-    move/from16 v19, v0
-
-    const/16 v20, 0xe0
-
-    move/from16 v0, v19
-
-    move/from16 v1, v20
-
-    if-eq v0, v1, :cond_4
-
-    and-int/lit16 v0, v3, 0xf8
-
-    move/from16 v19, v0
-
-    const/16 v20, 0xf0
-
-    move/from16 v0, v19
-
-    move/from16 v1, v20
-
-    if-eq v0, v1, :cond_4
-
-    and-int/lit16 v0, v3, 0xfc
-
-    move/from16 v19, v0
-
-    const/16 v20, 0xf8
-
-    move/from16 v0, v19
-
-    move/from16 v1, v20
-
-    if-eq v0, v1, :cond_4
-
-    and-int/lit16 v0, v3, 0xfe
-
-    move/from16 v19, v0
-
-    const/16 v20, 0xfc
-
-    move/from16 v0, v19
-
-    move/from16 v1, v20
-
-    if-ne v0, v1, :cond_f
-
-    .line 54
-    :cond_4
-    const/4 v14, 0x1
-
-    .line 55
-    .local v14, "utfCount":I
-    and-int/lit16 v0, v3, 0xf0
-
-    move/from16 v19, v0
-
-    const/16 v20, 0xe0
-
-    move/from16 v0, v19
-
-    move/from16 v1, v20
-
-    if-ne v0, v1, :cond_6
-
-    .line 56
-    const/4 v14, 0x2
-
-    .line 71
-    :cond_5
-    :goto_3
-    add-int v19, v7, v14
-
-    move/from16 v0, v19
-
-    if-le v0, v9, :cond_9
-
-    .line 72
-    add-int/lit8 v11, v12, 0x1
-
-    .end local v12    # "s":I
-    .restart local v11    # "s":I
-    const v19, 0xfffd
-
-    aput-char v19, v15, v12
-
-    .line 133
-    .end local v3    # "b0":B
-    .end local v14    # "utfCount":I
-    :goto_4
-    new-instance v19, Ljava/lang/String;
-
-    const/16 v20, 0x0
-
-    move-object/from16 v0, v19
-
-    move/from16 v1, v20
-
-    invoke-direct {v0, v15, v1, v11}, Ljava/lang/String;-><init>([CII)V
-
-    return-object v19
-
-    .line 57
-    .end local v11    # "s":I
-    .restart local v3    # "b0":B
-    .restart local v12    # "s":I
-    .restart local v14    # "utfCount":I
-    :cond_6
-    and-int/lit16 v0, v3, 0xf8
-
-    move/from16 v19, v0
-
-    const/16 v20, 0xf0
-
-    move/from16 v0, v19
-
-    move/from16 v1, v20
-
-    if-ne v0, v1, :cond_7
-
-    .line 58
-    const/4 v14, 0x3
-
-    goto :goto_3
-
-    .line 59
-    :cond_7
-    and-int/lit16 v0, v3, 0xfc
-
-    move/from16 v19, v0
-
-    const/16 v20, 0xf8
-
-    move/from16 v0, v19
-
-    move/from16 v1, v20
-
-    if-ne v0, v1, :cond_8
-
-    .line 60
-    const/4 v14, 0x4
-
-    goto :goto_3
-
-    .line 61
-    :cond_8
-    and-int/lit16 v0, v3, 0xfe
-
-    move/from16 v19, v0
-
-    const/16 v20, 0xfc
-
-    move/from16 v0, v19
-
-    move/from16 v1, v20
-
-    if-ne v0, v1, :cond_5
-
-    .line 62
-    const/4 v14, 0x5
-
-    goto :goto_3
-
-    .line 77
-    :cond_9
-    const/16 v19, 0x1f
-
-    add-int/lit8 v20, v14, -0x1
-
-    shr-int v19, v19, v20
-
-    and-int v16, v3, v19
-
-    .line 78
-    .restart local v16    # "val":I
     const/4 v6, 0x0
 
-    .local v6, "i":I
-    move v8, v7
+    :goto_1
+    if-ge v2, v3, :cond_f
 
-    .end local v7    # "idx":I
-    .restart local v8    # "idx":I
-    :goto_5
-    if-ge v6, v14, :cond_b
+    add-int/lit8 v7, v2, 0x1
 
-    .line 79
-    add-int/lit8 v7, v8, 0x1
+    .line 47
+    aget-byte v2, v1, v2
 
-    .end local v8    # "idx":I
-    .restart local v7    # "idx":I
-    aget-byte v2, v4, v8
+    and-int/lit16 v8, v2, 0x80
+
+    if-nez v8, :cond_2
+
+    and-int/lit16 v2, v2, 0xff
+
+    add-int/lit8 v8, v6, 0x1
+
+    int-to-char v2, v2
+
+    .line 52
+    aput-char v2, v4, v6
+
+    move v2, v7
+
+    move v6, v8
+
+    goto :goto_1
+
+    :cond_2
+    and-int/lit16 v8, v2, 0xe0
+
+    const/16 v9, 0xc0
+
+    const/16 v10, 0xe0
+
+    const/16 v11, 0xfc
+
+    const/16 v12, 0xf8
+
+    const/16 v13, 0xf0
+
+    const v14, 0xfffd
+
+    if-eq v8, v9, :cond_4
+
+    and-int/lit16 v8, v2, 0xf0
+
+    if-eq v8, v10, :cond_4
+
+    and-int/lit16 v8, v2, 0xf8
+
+    if-eq v8, v13, :cond_4
+
+    and-int/lit16 v8, v2, 0xfc
+
+    if-eq v8, v12, :cond_4
+
+    and-int/lit16 v8, v2, 0xfe
+
+    if-ne v8, v11, :cond_3
+
+    goto :goto_2
+
+    :cond_3
+    add-int/lit8 v2, v6, 0x1
+
+    .line 131
+    aput-char v14, v4, v6
+
+    goto/16 :goto_5
+
+    :cond_4
+    :goto_2
+    and-int/lit16 v8, v2, 0xf0
+
+    const/4 v9, 0x2
+
+    const/4 v15, 0x1
+
+    if-ne v8, v10, :cond_5
+
+    move v8, v9
+
+    goto :goto_3
+
+    :cond_5
+    and-int/lit16 v8, v2, 0xf8
+
+    if-ne v8, v13, :cond_6
+
+    const/4 v8, 0x3
+
+    goto :goto_3
+
+    :cond_6
+    and-int/lit16 v8, v2, 0xfc
+
+    if-ne v8, v12, :cond_7
+
+    const/4 v8, 0x4
+
+    goto :goto_3
+
+    :cond_7
+    and-int/lit16 v8, v2, 0xfe
+
+    if-ne v8, v11, :cond_8
+
+    const/4 v8, 0x5
+
+    goto :goto_3
+
+    :cond_8
+    move v8, v15
+
+    :goto_3
+    add-int v10, v7, v8
+
+    if-le v10, v3, :cond_9
+
+    add-int/lit8 v1, v6, 0x1
+
+    .line 73
+    aput-char v14, v4, v6
+
+    goto/16 :goto_6
+
+    :cond_9
+    add-int/lit8 v10, v8, -0x1
+
+    const/16 v11, 0x1f
+
+    shr-int v10, v11, v10
+
+    and-int/2addr v2, v10
+
+    move v10, v2
+
+    const/4 v2, 0x0
+
+    :goto_4
+    if-ge v2, v8, :cond_b
+
+    add-int/lit8 v12, v7, 0x1
 
     .line 80
-    .local v2, "b":B
-    and-int/lit16 v0, v2, 0xc0
+    aget-byte v7, v1, v7
 
-    move/from16 v19, v0
+    and-int/lit16 v13, v7, 0xc0
 
-    const/16 v20, 0x80
+    const/16 v5, 0x80
 
-    move/from16 v0, v19
+    if-eq v13, v5, :cond_a
 
-    move/from16 v1, v20
-
-    if-eq v0, v1, :cond_a
-
-    .line 81
-    add-int/lit8 v11, v12, 0x1
-
-    .end local v12    # "s":I
-    .restart local v11    # "s":I
-    const v19, 0xfffd
-
-    aput-char v19, v15, v12
+    add-int/lit8 v2, v6, 0x1
 
     .line 82
-    add-int/lit8 v7, v7, -0x1
+    aput-char v14, v4, v6
 
-    move v12, v11
+    add-int/lit8 v5, v12, -0x1
 
-    .end local v11    # "s":I
-    .restart local v12    # "s":I
-    move v8, v7
+    move v6, v2
 
-    .line 83
-    .end local v7    # "idx":I
-    .restart local v8    # "idx":I
-    goto/16 :goto_1
+    move v2, v5
 
-    .line 86
-    .end local v8    # "idx":I
-    .restart local v7    # "idx":I
+    goto :goto_1
+
     :cond_a
-    shl-int/lit8 v16, v16, 0x6
+    shl-int/lit8 v5, v10, 0x6
 
-    .line 87
-    and-int/lit8 v19, v2, 0x3f
+    and-int/lit8 v7, v7, 0x3f
 
-    or-int v16, v16, v19
+    or-int v10, v5, v7
 
-    .line 78
-    add-int/lit8 v6, v6, 0x1
+    add-int/lit8 v2, v2, 0x1
 
-    move v8, v7
+    move v7, v12
 
-    .end local v7    # "idx":I
-    .restart local v8    # "idx":I
-    goto :goto_5
+    goto :goto_4
 
-    .line 105
-    .end local v2    # "b":B
     :cond_b
-    const/16 v19, 0x2
+    const v2, 0xd800
 
-    move/from16 v0, v19
+    if-eq v8, v9, :cond_c
 
-    if-eq v14, v0, :cond_c
+    if-lt v10, v2, :cond_c
 
-    const v19, 0xd800
+    const v5, 0xdfff
 
-    move/from16 v0, v16
+    if-gt v10, v5, :cond_c
 
-    move/from16 v1, v19
-
-    if-lt v0, v1, :cond_c
-
-    const v19, 0xdfff
-
-    move/from16 v0, v16
-
-    move/from16 v1, v19
-
-    if-gt v0, v1, :cond_c
-
-    .line 106
-    add-int/lit8 v11, v12, 0x1
-
-    .end local v12    # "s":I
-    .restart local v11    # "s":I
-    const v19, 0xfffd
-
-    aput-char v19, v15, v12
-
-    move v12, v11
+    add-int/lit8 v2, v6, 0x1
 
     .line 107
-    .end local v11    # "s":I
-    .restart local v12    # "s":I
-    goto/16 :goto_1
+    aput-char v14, v4, v6
 
-    .line 111
+    goto :goto_5
+
     :cond_c
-    const v19, 0x10ffff
+    const v5, 0x10ffff
 
-    move/from16 v0, v16
+    if-le v10, v5, :cond_d
 
-    move/from16 v1, v19
-
-    if-le v0, v1, :cond_d
-
-    .line 112
-    add-int/lit8 v11, v12, 0x1
-
-    .end local v12    # "s":I
-    .restart local v11    # "s":I
-    const v19, 0xfffd
-
-    aput-char v19, v15, v12
-
-    move v12, v11
+    add-int/lit8 v2, v6, 0x1
 
     .line 113
-    .end local v11    # "s":I
-    .restart local v12    # "s":I
+    aput-char v14, v4, v6
+
+    :goto_5
+    move v6, v2
+
+    move v2, v7
+
     goto/16 :goto_1
 
-    .line 117
     :cond_d
-    const/high16 v19, 0x10000
+    const/high16 v5, 0x10000
 
-    move/from16 v0, v16
+    if-ge v10, v5, :cond_e
 
-    move/from16 v1, v19
+    add-int/lit8 v2, v6, 0x1
 
-    if-ge v0, v1, :cond_e
+    int-to-char v5, v10
 
-    .line 118
-    add-int/lit8 v11, v12, 0x1
+    .line 119
+    aput-char v5, v4, v6
 
-    .end local v12    # "s":I
-    .restart local v11    # "s":I
-    move/from16 v0, v16
+    goto :goto_5
 
-    int-to-char v0, v0
-
-    move/from16 v19, v0
-
-    aput-char v19, v15, v12
-
-    :goto_6
-    move v7, v8
-
-    .line 128
-    .end local v8    # "idx":I
-    .restart local v7    # "idx":I
-    goto/16 :goto_2
-
-    .line 120
-    .end local v7    # "idx":I
-    .end local v11    # "s":I
-    .restart local v8    # "idx":I
-    .restart local v12    # "s":I
     :cond_e
-    const v19, 0xffff
+    const v5, 0xffff
 
-    and-int v18, v16, v19
+    and-int v8, v10, v5
 
-    .line 121
-    .local v18, "x":I
-    shr-int/lit8 v19, v16, 0x10
+    shr-int/lit8 v9, v10, 0x10
 
-    and-int/lit8 v13, v19, 0x1f
+    and-int/2addr v9, v11
 
-    .line 122
-    .local v13, "u":I
-    add-int/lit8 v19, v13, -0x1
+    sub-int/2addr v9, v15
 
-    const v20, 0xffff
+    and-int/2addr v5, v9
 
-    and-int v17, v19, v20
+    shl-int/lit8 v5, v5, 0x6
 
-    .line 123
-    .local v17, "w":I
-    const v19, 0xd800
+    or-int/2addr v2, v5
 
-    shl-int/lit8 v20, v17, 0x6
+    shr-int/lit8 v5, v8, 0xa
 
-    or-int v19, v19, v20
+    or-int/2addr v2, v5
 
-    shr-int/lit8 v20, v18, 0xa
+    const v5, 0xdc00
 
-    or-int v5, v19, v20
+    and-int/lit16 v8, v8, 0x3ff
 
-    .line 124
-    .local v5, "hi":I
-    const v19, 0xdc00
+    or-int/2addr v5, v8
 
-    move/from16 v0, v18
+    add-int/lit8 v8, v6, 0x1
 
-    and-int/lit16 v0, v0, 0x3ff
-
-    move/from16 v20, v0
-
-    or-int v10, v19, v20
-
-    .line 125
-    .local v10, "lo":I
-    add-int/lit8 v11, v12, 0x1
-
-    .end local v12    # "s":I
-    .restart local v11    # "s":I
-    int-to-char v0, v5
-
-    move/from16 v19, v0
-
-    aput-char v19, v15, v12
+    int-to-char v2, v2
 
     .line 126
-    add-int/lit8 v12, v11, 0x1
+    aput-char v2, v4, v6
 
-    .end local v11    # "s":I
-    .restart local v12    # "s":I
-    int-to-char v0, v10
+    add-int/lit8 v2, v8, 0x1
 
-    move/from16 v19, v0
+    int-to-char v5, v5
 
-    aput-char v19, v15, v11
+    .line 127
+    aput-char v5, v4, v8
 
-    move v11, v12
+    goto :goto_5
 
-    .end local v12    # "s":I
-    .restart local v11    # "s":I
-    goto :goto_6
-
-    .line 130
-    .end local v5    # "hi":I
-    .end local v6    # "i":I
-    .end local v8    # "idx":I
-    .end local v10    # "lo":I
-    .end local v11    # "s":I
-    .end local v13    # "u":I
-    .end local v14    # "utfCount":I
-    .end local v16    # "val":I
-    .end local v17    # "w":I
-    .end local v18    # "x":I
-    .restart local v7    # "idx":I
-    .restart local v12    # "s":I
     :cond_f
-    add-int/lit8 v11, v12, 0x1
+    move v1, v6
 
-    .end local v12    # "s":I
-    .restart local v11    # "s":I
-    const v19, 0xfffd
+    .line 134
+    :goto_6
+    new-instance v2, Ljava/lang/String;
 
-    aput-char v19, v15, v12
+    const/4 v3, 0x0
 
-    goto/16 :goto_2
+    invoke-direct {v2, v4, v3, v1}, Ljava/lang/String;-><init>([CII)V
 
-    .end local v3    # "b0":B
-    .end local v7    # "idx":I
-    .end local v11    # "s":I
-    .restart local v8    # "idx":I
-    .restart local v12    # "s":I
+    return-object v2
+
+    .line 30
     :cond_10
-    move v11, v12
+    :goto_7
+    new-instance v4, Ljava/lang/IllegalArgumentException;
 
-    .end local v12    # "s":I
-    .restart local v11    # "s":I
-    move v7, v8
+    new-instance v5, Ljava/lang/StringBuilder;
 
-    .end local v8    # "idx":I
-    .restart local v7    # "idx":I
-    goto/16 :goto_4
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v6, "Brrr "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    array-length v1, v1
+
+    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v1, " "
+
+    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v5, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v1, " "
+
+    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-direct {v4, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v4
 .end method

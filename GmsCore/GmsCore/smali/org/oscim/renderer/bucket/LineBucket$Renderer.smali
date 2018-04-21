@@ -15,6 +15,8 @@
 
 
 # static fields
+.field private static final COORD_SCALE_BY_DIR_SCALE:F
+
 .field public static mTexID:I
 
 .field private static shaders:[Lorg/oscim/renderer/bucket/LineBucket$Shader;
@@ -24,21 +26,29 @@
 .method static constructor <clinit>()V
     .locals 3
 
-    .prologue
-    const/4 v2, 0x0
+    .line 538
+    sget v0, Lorg/oscim/renderer/MapRenderer;->COORD_SCALE:F
 
-    .line 541
+    const/high16 v1, 0x45000000    # 2048.0f
+
+    div-float/2addr v0, v1
+
+    sput v0, Lorg/oscim/renderer/bucket/LineBucket$Renderer;->COORD_SCALE_BY_DIR_SCALE:F
+
     const/4 v0, 0x2
 
+    .line 549
     new-array v0, v0, [Lorg/oscim/renderer/bucket/LineBucket$Shader;
 
     const/4 v1, 0x0
 
-    aput-object v2, v0, v1
+    const/4 v2, 0x0
 
-    const/4 v1, 0x1
+    aput-object v1, v0, v2
 
-    aput-object v2, v0, v1
+    const/4 v2, 0x1
+
+    aput-object v1, v0, v2
 
     sput-object v0, Lorg/oscim/renderer/bucket/LineBucket$Renderer;->shaders:[Lorg/oscim/renderer/bucket/LineBucket$Shader;
 
@@ -46,16 +56,13 @@
 .end method
 
 .method public static draw(Lorg/oscim/renderer/bucket/RenderBucket;Lorg/oscim/renderer/GLViewport;FLorg/oscim/renderer/bucket/RenderBuckets;)Lorg/oscim/renderer/bucket/RenderBucket;
-    .locals 31
-    .param p0, "b"    # Lorg/oscim/renderer/bucket/RenderBucket;
-    .param p1, "v"    # Lorg/oscim/renderer/GLViewport;
-    .param p2, "scale"    # F
-    .param p3, "buckets"    # Lorg/oscim/renderer/bucket/RenderBuckets;
+    .locals 38
 
-    .prologue
-    .line 575
     move-object/from16 v0, p1
 
+    move/from16 v1, p2
+
+    .line 583
     iget-object v2, v0, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
 
     iget v2, v2, Lorg/oscim/core/MapPosition;->tilt:F
@@ -64,933 +71,924 @@
 
     cmpg-float v2, v2, v3
 
-    if-gez v2, :cond_6
+    const/4 v4, 0x0
 
-    const/16 v16, 0x1
+    const/4 v5, 0x1
 
-    .line 577
-    .local v16, "mode":I
-    :goto_0
-    sget-object v2, Lorg/oscim/renderer/bucket/LineBucket$Renderer;->shaders:[Lorg/oscim/renderer/bucket/LineBucket$Shader;
+    if-gez v2, :cond_0
 
-    aget-object v20, v2, v16
-
-    .line 578
-    .local v20, "s":Lorg/oscim/renderer/bucket/LineBucket$Shader;
-    invoke-virtual/range {v20 .. v20}, Lorg/oscim/renderer/bucket/LineBucket$Shader;->useProgram()Z
-
-    .line 580
-    const/4 v2, 0x1
-
-    invoke-static {v2}, Lorg/oscim/renderer/GLState;->blend(Z)V
-
-    .line 586
-    sget-boolean v2, Lorg/oscim/backend/GLAdapter;->GDX_DESKTOP_QUIRKS:Z
-
-    if-nez v2, :cond_0
-
-    .line 587
-    sget v2, Lorg/oscim/renderer/bucket/LineBucket$Renderer;->mTexID:I
-
-    invoke-static {v2}, Lorg/oscim/renderer/GLState;->bindTex2D(I)V
-
-    .line 589
-    :cond_0
-    move-object/from16 v0, v20
-
-    iget v0, v0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uFade:I
-
-    move/from16 v22, v0
-
-    .line 590
-    .local v22, "uLineFade":I
-    move-object/from16 v0, v20
-
-    iget v0, v0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uMode:I
-
-    move/from16 v24, v0
-
-    .line 591
-    .local v24, "uLineMode":I
-    move-object/from16 v0, v20
-
-    iget v0, v0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uColor:I
-
-    move/from16 v21, v0
-
-    .line 592
-    .local v21, "uLineColor":I
-    move-object/from16 v0, v20
-
-    iget v0, v0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uWidth:I
-
-    move/from16 v25, v0
-
-    .line 593
-    .local v25, "uLineWidth":I
-    move-object/from16 v0, v20
-
-    iget v0, v0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uHeight:I
-
-    move/from16 v23, v0
-
-    .line 595
-    .local v23, "uLineHeight":I
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    move-object/from16 v0, v20
-
-    iget v3, v0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->aPos:I
-
-    const/4 v4, 0x4
-
-    const/16 v5, 0x1402
-
-    const/4 v6, 0x0
-
-    const/4 v7, 0x0
-
-    move-object/from16 v0, p3
-
-    iget-object v8, v0, Lorg/oscim/renderer/bucket/RenderBuckets;->offset:[I
-
-    const/16 v30, 0x0
-
-    aget v8, v8, v30
-
-    invoke-interface/range {v2 .. v8}, Lorg/oscim/backend/GL;->vertexAttribPointer(IIIZII)V
-
-    .line 598
-    move-object/from16 v0, p1
-
-    iget-object v2, v0, Lorg/oscim/renderer/GLViewport;->mvp:Lorg/oscim/renderer/GLMatrix;
-
-    move-object/from16 v0, v20
-
-    iget v3, v0, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uMVP:I
-
-    invoke-virtual {v2, v3}, Lorg/oscim/renderer/GLMatrix;->setAsUniform(I)V
-
-    .line 604
-    move/from16 v0, p2
-
-    float-to-double v2, v0
-
-    invoke-static {v2, v3}, Ljava/lang/Math;->sqrt(D)D
-
-    move-result-wide v26
-
-    .line 608
-    .local v26, "variableScale":D
-    if-nez v16, :cond_7
-
-    const-wide v18, 0x3f1a36e2eb1c432dL    # 1.0E-4
-
-    .line 610
-    .local v18, "pixel":D
-    :goto_1
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    move-wide/from16 v0, v18
-
-    double-to-float v3, v0
-
-    move/from16 v0, v22
-
-    invoke-interface {v2, v0, v3}, Lorg/oscim/backend/GL;->uniform1f(IF)V
-
-    .line 612
-    const/4 v11, 0x0
-
-    .line 613
-    .local v11, "capMode":I
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    int-to-float v3, v11
-
-    move/from16 v0, v24
-
-    invoke-interface {v2, v0, v3}, Lorg/oscim/backend/GL;->uniform1f(IF)V
-
-    .line 615
-    const/4 v10, 0x0
-
-    .line 618
-    .local v10, "blur":Z
-    const/4 v13, 0x0
-
-    .line 619
-    .local v13, "heightOffset":F
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    move/from16 v0, v23
-
-    invoke-interface {v2, v0, v13}, Lorg/oscim/backend/GL;->uniform1f(IF)V
-
-    .line 621
-    :goto_2
-    if-eqz p0, :cond_15
-
-    move-object/from16 v0, p0
-
-    iget v2, v0, Lorg/oscim/renderer/bucket/RenderBucket;->type:I
-
-    if-nez v2, :cond_15
-
-    move-object/from16 v14, p0
-
-    .line 622
-    check-cast v14, Lorg/oscim/renderer/bucket/LineBucket;
-
-    .line 623
-    .local v14, "lb":Lorg/oscim/renderer/bucket/LineBucket;
-    iget-object v2, v14, Lorg/oscim/renderer/bucket/LineBucket;->line:Lorg/oscim/theme/styles/LineStyle;
-
-    invoke-virtual {v2}, Lorg/oscim/theme/styles/LineStyle;->current()Lorg/oscim/theme/styles/LineStyle;
-
-    move-result-object v15
-
-    .line 625
-    .local v15, "line":Lorg/oscim/theme/styles/LineStyle;
-    iget v2, v14, Lorg/oscim/renderer/bucket/LineBucket;->heightOffset:F
-
-    cmpl-float v2, v2, v13
-
-    if-eqz v2, :cond_1
-
-    .line 626
-    iget v13, v14, Lorg/oscim/renderer/bucket/LineBucket;->heightOffset:F
-
-    .line 628
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    move-object/from16 v0, p1
-
-    iget-object v3, v0, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
-
-    .line 629
-    invoke-static {v3}, Lorg/oscim/core/MercatorProjection;->groundResolution(Lorg/oscim/core/MapPosition;)F
-
-    move-result v3
-
-    div-float v3, v13, v3
-
-    .line 628
-    move/from16 v0, v23
-
-    invoke-interface {v2, v0, v3}, Lorg/oscim/backend/GL;->uniform1f(IF)V
-
-    .line 632
-    :cond_1
-    iget v2, v15, Lorg/oscim/theme/styles/LineStyle;->fadeScale:I
-
-    move-object/from16 v0, p1
-
-    iget-object v3, v0, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
-
-    iget v3, v3, Lorg/oscim/core/MapPosition;->zoomLevel:I
-
-    if-ge v2, v3, :cond_8
-
-    .line 633
-    iget v2, v15, Lorg/oscim/theme/styles/LineStyle;->color:I
-
-    const/high16 v3, 0x3f800000    # 1.0f
-
-    move/from16 v0, v21
-
-    invoke-static {v0, v2, v3}, Lorg/oscim/renderer/GLUtils;->setColor(IIF)V
-
-    .line 641
-    :goto_3
-    if-nez v16, :cond_2
-
-    if-eqz v10, :cond_2
-
-    iget v2, v15, Lorg/oscim/theme/styles/LineStyle;->blur:F
-
-    const/4 v3, 0x0
-
-    cmpl-float v2, v2, v3
-
-    if-nez v2, :cond_2
-
-    .line 642
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    move-wide/from16 v0, v18
-
-    double-to-float v3, v0
-
-    move/from16 v0, v22
-
-    invoke-interface {v2, v0, v3}, Lorg/oscim/backend/GL;->uniform1f(IF)V
-
-    .line 643
-    const/4 v10, 0x0
-
-    .line 647
-    :cond_2
-    iget-boolean v2, v15, Lorg/oscim/theme/styles/LineStyle;->outline:Z
-
-    if-nez v2, :cond_e
-
-    .line 650
-    iget-boolean v2, v15, Lorg/oscim/theme/styles/LineStyle;->fixed:Z
-
-    if-eqz v2, :cond_a
-
-    .line 651
-    iget v2, v15, Lorg/oscim/theme/styles/LineStyle;->width:F
-
-    const/high16 v3, 0x3f800000    # 1.0f
-
-    invoke-static {v2, v3}, Ljava/lang/Math;->max(FF)F
-
-    move-result v2
-
-    div-float v2, v2, p2
-
-    float-to-double v0, v2
-
-    move-wide/from16 v28, v0
-
-    .line 656
-    .local v28, "width":D
-    :goto_4
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    const-wide/high16 v4, 0x3f70000000000000L    # 0.00390625
-
-    mul-double v4, v4, v28
-
-    double-to-float v3, v4
-
-    move/from16 v0, v25
-
-    invoke-interface {v2, v0, v3}, Lorg/oscim/backend/GL;->uniform1f(IF)V
-
-    .line 660
-    iget v2, v15, Lorg/oscim/theme/styles/LineStyle;->blur:F
-
-    const/4 v3, 0x0
-
-    cmpl-float v2, v2, v3
-
-    if-lez v2, :cond_b
-
-    .line 661
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    iget v3, v15, Lorg/oscim/theme/styles/LineStyle;->blur:F
-
-    move/from16 v0, v22
-
-    invoke-interface {v2, v0, v3}, Lorg/oscim/backend/GL;->uniform1f(IF)V
-
-    .line 662
-    const/4 v10, 0x1
-
-    .line 669
-    :cond_3
-    :goto_5
-    iget v2, v14, Lorg/oscim/renderer/bucket/LineBucket;->scale:F
-
-    float-to-double v2, v2
-
-    const-wide/high16 v4, 0x3ff8000000000000L    # 1.5
-
-    cmpg-double v2, v2, v4
-
-    if-gez v2, :cond_c
-
-    .line 671
-    if-eqz v11, :cond_4
-
-    .line 672
-    const/4 v11, 0x0
-
-    .line 673
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    int-to-float v3, v11
-
-    move/from16 v0, v24
-
-    invoke-interface {v2, v0, v3}, Lorg/oscim/backend/GL;->uniform1f(IF)V
-
-    .line 685
-    :cond_4
-    :goto_6
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    const/4 v3, 0x5
-
-    move-object/from16 v0, p0
-
-    iget v4, v0, Lorg/oscim/renderer/bucket/RenderBucket;->vertexOffset:I
-
-    move-object/from16 v0, p0
-
-    iget v5, v0, Lorg/oscim/renderer/bucket/RenderBucket;->numVertices:I
-
-    invoke-interface {v2, v3, v4, v5}, Lorg/oscim/backend/GL;->drawArrays(III)V
-
-    .line 621
-    .end local v28    # "width":D
-    :cond_5
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
-
-    move-object/from16 p0, v0
-
-    .end local p0    # "b":Lorg/oscim/renderer/bucket/RenderBucket;
-    check-cast p0, Lorg/oscim/renderer/bucket/RenderBucket;
-
-    .restart local p0    # "b":Lorg/oscim/renderer/bucket/RenderBucket;
-    goto/16 :goto_2
-
-    .line 575
-    .end local v10    # "blur":Z
-    .end local v11    # "capMode":I
-    .end local v13    # "heightOffset":F
-    .end local v14    # "lb":Lorg/oscim/renderer/bucket/LineBucket;
-    .end local v15    # "line":Lorg/oscim/theme/styles/LineStyle;
-    .end local v16    # "mode":I
-    .end local v18    # "pixel":D
-    .end local v20    # "s":Lorg/oscim/renderer/bucket/LineBucket$Shader;
-    .end local v21    # "uLineColor":I
-    .end local v22    # "uLineFade":I
-    .end local v23    # "uLineHeight":I
-    .end local v24    # "uLineMode":I
-    .end local v25    # "uLineWidth":I
-    .end local v26    # "variableScale":D
-    :cond_6
-    const/16 v16, 0x0
-
-    goto/16 :goto_0
-
-    .line 608
-    .restart local v16    # "mode":I
-    .restart local v20    # "s":Lorg/oscim/renderer/bucket/LineBucket$Shader;
-    .restart local v21    # "uLineColor":I
-    .restart local v22    # "uLineFade":I
-    .restart local v23    # "uLineHeight":I
-    .restart local v24    # "uLineMode":I
-    .restart local v25    # "uLineWidth":I
-    .restart local v26    # "variableScale":D
-    :cond_7
-    const-wide/high16 v2, 0x3ff8000000000000L    # 1.5
-
-    move/from16 v0, p2
-
-    float-to-double v4, v0
-
-    div-double v18, v2, v4
-
-    goto/16 :goto_1
-
-    .line 634
-    .restart local v10    # "blur":Z
-    .restart local v11    # "capMode":I
-    .restart local v13    # "heightOffset":F
-    .restart local v14    # "lb":Lorg/oscim/renderer/bucket/LineBucket;
-    .restart local v15    # "line":Lorg/oscim/theme/styles/LineStyle;
-    .restart local v18    # "pixel":D
-    :cond_8
-    iget v2, v15, Lorg/oscim/theme/styles/LineStyle;->fadeScale:I
-
-    move-object/from16 v0, p1
-
-    iget-object v3, v0, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
-
-    iget v3, v3, Lorg/oscim/core/MapPosition;->zoomLevel:I
-
-    if-gt v2, v3, :cond_5
-
-    .line 637
-    move/from16 v0, p2
-
-    float-to-double v2, v0
-
-    const-wide v4, 0x3ff3333333333333L    # 1.2
-
-    cmpl-double v2, v2, v4
-
-    if-lez v2, :cond_9
-
-    move/from16 v0, p2
-
-    float-to-double v2, v0
-
-    :goto_7
-    double-to-float v2, v2
-
-    const/high16 v3, 0x3f800000    # 1.0f
-
-    sub-float v9, v2, v3
-
-    .line 638
-    .local v9, "alpha":F
-    iget v2, v15, Lorg/oscim/theme/styles/LineStyle;->color:I
-
-    move/from16 v0, v21
-
-    invoke-static {v0, v2, v9}, Lorg/oscim/renderer/GLUtils;->setColor(IIF)V
-
-    goto/16 :goto_3
-
-    .line 637
-    .end local v9    # "alpha":F
-    :cond_9
-    const-wide v2, 0x3ff3333333333333L    # 1.2
-
-    goto :goto_7
-
-    .line 653
-    :cond_a
-    iget v2, v14, Lorg/oscim/renderer/bucket/LineBucket;->scale:F
-
-    iget v3, v15, Lorg/oscim/theme/styles/LineStyle;->width:F
-
-    mul-float/2addr v2, v3
-
-    float-to-double v2, v2
-
-    div-double v28, v2, v26
-
-    .restart local v28    # "width":D
-    goto/16 :goto_4
-
-    .line 663
-    :cond_b
-    const/4 v2, 0x1
-
-    move/from16 v0, v16
-
-    if-ne v0, v2, :cond_3
-
-    .line 664
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    div-double v4, v18, v28
-
-    double-to-float v3, v4
-
-    move/from16 v0, v22
-
-    invoke-interface {v2, v0, v3}, Lorg/oscim/backend/GL;->uniform1f(IF)V
-
-    goto :goto_5
-
-    .line 675
-    :cond_c
-    iget-boolean v2, v14, Lorg/oscim/renderer/bucket/LineBucket;->roundCap:Z
-
-    if-eqz v2, :cond_d
-
-    .line 676
-    const/4 v2, 0x2
-
-    if-eq v11, v2, :cond_4
-
-    .line 677
-    const/4 v11, 0x2
-
-    .line 678
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    int-to-float v3, v11
-
-    move/from16 v0, v24
-
-    invoke-interface {v2, v0, v3}, Lorg/oscim/backend/GL;->uniform1f(IF)V
-
-    goto :goto_6
-
-    .line 680
-    :cond_d
-    const/4 v2, 0x1
-
-    if-eq v11, v2, :cond_4
-
-    .line 681
-    const/4 v11, 0x1
-
-    .line 682
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    int-to-float v3, v11
-
-    move/from16 v0, v24
-
-    invoke-interface {v2, v0, v3}, Lorg/oscim/backend/GL;->uniform1f(IF)V
-
-    goto/16 :goto_6
-
-    .line 693
-    .end local v28    # "width":D
-    :cond_e
-    iget-object v0, v14, Lorg/oscim/renderer/bucket/LineBucket;->outlines:Lorg/oscim/renderer/bucket/LineBucket;
-
-    move-object/from16 v17, v0
-
-    .local v17, "ref":Lorg/oscim/renderer/bucket/LineBucket;
-    :goto_8
-    if-eqz v17, :cond_5
-
-    .line 694
-    move-object/from16 v0, v17
-
-    iget-object v2, v0, Lorg/oscim/renderer/bucket/LineBucket;->line:Lorg/oscim/theme/styles/LineStyle;
-
-    invoke-virtual {v2}, Lorg/oscim/theme/styles/LineStyle;->current()Lorg/oscim/theme/styles/LineStyle;
-
-    move-result-object v12
-
-    .line 697
-    .local v12, "core":Lorg/oscim/theme/styles/LineStyle;
-    iget-boolean v2, v12, Lorg/oscim/theme/styles/LineStyle;->fixed:Z
-
-    if-eqz v2, :cond_11
-
-    .line 698
-    iget v2, v12, Lorg/oscim/theme/styles/LineStyle;->width:F
-
-    const/high16 v3, 0x3f800000    # 1.0f
-
-    invoke-static {v2, v3}, Ljava/lang/Math;->max(FF)F
-
-    move-result v2
-
-    div-float v2, v2, p2
-
-    float-to-double v0, v2
-
-    move-wide/from16 v28, v0
-
-    .line 703
-    .restart local v28    # "width":D
-    :goto_9
-    iget-boolean v2, v15, Lorg/oscim/theme/styles/LineStyle;->fixed:Z
-
-    if-eqz v2, :cond_12
-
-    .line 704
-    iget v2, v15, Lorg/oscim/theme/styles/LineStyle;->width:F
-
-    div-float v2, v2, p2
-
-    float-to-double v2, v2
-
-    add-double v28, v28, v2
-
-    .line 709
-    :goto_a
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    const-wide/high16 v4, 0x3f70000000000000L    # 0.00390625
-
-    mul-double v4, v4, v28
-
-    double-to-float v3, v4
-
-    move/from16 v0, v25
-
-    invoke-interface {v2, v0, v3}, Lorg/oscim/backend/GL;->uniform1f(IF)V
-
-    .line 713
-    iget v2, v15, Lorg/oscim/theme/styles/LineStyle;->blur:F
-
-    const/4 v3, 0x0
-
-    cmpl-float v2, v2, v3
-
-    if-lez v2, :cond_13
-
-    .line 714
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    iget v3, v15, Lorg/oscim/theme/styles/LineStyle;->blur:F
-
-    move/from16 v0, v22
-
-    invoke-interface {v2, v0, v3}, Lorg/oscim/backend/GL;->uniform1f(IF)V
-
-    .line 715
-    const/4 v10, 0x1
-
-    .line 721
-    :cond_f
-    :goto_b
-    move-object/from16 v0, v17
-
-    iget-boolean v2, v0, Lorg/oscim/renderer/bucket/LineBucket;->roundCap:Z
-
-    if-eqz v2, :cond_14
-
-    .line 723
-    const/4 v2, 0x2
-
-    if-eq v11, v2, :cond_10
-
-    .line 724
-    const/4 v11, 0x2
-
-    .line 725
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    int-to-float v3, v11
-
-    move/from16 v0, v24
-
-    invoke-interface {v2, v0, v3}, Lorg/oscim/backend/GL;->uniform1f(IF)V
-
-    .line 732
-    :cond_10
-    :goto_c
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    const/4 v3, 0x5
-
-    move-object/from16 v0, v17
-
-    iget v4, v0, Lorg/oscim/renderer/bucket/LineBucket;->vertexOffset:I
-
-    move-object/from16 v0, v17
-
-    iget v5, v0, Lorg/oscim/renderer/bucket/LineBucket;->numVertices:I
-
-    invoke-interface {v2, v3, v4, v5}, Lorg/oscim/backend/GL;->drawArrays(III)V
-
-    .line 693
-    move-object/from16 v0, v17
-
-    iget-object v0, v0, Lorg/oscim/renderer/bucket/LineBucket;->outlines:Lorg/oscim/renderer/bucket/LineBucket;
-
-    move-object/from16 v17, v0
-
-    goto :goto_8
-
-    .line 700
-    .end local v28    # "width":D
-    :cond_11
-    move-object/from16 v0, v17
-
-    iget v2, v0, Lorg/oscim/renderer/bucket/LineBucket;->scale:F
-
-    iget v3, v12, Lorg/oscim/theme/styles/LineStyle;->width:F
-
-    mul-float/2addr v2, v3
-
-    float-to-double v2, v2
-
-    div-double v28, v2, v26
-
-    .restart local v28    # "width":D
-    goto :goto_9
-
-    .line 706
-    :cond_12
-    iget v2, v14, Lorg/oscim/renderer/bucket/LineBucket;->scale:F
-
-    iget v3, v15, Lorg/oscim/theme/styles/LineStyle;->width:F
-
-    mul-float/2addr v2, v3
-
-    float-to-double v2, v2
-
-    div-double v2, v2, v26
-
-    add-double v28, v28, v2
-
-    goto :goto_a
-
-    .line 716
-    :cond_13
-    const/4 v2, 0x1
-
-    move/from16 v0, v16
-
-    if-ne v0, v2, :cond_f
-
-    .line 717
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    div-double v4, v18, v28
-
-    double-to-float v3, v4
-
-    move/from16 v0, v22
-
-    invoke-interface {v2, v0, v3}, Lorg/oscim/backend/GL;->uniform1f(IF)V
-
-    goto :goto_b
-
-    .line 727
-    :cond_14
-    const/4 v2, 0x1
-
-    if-eq v11, v2, :cond_10
-
-    .line 728
-    const/4 v11, 0x1
-
-    .line 729
-    sget-object v2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    int-to-float v3, v11
-
-    move/from16 v0, v24
-
-    invoke-interface {v2, v0, v3}, Lorg/oscim/backend/GL;->uniform1f(IF)V
-
-    goto :goto_c
-
-    .line 737
-    .end local v12    # "core":Lorg/oscim/theme/styles/LineStyle;
-    .end local v14    # "lb":Lorg/oscim/renderer/bucket/LineBucket;
-    .end local v15    # "line":Lorg/oscim/theme/styles/LineStyle;
-    .end local v17    # "ref":Lorg/oscim/renderer/bucket/LineBucket;
-    .end local v28    # "width":D
-    :cond_15
-    return-object p0
-.end method
-
-.method static init()Z
-    .locals 16
-
-    .prologue
-    const v6, 0x8370
-
-    const/16 v4, 0x2600
-
-    const/4 v13, 0x1
-
-    const/16 v1, 0x80
-
-    .line 545
-    sget-object v2, Lorg/oscim/renderer/bucket/LineBucket$Renderer;->shaders:[Lorg/oscim/renderer/bucket/LineBucket$Shader;
-
-    const/4 v3, 0x0
-
-    new-instance v5, Lorg/oscim/renderer/bucket/LineBucket$Shader;
-
-    const-string v7, "line_aa_proj"
-
-    invoke-direct {v5, v7}, Lorg/oscim/renderer/bucket/LineBucket$Shader;-><init>(Ljava/lang/String;)V
-
-    aput-object v5, v2, v3
-
-    .line 546
-    sget-object v2, Lorg/oscim/renderer/bucket/LineBucket$Renderer;->shaders:[Lorg/oscim/renderer/bucket/LineBucket$Shader;
-
-    new-instance v3, Lorg/oscim/renderer/bucket/LineBucket$Shader;
-
-    const-string v5, "line_aa"
-
-    invoke-direct {v3, v5}, Lorg/oscim/renderer/bucket/LineBucket$Shader;-><init>(Ljava/lang/String;)V
-
-    aput-object v3, v2, v13
-
-    .line 550
-    const/16 v2, 0x4000
-
-    new-array v0, v2, [B
-
-    .line 552
-    .local v0, "pixel":[B
-    const/4 v9, 0x0
-
-    .local v9, "x":I
-    :goto_0
-    if-ge v9, v1, :cond_2
-
-    .line 553
-    mul-int v2, v9, v9
-
-    int-to-float v10, v2
-
-    .line 554
-    .local v10, "xx":F
-    const/4 v11, 0x0
-
-    .local v11, "y":I
-    :goto_1
-    if-ge v11, v1, :cond_1
-
-    .line 555
-    mul-int v2, v11, v11
-
-    int-to-float v12, v2
-
-    .line 556
-    .local v12, "yy":F
-    add-float v2, v10, v12
-
-    float-to-double v2, v2
-
-    invoke-static {v2, v3}, Ljava/lang/Math;->sqrt(D)D
-
-    move-result-wide v2
-
-    const-wide/high16 v14, 0x4000000000000000L    # 2.0
-
-    mul-double/2addr v2, v14
-
-    double-to-int v8, v2
-
-    .line 557
-    .local v8, "color":I
-    const/16 v2, 0xff
-
-    if-le v8, v2, :cond_0
-
-    .line 558
-    const/16 v8, 0xff
-
-    .line 559
-    :cond_0
-    mul-int/lit16 v2, v11, 0x80
-
-    add-int/2addr v2, v9
-
-    int-to-byte v3, v8
-
-    aput-byte v3, v0, v2
-
-    .line 554
-    add-int/lit8 v11, v11, 0x1
-
-    goto :goto_1
-
-    .line 552
-    .end local v8    # "color":I
-    .end local v12    # "yy":F
-    :cond_1
-    add-int/lit8 v9, v9, 0x1
+    move v2, v5
 
     goto :goto_0
 
-    .line 563
-    .end local v10    # "xx":F
-    .end local v11    # "y":I
-    :cond_2
-    const/16 v3, 0x1906
+    :cond_0
+    move v2, v4
 
-    move v2, v1
+    .line 585
+    :goto_0
+    sget-object v6, Lorg/oscim/renderer/bucket/LineBucket$Renderer;->shaders:[Lorg/oscim/renderer/bucket/LineBucket$Shader;
+
+    aget-object v6, v6, v2
+
+    .line 586
+    invoke-virtual {v6}, Lorg/oscim/renderer/bucket/LineBucket$Shader;->useProgram()Z
+
+    .line 588
+    invoke-static {v5}, Lorg/oscim/renderer/GLState;->blend(Z)V
+
+    .line 594
+    sget-boolean v7, Lorg/oscim/backend/GLAdapter;->GDX_DESKTOP_QUIRKS:Z
+
+    if-nez v7, :cond_1
+
+    .line 595
+    sget v7, Lorg/oscim/renderer/bucket/LineBucket$Renderer;->mTexID:I
+
+    invoke-static {v7}, Lorg/oscim/renderer/GLState;->bindTex2D(I)V
+
+    .line 597
+    :cond_1
+    iget v7, v6, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uFade:I
+
+    .line 598
+    iget v8, v6, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uMode:I
+
+    .line 599
+    iget v9, v6, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uColor:I
+
+    .line 600
+    iget v10, v6, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uWidth:I
+
+    .line 601
+    iget v11, v6, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uHeight:I
+
+    .line 603
+    sget-object v12, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    iget v13, v6, Lorg/oscim/renderer/bucket/LineBucket$Shader;->aPos:I
+
+    const/4 v14, 0x4
+
+    const/16 v15, 0x1402
+
+    const/16 v16, 0x0
+
+    const/16 v17, 0x0
+
+    move-object/from16 v5, p3
+
+    iget-object v5, v5, Lorg/oscim/renderer/bucket/RenderBuckets;->offset:[I
+
+    aget v18, v5, v4
+
+    invoke-interface/range {v12 .. v18}, Lorg/oscim/backend/GL;->vertexAttribPointer(IIIZII)V
+
+    .line 606
+    iget-object v5, v0, Lorg/oscim/renderer/GLViewport;->mvp:Lorg/oscim/renderer/GLMatrix;
+
+    iget v6, v6, Lorg/oscim/renderer/bucket/LineBucket$Shader;->uMVP:I
+
+    invoke-virtual {v5, v6}, Lorg/oscim/renderer/GLMatrix;->setAsUniform(I)V
+
+    float-to-double v5, v1
+
+    .line 612
+    invoke-static {v5, v6}, Ljava/lang/Math;->sqrt(D)D
+
+    move-result-wide v12
+
+    const-wide/high16 v14, 0x3ff8000000000000L    # 1.5
+
+    if-nez v2, :cond_2
+
+    const-wide v16, 0x3f1a36e2eb1c432dL    # 1.0E-4
+
+    :goto_1
+    move-wide/from16 v14, v16
+
+    goto :goto_2
+
+    :cond_2
+    div-double v16, v14, v5
+
+    goto :goto_1
+
+    .line 618
+    :goto_2
+    sget-object v3, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    double-to-float v4, v14
+
+    invoke-interface {v3, v7, v4}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+
+    .line 621
+    sget-object v3, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    move-wide/from16 v19, v14
+
+    const/4 v14, 0x0
+
+    int-to-float v15, v14
+
+    invoke-interface {v3, v8, v15}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+
+    .line 627
+    sget-object v3, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    const/4 v14, 0x0
+
+    invoke-interface {v3, v11, v14}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+
+    move-object/from16 v3, p0
+
+    move/from16 v16, v14
+
+    const/16 v17, 0x0
+
+    const/16 v21, 0x0
+
+    :goto_3
+    if-eqz v3, :cond_19
+
+    .line 632
+    iget-byte v14, v3, Lorg/oscim/renderer/bucket/RenderBucket;->type:B
+
+    if-nez v14, :cond_19
+
+    .line 633
+    move-object v14, v3
+
+    check-cast v14, Lorg/oscim/renderer/bucket/LineBucket;
+
+    move-object/from16 v22, v3
+
+    .line 634
+    iget-object v3, v14, Lorg/oscim/renderer/bucket/LineBucket;->line:Lorg/oscim/theme/styles/LineStyle;
+
+    invoke-virtual {v3}, Lorg/oscim/theme/styles/LineStyle;->current()Lorg/oscim/theme/styles/LineStyle;
+
+    move-result-object v3
+
+    move/from16 v23, v8
+
+    .line 636
+    iget v8, v3, Lorg/oscim/theme/styles/LineStyle;->heightOffset:F
+
+    move/from16 v24, v15
+
+    iget v15, v14, Lorg/oscim/renderer/bucket/LineBucket;->heightOffset:F
+
+    cmpl-float v8, v8, v15
+
+    if-eqz v8, :cond_3
+
+    .line 637
+    iget v8, v3, Lorg/oscim/theme/styles/LineStyle;->heightOffset:F
+
+    iput v8, v14, Lorg/oscim/renderer/bucket/LineBucket;->heightOffset:F
+
+    .line 638
+    :cond_3
+    iget v8, v14, Lorg/oscim/renderer/bucket/LineBucket;->heightOffset:F
+
+    cmpl-float v8, v8, v16
+
+    if-eqz v8, :cond_4
+
+    .line 639
+    iget v8, v14, Lorg/oscim/renderer/bucket/LineBucket;->heightOffset:F
+
+    .line 641
+    sget-object v15, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    move/from16 v25, v10
+
+    iget-object v10, v0, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
+
+    .line 642
+    invoke-static {v10}, Lorg/oscim/core/MercatorProjection;->groundResolution(Lorg/oscim/core/MapPosition;)F
+
+    move-result v10
+
+    div-float v10, v8, v10
+
+    .line 641
+    invoke-interface {v15, v11, v10}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+
+    move/from16 v16, v8
+
+    goto :goto_4
+
+    :cond_4
+    move/from16 v25, v10
+
+    .line 645
+    :goto_4
+    iget v8, v3, Lorg/oscim/theme/styles/LineStyle;->fadeScale:I
+
+    iget-object v10, v0, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
+
+    iget v10, v10, Lorg/oscim/core/MapPosition;->zoomLevel:I
+
+    if-ge v8, v10, :cond_5
+
+    .line 646
+    iget v8, v3, Lorg/oscim/theme/styles/LineStyle;->color:I
+
+    const/high16 v10, 0x3f800000    # 1.0f
+
+    invoke-static {v9, v8, v10}, Lorg/oscim/renderer/GLUtils;->setColor(IIF)V
+
+    move-wide/from16 v28, v5
+
+    goto :goto_6
+
+    .line 647
+    :cond_5
+    iget v8, v3, Lorg/oscim/theme/styles/LineStyle;->fadeScale:I
+
+    iget-object v10, v0, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
+
+    iget v10, v10, Lorg/oscim/core/MapPosition;->zoomLevel:I
+
+    if-le v8, v10, :cond_6
+
+    move/from16 v32, v4
+
+    move-wide/from16 v28, v5
+
+    move/from16 v30, v9
+
+    move/from16 v31, v11
+
+    move/from16 v36, v17
+
+    move-object/from16 v0, v22
+
+    move/from16 v8, v23
+
+    move/from16 v33, v24
+
+    move/from16 v11, v25
+
+    const-wide/high16 v17, 0x3ff8000000000000L    # 1.5
+
+    goto/16 :goto_11
+
+    :cond_6
+    const-wide v26, 0x3ff3333333333333L    # 1.2
+
+    cmpl-double v8, v5, v26
+
+    if-lez v8, :cond_7
+
+    move-wide/from16 v28, v5
+
+    goto :goto_5
+
+    :cond_7
+    move-wide/from16 v28, v5
+
+    move-wide/from16 v5, v26
+
+    :goto_5
+    double-to-float v5, v5
+
+    const/high16 v6, 0x3f800000    # 1.0f
+
+    sub-float/2addr v5, v6
+
+    .line 651
+    iget v6, v3, Lorg/oscim/theme/styles/LineStyle;->color:I
+
+    invoke-static {v9, v6, v5}, Lorg/oscim/renderer/GLUtils;->setColor(IIF)V
+
+    :goto_6
+    if-nez v2, :cond_8
+
+    if-eqz v17, :cond_8
+
+    .line 654
+    iget v5, v3, Lorg/oscim/theme/styles/LineStyle;->blur:F
+
+    const/4 v6, 0x0
+
+    cmpl-float v5, v5, v6
+
+    if-nez v5, :cond_8
+
+    .line 655
+    sget-object v5, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    invoke-interface {v5, v7, v4}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+
+    const/4 v5, 0x0
+
+    goto :goto_7
+
+    :cond_8
+    move/from16 v5, v17
+
+    .line 660
+    :goto_7
+    iget-boolean v6, v3, Lorg/oscim/theme/styles/LineStyle;->outline:Z
+
+    if-nez v6, :cond_10
+
+    .line 663
+    iget-boolean v6, v3, Lorg/oscim/theme/styles/LineStyle;->fixed:Z
+
+    if-eqz v6, :cond_9
+
+    .line 664
+    iget v6, v3, Lorg/oscim/theme/styles/LineStyle;->width:F
+
+    const/high16 v15, 0x3f800000    # 1.0f
+
+    invoke-static {v6, v15}, Ljava/lang/Math;->max(FF)F
+
+    move-result v6
+
+    div-float/2addr v6, v1
+
+    move/from16 v30, v9
+
+    float-to-double v8, v6
+
+    goto :goto_8
+
+    :cond_9
+    move/from16 v30, v9
+
+    .line 666
+    iget v6, v14, Lorg/oscim/renderer/bucket/LineBucket;->scale:F
+
+    iget v8, v3, Lorg/oscim/theme/styles/LineStyle;->width:F
+
+    mul-float/2addr v6, v8
+
+    float-to-double v8, v6
+
+    div-double/2addr v8, v12
+
+    .line 669
+    :goto_8
+    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    sget v15, Lorg/oscim/renderer/bucket/LineBucket$Renderer;->COORD_SCALE_BY_DIR_SCALE:F
+
+    move/from16 v31, v11
+
+    float-to-double v10, v15
+
+    mul-double/2addr v10, v8
+
+    double-to-float v10, v10
+
+    move/from16 v11, v25
+
+    invoke-interface {v6, v11, v10}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+
+    .line 673
+    iget v6, v3, Lorg/oscim/theme/styles/LineStyle;->blur:F
+
+    const/4 v10, 0x0
+
+    cmpl-float v6, v6, v10
+
+    if-lez v6, :cond_a
+
+    .line 674
+    sget-object v5, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    iget v3, v3, Lorg/oscim/theme/styles/LineStyle;->blur:F
+
+    invoke-interface {v5, v7, v3}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+
+    const/4 v5, 0x1
+
+    goto :goto_9
+
+    :cond_a
+    const/4 v3, 0x1
+
+    if-ne v2, v3, :cond_b
+
+    .line 677
+    sget-object v3, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    div-double v8, v19, v8
+
+    double-to-float v6, v8
+
+    invoke-interface {v3, v7, v6}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+
+    .line 682
+    :cond_b
+    :goto_9
+    iget v3, v14, Lorg/oscim/renderer/bucket/LineBucket;->scale:F
+
+    float-to-double v8, v3
+
+    const-wide/high16 v17, 0x3ff8000000000000L    # 1.5
+
+    cmpg-double v3, v8, v17
+
+    if-gez v3, :cond_d
+
+    move/from16 v6, v21
+
+    if-eqz v6, :cond_c
+
+    .line 685
+    sget-object v3, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    move/from16 v8, v23
+
+    move/from16 v9, v24
+
+    invoke-interface {v3, v8, v9}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+
+    const/4 v6, 0x0
+
+    goto :goto_a
+
+    :cond_c
+    move/from16 v8, v23
+
+    move/from16 v9, v24
+
+    goto :goto_a
+
+    :cond_d
+    move/from16 v6, v21
+
+    move/from16 v8, v23
+
+    move/from16 v9, v24
+
+    .line 687
+    iget-boolean v3, v14, Lorg/oscim/renderer/bucket/LineBucket;->roundCap:Z
+
+    if-eqz v3, :cond_e
+
+    const/4 v3, 0x2
+
+    if-eq v6, v3, :cond_f
+
+    .line 690
+    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    int-to-float v10, v3
+
+    invoke-interface {v6, v8, v10}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+
+    const/4 v6, 0x2
+
+    goto :goto_a
+
+    :cond_e
+    const/4 v3, 0x1
+
+    if-eq v6, v3, :cond_f
+
+    .line 694
+    sget-object v6, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    int-to-float v10, v3
+
+    invoke-interface {v6, v8, v10}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+
+    const/4 v6, 0x1
+
+    .line 697
+    :cond_f
+    :goto_a
+    sget-object v3, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    move-object/from16 v10, v22
+
+    iget v14, v10, Lorg/oscim/renderer/bucket/RenderBucket;->vertexOffset:I
+
+    iget v15, v10, Lorg/oscim/renderer/bucket/RenderBucket;->numVertices:I
+
+    const/4 v0, 0x5
+
+    invoke-interface {v3, v0, v14, v15}, Lorg/oscim/backend/GL;->drawArrays(III)V
+
+    move/from16 v32, v4
+
+    move/from16 v36, v5
+
+    move/from16 v21, v6
+
+    move/from16 v33, v9
+
+    goto/16 :goto_10
+
+    :cond_10
+    move/from16 v30, v9
+
+    move/from16 v31, v11
+
+    move/from16 v6, v21
+
+    move-object/from16 v10, v22
+
+    move/from16 v8, v23
+
+    move/from16 v9, v24
+
+    move/from16 v11, v25
+
+    const-wide/high16 v17, 0x3ff8000000000000L    # 1.5
+
+    .line 705
+    iget-object v0, v14, Lorg/oscim/renderer/bucket/LineBucket;->outlines:Lorg/oscim/renderer/bucket/LineBucket;
+
+    move/from16 v37, v6
+
+    move v6, v5
+
+    move/from16 v5, v37
+
+    :goto_b
+    if-eqz v0, :cond_18
+
+    .line 706
+    iget-object v15, v0, Lorg/oscim/renderer/bucket/LineBucket;->line:Lorg/oscim/theme/styles/LineStyle;
+
+    invoke-virtual {v15}, Lorg/oscim/theme/styles/LineStyle;->current()Lorg/oscim/theme/styles/LineStyle;
+
+    move-result-object v15
+
+    move/from16 v32, v4
+
+    .line 709
+    iget-boolean v4, v15, Lorg/oscim/theme/styles/LineStyle;->fixed:Z
+
+    if-eqz v4, :cond_11
+
+    .line 710
+    iget v4, v15, Lorg/oscim/theme/styles/LineStyle;->width:F
+
+    const/high16 v15, 0x3f800000    # 1.0f
+
+    invoke-static {v4, v15}, Ljava/lang/Math;->max(FF)F
+
+    move-result v4
+
+    div-float/2addr v4, v1
+
+    move/from16 v33, v9
+
+    move-object/from16 v34, v10
+
+    float-to-double v9, v4
+
+    move v4, v15
+
+    goto :goto_c
+
+    :cond_11
+    move/from16 v33, v9
+
+    move-object/from16 v34, v10
+
+    const/high16 v4, 0x3f800000    # 1.0f
+
+    .line 712
+    iget v9, v0, Lorg/oscim/renderer/bucket/LineBucket;->scale:F
+
+    iget v10, v15, Lorg/oscim/theme/styles/LineStyle;->width:F
+
+    mul-float/2addr v9, v10
+
+    float-to-double v9, v9
+
+    div-double/2addr v9, v12
+
+    .line 715
+    :goto_c
+    iget-boolean v15, v3, Lorg/oscim/theme/styles/LineStyle;->fixed:Z
+
+    if-eqz v15, :cond_12
+
+    .line 716
+    iget v15, v3, Lorg/oscim/theme/styles/LineStyle;->width:F
+
+    div-float/2addr v15, v1
+
+    move/from16 v35, v5
+
+    float-to-double v4, v15
+
+    add-double/2addr v9, v4
+
+    goto :goto_d
+
+    :cond_12
+    move/from16 v35, v5
+
+    .line 718
+    iget v4, v14, Lorg/oscim/renderer/bucket/LineBucket;->scale:F
+
+    iget v5, v3, Lorg/oscim/theme/styles/LineStyle;->width:F
+
+    mul-float/2addr v4, v5
+
+    float-to-double v4, v4
+
+    div-double/2addr v4, v12
+
+    add-double/2addr v9, v4
+
+    .line 721
+    :goto_d
+    sget-object v4, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    sget v5, Lorg/oscim/renderer/bucket/LineBucket$Renderer;->COORD_SCALE_BY_DIR_SCALE:F
+
+    move/from16 v36, v6
+
+    float-to-double v5, v5
+
+    mul-double/2addr v5, v9
+
+    double-to-float v5, v5
+
+    invoke-interface {v4, v11, v5}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+
+    .line 725
+    iget v4, v3, Lorg/oscim/theme/styles/LineStyle;->blur:F
+
+    const/4 v5, 0x0
+
+    cmpl-float v4, v4, v5
+
+    if-lez v4, :cond_13
+
+    .line 726
+    sget-object v4, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    iget v6, v3, Lorg/oscim/theme/styles/LineStyle;->blur:F
+
+    invoke-interface {v4, v7, v6}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+
+    const/4 v6, 0x1
+
+    goto :goto_e
+
+    :cond_13
+    const/4 v4, 0x1
+
+    if-ne v2, v4, :cond_14
+
+    .line 729
+    sget-object v4, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    div-double v9, v19, v9
+
+    double-to-float v6, v9
+
+    invoke-interface {v4, v7, v6}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+
+    :cond_14
+    move/from16 v6, v36
+
+    .line 733
+    :goto_e
+    iget-boolean v4, v0, Lorg/oscim/renderer/bucket/LineBucket;->roundCap:Z
+
+    if-eqz v4, :cond_16
+
+    move/from16 v4, v35
+
+    const/4 v9, 0x2
+
+    if-eq v4, v9, :cond_15
+
+    .line 736
+    sget-object v4, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    int-to-float v10, v9
+
+    invoke-interface {v4, v8, v10}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+
+    move v4, v9
+
+    :cond_15
+    const/4 v10, 0x1
+
+    goto :goto_f
+
+    :cond_16
+    move/from16 v4, v35
+
+    const/4 v9, 0x2
+
+    const/4 v10, 0x1
+
+    if-eq v4, v10, :cond_17
+
+    .line 740
+    sget-object v4, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    int-to-float v15, v10
+
+    invoke-interface {v4, v8, v15}, Lorg/oscim/backend/GL;->uniform1f(IF)V
+
+    move v4, v10
+
+    .line 743
+    :cond_17
+    :goto_f
+    sget-object v15, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    iget v5, v0, Lorg/oscim/renderer/bucket/LineBucket;->vertexOffset:I
+
+    iget v9, v0, Lorg/oscim/renderer/bucket/LineBucket;->numVertices:I
+
+    const/4 v10, 0x5
+
+    invoke-interface {v15, v10, v5, v9}, Lorg/oscim/backend/GL;->drawArrays(III)V
+
+    .line 705
+    iget-object v0, v0, Lorg/oscim/renderer/bucket/LineBucket;->outlines:Lorg/oscim/renderer/bucket/LineBucket;
 
     move v5, v4
 
-    move v7, v6
+    move/from16 v4, v32
 
-    invoke-static/range {v0 .. v7}, Lorg/oscim/renderer/GLUtils;->loadTexture([BIIIIIII)I
+    move/from16 v9, v33
 
-    move-result v1
+    move-object/from16 v10, v34
 
-    sput v1, Lorg/oscim/renderer/bucket/LineBucket$Renderer;->mTexID:I
+    goto/16 :goto_b
+
+    :cond_18
+    move/from16 v32, v4
+
+    move v4, v5
+
+    move/from16 v36, v6
+
+    move/from16 v33, v9
+
+    move/from16 v21, v4
+
+    :goto_10
+    move-object v0, v10
+
+    .line 632
+    :goto_11
+    iget-object v0, v0, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
+
+    move-object v3, v0
+
+    check-cast v3, Lorg/oscim/renderer/bucket/RenderBucket;
+
+    move v10, v11
+
+    move-wide/from16 v5, v28
+
+    move/from16 v9, v30
+
+    move/from16 v11, v31
+
+    move/from16 v4, v32
+
+    move/from16 v15, v33
+
+    move/from16 v17, v36
+
+    move-object/from16 v0, p1
+
+    const/4 v14, 0x0
+
+    goto/16 :goto_3
+
+    :cond_19
+    move-object v0, v3
+
+    return-object v0
+.end method
+
+.method static init()Z
+    .locals 12
+
+    .line 553
+    sget-object v0, Lorg/oscim/renderer/bucket/LineBucket$Renderer;->shaders:[Lorg/oscim/renderer/bucket/LineBucket$Shader;
+
+    new-instance v1, Lorg/oscim/renderer/bucket/LineBucket$Shader;
+
+    const-string v2, "line_aa_proj"
+
+    invoke-direct {v1, v2}, Lorg/oscim/renderer/bucket/LineBucket$Shader;-><init>(Ljava/lang/String;)V
+
+    const/4 v2, 0x0
+
+    aput-object v1, v0, v2
+
+    .line 554
+    sget-object v0, Lorg/oscim/renderer/bucket/LineBucket$Renderer;->shaders:[Lorg/oscim/renderer/bucket/LineBucket$Shader;
+
+    new-instance v1, Lorg/oscim/renderer/bucket/LineBucket$Shader;
+
+    const-string v3, "line_aa"
+
+    invoke-direct {v1, v3}, Lorg/oscim/renderer/bucket/LineBucket$Shader;-><init>(Ljava/lang/String;)V
+
+    const/4 v3, 0x1
+
+    aput-object v1, v0, v3
+
+    const/16 v0, 0x4000
+
+    .line 558
+    new-array v4, v0, [B
+
+    move v0, v2
+
+    :goto_0
+    const/16 v1, 0x80
+
+    if-ge v0, v1, :cond_2
+
+    mul-int v5, v0, v0
+
+    int-to-float v5, v5
+
+    move v6, v2
+
+    :goto_1
+    if-ge v6, v1, :cond_1
+
+    mul-int v7, v6, v6
+
+    int-to-float v7, v7
+
+    add-float/2addr v7, v5
+
+    float-to-double v7, v7
+
+    .line 564
+    invoke-static {v7, v8}, Ljava/lang/Math;->sqrt(D)D
+
+    move-result-wide v7
+
+    const-wide/high16 v9, 0x4000000000000000L    # 2.0
+
+    mul-double/2addr v7, v9
+
+    double-to-int v7, v7
+
+    const/16 v8, 0xff
+
+    if-le v7, v8, :cond_0
+
+    move v7, v8
+
+    :cond_0
+    mul-int/lit16 v8, v6, 0x80
+
+    add-int/2addr v8, v0
+
+    int-to-byte v7, v7
 
     .line 567
-    return v13
+    aput-byte v7, v4, v8
+
+    add-int/lit8 v6, v6, 0x1
+
+    goto :goto_1
+
+    :cond_1
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_0
+
+    :cond_2
+    const/16 v5, 0x80
+
+    const/16 v6, 0x80
+
+    const/16 v7, 0x1906
+
+    const/16 v8, 0x2600
+
+    const/16 v9, 0x2600
+
+    const v10, 0x8370
+
+    const v11, 0x8370
+
+    .line 571
+    invoke-static/range {v4 .. v11}, Lorg/oscim/renderer/GLUtils;->loadTexture([BIIIIIII)I
+
+    move-result v0
+
+    sput v0, Lorg/oscim/renderer/bucket/LineBucket$Renderer;->mTexID:I
+
+    return v3
 .end method

@@ -15,13 +15,14 @@
 .field public static final DEFAULT_APP_DATA:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lorg/microg/gms/gcm/mcs/AppData;",
             ">;"
         }
     .end annotation
 .end field
+
+.field public static final DEFAULT_DELAY:Ljava/lang/Integer;
 
 .field public static final DEFAULT_DEVICE_USER_ID:Ljava/lang/Long;
 
@@ -30,6 +31,10 @@
 .field public static final DEFAULT_LAST_STREAM_ID_RECEIVED:Ljava/lang/Integer;
 
 .field public static final DEFAULT_QUEUED:Ljava/lang/Integer;
+
+.field public static final DEFAULT_RAW_DATA:Lokio/ByteString;
+
+.field public static final DEFAULT_RMQ_ID:Ljava/lang/Long;
 
 .field public static final DEFAULT_SENT:Ljava/lang/Long;
 
@@ -50,8 +55,7 @@
 
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lorg/microg/gms/gcm/mcs/AppData;",
             ">;"
         }
@@ -63,6 +67,20 @@
         label = .enum Lcom/squareup/wire/Message$Label;->REQUIRED:Lcom/squareup/wire/Message$Label;
         tag = 0x5
         type = .enum Lcom/squareup/wire/Message$Datatype;->STRING:Lcom/squareup/wire/Message$Datatype;
+    .end annotation
+.end field
+
+.field public final client_id:Ljava/lang/String;
+    .annotation runtime Lcom/squareup/wire/ProtoField;
+        tag = 0xf
+        type = .enum Lcom/squareup/wire/Message$Datatype;->STRING:Lcom/squareup/wire/Message$Datatype;
+    .end annotation
+.end field
+
+.field public final delay:Ljava/lang/Integer;
+    .annotation runtime Lcom/squareup/wire/ProtoField;
+        tag = 0x16
+        type = .enum Lcom/squareup/wire/Message$Datatype;->INT32:Lcom/squareup/wire/Message$Datatype;
     .end annotation
 .end field
 
@@ -102,9 +120,23 @@
     .end annotation
 .end field
 
+.field public final permission:Ljava/lang/String;
+    .annotation runtime Lcom/squareup/wire/ProtoField;
+        tag = 0xc
+        type = .enum Lcom/squareup/wire/Message$Datatype;->STRING:Lcom/squareup/wire/Message$Datatype;
+    .end annotation
+.end field
+
 .field public final persistent_id:Ljava/lang/String;
     .annotation runtime Lcom/squareup/wire/ProtoField;
         tag = 0x9
+        type = .enum Lcom/squareup/wire/Message$Datatype;->STRING:Lcom/squareup/wire/Message$Datatype;
+    .end annotation
+.end field
+
+.field public final pkg_signature:Ljava/lang/String;
+    .annotation runtime Lcom/squareup/wire/ProtoField;
+        tag = 0xe
         type = .enum Lcom/squareup/wire/Message$Datatype;->STRING:Lcom/squareup/wire/Message$Datatype;
     .end annotation
 .end field
@@ -116,10 +148,24 @@
     .end annotation
 .end field
 
+.field public final raw_data:Lokio/ByteString;
+    .annotation runtime Lcom/squareup/wire/ProtoField;
+        tag = 0x15
+        type = .enum Lcom/squareup/wire/Message$Datatype;->BYTES:Lcom/squareup/wire/Message$Datatype;
+    .end annotation
+.end field
+
 .field public final reg_id:Ljava/lang/String;
     .annotation runtime Lcom/squareup/wire/ProtoField;
         tag = 0xd
         type = .enum Lcom/squareup/wire/Message$Datatype;->STRING:Lcom/squareup/wire/Message$Datatype;
+    .end annotation
+.end field
+
+.field public final rmq_id:Ljava/lang/Long;
+    .annotation runtime Lcom/squareup/wire/ProtoField;
+        tag = 0x1
+        type = .enum Lcom/squareup/wire/Message$Datatype;->INT64:Lcom/squareup/wire/Message$Datatype;
     .end annotation
 .end field
 
@@ -170,104 +216,107 @@
 .method static constructor <clinit>()V
     .locals 4
 
-    .prologue
-    const-wide/16 v2, 0x0
+    const-wide/16 v0, 0x0
 
-    const/4 v1, 0x0
+    .line 24
+    invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
-    .line 27
-    invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;
+    move-result-object v2
 
-    move-result-object v0
-
-    sput-object v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_APP_DATA:Ljava/util/List;
-
-    .line 28
-    invoke-static {v1}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
-
-    move-result-object v0
-
-    sput-object v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_FROM_TRUSTED_SERVER:Ljava/lang/Boolean;
+    sput-object v2, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_RMQ_ID:Ljava/lang/Long;
 
     .line 30
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;
 
-    move-result-object v0
+    move-result-object v2
 
-    sput-object v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_STREAM_ID:Ljava/lang/Integer;
+    sput-object v2, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_APP_DATA:Ljava/util/List;
+
+    const/4 v2, 0x0
 
     .line 31
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v2}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 
-    move-result-object v0
+    move-result-object v3
 
-    sput-object v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_LAST_STREAM_ID_RECEIVED:Ljava/lang/Integer;
+    sput-object v3, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_FROM_TRUSTED_SERVER:Ljava/lang/Boolean;
 
     .line 33
-    invoke-static {v2, v3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v0
+    move-result-object v3
 
-    sput-object v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_DEVICE_USER_ID:Ljava/lang/Long;
+    sput-object v3, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_STREAM_ID:Ljava/lang/Integer;
 
     .line 34
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v0
+    move-result-object v3
 
-    sput-object v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_TTL:Ljava/lang/Integer;
+    sput-object v3, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_LAST_STREAM_ID_RECEIVED:Ljava/lang/Integer;
 
-    .line 35
-    invoke-static {v2, v3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+    .line 39
+    invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
-    move-result-object v0
+    move-result-object v3
 
-    sput-object v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_SENT:Ljava/lang/Long;
+    sput-object v3, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_DEVICE_USER_ID:Ljava/lang/Long;
 
-    .line 36
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    .line 40
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v0
+    move-result-object v3
 
-    sput-object v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_QUEUED:Ljava/lang/Integer;
+    sput-object v3, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_TTL:Ljava/lang/Integer;
 
-    .line 37
-    invoke-static {v2, v3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+    .line 41
+    invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v3
+
+    sput-object v3, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_SENT:Ljava/lang/Long;
+
+    .line 42
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v3
+
+    sput-object v3, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_QUEUED:Ljava/lang/Integer;
+
+    .line 43
+    invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
     move-result-object v0
 
     sput-object v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_STATUS:Ljava/lang/Long;
 
+    .line 44
+    sget-object v0, Lokio/ByteString;->EMPTY:Lokio/ByteString;
+
+    sput-object v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_RAW_DATA:Lokio/ByteString;
+
+    .line 45
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->DEFAULT_DELAY:Ljava/lang/Integer;
+
     return-void
 .end method
 
-.method public constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Long;)V
+.method public constructor <init>(Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Long;Lokio/ByteString;Ljava/lang/Integer;)V
     .locals 2
-    .param p1, "id"    # Ljava/lang/String;
-    .param p2, "from"    # Ljava/lang/String;
-    .param p3, "to"    # Ljava/lang/String;
-    .param p4, "category"    # Ljava/lang/String;
-    .param p5, "token"    # Ljava/lang/String;
-    .param p7, "from_trusted_server"    # Ljava/lang/Boolean;
-    .param p8, "persistent_id"    # Ljava/lang/String;
-    .param p9, "stream_id"    # Ljava/lang/Integer;
-    .param p10, "last_stream_id_received"    # Ljava/lang/Integer;
-    .param p11, "reg_id"    # Ljava/lang/String;
-    .param p12, "device_user_id"    # Ljava/lang/Long;
-    .param p13, "ttl"    # Ljava/lang/Integer;
-    .param p14, "sent"    # Ljava/lang/Long;
-    .param p15, "queued"    # Ljava/lang/Integer;
-    .param p16, "status"    # Ljava/lang/Long;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
+            "Ljava/lang/Long;",
             "Ljava/lang/String;",
             "Ljava/lang/String;",
             "Ljava/lang/String;",
             "Ljava/lang/String;",
             "Ljava/lang/String;",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lorg/microg/gms/gcm/mcs/AppData;",
             ">;",
             "Ljava/lang/Boolean;",
@@ -275,505 +324,666 @@
             "Ljava/lang/Integer;",
             "Ljava/lang/Integer;",
             "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
             "Ljava/lang/Long;",
             "Ljava/lang/Integer;",
             "Ljava/lang/Long;",
             "Ljava/lang/Integer;",
             "Ljava/lang/Long;",
+            "Lokio/ByteString;",
+            "Ljava/lang/Integer;",
             ")V"
         }
     .end annotation
 
-    .prologue
-    .line 142
-    .local p6, "app_data":Ljava/util/List;, "Ljava/util/List<Lorg/microg/gms/gcm/mcs/AppData;>;"
-    invoke-direct {p0}, Lcom/squareup/wire/Message;-><init>()V
+    move-object v0, p0
 
-    .line 143
-    iput-object p1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->id:Ljava/lang/String;
+    .line 172
+    invoke-direct {v0}, Lcom/squareup/wire/Message;-><init>()V
 
-    .line 144
-    iput-object p2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->from:Ljava/lang/String;
+    move-object v1, p1
 
-    .line 145
-    iput-object p3, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->to:Ljava/lang/String;
+    .line 173
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->rmq_id:Ljava/lang/Long;
 
-    .line 146
-    iput-object p4, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->category:Ljava/lang/String;
+    move-object v1, p2
 
-    .line 147
-    iput-object p5, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->token:Ljava/lang/String;
+    .line 174
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->id:Ljava/lang/String;
 
-    .line 148
-    invoke-static {p6}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->immutableCopyOf(Ljava/util/List;)Ljava/util/List;
+    move-object v1, p3
+
+    .line 175
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->from:Ljava/lang/String;
+
+    move-object v1, p4
+
+    .line 176
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->to:Ljava/lang/String;
+
+    move-object v1, p5
+
+    .line 177
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->category:Ljava/lang/String;
+
+    move-object v1, p6
+
+    .line 178
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->token:Ljava/lang/String;
+
+    .line 179
+    invoke-static {p7}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->immutableCopyOf(Ljava/util/List;)Ljava/util/List;
 
     move-result-object v1
 
-    iput-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->app_data:Ljava/util/List;
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->app_data:Ljava/util/List;
 
-    .line 149
-    iput-object p7, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->from_trusted_server:Ljava/lang/Boolean;
+    move-object v1, p8
 
-    .line 150
-    iput-object p8, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->persistent_id:Ljava/lang/String;
+    .line 180
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->from_trusted_server:Ljava/lang/Boolean;
 
-    .line 151
-    iput-object p9, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->stream_id:Ljava/lang/Integer;
+    move-object v1, p9
 
-    .line 152
-    iput-object p10, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->last_stream_id_received:Ljava/lang/Integer;
+    .line 181
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->persistent_id:Ljava/lang/String;
 
-    .line 153
-    iput-object p11, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->reg_id:Ljava/lang/String;
+    move-object v1, p10
 
-    .line 154
-    iput-object p12, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->device_user_id:Ljava/lang/Long;
+    .line 182
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->stream_id:Ljava/lang/Integer;
 
-    .line 155
-    iput-object p13, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->ttl:Ljava/lang/Integer;
+    move-object v1, p11
 
-    .line 156
-    move-object/from16 v0, p14
+    .line 183
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->last_stream_id_received:Ljava/lang/Integer;
 
-    iput-object v0, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->sent:Ljava/lang/Long;
+    move-object v1, p12
 
-    .line 157
-    move-object/from16 v0, p15
+    .line 184
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->permission:Ljava/lang/String;
 
-    iput-object v0, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->queued:Ljava/lang/Integer;
+    move-object v1, p13
 
-    .line 158
-    move-object/from16 v0, p16
+    .line 185
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->reg_id:Ljava/lang/String;
 
-    iput-object v0, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->status:Ljava/lang/Long;
+    move-object/from16 v1, p14
 
-    .line 159
+    .line 186
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->pkg_signature:Ljava/lang/String;
+
+    move-object/from16 v1, p15
+
+    .line 187
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->client_id:Ljava/lang/String;
+
+    move-object/from16 v1, p16
+
+    .line 188
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->device_user_id:Ljava/lang/Long;
+
+    move-object/from16 v1, p17
+
+    .line 189
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->ttl:Ljava/lang/Integer;
+
+    move-object/from16 v1, p18
+
+    .line 190
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->sent:Ljava/lang/Long;
+
+    move-object/from16 v1, p19
+
+    .line 191
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->queued:Ljava/lang/Integer;
+
+    move-object/from16 v1, p20
+
+    .line 192
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->status:Ljava/lang/Long;
+
+    move-object/from16 v1, p21
+
+    .line 193
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->raw_data:Lokio/ByteString;
+
+    move-object/from16 v1, p22
+
+    .line 194
+    iput-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->delay:Ljava/lang/Integer;
+
     return-void
 .end method
 
 .method private constructor <init>(Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;)V
-    .locals 18
-    .param p1, "builder"    # Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;
-
-    .prologue
-    .line 162
-    move-object/from16 v0, p1
-
-    iget-object v2, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->id:Ljava/lang/String;
+    .locals 31
 
     move-object/from16 v0, p1
 
-    iget-object v3, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->from:Ljava/lang/String;
+    .line 198
+    iget-object v2, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->rmq_id:Ljava/lang/Long;
 
-    move-object/from16 v0, p1
+    iget-object v3, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->id:Ljava/lang/String;
 
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->to:Ljava/lang/String;
+    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->from:Ljava/lang/String;
 
-    move-object/from16 v0, p1
+    iget-object v5, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->to:Ljava/lang/String;
 
-    iget-object v5, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->category:Ljava/lang/String;
+    iget-object v6, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->category:Ljava/lang/String;
 
-    move-object/from16 v0, p1
+    iget-object v7, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->token:Ljava/lang/String;
 
-    iget-object v6, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->token:Ljava/lang/String;
+    iget-object v8, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->app_data:Ljava/util/List;
 
-    move-object/from16 v0, p1
+    iget-object v9, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->from_trusted_server:Ljava/lang/Boolean;
 
-    iget-object v7, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->app_data:Ljava/util/List;
+    iget-object v10, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->persistent_id:Ljava/lang/String;
 
-    move-object/from16 v0, p1
+    iget-object v11, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->stream_id:Ljava/lang/Integer;
 
-    iget-object v8, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->from_trusted_server:Ljava/lang/Boolean;
+    iget-object v12, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->last_stream_id_received:Ljava/lang/Integer;
 
-    move-object/from16 v0, p1
+    iget-object v13, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->permission:Ljava/lang/String;
 
-    iget-object v9, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->persistent_id:Ljava/lang/String;
+    iget-object v14, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->reg_id:Ljava/lang/String;
 
-    move-object/from16 v0, p1
+    iget-object v15, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->pkg_signature:Ljava/lang/String;
 
-    iget-object v10, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->stream_id:Ljava/lang/Integer;
+    iget-object v1, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->client_id:Ljava/lang/String;
 
-    move-object/from16 v0, p1
+    move-object/from16 v24, v15
 
-    iget-object v11, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->last_stream_id_received:Ljava/lang/Integer;
+    iget-object v15, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->device_user_id:Ljava/lang/Long;
 
-    move-object/from16 v0, p1
+    move-object/from16 v25, v15
 
-    iget-object v12, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->reg_id:Ljava/lang/String;
+    iget-object v15, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->ttl:Ljava/lang/Integer;
 
-    move-object/from16 v0, p1
-
-    iget-object v13, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->device_user_id:Ljava/lang/Long;
-
-    move-object/from16 v0, p1
-
-    iget-object v14, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->ttl:Ljava/lang/Integer;
-
-    move-object/from16 v0, p1
+    move-object/from16 v26, v15
 
     iget-object v15, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->sent:Ljava/lang/Long;
 
-    move-object/from16 v0, p1
+    move-object/from16 v27, v15
 
-    iget-object v0, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->queued:Ljava/lang/Integer;
+    iget-object v15, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->queued:Ljava/lang/Integer;
 
-    move-object/from16 v16, v0
+    move-object/from16 v28, v15
 
-    move-object/from16 v0, p1
+    iget-object v15, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->status:Ljava/lang/Long;
 
-    iget-object v0, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->status:Ljava/lang/Long;
+    move-object/from16 v29, v15
 
-    move-object/from16 v17, v0
+    iget-object v15, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->raw_data:Lokio/ByteString;
+
+    move-object/from16 v30, v15
+
+    iget-object v15, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;->delay:Ljava/lang/Integer;
+
+    move-object/from16 v16, v1
 
     move-object/from16 v1, p0
 
-    invoke-direct/range {v1 .. v17}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Long;)V
+    move-object/from16 v23, v15
 
-    .line 163
+    move-object/from16 v17, v25
+
+    move-object/from16 v18, v26
+
+    move-object/from16 v19, v27
+
+    move-object/from16 v20, v28
+
+    move-object/from16 v21, v29
+
+    move-object/from16 v22, v30
+
+    move-object/from16 v15, v24
+
+    invoke-direct/range {v1 .. v23}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;-><init>(Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Long;Lokio/ByteString;Ljava/lang/Integer;)V
+
+    .line 199
     invoke-virtual/range {p0 .. p1}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->setBuilder(Lcom/squareup/wire/Message$Builder;)V
 
-    .line 164
     return-void
 .end method
 
 .method synthetic constructor <init>(Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;Lorg/microg/gms/gcm/mcs/DataMessageStanza$1;)V
     .locals 0
-    .param p1, "x0"    # Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;
-    .param p2, "x1"    # Lorg/microg/gms/gcm/mcs/DataMessageStanza$1;
 
-    .prologue
-    .line 20
+    .line 22
     invoke-direct {p0, p1}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;-><init>(Lorg/microg/gms/gcm/mcs/DataMessageStanza$Builder;)V
 
     return-void
 .end method
 
 .method static synthetic access$000(Ljava/util/List;)Ljava/util/List;
-    .locals 1
-    .param p0, "x0"    # Ljava/util/List;
+    .locals 0
 
-    .prologue
-    .line 20
+    .line 22
     invoke-static {p0}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->copyOf(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object v0
+    move-result-object p0
 
-    return-object v0
+    return-object p0
 .end method
 
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 5
-    .param p1, "other"    # Ljava/lang/Object;
+    .locals 4
 
-    .prologue
-    const/4 v1, 0x1
+    const/4 v0, 0x1
+
+    if-ne p1, p0, :cond_0
+
+    return v0
+
+    .line 205
+    :cond_0
+    instance-of v1, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;
 
     const/4 v2, 0x0
 
-    .line 168
-    if-ne p1, p0, :cond_1
+    if-nez v1, :cond_1
 
-    .line 171
-    :cond_0
-    :goto_0
-    return v1
+    return v2
 
-    .line 169
+    .line 206
     :cond_1
-    instance-of v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;
+    check-cast p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;
 
-    if-nez v3, :cond_2
+    .line 207
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->rmq_id:Ljava/lang/Long;
 
-    move v1, v2
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->rmq_id:Ljava/lang/Long;
+
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->id:Ljava/lang/String;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->id:Ljava/lang/String;
+
+    .line 208
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->from:Ljava/lang/String;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->from:Ljava/lang/String;
+
+    .line 209
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->to:Ljava/lang/String;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->to:Ljava/lang/String;
+
+    .line 210
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->category:Ljava/lang/String;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->category:Ljava/lang/String;
+
+    .line 211
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->token:Ljava/lang/String;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->token:Ljava/lang/String;
+
+    .line 212
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->app_data:Ljava/util/List;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->app_data:Ljava/util/List;
+
+    .line 213
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/util/List;Ljava/util/List;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->from_trusted_server:Ljava/lang/Boolean;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->from_trusted_server:Ljava/lang/Boolean;
+
+    .line 214
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->persistent_id:Ljava/lang/String;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->persistent_id:Ljava/lang/String;
+
+    .line 215
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->stream_id:Ljava/lang/Integer;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->stream_id:Ljava/lang/Integer;
+
+    .line 216
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->last_stream_id_received:Ljava/lang/Integer;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->last_stream_id_received:Ljava/lang/Integer;
+
+    .line 217
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->permission:Ljava/lang/String;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->permission:Ljava/lang/String;
+
+    .line 218
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->reg_id:Ljava/lang/String;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->reg_id:Ljava/lang/String;
+
+    .line 219
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->pkg_signature:Ljava/lang/String;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->pkg_signature:Ljava/lang/String;
+
+    .line 220
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->client_id:Ljava/lang/String;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->client_id:Ljava/lang/String;
+
+    .line 221
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->device_user_id:Ljava/lang/Long;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->device_user_id:Ljava/lang/Long;
+
+    .line 222
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->ttl:Ljava/lang/Integer;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->ttl:Ljava/lang/Integer;
+
+    .line 223
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->sent:Ljava/lang/Long;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->sent:Ljava/lang/Long;
+
+    .line 224
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->queued:Ljava/lang/Integer;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->queued:Ljava/lang/Integer;
+
+    .line 225
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->status:Ljava/lang/Long;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->status:Ljava/lang/Long;
+
+    .line 226
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->raw_data:Lokio/ByteString;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->raw_data:Lokio/ByteString;
+
+    .line 227
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->delay:Ljava/lang/Integer;
+
+    iget-object p1, p1, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->delay:Ljava/lang/Integer;
+
+    .line 228
+    invoke-virtual {p0, v1, p1}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result p1
+
+    if-eqz p1, :cond_2
 
     goto :goto_0
 
     :cond_2
-    move-object v0, p1
+    move v0, v2
 
-    .line 170
-    check-cast v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;
-
-    .line 171
-    .local v0, "o":Lorg/microg/gms/gcm/mcs/DataMessageStanza;
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->id:Ljava/lang/String;
-
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->id:Ljava/lang/String;
-
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->from:Ljava/lang/String;
-
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->from:Ljava/lang/String;
-
-    .line 172
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->to:Ljava/lang/String;
-
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->to:Ljava/lang/String;
-
-    .line 173
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->category:Ljava/lang/String;
-
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->category:Ljava/lang/String;
-
-    .line 174
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->token:Ljava/lang/String;
-
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->token:Ljava/lang/String;
-
-    .line 175
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->app_data:Ljava/util/List;
-
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->app_data:Ljava/util/List;
-
-    .line 176
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/util/List;Ljava/util/List;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->from_trusted_server:Ljava/lang/Boolean;
-
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->from_trusted_server:Ljava/lang/Boolean;
-
-    .line 177
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->persistent_id:Ljava/lang/String;
-
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->persistent_id:Ljava/lang/String;
-
-    .line 178
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->stream_id:Ljava/lang/Integer;
-
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->stream_id:Ljava/lang/Integer;
-
-    .line 179
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->last_stream_id_received:Ljava/lang/Integer;
-
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->last_stream_id_received:Ljava/lang/Integer;
-
-    .line 180
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->reg_id:Ljava/lang/String;
-
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->reg_id:Ljava/lang/String;
-
-    .line 181
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->device_user_id:Ljava/lang/Long;
-
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->device_user_id:Ljava/lang/Long;
-
-    .line 182
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->ttl:Ljava/lang/Integer;
-
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->ttl:Ljava/lang/Integer;
-
-    .line 183
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->sent:Ljava/lang/Long;
-
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->sent:Ljava/lang/Long;
-
-    .line 184
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->queued:Ljava/lang/Integer;
-
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->queued:Ljava/lang/Integer;
-
-    .line 185
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->status:Ljava/lang/Long;
-
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->status:Ljava/lang/Long;
-
-    .line 186
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-nez v3, :cond_0
-
-    :cond_3
-    move v1, v2
-
-    goto/16 :goto_0
+    :goto_0
+    return v0
 .end method
 
 .method public hashCode()I
-    .locals 4
+    .locals 3
 
-    .prologue
-    const/4 v1, 0x0
-
-    .line 191
+    .line 233
     iget v0, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->hashCode:I
 
-    .line 192
-    .local v0, "result":I
-    if-nez v0, :cond_1
+    if-nez v0, :cond_16
 
-    .line 193
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->id:Ljava/lang/String;
+    .line 235
+    iget-object v0, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->rmq_id:Ljava/lang/Long;
 
-    if-eqz v2, :cond_2
+    const/4 v1, 0x0
 
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->id:Ljava/lang/String;
+    if-eqz v0, :cond_0
 
-    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
+    iget-object v0, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->rmq_id:Ljava/lang/Long;
+
+    invoke-virtual {v0}, Ljava/lang/Long;->hashCode()I
 
     move-result v0
 
-    .line 194
+    goto :goto_0
+
+    :cond_0
+    move v0, v1
+
     :goto_0
-    mul-int/lit8 v3, v0, 0x25
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 236
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->id:Ljava/lang/String;
+
+    if-eqz v2, :cond_1
+
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->id:Ljava/lang/String;
+
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
+
+    move-result v2
+
+    goto :goto_1
+
+    :cond_1
+    move v2, v1
+
+    :goto_1
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 237
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->from:Ljava/lang/String;
+
+    if-eqz v2, :cond_2
 
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->from:Ljava/lang/String;
+
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
+
+    move-result v2
+
+    goto :goto_2
+
+    :cond_2
+    move v2, v1
+
+    :goto_2
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 238
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->to:Ljava/lang/String;
 
     if-eqz v2, :cond_3
 
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->from:Ljava/lang/String;
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->to:Ljava/lang/String;
 
     invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
 
     move-result v2
 
-    :goto_1
-    add-int v0, v3, v2
+    goto :goto_3
 
-    .line 195
-    mul-int/lit8 v3, v0, 0x25
+    :cond_3
+    move v2, v1
 
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->to:Ljava/lang/String;
+    :goto_3
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 239
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->category:Ljava/lang/String;
 
     if-eqz v2, :cond_4
 
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->to:Ljava/lang/String;
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->category:Ljava/lang/String;
 
     invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
 
     move-result v2
 
-    :goto_2
-    add-int v0, v3, v2
+    goto :goto_4
 
-    .line 196
-    mul-int/lit8 v3, v0, 0x25
+    :cond_4
+    move v2, v1
 
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->category:Ljava/lang/String;
+    :goto_4
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 240
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->token:Ljava/lang/String;
 
     if-eqz v2, :cond_5
 
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->category:Ljava/lang/String;
-
-    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
-
-    move-result v2
-
-    :goto_3
-    add-int v0, v3, v2
-
-    .line 197
-    mul-int/lit8 v3, v0, 0x25
-
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->token:Ljava/lang/String;
-
-    if-eqz v2, :cond_6
-
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->token:Ljava/lang/String;
 
     invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
 
     move-result v2
 
-    :goto_4
-    add-int v0, v3, v2
+    goto :goto_5
 
-    .line 198
-    mul-int/lit8 v3, v0, 0x25
+    :cond_5
+    move v2, v1
 
+    :goto_5
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 241
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->app_data:Ljava/util/List;
 
-    if-eqz v2, :cond_7
+    if-eqz v2, :cond_6
 
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->app_data:Ljava/util/List;
 
@@ -781,15 +991,20 @@
 
     move-result v2
 
-    :goto_5
-    add-int v0, v3, v2
+    goto :goto_6
 
-    .line 199
-    mul-int/lit8 v3, v0, 0x25
+    :cond_6
+    const/4 v2, 0x1
 
+    :goto_6
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 242
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->from_trusted_server:Ljava/lang/Boolean;
 
-    if-eqz v2, :cond_8
+    if-eqz v2, :cond_7
 
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->from_trusted_server:Ljava/lang/Boolean;
 
@@ -797,15 +1012,20 @@
 
     move-result v2
 
-    :goto_6
-    add-int v0, v3, v2
+    goto :goto_7
 
-    .line 200
-    mul-int/lit8 v3, v0, 0x25
+    :cond_7
+    move v2, v1
 
+    :goto_7
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 243
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->persistent_id:Ljava/lang/String;
 
-    if-eqz v2, :cond_9
+    if-eqz v2, :cond_8
 
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->persistent_id:Ljava/lang/String;
 
@@ -813,44 +1033,80 @@
 
     move-result v2
 
-    :goto_7
-    add-int v0, v3, v2
+    goto :goto_8
 
-    .line 201
-    mul-int/lit8 v3, v0, 0x25
+    :cond_8
+    move v2, v1
+
+    :goto_8
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 244
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->stream_id:Ljava/lang/Integer;
+
+    if-eqz v2, :cond_9
 
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->stream_id:Ljava/lang/Integer;
+
+    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
+
+    move-result v2
+
+    goto :goto_9
+
+    :cond_9
+    move v2, v1
+
+    :goto_9
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 245
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->last_stream_id_received:Ljava/lang/Integer;
 
     if-eqz v2, :cond_a
 
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->stream_id:Ljava/lang/Integer;
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->last_stream_id_received:Ljava/lang/Integer;
 
     invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
 
     move-result v2
 
-    :goto_8
-    add-int v0, v3, v2
+    goto :goto_a
 
-    .line 202
-    mul-int/lit8 v3, v0, 0x25
+    :cond_a
+    move v2, v1
 
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->last_stream_id_received:Ljava/lang/Integer;
+    :goto_a
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 246
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->permission:Ljava/lang/String;
 
     if-eqz v2, :cond_b
 
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->last_stream_id_received:Ljava/lang/Integer;
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->permission:Ljava/lang/String;
 
-    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
 
     move-result v2
 
-    :goto_9
-    add-int v0, v3, v2
+    goto :goto_b
 
-    .line 203
-    mul-int/lit8 v3, v0, 0x25
+    :cond_b
+    move v2, v1
 
+    :goto_b
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 247
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->reg_id:Ljava/lang/String;
 
     if-eqz v2, :cond_c
@@ -861,183 +1117,201 @@
 
     move-result v2
 
-    :goto_a
-    add-int v0, v3, v2
-
-    .line 204
-    mul-int/lit8 v3, v0, 0x25
-
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->device_user_id:Ljava/lang/Long;
-
-    if-eqz v2, :cond_d
-
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->device_user_id:Ljava/lang/Long;
-
-    invoke-virtual {v2}, Ljava/lang/Long;->hashCode()I
-
-    move-result v2
-
-    :goto_b
-    add-int v0, v3, v2
-
-    .line 205
-    mul-int/lit8 v3, v0, 0x25
-
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->ttl:Ljava/lang/Integer;
-
-    if-eqz v2, :cond_e
-
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->ttl:Ljava/lang/Integer;
-
-    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
-
-    move-result v2
-
-    :goto_c
-    add-int v0, v3, v2
-
-    .line 206
-    mul-int/lit8 v3, v0, 0x25
-
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->sent:Ljava/lang/Long;
-
-    if-eqz v2, :cond_f
-
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->sent:Ljava/lang/Long;
-
-    invoke-virtual {v2}, Ljava/lang/Long;->hashCode()I
-
-    move-result v2
-
-    :goto_d
-    add-int v0, v3, v2
-
-    .line 207
-    mul-int/lit8 v3, v0, 0x25
-
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->queued:Ljava/lang/Integer;
-
-    if-eqz v2, :cond_10
-
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->queued:Ljava/lang/Integer;
-
-    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
-
-    move-result v2
-
-    :goto_e
-    add-int v0, v3, v2
-
-    .line 208
-    mul-int/lit8 v2, v0, 0x25
-
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->status:Ljava/lang/Long;
-
-    if-eqz v3, :cond_0
-
-    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->status:Ljava/lang/Long;
-
-    invoke-virtual {v1}, Ljava/lang/Long;->hashCode()I
-
-    move-result v1
-
-    :cond_0
-    add-int v0, v2, v1
-
-    .line 209
-    iput v0, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->hashCode:I
-
-    .line 211
-    :cond_1
-    return v0
-
-    :cond_2
-    move v0, v1
-
-    .line 193
-    goto/16 :goto_0
-
-    :cond_3
-    move v2, v1
-
-    .line 194
-    goto/16 :goto_1
-
-    :cond_4
-    move v2, v1
-
-    .line 195
-    goto/16 :goto_2
-
-    :cond_5
-    move v2, v1
-
-    .line 196
-    goto/16 :goto_3
-
-    :cond_6
-    move v2, v1
-
-    .line 197
-    goto/16 :goto_4
-
-    .line 198
-    :cond_7
-    const/4 v2, 0x1
-
-    goto/16 :goto_5
-
-    :cond_8
-    move v2, v1
-
-    .line 199
-    goto/16 :goto_6
-
-    :cond_9
-    move v2, v1
-
-    .line 200
-    goto/16 :goto_7
-
-    :cond_a
-    move v2, v1
-
-    .line 201
-    goto :goto_8
-
-    :cond_b
-    move v2, v1
-
-    .line 202
-    goto :goto_9
+    goto :goto_c
 
     :cond_c
     move v2, v1
 
-    .line 203
-    goto :goto_a
+    :goto_c
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 248
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->pkg_signature:Ljava/lang/String;
+
+    if-eqz v2, :cond_d
+
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->pkg_signature:Ljava/lang/String;
+
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
+
+    move-result v2
+
+    goto :goto_d
 
     :cond_d
     move v2, v1
 
-    .line 204
-    goto :goto_b
+    :goto_d
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 249
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->client_id:Ljava/lang/String;
+
+    if-eqz v2, :cond_e
+
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->client_id:Ljava/lang/String;
+
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
+
+    move-result v2
+
+    goto :goto_e
 
     :cond_e
     move v2, v1
 
-    .line 205
-    goto :goto_c
+    :goto_e
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 250
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->device_user_id:Ljava/lang/Long;
+
+    if-eqz v2, :cond_f
+
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->device_user_id:Ljava/lang/Long;
+
+    invoke-virtual {v2}, Ljava/lang/Long;->hashCode()I
+
+    move-result v2
+
+    goto :goto_f
 
     :cond_f
     move v2, v1
 
-    .line 206
-    goto :goto_d
+    :goto_f
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 251
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->ttl:Ljava/lang/Integer;
+
+    if-eqz v2, :cond_10
+
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->ttl:Ljava/lang/Integer;
+
+    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
+
+    move-result v2
+
+    goto :goto_10
 
     :cond_10
     move v2, v1
 
-    .line 207
-    goto :goto_e
+    :goto_10
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 252
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->sent:Ljava/lang/Long;
+
+    if-eqz v2, :cond_11
+
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->sent:Ljava/lang/Long;
+
+    invoke-virtual {v2}, Ljava/lang/Long;->hashCode()I
+
+    move-result v2
+
+    goto :goto_11
+
+    :cond_11
+    move v2, v1
+
+    :goto_11
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 253
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->queued:Ljava/lang/Integer;
+
+    if-eqz v2, :cond_12
+
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->queued:Ljava/lang/Integer;
+
+    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
+
+    move-result v2
+
+    goto :goto_12
+
+    :cond_12
+    move v2, v1
+
+    :goto_12
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 254
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->status:Ljava/lang/Long;
+
+    if-eqz v2, :cond_13
+
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->status:Ljava/lang/Long;
+
+    invoke-virtual {v2}, Ljava/lang/Long;->hashCode()I
+
+    move-result v2
+
+    goto :goto_13
+
+    :cond_13
+    move v2, v1
+
+    :goto_13
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 255
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->raw_data:Lokio/ByteString;
+
+    if-eqz v2, :cond_14
+
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->raw_data:Lokio/ByteString;
+
+    invoke-virtual {v2}, Lokio/ByteString;->hashCode()I
+
+    move-result v2
+
+    goto :goto_14
+
+    :cond_14
+    move v2, v1
+
+    :goto_14
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 256
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->delay:Ljava/lang/Integer;
+
+    if-eqz v2, :cond_15
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->delay:Ljava/lang/Integer;
+
+    invoke-virtual {v1}, Ljava/lang/Integer;->hashCode()I
+
+    move-result v1
+
+    :cond_15
+    add-int/2addr v0, v1
+
+    .line 257
+    iput v0, p0, Lorg/microg/gms/gcm/mcs/DataMessageStanza;->hashCode:I
+
+    :cond_16
+    return v0
 .end method

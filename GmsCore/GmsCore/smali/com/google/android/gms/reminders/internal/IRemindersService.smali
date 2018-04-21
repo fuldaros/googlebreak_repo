@@ -28,8 +28,7 @@
         value = {
             "(",
             "Lcom/google/android/gms/reminders/internal/IRemindersCallbacks;",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/android/gms/reminders/model/TaskEntity;",
             ">;)V"
         }

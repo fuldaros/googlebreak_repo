@@ -8,6 +8,8 @@
     value = {
         Lorg/microg/tools/ui/R$string;,
         Lorg/microg/tools/ui/R$layout;,
-        Lorg/microg/tools/ui/R$id;
+        Lorg/microg/tools/ui/R$id;,
+        Lorg/microg/tools/ui/R$drawable;,
+        Lorg/microg/tools/ui/R$attr;
     }
 .end annotation

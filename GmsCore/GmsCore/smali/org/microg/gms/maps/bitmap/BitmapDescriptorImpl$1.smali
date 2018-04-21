@@ -26,9 +26,7 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;Landroid/content/Context;)V
     .locals 0
-    .param p1, "this$0"    # Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;
 
-    .prologue
     .line 74
     iput-object p1, p0, Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl$1;->this$0:Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;
 
@@ -42,139 +40,125 @@
 
 # virtual methods
 .method public run()V
-    .locals 5
+    .locals 3
 
-    .prologue
+    const-string v0, "BitmapDescriptor"
+
     .line 77
-    const-string v2, "BitmapDescriptor"
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    new-instance v3, Ljava/lang/StringBuilder;
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+    const-string v2, "Start loading "
 
-    const-string v4, "Start loading "
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    iget-object v4, p0, Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl$1;->this$0:Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;
-
-    invoke-virtual {v4}, Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;->getDescriptor()Lorg/microg/gms/maps/bitmap/AbstractBitmapDescriptor;
-
-    move-result-object v4
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 78
     iget-object v2, p0, Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl$1;->this$0:Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;
 
     invoke-virtual {v2}, Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;->getDescriptor()Lorg/microg/gms/maps/bitmap/AbstractBitmapDescriptor;
 
     move-result-object v2
 
-    iget-object v3, p0, Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl$1;->val$context:Landroid/content/Context;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2, v3}, Lorg/microg/gms/maps/bitmap/AbstractBitmapDescriptor;->loadBitmap(Landroid/content/Context;)Landroid/graphics/Bitmap;
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v1
 
-    if-eqz v2, :cond_0
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 78
+    iget-object v0, p0, Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl$1;->this$0:Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;
+
+    invoke-virtual {v0}, Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;->getDescriptor()Lorg/microg/gms/maps/bitmap/AbstractBitmapDescriptor;
+
+    move-result-object v0
+
+    iget-object v1, p0, Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl$1;->val$context:Landroid/content/Context;
+
+    invoke-virtual {v0, v1}, Lorg/microg/gms/maps/bitmap/AbstractBitmapDescriptor;->loadBitmap(Landroid/content/Context;)Landroid/graphics/Bitmap;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_0
 
     .line 80
-    iget-object v3, p0, Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl$1;->this$0:Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;
+    iget-object v0, p0, Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl$1;->this$0:Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;
 
-    monitor-enter v3
+    monitor-enter v0
 
     .line 81
     :try_start_0
-    iget-object v2, p0, Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl$1;->this$0:Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;
+    iget-object v1, p0, Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl$1;->this$0:Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;
 
-    invoke-static {v2}, Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;->access$000(Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;)Ljava/util/Set;
+    invoke-static {v1}, Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;->access$000(Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;)Ljava/util/Set;
 
     move-result-object v1
 
     .line 82
-    .local v1, "waitingForLoad":Ljava/util/Set;, "Ljava/util/Set<Ljava/lang/Runnable;>;"
-    monitor-exit v3
+    monitor-exit v0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 83
     invoke-interface {v1}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
 
-    move-result-object v2
-
-    :goto_0
-    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v3
-
-    if-eqz v3, :cond_0
-
-    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
     move-result-object v0
 
-    check-cast v0, Ljava/lang/Runnable;
+    :goto_0
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/lang/Runnable;
 
     .line 84
-    .local v0, "after":Ljava/lang/Runnable;
-    invoke-interface {v0}, Ljava/lang/Runnable;->run()V
+    invoke-interface {v1}, Ljava/lang/Runnable;->run()V
 
     goto :goto_0
 
-    .line 82
-    .end local v0    # "after":Ljava/lang/Runnable;
-    .end local v1    # "waitingForLoad":Ljava/util/Set;, "Ljava/util/Set<Ljava/lang/Runnable;>;"
     :catchall_0
-    move-exception v2
+    move-exception v1
 
+    .line 82
     :try_start_1
-    monitor-exit v3
+    monitor-exit v0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    throw v2
+    throw v1
+
+    :cond_0
+    const-string v0, "BitmapDescriptor"
 
     .line 87
-    :cond_0
-    const-string v2, "BitmapDescriptor"
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    new-instance v3, Ljava/lang/StringBuilder;
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+    const-string v2, "Done loading "
 
-    const-string v4, "Done loading "
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    iget-object v2, p0, Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl$1;->this$0:Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;
 
-    move-result-object v3
+    invoke-virtual {v2}, Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;->getDescriptor()Lorg/microg/gms/maps/bitmap/AbstractBitmapDescriptor;
 
-    iget-object v4, p0, Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl$1;->this$0:Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;
+    move-result-object v2
 
-    invoke-virtual {v4}, Lorg/microg/gms/maps/bitmap/BitmapDescriptorImpl;->getDescriptor()Lorg/microg/gms/maps/bitmap/AbstractBitmapDescriptor;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object v4
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    move-result-object v1
 
-    move-result-object v3
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 88
     return-void
 .end method

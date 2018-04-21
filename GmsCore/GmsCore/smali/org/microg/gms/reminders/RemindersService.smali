@@ -7,10 +7,9 @@
 .method public constructor <init>()V
     .locals 3
 
-    .prologue
-    .line 30
     const-string v0, "GmsRemindSvc"
 
+    .line 30
     sget-object v1, Lorg/microg/gms/common/GmsService;->REMINDERS:Lorg/microg/gms/common/GmsService;
 
     const/4 v2, 0x0
@@ -19,35 +18,29 @@
 
     invoke-direct {p0, v0, v1, v2}, Lorg/microg/gms/BaseService;-><init>(Ljava/lang/String;Lorg/microg/gms/common/GmsService;[Lorg/microg/gms/common/GmsService;)V
 
-    .line 31
     return-void
 .end method
 
 
 # virtual methods
 .method public handleServiceRequest(Lcom/google/android/gms/common/internal/IGmsCallbacks;Lcom/google/android/gms/common/internal/GetServiceRequest;Lorg/microg/gms/common/GmsService;)V
-    .locals 3
-    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .param p2, "request"    # Lcom/google/android/gms/common/internal/GetServiceRequest;
-    .param p3, "service"    # Lorg/microg/gms/common/GmsService;
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
     .line 35
+    new-instance p2, Lorg/microg/gms/reminders/RemindersServiceImpl;
+
+    invoke-direct {p2}, Lorg/microg/gms/reminders/RemindersServiceImpl;-><init>()V
+
+    const/4 p3, 0x0
+
     const/4 v0, 0x0
 
-    new-instance v1, Lorg/microg/gms/reminders/RemindersServiceImpl;
+    invoke-interface {p1, p3, p2, v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks;->onPostInitComplete(ILandroid/os/IBinder;Landroid/os/Bundle;)V
 
-    invoke-direct {v1}, Lorg/microg/gms/reminders/RemindersServiceImpl;-><init>()V
-
-    const/4 v2, 0x0
-
-    invoke-interface {p1, v0, v1, v2}, Lcom/google/android/gms/common/internal/IGmsCallbacks;->onPostInitComplete(ILandroid/os/IBinder;Landroid/os/Bundle;)V
-
-    .line 36
     return-void
 .end method

@@ -46,26 +46,25 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
-    const/4 v1, 0x0
+    const/4 v0, 0x0
 
     .line 16
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v0
+    move-result-object v1
 
-    sput-object v0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->DEFAULT_STREAM_ID:Ljava/lang/Integer;
+    sput-object v1, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->DEFAULT_STREAM_ID:Ljava/lang/Integer;
 
     .line 17
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v0
 
     sput-object v0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->DEFAULT_LAST_STREAM_ID_RECEIVED:Ljava/lang/Integer;
 
-    .line 18
     const-wide/16 v0, 0x0
 
+    .line 18
     invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
     move-result-object v0
@@ -77,11 +76,7 @@
 
 .method public constructor <init>(Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;)V
     .locals 0
-    .param p1, "stream_id"    # Ljava/lang/Integer;
-    .param p2, "last_stream_id_received"    # Ljava/lang/Integer;
-    .param p3, "status"    # Ljava/lang/Long;
 
-    .prologue
     .line 29
     invoke-direct {p0}, Lcom/squareup/wire/Message;-><init>()V
 
@@ -94,15 +89,12 @@
     .line 32
     iput-object p3, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->status:Ljava/lang/Long;
 
-    .line 33
     return-void
 .end method
 
 .method private constructor <init>(Lorg/microg/gms/gcm/mcs/HeartbeatAck$Builder;)V
     .locals 3
-    .param p1, "builder"    # Lorg/microg/gms/gcm/mcs/HeartbeatAck$Builder;
 
-    .prologue
     .line 36
     iget-object v0, p1, Lorg/microg/gms/gcm/mcs/HeartbeatAck$Builder;->stream_id:Ljava/lang/Integer;
 
@@ -115,16 +107,12 @@
     .line 37
     invoke-virtual {p0, p1}, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->setBuilder(Lcom/squareup/wire/Message$Builder;)V
 
-    .line 38
     return-void
 .end method
 
 .method synthetic constructor <init>(Lorg/microg/gms/gcm/mcs/HeartbeatAck$Builder;Lorg/microg/gms/gcm/mcs/HeartbeatAck$1;)V
     .locals 0
-    .param p1, "x0"    # Lorg/microg/gms/gcm/mcs/HeartbeatAck$Builder;
-    .param p2, "x1"    # Lorg/microg/gms/gcm/mcs/HeartbeatAck$1;
 
-    .prologue
     .line 14
     invoke-direct {p0, p1}, Lorg/microg/gms/gcm/mcs/HeartbeatAck;-><init>(Lorg/microg/gms/gcm/mcs/HeartbeatAck$Builder;)V
 
@@ -134,109 +122,103 @@
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 5
-    .param p1, "other"    # Ljava/lang/Object;
+    .locals 4
 
-    .prologue
-    const/4 v1, 0x1
+    const/4 v0, 0x1
+
+    if-ne p1, p0, :cond_0
+
+    return v0
+
+    .line 43
+    :cond_0
+    instance-of v1, p1, Lorg/microg/gms/gcm/mcs/HeartbeatAck;
 
     const/4 v2, 0x0
 
-    .line 42
-    if-ne p1, p0, :cond_1
+    if-nez v1, :cond_1
+
+    return v2
+
+    .line 44
+    :cond_1
+    check-cast p1, Lorg/microg/gms/gcm/mcs/HeartbeatAck;
 
     .line 45
-    :cond_0
-    :goto_0
-    return v1
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->stream_id:Ljava/lang/Integer;
 
-    .line 43
-    :cond_1
-    instance-of v3, p1, Lorg/microg/gms/gcm/mcs/HeartbeatAck;
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->stream_id:Ljava/lang/Integer;
 
-    if-nez v3, :cond_2
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
 
-    move v1, v2
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->last_stream_id_received:Ljava/lang/Integer;
+
+    iget-object v3, p1, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->last_stream_id_received:Ljava/lang/Integer;
+
+    .line 46
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->status:Ljava/lang/Long;
+
+    iget-object p1, p1, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->status:Ljava/lang/Long;
+
+    .line 47
+    invoke-virtual {p0, v1, p1}, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result p1
+
+    if-eqz p1, :cond_2
 
     goto :goto_0
 
     :cond_2
-    move-object v0, p1
+    move v0, v2
 
-    .line 44
-    check-cast v0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;
-
-    .line 45
-    .local v0, "o":Lorg/microg/gms/gcm/mcs/HeartbeatAck;
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->stream_id:Ljava/lang/Integer;
-
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->stream_id:Ljava/lang/Integer;
-
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->last_stream_id_received:Ljava/lang/Integer;
-
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->last_stream_id_received:Ljava/lang/Integer;
-
-    .line 46
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->status:Ljava/lang/Long;
-
-    iget-object v4, v0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->status:Ljava/lang/Long;
-
-    .line 47
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-nez v3, :cond_0
-
-    :cond_3
-    move v1, v2
-
-    goto :goto_0
+    :goto_0
+    return v0
 .end method
 
 .method public hashCode()I
-    .locals 4
-
-    .prologue
-    const/4 v1, 0x0
+    .locals 3
 
     .line 52
     iget v0, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->hashCode:I
 
-    .line 53
-    .local v0, "result":I
-    if-nez v0, :cond_1
+    if-nez v0, :cond_3
 
     .line 54
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->stream_id:Ljava/lang/Integer;
+    iget-object v0, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->stream_id:Ljava/lang/Integer;
 
-    if-eqz v2, :cond_2
+    const/4 v1, 0x0
 
-    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->stream_id:Ljava/lang/Integer;
+    if-eqz v0, :cond_0
 
-    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
+    iget-object v0, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->stream_id:Ljava/lang/Integer;
+
+    invoke-virtual {v0}, Ljava/lang/Integer;->hashCode()I
 
     move-result v0
 
-    .line 55
-    :goto_0
-    mul-int/lit8 v3, v0, 0x25
+    goto :goto_0
 
+    :cond_0
+    move v0, v1
+
+    :goto_0
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 55
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->last_stream_id_received:Ljava/lang/Integer;
 
-    if-eqz v2, :cond_3
+    if-eqz v2, :cond_1
 
     iget-object v2, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->last_stream_id_received:Ljava/lang/Integer;
 
@@ -244,15 +226,20 @@
 
     move-result v2
 
+    goto :goto_1
+
+    :cond_1
+    move v2, v1
+
     :goto_1
-    add-int v0, v3, v2
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
 
     .line 56
-    mul-int/lit8 v2, v0, 0x25
+    iget-object v2, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->status:Ljava/lang/Long;
 
-    iget-object v3, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->status:Ljava/lang/Long;
-
-    if-eqz v3, :cond_0
+    if-eqz v2, :cond_2
 
     iget-object v1, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->status:Ljava/lang/Long;
 
@@ -260,25 +247,12 @@
 
     move-result v1
 
-    :cond_0
-    add-int v0, v2, v1
+    :cond_2
+    add-int/2addr v0, v1
 
     .line 57
     iput v0, p0, Lorg/microg/gms/gcm/mcs/HeartbeatAck;->hashCode:I
 
-    .line 59
-    :cond_1
-    return v0
-
-    :cond_2
-    move v0, v1
-
-    .line 54
-    goto :goto_0
-
     :cond_3
-    move v2, v1
-
-    .line 55
-    goto :goto_1
+    return v0
 .end method

@@ -23,10 +23,8 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/people/PeopleServiceImpl;Ljava/lang/Thread;)V
     .locals 0
-    .param p1, "this$0"    # Lorg/microg/gms/people/PeopleServiceImpl;
 
-    .prologue
-    .line 138
+    .line 140
     iput-object p1, p0, Lorg/microg/gms/people/PeopleServiceImpl$2;->this$0:Lorg/microg/gms/people/PeopleServiceImpl;
 
     iput-object p2, p0, Lorg/microg/gms/people/PeopleServiceImpl$2;->val$thread:Ljava/lang/Thread;
@@ -46,12 +44,10 @@
         }
     .end annotation
 
-    .prologue
-    .line 141
+    .line 143
     iget-object v0, p0, Lorg/microg/gms/people/PeopleServiceImpl$2;->val$thread:Ljava/lang/Thread;
 
     invoke-virtual {v0}, Ljava/lang/Thread;->interrupt()V
 
-    .line 142
     return-void
 .end method

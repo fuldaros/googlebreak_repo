@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder",
-        "<",
+        "Lcom/squareup/wire/Message$Builder<",
         "Lorg/microg/gms/auth/ConsentData$ScopeDetails;",
         ">;"
     }
@@ -35,27 +34,20 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
     .line 211
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
-    .line 212
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/gms/auth/ConsentData$ScopeDetails;)V
     .locals 1
-    .param p1, "message"    # Lorg/microg/gms/auth/ConsentData$ScopeDetails;
 
-    .prologue
     .line 215
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
-    .line 216
     if-nez p1, :cond_0
 
-    .line 220
-    :goto_0
     return-void
 
     .line 217
@@ -70,11 +62,11 @@
     iput-object v0, p0, Lorg/microg/gms/auth/ConsentData$ScopeDetails$Builder;->description:Ljava/lang/String;
 
     .line 219
-    iget-object v0, p1, Lorg/microg/gms/auth/ConsentData$ScopeDetails;->id:Ljava/lang/String;
+    iget-object p1, p1, Lorg/microg/gms/auth/ConsentData$ScopeDetails;->id:Ljava/lang/String;
 
-    iput-object v0, p0, Lorg/microg/gms/auth/ConsentData$ScopeDetails$Builder;->id:Ljava/lang/String;
+    iput-object p1, p0, Lorg/microg/gms/auth/ConsentData$ScopeDetails$Builder;->id:Ljava/lang/String;
 
-    goto :goto_0
+    return-void
 .end method
 
 
@@ -82,7 +74,6 @@
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
-    .prologue
     .line 205
     invoke-virtual {p0}, Lorg/microg/gms/auth/ConsentData$ScopeDetails$Builder;->build()Lorg/microg/gms/auth/ConsentData$ScopeDetails;
 
@@ -94,7 +85,6 @@
 .method public build()Lorg/microg/gms/auth/ConsentData$ScopeDetails;
     .locals 2
 
-    .prologue
     .line 239
     new-instance v0, Lorg/microg/gms/auth/ConsentData$ScopeDetails;
 

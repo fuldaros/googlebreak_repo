@@ -24,8 +24,7 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .prologue
-    .line 41
+    .line 42
     const-class v0, Lorg/oscim/tiling/source/UrlTileDataSource;
 
     invoke-static {v0}, Lorg/slf4j/LoggerFactory;->getLogger(Ljava/lang/Class;)Lorg/slf4j/Logger;
@@ -38,42 +37,36 @@
 .end method
 
 .method public constructor <init>(Lorg/oscim/tiling/source/UrlTileSource;Lorg/oscim/tiling/source/ITileDecoder;Lorg/oscim/tiling/source/HttpEngine;)V
-    .locals 1
-    .param p1, "tileSource"    # Lorg/oscim/tiling/source/UrlTileSource;
-    .param p2, "tileDecoder"    # Lorg/oscim/tiling/source/ITileDecoder;
-    .param p3, "conn"    # Lorg/oscim/tiling/source/HttpEngine;
-
-    .prologue
-    .line 48
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    .locals 0
 
     .line 49
-    iput-object p2, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mTileDecoder:Lorg/oscim/tiling/source/ITileDecoder;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 50
+    iput-object p2, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mTileDecoder:Lorg/oscim/tiling/source/ITileDecoder;
+
+    .line 51
     iput-object p1, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mTileSource:Lorg/oscim/tiling/source/UrlTileSource;
 
-    .line 51
-    iget-object v0, p1, Lorg/oscim/tiling/source/UrlTileSource;->tileCache:Lorg/oscim/tiling/ITileCache;
-
-    if-eqz v0, :cond_0
-
-    const/4 v0, 0x1
-
-    :goto_0
-    iput-boolean v0, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mUseCache:Z
-
     .line 52
-    iput-object p3, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
+    iget-object p1, p1, Lorg/oscim/tiling/source/UrlTileSource;->tileCache:Lorg/oscim/tiling/ITileCache;
 
-    .line 53
-    return-void
+    if-eqz p1, :cond_0
 
-    .line 51
-    :cond_0
-    const/4 v0, 0x0
+    const/4 p1, 0x1
 
     goto :goto_0
+
+    :cond_0
+    const/4 p1, 0x0
+
+    :goto_0
+    iput-boolean p1, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mUseCache:Z
+
+    .line 53
+    iput-object p3, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
+
+    return-void
 .end method
 
 
@@ -81,523 +74,561 @@
 .method public cancel()V
     .locals 1
 
-    .prologue
-    .line 117
+    .line 120
     iget-object v0, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
 
     invoke-interface {v0}, Lorg/oscim/tiling/source/HttpEngine;->close()V
 
-    .line 118
     return-void
 .end method
 
 .method public dispose()V
     .locals 1
 
-    .prologue
-    .line 112
+    .line 115
     iget-object v0, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
 
     invoke-interface {v0}, Lorg/oscim/tiling/source/HttpEngine;->close()V
 
-    .line 113
     return-void
 .end method
 
 .method public query(Lorg/oscim/layers/tile/MapTile;Lorg/oscim/tiling/ITileDataSink;)V
-    .locals 11
-    .param p1, "tile"    # Lorg/oscim/layers/tile/MapTile;
-    .param p2, "sink"    # Lorg/oscim/tiling/ITileDataSink;
+    .locals 8
 
-    .prologue
-    const/4 v5, 0x1
+    .line 58
+    iget-object v0, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mTileSource:Lorg/oscim/tiling/source/UrlTileSource;
 
-    const/4 v7, 0x0
-
-    .line 57
-    iget-object v8, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mTileSource:Lorg/oscim/tiling/source/UrlTileSource;
-
-    iget-object v1, v8, Lorg/oscim/tiling/source/UrlTileSource;->tileCache:Lorg/oscim/tiling/ITileCache;
-
-    .line 59
-    .local v1, "cache":Lorg/oscim/tiling/ITileCache;
-    iget-boolean v8, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mUseCache:Z
-
-    if-eqz v8, :cond_1
+    iget-object v0, v0, Lorg/oscim/tiling/source/UrlTileSource;->tileCache:Lorg/oscim/tiling/ITileCache;
 
     .line 60
-    invoke-interface {v1, p1}, Lorg/oscim/tiling/ITileCache;->getTile(Lorg/oscim/core/Tile;)Lorg/oscim/tiling/ITileCache$TileReader;
+    iget-boolean v1, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mUseCache:Z
 
-    move-result-object v0
+    if-eqz v1, :cond_1
 
     .line 61
-    .local v0, "c":Lorg/oscim/tiling/ITileCache$TileReader;
-    if-eqz v0, :cond_1
+    invoke-interface {v0, p1}, Lorg/oscim/tiling/ITileCache;->getTile(Lorg/oscim/core/Tile;)Lorg/oscim/tiling/ITileCache$TileReader;
 
-    .line 62
-    invoke-interface {v0}, Lorg/oscim/tiling/ITileCache$TileReader;->getInputStream()Ljava/io/InputStream;
+    move-result-object v1
 
-    move-result-object v4
+    if-eqz v1, :cond_1
 
-    .line 64
-    .local v4, "is":Ljava/io/InputStream;
-    :try_start_0
-    iget-object v8, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mTileDecoder:Lorg/oscim/tiling/source/ITileDecoder;
+    .line 63
+    invoke-interface {v1}, Lorg/oscim/tiling/ITileCache$TileReader;->getInputStream()Ljava/io/InputStream;
 
-    invoke-interface {v8, p1, p2, v4}, Lorg/oscim/tiling/source/ITileDecoder;->decode(Lorg/oscim/core/Tile;Lorg/oscim/tiling/ITileDataSink;Ljava/io/InputStream;)Z
-
-    move-result v8
-
-    if-eqz v8, :cond_0
+    move-result-object v1
 
     .line 65
-    sget-object v8, Lorg/oscim/tiling/QueryResult;->SUCCESS:Lorg/oscim/tiling/QueryResult;
+    :try_start_0
+    iget-object v2, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mTileDecoder:Lorg/oscim/tiling/source/ITileDecoder;
 
-    invoke-interface {p2, v8}, Lorg/oscim/tiling/ITileDataSink;->completed(Lorg/oscim/tiling/QueryResult;)V
+    invoke-interface {v2, p1, p2, v1}, Lorg/oscim/tiling/source/ITileDecoder;->decode(Lorg/oscim/core/Tile;Lorg/oscim/tiling/ITileDataSink;Ljava/io/InputStream;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    .line 66
+    sget-object v2, Lorg/oscim/tiling/QueryResult;->SUCCESS:Lorg/oscim/tiling/QueryResult;
+
+    invoke-interface {p2, v2}, Lorg/oscim/tiling/ITileDataSink;->completed(Lorg/oscim/tiling/QueryResult;)V
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 71
-    invoke-static {v4}, Lorg/oscim/utils/IOUtils;->closeQuietly(Ljava/io/Closeable;)V
+    .line 72
+    invoke-static {v1}, Lorg/oscim/utils/IOUtils;->closeQuietly(Ljava/io/Closeable;)V
 
-    .line 108
-    .end local v0    # "c":Lorg/oscim/tiling/ITileCache$TileReader;
-    .end local v4    # "is":Ljava/io/InputStream;
-    :goto_0
     return-void
 
-    .line 71
-    .restart local v0    # "c":Lorg/oscim/tiling/ITileCache$TileReader;
-    .restart local v4    # "is":Ljava/io/InputStream;
     :cond_0
-    invoke-static {v4}, Lorg/oscim/utils/IOUtils;->closeQuietly(Ljava/io/Closeable;)V
+    :goto_0
+    invoke-static {v1}, Lorg/oscim/utils/IOUtils;->closeQuietly(Ljava/io/Closeable;)V
 
-    .line 76
-    .end local v0    # "c":Lorg/oscim/tiling/ITileCache$TileReader;
-    .end local v4    # "is":Ljava/io/InputStream;
-    :cond_1
-    :goto_1
-    sget-object v6, Lorg/oscim/tiling/QueryResult;->FAILED:Lorg/oscim/tiling/QueryResult;
+    goto :goto_2
 
-    .line 78
-    .local v6, "res":Lorg/oscim/tiling/QueryResult;
-    const/4 v2, 0x0
-
-    .line 80
-    .local v2, "cacheWriter":Lorg/oscim/tiling/ITileCache$TileWriter;
-    :try_start_1
-    iget-object v8, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
-
-    invoke-interface {v8, p1}, Lorg/oscim/tiling/source/HttpEngine;->sendRequest(Lorg/oscim/core/Tile;)V
-
-    .line 81
-    iget-object v8, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
-
-    invoke-interface {v8}, Lorg/oscim/tiling/source/HttpEngine;->read()Ljava/io/InputStream;
-
-    move-result-object v4
-
-    .line 82
-    .restart local v4    # "is":Ljava/io/InputStream;
-    iget-boolean v8, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mUseCache:Z
-
-    if-eqz v8, :cond_2
-
-    .line 83
-    invoke-interface {v1, p1}, Lorg/oscim/tiling/ITileCache;->writeTile(Lorg/oscim/core/Tile;)Lorg/oscim/tiling/ITileCache$TileWriter;
-
-    move-result-object v2
-
-    .line 84
-    iget-object v8, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
-
-    invoke-interface {v2}, Lorg/oscim/tiling/ITileCache$TileWriter;->getOutputStream()Ljava/io/OutputStream;
-
-    move-result-object v9
-
-    invoke-interface {v8, v9}, Lorg/oscim/tiling/source/HttpEngine;->setCache(Ljava/io/OutputStream;)V
-
-    .line 86
-    :cond_2
-    iget-object v8, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mTileDecoder:Lorg/oscim/tiling/source/ITileDecoder;
-
-    invoke-interface {v8, p1, p2, v4}, Lorg/oscim/tiling/source/ITileDecoder;->decode(Lorg/oscim/core/Tile;Lorg/oscim/tiling/ITileDataSink;Ljava/io/InputStream;)Z
-
-    move-result v8
-
-    if-eqz v8, :cond_3
-
-    .line 87
-    sget-object v6, Lorg/oscim/tiling/QueryResult;->SUCCESS:Lorg/oscim/tiling/QueryResult;
-    :try_end_1
-    .catch Ljava/net/SocketException; {:try_start_1 .. :try_end_1} :catch_1
-    .catch Ljava/net/SocketTimeoutException; {:try_start_1 .. :try_end_1} :catch_2
-    .catch Ljava/net/UnknownHostException; {:try_start_1 .. :try_end_1} :catch_3
-    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_4
-    .catchall {:try_start_1 .. :try_end_1} :catchall_1
-
-    .line 98
-    :cond_3
-    sget-object v8, Lorg/oscim/tiling/QueryResult;->SUCCESS:Lorg/oscim/tiling/QueryResult;
-
-    if-ne v6, v8, :cond_6
-
-    .line 100
-    .local v5, "ok":Z
-    :goto_2
-    iget-object v7, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
-
-    invoke-interface {v7, v5}, Lorg/oscim/tiling/source/HttpEngine;->requestCompleted(Z)Z
-
-    move-result v7
-
-    if-nez v7, :cond_4
-
-    if-eqz v5, :cond_4
-
-    .line 101
-    sget-object v6, Lorg/oscim/tiling/QueryResult;->FAILED:Lorg/oscim/tiling/QueryResult;
-
-    .line 103
-    :cond_4
-    if-eqz v2, :cond_5
-
-    .line 104
-    invoke-interface {v2, v5}, Lorg/oscim/tiling/ITileCache$TileWriter;->complete(Z)V
-
-    .line 106
-    :cond_5
-    invoke-interface {p2, v6}, Lorg/oscim/tiling/ITileDataSink;->completed(Lorg/oscim/tiling/QueryResult;)V
-
-    goto :goto_0
-
-    .line 68
-    .end local v2    # "cacheWriter":Lorg/oscim/tiling/ITileCache$TileWriter;
-    .end local v5    # "ok":Z
-    .end local v6    # "res":Lorg/oscim/tiling/QueryResult;
-    .restart local v0    # "c":Lorg/oscim/tiling/ITileCache$TileReader;
-    :catch_0
-    move-exception v3
-
-    .line 69
-    .local v3, "e":Ljava/io/IOException;
-    :try_start_2
-    sget-object v8, Lorg/oscim/tiling/source/UrlTileDataSource;->log:Lorg/slf4j/Logger;
-
-    const-string v9, "{} Cache read: {}"
-
-    invoke-interface {v8, v9, p1, v3}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
-
-    .line 71
-    invoke-static {v4}, Lorg/oscim/utils/IOUtils;->closeQuietly(Ljava/io/Closeable;)V
+    :catchall_0
+    move-exception p1
 
     goto :goto_1
 
-    .end local v3    # "e":Ljava/io/IOException;
-    :catchall_0
-    move-exception v7
+    :catch_0
+    move-exception v2
 
-    invoke-static {v4}, Lorg/oscim/utils/IOUtils;->closeQuietly(Ljava/io/Closeable;)V
+    .line 70
+    :try_start_1
+    sget-object v3, Lorg/oscim/tiling/source/UrlTileDataSource;->log:Lorg/slf4j/Logger;
 
-    throw v7
+    const-string v4, "{} Cache read: {}"
 
-    .end local v0    # "c":Lorg/oscim/tiling/ITileCache$TileReader;
-    .restart local v2    # "cacheWriter":Lorg/oscim/tiling/ITileCache$TileWriter;
-    .restart local v6    # "res":Lorg/oscim/tiling/QueryResult;
-    :cond_6
-    move v5, v7
-
-    .line 98
-    goto :goto_2
-
-    .line 88
-    .end local v4    # "is":Ljava/io/InputStream;
-    :catch_1
-    move-exception v3
-
-    .line 89
-    .local v3, "e":Ljava/net/SocketException;
-    :try_start_3
-    sget-object v8, Lorg/oscim/tiling/source/UrlTileDataSource;->log:Lorg/slf4j/Logger;
-
-    const-string v9, "{} Socket Error: {}"
-
-    invoke-virtual {v3}, Ljava/net/SocketException;->getMessage()Ljava/lang/String;
-
-    move-result-object v10
-
-    invoke-interface {v8, v9, p1, v10}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_1
-
-    .line 98
-    sget-object v8, Lorg/oscim/tiling/QueryResult;->SUCCESS:Lorg/oscim/tiling/QueryResult;
-
-    if-ne v6, v8, :cond_9
-
-    .line 100
-    .restart local v5    # "ok":Z
-    :goto_3
-    iget-object v7, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
-
-    invoke-interface {v7, v5}, Lorg/oscim/tiling/source/HttpEngine;->requestCompleted(Z)Z
-
-    move-result v7
-
-    if-nez v7, :cond_7
-
-    if-eqz v5, :cond_7
-
-    .line 101
-    sget-object v6, Lorg/oscim/tiling/QueryResult;->FAILED:Lorg/oscim/tiling/QueryResult;
-
-    .line 103
-    :cond_7
-    if-eqz v2, :cond_8
-
-    .line 104
-    invoke-interface {v2, v5}, Lorg/oscim/tiling/ITileCache$TileWriter;->complete(Z)V
-
-    .line 106
-    :cond_8
-    invoke-interface {p2, v6}, Lorg/oscim/tiling/ITileDataSink;->completed(Lorg/oscim/tiling/QueryResult;)V
+    invoke-interface {v3, v4, p1, v2}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     goto :goto_0
 
-    .end local v5    # "ok":Z
-    :cond_9
-    move v5, v7
+    .line 72
+    :goto_1
+    invoke-static {v1}, Lorg/oscim/utils/IOUtils;->closeQuietly(Ljava/io/Closeable;)V
 
-    .line 98
+    throw p1
+
+    .line 77
+    :cond_1
+    :goto_2
+    sget-object v1, Lorg/oscim/tiling/QueryResult;->FAILED:Lorg/oscim/tiling/QueryResult;
+
+    const/4 v2, 0x0
+
+    const/4 v3, 0x0
+
+    const/4 v4, 0x1
+
+    .line 81
+    :try_start_2
+    iget-object v5, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
+
+    invoke-interface {v5, p1}, Lorg/oscim/tiling/source/HttpEngine;->sendRequest(Lorg/oscim/core/Tile;)V
+
+    .line 82
+    iget-object v5, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
+
+    invoke-interface {v5}, Lorg/oscim/tiling/source/HttpEngine;->read()Ljava/io/InputStream;
+
+    move-result-object v5
+
+    .line 83
+    iget-boolean v6, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mUseCache:Z
+
+    if-eqz v6, :cond_2
+
+    .line 84
+    invoke-interface {v0, p1}, Lorg/oscim/tiling/ITileCache;->writeTile(Lorg/oscim/core/Tile;)Lorg/oscim/tiling/ITileCache$TileWriter;
+
+    move-result-object v0
+    :try_end_2
+    .catch Ljava/net/SocketException; {:try_start_2 .. :try_end_2} :catch_a
+    .catch Ljava/net/SocketTimeoutException; {:try_start_2 .. :try_end_2} :catch_9
+    .catch Ljava/net/UnknownHostException; {:try_start_2 .. :try_end_2} :catch_8
+    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_7
+    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_6
+    .catchall {:try_start_2 .. :try_end_2} :catchall_2
+
+    .line 85
+    :try_start_3
+    iget-object v2, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
+
+    invoke-interface {v0}, Lorg/oscim/tiling/ITileCache$TileWriter;->getOutputStream()Ljava/io/OutputStream;
+
+    move-result-object v6
+
+    invoke-interface {v2, v6}, Lorg/oscim/tiling/source/HttpEngine;->setCache(Ljava/io/OutputStream;)V
+    :try_end_3
+    .catch Ljava/net/SocketException; {:try_start_3 .. :try_end_3} :catch_5
+    .catch Ljava/net/SocketTimeoutException; {:try_start_3 .. :try_end_3} :catch_4
+    .catch Ljava/net/UnknownHostException; {:try_start_3 .. :try_end_3} :catch_3
+    .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_2
+    .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_1
+    .catchall {:try_start_3 .. :try_end_3} :catchall_1
+
+    move-object v2, v0
+
     goto :goto_3
 
-    .line 90
-    .end local v3    # "e":Ljava/net/SocketException;
+    :catchall_1
+    move-exception p1
+
+    move-object v2, v0
+
+    goto/16 :goto_c
+
+    :catch_1
+    move-exception v2
+
+    move-object v7, v2
+
+    move-object v2, v0
+
+    move-object v0, v7
+
+    goto :goto_5
+
     :catch_2
-    move-exception v3
+    move-exception v2
 
-    .line 91
-    .local v3, "e":Ljava/net/SocketTimeoutException;
+    move-object v7, v2
+
+    move-object v2, v0
+
+    move-object v0, v7
+
+    goto/16 :goto_6
+
+    :catch_3
+    move-exception v2
+
+    move-object v7, v2
+
+    move-object v2, v0
+
+    move-object v0, v7
+
+    goto/16 :goto_7
+
+    :catch_4
+    move-object v2, v0
+
+    goto/16 :goto_8
+
+    :catch_5
+    move-exception v2
+
+    move-object v7, v2
+
+    move-object v2, v0
+
+    move-object v0, v7
+
+    goto/16 :goto_9
+
+    .line 87
+    :cond_2
+    :goto_3
     :try_start_4
-    sget-object v8, Lorg/oscim/tiling/source/UrlTileDataSource;->log:Lorg/slf4j/Logger;
+    iget-object v0, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mTileDecoder:Lorg/oscim/tiling/source/ITileDecoder;
 
-    const-string v9, "{} Socket Timeout"
+    invoke-interface {v0, p1, p2, v5}, Lorg/oscim/tiling/source/ITileDecoder;->decode(Lorg/oscim/core/Tile;Lorg/oscim/tiling/ITileDataSink;Ljava/io/InputStream;)Z
 
-    invoke-interface {v8, v9, p1}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;)V
+    move-result v0
 
-    .line 92
-    sget-object v6, Lorg/oscim/tiling/QueryResult;->DELAYED:Lorg/oscim/tiling/QueryResult;
+    if-eqz v0, :cond_3
+
+    .line 88
+    sget-object v0, Lorg/oscim/tiling/QueryResult;->SUCCESS:Lorg/oscim/tiling/QueryResult;
     :try_end_4
-    .catchall {:try_start_4 .. :try_end_4} :catchall_1
+    .catch Ljava/net/SocketException; {:try_start_4 .. :try_end_4} :catch_a
+    .catch Ljava/net/SocketTimeoutException; {:try_start_4 .. :try_end_4} :catch_9
+    .catch Ljava/net/UnknownHostException; {:try_start_4 .. :try_end_4} :catch_8
+    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_7
+    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_6
+    .catchall {:try_start_4 .. :try_end_4} :catchall_2
 
-    .line 98
-    sget-object v8, Lorg/oscim/tiling/QueryResult;->SUCCESS:Lorg/oscim/tiling/QueryResult;
-
-    if-ne v6, v8, :cond_c
-
-    .line 100
-    .restart local v5    # "ok":Z
-    :goto_4
-    iget-object v7, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
-
-    invoke-interface {v7, v5}, Lorg/oscim/tiling/source/HttpEngine;->requestCompleted(Z)Z
-
-    move-result v7
-
-    if-nez v7, :cond_a
-
-    if-eqz v5, :cond_a
-
-    .line 101
-    sget-object v6, Lorg/oscim/tiling/QueryResult;->FAILED:Lorg/oscim/tiling/QueryResult;
-
-    .line 103
-    :cond_a
-    if-eqz v2, :cond_b
-
-    .line 104
-    invoke-interface {v2, v5}, Lorg/oscim/tiling/ITileCache$TileWriter;->complete(Z)V
-
-    .line 106
-    :cond_b
-    invoke-interface {p2, v6}, Lorg/oscim/tiling/ITileDataSink;->completed(Lorg/oscim/tiling/QueryResult;)V
-
-    goto/16 :goto_0
-
-    .end local v5    # "ok":Z
-    :cond_c
-    move v5, v7
-
-    .line 98
     goto :goto_4
 
-    .line 93
-    .end local v3    # "e":Ljava/net/SocketTimeoutException;
-    :catch_3
-    move-exception v3
-
-    .line 94
-    .local v3, "e":Ljava/net/UnknownHostException;
-    :try_start_5
-    sget-object v8, Lorg/oscim/tiling/source/UrlTileDataSource;->log:Lorg/slf4j/Logger;
-
-    const-string v9, "{} Unknown host: {}"
-
-    invoke-virtual {v3}, Ljava/net/UnknownHostException;->getMessage()Ljava/lang/String;
-
-    move-result-object v10
-
-    invoke-interface {v8, v9, p1, v10}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
-    :try_end_5
-    .catchall {:try_start_5 .. :try_end_5} :catchall_1
-
-    .line 98
-    sget-object v8, Lorg/oscim/tiling/QueryResult;->SUCCESS:Lorg/oscim/tiling/QueryResult;
-
-    if-ne v6, v8, :cond_f
-
-    .line 100
-    .restart local v5    # "ok":Z
-    :goto_5
-    iget-object v7, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
-
-    invoke-interface {v7, v5}, Lorg/oscim/tiling/source/HttpEngine;->requestCompleted(Z)Z
-
-    move-result v7
-
-    if-nez v7, :cond_d
-
-    if-eqz v5, :cond_d
+    :cond_3
+    move-object v0, v1
 
     .line 101
-    sget-object v6, Lorg/oscim/tiling/QueryResult;->FAILED:Lorg/oscim/tiling/QueryResult;
+    :goto_4
+    sget-object p1, Lorg/oscim/tiling/QueryResult;->SUCCESS:Lorg/oscim/tiling/QueryResult;
+
+    if-ne v0, p1, :cond_4
+
+    move v3, v4
+
+    .line 103
+    :cond_4
+    iget-object p1, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
+
+    invoke-interface {p1, v3}, Lorg/oscim/tiling/source/HttpEngine;->requestCompleted(Z)Z
+
+    move-result p1
+
+    if-nez p1, :cond_5
+
+    if-eqz v3, :cond_5
+
+    .line 104
+    sget-object v0, Lorg/oscim/tiling/QueryResult;->FAILED:Lorg/oscim/tiling/QueryResult;
+
+    :cond_5
+    if-eqz v2, :cond_6
+
+    .line 107
+    invoke-interface {v2, v3}, Lorg/oscim/tiling/ITileCache$TileWriter;->complete(Z)V
+
+    .line 109
+    :cond_6
+    invoke-interface {p2, v0}, Lorg/oscim/tiling/ITileDataSink;->completed(Lorg/oscim/tiling/QueryResult;)V
+
+    goto/16 :goto_b
+
+    :catchall_2
+    move-exception p1
+
+    goto/16 :goto_c
+
+    :catch_6
+    move-exception v0
+
+    .line 99
+    :goto_5
+    :try_start_5
+    sget-object v5, Lorg/oscim/tiling/source/UrlTileDataSource;->log:Lorg/slf4j/Logger;
+
+    const-string v6, "{} Error: {}"
+
+    invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-interface {v5, v6, p1, v0}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+    :try_end_5
+    .catchall {:try_start_5 .. :try_end_5} :catchall_2
+
+    .line 101
+    sget-object p1, Lorg/oscim/tiling/QueryResult;->SUCCESS:Lorg/oscim/tiling/QueryResult;
+
+    if-ne v1, p1, :cond_7
+
+    move v3, v4
+
+    .line 103
+    :cond_7
+    iget-object p1, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
+
+    invoke-interface {p1, v3}, Lorg/oscim/tiling/source/HttpEngine;->requestCompleted(Z)Z
+
+    move-result p1
+
+    if-nez p1, :cond_8
+
+    if-eqz v3, :cond_8
+
+    .line 104
+    sget-object v1, Lorg/oscim/tiling/QueryResult;->FAILED:Lorg/oscim/tiling/QueryResult;
+
+    :cond_8
+    if-eqz v2, :cond_12
+
+    goto/16 :goto_a
+
+    :catch_7
+    move-exception v0
+
+    .line 97
+    :goto_6
+    :try_start_6
+    sget-object v5, Lorg/oscim/tiling/source/UrlTileDataSource;->log:Lorg/slf4j/Logger;
+
+    const-string v6, "{} Network Error: {}"
+
+    invoke-virtual {v0}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-interface {v5, v6, p1, v0}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+    :try_end_6
+    .catchall {:try_start_6 .. :try_end_6} :catchall_2
+
+    .line 101
+    sget-object p1, Lorg/oscim/tiling/QueryResult;->SUCCESS:Lorg/oscim/tiling/QueryResult;
+
+    if-ne v1, p1, :cond_9
+
+    move v3, v4
+
+    .line 103
+    :cond_9
+    iget-object p1, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
+
+    invoke-interface {p1, v3}, Lorg/oscim/tiling/source/HttpEngine;->requestCompleted(Z)Z
+
+    move-result p1
+
+    if-nez p1, :cond_a
+
+    if-eqz v3, :cond_a
+
+    .line 104
+    sget-object v1, Lorg/oscim/tiling/QueryResult;->FAILED:Lorg/oscim/tiling/QueryResult;
+
+    :cond_a
+    if-eqz v2, :cond_12
+
+    goto :goto_a
+
+    :catch_8
+    move-exception v0
+
+    .line 95
+    :goto_7
+    :try_start_7
+    sget-object v5, Lorg/oscim/tiling/source/UrlTileDataSource;->log:Lorg/slf4j/Logger;
+
+    const-string v6, "{} Unknown host: {}"
+
+    invoke-virtual {v0}, Ljava/net/UnknownHostException;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-interface {v5, v6, p1, v0}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+    :try_end_7
+    .catchall {:try_start_7 .. :try_end_7} :catchall_2
+
+    .line 101
+    sget-object p1, Lorg/oscim/tiling/QueryResult;->SUCCESS:Lorg/oscim/tiling/QueryResult;
+
+    if-ne v1, p1, :cond_b
+
+    move v3, v4
+
+    .line 103
+    :cond_b
+    iget-object p1, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
+
+    invoke-interface {p1, v3}, Lorg/oscim/tiling/source/HttpEngine;->requestCompleted(Z)Z
+
+    move-result p1
+
+    if-nez p1, :cond_c
+
+    if-eqz v3, :cond_c
+
+    .line 104
+    sget-object v1, Lorg/oscim/tiling/QueryResult;->FAILED:Lorg/oscim/tiling/QueryResult;
+
+    :cond_c
+    if-eqz v2, :cond_12
+
+    goto :goto_a
+
+    .line 92
+    :catch_9
+    :goto_8
+    :try_start_8
+    sget-object v0, Lorg/oscim/tiling/source/UrlTileDataSource;->log:Lorg/slf4j/Logger;
+
+    const-string v5, "{} Socket Timeout"
+
+    invoke-interface {v0, v5, p1}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 93
+    sget-object p1, Lorg/oscim/tiling/QueryResult;->DELAYED:Lorg/oscim/tiling/QueryResult;
+    :try_end_8
+    .catchall {:try_start_8 .. :try_end_8} :catchall_2
+
+    .line 101
+    sget-object v0, Lorg/oscim/tiling/QueryResult;->SUCCESS:Lorg/oscim/tiling/QueryResult;
+
+    if-ne p1, v0, :cond_d
+
+    move v3, v4
 
     .line 103
     :cond_d
-    if-eqz v2, :cond_e
+    iget-object v0, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
+
+    invoke-interface {v0, v3}, Lorg/oscim/tiling/source/HttpEngine;->requestCompleted(Z)Z
+
+    move-result v0
+
+    if-nez v0, :cond_e
+
+    if-eqz v3, :cond_e
 
     .line 104
-    invoke-interface {v2, v5}, Lorg/oscim/tiling/ITileCache$TileWriter;->complete(Z)V
+    sget-object p1, Lorg/oscim/tiling/QueryResult;->FAILED:Lorg/oscim/tiling/QueryResult;
 
-    .line 106
     :cond_e
-    invoke-interface {p2, v6}, Lorg/oscim/tiling/ITileDataSink;->completed(Lorg/oscim/tiling/QueryResult;)V
+    if-eqz v2, :cond_f
 
-    goto/16 :goto_0
+    .line 107
+    invoke-interface {v2, v3}, Lorg/oscim/tiling/ITileCache$TileWriter;->complete(Z)V
 
-    .end local v5    # "ok":Z
+    .line 109
     :cond_f
-    move v5, v7
+    invoke-interface {p2, p1}, Lorg/oscim/tiling/ITileDataSink;->completed(Lorg/oscim/tiling/QueryResult;)V
 
-    .line 98
-    goto :goto_5
+    goto :goto_b
 
-    .line 95
-    .end local v3    # "e":Ljava/net/UnknownHostException;
-    :catch_4
-    move-exception v3
+    :catch_a
+    move-exception v0
 
-    .line 96
-    .local v3, "e":Ljava/io/IOException;
-    :try_start_6
-    sget-object v8, Lorg/oscim/tiling/source/UrlTileDataSource;->log:Lorg/slf4j/Logger;
+    .line 90
+    :goto_9
+    :try_start_9
+    sget-object v5, Lorg/oscim/tiling/source/UrlTileDataSource;->log:Lorg/slf4j/Logger;
 
-    const-string v9, "{} Network Error: {}"
+    const-string v6, "{} Socket Error: {}"
 
-    invoke-virtual {v3}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
+    invoke-virtual {v0}, Ljava/net/SocketException;->getMessage()Ljava/lang/String;
 
-    move-result-object v10
+    move-result-object v0
 
-    invoke-interface {v8, v9, p1, v10}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
-    :try_end_6
-    .catchall {:try_start_6 .. :try_end_6} :catchall_1
-
-    .line 98
-    sget-object v8, Lorg/oscim/tiling/QueryResult;->SUCCESS:Lorg/oscim/tiling/QueryResult;
-
-    if-ne v6, v8, :cond_12
-
-    .line 100
-    .restart local v5    # "ok":Z
-    :goto_6
-    iget-object v7, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
-
-    invoke-interface {v7, v5}, Lorg/oscim/tiling/source/HttpEngine;->requestCompleted(Z)Z
-
-    move-result v7
-
-    if-nez v7, :cond_10
-
-    if-eqz v5, :cond_10
+    invoke-interface {v5, v6, p1, v0}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+    :try_end_9
+    .catchall {:try_start_9 .. :try_end_9} :catchall_2
 
     .line 101
-    sget-object v6, Lorg/oscim/tiling/QueryResult;->FAILED:Lorg/oscim/tiling/QueryResult;
+    sget-object p1, Lorg/oscim/tiling/QueryResult;->SUCCESS:Lorg/oscim/tiling/QueryResult;
+
+    if-ne v1, p1, :cond_10
+
+    move v3, v4
 
     .line 103
     :cond_10
-    if-eqz v2, :cond_11
+    iget-object p1, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
+
+    invoke-interface {p1, v3}, Lorg/oscim/tiling/source/HttpEngine;->requestCompleted(Z)Z
+
+    move-result p1
+
+    if-nez p1, :cond_11
+
+    if-eqz v3, :cond_11
 
     .line 104
-    invoke-interface {v2, v5}, Lorg/oscim/tiling/ITileCache$TileWriter;->complete(Z)V
+    sget-object v1, Lorg/oscim/tiling/QueryResult;->FAILED:Lorg/oscim/tiling/QueryResult;
 
-    .line 106
     :cond_11
-    invoke-interface {p2, v6}, Lorg/oscim/tiling/ITileDataSink;->completed(Lorg/oscim/tiling/QueryResult;)V
+    if-eqz v2, :cond_12
 
-    goto/16 :goto_0
+    .line 107
+    :goto_a
+    invoke-interface {v2, v3}, Lorg/oscim/tiling/ITileCache$TileWriter;->complete(Z)V
 
-    .end local v5    # "ok":Z
+    .line 109
     :cond_12
-    move v5, v7
+    invoke-interface {p2, v1}, Lorg/oscim/tiling/ITileDataSink;->completed(Lorg/oscim/tiling/QueryResult;)V
 
-    .line 98
-    goto :goto_6
-
-    .end local v3    # "e":Ljava/io/IOException;
-    :catchall_1
-    move-exception v8
-
-    sget-object v9, Lorg/oscim/tiling/QueryResult;->SUCCESS:Lorg/oscim/tiling/QueryResult;
-
-    if-ne v6, v9, :cond_15
-
-    .line 100
-    .restart local v5    # "ok":Z
-    :goto_7
-    iget-object v7, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
-
-    invoke-interface {v7, v5}, Lorg/oscim/tiling/source/HttpEngine;->requestCompleted(Z)Z
-
-    move-result v7
-
-    if-nez v7, :cond_13
-
-    if-eqz v5, :cond_13
+    :goto_b
+    return-void
 
     .line 101
-    sget-object v6, Lorg/oscim/tiling/QueryResult;->FAILED:Lorg/oscim/tiling/QueryResult;
+    :goto_c
+    sget-object v0, Lorg/oscim/tiling/QueryResult;->SUCCESS:Lorg/oscim/tiling/QueryResult;
+
+    if-ne v1, v0, :cond_13
+
+    move v3, v4
 
     .line 103
     :cond_13
-    if-eqz v2, :cond_14
+    iget-object v0, p0, Lorg/oscim/tiling/source/UrlTileDataSource;->mConn:Lorg/oscim/tiling/source/HttpEngine;
+
+    invoke-interface {v0, v3}, Lorg/oscim/tiling/source/HttpEngine;->requestCompleted(Z)Z
+
+    move-result v0
+
+    if-nez v0, :cond_14
+
+    if-eqz v3, :cond_14
 
     .line 104
-    invoke-interface {v2, v5}, Lorg/oscim/tiling/ITileCache$TileWriter;->complete(Z)V
+    sget-object v1, Lorg/oscim/tiling/QueryResult;->FAILED:Lorg/oscim/tiling/QueryResult;
 
-    .line 106
     :cond_14
-    invoke-interface {p2, v6}, Lorg/oscim/tiling/ITileDataSink;->completed(Lorg/oscim/tiling/QueryResult;)V
+    if-eqz v2, :cond_15
 
     .line 107
-    throw v8
+    invoke-interface {v2, v3}, Lorg/oscim/tiling/ITileCache$TileWriter;->complete(Z)V
 
-    .end local v5    # "ok":Z
+    .line 109
     :cond_15
-    move v5, v7
+    invoke-interface {p2, v1}, Lorg/oscim/tiling/ITileDataSink;->completed(Lorg/oscim/tiling/QueryResult;)V
 
-    .line 98
-    goto :goto_7
+    .line 110
+    throw p1
 .end method

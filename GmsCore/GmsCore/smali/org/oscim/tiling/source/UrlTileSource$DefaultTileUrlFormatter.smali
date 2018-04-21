@@ -12,18 +12,26 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x8
+    accessFlags = 0xa
     name = "DefaultTileUrlFormatter"
 .end annotation
 
 
 # direct methods
-.method constructor <init>()V
+.method private constructor <init>()V
     .locals 0
 
-    .prologue
-    .line 161
+    .line 196
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method synthetic constructor <init>(Lorg/oscim/tiling/source/UrlTileSource$1;)V
+    .locals 0
+
+    .line 196
+    invoke-direct {p0}, Lorg/oscim/tiling/source/UrlTileSource$DefaultTileUrlFormatter;-><init>()V
 
     return-void
 .end method
@@ -32,35 +40,30 @@
 # virtual methods
 .method public formatTilePath(Lorg/oscim/tiling/source/UrlTileSource;Lorg/oscim/core/Tile;)Ljava/lang/String;
     .locals 8
-    .param p1, "tileSource"    # Lorg/oscim/tiling/source/UrlTileSource;
-    .param p2, "tile"    # Lorg/oscim/core/Tile;
 
-    .prologue
-    const/4 v3, 0x0
+    .line 200
+    new-instance v0, Ljava/lang/StringBuilder;
 
-    .line 165
-    new-instance v1, Ljava/lang/StringBuilder;
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    .line 166
-    .local v1, "sb":Ljava/lang/StringBuilder;
+    .line 201
     invoke-virtual {p1}, Lorg/oscim/tiling/source/UrlTileSource;->getTilePath()[Ljava/lang/String;
 
-    move-result-object v4
+    move-result-object v1
 
-    array-length v5, v4
+    const/4 v2, 0x0
 
-    move v2, v3
+    array-length v3, v1
+
+    move v4, v2
 
     :goto_0
-    if-ge v2, v5, :cond_1
+    if-ge v4, v3, :cond_1
 
-    aget-object v0, v4, v2
+    aget-object v5, v1, v4
 
-    .line 167
-    .local v0, "b":Ljava/lang/String;
-    invoke-virtual {v0}, Ljava/lang/String;->length()I
+    .line 202
+    invoke-virtual {v5}, Ljava/lang/String;->length()I
 
     move-result v6
 
@@ -68,63 +71,73 @@
 
     if-ne v6, v7, :cond_0
 
-    .line 168
-    invoke-virtual {v0, v3}, Ljava/lang/String;->charAt(I)C
+    .line 203
+    invoke-virtual {v5, v2}, Ljava/lang/String;->charAt(I)C
 
     move-result v6
 
     packed-switch v6, :pswitch_data_0
 
-    .line 182
-    :cond_0
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    goto :goto_1
 
-    .line 166
+    .line 211
+    :pswitch_0
+    iget-byte v5, p2, Lorg/oscim/core/Tile;->zoomLevel:B
+
+    invoke-virtual {p1, v5}, Lorg/oscim/tiling/source/UrlTileSource;->tileZToUrlZ(I)I
+
+    move-result v5
+
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    goto :goto_2
+
+    .line 208
+    :pswitch_1
+    iget v5, p2, Lorg/oscim/core/Tile;->tileY:I
+
+    invoke-virtual {p1, v5}, Lorg/oscim/tiling/source/UrlTileSource;->tileYToUrlY(I)I
+
+    move-result v5
+
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    goto :goto_2
+
+    .line 205
+    :pswitch_2
+    iget v5, p2, Lorg/oscim/core/Tile;->tileX:I
+
+    invoke-virtual {p1, v5}, Lorg/oscim/tiling/source/UrlTileSource;->tileXToUrlX(I)I
+
+    move-result v5
+
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    goto :goto_2
+
+    .line 217
+    :cond_0
     :goto_1
-    add-int/lit8 v2, v2, 0x1
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    :goto_2
+    add-int/lit8 v4, v4, 0x1
 
     goto :goto_0
 
-    .line 170
-    :pswitch_0
-    iget v6, p2, Lorg/oscim/core/Tile;->tileX:I
-
-    invoke-virtual {v1, v6}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    goto :goto_1
-
-    .line 173
-    :pswitch_1
-    iget v6, p2, Lorg/oscim/core/Tile;->tileY:I
-
-    invoke-virtual {v1, v6}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    goto :goto_1
-
-    .line 176
-    :pswitch_2
-    iget-byte v6, p2, Lorg/oscim/core/Tile;->zoomLevel:B
-
-    invoke-virtual {v1, v6}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    goto :goto_1
-
-    .line 184
-    .end local v0    # "b":Ljava/lang/String;
+    .line 219
     :cond_1
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object p1
 
-    return-object v2
-
-    .line 168
-    nop
+    return-object p1
 
     :pswitch_data_0
     .packed-switch 0x58
-        :pswitch_0
-        :pswitch_1
         :pswitch_2
+        :pswitch_1
+        :pswitch_0
     .end packed-switch
 .end method

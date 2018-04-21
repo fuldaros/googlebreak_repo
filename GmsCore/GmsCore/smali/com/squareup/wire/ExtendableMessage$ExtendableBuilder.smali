@@ -16,10 +16,10 @@
 .annotation system Ldalvik/annotation/Signature;
     value = {
         "<T:",
-        "Lcom/squareup/wire/ExtendableMessage",
-        "<*>;>",
-        "Lcom/squareup/wire/Message$Builder",
-        "<TT;>;"
+        "Lcom/squareup/wire/ExtendableMessage<",
+        "*>;>",
+        "Lcom/squareup/wire/Message$Builder<",
+        "TT;>;"
     }
 .end annotation
 
@@ -28,8 +28,8 @@
 .field extensionMap:Lcom/squareup/wire/ExtensionMap;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Lcom/squareup/wire/ExtensionMap",
-            "<TT;>;"
+            "Lcom/squareup/wire/ExtensionMap<",
+            "TT;>;"
         }
     .end annotation
 .end field
@@ -39,12 +39,9 @@
 .method protected constructor <init>()V
     .locals 0
 
-    .prologue
     .line 94
-    .local p0, "this":Lcom/squareup/wire/ExtendableMessage$ExtendableBuilder;, "Lcom/squareup/wire/ExtendableMessage$ExtendableBuilder<TT;>;"
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
-    .line 95
     return-void
 .end method
 
@@ -57,18 +54,14 @@
             "<E:",
             "Ljava/lang/Object;",
             ">(",
-            "Lcom/squareup/wire/Extension",
-            "<TT;TE;>;TE;)",
-            "Lcom/squareup/wire/ExtendableMessage$ExtendableBuilder",
-            "<TT;>;"
+            "Lcom/squareup/wire/Extension<",
+            "TT;TE;>;TE;)",
+            "Lcom/squareup/wire/ExtendableMessage$ExtendableBuilder<",
+            "TT;>;"
         }
     .end annotation
 
-    .prologue
     .line 116
-    .local p0, "this":Lcom/squareup/wire/ExtendableMessage$ExtendableBuilder;, "Lcom/squareup/wire/ExtendableMessage$ExtendableBuilder<TT;>;"
-    .local p1, "extension":Lcom/squareup/wire/Extension;, "Lcom/squareup/wire/Extension<TT;TE;>;"
-    .local p2, "value":Ljava/lang/Object;, "TE;"
     iget-object v0, p0, Lcom/squareup/wire/ExtendableMessage$ExtendableBuilder;->extensionMap:Lcom/squareup/wire/ExtensionMap;
 
     if-nez v0, :cond_0
@@ -80,9 +73,7 @@
 
     iput-object v0, p0, Lcom/squareup/wire/ExtendableMessage$ExtendableBuilder;->extensionMap:Lcom/squareup/wire/ExtensionMap;
 
-    .line 121
-    :goto_0
-    return-object p0
+    goto :goto_0
 
     .line 119
     :cond_0
@@ -90,5 +81,6 @@
 
     invoke-virtual {v0, p1, p2}, Lcom/squareup/wire/ExtensionMap;->put(Lcom/squareup/wire/Extension;Ljava/lang/Object;)V
 
-    goto :goto_0
+    :goto_0
+    return-object p0
 .end method

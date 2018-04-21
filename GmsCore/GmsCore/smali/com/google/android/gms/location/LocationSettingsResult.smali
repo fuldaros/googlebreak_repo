@@ -2,13 +2,15 @@
 .super Lorg/microg/safeparcel/AutoSafeParcelable;
 .source "LocationSettingsResult.java"
 
+# interfaces
+.implements Lcom/google/android/gms/common/api/Result;
+
 
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator",
-            "<",
+            "Landroid/os/Parcelable$Creator<",
             "Lcom/google/android/gms/location/LocationSettingsResult;",
             ">;"
         }
@@ -40,8 +42,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
-    .line 59
+    .line 71
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
     const-class v1, Lcom/google/android/gms/location/LocationSettingsResult;
@@ -55,24 +56,20 @@
 
 .method public constructor <init>(Lcom/google/android/gms/location/LocationSettingsStates;Lcom/google/android/gms/common/api/Status;)V
     .locals 1
-    .param p1, "settings"    # Lcom/google/android/gms/location/LocationSettingsStates;
-    .param p2, "status"    # Lcom/google/android/gms/common/api/Status;
 
-    .prologue
-    .line 49
+    .line 61
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    .line 29
     const/4 v0, 0x1
 
+    .line 38
     iput v0, p0, Lcom/google/android/gms/location/LocationSettingsResult;->versionCode:I
 
-    .line 50
+    .line 62
     iput-object p1, p0, Lcom/google/android/gms/location/LocationSettingsResult;->settings:Lcom/google/android/gms/location/LocationSettingsStates;
 
-    .line 51
+    .line 63
     iput-object p2, p0, Lcom/google/android/gms/location/LocationSettingsResult;->status:Lcom/google/android/gms/common/api/Status;
 
-    .line 52
     return-void
 .end method

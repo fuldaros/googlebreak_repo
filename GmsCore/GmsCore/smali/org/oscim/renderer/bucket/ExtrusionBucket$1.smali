@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lorg/oscim/utils/pool/Pool",
-        "<",
+        "Lorg/oscim/utils/pool/Pool<",
         "Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;",
         ">;"
     }
@@ -27,8 +26,7 @@
 .method constructor <init>()V
     .locals 0
 
-    .prologue
-    .line 112
+    .line 117
     invoke-direct {p0}, Lorg/oscim/utils/pool/Pool;-><init>()V
 
     return-void
@@ -39,8 +37,7 @@
 .method protected createItem()Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;
     .locals 1
 
-    .prologue
-    .line 115
+    .line 120
     new-instance v0, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;
 
     invoke-direct {v0}, Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;-><init>()V
@@ -51,8 +48,7 @@
 .method protected bridge synthetic createItem()Lorg/oscim/utils/pool/Inlist;
     .locals 1
 
-    .prologue
-    .line 112
+    .line 117
     invoke-virtual {p0}, Lorg/oscim/renderer/bucket/ExtrusionBucket$1;->createItem()Lorg/oscim/renderer/bucket/ExtrusionBucket$Vertex;
 
     move-result-object v0

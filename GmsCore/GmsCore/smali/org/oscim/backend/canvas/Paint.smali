@@ -9,8 +9,7 @@
         Lorg/oscim/backend/canvas/Paint$FontStyle;,
         Lorg/oscim/backend/canvas/Paint$FontFamily;,
         Lorg/oscim/backend/canvas/Paint$Style;,
-        Lorg/oscim/backend/canvas/Paint$Cap;,
-        Lorg/oscim/backend/canvas/Paint$Align;
+        Lorg/oscim/backend/canvas/Paint$Cap;
     }
 .end annotation
 
@@ -32,9 +31,6 @@
 .end method
 
 .method public abstract setStyle(Lorg/oscim/backend/canvas/Paint$Style;)V
-.end method
-
-.method public abstract setTextAlign(Lorg/oscim/backend/canvas/Paint$Align;)V
 .end method
 
 .method public abstract setTextSize(F)V

@@ -13,7 +13,6 @@
 .method public constructor <init>()V
     .locals 1
 
-    .prologue
     .line 44
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -38,29 +37,22 @@
 # virtual methods
 .method public select(Lcom/vividsolutions/jts/geom/LineSegment;)V
     .locals 0
-    .param p1, "seg"    # Lcom/vividsolutions/jts/geom/LineSegment;
 
-    .prologue
-    .line 74
     return-void
 .end method
 
 .method public select(Lcom/vividsolutions/jts/index/chain/MonotoneChain;I)V
     .locals 1
-    .param p1, "mc"    # Lcom/vividsolutions/jts/index/chain/MonotoneChain;
-    .param p2, "startIndex"    # I
 
-    .prologue
     .line 61
     iget-object v0, p0, Lcom/vividsolutions/jts/index/chain/MonotoneChainSelectAction;->selectedSegment:Lcom/vividsolutions/jts/geom/LineSegment;
 
     invoke-virtual {p1, p2, v0}, Lcom/vividsolutions/jts/index/chain/MonotoneChain;->getLineSegment(ILcom/vividsolutions/jts/geom/LineSegment;)V
 
     .line 63
-    iget-object v0, p0, Lcom/vividsolutions/jts/index/chain/MonotoneChainSelectAction;->selectedSegment:Lcom/vividsolutions/jts/geom/LineSegment;
+    iget-object p1, p0, Lcom/vividsolutions/jts/index/chain/MonotoneChainSelectAction;->selectedSegment:Lcom/vividsolutions/jts/geom/LineSegment;
 
-    invoke-virtual {p0, v0}, Lcom/vividsolutions/jts/index/chain/MonotoneChainSelectAction;->select(Lcom/vividsolutions/jts/geom/LineSegment;)V
+    invoke-virtual {p0, p1}, Lcom/vividsolutions/jts/index/chain/MonotoneChainSelectAction;->select(Lcom/vividsolutions/jts/geom/LineSegment;)V
 
-    .line 64
     return-void
 .end method

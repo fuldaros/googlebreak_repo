@@ -7,8 +7,7 @@
 .field public static CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator",
-            "<",
+            "Landroid/os/Parcelable$Creator<",
             "Lcom/google/android/gms/maps/GoogleMapOptions;",
             ">;"
         }
@@ -106,7 +105,6 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
     .line 88
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -120,15 +118,12 @@
 .end method
 
 .method public constructor <init>()V
-    .locals 2
-
-    .prologue
-    const/4 v1, 0x0
-
-    const/4 v0, 0x1
+    .locals 1
 
     .line 53
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
+
+    const/4 v0, 0x1
 
     .line 38
     iput-boolean v0, p0, Lcom/google/android/gms/maps/GoogleMapOptions;->scrollGesturesEnabled:Z
@@ -142,16 +137,17 @@
     .line 44
     iput-boolean v0, p0, Lcom/google/android/gms/maps/GoogleMapOptions;->rotateGesturesEnabled:Z
 
+    const/4 v0, 0x0
+
     .line 46
-    iput-boolean v1, p0, Lcom/google/android/gms/maps/GoogleMapOptions;->liteMode:Z
+    iput-boolean v0, p0, Lcom/google/android/gms/maps/GoogleMapOptions;->liteMode:Z
 
     .line 48
-    iput-boolean v1, p0, Lcom/google/android/gms/maps/GoogleMapOptions;->mapToobarEnabled:Z
+    iput-boolean v0, p0, Lcom/google/android/gms/maps/GoogleMapOptions;->mapToobarEnabled:Z
 
     .line 50
-    iput-boolean v1, p0, Lcom/google/android/gms/maps/GoogleMapOptions;->ambientEnabled:Z
+    iput-boolean v0, p0, Lcom/google/android/gms/maps/GoogleMapOptions;->ambientEnabled:Z
 
-    .line 54
     return-void
 .end method
 
@@ -160,7 +156,6 @@
 .method public getCamera()Lcom/google/android/gms/maps/model/CameraPosition;
     .locals 1
 
-    .prologue
     .line 61
     iget-object v0, p0, Lcom/google/android/gms/maps/GoogleMapOptions;->camera:Lcom/google/android/gms/maps/model/CameraPosition;
 
@@ -170,7 +165,6 @@
 .method public isCompassEnabled()Z
     .locals 1
 
-    .prologue
     .line 69
     iget-boolean v0, p0, Lcom/google/android/gms/maps/GoogleMapOptions;->compassEnabled:Z
 
@@ -180,7 +174,6 @@
 .method public isRotateGesturesEnabled()Z
     .locals 1
 
-    .prologue
     .line 85
     iget-boolean v0, p0, Lcom/google/android/gms/maps/GoogleMapOptions;->rotateGesturesEnabled:Z
 
@@ -190,7 +183,6 @@
 .method public isScrollGesturesEnabled()Z
     .locals 1
 
-    .prologue
     .line 73
     iget-boolean v0, p0, Lcom/google/android/gms/maps/GoogleMapOptions;->scrollGesturesEnabled:Z
 
@@ -200,7 +192,6 @@
 .method public isTiltGesturesEnabled()Z
     .locals 1
 
-    .prologue
     .line 81
     iget-boolean v0, p0, Lcom/google/android/gms/maps/GoogleMapOptions;->tiltGesturesEnabled:Z
 
@@ -210,7 +201,6 @@
 .method public isZoomControlsEnabled()Z
     .locals 1
 
-    .prologue
     .line 65
     iget-boolean v0, p0, Lcom/google/android/gms/maps/GoogleMapOptions;->zoomControlsEnabled:Z
 
@@ -220,7 +210,6 @@
 .method public isZoomGesturesEnabled()Z
     .locals 1
 
-    .prologue
     .line 77
     iget-boolean v0, p0, Lcom/google/android/gms/maps/GoogleMapOptions;->zoomGesturesEnabled:Z
 

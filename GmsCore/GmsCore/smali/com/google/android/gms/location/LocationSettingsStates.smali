@@ -7,8 +7,7 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator",
-            "<",
+            "Landroid/os/Parcelable$Creator<",
             "Lcom/google/android/gms/location/LocationSettingsStates;",
             ">;"
         }
@@ -64,8 +63,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
-    .line 88
+    .line 91
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
     const-class v1, Lcom/google/android/gms/location/LocationSettingsStates;
@@ -79,40 +77,32 @@
 
 .method public constructor <init>(ZZZZZZ)V
     .locals 1
-    .param p1, "gpsUsable"    # Z
-    .param p2, "networkLocationUsable"    # Z
-    .param p3, "bleUsable"    # Z
-    .param p4, "gpsPresent"    # Z
-    .param p5, "networkLocationPresent"    # Z
-    .param p6, "blePresent"    # Z
-
-    .prologue
-    .line 79
-    invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
-
-    .line 26
-    const/4 v0, 0x2
-
-    iput v0, p0, Lcom/google/android/gms/location/LocationSettingsStates;->versionCode:I
-
-    .line 80
-    iput-boolean p1, p0, Lcom/google/android/gms/location/LocationSettingsStates;->gpsUsable:Z
-
-    .line 81
-    iput-boolean p2, p0, Lcom/google/android/gms/location/LocationSettingsStates;->networkLocationUsable:Z
 
     .line 82
-    iput-boolean p3, p0, Lcom/google/android/gms/location/LocationSettingsStates;->bleUsable:Z
+    invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
+
+    const/4 v0, 0x2
+
+    .line 29
+    iput v0, p0, Lcom/google/android/gms/location/LocationSettingsStates;->versionCode:I
 
     .line 83
-    iput-boolean p4, p0, Lcom/google/android/gms/location/LocationSettingsStates;->gpsPresent:Z
+    iput-boolean p1, p0, Lcom/google/android/gms/location/LocationSettingsStates;->gpsUsable:Z
 
     .line 84
-    iput-boolean p5, p0, Lcom/google/android/gms/location/LocationSettingsStates;->networkLocationPresent:Z
+    iput-boolean p2, p0, Lcom/google/android/gms/location/LocationSettingsStates;->networkLocationUsable:Z
 
     .line 85
-    iput-boolean p6, p0, Lcom/google/android/gms/location/LocationSettingsStates;->blePresent:Z
+    iput-boolean p3, p0, Lcom/google/android/gms/location/LocationSettingsStates;->bleUsable:Z
 
     .line 86
+    iput-boolean p4, p0, Lcom/google/android/gms/location/LocationSettingsStates;->gpsPresent:Z
+
+    .line 87
+    iput-boolean p5, p0, Lcom/google/android/gms/location/LocationSettingsStates;->networkLocationPresent:Z
+
+    .line 88
+    iput-boolean p6, p0, Lcom/google/android/gms/location/LocationSettingsStates;->blePresent:Z
+
     return-void
 .end method

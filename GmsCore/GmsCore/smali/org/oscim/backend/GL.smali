@@ -4,10 +4,19 @@
 
 
 # virtual methods
+.method public abstract activeTexture(I)V
+.end method
+
 .method public abstract attachShader(II)V
 .end method
 
 .method public abstract bindBuffer(II)V
+.end method
+
+.method public abstract bindFramebuffer(II)V
+.end method
+
+.method public abstract bindRenderbuffer(II)V
 .end method
 
 .method public abstract bindTexture(II)V
@@ -20,6 +29,9 @@
 .end method
 
 .method public abstract bufferSubData(IIILjava/nio/Buffer;)V
+.end method
+
+.method public abstract checkFramebufferStatus(I)I
 .end method
 
 .method public abstract clear(I)V
@@ -82,13 +94,28 @@
 .method public abstract enableVertexAttribArray(I)V
 .end method
 
+.method public abstract framebufferRenderbuffer(IIII)V
+.end method
+
+.method public abstract framebufferTexture2D(IIIII)V
+.end method
+
 .method public abstract frontFace(I)V
 .end method
 
 .method public abstract genBuffers(ILjava/nio/IntBuffer;)V
 .end method
 
+.method public abstract genFramebuffers(ILjava/nio/IntBuffer;)V
+.end method
+
+.method public abstract genRenderbuffers(ILjava/nio/IntBuffer;)V
+.end method
+
 .method public abstract genTextures(ILjava/nio/IntBuffer;)V
+.end method
+
+.method public abstract generateMipmap(I)V
 .end method
 
 .method public abstract getAttribLocation(ILjava/lang/String;)I
@@ -122,6 +149,9 @@
 .end method
 
 .method public abstract readPixels(IIIIIILjava/nio/Buffer;)V
+.end method
+
+.method public abstract renderbufferStorage(IIII)V
 .end method
 
 .method public abstract shaderSource(ILjava/lang/String;)V

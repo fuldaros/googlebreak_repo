@@ -24,9 +24,7 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/maps/markup/MarkerImpl;)V
     .locals 0
-    .param p1, "this$0"    # Lorg/microg/gms/maps/markup/MarkerImpl;
 
-    .prologue
     .line 246
     iput-object p1, p0, Lorg/microg/gms/maps/markup/MarkerImpl$1;->this$0:Lorg/microg/gms/maps/markup/MarkerImpl;
 
@@ -40,7 +38,6 @@
 .method public run()V
     .locals 2
 
-    .prologue
     .line 249
     iget-object v0, p0, Lorg/microg/gms/maps/markup/MarkerImpl$1;->this$0:Lorg/microg/gms/maps/markup/MarkerImpl;
 
@@ -52,6 +49,5 @@
 
     invoke-interface {v0, v1}, Lorg/microg/gms/maps/markup/Markup$MarkupListener;->update(Lorg/microg/gms/maps/markup/Markup;)V
 
-    .line 250
     return-void
 .end method

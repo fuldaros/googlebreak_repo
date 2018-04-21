@@ -18,8 +18,7 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
-    .line 174
+    .line 189
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -30,7 +29,5 @@
 .method protected prepare()V
     .locals 0
 
-    .prologue
-    .line 176
     return-void
 .end method

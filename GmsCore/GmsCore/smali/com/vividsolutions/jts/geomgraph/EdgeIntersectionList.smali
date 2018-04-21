@@ -12,9 +12,7 @@
 # direct methods
 .method public constructor <init>(Lcom/vividsolutions/jts/geomgraph/Edge;)V
     .locals 1
-    .param p1, "edge"    # Lcom/vividsolutions/jts/geomgraph/Edge;
 
-    .prologue
     .line 53
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -28,6 +26,5 @@
     .line 54
     iput-object p1, p0, Lcom/vividsolutions/jts/geomgraph/EdgeIntersectionList;->edge:Lcom/vividsolutions/jts/geomgraph/Edge;
 
-    .line 55
     return-void
 .end method

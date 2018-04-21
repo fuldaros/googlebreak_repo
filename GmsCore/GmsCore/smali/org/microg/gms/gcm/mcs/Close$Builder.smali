@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder",
-        "<",
+        "Lcom/squareup/wire/Message$Builder<",
         "Lorg/microg/gms/gcm/mcs/Close;",
         ">;"
     }
@@ -27,23 +26,18 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
     .line 31
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
-    .line 32
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/gms/gcm/mcs/Close;)V
     .locals 0
-    .param p1, "message"    # Lorg/microg/gms/gcm/mcs/Close;
 
-    .prologue
     .line 35
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
-    .line 36
     return-void
 .end method
 
@@ -52,7 +46,6 @@
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
-    .prologue
     .line 29
     invoke-virtual {p0}, Lorg/microg/gms/gcm/mcs/Close$Builder;->build()Lorg/microg/gms/gcm/mcs/Close;
 
@@ -64,7 +57,6 @@
 .method public build()Lorg/microg/gms/gcm/mcs/Close;
     .locals 2
 
-    .prologue
     .line 40
     new-instance v0, Lorg/microg/gms/gcm/mcs/Close;
 

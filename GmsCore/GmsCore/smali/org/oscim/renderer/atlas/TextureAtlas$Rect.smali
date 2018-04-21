@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lorg/oscim/utils/pool/Inlist",
-        "<",
+        "Lorg/oscim/utils/pool/Inlist<",
         "Lorg/oscim/renderer/atlas/TextureAtlas$Rect;",
         ">;"
     }
@@ -36,28 +35,22 @@
 # direct methods
 .method public constructor <init>(IIII)V
     .locals 0
-    .param p1, "x"    # I
-    .param p2, "y"    # I
-    .param p3, "w"    # I
-    .param p4, "h"    # I
 
-    .prologue
-    .line 103
+    .line 113
     invoke-direct {p0}, Lorg/oscim/utils/pool/Inlist;-><init>()V
 
-    .line 104
+    .line 114
     iput p1, p0, Lorg/oscim/renderer/atlas/TextureAtlas$Rect;->x:I
 
-    .line 105
+    .line 115
     iput p2, p0, Lorg/oscim/renderer/atlas/TextureAtlas$Rect;->y:I
 
-    .line 106
+    .line 116
     iput p3, p0, Lorg/oscim/renderer/atlas/TextureAtlas$Rect;->w:I
 
-    .line 107
+    .line 117
     iput p4, p0, Lorg/oscim/renderer/atlas/TextureAtlas$Rect;->h:I
 
-    .line 108
     return-void
 .end method
 
@@ -66,8 +59,7 @@
 .method public toString()Ljava/lang/String;
     .locals 2
 
-    .prologue
-    .line 114
+    .line 124
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -76,43 +68,29 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     const-string v1, ":"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget v1, p0, Lorg/oscim/renderer/atlas/TextureAtlas$Rect;->y:I
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     const-string v1, " "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget v1, p0, Lorg/oscim/renderer/atlas/TextureAtlas$Rect;->w:I
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     const-string v1, "x"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     iget v1, p0, Lorg/oscim/renderer/atlas/TextureAtlas$Rect;->h:I
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 

@@ -6,8 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lorg/oscim/utils/pool/Inlist",
-        "<",
+        "Lorg/oscim/utils/pool/Inlist<",
         "Lorg/oscim/renderer/BufferObject;",
         ">;"
     }
@@ -36,9 +35,6 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
-    const/4 v1, 0x2
-
     .line 33
     const-class v0, Lorg/oscim/renderer/BufferObject;
 
@@ -48,13 +44,15 @@
 
     sput-object v0, Lorg/oscim/renderer/BufferObject;->log:Lorg/slf4j/Logger;
 
-    .line 99
-    new-array v0, v1, [Lorg/oscim/renderer/BufferObject;
+    const/4 v0, 0x2
 
-    sput-object v0, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
+    .line 105
+    new-array v1, v0, [Lorg/oscim/renderer/BufferObject;
 
-    .line 100
-    new-array v0, v1, [I
+    sput-object v1, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
+
+    .line 106
+    new-array v0, v0, [I
 
     sput-object v0, Lorg/oscim/renderer/BufferObject;->counter:[I
 
@@ -63,544 +61,456 @@
 
 .method private constructor <init>(II)V
     .locals 0
-    .param p1, "target"    # I
-    .param p2, "id"    # I
 
-    .prologue
-    .line 46
+    .line 52
     invoke-direct {p0}, Lorg/oscim/utils/pool/Inlist;-><init>()V
 
-    .line 47
+    .line 53
     iput p2, p0, Lorg/oscim/renderer/BufferObject;->id:I
 
-    .line 48
+    .line 54
     iput p1, p0, Lorg/oscim/renderer/BufferObject;->target:I
 
-    .line 49
     return-void
 .end method
 
 .method public static checkBufferUsage(Z)V
-    .locals 4
-    .param p0, "force"    # Z
-
-    .prologue
-    const/high16 v3, 0x100000
-
-    .line 91
-    sget v0, Lorg/oscim/renderer/BufferObject;->mBufferMemoryUsage:I
-
-    const/high16 v1, 0x1000000
-
-    if-ge v0, v1, :cond_0
+    .locals 3
 
     .line 97
-    :goto_0
+    sget p0, Lorg/oscim/renderer/BufferObject;->mBufferMemoryUsage:I
+
+    const/high16 v0, 0x1000000
+
+    if-ge p0, v0, :cond_0
+
     return-void
 
-    .line 94
+    .line 100
     :cond_0
-    sget-object v0, Lorg/oscim/renderer/BufferObject;->log:Lorg/slf4j/Logger;
+    sget-object p0, Lorg/oscim/renderer/BufferObject;->log:Lorg/slf4j/Logger;
 
-    new-instance v1, Ljava/lang/StringBuilder;
+    new-instance v0, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "use: "
+    const-string v1, "use: "
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    sget v1, Lorg/oscim/renderer/BufferObject;->mBufferMemoryUsage:I
 
-    sget v2, Lorg/oscim/renderer/BufferObject;->mBufferMemoryUsage:I
+    const/high16 v2, 0x100000
 
-    div-int/2addr v2, v3
+    div-int/2addr v1, v2
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    const-string v1, "MB"
 
-    const-string v2, "MB"
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-interface {p0, v0}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
 
-    move-result-object v1
+    .line 101
+    sget p0, Lorg/oscim/renderer/BufferObject;->mBufferMemoryUsage:I
 
-    invoke-interface {v0, v1}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
+    invoke-static {v2}, Lorg/oscim/renderer/BufferObject;->limitUsage(I)I
 
-    .line 95
-    sget v0, Lorg/oscim/renderer/BufferObject;->mBufferMemoryUsage:I
+    move-result v0
 
-    invoke-static {v3}, Lorg/oscim/renderer/BufferObject;->limitUsage(I)I
+    sub-int/2addr p0, v0
 
-    move-result v1
+    sput p0, Lorg/oscim/renderer/BufferObject;->mBufferMemoryUsage:I
 
-    sub-int/2addr v0, v1
+    .line 102
+    sget-object p0, Lorg/oscim/renderer/BufferObject;->log:Lorg/slf4j/Logger;
 
-    sput v0, Lorg/oscim/renderer/BufferObject;->mBufferMemoryUsage:I
+    new-instance v0, Ljava/lang/StringBuilder;
 
-    .line 96
-    sget-object v0, Lorg/oscim/renderer/BufferObject;->log:Lorg/slf4j/Logger;
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    new-instance v1, Ljava/lang/StringBuilder;
+    const-string v1, "now: "
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v2, "now: "
+    sget v1, Lorg/oscim/renderer/BufferObject;->mBufferMemoryUsage:I
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    div-int/2addr v1, v2
 
-    move-result-object v1
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    sget v2, Lorg/oscim/renderer/BufferObject;->mBufferMemoryUsage:I
+    const-string v1, "MB"
 
-    div-int/2addr v2, v3
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    const-string v2, "MB"
+    invoke-interface {p0, v0}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-interface {v0, v1}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
-
-    goto :goto_0
+    return-void
 .end method
 
 .method static declared-synchronized clear()V
-    .locals 4
+    .locals 5
 
-    .prologue
-    .line 222
-    const-class v1, Lorg/oscim/renderer/BufferObject;
+    const-class v0, Lorg/oscim/renderer/BufferObject;
 
-    monitor-enter v1
+    monitor-enter v0
 
-    const/4 v0, 0x0
+    const/4 v1, 0x0
 
+    .line 228
     :try_start_0
-    sput v0, Lorg/oscim/renderer/BufferObject;->mBufferMemoryUsage:I
+    sput v1, Lorg/oscim/renderer/BufferObject;->mBufferMemoryUsage:I
 
-    .line 224
-    sget-object v0, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
-
-    const/4 v2, 0x0
+    .line 230
+    sget-object v2, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
 
     const/4 v3, 0x0
 
-    aput-object v3, v0, v2
+    aput-object v3, v2, v1
 
-    .line 225
-    sget-object v0, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
+    .line 231
+    sget-object v2, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
 
-    const/4 v2, 0x1
+    const/4 v4, 0x1
 
-    const/4 v3, 0x0
+    aput-object v3, v2, v4
 
-    aput-object v3, v0, v2
+    .line 232
+    sget-object v2, Lorg/oscim/renderer/BufferObject;->counter:[I
 
-    .line 226
-    sget-object v0, Lorg/oscim/renderer/BufferObject;->counter:[I
+    aput v1, v2, v1
 
-    const/4 v2, 0x0
+    .line 233
+    sget-object v2, Lorg/oscim/renderer/BufferObject;->counter:[I
 
-    const/4 v3, 0x0
-
-    aput v3, v0, v2
-
-    .line 227
-    sget-object v0, Lorg/oscim/renderer/BufferObject;->counter:[I
-
-    const/4 v2, 0x1
-
-    const/4 v3, 0x0
-
-    aput v3, v0, v2
+    aput v1, v2, v4
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 228
-    monitor-exit v1
+    .line 234
+    monitor-exit v0
 
     return-void
 
-    .line 222
     :catchall_0
-    move-exception v0
+    move-exception v1
 
-    monitor-exit v1
+    .line 227
+    monitor-exit v0
 
-    throw v0
+    throw v1
 .end method
 
 .method static createBuffers(II)V
     .locals 5
-    .param p0, "target"    # I
-    .param p1, "num"    # I
-
-    .prologue
-    .line 210
-    invoke-static {p1}, Lorg/oscim/renderer/GLUtils;->glGenBuffers(I)[I
-
-    move-result-object v2
-
-    .line 212
-    .local v2, "mVboIds":[I
-    const v4, 0x8892
-
-    if-ne p0, v4, :cond_0
-
-    const/4 v3, 0x0
-
-    .line 214
-    .local v3, "t":I
-    :goto_0
-    const/4 v1, 0x0
-
-    .local v1, "i":I
-    :goto_1
-    if-ge v1, p1, :cond_1
-
-    .line 215
-    new-instance v0, Lorg/oscim/renderer/BufferObject;
-
-    aget v4, v2, v1
-
-    invoke-direct {v0, p0, v4}, Lorg/oscim/renderer/BufferObject;-><init>(II)V
 
     .line 216
-    .local v0, "bo":Lorg/oscim/renderer/BufferObject;
-    sget-object v4, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
+    invoke-static {p1}, Lorg/oscim/renderer/GLUtils;->glGenBuffers(I)[I
 
-    aget-object v4, v4, v3
+    move-result-object v0
 
-    iput-object v4, v0, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
+    const/4 v1, 0x0
 
-    .line 217
-    sget-object v4, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
+    const v2, 0x8892
 
-    aput-object v0, v4, v3
+    if-ne p0, v2, :cond_0
 
-    .line 214
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_1
-
-    .line 212
-    .end local v0    # "bo":Lorg/oscim/renderer/BufferObject;
-    .end local v1    # "i":I
-    .end local v3    # "t":I
-    :cond_0
-    const/4 v3, 0x1
+    move v2, v1
 
     goto :goto_0
 
-    .line 219
-    .restart local v1    # "i":I
-    .restart local v3    # "t":I
+    :cond_0
+    const/4 v2, 0x1
+
+    :goto_0
+    if-ge v1, p1, :cond_1
+
+    .line 221
+    new-instance v3, Lorg/oscim/renderer/BufferObject;
+
+    aget v4, v0, v1
+
+    invoke-direct {v3, p0, v4}, Lorg/oscim/renderer/BufferObject;-><init>(II)V
+
+    .line 222
+    sget-object v4, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
+
+    aget-object v4, v4, v2
+
+    iput-object v4, v3, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
+
+    .line 223
+    sget-object v4, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
+
+    aput-object v3, v4, v2
+
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_0
+
     :cond_1
     return-void
 .end method
 
 .method public static declared-synchronized get(II)Lorg/oscim/renderer/BufferObject;
-    .locals 9
-    .param p0, "target"    # I
-    .param p1, "size"    # I
+    .locals 8
 
-    .prologue
-    .line 108
-    const-class v6, Lorg/oscim/renderer/BufferObject;
+    const-class v0, Lorg/oscim/renderer/BufferObject;
 
-    monitor-enter v6
+    monitor-enter v0
 
-    const v5, 0x8892
+    const v1, 0x8892
 
-    if-ne p0, v5, :cond_0
+    const/4 v2, 0x1
 
-    const/4 v4, 0x0
+    if-ne p0, v1, :cond_0
 
-    .line 110
-    .local v4, "t":I
-    :goto_0
-    :try_start_0
-    sget-object v5, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
-
-    aget-object v5, v5, v4
-
-    if-nez v5, :cond_2
-
-    .line 111
-    sget-object v5, Lorg/oscim/renderer/BufferObject;->counter:[I
-
-    aget v5, v5, v4
-
-    if-eqz v5, :cond_1
-
-    .line 112
-    new-instance v5, Ljava/lang/IllegalStateException;
-
-    new-instance v7, Ljava/lang/StringBuilder;
-
-    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v8, "lost objects: "
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v7
-
-    sget-object v8, Lorg/oscim/renderer/BufferObject;->counter:[I
-
-    aget v8, v8, v4
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v7
-
-    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-direct {v5, v7}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    throw v5
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    .line 108
-    :catchall_0
-    move-exception v5
-
-    monitor-exit v6
-
-    throw v5
-
-    .end local v4    # "t":I
-    :cond_0
-    const/4 v4, 0x1
+    const/4 v1, 0x0
 
     goto :goto_0
 
-    .line 114
-    .restart local v4    # "t":I
-    :cond_1
-    const/16 v5, 0xa
+    :cond_0
+    move v1, v2
 
-    :try_start_1
-    invoke-static {p0, v5}, Lorg/oscim/renderer/BufferObject;->createBuffers(II)V
+    .line 116
+    :goto_0
+    :try_start_0
+    sget-object v3, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
 
-    .line 115
-    sget-object v5, Lorg/oscim/renderer/BufferObject;->counter:[I
+    aget-object v3, v3, v1
 
-    aget v7, v5, v4
-
-    add-int/lit8 v7, v7, 0xa
-
-    aput v7, v5, v4
+    if-nez v3, :cond_2
 
     .line 117
-    :cond_2
-    sget-object v5, Lorg/oscim/renderer/BufferObject;->counter:[I
+    sget-object v3, Lorg/oscim/renderer/BufferObject;->counter:[I
 
-    aget v7, v5, v4
+    aget v3, v3, v1
 
-    add-int/lit8 v7, v7, -0x1
+    if-eqz v3, :cond_1
 
-    aput v7, v5, v4
+    .line 118
+    new-instance p0, Ljava/lang/IllegalStateException;
 
-    .line 119
-    if-eqz p1, :cond_6
+    new-instance p1, Ljava/lang/StringBuilder;
+
+    invoke-direct {p1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "lost objects: "
+
+    invoke-virtual {p1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    sget-object v2, Lorg/oscim/renderer/BufferObject;->counter:[I
+
+    aget v1, v2, v1
+
+    invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-direct {p0, p1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw p0
+
+    :cond_1
+    const/16 v3, 0xa
+
+    .line 120
+    invoke-static {p0, v3}, Lorg/oscim/renderer/BufferObject;->createBuffers(II)V
 
     .line 121
-    sget-object v5, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
+    sget-object p0, Lorg/oscim/renderer/BufferObject;->counter:[I
 
-    aget-object v0, v5, v4
+    aget v4, p0, v1
+
+    add-int/2addr v4, v3
+
+    aput v4, p0, v1
 
     .line 123
-    .local v0, "bo":Lorg/oscim/renderer/BufferObject;
-    const/4 v2, 0x0
+    :cond_2
+    sget-object p0, Lorg/oscim/renderer/BufferObject;->counter:[I
 
-    .line 124
-    .local v2, "min":Lorg/oscim/renderer/BufferObject;
-    const/4 v3, 0x0
+    aget v3, p0, v1
 
-    .line 126
-    .local v3, "prev":Lorg/oscim/renderer/BufferObject;
-    :goto_1
-    if-eqz v0, :cond_5
+    sub-int/2addr v3, v2
+
+    aput v3, p0, v1
+
+    const/4 p0, 0x0
+
+    if-eqz p1, :cond_6
 
     .line 127
-    iget v5, v0, Lorg/oscim/renderer/BufferObject;->size:I
+    sget-object v2, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
+
+    aget-object v2, v2, v1
+
+    move-object v3, p0
+
+    move-object v4, v3
+
+    :goto_1
+    if-eqz v2, :cond_5
+
+    .line 133
+    iget v5, v2, Lorg/oscim/renderer/BufferObject;->size:I
 
     if-le v5, p1, :cond_4
 
-    .line 128
-    if-eqz v2, :cond_3
+    if-eqz v3, :cond_3
 
-    iget-object v5, v2, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
+    .line 134
+    iget-object v5, v3, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
 
     check-cast v5, Lorg/oscim/renderer/BufferObject;
 
     iget v5, v5, Lorg/oscim/renderer/BufferObject;->size:I
 
-    iget v7, v0, Lorg/oscim/renderer/BufferObject;->size:I
+    iget v6, v2, Lorg/oscim/renderer/BufferObject;->size:I
 
-    if-le v5, v7, :cond_4
+    if-le v5, v6, :cond_4
 
-    .line 129
     :cond_3
-    move-object v2, v3
+    move-object v3, v4
 
-    .line 131
+    .line 132
     :cond_4
-    move-object v3, v0
+    iget-object v4, v2, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
 
-    .line 126
-    iget-object v0, v0, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
+    check-cast v4, Lorg/oscim/renderer/BufferObject;
 
-    .end local v0    # "bo":Lorg/oscim/renderer/BufferObject;
-    check-cast v0, Lorg/oscim/renderer/BufferObject;
+    move-object v7, v4
 
-    .restart local v0    # "bo":Lorg/oscim/renderer/BufferObject;
+    move-object v4, v2
+
+    move-object v2, v7
+
     goto :goto_1
 
-    .line 134
     :cond_5
-    if-eqz v2, :cond_6
+    if-eqz v3, :cond_6
 
-    sget-object v5, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
+    .line 140
+    sget-object p1, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
 
-    aget-object v5, v5, v4
+    aget-object p1, p1, v1
 
-    if-eq v2, v5, :cond_6
+    if-eq v3, p1, :cond_6
 
-    .line 135
-    iget-object v0, v2, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
+    .line 141
+    iget-object p1, v3, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
 
-    .end local v0    # "bo":Lorg/oscim/renderer/BufferObject;
-    check-cast v0, Lorg/oscim/renderer/BufferObject;
+    check-cast p1, Lorg/oscim/renderer/BufferObject;
 
-    .line 136
-    .restart local v0    # "bo":Lorg/oscim/renderer/BufferObject;
-    iget-object v5, v0, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
+    .line 142
+    iget-object v1, p1, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
 
-    iput-object v5, v2, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
+    iput-object v1, v3, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
 
-    .line 137
-    const/4 v5, 0x0
+    .line 143
+    iput-object p0, p1, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    iput-object v5, v0, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
+    .line 144
+    monitor-exit v0
+
+    return-object p1
+
+    .line 148
+    :cond_6
+    :try_start_1
+    sget-object p1, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
+
+    aget-object p1, p1, v1
+
+    .line 149
+    sget-object v2, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
+
+    sget-object v3, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
+
+    aget-object v3, v3, v1
+
+    iget-object v3, v3, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
+
+    check-cast v3, Lorg/oscim/renderer/BufferObject;
+
+    aput-object v3, v2, v1
+
+    .line 150
+    iput-object p0, p1, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    move-object v1, v0
+    .line 151
+    monitor-exit v0
 
-    .line 145
-    .end local v0    # "bo":Lorg/oscim/renderer/BufferObject;
-    .end local v2    # "min":Lorg/oscim/renderer/BufferObject;
-    .end local v3    # "prev":Lorg/oscim/renderer/BufferObject;
-    .local v1, "bo":Lorg/oscim/renderer/BufferObject;
-    :goto_2
-    monitor-exit v6
+    return-object p1
 
-    return-object v1
+    :catchall_0
+    move-exception p0
 
-    .line 142
-    .end local v1    # "bo":Lorg/oscim/renderer/BufferObject;
-    :cond_6
-    :try_start_2
-    sget-object v5, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
+    .line 113
+    monitor-exit v0
 
-    aget-object v0, v5, v4
-
-    .line 143
-    .restart local v0    # "bo":Lorg/oscim/renderer/BufferObject;
-    sget-object v7, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
-
-    sget-object v5, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
-
-    aget-object v5, v5, v4
-
-    iget-object v5, v5, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
-
-    check-cast v5, Lorg/oscim/renderer/BufferObject;
-
-    aput-object v5, v7, v4
-
-    .line 144
-    const/4 v5, 0x0
-
-    iput-object v5, v0, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
-
-    move-object v1, v0
-
-    .line 145
-    .end local v0    # "bo":Lorg/oscim/renderer/BufferObject;
-    .restart local v1    # "bo":Lorg/oscim/renderer/BufferObject;
-    goto :goto_2
+    throw p0
 .end method
 
 .method static declared-synchronized init(I)V
     .locals 4
-    .param p0, "num"    # I
 
-    .prologue
-    .line 231
-    const-class v1, Lorg/oscim/renderer/BufferObject;
+    const-class v0, Lorg/oscim/renderer/BufferObject;
 
-    monitor-enter v1
+    monitor-enter v0
 
-    const v0, 0x8892
+    const v1, 0x8892
 
+    .line 237
     :try_start_0
-    invoke-static {v0, p0}, Lorg/oscim/renderer/BufferObject;->createBuffers(II)V
+    invoke-static {v1, p0}, Lorg/oscim/renderer/BufferObject;->createBuffers(II)V
 
-    .line 232
-    sget-object v0, Lorg/oscim/renderer/BufferObject;->counter:[I
+    .line 238
+    sget-object v1, Lorg/oscim/renderer/BufferObject;->counter:[I
 
     const/4 v2, 0x0
 
-    aget v3, v0, v2
+    aget v3, v1, v2
 
     add-int/2addr v3, p0
 
-    aput v3, v0, v2
+    aput v3, v1, v2
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 233
-    monitor-exit v1
+    .line 239
+    monitor-exit v0
 
     return-void
 
-    .line 231
     :catchall_0
-    move-exception v0
+    move-exception p0
 
-    monitor-exit v1
+    .line 236
+    monitor-exit v0
 
-    throw v0
+    throw p0
 .end method
 
 .method public static isMaxFill()Z
     .locals 2
 
-    .prologue
-    .line 236
+    .line 242
     sget v0, Lorg/oscim/renderer/BufferObject;->mBufferMemoryUsage:I
 
     const/high16 v1, 0x1000000
@@ -609,290 +519,246 @@
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
+    goto :goto_0
 
     :cond_0
     const/4 v0, 0x0
 
-    goto :goto_0
+    :goto_0
+    return v0
 .end method
 
 .method static declared-synchronized limitUsage(I)I
-    .locals 11
-    .param p0, "reduce"    # I
+    .locals 12
 
-    .prologue
-    const/16 v10, 0xa
+    const-class v0, Lorg/oscim/renderer/BufferObject;
 
-    .line 168
-    const-class v8, Lorg/oscim/renderer/BufferObject;
+    monitor-enter v0
 
-    monitor-enter v8
-
-    const/16 v7, 0xa
-
-    :try_start_0
-    new-array v6, v7, [I
-
-    .line 169
-    .local v6, "vboIds":[I
-    const/4 v1, 0x0
-
-    .line 171
-    .local v1, "freed":I
-    const/4 v5, 0x0
-
-    .local v5, "t":I
-    :goto_0
-    const/4 v7, 0x2
-
-    if-ge v5, v7, :cond_4
-
-    .line 173
-    const/4 v3, 0x0
+    const/16 v1, 0xa
 
     .line 174
-    .local v3, "removed":I
-    sget-object v7, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
+    :try_start_0
+    new-array v2, v1, [I
 
-    aget-object v2, v7, v5
+    const/4 v3, 0x0
 
-    .line 176
-    .local v2, "prev":Lorg/oscim/renderer/BufferObject;
-    if-nez v2, :cond_1
-
-    .line 177
-    sget-object v7, Lorg/oscim/renderer/BufferObject;->log:Lorg/slf4j/Logger;
-
-    const-string v9, "nothing to free"
-
-    invoke-interface {v7, v9}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
-
-    .line 171
-    :cond_0
-    :goto_1
-    add-int/lit8 v5, v5, 0x1
-
-    goto :goto_0
-
-    .line 181
-    :cond_1
-    sget-object v7, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
-
-    aget-object v7, v7, v5
-
-    iget-object v0, v7, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
-
-    check-cast v0, Lorg/oscim/renderer/BufferObject;
-
-    .local v0, "bo":Lorg/oscim/renderer/BufferObject;
     move v4, v3
 
-    .end local v3    # "removed":I
-    .local v4, "removed":I
-    :goto_2
-    if-eqz v0, :cond_6
+    move v5, v4
 
-    .line 182
-    iget v7, v0, Lorg/oscim/renderer/BufferObject;->size:I
+    :goto_0
+    const/4 v6, 0x2
 
-    if-lez v7, :cond_3
+    if-ge v4, v6, :cond_6
+
+    .line 180
+    sget-object v6, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
+
+    aget-object v6, v6, v4
+
+    if-nez v6, :cond_0
 
     .line 183
-    iget v7, v0, Lorg/oscim/renderer/BufferObject;->size:I
+    sget-object v6, Lorg/oscim/renderer/BufferObject;->log:Lorg/slf4j/Logger;
 
-    add-int/2addr v1, v7
+    const-string v7, "nothing to free"
 
-    .line 184
-    const/4 v7, 0x0
+    invoke-interface {v6, v7}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
 
-    iput v7, v0, Lorg/oscim/renderer/BufferObject;->size:I
-
-    .line 186
-    add-int/lit8 v3, v4, 0x1
-
-    .end local v4    # "removed":I
-    .restart local v3    # "removed":I
-    iget v7, v0, Lorg/oscim/renderer/BufferObject;->id:I
-
-    aput v7, v6, v4
+    goto :goto_4
 
     .line 187
-    iget-object v7, v0, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
+    :cond_0
+    sget-object v7, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
 
-    iput-object v7, v2, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
+    aget-object v7, v7, v4
+
+    iget-object v7, v7, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
+
+    check-cast v7, Lorg/oscim/renderer/BufferObject;
+
+    move-object v8, v6
+
+    move-object v6, v7
+
+    move v7, v3
+
+    :goto_1
+    if-eqz v6, :cond_4
 
     .line 188
-    iget-object v0, v0, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
+    iget v9, v6, Lorg/oscim/renderer/BufferObject;->size:I
 
-    .end local v0    # "bo":Lorg/oscim/renderer/BufferObject;
-    check-cast v0, Lorg/oscim/renderer/BufferObject;
+    if-lez v9, :cond_3
+
+    .line 189
+    iget v9, v6, Lorg/oscim/renderer/BufferObject;->size:I
+
+    add-int/2addr v5, v9
 
     .line 190
-    .restart local v0    # "bo":Lorg/oscim/renderer/BufferObject;
-    if-eq v3, v10, :cond_2
+    iput v3, v6, Lorg/oscim/renderer/BufferObject;->size:I
 
-    if-ge p0, v1, :cond_5
+    add-int/lit8 v9, v7, 0x1
 
-    .line 199
-    :cond_2
-    :goto_3
-    if-lez v3, :cond_0
+    .line 192
+    iget v10, v6, Lorg/oscim/renderer/BufferObject;->id:I
 
-    .line 200
-    invoke-static {v3, v6}, Lorg/oscim/renderer/GLUtils;->glDeleteBuffers(I[I)V
+    aput v10, v2, v7
 
-    .line 201
-    sget-object v7, Lorg/oscim/renderer/BufferObject;->counter:[I
+    .line 193
+    iget-object v7, v6, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
 
-    aget v9, v7, v5
+    iput-object v7, v8, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
 
-    sub-int/2addr v9, v3
+    .line 194
+    iget-object v6, v6, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
 
-    aput v9, v7, v5
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    check-cast v6, Lorg/oscim/renderer/BufferObject;
+
+    if-eq v9, v1, :cond_2
+
+    if-ge p0, v5, :cond_1
+
+    goto :goto_2
+
+    :cond_1
+    move v7, v9
 
     goto :goto_1
 
-    .line 168
-    .end local v0    # "bo":Lorg/oscim/renderer/BufferObject;
-    .end local v1    # "freed":I
-    .end local v2    # "prev":Lorg/oscim/renderer/BufferObject;
-    .end local v3    # "removed":I
-    .end local v5    # "t":I
-    .end local v6    # "vboIds":[I
-    :catchall_0
-    move-exception v7
+    :cond_2
+    :goto_2
+    move v7, v9
 
-    monitor-exit v8
+    goto :goto_3
 
-    throw v7
-
-    .line 194
-    .restart local v0    # "bo":Lorg/oscim/renderer/BufferObject;
-    .restart local v1    # "freed":I
-    .restart local v2    # "prev":Lorg/oscim/renderer/BufferObject;
-    .restart local v4    # "removed":I
-    .restart local v5    # "t":I
-    .restart local v6    # "vboIds":[I
+    .line 201
     :cond_3
-    move-object v2, v0
+    iget-object v8, v6, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
 
-    .line 195
-    :try_start_1
-    iget-object v0, v0, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
+    check-cast v8, Lorg/oscim/renderer/BufferObject;
 
-    .end local v0    # "bo":Lorg/oscim/renderer/BufferObject;
-    check-cast v0, Lorg/oscim/renderer/BufferObject;
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    move-object v11, v8
 
-    .restart local v0    # "bo":Lorg/oscim/renderer/BufferObject;
-    goto :goto_2
+    move-object v8, v6
+
+    move-object v6, v11
+
+    goto :goto_1
+
+    :cond_4
+    :goto_3
+    if-lez v7, :cond_5
 
     .line 206
-    .end local v0    # "bo":Lorg/oscim/renderer/BufferObject;
-    .end local v2    # "prev":Lorg/oscim/renderer/BufferObject;
-    .end local v4    # "removed":I
-    :cond_4
-    monitor-exit v8
+    invoke-static {v7, v2}, Lorg/oscim/renderer/GLUtils;->glDeleteBuffers(I[I)V
 
-    return v1
+    .line 207
+    sget-object v6, Lorg/oscim/renderer/BufferObject;->counter:[I
 
-    .restart local v0    # "bo":Lorg/oscim/renderer/BufferObject;
-    .restart local v2    # "prev":Lorg/oscim/renderer/BufferObject;
-    .restart local v3    # "removed":I
+    aget v8, v6, v4
+
+    sub-int/2addr v8, v7
+
+    aput v8, v6, v4
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
     :cond_5
-    move v4, v3
+    :goto_4
+    add-int/lit8 v4, v4, 0x1
 
-    .end local v3    # "removed":I
-    .restart local v4    # "removed":I
-    goto :goto_2
+    goto :goto_0
 
+    .line 212
     :cond_6
-    move v3, v4
+    monitor-exit v0
 
-    .end local v4    # "removed":I
-    .restart local v3    # "removed":I
-    goto :goto_3
+    return v5
+
+    :catchall_0
+    move-exception p0
+
+    .line 173
+    monitor-exit v0
+
+    throw p0
 .end method
 
 .method public static declared-synchronized release(Lorg/oscim/renderer/BufferObject;)Lorg/oscim/renderer/BufferObject;
     .locals 5
-    .param p0, "bo"    # Lorg/oscim/renderer/BufferObject;
     .annotation runtime Ljavax/annotation/CheckReturnValue;
     .end annotation
 
-    .prologue
-    const/4 v4, 0x0
+    const-class v0, Lorg/oscim/renderer/BufferObject;
 
-    .line 150
-    const-class v2, Lorg/oscim/renderer/BufferObject;
+    monitor-enter v0
 
-    monitor-enter v2
+    const/4 v1, 0x0
 
     if-nez p0, :cond_0
 
+    .line 157
+    monitor-exit v0
+
+    return-object v1
+
     .line 162
-    :goto_0
-    monitor-exit v2
-
-    return-object v4
-
-    .line 156
     :cond_0
     :try_start_0
-    iget v1, p0, Lorg/oscim/renderer/BufferObject;->target:I
+    iget v2, p0, Lorg/oscim/renderer/BufferObject;->target:I
 
     const v3, 0x8892
 
-    if-ne v1, v3, :cond_1
+    const/4 v4, 0x1
 
-    const/4 v0, 0x0
+    if-ne v2, v3, :cond_1
 
-    .line 158
-    .local v0, "t":I
-    :goto_1
-    sget-object v1, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
-
-    aget-object v1, v1, v0
-
-    iput-object v1, p0, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
-
-    .line 159
-    sget-object v1, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
-
-    aput-object p0, v1, v0
-
-    .line 160
-    sget-object v1, Lorg/oscim/renderer/BufferObject;->counter:[I
-
-    aget v3, v1, v0
-
-    add-int/lit8 v3, v3, 0x1
-
-    aput v3, v1, v0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    const/4 v2, 0x0
 
     goto :goto_0
 
-    .line 150
-    .end local v0    # "t":I
-    :catchall_0
-    move-exception v1
-
-    monitor-exit v2
-
-    throw v1
-
-    .line 156
     :cond_1
-    const/4 v0, 0x1
+    move v2, v4
 
-    goto :goto_1
+    .line 164
+    :goto_0
+    sget-object v3, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
+
+    aget-object v3, v3, v2
+
+    iput-object v3, p0, Lorg/oscim/renderer/BufferObject;->next:Lorg/oscim/utils/pool/Inlist;
+
+    .line 165
+    sget-object v3, Lorg/oscim/renderer/BufferObject;->pool:[Lorg/oscim/renderer/BufferObject;
+
+    aput-object p0, v3, v2
+
+    .line 166
+    sget-object p0, Lorg/oscim/renderer/BufferObject;->counter:[I
+
+    aget v3, p0, v2
+
+    add-int/2addr v3, v4
+
+    aput v3, p0, v2
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 168
+    monitor-exit v0
+
+    return-object v1
+
+    :catchall_0
+    move-exception p0
+
+    .line 155
+    monitor-exit v0
+
+    throw p0
 .end method
 
 
@@ -900,108 +766,96 @@
 .method public bind()V
     .locals 2
 
-    .prologue
-    .line 78
+    .line 84
     iget v0, p0, Lorg/oscim/renderer/BufferObject;->target:I
 
     iget v1, p0, Lorg/oscim/renderer/BufferObject;->id:I
 
     invoke-static {v0, v1}, Lorg/oscim/renderer/GLState;->bindBuffer(II)V
 
-    .line 79
     return-void
 .end method
 
 .method public loadBufferData(Ljava/nio/Buffer;I)V
-    .locals 5
-    .param p1, "buf"    # Ljava/nio/Buffer;
-    .param p2, "newSize"    # I
+    .locals 3
 
-    .prologue
-    .line 55
-    const/4 v0, 0x0
-
-    .line 57
-    .local v0, "clear":Z
+    .line 63
     invoke-virtual {p1}, Ljava/nio/Buffer;->position()I
 
-    move-result v1
+    move-result v0
 
-    if-eqz v1, :cond_0
+    if-eqz v0, :cond_0
 
-    .line 58
-    sget-object v1, Lorg/oscim/renderer/BufferObject;->log:Lorg/slf4j/Logger;
+    .line 64
+    sget-object v0, Lorg/oscim/renderer/BufferObject;->log:Lorg/slf4j/Logger;
 
-    const-string v2, "flip your buffer!"
+    const-string v1, "flip your buffer!"
 
-    invoke-interface {v1, v2}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
+    invoke-interface {v0, v1}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
 
-    .line 59
+    .line 65
     invoke-virtual {p1}, Ljava/nio/Buffer;->flip()Ljava/nio/Buffer;
 
-    .line 62
+    .line 68
     :cond_0
-    iget v1, p0, Lorg/oscim/renderer/BufferObject;->target:I
+    iget v0, p0, Lorg/oscim/renderer/BufferObject;->target:I
 
-    iget v2, p0, Lorg/oscim/renderer/BufferObject;->id:I
+    iget v1, p0, Lorg/oscim/renderer/BufferObject;->id:I
 
-    invoke-static {v1, v2}, Lorg/oscim/renderer/GLState;->bindBuffer(II)V
+    invoke-static {v0, v1}, Lorg/oscim/renderer/GLState;->bindBuffer(II)V
 
-    .line 66
-    sget-boolean v1, Lorg/oscim/backend/GLAdapter;->NO_BUFFER_SUB_DATA:Z
-
-    if-nez v1, :cond_1
+    .line 72
+    sget-boolean v0, Lorg/oscim/backend/GLAdapter;->NO_BUFFER_SUB_DATA:Z
 
     if-nez v0, :cond_1
 
-    iget v1, p0, Lorg/oscim/renderer/BufferObject;->size:I
+    iget v0, p0, Lorg/oscim/renderer/BufferObject;->size:I
 
-    if-le v1, p2, :cond_1
+    if-le v0, p2, :cond_1
 
-    iget v1, p0, Lorg/oscim/renderer/BufferObject;->size:I
+    iget v0, p0, Lorg/oscim/renderer/BufferObject;->size:I
 
-    mul-int/lit8 v2, p2, 0x4
+    mul-int/lit8 v1, p2, 0x4
 
-    if-ge v1, v2, :cond_1
+    if-ge v0, v1, :cond_1
 
-    .line 68
-    sget-object v1, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+    .line 74
+    sget-object v0, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
 
-    iget v2, p0, Lorg/oscim/renderer/BufferObject;->target:I
+    iget v1, p0, Lorg/oscim/renderer/BufferObject;->target:I
 
-    const/4 v3, 0x0
+    const/4 v2, 0x0
 
-    invoke-interface {v1, v2, v3, p2, p1}, Lorg/oscim/backend/GL;->bufferSubData(IIILjava/nio/Buffer;)V
-
-    .line 75
-    :goto_0
-    return-void
-
-    .line 70
-    :cond_1
-    sget v1, Lorg/oscim/renderer/BufferObject;->mBufferMemoryUsage:I
-
-    iget v2, p0, Lorg/oscim/renderer/BufferObject;->size:I
-
-    sub-int v2, p2, v2
-
-    add-int/2addr v1, v2
-
-    sput v1, Lorg/oscim/renderer/BufferObject;->mBufferMemoryUsage:I
-
-    .line 71
-    iput p2, p0, Lorg/oscim/renderer/BufferObject;->size:I
-
-    .line 73
-    sget-object v1, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
-
-    iget v2, p0, Lorg/oscim/renderer/BufferObject;->target:I
-
-    iget v3, p0, Lorg/oscim/renderer/BufferObject;->size:I
-
-    const v4, 0x88e4
-
-    invoke-interface {v1, v2, v3, p1, v4}, Lorg/oscim/backend/GL;->bufferData(IILjava/nio/Buffer;I)V
+    invoke-interface {v0, v1, v2, p2, p1}, Lorg/oscim/backend/GL;->bufferSubData(IIILjava/nio/Buffer;)V
 
     goto :goto_0
+
+    .line 76
+    :cond_1
+    sget v0, Lorg/oscim/renderer/BufferObject;->mBufferMemoryUsage:I
+
+    iget v1, p0, Lorg/oscim/renderer/BufferObject;->size:I
+
+    sub-int v1, p2, v1
+
+    add-int/2addr v0, v1
+
+    sput v0, Lorg/oscim/renderer/BufferObject;->mBufferMemoryUsage:I
+
+    .line 77
+    iput p2, p0, Lorg/oscim/renderer/BufferObject;->size:I
+
+    .line 79
+    sget-object p2, Lorg/oscim/backend/GLAdapter;->gl:Lorg/oscim/backend/GL;
+
+    iget v0, p0, Lorg/oscim/renderer/BufferObject;->target:I
+
+    iget v1, p0, Lorg/oscim/renderer/BufferObject;->size:I
+
+    const v2, 0x88e4
+
+    invoke-interface {p2, v0, v1, p1, v2}, Lorg/oscim/backend/GL;->bufferData(IILjava/nio/Buffer;I)V
+
+    :goto_0
+    return-void
 .end method

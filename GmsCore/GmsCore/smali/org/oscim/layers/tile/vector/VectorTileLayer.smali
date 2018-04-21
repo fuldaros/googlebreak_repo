@@ -20,10 +20,8 @@
 .field private mLoaderProcessHooks:Lorg/oscim/utils/pool/Inlist$List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Lorg/oscim/utils/pool/Inlist$List",
-            "<",
-            "Lorg/oscim/utils/pool/LList",
-            "<",
+            "Lorg/oscim/utils/pool/Inlist$List<",
+            "Lorg/oscim/utils/pool/LList<",
             "Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderProcessHook;",
             ">;>;"
         }
@@ -33,10 +31,8 @@
 .field private mLoaderThemeHooks:Lorg/oscim/utils/pool/Inlist$List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Lorg/oscim/utils/pool/Inlist$List",
-            "<",
-            "Lorg/oscim/utils/pool/LList",
-            "<",
+            "Lorg/oscim/utils/pool/Inlist$List<",
+            "Lorg/oscim/utils/pool/LList<",
             "Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;",
             ">;>;"
         }
@@ -52,8 +48,7 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .prologue
-    .line 42
+    .line 43
     const-class v0, Lorg/oscim/layers/tile/vector/VectorTileLayer;
 
     invoke-static {v0}, Lorg/slf4j/LoggerFactory;->getLogger(Ljava/lang/Class;)Lorg/slf4j/Logger;
@@ -66,58 +61,49 @@
 .end method
 
 .method public constructor <init>(Lorg/oscim/map/Map;I)V
-    .locals 2
-    .param p1, "map"    # Lorg/oscim/map/Map;
-    .param p2, "cacheLimit"    # I
+    .locals 1
 
-    .prologue
-    .line 55
+    .line 56
     new-instance v0, Lorg/oscim/layers/tile/TileManager;
 
     invoke-direct {v0, p1, p2}, Lorg/oscim/layers/tile/TileManager;-><init>(Lorg/oscim/map/Map;I)V
 
-    new-instance v1, Lorg/oscim/layers/tile/VectorTileRenderer;
+    new-instance p2, Lorg/oscim/layers/tile/VectorTileRenderer;
 
-    invoke-direct {v1}, Lorg/oscim/layers/tile/VectorTileRenderer;-><init>()V
+    invoke-direct {p2}, Lorg/oscim/layers/tile/VectorTileRenderer;-><init>()V
 
-    invoke-direct {p0, p1, v0, v1}, Lorg/oscim/layers/tile/vector/VectorTileLayer;-><init>(Lorg/oscim/map/Map;Lorg/oscim/layers/tile/TileManager;Lorg/oscim/layers/tile/VectorTileRenderer;)V
+    invoke-direct {p0, p1, v0, p2}, Lorg/oscim/layers/tile/vector/VectorTileLayer;-><init>(Lorg/oscim/map/Map;Lorg/oscim/layers/tile/TileManager;Lorg/oscim/layers/tile/VectorTileRenderer;)V
 
-    .line 57
     return-void
 .end method
 
 .method public constructor <init>(Lorg/oscim/map/Map;Lorg/oscim/layers/tile/TileManager;Lorg/oscim/layers/tile/VectorTileRenderer;)V
-    .locals 1
-    .param p1, "map"    # Lorg/oscim/map/Map;
-    .param p2, "tileManager"    # Lorg/oscim/layers/tile/TileManager;
-    .param p3, "renderer"    # Lorg/oscim/layers/tile/VectorTileRenderer;
+    .locals 0
 
-    .prologue
-    .line 61
+    .line 62
     invoke-direct {p0, p1, p2, p3}, Lorg/oscim/layers/tile/TileLayer;-><init>(Lorg/oscim/map/Map;Lorg/oscim/layers/tile/TileManager;Lorg/oscim/layers/tile/TileRenderer;)V
 
-    .line 155
-    new-instance v0, Lorg/oscim/utils/pool/Inlist$List;
+    .line 163
+    new-instance p1, Lorg/oscim/utils/pool/Inlist$List;
 
-    invoke-direct {v0}, Lorg/oscim/utils/pool/Inlist$List;-><init>()V
+    invoke-direct {p1}, Lorg/oscim/utils/pool/Inlist$List;-><init>()V
 
-    iput-object v0, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mLoaderProcessHooks:Lorg/oscim/utils/pool/Inlist$List;
+    iput-object p1, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mLoaderProcessHooks:Lorg/oscim/utils/pool/Inlist$List;
 
-    .line 158
-    new-instance v0, Lorg/oscim/utils/pool/Inlist$List;
+    .line 166
+    new-instance p1, Lorg/oscim/utils/pool/Inlist$List;
 
-    invoke-direct {v0}, Lorg/oscim/utils/pool/Inlist$List;-><init>()V
+    invoke-direct {p1}, Lorg/oscim/utils/pool/Inlist$List;-><init>()V
 
-    iput-object v0, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mLoaderThemeHooks:Lorg/oscim/utils/pool/Inlist$List;
-
-    .line 63
-    invoke-virtual {p0}, Lorg/oscim/layers/tile/vector/VectorTileLayer;->getNumLoaders()I
-
-    move-result v0
-
-    invoke-virtual {p0, v0}, Lorg/oscim/layers/tile/vector/VectorTileLayer;->initLoader(I)V
+    iput-object p1, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mLoaderThemeHooks:Lorg/oscim/utils/pool/Inlist$List;
 
     .line 64
+    invoke-virtual {p0}, Lorg/oscim/layers/tile/vector/VectorTileLayer;->getNumLoaders()I
+
+    move-result p1
+
+    invoke-virtual {p0, p1}, Lorg/oscim/layers/tile/vector/VectorTileLayer;->initLoader(I)V
+
     return-void
 .end method
 
@@ -125,10 +111,8 @@
 # virtual methods
 .method public addHook(Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;)V
     .locals 2
-    .param p1, "h"    # Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;
 
-    .prologue
-    .line 166
+    .line 174
     iget-object v0, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mLoaderThemeHooks:Lorg/oscim/utils/pool/Inlist$List;
 
     new-instance v1, Lorg/oscim/utils/pool/LList;
@@ -137,104 +121,85 @@
 
     invoke-virtual {v0, v1}, Lorg/oscim/utils/pool/Inlist$List;->append(Lorg/oscim/utils/pool/Inlist;)V
 
-    .line 167
     return-void
 .end method
 
 .method public callHooksComplete(Lorg/oscim/layers/tile/MapTile;Z)V
-    .locals 3
-    .param p1, "tile"    # Lorg/oscim/layers/tile/MapTile;
-    .param p2, "success"    # Z
+    .locals 2
 
-    .prologue
-    .line 203
-    iget-object v2, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mLoaderThemeHooks:Lorg/oscim/utils/pool/Inlist$List;
+    .line 212
+    iget-object v0, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mLoaderThemeHooks:Lorg/oscim/utils/pool/Inlist$List;
 
-    invoke-virtual {v2}, Lorg/oscim/utils/pool/Inlist$List;->head()Lorg/oscim/utils/pool/Inlist;
-
-    move-result-object v1
-
-    check-cast v1, Lorg/oscim/utils/pool/LList;
-
-    .line 204
-    .local v1, "th":Lorg/oscim/utils/pool/LList;, "Lorg/oscim/utils/pool/LList<Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;>;"
-    :goto_0
-    if-eqz v1, :cond_0
-
-    .line 205
-    iget-object v2, v1, Lorg/oscim/utils/pool/LList;->data:Ljava/lang/Object;
-
-    check-cast v2, Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;
-
-    invoke-interface {v2, p1, p2}, Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;->complete(Lorg/oscim/layers/tile/MapTile;Z)V
-
-    .line 206
-    iget-object v1, v1, Lorg/oscim/utils/pool/LList;->next:Lorg/oscim/utils/pool/Inlist;
-
-    .end local v1    # "th":Lorg/oscim/utils/pool/LList;, "Lorg/oscim/utils/pool/LList<Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;>;"
-    check-cast v1, Lorg/oscim/utils/pool/LList;
-
-    .restart local v1    # "th":Lorg/oscim/utils/pool/LList;, "Lorg/oscim/utils/pool/LList<Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;>;"
-    goto :goto_0
-
-    .line 209
-    :cond_0
-    iget-object v2, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mLoaderProcessHooks:Lorg/oscim/utils/pool/Inlist$List;
-
-    invoke-virtual {v2}, Lorg/oscim/utils/pool/Inlist$List;->head()Lorg/oscim/utils/pool/Inlist;
+    invoke-virtual {v0}, Lorg/oscim/utils/pool/Inlist$List;->head()Lorg/oscim/utils/pool/Inlist;
 
     move-result-object v0
 
     check-cast v0, Lorg/oscim/utils/pool/LList;
 
-    .line 210
-    .local v0, "ph":Lorg/oscim/utils/pool/LList;, "Lorg/oscim/utils/pool/LList<Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderProcessHook;>;"
+    :goto_0
+    if-eqz v0, :cond_0
+
+    .line 214
+    iget-object v1, v0, Lorg/oscim/utils/pool/LList;->data:Ljava/lang/Object;
+
+    check-cast v1, Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;
+
+    invoke-interface {v1, p1, p2}, Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;->complete(Lorg/oscim/layers/tile/MapTile;Z)V
+
+    .line 215
+    iget-object v0, v0, Lorg/oscim/utils/pool/LList;->next:Lorg/oscim/utils/pool/Inlist;
+
+    check-cast v0, Lorg/oscim/utils/pool/LList;
+
+    goto :goto_0
+
+    .line 218
+    :cond_0
+    iget-object v0, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mLoaderProcessHooks:Lorg/oscim/utils/pool/Inlist$List;
+
+    invoke-virtual {v0}, Lorg/oscim/utils/pool/Inlist$List;->head()Lorg/oscim/utils/pool/Inlist;
+
+    move-result-object v0
+
+    check-cast v0, Lorg/oscim/utils/pool/LList;
+
     :goto_1
     if-eqz v0, :cond_1
 
-    .line 211
-    iget-object v2, v0, Lorg/oscim/utils/pool/LList;->data:Ljava/lang/Object;
+    .line 220
+    iget-object v1, v0, Lorg/oscim/utils/pool/LList;->data:Ljava/lang/Object;
 
-    check-cast v2, Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderProcessHook;
+    check-cast v1, Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderProcessHook;
 
-    invoke-interface {v2, p1, p2}, Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderProcessHook;->complete(Lorg/oscim/layers/tile/MapTile;Z)V
+    invoke-interface {v1, p1, p2}, Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderProcessHook;->complete(Lorg/oscim/layers/tile/MapTile;Z)V
 
-    .line 212
+    .line 221
     iget-object v0, v0, Lorg/oscim/utils/pool/LList;->next:Lorg/oscim/utils/pool/Inlist;
 
-    .end local v0    # "ph":Lorg/oscim/utils/pool/LList;, "Lorg/oscim/utils/pool/LList<Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderProcessHook;>;"
     check-cast v0, Lorg/oscim/utils/pool/LList;
 
-    .restart local v0    # "ph":Lorg/oscim/utils/pool/LList;, "Lorg/oscim/utils/pool/LList<Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderProcessHook;>;"
     goto :goto_1
 
-    .line 214
     :cond_1
     return-void
 .end method
 
 .method public callProcessHooks(Lorg/oscim/layers/tile/MapTile;Lorg/oscim/renderer/bucket/RenderBuckets;Lorg/oscim/core/MapElement;)Z
     .locals 2
-    .param p1, "tile"    # Lorg/oscim/layers/tile/MapTile;
-    .param p2, "layers"    # Lorg/oscim/renderer/bucket/RenderBuckets;
-    .param p3, "element"    # Lorg/oscim/core/MapElement;
 
-    .prologue
-    .line 189
-    iget-object v1, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mLoaderProcessHooks:Lorg/oscim/utils/pool/Inlist$List;
+    .line 198
+    iget-object v0, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mLoaderProcessHooks:Lorg/oscim/utils/pool/Inlist$List;
 
-    invoke-virtual {v1}, Lorg/oscim/utils/pool/Inlist$List;->head()Lorg/oscim/utils/pool/Inlist;
+    invoke-virtual {v0}, Lorg/oscim/utils/pool/Inlist$List;->head()Lorg/oscim/utils/pool/Inlist;
 
     move-result-object v0
 
     check-cast v0, Lorg/oscim/utils/pool/LList;
 
-    .line 190
-    .local v0, "ph":Lorg/oscim/utils/pool/LList;, "Lorg/oscim/utils/pool/LList<Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderProcessHook;>;"
     :goto_0
     if-eqz v0, :cond_1
 
-    .line 191
+    .line 200
     iget-object v1, v0, Lorg/oscim/utils/pool/LList;->data:Ljava/lang/Object;
 
     check-cast v1, Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderProcessHook;
@@ -245,94 +210,80 @@
 
     if-eqz v1, :cond_0
 
-    .line 192
-    const/4 v1, 0x1
+    const/4 p1, 0x1
 
-    .line 196
-    :goto_1
-    return v1
+    return p1
 
-    .line 193
+    .line 202
     :cond_0
     iget-object v0, v0, Lorg/oscim/utils/pool/LList;->next:Lorg/oscim/utils/pool/Inlist;
 
-    .end local v0    # "ph":Lorg/oscim/utils/pool/LList;, "Lorg/oscim/utils/pool/LList<Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderProcessHook;>;"
     check-cast v0, Lorg/oscim/utils/pool/LList;
 
-    .restart local v0    # "ph":Lorg/oscim/utils/pool/LList;, "Lorg/oscim/utils/pool/LList<Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderProcessHook;>;"
     goto :goto_0
 
-    .line 196
     :cond_1
-    const/4 v1, 0x0
+    const/4 p1, 0x0
 
-    goto :goto_1
+    return p1
 .end method
 
 .method public callThemeHooks(Lorg/oscim/layers/tile/MapTile;Lorg/oscim/renderer/bucket/RenderBuckets;Lorg/oscim/core/MapElement;Lorg/oscim/theme/styles/RenderStyle;I)V
-    .locals 7
-    .param p1, "tile"    # Lorg/oscim/layers/tile/MapTile;
-    .param p2, "layers"    # Lorg/oscim/renderer/bucket/RenderBuckets;
-    .param p3, "element"    # Lorg/oscim/core/MapElement;
-    .param p4, "style"    # Lorg/oscim/theme/styles/RenderStyle;
-    .param p5, "level"    # I
+    .locals 8
 
-    .prologue
-    .line 178
+    .line 187
     iget-object v0, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mLoaderThemeHooks:Lorg/oscim/utils/pool/Inlist$List;
 
     invoke-virtual {v0}, Lorg/oscim/utils/pool/Inlist$List;->head()Lorg/oscim/utils/pool/Inlist;
 
-    move-result-object v6
+    move-result-object v0
 
-    check-cast v6, Lorg/oscim/utils/pool/LList;
+    check-cast v0, Lorg/oscim/utils/pool/LList;
 
-    .line 179
-    .local v6, "th":Lorg/oscim/utils/pool/LList;, "Lorg/oscim/utils/pool/LList<Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;>;"
     :goto_0
-    if-eqz v6, :cond_0
-
-    .line 180
-    iget-object v0, v6, Lorg/oscim/utils/pool/LList;->data:Ljava/lang/Object;
-
-    check-cast v0, Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;
-
-    move-object v1, p1
-
-    move-object v2, p2
-
-    move-object v3, p3
-
-    move-object v4, p4
-
-    move v5, p5
-
-    invoke-interface/range {v0 .. v5}, Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;->process(Lorg/oscim/layers/tile/MapTile;Lorg/oscim/renderer/bucket/RenderBuckets;Lorg/oscim/core/MapElement;Lorg/oscim/theme/styles/RenderStyle;I)Z
-
-    move-result v0
-
     if-eqz v0, :cond_1
 
-    .line 185
-    :cond_0
+    .line 189
+    iget-object v1, v0, Lorg/oscim/utils/pool/LList;->data:Ljava/lang/Object;
+
+    move-object v2, v1
+
+    check-cast v2, Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;
+
+    move-object v3, p1
+
+    move-object v4, p2
+
+    move-object v5, p3
+
+    move-object v6, p4
+
+    move v7, p5
+
+    invoke-interface/range {v2 .. v7}, Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;->process(Lorg/oscim/layers/tile/MapTile;Lorg/oscim/renderer/bucket/RenderBuckets;Lorg/oscim/core/MapElement;Lorg/oscim/theme/styles/RenderStyle;I)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
     return-void
 
-    .line 183
-    :cond_1
-    iget-object v6, v6, Lorg/oscim/utils/pool/LList;->next:Lorg/oscim/utils/pool/Inlist;
+    .line 192
+    :cond_0
+    iget-object v0, v0, Lorg/oscim/utils/pool/LList;->next:Lorg/oscim/utils/pool/Inlist;
 
-    .end local v6    # "th":Lorg/oscim/utils/pool/LList;, "Lorg/oscim/utils/pool/LList<Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;>;"
-    check-cast v6, Lorg/oscim/utils/pool/LList;
+    check-cast v0, Lorg/oscim/utils/pool/LList;
 
-    .restart local v6    # "th":Lorg/oscim/utils/pool/LList;, "Lorg/oscim/utils/pool/LList<Lorg/oscim/layers/tile/vector/VectorTileLayer$TileLoaderThemeHook;>;"
     goto :goto_0
+
+    :cond_1
+    return-void
 .end method
 
 .method protected createLoader()Lorg/oscim/layers/tile/TileLoader;
     .locals 1
 
-    .prologue
-    .line 68
+    .line 69
     new-instance v0, Lorg/oscim/layers/tile/vector/VectorTileLoader;
 
     invoke-direct {v0, p0}, Lorg/oscim/layers/tile/vector/VectorTileLoader;-><init>(Lorg/oscim/layers/tile/vector/VectorTileLayer;)V
@@ -343,8 +294,7 @@
 .method public getTheme()Lorg/oscim/theme/IRenderTheme;
     .locals 1
 
-    .prologue
-    .line 127
+    .line 129
     iget-object v0, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mTheme:Lorg/oscim/theme/IRenderTheme;
 
     return-object v0
@@ -353,168 +303,158 @@
 .method public onDetach()V
     .locals 1
 
-    .prologue
-    .line 171
+    .line 179
     invoke-super {p0}, Lorg/oscim/layers/tile/TileLayer;->onDetach()V
 
-    .line 172
+    .line 180
+    iget-object v0, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mTileSource:Lorg/oscim/tiling/TileSource;
+
+    if-eqz v0, :cond_0
+
+    .line 181
     iget-object v0, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mTileSource:Lorg/oscim/tiling/TileSource;
 
     invoke-virtual {v0}, Lorg/oscim/tiling/TileSource;->close()V
 
-    .line 173
+    :cond_0
     return-void
 .end method
 
 .method public setRenderTheme(Lorg/oscim/theme/IRenderTheme;)V
-    .locals 2
-    .param p1, "theme"    # Lorg/oscim/theme/IRenderTheme;
+    .locals 1
 
-    .prologue
-    .line 112
     const/4 v0, 0x1
 
+    .line 114
     invoke-virtual {p0, v0}, Lorg/oscim/layers/tile/vector/VectorTileLayer;->pauseLoaders(Z)V
 
-    .line 113
+    .line 115
     iget-object v0, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mTileManager:Lorg/oscim/layers/tile/TileManager;
 
     invoke-virtual {v0}, Lorg/oscim/layers/tile/TileManager;->clearJobs()V
 
-    .line 115
+    .line 117
     iput-object p1, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mTheme:Lorg/oscim/theme/IRenderTheme;
 
-    .line 119
+    .line 121
     invoke-virtual {p0}, Lorg/oscim/layers/tile/vector/VectorTileLayer;->tileRenderer()Lorg/oscim/layers/tile/TileRenderer;
 
     move-result-object v0
 
     invoke-interface {p1}, Lorg/oscim/theme/IRenderTheme;->getMapBackground()I
 
-    move-result v1
+    move-result p1
 
-    invoke-virtual {v0, v1}, Lorg/oscim/layers/tile/TileRenderer;->setOverdrawColor(I)V
+    invoke-virtual {v0, p1}, Lorg/oscim/layers/tile/TileRenderer;->setOverdrawColor(I)V
 
-    .line 121
+    .line 123
     invoke-virtual {p0}, Lorg/oscim/layers/tile/vector/VectorTileLayer;->resumeLoaders()V
 
-    .line 122
     return-void
 .end method
 
 .method public setTileSource(Lorg/oscim/tiling/TileSource;)Z
-    .locals 7
-    .param p1, "tileSource"    # Lorg/oscim/tiling/TileSource;
+    .locals 6
 
-    .prologue
-    const/4 v3, 0x1
-
-    const/4 v2, 0x0
-
-    .line 77
-    invoke-virtual {p0, v3}, Lorg/oscim/layers/tile/vector/VectorTileLayer;->pauseLoaders(Z)V
+    const/4 v0, 0x1
 
     .line 78
-    iget-object v4, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mTileManager:Lorg/oscim/layers/tile/TileManager;
-
-    invoke-virtual {v4}, Lorg/oscim/layers/tile/TileManager;->clearJobs()V
+    invoke-virtual {p0, v0}, Lorg/oscim/layers/tile/vector/VectorTileLayer;->pauseLoaders(Z)V
 
     .line 79
-    iget-object v4, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mTileManager:Lorg/oscim/layers/tile/TileManager;
+    iget-object v1, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mTileManager:Lorg/oscim/layers/tile/TileManager;
 
-    invoke-virtual {p1}, Lorg/oscim/tiling/TileSource;->getZoomLevelMin()I
+    invoke-virtual {v1}, Lorg/oscim/layers/tile/TileManager;->clearJobs()V
 
-    move-result v5
+    .line 81
+    iget-object v1, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mTileSource:Lorg/oscim/tiling/TileSource;
 
-    .line 80
-    invoke-virtual {p1}, Lorg/oscim/tiling/TileSource;->getZoomLevelMax()I
-
-    move-result v6
-
-    .line 79
-    invoke-virtual {v4, v5, v6}, Lorg/oscim/layers/tile/TileManager;->setZoomLevel(II)V
+    if-eqz v1, :cond_0
 
     .line 82
-    iget-object v4, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mTileSource:Lorg/oscim/tiling/TileSource;
+    iget-object v1, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mTileSource:Lorg/oscim/tiling/TileSource;
 
-    if-eqz v4, :cond_0
+    invoke-virtual {v1}, Lorg/oscim/tiling/TileSource;->close()V
+
+    const/4 v1, 0x0
 
     .line 83
-    iget-object v4, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mTileSource:Lorg/oscim/tiling/TileSource;
+    iput-object v1, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mTileSource:Lorg/oscim/tiling/TileSource;
 
-    invoke-virtual {v4}, Lorg/oscim/tiling/TileSource;->close()V
-
-    .line 84
-    const/4 v4, 0x0
-
-    iput-object v4, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mTileSource:Lorg/oscim/tiling/TileSource;
-
-    .line 87
+    .line 86
     :cond_0
     invoke-virtual {p1}, Lorg/oscim/tiling/TileSource;->open()Lorg/oscim/tiling/TileSource$OpenResult;
 
     move-result-object v1
 
+    .line 88
+    sget-object v2, Lorg/oscim/tiling/TileSource$OpenResult;->SUCCESS:Lorg/oscim/tiling/TileSource$OpenResult;
+
+    const/4 v3, 0x0
+
+    if-eq v1, v2, :cond_1
+
     .line 89
-    .local v1, "msg":Lorg/oscim/tiling/TileSource$OpenResult;
-    sget-object v4, Lorg/oscim/tiling/TileSource$OpenResult;->SUCCESS:Lorg/oscim/tiling/TileSource$OpenResult;
-
-    if-eq v1, v4, :cond_1
-
-    .line 90
-    sget-object v3, Lorg/oscim/layers/tile/vector/VectorTileLayer;->log:Lorg/slf4j/Logger;
+    sget-object p1, Lorg/oscim/layers/tile/vector/VectorTileLayer;->log:Lorg/slf4j/Logger;
 
     invoke-virtual {v1}, Lorg/oscim/tiling/TileSource$OpenResult;->getErrorMessage()Ljava/lang/String;
 
-    move-result-object v4
+    move-result-object v0
 
-    invoke-interface {v3, v4}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
+    invoke-interface {p1, v0}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
 
-    .line 102
-    :goto_0
-    return v2
+    return v3
 
-    .line 94
+    .line 93
     :cond_1
     iput-object p1, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mTileSource:Lorg/oscim/tiling/TileSource;
 
-    .line 96
-    iget-object v4, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mTileLoader:[Lorg/oscim/layers/tile/TileLoader;
+    .line 95
+    iget-object v1, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mTileManager:Lorg/oscim/layers/tile/TileManager;
 
-    array-length v5, v4
+    invoke-virtual {p1}, Lorg/oscim/tiling/TileSource;->getZoomLevelMin()I
 
-    :goto_1
-    if-ge v2, v5, :cond_2
-
-    aget-object v0, v4, v2
-
-    .line 97
-    .local v0, "l":Lorg/oscim/layers/tile/TileLoader;
-    check-cast v0, Lorg/oscim/layers/tile/vector/VectorTileLoader;
-
-    .end local v0    # "l":Lorg/oscim/layers/tile/TileLoader;
-    invoke-virtual {p1}, Lorg/oscim/tiling/TileSource;->getDataSource()Lorg/oscim/tiling/ITileDataSource;
-
-    move-result-object v6
-
-    invoke-virtual {v0, v6}, Lorg/oscim/layers/tile/vector/VectorTileLoader;->setDataSource(Lorg/oscim/tiling/ITileDataSource;)V
+    move-result v2
 
     .line 96
-    add-int/lit8 v2, v2, 0x1
+    invoke-virtual {p1}, Lorg/oscim/tiling/TileSource;->getZoomLevelMax()I
 
-    goto :goto_1
+    move-result v4
+
+    .line 95
+    invoke-virtual {v1, v2, v4}, Lorg/oscim/layers/tile/TileManager;->setZoomLevel(II)V
+
+    .line 98
+    iget-object v1, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mTileLoader:[Lorg/oscim/layers/tile/TileLoader;
+
+    array-length v2, v1
+
+    :goto_0
+    if-ge v3, v2, :cond_2
+
+    aget-object v4, v1, v3
 
     .line 99
+    check-cast v4, Lorg/oscim/layers/tile/vector/VectorTileLoader;
+
+    invoke-virtual {p1}, Lorg/oscim/tiling/TileSource;->getDataSource()Lorg/oscim/tiling/ITileDataSource;
+
+    move-result-object v5
+
+    invoke-virtual {v4, v5}, Lorg/oscim/layers/tile/vector/VectorTileLoader;->setDataSource(Lorg/oscim/tiling/ITileDataSource;)V
+
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_0
+
+    .line 101
     :cond_2
-    iget-object v2, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mMap:Lorg/oscim/map/Map;
+    iget-object p1, p0, Lorg/oscim/layers/tile/vector/VectorTileLayer;->mMap:Lorg/oscim/map/Map;
 
-    invoke-virtual {v2}, Lorg/oscim/map/Map;->clearMap()V
-
-    .line 100
-    invoke-virtual {p0}, Lorg/oscim/layers/tile/vector/VectorTileLayer;->resumeLoaders()V
-
-    move v2, v3
+    invoke-virtual {p1}, Lorg/oscim/map/Map;->clearMap()V
 
     .line 102
-    goto :goto_0
+    invoke-virtual {p0}, Lorg/oscim/layers/tile/vector/VectorTileLayer;->resumeLoaders()V
+
+    return v0
 .end method

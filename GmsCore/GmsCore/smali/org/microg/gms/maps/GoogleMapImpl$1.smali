@@ -24,10 +24,8 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/maps/GoogleMapImpl;)V
     .locals 0
-    .param p1, "this$0"    # Lorg/microg/gms/maps/GoogleMapImpl;
 
-    .prologue
-    .line 104
+    .line 107
     iput-object p1, p0, Lorg/microg/gms/maps/GoogleMapImpl$1;->this$0:Lorg/microg/gms/maps/GoogleMapImpl;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,78 +36,67 @@
 
 # virtual methods
 .method public onLocationChanged(Landroid/location/Location;)V
-    .locals 3
-    .param p1, "location"    # Landroid/location/Location;
+    .locals 1
 
-    .prologue
-    .line 108
-    iget-object v1, p0, Lorg/microg/gms/maps/GoogleMapImpl$1;->this$0:Lorg/microg/gms/maps/GoogleMapImpl;
+    .line 111
+    iget-object v0, p0, Lorg/microg/gms/maps/GoogleMapImpl$1;->this$0:Lorg/microg/gms/maps/GoogleMapImpl;
 
-    invoke-static {v1}, Lorg/microg/gms/maps/GoogleMapImpl;->access$000(Lorg/microg/gms/maps/GoogleMapImpl;)Lcom/google/android/gms/maps/internal/IOnMyLocationChangeListener;
+    invoke-static {v0, p1}, Lorg/microg/gms/maps/GoogleMapImpl;->access$002(Lorg/microg/gms/maps/GoogleMapImpl;Landroid/location/Location;)Landroid/location/Location;
 
-    move-result-object v1
+    .line 112
+    iget-object v0, p0, Lorg/microg/gms/maps/GoogleMapImpl$1;->this$0:Lorg/microg/gms/maps/GoogleMapImpl;
 
-    if-eqz v1, :cond_0
+    invoke-static {v0}, Lorg/microg/gms/maps/GoogleMapImpl;->access$100(Lorg/microg/gms/maps/GoogleMapImpl;)Lcom/google/android/gms/maps/internal/IOnMyLocationChangeListener;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_0
 
     if-eqz p1, :cond_0
 
-    .line 110
+    .line 114
     :try_start_0
-    iget-object v1, p0, Lorg/microg/gms/maps/GoogleMapImpl$1;->this$0:Lorg/microg/gms/maps/GoogleMapImpl;
+    iget-object v0, p0, Lorg/microg/gms/maps/GoogleMapImpl$1;->this$0:Lorg/microg/gms/maps/GoogleMapImpl;
 
-    invoke-static {v1}, Lorg/microg/gms/maps/GoogleMapImpl;->access$000(Lorg/microg/gms/maps/GoogleMapImpl;)Lcom/google/android/gms/maps/internal/IOnMyLocationChangeListener;
+    invoke-static {v0}, Lorg/microg/gms/maps/GoogleMapImpl;->access$100(Lorg/microg/gms/maps/GoogleMapImpl;)Lcom/google/android/gms/maps/internal/IOnMyLocationChangeListener;
 
-    move-result-object v1
+    move-result-object v0
 
     invoke-static {p1}, Lcom/google/android/gms/dynamic/ObjectWrapper;->wrap(Ljava/lang/Object;)Lcom/google/android/gms/dynamic/ObjectWrapper;
 
-    move-result-object v2
+    move-result-object p1
 
-    invoke-interface {v1, v2}, Lcom/google/android/gms/maps/internal/IOnMyLocationChangeListener;->onMyLocationChanged(Lcom/google/android/gms/dynamic/IObjectWrapper;)V
+    invoke-interface {v0, p1}, Lcom/google/android/gms/maps/internal/IOnMyLocationChangeListener;->onMyLocationChanged(Lcom/google/android/gms/dynamic/IObjectWrapper;)V
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 115
+    goto :goto_0
+
+    :catch_0
+    move-exception p1
+
+    .line 116
+    invoke-static {p1}, Lcom/google/devtools/build/android/desugar/runtime/ThrowableExtension;->printStackTrace(Ljava/lang/Throwable;)V
+
     :cond_0
     :goto_0
     return-void
-
-    .line 111
-    :catch_0
-    move-exception v0
-
-    .line 112
-    .local v0, "e":Landroid/os/RemoteException;
-    invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
-
-    goto :goto_0
 .end method
 
 .method public onProviderDisabled(Ljava/lang/String;)V
     .locals 0
-    .param p1, "provider"    # Ljava/lang/String;
 
-    .prologue
-    .line 127
     return-void
 .end method
 
 .method public onProviderEnabled(Ljava/lang/String;)V
     .locals 0
-    .param p1, "provider"    # Ljava/lang/String;
 
-    .prologue
-    .line 123
     return-void
 .end method
 
 .method public onStatusChanged(Ljava/lang/String;ILandroid/os/Bundle;)V
     .locals 0
-    .param p1, "provider"    # Ljava/lang/String;
-    .param p2, "status"    # I
-    .param p3, "extras"    # Landroid/os/Bundle;
 
-    .prologue
-    .line 119
     return-void
 .end method

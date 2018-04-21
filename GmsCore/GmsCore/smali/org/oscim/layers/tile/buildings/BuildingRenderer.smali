@@ -29,8 +29,7 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .prologue
-    .line 21
+    .line 37
     const-class v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;
 
     invoke-static {v0}, Lorg/slf4j/LoggerFactory;->getLogger(Ljava/lang/Class;)Lorg/slf4j/Logger;
@@ -43,115 +42,99 @@
 .end method
 
 .method public constructor <init>(Lorg/oscim/layers/tile/TileRenderer;IIZZ)V
-    .locals 1
-    .param p1, "tileRenderer"    # Lorg/oscim/layers/tile/TileRenderer;
-    .param p2, "zoomMin"    # I
-    .param p3, "zoomMax"    # I
-    .param p4, "mesh"    # Z
-    .param p5, "alpha"    # Z
+    .locals 0
 
-    .prologue
-    .line 37
+    .line 53
     invoke-direct {p0, p4, p5}, Lorg/oscim/renderer/ExtrusionRenderer;-><init>(ZZ)V
 
-    .line 29
-    const/high16 v0, 0x437a0000    # 250.0f
+    const/high16 p4, 0x437a0000    # 250.0f
 
-    iput v0, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mFadeInTime:F
+    .line 45
+    iput p4, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mFadeInTime:F
 
-    .line 30
-    const/high16 v0, 0x43c80000    # 400.0f
+    const/high16 p4, 0x43c80000    # 400.0f
 
-    iput v0, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mFadeOutTime:F
+    .line 46
+    iput p4, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mFadeOutTime:F
 
-    .line 39
+    .line 55
     iput p3, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mZoomMax:I
 
-    .line 40
+    .line 56
     iput p2, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mZoomMin:I
 
-    .line 41
+    .line 57
     iput-object p1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileRenderer:Lorg/oscim/layers/tile/TileRenderer;
 
-    .line 42
-    new-instance v0, Lorg/oscim/layers/tile/TileSet;
+    .line 58
+    new-instance p1, Lorg/oscim/layers/tile/TileSet;
 
-    invoke-direct {v0}, Lorg/oscim/layers/tile/TileSet;-><init>()V
+    invoke-direct {p1}, Lorg/oscim/layers/tile/TileSet;-><init>()V
 
-    iput-object v0, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
+    iput-object p1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
 
-    .line 43
     return-void
 .end method
 
 .method private static getBuckets(Lorg/oscim/layers/tile/MapTile;)Lorg/oscim/renderer/bucket/ExtrusionBuckets;
-    .locals 2
-    .param p0, "t"    # Lorg/oscim/layers/tile/MapTile;
+    .locals 1
 
-    .prologue
-    .line 197
+    .line 213
     invoke-virtual {p0}, Lorg/oscim/layers/tile/MapTile;->getBuckets()Lorg/oscim/renderer/bucket/RenderBuckets;
 
     move-result-object v0
 
-    .line 198
-    .local v0, "buckets":Lorg/oscim/renderer/bucket/RenderBuckets;
     if-eqz v0, :cond_0
 
-    const/16 v1, 0xc
+    const/16 v0, 0xc
 
-    invoke-virtual {p0, v1}, Lorg/oscim/layers/tile/MapTile;->state(I)Z
+    .line 214
+    invoke-virtual {p0, v0}, Lorg/oscim/layers/tile/MapTile;->state(I)Z
 
-    move-result v1
+    move-result v0
 
-    if-nez v1, :cond_0
+    if-nez v0, :cond_0
 
-    .line 199
-    const/4 v1, 0x0
+    const/4 p0, 0x0
 
-    .line 201
-    :goto_0
-    return-object v1
+    return-object p0
 
+    .line 217
     :cond_0
     invoke-static {p0}, Lorg/oscim/layers/tile/buildings/BuildingLayer;->get(Lorg/oscim/layers/tile/MapTile;)Lorg/oscim/renderer/bucket/ExtrusionBuckets;
 
-    move-result-object v1
+    move-result-object p0
 
-    goto :goto_0
+    return-object p0
 .end method
 
 
 # virtual methods
 .method public render(Lorg/oscim/renderer/GLViewport;)V
-    .locals 2
-    .param p1, "v"    # Lorg/oscim/renderer/GLViewport;
+    .locals 1
 
-    .prologue
-    .line 190
+    .line 206
     invoke-super {p0, p1}, Lorg/oscim/renderer/ExtrusionRenderer;->render(Lorg/oscim/renderer/GLViewport;)V
 
-    .line 193
-    iget-object v0, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileRenderer:Lorg/oscim/layers/tile/TileRenderer;
+    .line 209
+    iget-object p1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileRenderer:Lorg/oscim/layers/tile/TileRenderer;
 
-    iget-object v1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
+    iget-object v0, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
 
-    invoke-virtual {v0, v1}, Lorg/oscim/layers/tile/TileRenderer;->releaseTiles(Lorg/oscim/layers/tile/TileSet;)V
+    invoke-virtual {p1, v0}, Lorg/oscim/layers/tile/TileRenderer;->releaseTiles(Lorg/oscim/layers/tile/TileSet;)V
 
-    .line 194
     return-void
 .end method
 
 .method public setup()Z
     .locals 1
 
-    .prologue
-    .line 47
     const/4 v0, 0x0
 
+    .line 63
     iput v0, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAlpha:F
 
-    .line 48
+    .line 64
     invoke-super {p0}, Lorg/oscim/renderer/ExtrusionRenderer;->setup()Z
 
     move-result v0
@@ -160,958 +143,532 @@
 .end method
 
 .method public update(Lorg/oscim/renderer/GLViewport;)V
-    .locals 22
-    .param p1, "v"    # Lorg/oscim/renderer/GLViewport;
-
-    .prologue
-    .line 55
-    move-object/from16 v0, p1
-
-    iget-object v0, v0, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
-
-    move-object/from16 v19, v0
-
-    move-object/from16 v0, v19
-
-    iget v0, v0, Lorg/oscim/core/MapPosition;->zoomLevel:I
-
-    move/from16 v19, v0
-
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mZoomMin:I
-
-    move/from16 v20, v0
-
-    sub-int v8, v19, v20
-
-    .line 58
-    .local v8, "diff":I
-    const/16 v19, -0x1
-
-    move/from16 v0, v19
-
-    if-ge v8, v0, :cond_0
-
-    .line 59
-    const/16 v19, 0x0
-
-    move/from16 v0, v19
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAlpha:F
-
-    .line 60
-    const/16 v19, 0x0
-
-    move/from16 v0, v19
-
-    move-object/from16 v1, p0
-
-    iput-boolean v0, v1, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mShow:Z
-
-    .line 61
-    const/16 v19, 0x0
-
-    move-object/from16 v0, p0
-
-    move/from16 v1, v19
-
-    invoke-virtual {v0, v1}, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->setReady(Z)V
-
-    .line 186
-    :goto_0
-    return-void
-
-    .line 65
-    :cond_0
-    if-ltz v8, :cond_3
-
-    .line 66
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAlpha:F
-
-    move/from16 v19, v0
-
-    const/high16 v20, 0x3f800000    # 1.0f
-
-    cmpg-float v19, v19, v20
-
-    if-gez v19, :cond_2
-
-    .line 67
-    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-
-    move-result-wide v14
-
-    .line 68
-    .local v14, "now":J
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mShow:Z
-
-    move/from16 v19, v0
-
-    if-nez v19, :cond_1
-
-    .line 69
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAlpha:F
-
-    move/from16 v19, v0
-
-    const/high16 v20, 0x437a0000    # 250.0f
-
-    mul-float v19, v19, v20
-
-    move/from16 v0, v19
-
-    float-to-long v0, v0
-
-    move-wide/from16 v20, v0
-
-    sub-long v20, v14, v20
-
-    move-wide/from16 v0, v20
-
-    move-object/from16 v2, p0
-
-    iput-wide v0, v2, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAnimTime:J
+    .locals 11
 
     .line 71
-    :cond_1
-    const/16 v19, 0x1
+    iget-object p1, p1, Lorg/oscim/renderer/GLViewport;->pos:Lorg/oscim/core/MapPosition;
 
-    move/from16 v0, v19
+    iget p1, p1, Lorg/oscim/core/MapPosition;->zoomLevel:I
 
-    move-object/from16 v1, p0
+    iget v0, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mZoomMin:I
 
-    iput-boolean v0, v1, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mShow:Z
+    sub-int/2addr p1, v0
 
-    .line 72
-    move-object/from16 v0, p0
+    const/4 v0, 0x0
 
-    iget-wide v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAnimTime:J
+    const/4 v1, 0x0
 
-    move-wide/from16 v20, v0
+    const/4 v2, -0x1
 
-    sub-long v20, v14, v20
+    if-ge p1, v2, :cond_0
 
-    move-wide/from16 v0, v20
+    .line 75
+    iput v0, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAlpha:F
 
-    long-to-float v0, v0
+    .line 76
+    iput-boolean v1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mShow:Z
 
-    move/from16 v19, v0
+    .line 77
+    invoke-virtual {p0, v1}, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->setReady(Z)V
 
-    const/high16 v20, 0x437a0000    # 250.0f
+    return-void
 
-    div-float v19, v19, v20
+    :cond_0
+    const/high16 v2, 0x3f800000    # 1.0f
 
-    const/16 v20, 0x0
+    const/4 v3, 0x1
 
-    const/high16 v21, 0x3f800000    # 1.0f
+    if-ltz p1, :cond_2
 
-    invoke-static/range {v19 .. v21}, Lorg/oscim/utils/FastMath;->clamp(FFF)F
+    .line 82
+    iget p1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAlpha:F
 
-    move-result v19
+    cmpg-float p1, p1, v2
 
-    move/from16 v0, v19
+    if-gez p1, :cond_4
 
-    move-object/from16 v1, p0
+    .line 83
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
-    iput v0, v1, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAlpha:F
+    move-result-wide v4
 
-    .line 73
-    invoke-static {}, Lorg/oscim/renderer/MapRenderer;->animate()V
+    .line 84
+    iget-boolean p1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mShow:Z
+
+    const/high16 v6, 0x437a0000    # 250.0f
+
+    if-nez p1, :cond_1
+
+    .line 85
+    iget p1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAlpha:F
+
+    mul-float/2addr p1, v6
+
+    float-to-long v7, p1
+
+    sub-long v9, v4, v7
+
+    iput-wide v9, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAnimTime:J
 
     .line 87
-    .end local v14    # "now":J
-    :cond_2
-    :goto_1
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAlpha:F
-
-    move/from16 v19, v0
-
-    const/16 v20, 0x0
-
-    cmpl-float v19, v19, v20
-
-    if-nez v19, :cond_5
+    :cond_1
+    iput-boolean v3, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mShow:Z
 
     .line 88
-    const/16 v19, 0x0
+    iget-wide v7, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAnimTime:J
 
-    move-object/from16 v0, p0
+    sub-long v9, v4, v7
 
-    move/from16 v1, v19
+    long-to-float p1, v9
 
-    invoke-virtual {v0, v1}, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->setReady(Z)V
+    div-float/2addr p1, v6
+
+    invoke-static {p1, v0, v2}, Lorg/oscim/utils/FastMath;->clamp(FFF)F
+
+    move-result p1
+
+    iput p1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAlpha:F
+
+    .line 89
+    invoke-static {}, Lorg/oscim/renderer/MapRenderer;->animate()V
 
     goto :goto_0
 
-    .line 76
-    :cond_3
-    move-object/from16 v0, p0
+    .line 92
+    :cond_2
+    iget p1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAlpha:F
 
-    iget v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAlpha:F
+    cmpl-float p1, p1, v0
 
-    move/from16 v19, v0
+    if-lez p1, :cond_4
 
-    const/16 v20, 0x0
-
-    cmpl-float v19, v19, v20
-
-    if-lez v19, :cond_2
-
-    .line 77
+    .line 93
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
-    move-result-wide v14
-
-    .line 78
-    .restart local v14    # "now":J
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mShow:Z
-
-    move/from16 v19, v0
-
-    if-eqz v19, :cond_4
-
-    .line 79
-    const/high16 v19, 0x3f800000    # 1.0f
-
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAlpha:F
-
-    move/from16 v20, v0
-
-    sub-float v19, v19, v20
-
-    const/high16 v20, 0x43c80000    # 400.0f
-
-    mul-float v19, v19, v20
-
-    move/from16 v0, v19
-
-    float-to-long v0, v0
-
-    move-wide/from16 v20, v0
-
-    sub-long v20, v14, v20
-
-    move-wide/from16 v0, v20
-
-    move-object/from16 v2, p0
-
-    iput-wide v0, v2, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAnimTime:J
-
-    .line 81
-    :cond_4
-    const/16 v19, 0x0
-
-    move/from16 v0, v19
-
-    move-object/from16 v1, p0
-
-    iput-boolean v0, v1, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mShow:Z
-
-    .line 82
-    const/high16 v19, 0x3f800000    # 1.0f
-
-    move-object/from16 v0, p0
-
-    iget-wide v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAnimTime:J
-
-    move-wide/from16 v20, v0
-
-    sub-long v20, v14, v20
-
-    move-wide/from16 v0, v20
-
-    long-to-float v0, v0
-
-    move/from16 v20, v0
-
-    const/high16 v21, 0x43c80000    # 400.0f
-
-    div-float v20, v20, v21
-
-    sub-float v19, v19, v20
-
-    const/16 v20, 0x0
-
-    const/high16 v21, 0x3f800000    # 1.0f
-
-    invoke-static/range {v19 .. v21}, Lorg/oscim/utils/FastMath;->clamp(FFF)F
-
-    move-result v19
-
-    move/from16 v0, v19
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAlpha:F
-
-    .line 83
-    invoke-static {}, Lorg/oscim/renderer/MapRenderer;->animate()V
-
-    goto :goto_1
-
-    .line 92
-    .end local v14    # "now":J
-    :cond_5
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileRenderer:Lorg/oscim/layers/tile/TileRenderer;
-
-    move-object/from16 v19, v0
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
-
-    move-object/from16 v20, v0
-
-    invoke-virtual/range {v19 .. v20}, Lorg/oscim/layers/tile/TileRenderer;->getVisibleTiles(Lorg/oscim/layers/tile/TileSet;)Z
+    move-result-wide v4
 
     .line 94
-    move-object/from16 v0, p0
+    iget-boolean p1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mShow:Z
 
-    iget-object v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
+    const/high16 v6, 0x43c80000    # 400.0f
 
-    move-object/from16 v19, v0
-
-    move-object/from16 v0, v19
-
-    iget v0, v0, Lorg/oscim/layers/tile/TileSet;->cnt:I
-
-    move/from16 v19, v0
-
-    if-nez v19, :cond_6
+    if-eqz p1, :cond_3
 
     .line 95
-    move-object/from16 v0, p0
+    iget p1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAlpha:F
 
-    iget-object v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileRenderer:Lorg/oscim/layers/tile/TileRenderer;
+    sub-float p1, v2, p1
 
-    move-object/from16 v19, v0
+    mul-float/2addr p1, v6
 
-    move-object/from16 v0, p0
+    float-to-long v7, p1
 
-    iget-object v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
+    sub-long v9, v4, v7
 
-    move-object/from16 v20, v0
+    iput-wide v9, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAnimTime:J
 
-    invoke-virtual/range {v19 .. v20}, Lorg/oscim/layers/tile/TileRenderer;->releaseTiles(Lorg/oscim/layers/tile/TileSet;)V
+    .line 97
+    :cond_3
+    iput-boolean v1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mShow:Z
 
-    .line 96
-    const/16 v19, 0x0
+    .line 98
+    iget-wide v7, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAnimTime:J
 
-    move-object/from16 v0, p0
+    sub-long v9, v4, v7
 
-    move/from16 v1, v19
+    long-to-float p1, v9
 
-    invoke-virtual {v0, v1}, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->setReady(Z)V
+    div-float/2addr p1, v6
 
-    goto/16 :goto_0
+    sub-float p1, v2, p1
 
-    .line 100
-    :cond_6
-    move-object/from16 v0, p0
+    invoke-static {p1, v0, v2}, Lorg/oscim/utils/FastMath;->clamp(FFF)F
 
-    iget-object v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
+    move-result p1
 
-    move-object/from16 v19, v0
+    iput p1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAlpha:F
 
-    move-object/from16 v0, v19
+    .line 99
+    invoke-static {}, Lorg/oscim/renderer/MapRenderer;->animate()V
 
-    iget-object v0, v0, Lorg/oscim/layers/tile/TileSet;->tiles:[Lorg/oscim/layers/tile/MapTile;
+    .line 103
+    :cond_4
+    :goto_0
+    iget p1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mAlpha:F
 
-    move-object/from16 v17, v0
+    cmpl-float p1, p1, v0
 
-    .line 101
-    .local v17, "tiles":[Lorg/oscim/layers/tile/MapTile;
-    const/16 v19, 0x0
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
-
-    move-object/from16 v20, v0
-
-    move-object/from16 v0, v20
-
-    iget v0, v0, Lorg/oscim/layers/tile/TileSet;->cnt:I
-
-    move/from16 v20, v0
-
-    move-object/from16 v0, v17
-
-    move/from16 v1, v19
-
-    move/from16 v2, v20
-
-    invoke-static {v0, v1, v2}, Lorg/oscim/layers/tile/TileDistanceSort;->sort([Lorg/oscim/layers/tile/MapTile;II)V
+    if-nez p1, :cond_5
 
     .line 104
-    move-object/from16 v0, p0
+    invoke-virtual {p0, v1}, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->setReady(Z)V
 
-    iget-object v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
+    return-void
 
-    move-object/from16 v19, v0
+    .line 108
+    :cond_5
+    iget-object p1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileRenderer:Lorg/oscim/layers/tile/TileRenderer;
 
-    move-object/from16 v0, v19
+    iget-object v0, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
+
+    invoke-virtual {p1, v0}, Lorg/oscim/layers/tile/TileRenderer;->getVisibleTiles(Lorg/oscim/layers/tile/TileSet;)Z
+
+    .line 110
+    iget-object p1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
+
+    iget p1, p1, Lorg/oscim/layers/tile/TileSet;->cnt:I
+
+    if-nez p1, :cond_6
+
+    .line 111
+    iget-object p1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileRenderer:Lorg/oscim/layers/tile/TileRenderer;
+
+    iget-object v0, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
+
+    invoke-virtual {p1, v0}, Lorg/oscim/layers/tile/TileRenderer;->releaseTiles(Lorg/oscim/layers/tile/TileSet;)V
+
+    .line 112
+    invoke-virtual {p0, v1}, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->setReady(Z)V
+
+    return-void
+
+    .line 116
+    :cond_6
+    iget-object p1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
+
+    iget-object p1, p1, Lorg/oscim/layers/tile/TileSet;->tiles:[Lorg/oscim/layers/tile/MapTile;
+
+    .line 117
+    iget-object v0, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
 
     iget v0, v0, Lorg/oscim/layers/tile/TileSet;->cnt:I
 
-    move/from16 v19, v0
+    invoke-static {p1, v1, v0}, Lorg/oscim/layers/tile/TileDistanceSort;->sort([Lorg/oscim/layers/tile/MapTile;II)V
 
-    mul-int/lit8 v13, v19, 0x4
+    .line 120
+    iget-object v0, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
 
-    .line 105
-    .local v13, "maxTiles":I
-    move-object/from16 v0, p0
+    iget v0, v0, Lorg/oscim/layers/tile/TileSet;->cnt:I
 
-    iget-object v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mExtrusionBucketSet:[Lorg/oscim/renderer/bucket/ExtrusionBuckets;
+    const/4 v2, 0x4
 
-    move-object/from16 v19, v0
+    mul-int/2addr v0, v2
 
-    move-object/from16 v0, v19
+    .line 121
+    iget-object v4, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mExtrusionBucketSet:[Lorg/oscim/renderer/bucket/ExtrusionBuckets;
 
-    array-length v0, v0
+    array-length v4, v4
 
-    move/from16 v19, v0
+    if-ge v4, v0, :cond_7
 
-    move/from16 v0, v19
+    .line 122
+    new-array v0, v0, [Lorg/oscim/renderer/bucket/ExtrusionBuckets;
 
-    if-ge v0, v13, :cond_7
+    iput-object v0, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mExtrusionBucketSet:[Lorg/oscim/renderer/bucket/ExtrusionBuckets;
 
-    .line 106
-    new-array v0, v13, [Lorg/oscim/renderer/bucket/ExtrusionBuckets;
-
-    move-object/from16 v19, v0
-
-    move-object/from16 v0, v19
-
-    move-object/from16 v1, p0
-
-    iput-object v0, v1, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mExtrusionBucketSet:[Lorg/oscim/renderer/bucket/ExtrusionBuckets;
-
-    .line 109
+    .line 128
     :cond_7
-    const/4 v7, 0x0
-
-    .line 111
-    .local v7, "compiled":Z
-    const/4 v4, 0x0
-
-    .line 112
-    .local v4, "activeTiles":I
-    const/16 v19, 0x0
-
-    aget-object v19, v17, v19
-
-    move-object/from16 v0, v19
+    aget-object v0, p1, v1
 
     iget-byte v0, v0, Lorg/oscim/layers/tile/MapTile;->zoomLevel:B
 
-    move/from16 v18, v0
+    .line 130
+    iget v4, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mZoomMin:I
 
-    .line 114
-    .local v18, "zoom":I
-    move-object/from16 v0, p0
+    if-lt v0, v4, :cond_b
 
-    iget v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mZoomMin:I
+    iget v4, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mZoomMax:I
 
-    move/from16 v19, v0
+    if-gt v0, v4, :cond_b
 
-    move/from16 v0, v18
+    move v0, v1
 
-    move/from16 v1, v19
+    move v2, v0
 
-    if-lt v0, v1, :cond_b
+    move v4, v2
 
-    move-object/from16 v0, p0
+    .line 133
+    :goto_1
+    iget-object v5, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
 
-    iget v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mZoomMax:I
+    iget v5, v5, Lorg/oscim/layers/tile/TileSet;->cnt:I
 
-    move/from16 v19, v0
+    if-ge v0, v5, :cond_17
 
-    move/from16 v0, v18
+    .line 134
+    aget-object v5, p1, v0
 
-    move/from16 v1, v19
+    invoke-static {v5}, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->getBuckets(Lorg/oscim/layers/tile/MapTile;)Lorg/oscim/renderer/bucket/ExtrusionBuckets;
 
-    if-gt v0, v1, :cond_b
+    move-result-object v5
 
-    .line 117
-    const/4 v11, 0x0
-
-    .local v11, "i":I
-    :goto_2
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
-
-    move-object/from16 v19, v0
-
-    move-object/from16 v0, v19
-
-    iget v0, v0, Lorg/oscim/layers/tile/TileSet;->cnt:I
-
-    move/from16 v19, v0
-
-    move/from16 v0, v19
-
-    if-ge v11, v0, :cond_13
-
-    .line 118
-    aget-object v19, v17, v11
-
-    invoke-static/range {v19 .. v19}, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->getBuckets(Lorg/oscim/layers/tile/MapTile;)Lorg/oscim/renderer/bucket/ExtrusionBuckets;
-
-    move-result-object v10
-
-    .line 119
-    .local v10, "ebs":Lorg/oscim/renderer/bucket/ExtrusionBuckets;
-    if-nez v10, :cond_9
-
-    .line 117
-    :cond_8
-    :goto_3
-    add-int/lit8 v11, v11, 0x1
+    if-nez v5, :cond_8
 
     goto :goto_2
 
-    .line 122
+    .line 138
+    :cond_8
+    iget-boolean v6, v5, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->compiled:Z
+
+    if-eqz v6, :cond_9
+
+    .line 139
+    iget-object v6, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mExtrusionBucketSet:[Lorg/oscim/renderer/bucket/ExtrusionBuckets;
+
+    add-int/lit8 v7, v4, 0x1
+
+    aput-object v5, v6, v4
+
+    move v4, v7
+
+    goto :goto_2
+
     :cond_9
-    iget-boolean v0, v10, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->compiled:Z
+    if-nez v2, :cond_a
 
-    move/from16 v19, v0
+    .line 140
+    invoke-virtual {v5}, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->compile()Z
 
-    if-eqz v19, :cond_a
+    move-result v6
 
-    .line 123
-    move-object/from16 v0, p0
+    if-eqz v6, :cond_a
 
-    iget-object v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mExtrusionBucketSet:[Lorg/oscim/renderer/bucket/ExtrusionBuckets;
+    .line 141
+    iget-object v2, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mExtrusionBucketSet:[Lorg/oscim/renderer/bucket/ExtrusionBuckets;
 
-    move-object/from16 v19, v0
+    add-int/lit8 v6, v4, 0x1
 
-    add-int/lit8 v5, v4, 0x1
+    aput-object v5, v2, v4
 
-    .end local v4    # "activeTiles":I
-    .local v5, "activeTiles":I
-    aput-object v10, v19, v4
+    move v2, v3
 
-    move v4, v5
+    move v4, v6
 
-    .end local v5    # "activeTiles":I
-    .restart local v4    # "activeTiles":I
-    goto :goto_3
-
-    .line 124
     :cond_a
-    if-nez v7, :cond_8
+    :goto_2
+    add-int/lit8 v0, v0, 0x1
 
-    invoke-virtual {v10}, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->compile()Z
+    goto :goto_1
 
-    move-result v19
-
-    if-eqz v19, :cond_8
-
-    .line 125
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mExtrusionBucketSet:[Lorg/oscim/renderer/bucket/ExtrusionBuckets;
-
-    move-object/from16 v19, v0
-
-    add-int/lit8 v5, v4, 0x1
-
-    .end local v4    # "activeTiles":I
-    .restart local v5    # "activeTiles":I
-    aput-object v10, v19, v4
-
-    .line 126
-    const/4 v7, 0x1
-
-    move v4, v5
-
-    .end local v5    # "activeTiles":I
-    .restart local v4    # "activeTiles":I
-    goto :goto_3
-
-    .line 129
-    .end local v10    # "ebs":Lorg/oscim/renderer/bucket/ExtrusionBuckets;
-    .end local v11    # "i":I
+    .line 145
     :cond_b
-    move-object/from16 v0, p0
+    iget v4, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mZoomMax:I
 
-    iget v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mZoomMax:I
+    add-int/2addr v4, v3
 
-    move/from16 v19, v0
+    if-ne v0, v4, :cond_10
 
-    add-int/lit8 v19, v19, 0x1
+    move v0, v1
 
-    move/from16 v0, v18
+    move v2, v0
 
-    move/from16 v1, v19
+    move v4, v2
 
-    if-ne v0, v1, :cond_f
+    .line 147
+    :goto_3
+    iget-object v5, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
 
-    .line 131
-    const/4 v11, 0x0
+    iget v5, v5, Lorg/oscim/layers/tile/TileSet;->cnt:I
 
-    .restart local v11    # "i":I
-    :goto_4
-    move-object/from16 v0, p0
+    if-ge v0, v5, :cond_17
 
-    iget-object v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
+    .line 148
+    aget-object v5, p1, v0
 
-    move-object/from16 v19, v0
+    iget-object v5, v5, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
 
-    move-object/from16 v0, v19
+    invoke-virtual {v5}, Lorg/oscim/layers/tile/MapTile$TileNode;->parent()Ljava/lang/Object;
 
-    iget v0, v0, Lorg/oscim/layers/tile/TileSet;->cnt:I
+    move-result-object v5
 
-    move/from16 v19, v0
+    check-cast v5, Lorg/oscim/layers/tile/MapTile;
 
-    move/from16 v0, v19
-
-    if-ge v11, v0, :cond_13
-
-    .line 132
-    aget-object v19, v17, v11
-
-    move-object/from16 v0, v19
-
-    iget-object v0, v0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
-
-    move-object/from16 v19, v0
-
-    invoke-virtual/range {v19 .. v19}, Lorg/oscim/layers/tile/MapTile$TileNode;->parent()Ljava/lang/Object;
-
-    move-result-object v16
-
-    check-cast v16, Lorg/oscim/layers/tile/MapTile;
-
-    .line 134
-    .local v16, "t":Lorg/oscim/layers/tile/MapTile;
-    if-nez v16, :cond_d
-
-    .line 131
-    :cond_c
-    :goto_5
-    add-int/lit8 v11, v11, 0x1
+    if-nez v5, :cond_c
 
     goto :goto_4
 
-    .line 141
-    :cond_d
-    invoke-static/range {v16 .. v16}, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->getBuckets(Lorg/oscim/layers/tile/MapTile;)Lorg/oscim/renderer/bucket/ExtrusionBuckets;
-
-    move-result-object v10
-
-    .line 142
-    .restart local v10    # "ebs":Lorg/oscim/renderer/bucket/ExtrusionBuckets;
-    if-eqz v10, :cond_c
-
-    .line 145
-    iget-boolean v0, v10, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->compiled:Z
-
-    move/from16 v19, v0
-
-    if-eqz v19, :cond_e
-
-    .line 146
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mExtrusionBucketSet:[Lorg/oscim/renderer/bucket/ExtrusionBuckets;
-
-    move-object/from16 v19, v0
-
-    add-int/lit8 v5, v4, 0x1
-
-    .end local v4    # "activeTiles":I
-    .restart local v5    # "activeTiles":I
-    aput-object v10, v19, v4
-
-    move v4, v5
-
-    .end local v5    # "activeTiles":I
-    .restart local v4    # "activeTiles":I
-    goto :goto_5
-
-    .line 148
-    :cond_e
-    if-nez v7, :cond_c
-
-    invoke-virtual {v10}, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->compile()Z
-
-    move-result v19
-
-    if-eqz v19, :cond_c
-
-    .line 149
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mExtrusionBucketSet:[Lorg/oscim/renderer/bucket/ExtrusionBuckets;
-
-    move-object/from16 v19, v0
-
-    add-int/lit8 v5, v4, 0x1
-
-    .end local v4    # "activeTiles":I
-    .restart local v5    # "activeTiles":I
-    aput-object v10, v19, v4
-
-    .line 150
-    const/4 v7, 0x1
-
-    move v4, v5
-
-    .end local v5    # "activeTiles":I
-    .restart local v4    # "activeTiles":I
-    goto :goto_5
-
-    .line 153
-    .end local v10    # "ebs":Lorg/oscim/renderer/bucket/ExtrusionBuckets;
-    .end local v11    # "i":I
-    .end local v16    # "t":Lorg/oscim/layers/tile/MapTile;
-    :cond_f
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mZoomMin:I
-
-    move/from16 v19, v0
-
-    add-int/lit8 v19, v19, -0x1
-
-    move/from16 v0, v18
-
-    move/from16 v1, v19
-
-    if-ne v0, v1, :cond_13
-
-    .line 155
-    const/4 v11, 0x0
-
-    .restart local v11    # "i":I
-    :goto_6
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
-
-    move-object/from16 v19, v0
-
-    move-object/from16 v0, v19
-
-    iget v0, v0, Lorg/oscim/layers/tile/TileSet;->cnt:I
-
-    move/from16 v19, v0
-
-    move/from16 v0, v19
-
-    if-ge v11, v0, :cond_13
-
-    .line 156
-    aget-object v16, v17, v11
-
     .line 157
-    .restart local v16    # "t":Lorg/oscim/layers/tile/MapTile;
-    const/4 v12, 0x0
+    :cond_c
+    invoke-static {v5}, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->getBuckets(Lorg/oscim/layers/tile/MapTile;)Lorg/oscim/renderer/bucket/ExtrusionBuckets;
 
-    .local v12, "j":B
-    move v5, v4
+    move-result-object v5
 
-    .end local v4    # "activeTiles":I
-    .restart local v5    # "activeTiles":I
-    :goto_7
-    const/16 v19, 0x4
+    if-nez v5, :cond_d
 
-    move/from16 v0, v19
-
-    if-ge v12, v0, :cond_12
-
-    .line 158
-    const/16 v19, 0x1
-
-    shl-int v19, v19, v12
-
-    move-object/from16 v0, v16
-
-    move/from16 v1, v19
-
-    invoke-virtual {v0, v1}, Lorg/oscim/layers/tile/MapTile;->hasProxy(I)Z
-
-    move-result v19
-
-    if-nez v19, :cond_10
-
-    move v4, v5
-
-    .line 157
-    .end local v5    # "activeTiles":I
-    .restart local v4    # "activeTiles":I
-    :goto_8
-    add-int/lit8 v19, v12, 0x1
-
-    move/from16 v0, v19
-
-    int-to-byte v12, v0
-
-    move v5, v4
-
-    .end local v4    # "activeTiles":I
-    .restart local v5    # "activeTiles":I
-    goto :goto_7
+    goto :goto_4
 
     .line 161
-    :cond_10
-    move-object/from16 v0, v16
+    :cond_d
+    iget-boolean v6, v5, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->compiled:Z
 
-    iget-object v0, v0, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
-
-    move-object/from16 v19, v0
-
-    move-object/from16 v0, v19
-
-    invoke-virtual {v0, v12}, Lorg/oscim/layers/tile/MapTile$TileNode;->child(I)Ljava/lang/Object;
-
-    move-result-object v6
-
-    check-cast v6, Lorg/oscim/layers/tile/MapTile;
+    if-eqz v6, :cond_e
 
     .line 162
-    .local v6, "c":Lorg/oscim/layers/tile/MapTile;
-    invoke-static {v6}, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->getBuckets(Lorg/oscim/layers/tile/MapTile;)Lorg/oscim/renderer/bucket/ExtrusionBuckets;
+    iget-object v6, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mExtrusionBucketSet:[Lorg/oscim/renderer/bucket/ExtrusionBuckets;
 
-    move-result-object v9
+    add-int/lit8 v7, v4, 0x1
+
+    aput-object v5, v6, v4
+
+    move v4, v7
+
+    goto :goto_4
+
+    :cond_e
+    if-nez v2, :cond_f
 
     .line 164
-    .local v9, "eb":Lorg/oscim/renderer/bucket/ExtrusionBuckets;
-    if-eqz v9, :cond_16
+    invoke-virtual {v5}, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->compile()Z
 
-    iget-boolean v0, v9, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->compiled:Z
+    move-result v6
 
-    move/from16 v19, v0
-
-    if-nez v19, :cond_11
-
-    move v4, v5
+    if-eqz v6, :cond_f
 
     .line 165
-    .end local v5    # "activeTiles":I
-    .restart local v4    # "activeTiles":I
-    goto :goto_8
+    iget-object v2, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mExtrusionBucketSet:[Lorg/oscim/renderer/bucket/ExtrusionBuckets;
 
-    .line 167
-    .end local v4    # "activeTiles":I
-    .restart local v5    # "activeTiles":I
-    :cond_11
-    move-object/from16 v0, p0
+    add-int/lit8 v6, v4, 0x1
 
-    iget-object v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mExtrusionBucketSet:[Lorg/oscim/renderer/bucket/ExtrusionBuckets;
+    aput-object v5, v2, v4
 
-    move-object/from16 v19, v0
+    move v2, v3
 
-    add-int/lit8 v4, v5, 0x1
+    move v4, v6
 
-    .end local v5    # "activeTiles":I
-    .restart local v4    # "activeTiles":I
-    aput-object v9, v19, v5
+    :cond_f
+    :goto_4
+    add-int/lit8 v0, v0, 0x1
 
-    goto :goto_8
+    goto :goto_3
 
-    .line 155
-    .end local v4    # "activeTiles":I
-    .end local v6    # "c":Lorg/oscim/layers/tile/MapTile;
-    .end local v9    # "eb":Lorg/oscim/renderer/bucket/ExtrusionBuckets;
-    .restart local v5    # "activeTiles":I
-    :cond_12
-    add-int/lit8 v11, v11, 0x1
+    .line 169
+    :cond_10
+    iget v4, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mZoomMin:I
 
-    move v4, v5
+    sub-int/2addr v4, v3
 
-    .end local v5    # "activeTiles":I
-    .restart local v4    # "activeTiles":I
-    goto :goto_6
+    if-ne v0, v4, :cond_16
 
-    .line 173
-    .end local v11    # "i":I
-    .end local v12    # "j":B
-    .end local v16    # "t":Lorg/oscim/layers/tile/MapTile;
-    :cond_13
-    if-eqz v7, :cond_14
+    move v0, v1
+
+    move v4, v0
+
+    .line 171
+    :goto_5
+    iget-object v5, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
+
+    iget v5, v5, Lorg/oscim/layers/tile/TileSet;->cnt:I
+
+    if-ge v0, v5, :cond_15
+
+    .line 172
+    aget-object v5, p1, v0
+
+    move v6, v4
+
+    move v4, v1
+
+    :goto_6
+    if-ge v4, v2, :cond_14
+
+    shl-int v7, v3, v4
 
     .line 174
-    invoke-static {}, Lorg/oscim/renderer/MapRenderer;->animate()V
+    invoke-virtual {v5, v7}, Lorg/oscim/layers/tile/MapTile;->hasProxy(I)Z
 
-    .line 176
-    :cond_14
-    move-object/from16 v0, p0
+    move-result v7
 
-    iput v4, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mBucketsCnt:I
+    if-nez v7, :cond_11
+
+    goto :goto_7
+
+    .line 177
+    :cond_11
+    iget-object v7, v5, Lorg/oscim/layers/tile/MapTile;->node:Lorg/oscim/layers/tile/MapTile$TileNode;
+
+    invoke-virtual {v7, v4}, Lorg/oscim/layers/tile/MapTile$TileNode;->child(I)Ljava/lang/Object;
+
+    move-result-object v7
+
+    check-cast v7, Lorg/oscim/layers/tile/MapTile;
+
+    .line 178
+    invoke-static {v7}, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->getBuckets(Lorg/oscim/layers/tile/MapTile;)Lorg/oscim/renderer/bucket/ExtrusionBuckets;
+
+    move-result-object v7
+
+    if-eqz v7, :cond_13
 
     .line 180
-    if-nez v4, :cond_15
+    iget-boolean v8, v7, Lorg/oscim/renderer/bucket/ExtrusionBuckets;->compiled:Z
 
-    .line 181
-    move-object/from16 v0, p0
+    if-nez v8, :cond_12
 
-    iget-object v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileRenderer:Lorg/oscim/layers/tile/TileRenderer;
+    goto :goto_7
 
-    move-object/from16 v19, v0
+    .line 183
+    :cond_12
+    iget-object v8, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mExtrusionBucketSet:[Lorg/oscim/renderer/bucket/ExtrusionBuckets;
 
-    move-object/from16 v0, p0
+    add-int/lit8 v9, v6, 0x1
 
-    iget-object v0, v0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
+    aput-object v7, v8, v6
 
-    move-object/from16 v20, v0
+    move v6, v9
 
-    invoke-virtual/range {v19 .. v20}, Lorg/oscim/layers/tile/TileRenderer;->releaseTiles(Lorg/oscim/layers/tile/TileSet;)V
+    :cond_13
+    :goto_7
+    add-int/lit8 v4, v4, 0x1
 
-    .line 182
-    const/16 v19, 0x0
+    int-to-byte v4, v4
 
-    move-object/from16 v0, p0
+    goto :goto_6
 
-    move/from16 v1, v19
+    :cond_14
+    add-int/lit8 v0, v0, 0x1
 
-    invoke-virtual {v0, v1}, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->setReady(Z)V
+    move v4, v6
 
-    goto/16 :goto_0
+    goto :goto_5
 
-    .line 185
     :cond_15
-    const/16 v19, 0x1
+    move v2, v1
 
-    move-object/from16 v0, p0
-
-    move/from16 v1, v19
-
-    invoke-virtual {v0, v1}, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->setReady(Z)V
-
-    goto/16 :goto_0
-
-    .end local v4    # "activeTiles":I
-    .restart local v5    # "activeTiles":I
-    .restart local v6    # "c":Lorg/oscim/layers/tile/MapTile;
-    .restart local v9    # "eb":Lorg/oscim/renderer/bucket/ExtrusionBuckets;
-    .restart local v11    # "i":I
-    .restart local v12    # "j":B
-    .restart local v16    # "t":Lorg/oscim/layers/tile/MapTile;
-    :cond_16
-    move v4, v5
-
-    .end local v5    # "activeTiles":I
-    .restart local v4    # "activeTiles":I
     goto :goto_8
+
+    :cond_16
+    move v2, v1
+
+    move v4, v2
+
+    :cond_17
+    :goto_8
+    if-eqz v2, :cond_18
+
+    .line 190
+    invoke-static {}, Lorg/oscim/renderer/MapRenderer;->animate()V
+
+    .line 192
+    :cond_18
+    iput v4, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mBucketsCnt:I
+
+    if-nez v4, :cond_19
+
+    .line 197
+    iget-object p1, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileRenderer:Lorg/oscim/layers/tile/TileRenderer;
+
+    iget-object v0, p0, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->mTileSet:Lorg/oscim/layers/tile/TileSet;
+
+    invoke-virtual {p1, v0}, Lorg/oscim/layers/tile/TileRenderer;->releaseTiles(Lorg/oscim/layers/tile/TileSet;)V
+
+    .line 198
+    invoke-virtual {p0, v1}, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->setReady(Z)V
+
+    return-void
+
+    .line 201
+    :cond_19
+    invoke-virtual {p0, v3}, Lorg/oscim/layers/tile/buildings/BuildingRenderer;->setReady(Z)V
+
+    return-void
 .end method

@@ -16,14 +16,16 @@
 .annotation system Ldalvik/annotation/Signature;
     value = {
         "<T:",
-        "Lorg/oscim/theme/styles/RenderStyle$StyleBuilder",
-        "<TT;>;>",
+        "Lorg/oscim/theme/styles/RenderStyle$StyleBuilder<",
+        "TT;>;>",
         "Ljava/lang/Object;"
     }
 .end annotation
 
 
 # instance fields
+.field public cat:Ljava/lang/String;
+
 .field public fillColor:I
 
 .field public level:I
@@ -34,14 +36,14 @@
 
 .field public style:Ljava/lang/String;
 
+.field public themeCallback:Lorg/oscim/theme/ThemeCallback;
+
 
 # direct methods
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
-    .line 27
-    .local p0, "this":Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;, "Lorg/oscim/theme/styles/RenderStyle$StyleBuilder<TT;>;"
+    .line 30
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -52,9 +54,8 @@
 .method public abstract build()Lorg/oscim/theme/styles/RenderStyle;
 .end method
 
-.method public color(Ljava/lang/String;)Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
-    .locals 1
-    .param p1, "color"    # Ljava/lang/String;
+.method public cat(Ljava/lang/String;)Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -63,43 +64,78 @@
         }
     .end annotation
 
-    .prologue
-    .line 75
-    .local p0, "this":Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;, "Lorg/oscim/theme/styles/RenderStyle$StyleBuilder<TT;>;"
-    invoke-static {p1}, Lorg/oscim/backend/canvas/Color;->parseColor(Ljava/lang/String;)I
+    .line 44
+    iput-object p1, p0, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->cat:Ljava/lang/String;
 
-    move-result v0
-
-    iput v0, p0, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->fillColor:I
-
-    .line 76
+    .line 45
     invoke-virtual {p0}, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
 
-    move-result-object v0
+    move-result-object p1
 
-    return-object v0
+    return-object p1
 .end method
 
-.method public level(I)Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
-    .locals 1
-    .param p1, "level"    # I
+.method public color(I)Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I)TT;"
         }
     .end annotation
 
-    .prologue
-    .line 44
-    .local p0, "this":Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;, "Lorg/oscim/theme/styles/RenderStyle$StyleBuilder<TT;>;"
-    iput p1, p0, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->level:I
+    .line 80
+    iput p1, p0, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->fillColor:I
 
-    .line 45
+    .line 81
     invoke-virtual {p0}, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
 
-    move-result-object v0
+    move-result-object p1
 
-    return-object v0
+    return-object p1
+.end method
+
+.method public color(Ljava/lang/String;)Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            ")TT;"
+        }
+    .end annotation
+
+    .line 85
+    invoke-static {p1}, Lorg/oscim/backend/canvas/Color;->parseColor(Ljava/lang/String;)I
+
+    move-result p1
+
+    iput p1, p0, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->fillColor:I
+
+    .line 86
+    invoke-virtual {p0}, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public level(I)Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(I)TT;"
+        }
+    .end annotation
+
+    .line 54
+    iput p1, p0, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->level:I
+
+    .line 55
+    invoke-virtual {p0}, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+
+    move-result-object p1
+
+    return-object p1
 .end method
 
 .method protected self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
@@ -110,15 +146,30 @@
         }
     .end annotation
 
-    .prologue
-    .line 81
-    .local p0, "this":Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;, "Lorg/oscim/theme/styles/RenderStyle$StyleBuilder<TT;>;"
     return-object p0
 .end method
 
+.method public strokeColor(I)Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(I)TT;"
+        }
+    .end annotation
+
+    .line 65
+    iput p1, p0, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->strokeColor:I
+
+    .line 66
+    invoke-virtual {p0}, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
 .method public strokeColor(Ljava/lang/String;)Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
-    .locals 1
-    .param p1, "color"    # Ljava/lang/String;
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -127,19 +178,57 @@
         }
     .end annotation
 
-    .prologue
-    .line 60
-    .local p0, "this":Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;, "Lorg/oscim/theme/styles/RenderStyle$StyleBuilder<TT;>;"
+    .line 70
     invoke-static {p1}, Lorg/oscim/backend/canvas/Color;->parseColor(Ljava/lang/String;)I
 
-    move-result v0
+    move-result p1
 
-    iput v0, p0, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->strokeColor:I
+    iput p1, p0, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->strokeColor:I
 
-    .line 61
+    .line 71
     invoke-virtual {p0}, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
 
-    move-result-object v0
+    move-result-object p1
 
-    return-object v0
+    return-object p1
+.end method
+
+.method public strokeWidth(F)Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(F)TT;"
+        }
+    .end annotation
+
+    .line 75
+    iput p1, p0, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->strokeWidth:F
+
+    .line 76
+    invoke-virtual {p0}, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public themeCallback(Lorg/oscim/theme/ThemeCallback;)Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lorg/oscim/theme/ThemeCallback;",
+            ")TT;"
+        }
+    .end annotation
+
+    .line 90
+    iput-object p1, p0, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->themeCallback:Lorg/oscim/theme/ThemeCallback;
+
+    .line 91
+    invoke-virtual {p0}, Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;->self()Lorg/oscim/theme/styles/RenderStyle$StyleBuilder;
+
+    move-result-object p1
+
+    return-object p1
 .end method

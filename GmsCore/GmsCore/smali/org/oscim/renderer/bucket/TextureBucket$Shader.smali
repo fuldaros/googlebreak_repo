@@ -19,6 +19,8 @@
 
 .field aTexCoord:I
 
+.field uCoordScale:I
+
 .field uMV:I
 
 .field uProj:I
@@ -32,79 +34,85 @@
 .method constructor <init>()V
     .locals 1
 
-    .prologue
-    .line 80
+    .line 88
     invoke-direct {p0}, Lorg/oscim/renderer/GLShader;-><init>()V
 
-    .line 81
     const-string v0, "texture_layer"
 
+    .line 89
     invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->create(Ljava/lang/String;)Z
 
     move-result v0
 
     if-nez v0, :cond_0
 
-    .line 90
-    :goto_0
     return-void
 
-    .line 84
     :cond_0
     const-string v0, "u_mv"
 
+    .line 92
     invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->getUniform(Ljava/lang/String;)I
 
     move-result v0
 
     iput v0, p0, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->uMV:I
 
-    .line 85
     const-string v0, "u_proj"
 
+    .line 93
     invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->getUniform(Ljava/lang/String;)I
 
     move-result v0
 
     iput v0, p0, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->uProj:I
 
-    .line 86
     const-string v0, "u_scale"
 
+    .line 94
     invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->getUniform(Ljava/lang/String;)I
 
     move-result v0
 
     iput v0, p0, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->uScale:I
 
-    .line 87
+    const-string v0, "u_coord_scale"
+
+    .line 95
+    invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->getUniform(Ljava/lang/String;)I
+
+    move-result v0
+
+    iput v0, p0, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->uCoordScale:I
+
     const-string v0, "u_div"
 
+    .line 96
     invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->getUniform(Ljava/lang/String;)I
 
     move-result v0
 
     iput v0, p0, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->uTexSize:I
 
-    .line 88
     const-string v0, "vertex"
 
+    .line 97
     invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->getAttrib(Ljava/lang/String;)I
 
     move-result v0
 
     iput v0, p0, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->aPos:I
 
-    .line 89
     const-string v0, "tex_coord"
 
+    .line 98
     invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->getAttrib(Ljava/lang/String;)I
 
     move-result v0
 
     iput v0, p0, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->aTexCoord:I
 
-    goto :goto_0
+    return-void
 .end method
 
 
@@ -112,30 +120,26 @@
 .method public useProgram()Z
     .locals 2
 
-    .prologue
-    .line 94
+    .line 103
     invoke-super {p0}, Lorg/oscim/renderer/GLShader;->useProgram()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 95
+    .line 104
     iget v0, p0, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->aPos:I
 
     iget v1, p0, Lorg/oscim/renderer/bucket/TextureBucket$Shader;->aTexCoord:I
 
     invoke-static {v0, v1}, Lorg/oscim/renderer/GLState;->enableVertexArrays(II)V
 
-    .line 96
     const/4 v0, 0x1
 
-    .line 98
-    :goto_0
     return v0
 
     :cond_0
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 .end method

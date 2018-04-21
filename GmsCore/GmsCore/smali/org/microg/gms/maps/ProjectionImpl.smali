@@ -12,15 +12,13 @@
 # direct methods
 .method public constructor <init>(Lorg/oscim/map/Viewport;)V
     .locals 1
-    .param p1, "viewport"    # Lorg/oscim/map/Viewport;
 
-    .prologue
     .line 34
     invoke-direct {p0}, Lcom/google/android/gms/maps/internal/IProjectionDelegate$Stub;-><init>()V
 
-    .line 32
     const/16 v0, 0x8
 
+    .line 32
     new-array v0, v0, [F
 
     iput-object v0, p0, Lorg/microg/gms/maps/ProjectionImpl;->extents:[F
@@ -28,57 +26,51 @@
     .line 35
     iput-object p1, p0, Lorg/microg/gms/maps/ProjectionImpl;->viewport:Lorg/oscim/map/Viewport;
 
-    .line 36
     return-void
 .end method
 
 
 # virtual methods
 .method public fromScreenLocation(Lcom/google/android/gms/dynamic/IObjectWrapper;)Lcom/google/android/gms/maps/model/LatLng;
-    .locals 6
-    .param p1, "obj"    # Lcom/google/android/gms/dynamic/IObjectWrapper;
+    .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 40
     .line 41
     invoke-static {p1}, Lcom/google/android/gms/dynamic/ObjectWrapper;->unwrap(Lcom/google/android/gms/dynamic/IObjectWrapper;)Ljava/lang/Object;
 
-    move-result-object v1
+    move-result-object p1
 
-    check-cast v1, Landroid/graphics/Point;
+    check-cast p1, Landroid/graphics/Point;
 
-    invoke-static {v1}, Lorg/microg/gms/maps/GmsMapsTypeHelper;->fromPoint(Landroid/graphics/Point;)Lorg/oscim/core/Point;
+    invoke-static {p1}, Lorg/microg/gms/maps/GmsMapsTypeHelper;->fromPoint(Landroid/graphics/Point;)Lorg/oscim/core/Point;
 
-    move-result-object v0
+    move-result-object p1
 
     .line 42
-    .local v0, "point":Lorg/oscim/core/Point;
-    iget-object v1, p0, Lorg/microg/gms/maps/ProjectionImpl;->viewport:Lorg/oscim/map/Viewport;
+    iget-object v0, p0, Lorg/microg/gms/maps/ProjectionImpl;->viewport:Lorg/oscim/map/Viewport;
 
-    iget-wide v2, v0, Lorg/oscim/core/Point;->x:D
+    iget-wide v1, p1, Lorg/oscim/core/Point;->x:D
 
-    double-to-float v2, v2
+    double-to-float v1, v1
 
-    iget-wide v4, v0, Lorg/oscim/core/Point;->y:D
+    iget-wide v2, p1, Lorg/oscim/core/Point;->y:D
 
-    double-to-float v3, v4
+    double-to-float p1, v2
 
     .line 43
-    invoke-virtual {v1, v2, v3}, Lorg/oscim/map/Viewport;->fromScreenPoint(FF)Lorg/oscim/core/GeoPoint;
+    invoke-virtual {v0, v1, p1}, Lorg/oscim/map/Viewport;->fromScreenPoint(FF)Lorg/oscim/core/GeoPoint;
 
-    move-result-object v1
+    move-result-object p1
 
-    invoke-static {v1}, Lorg/microg/gms/maps/GmsMapsTypeHelper;->toLatLng(Lorg/oscim/core/GeoPoint;)Lcom/google/android/gms/maps/model/LatLng;
+    invoke-static {p1}, Lorg/microg/gms/maps/GmsMapsTypeHelper;->toLatLng(Lorg/oscim/core/GeoPoint;)Lcom/google/android/gms/maps/model/LatLng;
 
-    move-result-object v1
+    move-result-object p1
 
-    .line 42
-    return-object v1
+    return-object p1
 .end method
 
 .method public getVisibleRegion()Lcom/google/android/gms/maps/model/VisibleRegion;
@@ -89,7 +81,6 @@
         }
     .end annotation
 
-    .prologue
     .line 55
     iget-object v0, p0, Lorg/microg/gms/maps/ProjectionImpl;->viewport:Lorg/oscim/map/Viewport;
 
@@ -122,38 +113,35 @@
 .end method
 
 .method public toScreenLocation(Lcom/google/android/gms/maps/model/LatLng;)Lcom/google/android/gms/dynamic/IObjectWrapper;
-    .locals 3
-    .param p1, "latLng"    # Lcom/google/android/gms/maps/model/LatLng;
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
     .line 48
     new-instance v0, Lorg/oscim/core/Point;
 
     invoke-direct {v0}, Lorg/oscim/core/Point;-><init>()V
 
     .line 49
-    .local v0, "point":Lorg/oscim/core/Point;
     iget-object v1, p0, Lorg/microg/gms/maps/ProjectionImpl;->viewport:Lorg/oscim/map/Viewport;
 
     invoke-static {p1}, Lorg/microg/gms/maps/GmsMapsTypeHelper;->fromLatLng(Lcom/google/android/gms/maps/model/LatLng;)Lorg/oscim/core/GeoPoint;
 
-    move-result-object v2
+    move-result-object p1
 
-    invoke-virtual {v1, v2, v0}, Lorg/oscim/map/Viewport;->toScreenPoint(Lorg/oscim/core/GeoPoint;Lorg/oscim/core/Point;)V
+    invoke-virtual {v1, p1, v0}, Lorg/oscim/map/Viewport;->toScreenPoint(Lorg/oscim/core/GeoPoint;Lorg/oscim/core/Point;)V
 
     .line 50
     invoke-static {v0}, Lorg/microg/gms/maps/GmsMapsTypeHelper;->toPoint(Lorg/oscim/core/Point;)Landroid/graphics/Point;
 
-    move-result-object v1
+    move-result-object p1
 
-    invoke-static {v1}, Lcom/google/android/gms/dynamic/ObjectWrapper;->wrap(Ljava/lang/Object;)Lcom/google/android/gms/dynamic/ObjectWrapper;
+    invoke-static {p1}, Lcom/google/android/gms/dynamic/ObjectWrapper;->wrap(Ljava/lang/Object;)Lcom/google/android/gms/dynamic/ObjectWrapper;
 
-    move-result-object v1
+    move-result-object p1
 
-    return-object v1
+    return-object p1
 .end method

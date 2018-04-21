@@ -27,9 +27,7 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;Lcom/google/android/gms/maps/model/LatLngBounds;II)V
     .locals 0
-    .param p1, "this$0"    # Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;
 
-    .prologue
     .line 193
     iput-object p1, p0, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$11;->this$0:Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;
 
@@ -47,29 +45,25 @@
 
 # virtual methods
 .method getMapPosition(Lorg/oscim/map/Map;)Lorg/oscim/core/MapPosition;
-    .locals 4
-    .param p1, "map"    # Lorg/oscim/map/Map;
+    .locals 3
 
-    .prologue
     .line 196
     invoke-virtual {p1}, Lorg/oscim/map/Map;->getMapPosition()Lorg/oscim/core/MapPosition;
 
-    move-result-object v0
+    move-result-object p1
 
     .line 197
-    .local v0, "mapPosition":Lorg/oscim/core/MapPosition;
-    iget-object v1, p0, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$11;->val$bounds:Lcom/google/android/gms/maps/model/LatLngBounds;
+    iget-object v0, p0, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$11;->val$bounds:Lcom/google/android/gms/maps/model/LatLngBounds;
 
-    invoke-static {v1}, Lorg/microg/gms/maps/GmsMapsTypeHelper;->fromLatLngBounds(Lcom/google/android/gms/maps/model/LatLngBounds;)Lorg/oscim/core/BoundingBox;
+    invoke-static {v0}, Lorg/microg/gms/maps/GmsMapsTypeHelper;->fromLatLngBounds(Lcom/google/android/gms/maps/model/LatLngBounds;)Lorg/oscim/core/BoundingBox;
 
-    move-result-object v1
+    move-result-object v0
 
-    iget v2, p0, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$11;->val$width:I
+    iget v1, p0, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$11;->val$width:I
 
-    iget v3, p0, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$11;->val$height:I
+    iget v2, p0, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$11;->val$height:I
 
-    invoke-virtual {v0, v1, v2, v3}, Lorg/oscim/core/MapPosition;->setByBoundingBox(Lorg/oscim/core/BoundingBox;II)V
+    invoke-virtual {p1, v0, v1, v2}, Lorg/oscim/core/MapPosition;->setByBoundingBox(Lorg/oscim/core/BoundingBox;II)V
 
-    .line 199
-    return-object v0
+    return-object p1
 .end method

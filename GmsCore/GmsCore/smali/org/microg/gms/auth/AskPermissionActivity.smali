@@ -29,163 +29,138 @@
 .method public constructor <init>()V
     .locals 1
 
-    .prologue
     .line 56
     invoke-direct {p0}, Landroid/accounts/AccountAuthenticatorActivity;-><init>()V
 
-    .line 66
     const/4 v0, 0x0
 
+    .line 66
     iput-boolean v0, p0, Lorg/microg/gms/auth/AskPermissionActivity;->fromAccountManager:Z
 
     return-void
 .end method
 
 .method static synthetic access$000(Lorg/microg/gms/auth/AskPermissionActivity;)Landroid/accounts/Account;
-    .locals 1
-    .param p0, "x0"    # Lorg/microg/gms/auth/AskPermissionActivity;
+    .locals 0
 
-    .prologue
     .line 56
-    iget-object v0, p0, Lorg/microg/gms/auth/AskPermissionActivity;->account:Landroid/accounts/Account;
+    iget-object p0, p0, Lorg/microg/gms/auth/AskPermissionActivity;->account:Landroid/accounts/Account;
 
-    return-object v0
+    return-object p0
 .end method
 
 .method static synthetic access$200(Lorg/microg/gms/auth/AskPermissionActivity;)Z
-    .locals 1
-    .param p0, "x0"    # Lorg/microg/gms/auth/AskPermissionActivity;
+    .locals 0
 
-    .prologue
     .line 56
-    iget-boolean v0, p0, Lorg/microg/gms/auth/AskPermissionActivity;->fromAccountManager:Z
+    iget-boolean p0, p0, Lorg/microg/gms/auth/AskPermissionActivity;->fromAccountManager:Z
 
-    return v0
+    return p0
 .end method
 
 .method static synthetic access$300(Lorg/microg/gms/auth/AskPermissionActivity;)Lorg/microg/gms/auth/AuthManager;
-    .locals 1
-    .param p0, "x0"    # Lorg/microg/gms/auth/AskPermissionActivity;
+    .locals 0
 
-    .prologue
     .line 56
-    iget-object v0, p0, Lorg/microg/gms/auth/AskPermissionActivity;->authManager:Lorg/microg/gms/auth/AuthManager;
+    iget-object p0, p0, Lorg/microg/gms/auth/AskPermissionActivity;->authManager:Lorg/microg/gms/auth/AuthManager;
 
-    return-object v0
+    return-object p0
 .end method
 
 .method static synthetic access$400(Lorg/microg/gms/auth/AskPermissionActivity;)Ljava/lang/String;
-    .locals 1
-    .param p0, "x0"    # Lorg/microg/gms/auth/AskPermissionActivity;
+    .locals 0
 
-    .prologue
     .line 56
-    iget-object v0, p0, Lorg/microg/gms/auth/AskPermissionActivity;->packageName:Ljava/lang/String;
+    iget-object p0, p0, Lorg/microg/gms/auth/AskPermissionActivity;->packageName:Ljava/lang/String;
 
-    return-object v0
+    return-object p0
 .end method
 
 .method static synthetic access$500(Lorg/microg/gms/auth/AskPermissionActivity;)Z
-    .locals 1
-    .param p0, "x0"    # Lorg/microg/gms/auth/AskPermissionActivity;
+    .locals 0
 
-    .prologue
     .line 56
     invoke-direct {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->isOAuth()Z
 
-    move-result v0
+    move-result p0
 
-    return v0
+    return p0
 .end method
 
 .method static synthetic access$600(Lorg/microg/gms/auth/AskPermissionActivity;)Ljava/lang/String;
-    .locals 1
-    .param p0, "x0"    # Lorg/microg/gms/auth/AskPermissionActivity;
+    .locals 0
 
-    .prologue
     .line 56
-    iget-object v0, p0, Lorg/microg/gms/auth/AskPermissionActivity;->service:Ljava/lang/String;
+    iget-object p0, p0, Lorg/microg/gms/auth/AskPermissionActivity;->service:Ljava/lang/String;
 
-    return-object v0
+    return-object p0
 .end method
 
 .method static synthetic access$700(Lorg/microg/gms/auth/AskPermissionActivity;Ljava/lang/String;)Ljava/lang/String;
-    .locals 1
-    .param p0, "x0"    # Lorg/microg/gms/auth/AskPermissionActivity;
-    .param p1, "x1"    # Ljava/lang/String;
+    .locals 0
 
-    .prologue
     .line 56
     invoke-direct {p0, p1}, Lorg/microg/gms/auth/AskPermissionActivity;->getScopeLabel(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object p0
 
-    return-object v0
+    return-object p0
 .end method
 
 .method static synthetic access$800(Lorg/microg/gms/auth/AskPermissionActivity;Ljava/lang/String;)Ljava/lang/String;
-    .locals 1
-    .param p0, "x0"    # Lorg/microg/gms/auth/AskPermissionActivity;
-    .param p1, "x1"    # Ljava/lang/String;
+    .locals 0
 
-    .prologue
     .line 56
     invoke-direct {p0, p1}, Lorg/microg/gms/auth/AskPermissionActivity;->getScopeDescription(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object p0
 
-    return-object v0
+    return-object p0
 .end method
 
 .method static synthetic access$900(Lorg/microg/gms/auth/AskPermissionActivity;Ljava/lang/String;)Ljava/lang/String;
-    .locals 1
-    .param p0, "x0"    # Lorg/microg/gms/auth/AskPermissionActivity;
-    .param p1, "x1"    # Ljava/lang/String;
+    .locals 0
 
-    .prologue
     .line 56
     invoke-direct {p0, p1}, Lorg/microg/gms/auth/AskPermissionActivity;->getServiceLabel(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object p0
 
-    return-object v0
+    return-object p0
 .end method
 
 .method private getScopeDescription(Ljava/lang/String;)Ljava/lang/String;
     .locals 3
-    .param p1, "scope"    # Ljava/lang/String;
 
-    .prologue
     .line 222
-    iget-object v1, p0, Lorg/microg/gms/auth/AskPermissionActivity;->consentData:Lorg/microg/gms/auth/ConsentData;
+    iget-object v0, p0, Lorg/microg/gms/auth/AskPermissionActivity;->consentData:Lorg/microg/gms/auth/ConsentData;
 
-    if-eqz v1, :cond_1
+    if-eqz v0, :cond_1
 
     .line 223
-    iget-object v1, p0, Lorg/microg/gms/auth/AskPermissionActivity;->consentData:Lorg/microg/gms/auth/ConsentData;
+    iget-object v0, p0, Lorg/microg/gms/auth/AskPermissionActivity;->consentData:Lorg/microg/gms/auth/ConsentData;
 
-    iget-object v1, v1, Lorg/microg/gms/auth/ConsentData;->scopes:Ljava/util/List;
+    iget-object v0, v0, Lorg/microg/gms/auth/ConsentData;->scopes:Ljava/util/List;
 
-    invoke-interface {v1}, Ljava/util/List;->iterator()Ljava/util/Iterator;
-
-    move-result-object v1
-
-    :cond_0
-    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v2
-
-    if-eqz v2, :cond_1
-
-    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     move-result-object v0
 
-    check-cast v0, Lorg/microg/gms/auth/ConsentData$ScopeDetails;
+    :cond_0
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_1
+
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lorg/microg/gms/auth/ConsentData$ScopeDetails;
 
     .line 224
-    .local v0, "scopeDetails":Lorg/microg/gms/auth/ConsentData$ScopeDetails;
-    iget-object v2, v0, Lorg/microg/gms/auth/ConsentData$ScopeDetails;->id:Ljava/lang/String;
+    iget-object v2, v1, Lorg/microg/gms/auth/ConsentData$ScopeDetails;->id:Ljava/lang/String;
 
     invoke-virtual {p1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -194,247 +169,209 @@
     if-eqz v2, :cond_0
 
     .line 225
-    iget-object v1, v0, Lorg/microg/gms/auth/ConsentData$ScopeDetails;->description:Ljava/lang/String;
+    iget-object p1, v1, Lorg/microg/gms/auth/ConsentData$ScopeDetails;->description:Ljava/lang/String;
 
-    .line 229
-    .end local v0    # "scopeDetails":Lorg/microg/gms/auth/ConsentData$ScopeDetails;
-    :goto_0
-    return-object v1
+    return-object p1
 
     :cond_1
-    const/4 v1, 0x0
+    const/4 p1, 0x0
 
-    goto :goto_0
+    return-object p1
 .end method
 
 .method private getScopeLabel(Ljava/lang/String;)Ljava/lang/String;
-    .locals 7
-    .param p1, "scope"    # Ljava/lang/String;
+    .locals 4
 
-    .prologue
     .line 200
-    iget-object v4, p0, Lorg/microg/gms/auth/AskPermissionActivity;->consentData:Lorg/microg/gms/auth/ConsentData;
+    iget-object v0, p0, Lorg/microg/gms/auth/AskPermissionActivity;->consentData:Lorg/microg/gms/auth/ConsentData;
 
-    if-eqz v4, :cond_1
+    if-eqz v0, :cond_1
 
     .line 201
-    iget-object v4, p0, Lorg/microg/gms/auth/AskPermissionActivity;->consentData:Lorg/microg/gms/auth/ConsentData;
+    iget-object v0, p0, Lorg/microg/gms/auth/AskPermissionActivity;->consentData:Lorg/microg/gms/auth/ConsentData;
 
-    iget-object v4, v4, Lorg/microg/gms/auth/ConsentData;->scopes:Ljava/util/List;
+    iget-object v0, v0, Lorg/microg/gms/auth/ConsentData;->scopes:Ljava/util/List;
 
-    invoke-interface {v4}, Ljava/util/List;->iterator()Ljava/util/Iterator;
-
-    move-result-object v4
-
-    :cond_0
-    invoke-interface {v4}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v5
-
-    if-eqz v5, :cond_1
-
-    invoke-interface {v4}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v3
-
-    check-cast v3, Lorg/microg/gms/auth/ConsentData$ScopeDetails;
-
-    .line 202
-    .local v3, "scopeDetails":Lorg/microg/gms/auth/ConsentData$ScopeDetails;
-    iget-object v5, v3, Lorg/microg/gms/auth/ConsentData$ScopeDetails;->id:Ljava/lang/String;
-
-    invoke-virtual {p1, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v5
-
-    if-eqz v5, :cond_0
-
-    .line 203
-    iget-object v4, v3, Lorg/microg/gms/auth/ConsentData$ScopeDetails;->title:Ljava/lang/String;
-
-    .line 218
-    .end local v3    # "scopeDetails":Lorg/microg/gms/auth/ConsentData$ScopeDetails;
-    :goto_0
-    return-object v4
-
-    .line 207
-    :cond_1
-    const-string v2, "permission_scope_"
-
-    .line 208
-    .local v2, "labelResourceId":Ljava/lang/String;
-    const-string v4, "/"
-
-    const-string v5, "_"
-
-    invoke-virtual {p1, v4, v5}, Ljava/lang/String;->replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-
-    move-result-object v4
-
-    const-string v5, "-"
-
-    const-string v6, "_"
-
-    invoke-virtual {v4, v5, v6}, Ljava/lang/String;->replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     move-result-object v0
 
-    .line 209
-    .local v0, "escapedScope":Ljava/lang/String;
-    const-string v4, "https://"
-
-    invoke-virtual {p1, v4}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_2
-
-    .line 210
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    const/16 v5, 0x8
-
-    invoke-virtual {v0, v5}, Ljava/lang/String;->substring(I)Ljava/lang/String;
-
-    move-result-object v5
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    .line 214
-    :goto_1
-    invoke-virtual {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v4
-
-    const-string v5, "string"
-
-    invoke-virtual {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->getPackageName()Ljava/lang/String;
-
-    move-result-object v6
-
-    invoke-virtual {v4, v2, v5, v6}, Landroid/content/res/Resources;->getIdentifier(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+    :cond_0
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v1
 
-    .line 215
-    .local v1, "labelResource":I
-    if-eqz v1, :cond_3
+    if-eqz v1, :cond_1
 
-    .line 216
-    invoke-virtual {p0, v1}, Lorg/microg/gms/auth/AskPermissionActivity;->getString(I)Ljava/lang/String;
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    move-result-object v4
+    move-result-object v1
+
+    check-cast v1, Lorg/microg/gms/auth/ConsentData$ScopeDetails;
+
+    .line 202
+    iget-object v2, v1, Lorg/microg/gms/auth/ConsentData$ScopeDetails;->id:Ljava/lang/String;
+
+    invoke-virtual {p1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    .line 203
+    iget-object p1, v1, Lorg/microg/gms/auth/ConsentData$ScopeDetails;->title:Ljava/lang/String;
+
+    return-object p1
+
+    :cond_1
+    const-string v0, "permission_scope_"
+
+    const-string v1, "/"
+
+    const-string v2, "_"
+
+    .line 208
+    invoke-virtual {p1, v1, v2}, Ljava/lang/String;->replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+
+    move-result-object v1
+
+    const-string v2, "-"
+
+    const-string v3, "_"
+
+    invoke-virtual {v1, v2, v3}, Ljava/lang/String;->replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+
+    move-result-object v1
+
+    const-string v2, "https://"
+
+    .line 209
+    invoke-virtual {p1, v2}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    move-result p1
+
+    if-eqz p1, :cond_2
+
+    .line 210
+    new-instance p1, Ljava/lang/StringBuilder;
+
+    invoke-direct {p1}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const/16 v0, 0x8
+
+    invoke-virtual {v1, v0}, Ljava/lang/String;->substring(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
 
     goto :goto_0
 
     .line 212
-    .end local v1    # "labelResource":I
     :cond_2
-    new-instance v4, Ljava/lang/StringBuilder;
+    new-instance p1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {p1}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v4
+    invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v4
+    move-result-object p1
 
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    goto :goto_1
-
-    .line 218
-    .restart local v1    # "labelResource":I
-    :cond_3
-    const-string v4, "unknown"
-
-    goto :goto_0
-.end method
-
-.method private getServiceLabel(Ljava/lang/String;)Ljava/lang/String;
-    .locals 5
-    .param p1, "service"    # Ljava/lang/String;
-
-    .prologue
-    .line 233
+    .line 214
+    :goto_0
     invoke-virtual {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->getResources()Landroid/content/res/Resources;
 
-    move-result-object v1
+    move-result-object v0
 
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, "permission_service_"
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v3, "_label"
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    const-string v3, "string"
+    const-string v1, "string"
 
     invoke-virtual {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->getPackageName()Ljava/lang/String;
 
-    move-result-object v4
+    move-result-object v2
 
-    invoke-virtual {v1, v2, v3, v4}, Landroid/content/res/Resources;->getIdentifier(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v0, p1, v1, v2}, Landroid/content/res/Resources;->getIdentifier(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
 
-    move-result v0
+    move-result p1
 
-    .line 234
-    .local v0, "labelResource":I
-    if-eqz v0, :cond_0
+    if-eqz p1, :cond_3
+
+    .line 216
+    invoke-virtual {p0, p1}, Lorg/microg/gms/auth/AskPermissionActivity;->getString(I)Ljava/lang/String;
+
+    move-result-object p1
+
+    return-object p1
+
+    :cond_3
+    const-string p1, "unknown"
+
+    return-object p1
+.end method
+
+.method private getServiceLabel(Ljava/lang/String;)Ljava/lang/String;
+    .locals 3
+
+    .line 233
+    invoke-virtual {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "permission_service_"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string p1, "_label"
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    const-string v1, "string"
+
+    invoke-virtual {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->getPackageName()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v0, p1, v1, v2}, Landroid/content/res/Resources;->getIdentifier(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+
+    move-result p1
+
+    if-eqz p1, :cond_0
 
     .line 235
-    invoke-virtual {p0, v0}, Lorg/microg/gms/auth/AskPermissionActivity;->getString(I)Ljava/lang/String;
+    invoke-virtual {p0, p1}, Lorg/microg/gms/auth/AskPermissionActivity;->getString(I)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object p1
 
-    .line 237
-    :goto_0
-    return-object v1
+    return-object p1
 
     :cond_0
-    const-string v1, "unknown"
+    const-string p1, "unknown"
 
-    goto :goto_0
+    return-object p1
 .end method
 
 .method private isOAuth()Z
     .locals 2
 
-    .prologue
     .line 196
     iget-object v0, p0, Lorg/microg/gms/auth/AskPermissionActivity;->service:Ljava/lang/String;
 
@@ -444,7 +381,7 @@
 
     move-result v0
 
-    if-nez v0, :cond_0
+    if-nez v0, :cond_1
 
     iget-object v0, p0, Lorg/microg/gms/auth/AskPermissionActivity;->service:Ljava/lang/String;
 
@@ -454,18 +391,21 @@
 
     move-result v0
 
-    if-eqz v0, :cond_1
-
-    :cond_0
-    const/4 v0, 0x1
-
-    :goto_0
-    return v0
-
-    :cond_1
-    const/4 v0, 0x0
+    if-eqz v0, :cond_0
 
     goto :goto_0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_1
+
+    :cond_1
+    :goto_0
+    const/4 v0, 0x1
+
+    :goto_1
+    return v0
 .end method
 
 
@@ -473,18 +413,16 @@
 .method public finish()V
     .locals 2
 
-    .prologue
-    .line 190
-    const-string v1, "notification"
+    const-string v0, "notification"
 
-    invoke-virtual {p0, v1}, Lorg/microg/gms/auth/AskPermissionActivity;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    .line 190
+    invoke-virtual {p0, v0}, Lorg/microg/gms/auth/AskPermissionActivity;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Landroid/app/NotificationManager;
 
     .line 191
-    .local v0, "nm":Landroid/app/NotificationManager;
     iget-object v1, p0, Lorg/microg/gms/auth/AskPermissionActivity;->packageName:Ljava/lang/String;
 
     invoke-virtual {v1}, Ljava/lang/String;->hashCode()I
@@ -496,15 +434,11 @@
     .line 192
     invoke-super {p0}, Landroid/accounts/AccountAuthenticatorActivity;->finish()V
 
-    .line 193
     return-void
 .end method
 
 .method public onAllow()V
-    .locals 3
-
-    .prologue
-    const/4 v2, 0x0
+    .locals 2
 
     .line 157
     iget-object v0, p0, Lorg/microg/gms/auth/AskPermissionActivity;->authManager:Lorg/microg/gms/auth/AuthManager;
@@ -513,36 +447,38 @@
 
     invoke-virtual {v0, v1}, Lorg/microg/gms/auth/AuthManager;->setPermitted(Z)V
 
-    .line 158
     const v0, 0x1020019
 
+    .line 158
     invoke-virtual {p0, v0}, Lorg/microg/gms/auth/AskPermissionActivity;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
-    invoke-virtual {v0, v2}, Landroid/view/View;->setEnabled(Z)V
+    const/4 v1, 0x0
 
-    .line 159
+    invoke-virtual {v0, v1}, Landroid/view/View;->setEnabled(Z)V
+
     const v0, 0x102001a
 
+    .line 159
     invoke-virtual {p0, v0}, Lorg/microg/gms/auth/AskPermissionActivity;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
-    invoke-virtual {v0, v2}, Landroid/view/View;->setEnabled(Z)V
+    invoke-virtual {v0, v1}, Landroid/view/View;->setEnabled(Z)V
+
+    const v0, 0x7f08007e
 
     .line 160
-    const v0, 0x7f0d0055
-
     invoke-virtual {p0, v0}, Lorg/microg/gms/auth/AskPermissionActivity;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
-    invoke-virtual {v0, v2}, Landroid/view/View;->setVisibility(I)V
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    const v0, 0x7f08006d
 
     .line 161
-    const v0, 0x7f0d0054
-
     invoke-virtual {p0, v0}, Lorg/microg/gms/auth/AskPermissionActivity;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
@@ -563,478 +499,427 @@
     .line 180
     invoke-virtual {v0}, Ljava/lang/Thread;->start()V
 
-    .line 181
     return-void
 .end method
 
 .method protected onCreate(Landroid/os/Bundle;)V
-    .locals 13
-    .param p1, "savedInstanceState"    # Landroid/os/Bundle;
+    .locals 5
 
-    .prologue
     .line 70
     invoke-super {p0, p1}, Landroid/accounts/AccountAuthenticatorActivity;->onCreate(Landroid/os/Bundle;)V
 
-    .line 71
-    const v9, 0x7f04001a
+    const p1, 0x7f0a001e
 
-    invoke-virtual {p0, v9}, Lorg/microg/gms/auth/AskPermissionActivity;->setContentView(I)V
+    .line 71
+    invoke-virtual {p0, p1}, Lorg/microg/gms/auth/AskPermissionActivity;->setContentView(I)V
 
     .line 74
-    new-instance v5, Landroid/view/WindowManager$LayoutParams;
+    new-instance p1, Landroid/view/WindowManager$LayoutParams;
 
-    invoke-direct {v5}, Landroid/view/WindowManager$LayoutParams;-><init>()V
+    invoke-direct {p1}, Landroid/view/WindowManager$LayoutParams;-><init>()V
 
     .line 75
-    .local v5, "lp":Landroid/view/WindowManager$LayoutParams;
     invoke-virtual {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->getWindow()Landroid/view/Window;
 
-    move-result-object v9
+    move-result-object v0
 
-    invoke-virtual {v9}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
+    invoke-virtual {v0}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
 
-    move-result-object v9
+    move-result-object v0
 
-    invoke-virtual {v5, v9}, Landroid/view/WindowManager$LayoutParams;->copyFrom(Landroid/view/WindowManager$LayoutParams;)I
+    invoke-virtual {p1, v0}, Landroid/view/WindowManager$LayoutParams;->copyFrom(Landroid/view/WindowManager$LayoutParams;)I
+
+    const/4 v0, -0x1
 
     .line 76
-    const/4 v9, -0x1
+    iput v0, p1, Landroid/view/WindowManager$LayoutParams;->width:I
 
-    iput v9, v5, Landroid/view/WindowManager$LayoutParams;->width:I
+    const/4 v0, -0x2
 
     .line 77
-    const/4 v9, -0x2
-
-    iput v9, v5, Landroid/view/WindowManager$LayoutParams;->height:I
+    iput v0, p1, Landroid/view/WindowManager$LayoutParams;->height:I
 
     .line 78
     invoke-virtual {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->getWindow()Landroid/view/Window;
 
-    move-result-object v9
+    move-result-object v0
 
-    invoke-virtual {v9, v5}, Landroid/view/Window;->setAttributes(Landroid/view/WindowManager$LayoutParams;)V
+    invoke-virtual {v0, p1}, Landroid/view/Window;->setAttributes(Landroid/view/WindowManager$LayoutParams;)V
 
     .line 80
-    new-instance v9, Landroid/accounts/Account;
+    new-instance p1, Landroid/accounts/Account;
 
     invoke-virtual {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->getIntent()Landroid/content/Intent;
 
-    move-result-object v10
+    move-result-object v0
 
-    const-string v11, "authAccount"
+    const-string v1, "authAccount"
 
-    invoke-virtual {v10, v11}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v10
+    move-result-object v0
 
     .line 81
     invoke-virtual {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->getIntent()Landroid/content/Intent;
 
-    move-result-object v11
+    move-result-object v1
 
-    const-string v12, "accountType"
+    const-string v2, "accountType"
 
-    invoke-virtual {v11, v12}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v1, v2}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v11
+    move-result-object v1
 
-    invoke-direct {v9, v10, v11}, Landroid/accounts/Account;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p1, v0, v1}, Landroid/accounts/Account;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
-    iput-object v9, p0, Lorg/microg/gms/auth/AskPermissionActivity;->account:Landroid/accounts/Account;
+    iput-object p1, p0, Lorg/microg/gms/auth/AskPermissionActivity;->account:Landroid/accounts/Account;
 
     .line 82
     invoke-virtual {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->getIntent()Landroid/content/Intent;
 
-    move-result-object v9
+    move-result-object p1
 
-    const-string v10, "androidPackageName"
+    const-string v0, "androidPackageName"
 
-    invoke-virtual {v9, v10}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {p1, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v9
+    move-result-object p1
 
-    iput-object v9, p0, Lorg/microg/gms/auth/AskPermissionActivity;->packageName:Ljava/lang/String;
+    iput-object p1, p0, Lorg/microg/gms/auth/AskPermissionActivity;->packageName:Ljava/lang/String;
 
     .line 83
     invoke-virtual {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->getIntent()Landroid/content/Intent;
 
-    move-result-object v9
+    move-result-object p1
 
-    const-string v10, "authtoken"
+    const-string v0, "authtoken"
 
-    invoke-virtual {v9, v10}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {p1, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v9
+    move-result-object p1
 
-    iput-object v9, p0, Lorg/microg/gms/auth/AskPermissionActivity;->service:Ljava/lang/String;
+    iput-object p1, p0, Lorg/microg/gms/auth/AskPermissionActivity;->service:Ljava/lang/String;
 
     .line 84
     invoke-virtual {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->getIntent()Landroid/content/Intent;
 
-    move-result-object v9
+    move-result-object p1
 
-    const-string v10, "consent_data"
+    const-string v0, "consent_data"
 
-    invoke-virtual {v9, v10}, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z
+    invoke-virtual {p1, v0}, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z
 
-    move-result v9
+    move-result p1
 
-    if-eqz v9, :cond_1
+    const/4 v0, 0x0
+
+    if-eqz p1, :cond_0
 
     .line 86
     :try_start_0
-    new-instance v9, Lcom/squareup/wire/Wire;
+    new-instance p1, Lcom/squareup/wire/Wire;
 
-    const/4 v10, 0x0
+    new-array v1, v0, [Ljava/lang/Class;
 
-    new-array v10, v10, [Ljava/lang/Class;
-
-    invoke-direct {v9, v10}, Lcom/squareup/wire/Wire;-><init>([Ljava/lang/Class;)V
+    invoke-direct {p1, v1}, Lcom/squareup/wire/Wire;-><init>([Ljava/lang/Class;)V
 
     invoke-virtual {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->getIntent()Landroid/content/Intent;
 
-    move-result-object v10
+    move-result-object v1
 
-    const-string v11, "consent_data"
+    const-string v2, "consent_data"
 
-    invoke-virtual {v10, v11}, Landroid/content/Intent;->getByteArrayExtra(Ljava/lang/String;)[B
+    invoke-virtual {v1, v2}, Landroid/content/Intent;->getByteArrayExtra(Ljava/lang/String;)[B
 
-    move-result-object v10
+    move-result-object v1
 
-    const-class v11, Lorg/microg/gms/auth/ConsentData;
+    const-class v2, Lorg/microg/gms/auth/ConsentData;
 
-    invoke-virtual {v9, v10, v11}, Lcom/squareup/wire/Wire;->parseFrom([BLjava/lang/Class;)Lcom/squareup/wire/Message;
+    invoke-virtual {p1, v1, v2}, Lcom/squareup/wire/Wire;->parseFrom([BLjava/lang/Class;)Lcom/squareup/wire/Message;
 
-    move-result-object v9
+    move-result-object p1
 
-    check-cast v9, Lorg/microg/gms/auth/ConsentData;
+    check-cast p1, Lorg/microg/gms/auth/ConsentData;
 
-    iput-object v9, p0, Lorg/microg/gms/auth/AskPermissionActivity;->consentData:Lorg/microg/gms/auth/ConsentData;
+    iput-object p1, p0, Lorg/microg/gms/auth/AskPermissionActivity;->consentData:Lorg/microg/gms/auth/ConsentData;
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 94
+    goto :goto_0
+
+    :catch_0
+    move-exception p1
+
+    const-string v1, "GmsAuthAskPermission"
+
+    .line 88
+    invoke-static {v1, p1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    goto :goto_0
+
+    :cond_0
+    const-string p1, "GmsAuthAskPermission"
+
+    const-string v1, "No Consent details attached"
+
+    .line 91
+    invoke-static {p1, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
     :goto_0
-    const-string v9, "notification"
+    const-string p1, "notification"
 
-    invoke-virtual {p0, v9}, Lorg/microg/gms/auth/AskPermissionActivity;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    .line 94
+    invoke-virtual {p0, p1}, Lorg/microg/gms/auth/AskPermissionActivity;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
-    move-result-object v6
+    move-result-object p1
 
-    check-cast v6, Landroid/app/NotificationManager;
+    check-cast p1, Landroid/app/NotificationManager;
 
     .line 95
-    .local v6, "nm":Landroid/app/NotificationManager;
-    iget-object v9, p0, Lorg/microg/gms/auth/AskPermissionActivity;->packageName:Ljava/lang/String;
+    iget-object v1, p0, Lorg/microg/gms/auth/AskPermissionActivity;->packageName:Ljava/lang/String;
 
-    invoke-virtual {v9}, Ljava/lang/String;->hashCode()I
+    invoke-virtual {v1}, Ljava/lang/String;->hashCode()I
 
-    move-result v9
+    move-result v1
 
-    invoke-virtual {v6, v9}, Landroid/app/NotificationManager;->cancel(I)V
+    invoke-virtual {p1, v1}, Landroid/app/NotificationManager;->cancel(I)V
 
     .line 97
     invoke-virtual {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->getIntent()Landroid/content/Intent;
 
-    move-result-object v9
+    move-result-object p1
 
-    const-string v10, "from_account_manager"
+    const-string v1, "from_account_manager"
 
-    invoke-virtual {v9, v10}, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z
+    invoke-virtual {p1, v1}, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z
 
-    move-result v9
+    move-result p1
 
-    if-eqz v9, :cond_0
+    const/4 v1, 0x1
 
-    const/4 v9, 0x1
+    if-eqz p1, :cond_1
 
-    iput-boolean v9, p0, Lorg/microg/gms/auth/AskPermissionActivity;->fromAccountManager:Z
+    iput-boolean v1, p0, Lorg/microg/gms/auth/AskPermissionActivity;->fromAccountManager:Z
 
     .line 98
-    :cond_0
+    :cond_1
     invoke-virtual {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->getIntent()Landroid/content/Intent;
 
-    move-result-object v9
+    move-result-object p1
 
-    const-string v10, "callerUid"
+    const-string v2, "callerUid"
 
-    const/4 v11, 0x0
+    invoke-virtual {p1, v2, v0}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
 
-    invoke-virtual {v9, v10, v11}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
-
-    move-result v3
+    move-result p1
 
     .line 99
-    .local v3, "callerUid":I
-    iget-object v9, p0, Lorg/microg/gms/auth/AskPermissionActivity;->packageName:Ljava/lang/String;
+    iget-object v2, p0, Lorg/microg/gms/auth/AskPermissionActivity;->packageName:Ljava/lang/String;
 
-    invoke-static {p0, v9, v3}, Lorg/microg/gms/common/PackageUtils;->checkPackageUid(Landroid/content/Context;Ljava/lang/String;I)V
+    invoke-static {p0, v2, p1}, Lorg/microg/gms/common/PackageUtils;->checkPackageUid(Landroid/content/Context;Ljava/lang/String;I)V
 
     .line 100
-    new-instance v9, Lorg/microg/gms/auth/AuthManager;
+    new-instance p1, Lorg/microg/gms/auth/AuthManager;
 
-    iget-object v10, p0, Lorg/microg/gms/auth/AskPermissionActivity;->account:Landroid/accounts/Account;
+    iget-object v2, p0, Lorg/microg/gms/auth/AskPermissionActivity;->account:Landroid/accounts/Account;
 
-    iget-object v10, v10, Landroid/accounts/Account;->name:Ljava/lang/String;
+    iget-object v2, v2, Landroid/accounts/Account;->name:Ljava/lang/String;
 
-    iget-object v11, p0, Lorg/microg/gms/auth/AskPermissionActivity;->packageName:Ljava/lang/String;
+    iget-object v3, p0, Lorg/microg/gms/auth/AskPermissionActivity;->packageName:Ljava/lang/String;
 
-    iget-object v12, p0, Lorg/microg/gms/auth/AskPermissionActivity;->service:Ljava/lang/String;
+    iget-object v4, p0, Lorg/microg/gms/auth/AskPermissionActivity;->service:Ljava/lang/String;
 
-    invoke-direct {v9, p0, v10, v11, v12}, Lorg/microg/gms/auth/AuthManager;-><init>(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p1, p0, v2, v3, v4}, Lorg/microg/gms/auth/AuthManager;-><init>(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
-    iput-object v9, p0, Lorg/microg/gms/auth/AskPermissionActivity;->authManager:Lorg/microg/gms/auth/AuthManager;
+    iput-object p1, p0, Lorg/microg/gms/auth/AskPermissionActivity;->authManager:Lorg/microg/gms/auth/AuthManager;
 
     .line 103
     invoke-virtual {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->getPackageManager()Landroid/content/pm/PackageManager;
 
-    move-result-object v7
+    move-result-object p1
 
     .line 106
-    .local v7, "packageManager":Landroid/content/pm/PackageManager;
     :try_start_1
-    iget-object v9, p0, Lorg/microg/gms/auth/AskPermissionActivity;->packageName:Ljava/lang/String;
+    iget-object v2, p0, Lorg/microg/gms/auth/AskPermissionActivity;->packageName:Ljava/lang/String;
 
-    const/4 v10, 0x0
+    invoke-virtual {p1, v2, v0}, Landroid/content/pm/PackageManager;->getApplicationInfo(Ljava/lang/String;I)Landroid/content/pm/ApplicationInfo;
 
-    invoke-virtual {v7, v9, v10}, Landroid/content/pm/PackageManager;->getApplicationInfo(Ljava/lang/String;I)Landroid/content/pm/ApplicationInfo;
+    move-result-object v2
     :try_end_1
     .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_1 .. :try_end_1} :catch_1
 
-    move-result-object v2
-
     .line 112
-    .local v2, "applicationInfo":Landroid/content/pm/ApplicationInfo;
-    invoke-virtual {v7, v2}, Landroid/content/pm/PackageManager;->getApplicationLabel(Landroid/content/pm/ApplicationInfo;)Ljava/lang/CharSequence;
+    invoke-virtual {p1, v2}, Landroid/content/pm/PackageManager;->getApplicationLabel(Landroid/content/pm/ApplicationInfo;)Ljava/lang/CharSequence;
 
-    move-result-object v1
+    move-result-object v3
 
     .line 113
-    .local v1, "appLabel":Ljava/lang/CharSequence;
-    invoke-virtual {v7, v2}, Landroid/content/pm/PackageManager;->getApplicationIcon(Landroid/content/pm/ApplicationInfo;)Landroid/graphics/drawable/Drawable;
+    invoke-virtual {p1, v2}, Landroid/content/pm/PackageManager;->getApplicationIcon(Landroid/content/pm/ApplicationInfo;)Landroid/graphics/drawable/Drawable;
 
-    move-result-object v0
+    move-result-object p1
 
     .line 114
-    .local v0, "appIcon":Landroid/graphics/drawable/Drawable;
-    iget-object v9, p0, Lorg/microg/gms/auth/AskPermissionActivity;->account:Landroid/accounts/Account;
+    iget-object v2, p0, Lorg/microg/gms/auth/AskPermissionActivity;->account:Landroid/accounts/Account;
 
-    iget-object v9, v9, Landroid/accounts/Account;->name:Ljava/lang/String;
+    iget-object v2, v2, Landroid/accounts/Account;->name:Ljava/lang/String;
 
-    const/4 v10, 0x0
+    invoke-static {p0, v2, v0}, Lorg/microg/gms/people/PeopleManager;->getOwnerAvatarBitmap(Landroid/content/Context;Ljava/lang/String;Z)Landroid/graphics/Bitmap;
 
-    invoke-static {p0, v9, v10}, Lorg/microg/gms/people/PeopleManager;->getOwnerAvatarBitmap(Landroid/content/Context;Ljava/lang/String;Z)Landroid/graphics/Bitmap;
+    move-result-object v2
 
-    move-result-object v8
+    if-eqz v2, :cond_2
 
-    .line 117
-    .local v8, "profileIcon":Landroid/graphics/Bitmap;
-    if-eqz v8, :cond_2
+    const v4, 0x7f080007
 
     .line 118
-    const v9, 0x7f0d0056
+    invoke-virtual {p0, v4}, Lorg/microg/gms/auth/AskPermissionActivity;->findViewById(I)Landroid/view/View;
 
-    invoke-virtual {p0, v9}, Lorg/microg/gms/auth/AskPermissionActivity;->findViewById(I)Landroid/view/View;
+    move-result-object v4
 
-    move-result-object v9
+    check-cast v4, Landroid/widget/ImageView;
 
-    check-cast v9, Landroid/widget/ImageView;
+    invoke-virtual {v4, v2}, Landroid/widget/ImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
 
-    invoke-virtual {v9, v8}, Landroid/widget/ImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
+    goto :goto_1
+
+    .line 120
+    :cond_2
+    new-instance v2, Ljava/lang/Thread;
+
+    new-instance v4, Lorg/microg/gms/auth/AskPermissionActivity$1;
+
+    invoke-direct {v4, p0}, Lorg/microg/gms/auth/AskPermissionActivity$1;-><init>(Lorg/microg/gms/auth/AskPermissionActivity;)V
+
+    invoke-direct {v2, v4}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
+
+    .line 132
+    invoke-virtual {v2}, Ljava/lang/Thread;->start()V
+
+    :goto_1
+    const v2, 0x7f080021
 
     .line 135
-    :goto_1
-    const v9, 0x7f0d0057
+    invoke-virtual {p0, v2}, Lorg/microg/gms/auth/AskPermissionActivity;->findViewById(I)Landroid/view/View;
 
-    invoke-virtual {p0, v9}, Lorg/microg/gms/auth/AskPermissionActivity;->findViewById(I)Landroid/view/View;
+    move-result-object v2
 
-    move-result-object v9
+    check-cast v2, Landroid/widget/ImageView;
 
-    check-cast v9, Landroid/widget/ImageView;
-
-    invoke-virtual {v9, v0}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
+    invoke-virtual {v2, p1}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
 
     .line 136
     invoke-direct {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->isOAuth()Z
 
-    move-result v9
+    move-result p1
 
-    if-eqz v9, :cond_3
+    const v2, 0x7f0800b4
+
+    if-eqz p1, :cond_3
 
     .line 137
-    const v9, 0x7f0d002a
+    invoke-virtual {p0, v2}, Lorg/microg/gms/auth/AskPermissionActivity;->findViewById(I)Landroid/view/View;
 
-    invoke-virtual {p0, v9}, Lorg/microg/gms/auth/AskPermissionActivity;->findViewById(I)Landroid/view/View;
+    move-result-object p1
 
-    move-result-object v9
+    check-cast p1, Landroid/widget/TextView;
 
-    check-cast v9, Landroid/widget/TextView;
+    const v2, 0x7f0e002c
 
-    const v10, 0x7f070017
+    new-array v1, v1, [Ljava/lang/Object;
 
-    const/4 v11, 0x1
+    aput-object v3, v1, v0
 
-    new-array v11, v11, [Ljava/lang/Object;
+    invoke-virtual {p0, v2, v1}, Lorg/microg/gms/auth/AskPermissionActivity;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
 
-    const/4 v12, 0x0
+    move-result-object v0
 
-    aput-object v1, v11, v12
+    invoke-virtual {p1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    invoke-virtual {p0, v10, v11}, Lorg/microg/gms/auth/AskPermissionActivity;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
+    goto :goto_2
 
-    move-result-object v10
+    .line 139
+    :cond_3
+    invoke-virtual {p0, v2}, Lorg/microg/gms/auth/AskPermissionActivity;->findViewById(I)Landroid/view/View;
 
-    invoke-virtual {v9, v10}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    move-result-object p1
+
+    check-cast p1, Landroid/widget/TextView;
+
+    const v2, 0x7f0e002d
+
+    new-array v1, v1, [Ljava/lang/Object;
+
+    aput-object v3, v1, v0
+
+    invoke-virtual {p0, v2, v1}, Lorg/microg/gms/auth/AskPermissionActivity;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {p1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    :goto_2
+    const p1, 0x1020019
 
     .line 141
-    :goto_2
-    const v9, 0x1020019
+    invoke-virtual {p0, p1}, Lorg/microg/gms/auth/AskPermissionActivity;->findViewById(I)Landroid/view/View;
 
-    invoke-virtual {p0, v9}, Lorg/microg/gms/auth/AskPermissionActivity;->findViewById(I)Landroid/view/View;
+    move-result-object p1
 
-    move-result-object v9
+    new-instance v0, Lorg/microg/gms/auth/AskPermissionActivity$2;
 
-    new-instance v10, Lorg/microg/gms/auth/AskPermissionActivity$2;
+    invoke-direct {v0, p0}, Lorg/microg/gms/auth/AskPermissionActivity$2;-><init>(Lorg/microg/gms/auth/AskPermissionActivity;)V
 
-    invoke-direct {v10, p0}, Lorg/microg/gms/auth/AskPermissionActivity$2;-><init>(Lorg/microg/gms/auth/AskPermissionActivity;)V
+    invoke-virtual {p1, v0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    invoke-virtual {v9, v10}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    const p1, 0x102001a
 
     .line 147
-    const v9, 0x102001a
+    invoke-virtual {p0, p1}, Lorg/microg/gms/auth/AskPermissionActivity;->findViewById(I)Landroid/view/View;
 
-    invoke-virtual {p0, v9}, Lorg/microg/gms/auth/AskPermissionActivity;->findViewById(I)Landroid/view/View;
+    move-result-object p1
 
-    move-result-object v9
+    new-instance v0, Lorg/microg/gms/auth/AskPermissionActivity$3;
 
-    new-instance v10, Lorg/microg/gms/auth/AskPermissionActivity$3;
+    invoke-direct {v0, p0}, Lorg/microg/gms/auth/AskPermissionActivity$3;-><init>(Lorg/microg/gms/auth/AskPermissionActivity;)V
 
-    invoke-direct {v10, p0}, Lorg/microg/gms/auth/AskPermissionActivity$3;-><init>(Lorg/microg/gms/auth/AskPermissionActivity;)V
+    invoke-virtual {p1, v0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    invoke-virtual {v9, v10}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    const p1, 0x7f080079
 
     .line 153
-    const v9, 0x7f0d0058
+    invoke-virtual {p0, p1}, Lorg/microg/gms/auth/AskPermissionActivity;->findViewById(I)Landroid/view/View;
 
-    invoke-virtual {p0, v9}, Lorg/microg/gms/auth/AskPermissionActivity;->findViewById(I)Landroid/view/View;
+    move-result-object p1
 
-    move-result-object v9
+    check-cast p1, Landroid/widget/ListView;
 
-    check-cast v9, Landroid/widget/ListView;
+    new-instance v0, Lorg/microg/gms/auth/AskPermissionActivity$PermissionAdapter;
 
-    new-instance v10, Lorg/microg/gms/auth/AskPermissionActivity$PermissionAdapter;
+    const/4 v1, 0x0
 
-    const/4 v11, 0x0
+    invoke-direct {v0, p0, v1}, Lorg/microg/gms/auth/AskPermissionActivity$PermissionAdapter;-><init>(Lorg/microg/gms/auth/AskPermissionActivity;Lorg/microg/gms/auth/AskPermissionActivity$1;)V
 
-    invoke-direct {v10, p0, v11}, Lorg/microg/gms/auth/AskPermissionActivity$PermissionAdapter;-><init>(Lorg/microg/gms/auth/AskPermissionActivity;Lorg/microg/gms/auth/AskPermissionActivity$1;)V
+    invoke-virtual {p1, v0}, Landroid/widget/ListView;->setAdapter(Landroid/widget/ListAdapter;)V
 
-    invoke-virtual {v9, v10}, Landroid/widget/ListView;->setAdapter(Landroid/widget/ListAdapter;)V
-
-    .line 154
-    .end local v0    # "appIcon":Landroid/graphics/drawable/Drawable;
-    .end local v1    # "appLabel":Ljava/lang/CharSequence;
-    .end local v2    # "applicationInfo":Landroid/content/pm/ApplicationInfo;
-    .end local v8    # "profileIcon":Landroid/graphics/Bitmap;
-    :goto_3
     return-void
 
-    .line 87
-    .end local v3    # "callerUid":I
-    .end local v6    # "nm":Landroid/app/NotificationManager;
-    .end local v7    # "packageManager":Landroid/content/pm/PackageManager;
-    :catch_0
-    move-exception v4
-
-    .line 88
-    .local v4, "e":Ljava/lang/Exception;
-    const-string v9, "GmsAuthAskPermission"
-
-    invoke-static {v9, v4}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    goto/16 :goto_0
-
-    .line 91
-    .end local v4    # "e":Ljava/lang/Exception;
-    :cond_1
-    const-string v9, "GmsAuthAskPermission"
-
-    const-string v10, "No Consent details attached"
-
-    invoke-static {v9, v10}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto/16 :goto_0
-
-    .line 107
-    .restart local v3    # "callerUid":I
-    .restart local v6    # "nm":Landroid/app/NotificationManager;
-    .restart local v7    # "packageManager":Landroid/content/pm/PackageManager;
     :catch_1
-    move-exception v4
+    move-exception p1
+
+    const-string v0, "GmsAuthAskPermission"
 
     .line 108
-    .local v4, "e":Landroid/content/pm/PackageManager$NameNotFoundException;
-    const-string v9, "GmsAuthAskPermission"
-
-    invoke-static {v9, v4}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-static {v0, p1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
 
     .line 109
     invoke-virtual {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->finish()V
 
-    goto :goto_3
-
-    .line 120
-    .end local v4    # "e":Landroid/content/pm/PackageManager$NameNotFoundException;
-    .restart local v0    # "appIcon":Landroid/graphics/drawable/Drawable;
-    .restart local v1    # "appLabel":Ljava/lang/CharSequence;
-    .restart local v2    # "applicationInfo":Landroid/content/pm/ApplicationInfo;
-    .restart local v8    # "profileIcon":Landroid/graphics/Bitmap;
-    :cond_2
-    new-instance v9, Ljava/lang/Thread;
-
-    new-instance v10, Lorg/microg/gms/auth/AskPermissionActivity$1;
-
-    invoke-direct {v10, p0}, Lorg/microg/gms/auth/AskPermissionActivity$1;-><init>(Lorg/microg/gms/auth/AskPermissionActivity;)V
-
-    invoke-direct {v9, v10}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
-
-    .line 132
-    invoke-virtual {v9}, Ljava/lang/Thread;->start()V
-
-    goto/16 :goto_1
-
-    .line 139
-    :cond_3
-    const v9, 0x7f0d002a
-
-    invoke-virtual {p0, v9}, Lorg/microg/gms/auth/AskPermissionActivity;->findViewById(I)Landroid/view/View;
-
-    move-result-object v9
-
-    check-cast v9, Landroid/widget/TextView;
-
-    const v10, 0x7f070018
-
-    const/4 v11, 0x1
-
-    new-array v11, v11, [Ljava/lang/Object;
-
-    const/4 v12, 0x0
-
-    aput-object v1, v11, v12
-
-    invoke-virtual {p0, v10, v11}, Lorg/microg/gms/auth/AskPermissionActivity;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
-
-    move-result-object v10
-
-    invoke-virtual {v9, v10}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    goto :goto_2
+    return-void
 .end method
 
 .method public onDeny()V
     .locals 2
 
-    .prologue
     .line 184
     iget-object v0, p0, Lorg/microg/gms/auth/AskPermissionActivity;->authManager:Lorg/microg/gms/auth/AuthManager;
 
@@ -1045,6 +930,5 @@
     .line 185
     invoke-virtual {p0}, Lorg/microg/gms/auth/AskPermissionActivity;->finish()V
 
-    .line 186
     return-void
 .end method

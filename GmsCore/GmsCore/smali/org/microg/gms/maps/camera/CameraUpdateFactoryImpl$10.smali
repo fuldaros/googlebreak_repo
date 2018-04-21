@@ -23,9 +23,7 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;Lcom/google/android/gms/maps/model/LatLngBounds;)V
     .locals 0
-    .param p1, "this$0"    # Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;
 
-    .prologue
     .line 178
     iput-object p1, p0, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$10;->this$0:Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl;
 
@@ -39,17 +37,14 @@
 
 # virtual methods
 .method getMapPosition(Lorg/oscim/map/Map;)Lorg/oscim/core/MapPosition;
-    .locals 4
-    .param p1, "map"    # Lorg/oscim/map/Map;
+    .locals 3
 
-    .prologue
     .line 181
     invoke-virtual {p1}, Lorg/oscim/map/Map;->getMapPosition()Lorg/oscim/core/MapPosition;
 
     move-result-object v0
 
     .line 182
-    .local v0, "mapPosition":Lorg/oscim/core/MapPosition;
     iget-object v1, p0, Lorg/microg/gms/maps/camera/CameraUpdateFactoryImpl$10;->val$bounds:Lcom/google/android/gms/maps/model/LatLngBounds;
 
     invoke-static {v1}, Lorg/microg/gms/maps/GmsMapsTypeHelper;->fromLatLngBounds(Lcom/google/android/gms/maps/model/LatLngBounds;)Lorg/oscim/core/BoundingBox;
@@ -63,11 +58,10 @@
 
     invoke-virtual {p1}, Lorg/oscim/map/Map;->getHeight()I
 
-    move-result v3
+    move-result p1
 
     .line 182
-    invoke-virtual {v0, v1, v2, v3}, Lorg/oscim/core/MapPosition;->setByBoundingBox(Lorg/oscim/core/BoundingBox;II)V
+    invoke-virtual {v0, v1, v2, p1}, Lorg/oscim/core/MapPosition;->setByBoundingBox(Lorg/oscim/core/BoundingBox;II)V
 
-    .line 184
     return-object v0
 .end method

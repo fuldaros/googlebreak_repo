@@ -33,8 +33,8 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Ljava/lang/Class",
-            "<+",
+            "Ljava/lang/Class<",
+            "+",
             "Ljava/lang/Enum;",
             ">;"
         }
@@ -48,8 +48,8 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Ljava/lang/Class",
-            "<+",
+            "Ljava/lang/Class<",
+            "+",
             "Lcom/squareup/wire/Message;",
             ">;"
         }

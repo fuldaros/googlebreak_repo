@@ -28,21 +28,17 @@
 
 # direct methods
 .method public constructor <init>(Lcom/vividsolutions/jts/noding/snapround/MCIndexPointSnapper;Lcom/vividsolutions/jts/noding/snapround/HotPixel;Lcom/vividsolutions/jts/noding/SegmentString;I)V
-    .locals 1
-    .param p2, "hotPixel"    # Lcom/vividsolutions/jts/noding/snapround/HotPixel;
-    .param p3, "parentEdge"    # Lcom/vividsolutions/jts/noding/SegmentString;
-    .param p4, "hotPixelVertexIndex"    # I
+    .locals 0
 
-    .prologue
     .line 102
     iput-object p1, p0, Lcom/vividsolutions/jts/noding/snapround/MCIndexPointSnapper$HotPixelSnapAction;->this$0:Lcom/vividsolutions/jts/noding/snapround/MCIndexPointSnapper;
 
     invoke-direct {p0}, Lcom/vividsolutions/jts/index/chain/MonotoneChainSelectAction;-><init>()V
 
-    .line 99
-    const/4 v0, 0x0
+    const/4 p1, 0x0
 
-    iput-boolean v0, p0, Lcom/vividsolutions/jts/noding/snapround/MCIndexPointSnapper$HotPixelSnapAction;->isNodeAdded:Z
+    .line 99
+    iput-boolean p1, p0, Lcom/vividsolutions/jts/noding/snapround/MCIndexPointSnapper$HotPixelSnapAction;->isNodeAdded:Z
 
     .line 103
     iput-object p2, p0, Lcom/vividsolutions/jts/noding/snapround/MCIndexPointSnapper$HotPixelSnapAction;->hotPixel:Lcom/vividsolutions/jts/noding/snapround/HotPixel;
@@ -53,7 +49,6 @@
     .line 105
     iput p4, p0, Lcom/vividsolutions/jts/noding/snapround/MCIndexPointSnapper$HotPixelSnapAction;->hotPixelVertexIndex:I
 
-    .line 106
     return-void
 .end method
 
@@ -62,7 +57,6 @@
 .method public isNodeAdded()Z
     .locals 1
 
-    .prologue
     .line 108
     iget-boolean v0, p0, Lcom/vividsolutions/jts/noding/snapround/MCIndexPointSnapper$HotPixelSnapAction;->isNodeAdded:Z
 
@@ -70,46 +64,40 @@
 .end method
 
 .method public select(Lcom/vividsolutions/jts/index/chain/MonotoneChain;I)V
-    .locals 2
-    .param p1, "mc"    # Lcom/vividsolutions/jts/index/chain/MonotoneChain;
-    .param p2, "startIndex"    # I
+    .locals 1
 
-    .prologue
     .line 112
     invoke-virtual {p1}, Lcom/vividsolutions/jts/index/chain/MonotoneChain;->getContext()Ljava/lang/Object;
 
-    move-result-object v0
+    move-result-object p1
 
-    check-cast v0, Lcom/vividsolutions/jts/noding/NodedSegmentString;
+    check-cast p1, Lcom/vividsolutions/jts/noding/NodedSegmentString;
 
     .line 123
-    .local v0, "ss":Lcom/vividsolutions/jts/noding/NodedSegmentString;
-    iget-object v1, p0, Lcom/vividsolutions/jts/noding/snapround/MCIndexPointSnapper$HotPixelSnapAction;->parentEdge:Lcom/vividsolutions/jts/noding/SegmentString;
+    iget-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/MCIndexPointSnapper$HotPixelSnapAction;->parentEdge:Lcom/vividsolutions/jts/noding/SegmentString;
 
-    if-eqz v1, :cond_0
+    if-eqz v0, :cond_0
 
     .line 124
-    iget-object v1, p0, Lcom/vividsolutions/jts/noding/snapround/MCIndexPointSnapper$HotPixelSnapAction;->parentEdge:Lcom/vividsolutions/jts/noding/SegmentString;
+    iget-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/MCIndexPointSnapper$HotPixelSnapAction;->parentEdge:Lcom/vividsolutions/jts/noding/SegmentString;
 
-    if-ne v0, v1, :cond_0
+    if-ne p1, v0, :cond_0
 
-    iget v1, p0, Lcom/vividsolutions/jts/noding/snapround/MCIndexPointSnapper$HotPixelSnapAction;->hotPixelVertexIndex:I
+    iget v0, p0, Lcom/vividsolutions/jts/noding/snapround/MCIndexPointSnapper$HotPixelSnapAction;->hotPixelVertexIndex:I
 
-    if-ne p2, v1, :cond_0
+    if-ne p2, v0, :cond_0
 
-    .line 130
-    :goto_0
     return-void
 
     .line 129
     :cond_0
-    iget-object v1, p0, Lcom/vividsolutions/jts/noding/snapround/MCIndexPointSnapper$HotPixelSnapAction;->hotPixel:Lcom/vividsolutions/jts/noding/snapround/HotPixel;
+    iget-object v0, p0, Lcom/vividsolutions/jts/noding/snapround/MCIndexPointSnapper$HotPixelSnapAction;->hotPixel:Lcom/vividsolutions/jts/noding/snapround/HotPixel;
 
-    invoke-virtual {v1, v0, p2}, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->addSnappedNode(Lcom/vividsolutions/jts/noding/NodedSegmentString;I)Z
+    invoke-virtual {v0, p1, p2}, Lcom/vividsolutions/jts/noding/snapround/HotPixel;->addSnappedNode(Lcom/vividsolutions/jts/noding/NodedSegmentString;I)Z
 
-    move-result v1
+    move-result p1
 
-    iput-boolean v1, p0, Lcom/vividsolutions/jts/noding/snapround/MCIndexPointSnapper$HotPixelSnapAction;->isNodeAdded:Z
+    iput-boolean p1, p0, Lcom/vividsolutions/jts/noding/snapround/MCIndexPointSnapper$HotPixelSnapAction;->isNodeAdded:Z
 
-    goto :goto_0
+    return-void
 .end method

@@ -23,8 +23,7 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .prologue
-    .line 17
+    .line 34
     const-class v0, Lorg/oscim/renderer/bucket/HairLineBucket;
 
     invoke-static {v0}, Lorg/slf4j/LoggerFactory;->getLogger(Ljava/lang/Class;)Lorg/slf4j/Logger;
@@ -38,21 +37,18 @@
 
 .method public constructor <init>(I)V
     .locals 3
-    .param p1, "level"    # I
 
-    .prologue
-    .line 22
     const/4 v0, 0x5
 
     const/4 v1, 0x1
 
     const/4 v2, 0x0
 
-    invoke-direct {p0, v0, v1, v2}, Lorg/oscim/renderer/bucket/RenderBucket;-><init>(IZZ)V
+    .line 39
+    invoke-direct {p0, v0, v1, v2}, Lorg/oscim/renderer/bucket/RenderBucket;-><init>(BZZ)V
 
-    .line 23
+    .line 40
     iput p1, p0, Lorg/oscim/renderer/bucket/HairLineBucket;->level:I
 
-    .line 24
     return-void
 .end method

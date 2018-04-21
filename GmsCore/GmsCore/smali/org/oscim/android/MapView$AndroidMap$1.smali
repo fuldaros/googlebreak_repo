@@ -24,10 +24,8 @@
 # direct methods
 .method constructor <init>(Lorg/oscim/android/MapView$AndroidMap;)V
     .locals 0
-    .param p1, "this$0"    # Lorg/oscim/android/MapView$AndroidMap;
 
-    .prologue
-    .line 167
+    .line 183
     iput-object p1, p0, Lorg/oscim/android/MapView$AndroidMap$1;->this$0:Lorg/oscim/android/MapView$AndroidMap;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -40,13 +38,12 @@
 .method public run()V
     .locals 1
 
-    .prologue
-    .line 170
+    .line 186
     iget-object v0, p0, Lorg/oscim/android/MapView$AndroidMap$1;->this$0:Lorg/oscim/android/MapView$AndroidMap;
 
     invoke-static {v0}, Lorg/oscim/android/MapView$AndroidMap;->access$000(Lorg/oscim/android/MapView$AndroidMap;)V
 
-    .line 171
+    .line 187
     iget-object v0, p0, Lorg/oscim/android/MapView$AndroidMap$1;->this$0:Lorg/oscim/android/MapView$AndroidMap;
 
     invoke-static {v0}, Lorg/oscim/android/MapView$AndroidMap;->access$100(Lorg/oscim/android/MapView$AndroidMap;)Lorg/oscim/android/MapView;
@@ -55,6 +52,5 @@
 
     invoke-virtual {v0}, Lorg/oscim/android/MapView;->requestRender()V
 
-    .line 172
     return-void
 .end method

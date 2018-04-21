@@ -35,7 +35,6 @@
 .method public constructor <init>()V
     .locals 2
 
-    .prologue
     .line 22
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -112,76 +111,63 @@
 .end method
 
 .method private generateSerialNumber()Ljava/lang/String;
-    .locals 6
+    .locals 5
 
-    .prologue
-    const/16 v5, 0x10
-
-    .line 47
-    const-string v2, "008741"
+    const-string v0, "008741"
 
     .line 48
-    .local v2, "serial":Ljava/lang/String;
     new-instance v1, Ljava/util/Random;
 
     invoke-direct {v1}, Ljava/util/Random;-><init>()V
 
-    .line 49
-    .local v1, "rand":Ljava/util/Random;
-    const/4 v0, 0x0
+    const/4 v2, 0x0
 
-    .local v0, "i":I
     :goto_0
     const/16 v3, 0xa
 
-    if-ge v0, v3, :cond_0
+    if-ge v2, v3, :cond_0
 
     .line 50
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v3
+    const/16 v0, 0x10
 
-    invoke-virtual {v1, v5}, Ljava/util/Random;->nextInt(I)I
+    invoke-virtual {v1, v0}, Ljava/util/Random;->nextInt(I)I
 
     move-result v4
 
-    invoke-static {v4, v5}, Ljava/lang/Integer;->toString(II)Ljava/lang/String;
+    invoke-static {v4, v0}, Ljava/lang/Integer;->toString(II)Ljava/lang/String;
 
-    move-result-object v4
+    move-result-object v0
 
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
+    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v0
 
-    .line 49
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
     .line 51
     :cond_0
-    sget-object v3, Ljava/util/Locale;->US:Ljava/util/Locale;
+    sget-object v1, Ljava/util/Locale;->US:Ljava/util/Locale;
 
-    invoke-virtual {v2, v3}, Ljava/lang/String;->toUpperCase(Ljava/util/Locale;)Ljava/lang/String;
+    invoke-virtual {v0, v1}, Ljava/lang/String;->toUpperCase(Ljava/util/Locale;)Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v0
 
-    .line 52
-    return-object v2
+    return-object v0
 .end method
 
 .method private static getRadio()Ljava/lang/String;
     .locals 2
 
-    .prologue
     .line 39
     sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
 
@@ -194,12 +180,11 @@
 
     move-result-object v0
 
-    .line 42
-    :goto_0
     return-object v0
 
+    .line 42
     :cond_0
     sget-object v0, Landroid/os/Build;->RADIO:Ljava/lang/String;
 
-    goto :goto_0
+    return-object v0
 .end method

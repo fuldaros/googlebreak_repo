@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lorg/oscim/utils/pool/Inlist",
-        "<",
+        "Lorg/oscim/utils/pool/Inlist<",
         "Lorg/oscim/layers/tile/MapTile$TileData;",
         ">;"
     }
@@ -31,8 +30,7 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
-    .line 145
+    .line 153
     invoke-direct {p0}, Lorg/oscim/utils/pool/Inlist;-><init>()V
 
     return-void

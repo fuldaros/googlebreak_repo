@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lcom/squareup/wire/Message$Builder",
-        "<",
+        "Lcom/squareup/wire/Message$Builder<",
         "Lorg/microg/gms/checkin/CheckinResponse;",
         ">;"
     }
@@ -29,8 +28,7 @@
 .field public deleteSetting:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -44,8 +42,7 @@
 .field public intent:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lorg/microg/gms/checkin/CheckinResponse$Intent;",
             ">;"
         }
@@ -59,8 +56,7 @@
 .field public setting:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lorg/microg/gms/checkin/CheckinResponse$GservicesSetting;",
             ">;"
         }
@@ -80,27 +76,20 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
     .line 144
     invoke-direct {p0}, Lcom/squareup/wire/Message$Builder;-><init>()V
 
-    .line 145
     return-void
 .end method
 
 .method public constructor <init>(Lorg/microg/gms/checkin/CheckinResponse;)V
     .locals 1
-    .param p1, "message"    # Lorg/microg/gms/checkin/CheckinResponse;
 
-    .prologue
     .line 148
     invoke-direct {p0, p1}, Lcom/squareup/wire/Message$Builder;-><init>(Lcom/squareup/wire/Message;)V
 
-    .line 149
     if-nez p1, :cond_0
 
-    .line 162
-    :goto_0
     return-void
 
     .line 150
@@ -172,11 +161,11 @@
     iput-object v0, p0, Lorg/microg/gms/checkin/CheckinResponse$Builder;->versionInfo:Ljava/lang/String;
 
     .line 161
-    iget-object v0, p1, Lorg/microg/gms/checkin/CheckinResponse;->deviceDataVersionInfo:Ljava/lang/String;
+    iget-object p1, p1, Lorg/microg/gms/checkin/CheckinResponse;->deviceDataVersionInfo:Ljava/lang/String;
 
-    iput-object v0, p0, Lorg/microg/gms/checkin/CheckinResponse$Builder;->deviceDataVersionInfo:Ljava/lang/String;
+    iput-object p1, p0, Lorg/microg/gms/checkin/CheckinResponse$Builder;->deviceDataVersionInfo:Ljava/lang/String;
 
-    goto :goto_0
+    return-void
 .end method
 
 
@@ -184,7 +173,6 @@
 .method public bridge synthetic build()Lcom/squareup/wire/Message;
     .locals 1
 
-    .prologue
     .line 129
     invoke-virtual {p0}, Lorg/microg/gms/checkin/CheckinResponse$Builder;->build()Lorg/microg/gms/checkin/CheckinResponse;
 
@@ -196,7 +184,6 @@
 .method public build()Lorg/microg/gms/checkin/CheckinResponse;
     .locals 2
 
-    .prologue
     .line 226
     new-instance v0, Lorg/microg/gms/checkin/CheckinResponse;
 

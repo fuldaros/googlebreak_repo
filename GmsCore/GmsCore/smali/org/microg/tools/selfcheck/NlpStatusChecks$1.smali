@@ -30,10 +30,8 @@
 # direct methods
 .method constructor <init>(Lorg/microg/tools/selfcheck/NlpStatusChecks;Ljava/util/concurrent/atomic/AtomicBoolean;Lorg/microg/tools/selfcheck/SelfCheckGroup$ResultCollector;Landroid/content/Context;)V
     .locals 0
-    .param p1, "this$0"    # Lorg/microg/tools/selfcheck/NlpStatusChecks;
 
-    .prologue
-    .line 89
+    .line 105
     iput-object p1, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$1;->this$0:Lorg/microg/tools/selfcheck/NlpStatusChecks;
 
     iput-object p2, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$1;->val$result:Ljava/util/concurrent/atomic/AtomicBoolean;
@@ -52,84 +50,81 @@
 .method public run()V
     .locals 6
 
-    .prologue
-    .line 92
-    iget-object v1, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$1;->val$result:Ljava/util/concurrent/atomic/AtomicBoolean;
-
-    monitor-enter v1
-
-    .line 94
-    :try_start_0
+    .line 108
     iget-object v0, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$1;->val$result:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    monitor-enter v0
+
+    .line 110
+    :try_start_0
+    iget-object v1, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$1;->val$result:Ljava/util/concurrent/atomic/AtomicBoolean;
 
     const-wide/16 v2, 0x2710
 
-    invoke-virtual {v0, v2, v3}, Ljava/lang/Object;->wait(J)V
+    invoke-virtual {v1, v2, v3}, Ljava/lang/Object;->wait(J)V
     :try_end_0
     .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 97
+    goto :goto_0
+
+    :catchall_0
+    move-exception v1
+
+    goto :goto_2
+
+    .line 113
+    :catch_0
     :goto_0
     :try_start_1
-    iget-object v2, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$1;->val$collector:Lorg/microg/tools/selfcheck/SelfCheckGroup$ResultCollector;
+    iget-object v1, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$1;->val$collector:Lorg/microg/tools/selfcheck/SelfCheckGroup$ResultCollector;
 
-    iget-object v0, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$1;->val$context:Landroid/content/Context;
+    iget-object v2, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$1;->val$context:Landroid/content/Context;
 
     sget v3, Lorg/microg/nlp/R$string;->self_check_name_nlp_is_providing:I
 
-    invoke-virtual {v0, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+    invoke-virtual {v2, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v2
 
-    iget-object v0, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$1;->val$result:Ljava/util/concurrent/atomic/AtomicBoolean;
+    iget-object v3, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$1;->val$result:Ljava/util/concurrent/atomic/AtomicBoolean;
 
-    .line 98
-    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
+    .line 114
+    invoke-virtual {v3}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
 
-    move-result v0
+    move-result v3
 
-    if-eqz v0, :cond_0
+    if-eqz v3, :cond_0
 
-    sget-object v0, Lorg/microg/tools/selfcheck/SelfCheckGroup$Result;->Positive:Lorg/microg/tools/selfcheck/SelfCheckGroup$Result;
+    sget-object v3, Lorg/microg/tools/selfcheck/SelfCheckGroup$Result;->Positive:Lorg/microg/tools/selfcheck/SelfCheckGroup$Result;
+
+    goto :goto_1
+
+    :cond_0
+    sget-object v3, Lorg/microg/tools/selfcheck/SelfCheckGroup$Result;->Unknown:Lorg/microg/tools/selfcheck/SelfCheckGroup$Result;
 
     :goto_1
     iget-object v4, p0, Lorg/microg/tools/selfcheck/NlpStatusChecks$1;->val$context:Landroid/content/Context;
 
     sget v5, Lorg/microg/nlp/R$string;->self_check_resolution_nlp_is_providing:I
 
+    .line 115
     invoke-virtual {v4, v5}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
     move-result-object v4
 
-    .line 97
-    invoke-interface {v2, v3, v0, v4}, Lorg/microg/tools/selfcheck/SelfCheckGroup$ResultCollector;->addResult(Ljava/lang/String;Lorg/microg/tools/selfcheck/SelfCheckGroup$Result;Ljava/lang/String;)V
+    .line 113
+    invoke-interface {v1, v2, v3, v4}, Lorg/microg/tools/selfcheck/SelfCheckGroup$ResultCollector;->addResult(Ljava/lang/String;Lorg/microg/tools/selfcheck/SelfCheckGroup$Result;Ljava/lang/String;)V
 
-    .line 99
-    monitor-exit v1
+    .line 116
+    monitor-exit v0
 
-    .line 100
     return-void
 
-    .line 98
-    :cond_0
-    sget-object v0, Lorg/microg/tools/selfcheck/SelfCheckGroup$Result;->Unknown:Lorg/microg/tools/selfcheck/SelfCheckGroup$Result;
-
-    goto :goto_1
-
-    .line 99
-    :catchall_0
-    move-exception v0
-
-    monitor-exit v1
+    :goto_2
+    monitor-exit v0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    throw v0
-
-    .line 95
-    :catch_0
-    move-exception v0
-
-    goto :goto_0
+    throw v1
 .end method

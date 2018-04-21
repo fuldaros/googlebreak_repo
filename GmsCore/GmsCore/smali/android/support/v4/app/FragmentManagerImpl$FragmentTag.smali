@@ -22,10 +22,9 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .prologue
-    .line 2336
     const/4 v0, 0x3
 
+    .line 3777
     new-array v0, v0, [I
 
     fill-array-data v0, :array_0

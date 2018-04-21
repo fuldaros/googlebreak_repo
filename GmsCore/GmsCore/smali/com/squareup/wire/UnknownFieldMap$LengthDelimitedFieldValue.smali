@@ -21,10 +21,7 @@
 # direct methods
 .method public constructor <init>(ILokio/ByteString;)V
     .locals 1
-    .param p1, "tag"    # I
-    .param p2, "value"    # Lokio/ByteString;
 
-    .prologue
     .line 159
     sget-object v0, Lcom/squareup/wire/WireType;->LENGTH_DELIMITED:Lcom/squareup/wire/WireType;
 
@@ -33,7 +30,6 @@
     .line 160
     iput-object p2, p0, Lcom/squareup/wire/UnknownFieldMap$LengthDelimitedFieldValue;->value:Lokio/ByteString;
 
-    .line 161
     return-void
 .end method
 
@@ -42,7 +38,6 @@
 .method public getSerializedSize()I
     .locals 2
 
-    .prologue
     .line 164
     iget-object v0, p0, Lcom/squareup/wire/UnknownFieldMap$LengthDelimitedFieldValue;->value:Lokio/ByteString;
 
@@ -67,38 +62,34 @@
 
 .method public write(ILcom/squareup/wire/WireOutput;)V
     .locals 1
-    .param p1, "tag"    # I
-    .param p2, "output"    # Lcom/squareup/wire/WireOutput;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue
     .line 168
     sget-object v0, Lcom/squareup/wire/WireType;->LENGTH_DELIMITED:Lcom/squareup/wire/WireType;
 
     invoke-virtual {p2, p1, v0}, Lcom/squareup/wire/WireOutput;->writeTag(ILcom/squareup/wire/WireType;)V
 
     .line 169
-    iget-object v0, p0, Lcom/squareup/wire/UnknownFieldMap$LengthDelimitedFieldValue;->value:Lokio/ByteString;
+    iget-object p1, p0, Lcom/squareup/wire/UnknownFieldMap$LengthDelimitedFieldValue;->value:Lokio/ByteString;
 
-    invoke-virtual {v0}, Lokio/ByteString;->size()I
+    invoke-virtual {p1}, Lokio/ByteString;->size()I
 
-    move-result v0
+    move-result p1
 
-    invoke-virtual {p2, v0}, Lcom/squareup/wire/WireOutput;->writeVarint32(I)V
+    invoke-virtual {p2, p1}, Lcom/squareup/wire/WireOutput;->writeVarint32(I)V
 
     .line 170
-    iget-object v0, p0, Lcom/squareup/wire/UnknownFieldMap$LengthDelimitedFieldValue;->value:Lokio/ByteString;
+    iget-object p1, p0, Lcom/squareup/wire/UnknownFieldMap$LengthDelimitedFieldValue;->value:Lokio/ByteString;
 
-    invoke-virtual {v0}, Lokio/ByteString;->toByteArray()[B
+    invoke-virtual {p1}, Lokio/ByteString;->toByteArray()[B
 
-    move-result-object v0
+    move-result-object p1
 
-    invoke-virtual {p2, v0}, Lcom/squareup/wire/WireOutput;->writeRawBytes([B)V
+    invoke-virtual {p2, p1}, Lcom/squareup/wire/WireOutput;->writeRawBytes([B)V
 
-    .line 171
     return-void
 .end method

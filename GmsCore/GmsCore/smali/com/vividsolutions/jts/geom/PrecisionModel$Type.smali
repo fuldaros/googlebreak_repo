@@ -29,7 +29,6 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .prologue
     .line 115
     new-instance v0, Ljava/util/HashMap;
 
@@ -42,9 +41,7 @@
 
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 1
-    .param p1, "name"    # Ljava/lang/String;
 
-    .prologue
     .line 116
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -56,7 +53,6 @@
 
     invoke-interface {v0, p1, p0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 119
     return-void
 .end method
 
@@ -65,7 +61,6 @@
 .method public toString()Ljava/lang/String;
     .locals 1
 
-    .prologue
     .line 121
     iget-object v0, p0, Lcom/vividsolutions/jts/geom/PrecisionModel$Type;->name:Ljava/lang/String;
 

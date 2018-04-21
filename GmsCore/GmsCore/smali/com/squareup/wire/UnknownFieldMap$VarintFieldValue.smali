@@ -21,10 +21,7 @@
 # direct methods
 .method public constructor <init>(ILjava/lang/Long;)V
     .locals 1
-    .param p1, "tag"    # I
-    .param p2, "value"    # Ljava/lang/Long;
 
-    .prologue
     .line 93
     sget-object v0, Lcom/squareup/wire/WireType;->VARINT:Lcom/squareup/wire/WireType;
 
@@ -33,7 +30,6 @@
     .line 94
     iput-object p2, p0, Lcom/squareup/wire/UnknownFieldMap$VarintFieldValue;->value:Ljava/lang/Long;
 
-    .line 95
     return-void
 .end method
 
@@ -42,7 +38,6 @@
 .method public getSerializedSize()I
     .locals 2
 
-    .prologue
     .line 98
     iget-object v0, p0, Lcom/squareup/wire/UnknownFieldMap$VarintFieldValue;->value:Ljava/lang/Long;
 
@@ -59,29 +54,25 @@
 
 .method public write(ILcom/squareup/wire/WireOutput;)V
     .locals 2
-    .param p1, "tag"    # I
-    .param p2, "output"    # Lcom/squareup/wire/WireOutput;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue
     .line 102
     sget-object v0, Lcom/squareup/wire/WireType;->VARINT:Lcom/squareup/wire/WireType;
 
     invoke-virtual {p2, p1, v0}, Lcom/squareup/wire/WireOutput;->writeTag(ILcom/squareup/wire/WireType;)V
 
     .line 103
-    iget-object v0, p0, Lcom/squareup/wire/UnknownFieldMap$VarintFieldValue;->value:Ljava/lang/Long;
+    iget-object p1, p0, Lcom/squareup/wire/UnknownFieldMap$VarintFieldValue;->value:Ljava/lang/Long;
 
-    invoke-virtual {v0}, Ljava/lang/Long;->longValue()J
+    invoke-virtual {p1}, Ljava/lang/Long;->longValue()J
 
     move-result-wide v0
 
     invoke-virtual {p2, v0, v1}, Lcom/squareup/wire/WireOutput;->writeVarint64(J)V
 
-    .line 104
     return-void
 .end method

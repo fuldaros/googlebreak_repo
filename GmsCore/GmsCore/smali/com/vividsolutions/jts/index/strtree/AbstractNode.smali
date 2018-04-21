@@ -19,7 +19,6 @@
 .method public constructor <init>()V
     .locals 1
 
-    .prologue
     .line 64
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -30,20 +29,17 @@
 
     iput-object v0, p0, Lcom/vividsolutions/jts/index/strtree/AbstractNode;->childBoundables:Ljava/util/ArrayList;
 
-    .line 58
     const/4 v0, 0x0
 
+    .line 58
     iput-object v0, p0, Lcom/vividsolutions/jts/index/strtree/AbstractNode;->bounds:Ljava/lang/Object;
 
-    .line 65
     return-void
 .end method
 
 .method public constructor <init>(I)V
     .locals 1
-    .param p1, "level"    # I
 
-    .prologue
     .line 72
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -54,15 +50,14 @@
 
     iput-object v0, p0, Lcom/vividsolutions/jts/index/strtree/AbstractNode;->childBoundables:Ljava/util/ArrayList;
 
-    .line 58
     const/4 v0, 0x0
 
+    .line 58
     iput-object v0, p0, Lcom/vividsolutions/jts/index/strtree/AbstractNode;->bounds:Ljava/lang/Object;
 
     .line 73
     iput p1, p0, Lcom/vividsolutions/jts/index/strtree/AbstractNode;->level:I
 
-    .line 74
     return-void
 .end method
 
@@ -70,15 +65,18 @@
 # virtual methods
 .method public addChildBoundable(Lcom/vividsolutions/jts/index/strtree/Boundable;)V
     .locals 1
-    .param p1, "childBoundable"    # Lcom/vividsolutions/jts/index/strtree/Boundable;
 
-    .prologue
     .line 141
     iget-object v0, p0, Lcom/vividsolutions/jts/index/strtree/AbstractNode;->bounds:Ljava/lang/Object;
 
     if-nez v0, :cond_0
 
     const/4 v0, 0x1
+
+    goto :goto_0
+
+    :cond_0
+    const/4 v0, 0x0
 
     :goto_0
     invoke-static {v0}, Lcom/vividsolutions/jts/util/Assert;->isTrue(Z)V
@@ -88,14 +86,7 @@
 
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 143
     return-void
-
-    .line 141
-    :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
 .end method
 
 .method protected abstract computeBounds()Ljava/lang/Object;
@@ -104,7 +95,6 @@
 .method public getBounds()Ljava/lang/Object;
     .locals 1
 
-    .prologue
     .line 102
     iget-object v0, p0, Lcom/vividsolutions/jts/index/strtree/AbstractNode;->bounds:Ljava/lang/Object;
 
@@ -127,7 +117,6 @@
 .method public getChildBoundables()Ljava/util/List;
     .locals 1
 
-    .prologue
     .line 81
     iget-object v0, p0, Lcom/vividsolutions/jts/index/strtree/AbstractNode;->childBoundables:Ljava/util/ArrayList;
 
@@ -137,7 +126,6 @@
 .method public isEmpty()Z
     .locals 1
 
-    .prologue
     .line 133
     iget-object v0, p0, Lcom/vividsolutions/jts/index/strtree/AbstractNode;->childBoundables:Ljava/util/ArrayList;
 

@@ -7,7 +7,6 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
     .line 25
     invoke-direct {p0}, Lcom/google/android/gms/ads/identifier/internal/IAdvertisingIdService$Stub;-><init>()V
 
@@ -17,25 +16,23 @@
 
 # virtual methods
 .method public generateAdvertisingId(Ljava/lang/String;)Ljava/lang/String;
-    .locals 1
-    .param p1, "packageName"    # Ljava/lang/String;
+    .locals 0
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
     .line 38
     invoke-static {}, Ljava/util/UUID;->randomUUID()Ljava/util/UUID;
 
-    move-result-object v0
+    move-result-object p1
 
-    invoke-virtual {v0}, Ljava/util/UUID;->toString()Ljava/lang/String;
+    invoke-virtual {p1}, Ljava/util/UUID;->toString()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object p1
 
-    return-object v0
+    return-object p1
 .end method
 
 .method public getAdvertisingId()Ljava/lang/String;
@@ -46,10 +43,9 @@
         }
     .end annotation
 
-    .prologue
-    .line 28
     const/4 v0, 0x0
 
+    .line 28
     invoke-virtual {p0, v0}, Lorg/microg/gms/ads/AdvertisingIdServiceImpl;->generateAdvertisingId(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
@@ -58,32 +54,25 @@
 .end method
 
 .method public isAdTrackingLimited(Z)Z
-    .locals 1
-    .param p1, "defaultHint"    # Z
+    .locals 0
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 33
-    const/4 v0, 0x1
+    const/4 p1, 0x1
 
-    return v0
+    return p1
 .end method
 
 .method public setAdTrackingLimited(Ljava/lang/String;Z)V
     .locals 0
-    .param p1, "packageName"    # Ljava/lang/String;
-    .param p2, "limited"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 44
     return-void
 .end method

@@ -18,10 +18,9 @@
         "<E:",
         "Ljava/lang/Object;",
         ">",
-        "Lorg/oscim/utils/pool/Inlist",
-        "<",
-        "Lorg/oscim/utils/quadtree/BoxTree$Stack",
-        "<TE;>;>;"
+        "Lorg/oscim/utils/pool/Inlist<",
+        "Lorg/oscim/utils/quadtree/BoxTree$Stack<",
+        "TE;>;>;"
     }
 .end annotation
 
@@ -42,21 +41,18 @@
 .method constructor <init>()V
     .locals 1
 
-    .prologue
-    .line 35
-    .local p0, "this":Lorg/oscim/utils/quadtree/BoxTree$Stack;, "Lorg/oscim/utils/quadtree/BoxTree$Stack<TE;>;"
+    .line 37
     invoke-direct {p0}, Lorg/oscim/utils/pool/Inlist;-><init>()V
 
-    .line 36
     const/16 v0, 0x20
 
+    .line 38
     new-array v0, v0, [Lorg/oscim/utils/quadtree/BoxTree$BoxNode;
 
     check-cast v0, [Ljava/lang/Object;
 
     iput-object v0, p0, Lorg/oscim/utils/quadtree/BoxTree$Stack;->nodes:[Ljava/lang/Object;
 
-    .line 37
     return-void
 .end method
 
@@ -65,22 +61,20 @@
 .method empty()Z
     .locals 1
 
-    .prologue
-    .line 56
-    .local p0, "this":Lorg/oscim/utils/quadtree/BoxTree$Stack;, "Lorg/oscim/utils/quadtree/BoxTree$Stack<TE;>;"
+    .line 60
     iget v0, p0, Lorg/oscim/utils/quadtree/BoxTree$Stack;->tos:I
 
     if-gtz v0, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
+    goto :goto_0
 
     :cond_0
     const/4 v0, 0x0
 
-    goto :goto_0
+    :goto_0
+    return v0
 .end method
 
 .method pop()Ljava/lang/Object;
@@ -91,9 +85,7 @@
         }
     .end annotation
 
-    .prologue
-    .line 47
-    .local p0, "this":Lorg/oscim/utils/quadtree/BoxTree$Stack;, "Lorg/oscim/utils/quadtree/BoxTree$Stack<TE;>;"
+    .line 51
     iget-object v0, p0, Lorg/oscim/utils/quadtree/BoxTree$Stack;->nodes:[Ljava/lang/Object;
 
     iget v1, p0, Lorg/oscim/utils/quadtree/BoxTree$Stack;->tos:I
@@ -106,7 +98,7 @@
 
     aput-object v2, v0, v1
 
-    .line 48
+    .line 52
     iget-object v0, p0, Lorg/oscim/utils/quadtree/BoxTree$Stack;->nodes:[Ljava/lang/Object;
 
     iget v1, p0, Lorg/oscim/utils/quadtree/BoxTree$Stack;->tos:I
@@ -124,23 +116,19 @@
         }
     .end annotation
 
-    .prologue
-    .line 40
-    .local p0, "this":Lorg/oscim/utils/quadtree/BoxTree$Stack;, "Lorg/oscim/utils/quadtree/BoxTree$Stack<TE;>;"
-    .local p1, "node":Ljava/lang/Object;, "TE;"
+    .line 42
     iget-object v0, p0, Lorg/oscim/utils/quadtree/BoxTree$Stack;->nodes:[Ljava/lang/Object;
 
     iget v1, p0, Lorg/oscim/utils/quadtree/BoxTree$Stack;->tos:I
 
     aput-object p1, v0, v1
 
-    .line 41
-    iget v0, p0, Lorg/oscim/utils/quadtree/BoxTree$Stack;->tos:I
+    .line 43
+    iget p1, p0, Lorg/oscim/utils/quadtree/BoxTree$Stack;->tos:I
 
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 p1, p1, 0x1
 
-    iput v0, p0, Lorg/oscim/utils/quadtree/BoxTree$Stack;->tos:I
+    iput p1, p0, Lorg/oscim/utils/quadtree/BoxTree$Stack;->tos:I
 
-    .line 42
     return-void
 .end method

@@ -21,10 +21,8 @@
 # direct methods
 .method constructor <init>(Lorg/microg/gms/checkin/CheckinService;)V
     .locals 0
-    .param p1, "this$0"    # Lorg/microg/gms/checkin/CheckinService;
 
-    .prologue
-    .line 40
+    .line 43
     iput-object p1, p0, Lorg/microg/gms/checkin/CheckinService$1;->this$0:Lorg/microg/gms/checkin/CheckinService;
 
     invoke-direct {p0}, Lcom/google/android/gms/checkin/internal/ICheckinService$Stub;-><init>()V
@@ -42,8 +40,7 @@
         }
     .end annotation
 
-    .prologue
-    .line 43
+    .line 46
     iget-object v0, p0, Lorg/microg/gms/checkin/CheckinService$1;->this$0:Lorg/microg/gms/checkin/CheckinService;
 
     invoke-static {v0}, Lorg/microg/gms/checkin/LastCheckinInfo;->read(Landroid/content/Context;)Lorg/microg/gms/checkin/LastCheckinInfo;

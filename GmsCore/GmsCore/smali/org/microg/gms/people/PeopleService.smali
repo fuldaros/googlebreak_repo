@@ -11,10 +11,9 @@
 .method public constructor <init>()V
     .locals 3
 
-    .prologue
-    .line 31
     const-string v0, "GmsPeopleSvc"
 
+    .line 31
     sget-object v1, Lorg/microg/gms/common/GmsService;->PEOPLE:Lorg/microg/gms/common/GmsService;
 
     const/4 v2, 0x0
@@ -30,37 +29,31 @@
 
     iput-object v0, p0, Lorg/microg/gms/people/PeopleService;->impl:Lorg/microg/gms/people/PeopleServiceImpl;
 
-    .line 32
     return-void
 .end method
 
 
 # virtual methods
 .method public handleServiceRequest(Lcom/google/android/gms/common/internal/IGmsCallbacks;Lcom/google/android/gms/common/internal/GetServiceRequest;Lorg/microg/gms/common/GmsService;)V
-    .locals 3
-    .param p1, "callback"    # Lcom/google/android/gms/common/internal/IGmsCallbacks;
-    .param p2, "request"    # Lcom/google/android/gms/common/internal/GetServiceRequest;
-    .param p3, "service"    # Lorg/microg/gms/common/GmsService;
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
     .line 36
+    iget-object p2, p0, Lorg/microg/gms/people/PeopleService;->impl:Lorg/microg/gms/people/PeopleServiceImpl;
+
+    invoke-virtual {p2}, Lorg/microg/gms/people/PeopleServiceImpl;->asBinder()Landroid/os/IBinder;
+
+    move-result-object p2
+
+    const/4 p3, 0x0
+
     const/4 v0, 0x0
 
-    iget-object v1, p0, Lorg/microg/gms/people/PeopleService;->impl:Lorg/microg/gms/people/PeopleServiceImpl;
+    invoke-interface {p1, p3, p2, v0}, Lcom/google/android/gms/common/internal/IGmsCallbacks;->onPostInitComplete(ILandroid/os/IBinder;Landroid/os/Bundle;)V
 
-    invoke-virtual {v1}, Lorg/microg/gms/people/PeopleServiceImpl;->asBinder()Landroid/os/IBinder;
-
-    move-result-object v1
-
-    const/4 v2, 0x0
-
-    invoke-interface {p1, v0, v1, v2}, Lcom/google/android/gms/common/internal/IGmsCallbacks;->onPostInitComplete(ILandroid/os/IBinder;Landroid/os/Bundle;)V
-
-    .line 37
     return-void
 .end method

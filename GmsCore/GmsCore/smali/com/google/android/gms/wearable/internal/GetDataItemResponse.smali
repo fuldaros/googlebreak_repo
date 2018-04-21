@@ -7,8 +7,7 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator",
-            "<",
+            "Landroid/os/Parcelable$Creator<",
             "Lcom/google/android/gms/wearable/internal/GetDataItemResponse;",
             ">;"
         }
@@ -40,7 +39,6 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
     .line 40
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -56,41 +54,36 @@
 .method private constructor <init>()V
     .locals 1
 
-    .prologue
     .line 30
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    .line 23
     const/4 v0, 0x1
 
+    .line 23
     iput v0, p0, Lcom/google/android/gms/wearable/internal/GetDataItemResponse;->versionCode:I
 
-    .line 31
     const/4 v0, 0x0
 
+    .line 31
     iput v0, p0, Lcom/google/android/gms/wearable/internal/GetDataItemResponse;->statusCode:I
 
-    .line 32
     const/4 v0, 0x0
 
+    .line 32
     iput-object v0, p0, Lcom/google/android/gms/wearable/internal/GetDataItemResponse;->dataItem:Lcom/google/android/gms/wearable/internal/DataItemParcelable;
 
-    .line 33
     return-void
 .end method
 
 .method public constructor <init>(ILcom/google/android/gms/wearable/internal/DataItemParcelable;)V
     .locals 1
-    .param p1, "statusCode"    # I
-    .param p2, "dataItem"    # Lcom/google/android/gms/wearable/internal/DataItemParcelable;
 
-    .prologue
     .line 35
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    .line 23
     const/4 v0, 0x1
 
+    .line 23
     iput v0, p0, Lcom/google/android/gms/wearable/internal/GetDataItemResponse;->versionCode:I
 
     .line 36
@@ -99,6 +92,5 @@
     .line 37
     iput-object p2, p0, Lcom/google/android/gms/wearable/internal/GetDataItemResponse;->dataItem:Lcom/google/android/gms/wearable/internal/DataItemParcelable;
 
-    .line 38
     return-void
 .end method

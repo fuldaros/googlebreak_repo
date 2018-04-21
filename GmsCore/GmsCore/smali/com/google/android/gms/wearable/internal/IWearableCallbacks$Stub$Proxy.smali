@@ -24,16 +24,13 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .param p1, "remote"    # Landroid/os/IBinder;
 
-    .prologue
-    .line 220
+    .line 234
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 221
+    .line 235
     iput-object p1, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 222
     return-void
 .end method
 
@@ -42,1065 +39,996 @@
 .method public asBinder()Landroid/os/IBinder;
     .locals 1
 
-    .prologue
-    .line 225
+    .line 239
     iget-object v0, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     return-object v0
 .end method
 
-.method public onDataHolder(Lcom/google/android/gms/common/data/DataHolder;)V
-    .locals 5
-    .param p1, "dataHolder"    # Lcom/google/android/gms/common/data/DataHolder;
+.method public onDataItemChanged(Lcom/google/android/gms/common/data/DataHolder;)V
+    .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 296
+    .line 310
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 297
-    .local v0, "_data":Landroid/os/Parcel;
+    .line 311
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
-    .line 299
-    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
     const-string v2, "com.google.android.gms.wearable.internal.IWearableCallbacks"
 
+    .line 313
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 300
-    if-eqz p1, :cond_0
-
-    .line 301
-    const/4 v2, 0x1
-
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 302
     const/4 v2, 0x0
 
+    if-eqz p1, :cond_0
+
+    const/4 v3, 0x1
+
+    .line 315
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 316
     invoke-virtual {p1, v0, v2}, Lcom/google/android/gms/common/data/DataHolder;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 307
+    goto :goto_0
+
+    .line 319
+    :cond_0
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 321
     :goto_0
-    iget-object v2, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+    iget-object p1, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     const/4 v3, 0x5
 
-    const/4 v4, 0x0
+    invoke-interface {p1, v3, v0, v1, v2}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-
-    .line 308
+    .line 322
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 311
+    .line 325
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 312
+    .line 326
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 314
     return-void
 
-    .line 305
-    :cond_0
-    const/4 v2, 0x0
-
-    :try_start_1
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    goto :goto_0
-
-    .line 311
     :catchall_0
-    move-exception v2
+    move-exception p1
 
+    .line 325
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 312
+    .line 326
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    throw v2
+    .line 327
+    throw p1
 .end method
 
 .method public onDeleteDataItemsResponse(Lcom/google/android/gms/wearable/internal/DeleteDataItemsResponse;)V
-    .locals 5
-    .param p1, "response"    # Lcom/google/android/gms/wearable/internal/DeleteDataItemsResponse;
+    .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 317
+    .line 331
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 318
-    .local v0, "_data":Landroid/os/Parcel;
+    .line 332
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
-    .line 320
-    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
     const-string v2, "com.google.android.gms.wearable.internal.IWearableCallbacks"
 
+    .line 334
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 321
-    if-eqz p1, :cond_0
-
-    .line 322
-    const/4 v2, 0x1
-
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 323
     const/4 v2, 0x0
 
+    if-eqz p1, :cond_0
+
+    const/4 v3, 0x1
+
+    .line 336
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 337
     invoke-virtual {p1, v0, v2}, Lcom/google/android/gms/wearable/internal/DeleteDataItemsResponse;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 328
+    goto :goto_0
+
+    .line 340
+    :cond_0
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 342
     :goto_0
-    iget-object v2, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+    iget-object p1, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     const/4 v3, 0x6
 
-    const/4 v4, 0x0
+    invoke-interface {p1, v3, v0, v1, v2}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-
-    .line 329
+    .line 343
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 332
+    .line 346
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 333
+    .line 347
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 335
     return-void
 
-    .line 326
-    :cond_0
+    :catchall_0
+    move-exception p1
+
+    .line 346
+    invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
+
+    .line 347
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    .line 348
+    throw p1
+.end method
+
+.method public onGetCloudSyncSettingResponse(Lcom/google/android/gms/wearable/internal/GetCloudSyncSettingResponse;)V
+    .locals 4
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .line 499
+    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+
+    move-result-object v0
+
+    .line 500
+    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+
+    move-result-object v1
+
+    :try_start_0
+    const-string v2, "com.google.android.gms.wearable.internal.IWearableCallbacks"
+
+    .line 502
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
+
     const/4 v2, 0x0
 
-    :try_start_1
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    if-eqz p1, :cond_0
+
+    const/4 v3, 0x1
+
+    .line 504
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 505
+    invoke-virtual {p1, v0, v2}, Lcom/google/android/gms/wearable/internal/GetCloudSyncSettingResponse;->writeToParcel(Landroid/os/Parcel;I)V
 
     goto :goto_0
 
-    .line 332
-    :catchall_0
-    move-exception v2
+    .line 508
+    :cond_0
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
 
+    .line 510
+    :goto_0
+    iget-object p1, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+
+    const/16 v3, 0x1d
+
+    invoke-interface {p1, v3, v0, v1, v2}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
+
+    .line 511
+    invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 514
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 333
+    .line 515
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    throw v2
+    return-void
+
+    :catchall_0
+    move-exception p1
+
+    .line 514
+    invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
+
+    .line 515
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    .line 516
+    throw p1
 .end method
 
 .method public onGetConfigResponse(Lcom/google/android/gms/wearable/internal/GetConfigResponse;)V
-    .locals 5
-    .param p1, "response"    # Lcom/google/android/gms/wearable/internal/GetConfigResponse;
+    .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 233
+    .line 247
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 234
-    .local v0, "_data":Landroid/os/Parcel;
+    .line 248
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
-    .line 236
-    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
     const-string v2, "com.google.android.gms.wearable.internal.IWearableCallbacks"
 
+    .line 250
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 237
-    if-eqz p1, :cond_0
-
-    .line 238
-    const/4 v2, 0x1
-
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 239
     const/4 v2, 0x0
 
+    if-eqz p1, :cond_0
+
+    const/4 v3, 0x1
+
+    .line 252
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 253
     invoke-virtual {p1, v0, v2}, Lcom/google/android/gms/wearable/internal/GetConfigResponse;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 244
+    goto :goto_0
+
+    .line 256
+    :cond_0
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 258
     :goto_0
-    iget-object v2, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+    iget-object p1, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     const/4 v3, 0x2
 
-    const/4 v4, 0x0
+    invoke-interface {p1, v3, v0, v1, v2}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-
-    .line 245
+    .line 259
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 248
+    .line 262
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 249
+    .line 263
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 251
     return-void
 
-    .line 242
-    :cond_0
-    const/4 v2, 0x0
-
-    :try_start_1
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    goto :goto_0
-
-    .line 248
     :catchall_0
-    move-exception v2
+    move-exception p1
 
+    .line 262
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 249
+    .line 263
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    throw v2
+    .line 264
+    throw p1
 .end method
 
 .method public onGetConfigsResponse(Lcom/google/android/gms/wearable/internal/GetConfigsResponse;)V
-    .locals 5
-    .param p1, "response"    # Lcom/google/android/gms/wearable/internal/GetConfigsResponse;
+    .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 464
+    .line 478
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 465
-    .local v0, "_data":Landroid/os/Parcel;
+    .line 479
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
-    .line 467
-    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
     const-string v2, "com.google.android.gms.wearable.internal.IWearableCallbacks"
 
+    .line 481
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 468
-    if-eqz p1, :cond_0
-
-    .line 469
-    const/4 v2, 0x1
-
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 470
     const/4 v2, 0x0
 
+    if-eqz p1, :cond_0
+
+    const/4 v3, 0x1
+
+    .line 483
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 484
     invoke-virtual {p1, v0, v2}, Lcom/google/android/gms/wearable/internal/GetConfigsResponse;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 475
+    goto :goto_0
+
+    .line 487
+    :cond_0
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 489
     :goto_0
-    iget-object v2, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+    iget-object p1, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     const/16 v3, 0xd
 
-    const/4 v4, 0x0
+    invoke-interface {p1, v3, v0, v1, v2}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-
-    .line 476
+    .line 490
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 479
+    .line 493
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 480
+    .line 494
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 482
     return-void
 
-    .line 473
-    :cond_0
-    const/4 v2, 0x0
-
-    :try_start_1
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    goto :goto_0
-
-    .line 479
     :catchall_0
-    move-exception v2
+    move-exception p1
 
+    .line 493
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 480
+    .line 494
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    throw v2
+    .line 495
+    throw p1
 .end method
 
 .method public onGetConnectedNodesResponse(Lcom/google/android/gms/wearable/internal/GetConnectedNodesResponse;)V
-    .locals 5
-    .param p1, "response"    # Lcom/google/android/gms/wearable/internal/GetConnectedNodesResponse;
+    .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 401
+    .line 415
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 402
-    .local v0, "_data":Landroid/os/Parcel;
+    .line 416
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
-    .line 404
-    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
     const-string v2, "com.google.android.gms.wearable.internal.IWearableCallbacks"
 
+    .line 418
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 405
-    if-eqz p1, :cond_0
-
-    .line 406
-    const/4 v2, 0x1
-
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 407
     const/4 v2, 0x0
 
+    if-eqz p1, :cond_0
+
+    const/4 v3, 0x1
+
+    .line 420
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 421
     invoke-virtual {p1, v0, v2}, Lcom/google/android/gms/wearable/internal/GetConnectedNodesResponse;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 412
+    goto :goto_0
+
+    .line 424
+    :cond_0
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 426
     :goto_0
-    iget-object v2, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+    iget-object p1, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     const/16 v3, 0xa
 
-    const/4 v4, 0x0
+    invoke-interface {p1, v3, v0, v1, v2}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-
-    .line 413
+    .line 427
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 416
+    .line 430
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 417
+    .line 431
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 419
     return-void
 
-    .line 410
-    :cond_0
-    const/4 v2, 0x0
-
-    :try_start_1
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    goto :goto_0
-
-    .line 416
     :catchall_0
-    move-exception v2
+    move-exception p1
 
+    .line 430
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 417
+    .line 431
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    throw v2
+    .line 432
+    throw p1
 .end method
 
 .method public onGetDataItemResponse(Lcom/google/android/gms/wearable/internal/GetDataItemResponse;)V
-    .locals 5
-    .param p1, "response"    # Lcom/google/android/gms/wearable/internal/GetDataItemResponse;
+    .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 275
+    .line 289
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 276
-    .local v0, "_data":Landroid/os/Parcel;
+    .line 290
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
-    .line 278
-    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
     const-string v2, "com.google.android.gms.wearable.internal.IWearableCallbacks"
 
+    .line 292
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 279
-    if-eqz p1, :cond_0
-
-    .line 280
-    const/4 v2, 0x1
-
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 281
     const/4 v2, 0x0
 
+    if-eqz p1, :cond_0
+
+    const/4 v3, 0x1
+
+    .line 294
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 295
     invoke-virtual {p1, v0, v2}, Lcom/google/android/gms/wearable/internal/GetDataItemResponse;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 286
+    goto :goto_0
+
+    .line 298
+    :cond_0
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 300
     :goto_0
-    iget-object v2, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+    iget-object p1, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     const/4 v3, 0x4
 
-    const/4 v4, 0x0
+    invoke-interface {p1, v3, v0, v1, v2}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-
-    .line 287
+    .line 301
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 290
+    .line 304
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 291
+    .line 305
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 293
     return-void
 
-    .line 284
-    :cond_0
-    const/4 v2, 0x0
-
-    :try_start_1
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    goto :goto_0
-
-    .line 290
     :catchall_0
-    move-exception v2
+    move-exception p1
 
+    .line 304
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 291
+    .line 305
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    throw v2
+    .line 306
+    throw p1
 .end method
 
 .method public onGetFdForAssetResponse(Lcom/google/android/gms/wearable/internal/GetFdForAssetResponse;)V
-    .locals 5
-    .param p1, "response"    # Lcom/google/android/gms/wearable/internal/GetFdForAssetResponse;
+    .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 359
+    .line 373
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 360
-    .local v0, "_data":Landroid/os/Parcel;
+    .line 374
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
-    .line 362
-    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
     const-string v2, "com.google.android.gms.wearable.internal.IWearableCallbacks"
 
+    .line 376
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 363
-    if-eqz p1, :cond_0
-
-    .line 364
-    const/4 v2, 0x1
-
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 365
     const/4 v2, 0x0
 
+    if-eqz p1, :cond_0
+
+    const/4 v3, 0x1
+
+    .line 378
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 379
     invoke-virtual {p1, v0, v2}, Lcom/google/android/gms/wearable/internal/GetFdForAssetResponse;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 370
+    goto :goto_0
+
+    .line 382
+    :cond_0
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 384
     :goto_0
-    iget-object v2, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+    iget-object p1, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     const/16 v3, 0x8
 
-    const/4 v4, 0x0
+    invoke-interface {p1, v3, v0, v1, v2}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-
-    .line 371
+    .line 385
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 374
+    .line 388
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 375
+    .line 389
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 377
     return-void
 
-    .line 368
-    :cond_0
-    const/4 v2, 0x0
-
-    :try_start_1
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    goto :goto_0
-
-    .line 374
     :catchall_0
-    move-exception v2
+    move-exception p1
 
+    .line 388
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 375
+    .line 389
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    throw v2
+    .line 390
+    throw p1
 .end method
 
 .method public onGetLocalNodeResponse(Lcom/google/android/gms/wearable/internal/GetLocalNodeResponse;)V
-    .locals 5
-    .param p1, "response"    # Lcom/google/android/gms/wearable/internal/GetLocalNodeResponse;
+    .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 380
+    .line 394
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 381
-    .local v0, "_data":Landroid/os/Parcel;
+    .line 395
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
-    .line 383
-    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
     const-string v2, "com.google.android.gms.wearable.internal.IWearableCallbacks"
 
+    .line 397
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 384
-    if-eqz p1, :cond_0
-
-    .line 385
-    const/4 v2, 0x1
-
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 386
     const/4 v2, 0x0
 
+    if-eqz p1, :cond_0
+
+    const/4 v3, 0x1
+
+    .line 399
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 400
     invoke-virtual {p1, v0, v2}, Lcom/google/android/gms/wearable/internal/GetLocalNodeResponse;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 391
+    goto :goto_0
+
+    .line 403
+    :cond_0
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 405
     :goto_0
-    iget-object v2, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+    iget-object p1, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     const/16 v3, 0x9
 
-    const/4 v4, 0x0
+    invoke-interface {p1, v3, v0, v1, v2}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-
-    .line 392
+    .line 406
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 395
+    .line 409
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 396
+    .line 410
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 398
     return-void
 
-    .line 389
-    :cond_0
-    const/4 v2, 0x0
-
-    :try_start_1
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    goto :goto_0
-
-    .line 395
     :catchall_0
-    move-exception v2
+    move-exception p1
 
+    .line 409
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 396
+    .line 410
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    throw v2
+    .line 411
+    throw p1
 .end method
 
 .method public onPutDataResponse(Lcom/google/android/gms/wearable/internal/PutDataResponse;)V
-    .locals 5
-    .param p1, "response"    # Lcom/google/android/gms/wearable/internal/PutDataResponse;
+    .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 254
+    .line 268
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 255
-    .local v0, "_data":Landroid/os/Parcel;
+    .line 269
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
-    .line 257
-    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
     const-string v2, "com.google.android.gms.wearable.internal.IWearableCallbacks"
 
+    .line 271
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 258
-    if-eqz p1, :cond_0
-
-    .line 259
-    const/4 v2, 0x1
-
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 260
     const/4 v2, 0x0
 
+    if-eqz p1, :cond_0
+
+    const/4 v3, 0x1
+
+    .line 273
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 274
     invoke-virtual {p1, v0, v2}, Lcom/google/android/gms/wearable/internal/PutDataResponse;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 265
+    goto :goto_0
+
+    .line 277
+    :cond_0
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 279
     :goto_0
-    iget-object v2, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+    iget-object p1, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     const/4 v3, 0x3
 
-    const/4 v4, 0x0
+    invoke-interface {p1, v3, v0, v1, v2}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-
-    .line 266
+    .line 280
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 269
+    .line 283
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 270
+    .line 284
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 272
     return-void
 
-    .line 263
-    :cond_0
-    const/4 v2, 0x0
-
-    :try_start_1
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    goto :goto_0
-
-    .line 269
     :catchall_0
-    move-exception v2
+    move-exception p1
 
+    .line 283
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 270
+    .line 284
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    throw v2
+    .line 285
+    throw p1
 .end method
 
 .method public onSendMessageResponse(Lcom/google/android/gms/wearable/internal/SendMessageResponse;)V
-    .locals 5
-    .param p1, "response"    # Lcom/google/android/gms/wearable/internal/SendMessageResponse;
+    .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 338
+    .line 352
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 339
-    .local v0, "_data":Landroid/os/Parcel;
+    .line 353
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
-    .line 341
-    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
     const-string v2, "com.google.android.gms.wearable.internal.IWearableCallbacks"
 
+    .line 355
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 342
-    if-eqz p1, :cond_0
-
-    .line 343
-    const/4 v2, 0x1
-
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 344
     const/4 v2, 0x0
 
+    if-eqz p1, :cond_0
+
+    const/4 v3, 0x1
+
+    .line 357
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 358
     invoke-virtual {p1, v0, v2}, Lcom/google/android/gms/wearable/internal/SendMessageResponse;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 349
+    goto :goto_0
+
+    .line 361
+    :cond_0
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 363
     :goto_0
-    iget-object v2, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+    iget-object p1, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     const/4 v3, 0x7
 
-    const/4 v4, 0x0
+    invoke-interface {p1, v3, v0, v1, v2}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-
-    .line 350
+    .line 364
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 353
+    .line 367
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 354
+    .line 368
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 356
     return-void
 
-    .line 347
-    :cond_0
-    const/4 v2, 0x0
-
-    :try_start_1
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    goto :goto_0
-
-    .line 353
     :catchall_0
-    move-exception v2
+    move-exception p1
 
+    .line 367
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 354
+    .line 368
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    throw v2
+    .line 369
+    throw p1
 .end method
 
 .method public onStatus(Lcom/google/android/gms/common/api/Status;)V
-    .locals 5
-    .param p1, "status"    # Lcom/google/android/gms/common/api/Status;
+    .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 422
+    .line 436
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 423
-    .local v0, "_data":Landroid/os/Parcel;
+    .line 437
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
-    .line 425
-    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
     const-string v2, "com.google.android.gms.wearable.internal.IWearableCallbacks"
 
+    .line 439
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 426
-    if-eqz p1, :cond_0
-
-    .line 427
-    const/4 v2, 0x1
-
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 428
     const/4 v2, 0x0
 
+    if-eqz p1, :cond_0
+
+    const/4 v3, 0x1
+
+    .line 441
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 442
     invoke-virtual {p1, v0, v2}, Lcom/google/android/gms/common/api/Status;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 433
+    goto :goto_0
+
+    .line 445
+    :cond_0
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 447
     :goto_0
-    iget-object v2, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+    iget-object p1, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     const/16 v3, 0xb
 
-    const/4 v4, 0x0
+    invoke-interface {p1, v3, v0, v1, v2}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-
-    .line 434
+    .line 448
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 437
+    .line 451
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 438
+    .line 452
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 440
     return-void
 
-    .line 431
-    :cond_0
-    const/4 v2, 0x0
-
-    :try_start_1
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    goto :goto_0
-
-    .line 437
     :catchall_0
-    move-exception v2
+    move-exception p1
 
+    .line 451
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 438
+    .line 452
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    throw v2
+    .line 453
+    throw p1
 .end method
 
 .method public onStorageInfoResponse(Lcom/google/android/gms/wearable/internal/StorageInfoResponse;)V
-    .locals 5
-    .param p1, "response"    # Lcom/google/android/gms/wearable/internal/StorageInfoResponse;
+    .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
-    .line 443
+    .line 457
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 444
-    .local v0, "_data":Landroid/os/Parcel;
+    .line 458
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
-    .line 446
-    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
     const-string v2, "com.google.android.gms.wearable.internal.IWearableCallbacks"
 
+    .line 460
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 447
-    if-eqz p1, :cond_0
-
-    .line 448
-    const/4 v2, 0x1
-
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 449
     const/4 v2, 0x0
 
+    if-eqz p1, :cond_0
+
+    const/4 v3, 0x1
+
+    .line 462
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 463
     invoke-virtual {p1, v0, v2}, Lcom/google/android/gms/wearable/internal/StorageInfoResponse;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 454
+    goto :goto_0
+
+    .line 466
+    :cond_0
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 468
     :goto_0
-    iget-object v2, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+    iget-object p1, p0, Lcom/google/android/gms/wearable/internal/IWearableCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     const/16 v3, 0xc
 
-    const/4 v4, 0x0
+    invoke-interface {p1, v3, v0, v1, v2}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-
-    .line 455
+    .line 469
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 458
+    .line 472
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 459
+    .line 473
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 461
     return-void
 
-    .line 452
-    :cond_0
-    const/4 v2, 0x0
-
-    :try_start_1
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    goto :goto_0
-
-    .line 458
     :catchall_0
-    move-exception v2
+    move-exception p1
 
+    .line 472
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 459
+    .line 473
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    throw v2
+    .line 474
+    throw p1
 .end method

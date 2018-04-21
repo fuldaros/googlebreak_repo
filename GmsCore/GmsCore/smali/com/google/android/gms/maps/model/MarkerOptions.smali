@@ -7,8 +7,7 @@
 .field public static CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator",
-            "<",
+            "Landroid/os/Parcelable$Creator<",
             "Lcom/google/android/gms/maps/model/MarkerOptions;",
             ">;"
         }
@@ -108,7 +107,6 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
     .line 329
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -122,42 +120,40 @@
 .end method
 
 .method public constructor <init>()V
-    .locals 3
-
-    .prologue
-    const/4 v2, 0x0
-
-    const/high16 v1, 0x3f800000    # 1.0f
+    .locals 2
 
     .line 65
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    .line 29
     const/4 v0, 0x1
 
+    .line 29
     iput v0, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->versionCode:I
 
-    .line 43
     const/high16 v0, 0x3f000000    # 0.5f
 
+    .line 43
     iput v0, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->anchorU:F
 
+    const/high16 v0, 0x3f800000    # 1.0f
+
     .line 45
-    iput v1, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->anchorV:F
+    iput v0, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->anchorV:F
+
+    const/4 v1, 0x0
 
     .line 53
-    iput v2, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->rotation:F
+    iput v1, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->rotation:F
 
     .line 55
-    iput v2, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->infoWindowAnchorU:F
+    iput v1, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->infoWindowAnchorU:F
 
     .line 57
-    iput v1, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->infoWindowAnchorV:F
+    iput v0, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->infoWindowAnchorV:F
 
     .line 59
-    iput v1, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->alpha:F
+    iput v0, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->alpha:F
 
-    .line 66
     return-void
 .end method
 
@@ -165,60 +161,46 @@
 # virtual methods
 .method public alpha(F)Lcom/google/android/gms/maps/model/MarkerOptions;
     .locals 0
-    .param p1, "alpha"    # F
 
-    .prologue
     .line 75
     iput p1, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->alpha:F
 
-    .line 76
     return-object p0
 .end method
 
 .method public anchor(FF)Lcom/google/android/gms/maps/model/MarkerOptions;
     .locals 0
-    .param p1, "u"    # F
-    .param p2, "v"    # F
 
-    .prologue
     .line 96
     iput p1, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->anchorU:F
 
     .line 97
     iput p2, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->anchorV:F
 
-    .line 98
     return-object p0
 .end method
 
 .method public draggable(Z)Lcom/google/android/gms/maps/model/MarkerOptions;
     .locals 0
-    .param p1, "draggable"    # Z
 
-    .prologue
     .line 107
     iput-boolean p1, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->draggable:Z
 
-    .line 108
     return-object p0
 .end method
 
 .method public flat(Z)Lcom/google/android/gms/maps/model/MarkerOptions;
     .locals 0
-    .param p1, "flat"    # Z
 
-    .prologue
     .line 121
     iput-boolean p1, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->flat:Z
 
-    .line 122
     return-object p0
 .end method
 
 .method public getAlpha()F
     .locals 1
 
-    .prologue
     .line 131
     iget v0, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->alpha:F
 
@@ -228,7 +210,6 @@
 .method public getAnchorU()F
     .locals 1
 
-    .prologue
     .line 140
     iget v0, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->anchorU:F
 
@@ -238,7 +219,6 @@
 .method public getAnchorV()F
     .locals 1
 
-    .prologue
     .line 149
     iget v0, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->anchorV:F
 
@@ -248,7 +228,6 @@
 .method public getIcon()Lcom/google/android/gms/maps/model/BitmapDescriptor;
     .locals 2
 
-    .prologue
     .line 159
     iget-object v0, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->icon:Lcom/google/android/gms/maps/model/BitmapDescriptor;
 
@@ -281,7 +260,6 @@
 .method public getPosition()Lcom/google/android/gms/maps/model/LatLng;
     .locals 1
 
-    .prologue
     .line 189
     iget-object v0, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->position:Lcom/google/android/gms/maps/model/LatLng;
 
@@ -291,7 +269,6 @@
 .method public getRotation()F
     .locals 1
 
-    .prologue
     .line 198
     iget v0, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->rotation:F
 
@@ -301,7 +278,6 @@
 .method public getSnippet()Ljava/lang/String;
     .locals 1
 
-    .prologue
     .line 207
     iget-object v0, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->snippet:Ljava/lang/String;
 
@@ -311,7 +287,6 @@
 .method public getTitle()Ljava/lang/String;
     .locals 1
 
-    .prologue
     .line 216
     iget-object v0, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->title:Ljava/lang/String;
 
@@ -320,24 +295,19 @@
 
 .method public infoWindowAnchor(FF)Lcom/google/android/gms/maps/model/MarkerOptions;
     .locals 0
-    .param p1, "u"    # F
-    .param p2, "v"    # F
 
-    .prologue
     .line 241
     iput p1, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->infoWindowAnchorU:F
 
     .line 242
     iput p2, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->infoWindowAnchorV:F
 
-    .line 243
     return-object p0
 .end method
 
 .method public isDraggable()Z
     .locals 1
 
-    .prologue
     .line 252
     iget-boolean v0, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->draggable:Z
 
@@ -347,7 +317,6 @@
 .method public isFlat()Z
     .locals 1
 
-    .prologue
     .line 262
     iget-boolean v0, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->flat:Z
 
@@ -357,7 +326,6 @@
 .method public isVisible()Z
     .locals 1
 
-    .prologue
     .line 271
     iget-boolean v0, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->visible:Z
 
@@ -366,60 +334,45 @@
 
 .method public position(Lcom/google/android/gms/maps/model/LatLng;)Lcom/google/android/gms/maps/model/MarkerOptions;
     .locals 0
-    .param p1, "position"    # Lcom/google/android/gms/maps/model/LatLng;
 
-    .prologue
     .line 280
     iput-object p1, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->position:Lcom/google/android/gms/maps/model/LatLng;
 
-    .line 281
     return-object p0
 .end method
 
 .method public rotation(F)Lcom/google/android/gms/maps/model/MarkerOptions;
     .locals 0
-    .param p1, "rotation"    # F
 
-    .prologue
     .line 295
     iput p1, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->rotation:F
 
-    .line 296
     return-object p0
 .end method
 
 .method public snippet(Ljava/lang/String;)Lcom/google/android/gms/maps/model/MarkerOptions;
     .locals 0
-    .param p1, "snippet"    # Ljava/lang/String;
 
-    .prologue
     .line 305
     iput-object p1, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->snippet:Ljava/lang/String;
 
-    .line 306
     return-object p0
 .end method
 
 .method public title(Ljava/lang/String;)Lcom/google/android/gms/maps/model/MarkerOptions;
     .locals 0
-    .param p1, "title"    # Ljava/lang/String;
 
-    .prologue
     .line 315
     iput-object p1, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->title:Ljava/lang/String;
 
-    .line 316
     return-object p0
 .end method
 
 .method public visible(Z)Lcom/google/android/gms/maps/model/MarkerOptions;
     .locals 0
-    .param p1, "visible"    # Z
 
-    .prologue
     .line 325
     iput-boolean p1, p0, Lcom/google/android/gms/maps/model/MarkerOptions;->visible:Z
 
-    .line 326
     return-object p0
 .end method

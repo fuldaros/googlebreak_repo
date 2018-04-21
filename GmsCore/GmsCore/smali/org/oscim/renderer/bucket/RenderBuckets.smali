@@ -25,82 +25,80 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 5
+    .locals 4
 
-    .prologue
-    const/16 v4, 0x8
+    .line 47
+    const-class v0, Lorg/oscim/renderer/bucket/RenderBuckets;
 
-    const/4 v3, 0x0
+    invoke-static {v0}, Lorg/slf4j/LoggerFactory;->getLogger(Ljava/lang/Class;)Lorg/slf4j/Logger;
 
-    .line 44
-    const-class v1, Lorg/oscim/renderer/bucket/RenderBuckets;
+    move-result-object v0
 
-    invoke-static {v1}, Lorg/slf4j/LoggerFactory;->getLogger(Ljava/lang/Class;)Lorg/slf4j/Logger;
+    sput-object v0, Lorg/oscim/renderer/bucket/RenderBuckets;->log:Lorg/slf4j/Logger;
 
-    move-result-object v1
+    const/16 v0, 0x9
 
-    sput-object v1, Lorg/oscim/renderer/bucket/RenderBuckets;->log:Lorg/slf4j/Logger;
+    .line 49
+    new-array v0, v0, [I
 
-    .line 46
-    new-array v1, v4, [I
+    fill-array-data v0, :array_0
 
-    fill-array-data v1, :array_0
+    sput-object v0, Lorg/oscim/renderer/bucket/RenderBuckets;->VERTEX_SHORT_CNT:[I
 
-    sput-object v1, Lorg/oscim/renderer/bucket/RenderBuckets;->VERTEX_SHORT_CNT:[I
+    .line 438
+    sget v0, Lorg/oscim/core/Tile;->SIZE:I
 
-    .line 412
-    sget v1, Lorg/oscim/core/Tile;->SIZE:I
+    int-to-float v0, v0
 
-    int-to-float v1, v1
+    sget v1, Lorg/oscim/renderer/MapRenderer;->COORD_SCALE:F
 
-    const/high16 v2, 0x41000000    # 8.0f
+    mul-float/2addr v0, v1
 
-    mul-float/2addr v1, v2
+    float-to-int v0, v0
 
-    float-to-int v1, v1
+    int-to-short v0, v0
 
-    int-to-short v0, v1
+    const/16 v1, 0x8
 
-    .line 413
-    .local v0, "s":S
-    new-array v1, v4, [S
+    .line 439
+    new-array v1, v1, [S
 
-    aput-short v3, v1, v3
+    const/4 v2, 0x0
 
-    const/4 v2, 0x1
+    aput-short v2, v1, v2
 
-    aput-short v0, v1, v2
+    const/4 v3, 0x1
 
-    const/4 v2, 0x2
+    aput-short v0, v1, v3
 
-    aput-short v0, v1, v2
+    const/4 v3, 0x2
 
-    const/4 v2, 0x3
+    aput-short v0, v1, v3
 
-    aput-short v0, v1, v2
+    const/4 v3, 0x3
 
-    const/4 v2, 0x4
+    aput-short v0, v1, v3
 
-    aput-short v3, v1, v2
+    const/4 v3, 0x4
 
-    const/4 v2, 0x5
+    aput-short v2, v1, v3
 
-    aput-short v3, v1, v2
+    const/4 v3, 0x5
 
-    const/4 v2, 0x6
+    aput-short v2, v1, v3
 
-    aput-short v0, v1, v2
+    const/4 v3, 0x6
 
-    const/4 v2, 0x7
+    aput-short v0, v1, v3
 
-    aput-short v3, v1, v2
+    const/4 v0, 0x7
+
+    aput-short v2, v1, v0
 
     sput-object v1, Lorg/oscim/renderer/bucket/RenderBuckets;->fillCoords:[S
 
-    .line 414
     return-void
 
-    .line 46
     :array_0
     .array-data 4
         0x4
@@ -111,19 +109,19 @@
         0x2
         0x6
         0x6
+        0x2
     .end array-data
 .end method
 
 .method public constructor <init>()V
     .locals 1
 
-    .prologue
-    .line 42
+    .line 45
     invoke-direct {p0}, Lorg/oscim/layers/tile/MapTile$TileData;-><init>()V
 
-    .line 78
     const/4 v0, 0x2
 
+    .line 82
     new-array v0, v0, [I
 
     fill-array-data v0, :array_0
@@ -142,33 +140,26 @@
 .method private countIboSize()I
     .locals 3
 
-    .prologue
-    .line 267
-    const/4 v1, 0x0
-
-    .line 269
-    .local v1, "numIndices":I
+    .line 291
     iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
 
-    .local v0, "l":Lorg/oscim/renderer/bucket/RenderBucket;
+    const/4 v1, 0x0
+
     :goto_0
     if-eqz v0, :cond_0
 
-    .line 270
+    .line 292
     iget v2, v0, Lorg/oscim/renderer/bucket/RenderBucket;->numIndices:I
 
     add-int/2addr v1, v2
 
-    .line 269
+    .line 291
     iget-object v0, v0, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
 
-    .end local v0    # "l":Lorg/oscim/renderer/bucket/RenderBucket;
     check-cast v0, Lorg/oscim/renderer/bucket/RenderBucket;
 
-    .restart local v0    # "l":Lorg/oscim/renderer/bucket/RenderBucket;
     goto :goto_0
 
-    .line 272
     :cond_0
     return v1
 .end method
@@ -176,24 +167,20 @@
 .method private countVboSize()I
     .locals 5
 
-    .prologue
-    .line 258
-    const/4 v1, 0x0
-
-    .line 260
-    .local v1, "vboShorts":I
+    .line 282
     iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
 
-    .local v0, "l":Lorg/oscim/renderer/bucket/RenderBucket;
+    const/4 v1, 0x0
+
     :goto_0
     if-eqz v0, :cond_0
 
-    .line 261
+    .line 283
     iget v2, v0, Lorg/oscim/renderer/bucket/RenderBucket;->numVertices:I
 
     sget-object v3, Lorg/oscim/renderer/bucket/RenderBuckets;->VERTEX_SHORT_CNT:[I
 
-    iget v4, v0, Lorg/oscim/renderer/bucket/RenderBucket;->type:I
+    iget-byte v4, v0, Lorg/oscim/renderer/bucket/RenderBucket;->type:B
 
     aget v3, v3, v4
 
@@ -201,364 +188,338 @@
 
     add-int/2addr v1, v2
 
-    .line 260
+    .line 282
     iget-object v0, v0, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
 
-    .end local v0    # "l":Lorg/oscim/renderer/bucket/RenderBucket;
     check-cast v0, Lorg/oscim/renderer/bucket/RenderBucket;
 
-    .restart local v0    # "l":Lorg/oscim/renderer/bucket/RenderBucket;
     goto :goto_0
 
-    .line 263
     :cond_0
     return v1
 .end method
 
 .method private getBucket(II)Lorg/oscim/renderer/bucket/RenderBucket;
-    .locals 10
-    .param p1, "level"    # I
-    .param p2, "type"    # I
+    .locals 7
 
-    .prologue
-    const/4 v9, 0x0
+    .line 201
+    iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->mCurBucket:Lorg/oscim/renderer/bucket/RenderBucket;
 
-    const/4 v5, 0x3
-
-    const/4 v8, 0x2
-
-    const/4 v7, 0x1
-
-    .line 179
     const/4 v1, 0x0
 
-    .line 181
-    .local v1, "bucket":Lorg/oscim/renderer/bucket/RenderBucket;
-    iget-object v3, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->mCurBucket:Lorg/oscim/renderer/bucket/RenderBucket;
+    const/4 v2, 0x2
 
-    if-eqz v3, :cond_1
+    const/4 v3, 0x1
 
-    iget-object v3, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->mCurBucket:Lorg/oscim/renderer/bucket/RenderBucket;
+    const/4 v4, 0x3
 
-    iget v3, v3, Lorg/oscim/renderer/bucket/RenderBucket;->level:I
+    if-eqz v0, :cond_1
 
-    if-ne v3, p1, :cond_1
+    iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->mCurBucket:Lorg/oscim/renderer/bucket/RenderBucket;
 
-    .line 182
-    iget-object v1, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->mCurBucket:Lorg/oscim/renderer/bucket/RenderBucket;
+    iget v0, v0, Lorg/oscim/renderer/bucket/RenderBucket;->level:I
 
-    .line 183
-    iget v3, v1, Lorg/oscim/renderer/bucket/RenderBucket;->type:I
+    if-ne v0, p1, :cond_1
 
-    if-eq v3, p2, :cond_0
+    .line 202
+    iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->mCurBucket:Lorg/oscim/renderer/bucket/RenderBucket;
 
-    .line 184
-    sget-object v3, Lorg/oscim/renderer/bucket/RenderBuckets;->log:Lorg/slf4j/Logger;
+    .line 203
+    iget-byte v5, v0, Lorg/oscim/renderer/bucket/RenderBucket;->type:B
 
-    const-string v4, "BUG wrong bucket {} {} on level {}"
+    if-eq v5, p2, :cond_0
 
-    new-array v5, v5, [Ljava/lang/Object;
+    .line 204
+    sget-object v5, Lorg/oscim/renderer/bucket/RenderBuckets;->log:Lorg/slf4j/Logger;
 
-    iget v6, v1, Lorg/oscim/renderer/bucket/RenderBucket;->type:I
+    const-string v6, "BUG wrong bucket {} {} on level {}"
 
-    .line 185
-    invoke-static {v6}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    new-array v4, v4, [Ljava/lang/Object;
 
-    move-result-object v6
+    iget-byte v0, v0, Lorg/oscim/renderer/bucket/RenderBucket;->type:B
 
-    aput-object v6, v5, v9
+    .line 205
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 186
+    move-result-object v0
+
+    aput-object v0, v4, v1
+
+    .line 206
     invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v6
+    move-result-object p2
 
-    aput-object v6, v5, v7
+    aput-object p2, v4, v3
 
-    .line 187
+    .line 207
     invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v6
+    move-result-object p1
 
-    aput-object v6, v5, v8
+    aput-object p1, v4, v2
 
-    .line 184
-    invoke-interface {v3, v4, v5}, Lorg/slf4j/Logger;->error(Ljava/lang/String;[Ljava/lang/Object;)V
+    .line 204
+    invoke-interface {v5, v6, v4}, Lorg/slf4j/Logger;->error(Ljava/lang/String;[Ljava/lang/Object;)V
 
-    .line 189
-    new-instance v3, Ljava/lang/IllegalArgumentException;
+    .line 209
+    new-instance p1, Ljava/lang/IllegalArgumentException;
 
-    invoke-direct {v3}, Ljava/lang/IllegalArgumentException;-><init>()V
+    invoke-direct {p1}, Ljava/lang/IllegalArgumentException;-><init>()V
 
-    throw v3
+    throw p1
 
     :cond_0
-    move-object v2, v1
+    return-object v0
 
-    .line 254
-    .end local v1    # "bucket":Lorg/oscim/renderer/bucket/RenderBucket;
-    .local v2, "bucket":Lorg/oscim/renderer/bucket/RenderBucket;
-    :goto_0
-    return-object v2
-
-    .line 194
-    .end local v2    # "bucket":Lorg/oscim/renderer/bucket/RenderBucket;
-    .restart local v1    # "bucket":Lorg/oscim/renderer/bucket/RenderBucket;
+    .line 214
     :cond_1
     iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
 
-    .line 195
-    .local v0, "b":Lorg/oscim/renderer/bucket/RenderBucket;
-    if-eqz v0, :cond_2
+    const/4 v5, 0x0
 
-    iget v3, v0, Lorg/oscim/renderer/bucket/RenderBucket;->level:I
+    if-eqz v0, :cond_6
 
-    if-le v3, p1, :cond_5
+    .line 215
+    iget v6, v0, Lorg/oscim/renderer/bucket/RenderBucket;->level:I
 
-    .line 197
-    :cond_2
-    const/4 v0, 0x0
+    if-le v6, p1, :cond_2
 
-    .line 216
-    :cond_3
-    :goto_1
-    if-nez v1, :cond_d
-
-    .line 218
-    if-nez p2, :cond_8
-
-    .line 219
-    new-instance v1, Lorg/oscim/renderer/bucket/LineBucket;
-
-    .end local v1    # "bucket":Lorg/oscim/renderer/bucket/RenderBucket;
-    invoke-direct {v1, p1}, Lorg/oscim/renderer/bucket/LineBucket;-><init>(I)V
-
-    .line 229
-    .restart local v1    # "bucket":Lorg/oscim/renderer/bucket/RenderBucket;
-    :cond_4
-    :goto_2
-    if-nez v1, :cond_c
-
-    .line 230
-    new-instance v3, Ljava/lang/IllegalArgumentException;
-
-    invoke-direct {v3}, Ljava/lang/IllegalArgumentException;-><init>()V
-
-    throw v3
-
-    .line 199
-    :cond_5
-    iget-object v3, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->mCurBucket:Lorg/oscim/renderer/bucket/RenderBucket;
-
-    if-eqz v3, :cond_6
-
-    iget-object v3, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->mCurBucket:Lorg/oscim/renderer/bucket/RenderBucket;
-
-    iget v3, v3, Lorg/oscim/renderer/bucket/RenderBucket;->level:I
-
-    if-le p1, v3, :cond_6
-
-    .line 200
-    iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->mCurBucket:Lorg/oscim/renderer/bucket/RenderBucket;
-
-    .line 204
-    :cond_6
-    :goto_3
-    iget v3, v0, Lorg/oscim/renderer/bucket/RenderBucket;->level:I
-
-    if-ne v3, p1, :cond_7
-
-    .line 205
-    move-object v1, v0
-
-    .line 206
     goto :goto_1
 
-    .line 209
-    :cond_7
-    iget-object v3, v0, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
+    .line 219
+    :cond_2
+    iget-object v6, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->mCurBucket:Lorg/oscim/renderer/bucket/RenderBucket;
 
-    if-eqz v3, :cond_3
+    if-eqz v6, :cond_3
 
-    iget-object v3, v0, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
+    iget-object v6, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->mCurBucket:Lorg/oscim/renderer/bucket/RenderBucket;
 
-    check-cast v3, Lorg/oscim/renderer/bucket/RenderBucket;
+    iget v6, v6, Lorg/oscim/renderer/bucket/RenderBucket;->level:I
 
-    iget v3, v3, Lorg/oscim/renderer/bucket/RenderBucket;->level:I
-
-    if-gt v3, p1, :cond_3
-
-    .line 212
-    iget-object v0, v0, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
-
-    .end local v0    # "b":Lorg/oscim/renderer/bucket/RenderBucket;
-    check-cast v0, Lorg/oscim/renderer/bucket/RenderBucket;
-
-    .restart local v0    # "b":Lorg/oscim/renderer/bucket/RenderBucket;
-    goto :goto_3
+    if-le p1, v6, :cond_3
 
     .line 220
-    :cond_8
-    if-ne p2, v8, :cond_9
-
-    .line 221
-    new-instance v1, Lorg/oscim/renderer/bucket/PolygonBucket;
-
-    .end local v1    # "bucket":Lorg/oscim/renderer/bucket/RenderBucket;
-    invoke-direct {v1, p1}, Lorg/oscim/renderer/bucket/PolygonBucket;-><init>(I)V
-
-    .restart local v1    # "bucket":Lorg/oscim/renderer/bucket/RenderBucket;
-    goto :goto_2
-
-    .line 222
-    :cond_9
-    if-ne p2, v7, :cond_a
-
-    .line 223
-    new-instance v1, Lorg/oscim/renderer/bucket/LineTexBucket;
-
-    .end local v1    # "bucket":Lorg/oscim/renderer/bucket/RenderBucket;
-    invoke-direct {v1, p1}, Lorg/oscim/renderer/bucket/LineTexBucket;-><init>(I)V
-
-    .restart local v1    # "bucket":Lorg/oscim/renderer/bucket/RenderBucket;
-    goto :goto_2
+    iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->mCurBucket:Lorg/oscim/renderer/bucket/RenderBucket;
 
     .line 224
-    :cond_a
-    if-ne p2, v5, :cond_b
+    :cond_3
+    :goto_0
+    iget v6, v0, Lorg/oscim/renderer/bucket/RenderBucket;->level:I
 
-    .line 225
-    new-instance v1, Lorg/oscim/renderer/bucket/MeshBucket;
+    if-ne v6, p1, :cond_4
 
-    .end local v1    # "bucket":Lorg/oscim/renderer/bucket/RenderBucket;
-    invoke-direct {v1, p1}, Lorg/oscim/renderer/bucket/MeshBucket;-><init>(I)V
+    move-object v5, v0
 
-    .restart local v1    # "bucket":Lorg/oscim/renderer/bucket/RenderBucket;
     goto :goto_2
 
-    .line 226
-    :cond_b
-    const/4 v3, 0x5
+    .line 229
+    :cond_4
+    iget-object v6, v0, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
 
-    if-ne p2, v3, :cond_4
+    if-eqz v6, :cond_7
 
-    .line 227
-    new-instance v1, Lorg/oscim/renderer/bucket/HairLineBucket;
+    iget-object v6, v0, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
 
-    .end local v1    # "bucket":Lorg/oscim/renderer/bucket/RenderBucket;
-    invoke-direct {v1, p1}, Lorg/oscim/renderer/bucket/HairLineBucket;-><init>(I)V
+    check-cast v6, Lorg/oscim/renderer/bucket/RenderBucket;
 
-    .restart local v1    # "bucket":Lorg/oscim/renderer/bucket/RenderBucket;
+    iget v6, v6, Lorg/oscim/renderer/bucket/RenderBucket;->level:I
+
+    if-le v6, p1, :cond_5
+
     goto :goto_2
 
     .line 232
-    :cond_c
-    if-nez v0, :cond_e
+    :cond_5
+    iget-object v0, v0, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
 
-    .line 234
-    iget-object v3, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
+    check-cast v0, Lorg/oscim/renderer/bucket/RenderBucket;
 
-    iput-object v3, v1, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
+    goto :goto_0
 
-    .line 235
-    iput-object v1, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
+    :cond_6
+    :goto_1
+    move-object v0, v5
+
+    :cond_7
+    :goto_2
+    if-nez v5, :cond_10
+
+    if-nez p2, :cond_8
+
+    .line 239
+    new-instance v5, Lorg/oscim/renderer/bucket/LineBucket;
+
+    invoke-direct {v5, p1}, Lorg/oscim/renderer/bucket/LineBucket;-><init>(I)V
+
+    goto :goto_3
+
+    :cond_8
+    if-ne p2, v2, :cond_9
+
+    .line 241
+    new-instance v5, Lorg/oscim/renderer/bucket/PolygonBucket;
+
+    invoke-direct {v5, p1}, Lorg/oscim/renderer/bucket/PolygonBucket;-><init>(I)V
+
+    goto :goto_3
+
+    :cond_9
+    if-ne p2, v3, :cond_a
 
     .line 243
-    :cond_d
-    :goto_4
-    iget v3, v1, Lorg/oscim/renderer/bucket/RenderBucket;->type:I
+    new-instance v5, Lorg/oscim/renderer/bucket/LineTexBucket;
 
-    if-eq v3, p2, :cond_f
+    invoke-direct {v5, p1}, Lorg/oscim/renderer/bucket/LineTexBucket;-><init>(I)V
 
-    .line 244
-    sget-object v3, Lorg/oscim/renderer/bucket/RenderBuckets;->log:Lorg/slf4j/Logger;
+    goto :goto_3
 
-    const-string v4, "BUG wrong bucket {} {} on level {}"
-
-    new-array v5, v5, [Ljava/lang/Object;
-
-    iget v6, v1, Lorg/oscim/renderer/bucket/RenderBucket;->type:I
+    :cond_a
+    if-ne p2, v4, :cond_b
 
     .line 245
-    invoke-static {v6}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    new-instance v5, Lorg/oscim/renderer/bucket/MeshBucket;
 
-    move-result-object v6
+    invoke-direct {v5, p1}, Lorg/oscim/renderer/bucket/MeshBucket;-><init>(I)V
 
-    aput-object v6, v5, v9
+    goto :goto_3
 
-    .line 246
-    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    :cond_b
+    const/4 v6, 0x5
 
-    move-result-object v6
-
-    aput-object v6, v5, v7
+    if-ne p2, v6, :cond_c
 
     .line 247
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    new-instance v5, Lorg/oscim/renderer/bucket/HairLineBucket;
 
-    move-result-object v6
+    invoke-direct {v5, p1}, Lorg/oscim/renderer/bucket/HairLineBucket;-><init>(I)V
 
-    aput-object v6, v5, v8
+    goto :goto_3
 
-    .line 244
-    invoke-interface {v3, v4, v5}, Lorg/slf4j/Logger;->error(Ljava/lang/String;[Ljava/lang/Object;)V
+    :cond_c
+    const/16 v6, 0x8
+
+    if-ne p2, v6, :cond_d
 
     .line 249
-    new-instance v3, Ljava/lang/IllegalArgumentException;
+    new-instance v5, Lorg/oscim/renderer/bucket/CircleBucket;
 
-    invoke-direct {v3}, Ljava/lang/IllegalArgumentException;-><init>()V
+    invoke-direct {v5, p1}, Lorg/oscim/renderer/bucket/CircleBucket;-><init>(I)V
 
-    throw v3
+    :cond_d
+    :goto_3
+    if-nez v5, :cond_e
 
-    .line 237
+    .line 252
+    new-instance p1, Ljava/lang/IllegalArgumentException;
+
+    invoke-direct {p1}, Ljava/lang/IllegalArgumentException;-><init>()V
+
+    throw p1
+
     :cond_e
-    iget-object v3, v0, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
+    if-nez v0, :cond_f
 
-    iput-object v3, v1, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
+    .line 256
+    iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
 
-    .line 238
-    iput-object v1, v0, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
+    iput-object v0, v5, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
+
+    .line 257
+    iput-object v5, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
 
     goto :goto_4
 
-    .line 252
+    .line 259
     :cond_f
-    iput-object v1, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->mCurBucket:Lorg/oscim/renderer/bucket/RenderBucket;
+    iget-object v6, v0, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
 
-    move-object v2, v1
+    iput-object v6, v5, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
 
-    .line 254
-    .end local v1    # "bucket":Lorg/oscim/renderer/bucket/RenderBucket;
-    .restart local v2    # "bucket":Lorg/oscim/renderer/bucket/RenderBucket;
-    goto/16 :goto_0
+    .line 260
+    iput-object v5, v0, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
+
+    .line 265
+    :cond_10
+    :goto_4
+    iget-byte v0, v5, Lorg/oscim/renderer/bucket/RenderBucket;->type:B
+
+    if-eq v0, p2, :cond_11
+
+    .line 266
+    sget-object v0, Lorg/oscim/renderer/bucket/RenderBuckets;->log:Lorg/slf4j/Logger;
+
+    const-string v6, "BUG wrong bucket {} {} on level {}"
+
+    new-array v4, v4, [Ljava/lang/Object;
+
+    iget-byte v5, v5, Lorg/oscim/renderer/bucket/RenderBucket;->type:B
+
+    .line 267
+    invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v5
+
+    aput-object v5, v4, v1
+
+    .line 268
+    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object p2
+
+    aput-object p2, v4, v3
+
+    .line 269
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object p1
+
+    aput-object p1, v4, v2
+
+    .line 266
+    invoke-interface {v0, v6, v4}, Lorg/slf4j/Logger;->error(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 271
+    new-instance p1, Ljava/lang/IllegalArgumentException;
+
+    invoke-direct {p1}, Ljava/lang/IllegalArgumentException;-><init>()V
+
+    throw p1
+
+    .line 274
+    :cond_11
+    iput-object v5, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->mCurBucket:Lorg/oscim/renderer/bucket/RenderBucket;
+
+    return-object v5
 .end method
 
 .method public static initRenderer()V
     .locals 0
 
-    .prologue
-    .line 417
+    .line 443
     invoke-static {}, Lorg/oscim/renderer/bucket/LineBucket$Renderer;->init()Z
 
-    .line 418
+    .line 444
     invoke-static {}, Lorg/oscim/renderer/bucket/LineTexBucket$Renderer;->init()V
 
-    .line 419
+    .line 445
     invoke-static {}, Lorg/oscim/renderer/bucket/PolygonBucket$Renderer;->init()Z
 
-    .line 420
+    .line 446
     invoke-static {}, Lorg/oscim/renderer/bucket/TextureBucket$Renderer;->init()V
 
-    .line 421
+    .line 447
     invoke-static {}, Lorg/oscim/renderer/bucket/BitmapBucket$Renderer;->init()V
 
-    .line 422
+    .line 448
     invoke-static {}, Lorg/oscim/renderer/bucket/MeshBucket$Renderer;->init()Z
 
-    .line 423
+    .line 449
     invoke-static {}, Lorg/oscim/renderer/bucket/HairLineBucket$Renderer;->init()Z
 
-    .line 424
+    .line 450
+    invoke-static {}, Lorg/oscim/renderer/bucket/CircleBucket$Renderer;->init()Z
+
     return-void
 .end method
 
@@ -567,29 +528,27 @@
 .method public bind()V
     .locals 1
 
-    .prologue
-    .line 316
+    .line 342
     iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->vbo:Lorg/oscim/renderer/BufferObject;
 
     if-eqz v0, :cond_0
 
-    .line 317
+    .line 343
     iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->vbo:Lorg/oscim/renderer/BufferObject;
 
     invoke-virtual {v0}, Lorg/oscim/renderer/BufferObject;->bind()V
 
-    .line 319
+    .line 345
     :cond_0
     iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
 
     if-eqz v0, :cond_1
 
-    .line 320
+    .line 346
     iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
 
     invoke-virtual {v0}, Lorg/oscim/renderer/BufferObject;->bind()V
 
-    .line 322
     :cond_1
     return-void
 .end method
@@ -597,16 +556,15 @@
 .method public clear()V
     .locals 1
 
-    .prologue
     const/4 v0, 0x0
 
-    .line 289
+    .line 313
     invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/RenderBuckets;->set(Lorg/oscim/renderer/bucket/RenderBucket;)V
 
-    .line 290
+    .line 314
     iput-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->mCurBucket:Lorg/oscim/renderer/bucket/RenderBucket;
 
-    .line 292
+    .line 316
     iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->vbo:Lorg/oscim/renderer/BufferObject;
 
     invoke-static {v0}, Lorg/oscim/renderer/BufferObject;->release(Lorg/oscim/renderer/BufferObject;)Lorg/oscim/renderer/BufferObject;
@@ -615,7 +573,7 @@
 
     iput-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->vbo:Lorg/oscim/renderer/BufferObject;
 
-    .line 293
+    .line 317
     iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
 
     invoke-static {v0}, Lorg/oscim/renderer/BufferObject;->release(Lorg/oscim/renderer/BufferObject;)Lorg/oscim/renderer/BufferObject;
@@ -624,626 +582,551 @@
 
     iput-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
 
-    .line 294
     return-void
 .end method
 
 .method public compile(Z)Z
-    .locals 10
-    .param p1, "addFill"    # Z
+    .locals 8
 
-    .prologue
-    const/4 v9, 0x2
-
-    const/4 v6, 0x0
-
-    .line 326
+    .line 352
     invoke-direct {p0}, Lorg/oscim/renderer/bucket/RenderBuckets;->countVboSize()I
 
-    move-result v5
+    move-result v0
 
-    .line 328
-    .local v5, "vboSize":I
-    if-gtz v5, :cond_0
+    const/4 v1, 0x0
 
-    .line 329
-    iget-object v7, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->vbo:Lorg/oscim/renderer/BufferObject;
+    if-gtz v0, :cond_0
 
-    invoke-static {v7}, Lorg/oscim/renderer/BufferObject;->release(Lorg/oscim/renderer/BufferObject;)Lorg/oscim/renderer/BufferObject;
+    .line 355
+    iget-object p1, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->vbo:Lorg/oscim/renderer/BufferObject;
 
-    move-result-object v7
+    invoke-static {p1}, Lorg/oscim/renderer/BufferObject;->release(Lorg/oscim/renderer/BufferObject;)Lorg/oscim/renderer/BufferObject;
 
-    iput-object v7, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->vbo:Lorg/oscim/renderer/BufferObject;
+    move-result-object p1
 
-    .line 330
-    iget-object v7, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
+    iput-object p1, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->vbo:Lorg/oscim/renderer/BufferObject;
 
-    invoke-static {v7}, Lorg/oscim/renderer/BufferObject;->release(Lorg/oscim/renderer/BufferObject;)Lorg/oscim/renderer/BufferObject;
+    .line 356
+    iget-object p1, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
 
-    move-result-object v7
+    invoke-static {p1}, Lorg/oscim/renderer/BufferObject;->release(Lorg/oscim/renderer/BufferObject;)Lorg/oscim/renderer/BufferObject;
 
-    iput-object v7, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
+    move-result-object p1
 
-    .line 406
-    :goto_0
-    return v6
+    iput-object p1, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
 
-    .line 334
+    return v1
+
     :cond_0
     if-eqz p1, :cond_1
 
-    .line 335
-    add-int/lit8 v5, v5, 0x8
+    add-int/lit8 v0, v0, 0x8
 
-    .line 337
+    .line 363
     :cond_1
-    invoke-static {v5}, Lorg/oscim/renderer/MapRenderer;->getShortBuffer(I)Ljava/nio/ShortBuffer;
+    invoke-static {v0}, Lorg/oscim/renderer/MapRenderer;->getShortBuffer(I)Ljava/nio/ShortBuffer;
 
-    move-result-object v4
+    move-result-object v2
 
-    .line 339
-    .local v4, "vboData":Ljava/nio/ShortBuffer;
     if-eqz p1, :cond_2
 
-    .line 340
-    sget-object v7, Lorg/oscim/renderer/bucket/RenderBuckets;->fillCoords:[S
+    .line 366
+    sget-object v3, Lorg/oscim/renderer/bucket/RenderBuckets;->fillCoords:[S
 
-    const/16 v8, 0x8
+    const/16 v4, 0x8
 
-    invoke-virtual {v4, v7, v6, v8}, Ljava/nio/ShortBuffer;->put([SII)Ljava/nio/ShortBuffer;
+    invoke-virtual {v2, v3, v1, v4}, Ljava/nio/ShortBuffer;->put([SII)Ljava/nio/ShortBuffer;
 
-    .line 342
     :cond_2
-    const/4 v0, 0x0
-
-    .line 344
-    .local v0, "iboData":Ljava/nio/ShortBuffer;
-    invoke-direct {p0}, Lorg/oscim/renderer/bucket/RenderBuckets;->countIboSize()I
-
-    move-result v1
-
-    .line 345
-    .local v1, "iboSize":I
-    if-lez v1, :cond_3
-
-    .line 346
-    invoke-static {v1}, Lorg/oscim/renderer/MapRenderer;->getShortBuffer(I)Ljava/nio/ShortBuffer;
-
-    move-result-object v0
-
-    .line 349
-    :cond_3
-    if-eqz p1, :cond_5
-
-    const/4 v3, 0x4
-
-    .line 351
-    .local v3, "pos":I
-    :goto_1
-    iget-object v2, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
-
-    .local v2, "l":Lorg/oscim/renderer/bucket/RenderBucket;
-    :goto_2
-    if-eqz v2, :cond_6
-
-    .line 352
-    iget v7, v2, Lorg/oscim/renderer/bucket/RenderBucket;->type:I
-
-    if-ne v7, v9, :cond_4
-
-    .line 353
-    invoke-virtual {v2, v4, v0}, Lorg/oscim/renderer/bucket/RenderBucket;->compile(Ljava/nio/ShortBuffer;Ljava/nio/ShortBuffer;)V
-
-    .line 354
-    iput v3, v2, Lorg/oscim/renderer/bucket/RenderBucket;->vertexOffset:I
-
-    .line 355
-    iget v7, v2, Lorg/oscim/renderer/bucket/RenderBucket;->numVertices:I
-
-    add-int/2addr v3, v7
-
-    .line 351
-    :cond_4
-    iget-object v2, v2, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
-
-    .end local v2    # "l":Lorg/oscim/renderer/bucket/RenderBucket;
-    check-cast v2, Lorg/oscim/renderer/bucket/RenderBucket;
-
-    .restart local v2    # "l":Lorg/oscim/renderer/bucket/RenderBucket;
-    goto :goto_2
-
-    .end local v2    # "l":Lorg/oscim/renderer/bucket/RenderBucket;
-    .end local v3    # "pos":I
-    :cond_5
-    move v3, v6
-
-    .line 349
-    goto :goto_1
-
-    .line 359
-    .restart local v2    # "l":Lorg/oscim/renderer/bucket/RenderBucket;
-    .restart local v3    # "pos":I
-    :cond_6
-    iget-object v7, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->offset:[I
-
-    invoke-virtual {v4}, Ljava/nio/ShortBuffer;->position()I
-
-    move-result v8
-
-    mul-int/lit8 v8, v8, 0x2
-
-    aput v8, v7, v6
-
-    .line 360
     const/4 v3, 0x0
 
-    .line 361
-    iget-object v2, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
+    .line 370
+    invoke-direct {p0}, Lorg/oscim/renderer/bucket/RenderBuckets;->countIboSize()I
 
-    :goto_3
-    if-eqz v2, :cond_8
+    move-result v4
 
-    .line 362
-    iget v7, v2, Lorg/oscim/renderer/bucket/RenderBucket;->type:I
+    if-lez v4, :cond_3
+
+    .line 372
+    invoke-static {v4}, Lorg/oscim/renderer/MapRenderer;->getShortBuffer(I)Ljava/nio/ShortBuffer;
+
+    move-result-object v3
+
+    :cond_3
+    if-eqz p1, :cond_4
+
+    const/4 p1, 0x4
+
+    goto :goto_0
+
+    :cond_4
+    move p1, v1
+
+    .line 377
+    :goto_0
+    iget-object v5, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
+
+    :goto_1
+    const/4 v6, 0x2
+
+    if-eqz v5, :cond_6
+
+    .line 378
+    iget-byte v7, v5, Lorg/oscim/renderer/bucket/RenderBucket;->type:B
+
+    if-ne v7, v6, :cond_5
+
+    .line 379
+    invoke-virtual {v5, v2, v3}, Lorg/oscim/renderer/bucket/RenderBucket;->compile(Ljava/nio/ShortBuffer;Ljava/nio/ShortBuffer;)V
+
+    .line 380
+    iput p1, v5, Lorg/oscim/renderer/bucket/RenderBucket;->vertexOffset:I
+
+    .line 381
+    iget v6, v5, Lorg/oscim/renderer/bucket/RenderBucket;->numVertices:I
+
+    add-int/2addr p1, v6
+
+    .line 377
+    :cond_5
+    iget-object v5, v5, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
+
+    check-cast v5, Lorg/oscim/renderer/bucket/RenderBucket;
+
+    goto :goto_1
+
+    .line 385
+    :cond_6
+    iget-object p1, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->offset:[I
+
+    invoke-virtual {v2}, Ljava/nio/ShortBuffer;->position()I
+
+    move-result v5
+
+    mul-int/2addr v5, v6
+
+    aput v5, p1, v1
+
+    .line 387
+    iget-object p1, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
+
+    move v5, v1
+
+    :goto_2
+    if-eqz p1, :cond_8
+
+    .line 388
+    iget-byte v7, p1, Lorg/oscim/renderer/bucket/RenderBucket;->type:B
 
     if-nez v7, :cond_7
 
-    .line 363
-    invoke-virtual {v2, v4, v0}, Lorg/oscim/renderer/bucket/RenderBucket;->compile(Ljava/nio/ShortBuffer;Ljava/nio/ShortBuffer;)V
-
-    .line 365
-    iput v3, v2, Lorg/oscim/renderer/bucket/RenderBucket;->vertexOffset:I
-
-    .line 366
-    iget v7, v2, Lorg/oscim/renderer/bucket/RenderBucket;->numVertices:I
-
-    add-int/2addr v3, v7
-
-    .line 361
-    :cond_7
-    iget-object v2, v2, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
-
-    .end local v2    # "l":Lorg/oscim/renderer/bucket/RenderBucket;
-    check-cast v2, Lorg/oscim/renderer/bucket/RenderBucket;
-
-    .restart local v2    # "l":Lorg/oscim/renderer/bucket/RenderBucket;
-    goto :goto_3
-
-    .line 370
-    :cond_8
-    iget-object v2, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
-
-    :goto_4
-    if-eqz v2, :cond_a
-
-    .line 371
-    iget v7, v2, Lorg/oscim/renderer/bucket/RenderBucket;->type:I
-
-    if-eqz v7, :cond_9
-
-    iget v7, v2, Lorg/oscim/renderer/bucket/RenderBucket;->type:I
-
-    if-eq v7, v9, :cond_9
-
-    .line 372
-    invoke-virtual {v2, v4, v0}, Lorg/oscim/renderer/bucket/RenderBucket;->compile(Ljava/nio/ShortBuffer;Ljava/nio/ShortBuffer;)V
-
-    .line 370
-    :cond_9
-    iget-object v2, v2, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
-
-    .end local v2    # "l":Lorg/oscim/renderer/bucket/RenderBucket;
-    check-cast v2, Lorg/oscim/renderer/bucket/RenderBucket;
-
-    .restart local v2    # "l":Lorg/oscim/renderer/bucket/RenderBucket;
-    goto :goto_4
-
-    .line 376
-    :cond_a
-    invoke-virtual {v4}, Ljava/nio/ShortBuffer;->position()I
-
-    move-result v7
-
-    if-eq v5, v7, :cond_b
-
-    .line 377
-    sget-object v7, Lorg/oscim/renderer/bucket/RenderBuckets;->log:Lorg/slf4j/Logger;
-
-    new-instance v8, Ljava/lang/StringBuilder;
-
-    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v9, "wrong vertex buffer size:  new size: "
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-virtual {v8, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    const-string v9, " buffer pos: "
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    .line 379
-    invoke-virtual {v4}, Ljava/nio/ShortBuffer;->position()I
-
-    move-result v9
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    const-string v9, " buffer limit: "
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    .line 380
-    invoke-virtual {v4}, Ljava/nio/ShortBuffer;->limit()I
-
-    move-result v9
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    const-string v9, " buffer fill: "
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    .line 381
-    invoke-virtual {v4}, Ljava/nio/ShortBuffer;->remaining()I
-
-    move-result v9
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v8
-
-    .line 377
-    invoke-interface {v7, v8}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
-
-    goto/16 :goto_0
-
-    .line 385
-    :cond_b
-    if-lez v1, :cond_c
-
-    invoke-virtual {v0}, Ljava/nio/ShortBuffer;->position()I
-
-    move-result v7
-
-    if-eq v1, v7, :cond_c
-
-    .line 386
-    sget-object v7, Lorg/oscim/renderer/bucket/RenderBuckets;->log:Lorg/slf4j/Logger;
-
-    new-instance v8, Ljava/lang/StringBuilder;
-
-    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v9, "wrong indice buffer size:  new size: "
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-virtual {v8, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    const-string v9, " buffer pos: "
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    .line 388
-    invoke-virtual {v0}, Ljava/nio/ShortBuffer;->position()I
-
-    move-result v9
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    const-string v9, " buffer limit: "
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
     .line 389
-    invoke-virtual {v0}, Ljava/nio/ShortBuffer;->limit()I
+    invoke-virtual {p1, v2, v3}, Lorg/oscim/renderer/bucket/RenderBucket;->compile(Ljava/nio/ShortBuffer;Ljava/nio/ShortBuffer;)V
 
-    move-result v9
+    .line 391
+    iput v5, p1, Lorg/oscim/renderer/bucket/RenderBucket;->vertexOffset:I
 
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    .line 392
+    iget v7, p1, Lorg/oscim/renderer/bucket/RenderBucket;->numVertices:I
 
-    move-result-object v8
+    add-int/2addr v5, v7
 
-    const-string v9, " buffer fill: "
+    .line 387
+    :cond_7
+    iget-object p1, p1, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
 
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    check-cast p1, Lorg/oscim/renderer/bucket/RenderBucket;
 
-    move-result-object v8
+    goto :goto_2
 
-    .line 390
-    invoke-virtual {v0}, Ljava/nio/ShortBuffer;->remaining()I
+    .line 396
+    :cond_8
+    iget-object p1, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
 
-    move-result v9
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v8
-
-    .line 386
-    invoke-interface {v7, v8}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
-
-    goto/16 :goto_0
-
-    .line 394
-    :cond_c
-    iget-object v6, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->vbo:Lorg/oscim/renderer/BufferObject;
-
-    if-nez v6, :cond_d
-
-    .line 395
-    const v6, 0x8892
-
-    invoke-static {v6, v5}, Lorg/oscim/renderer/BufferObject;->get(II)Lorg/oscim/renderer/BufferObject;
-
-    move-result-object v6
-
-    iput-object v6, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->vbo:Lorg/oscim/renderer/BufferObject;
+    :goto_3
+    if-eqz p1, :cond_a
 
     .line 397
-    :cond_d
-    iget-object v6, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->vbo:Lorg/oscim/renderer/BufferObject;
+    iget-byte v5, p1, Lorg/oscim/renderer/bucket/RenderBucket;->type:B
 
-    invoke-virtual {v4}, Ljava/nio/ShortBuffer;->flip()Ljava/nio/Buffer;
+    if-eqz v5, :cond_9
 
-    move-result-object v7
+    iget-byte v5, p1, Lorg/oscim/renderer/bucket/RenderBucket;->type:B
 
-    mul-int/lit8 v8, v5, 0x2
+    if-eq v5, v6, :cond_9
 
-    invoke-virtual {v6, v7, v8}, Lorg/oscim/renderer/BufferObject;->loadBufferData(Ljava/nio/Buffer;I)V
+    .line 398
+    invoke-virtual {p1, v2, v3}, Lorg/oscim/renderer/bucket/RenderBucket;->compile(Ljava/nio/ShortBuffer;Ljava/nio/ShortBuffer;)V
 
-    .line 399
-    if-lez v1, :cond_f
+    .line 396
+    :cond_9
+    iget-object p1, p1, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
 
-    .line 400
-    iget-object v6, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
+    check-cast p1, Lorg/oscim/renderer/bucket/RenderBucket;
 
-    if-nez v6, :cond_e
+    goto :goto_3
 
-    .line 401
-    const v6, 0x8893
+    .line 402
+    :cond_a
+    invoke-virtual {v2}, Ljava/nio/ShortBuffer;->position()I
 
-    invoke-static {v6, v1}, Lorg/oscim/renderer/BufferObject;->get(II)Lorg/oscim/renderer/BufferObject;
+    move-result p1
 
-    move-result-object v6
-
-    iput-object v6, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
+    if-eq v0, p1, :cond_b
 
     .line 403
-    :cond_e
-    iget-object v6, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
+    sget-object p1, Lorg/oscim/renderer/bucket/RenderBuckets;->log:Lorg/slf4j/Logger;
 
-    invoke-virtual {v0}, Ljava/nio/ShortBuffer;->flip()Ljava/nio/Buffer;
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    mul-int/lit8 v8, v1, 0x2
+    const-string v4, "wrong vertex buffer size:  new size: "
 
-    invoke-virtual {v6, v7, v8}, Lorg/oscim/renderer/BufferObject;->loadBufferData(Ljava/nio/Buffer;I)V
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v0, " buffer pos: "
+
+    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 405
+    invoke-virtual {v2}, Ljava/nio/ShortBuffer;->position()I
+
+    move-result v0
+
+    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v0, " buffer limit: "
+
+    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 406
-    :cond_f
-    const/4 v6, 0x1
+    invoke-virtual {v2}, Ljava/nio/ShortBuffer;->limit()I
 
-    goto/16 :goto_0
+    move-result v0
+
+    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v0, " buffer fill: "
+
+    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 407
+    invoke-virtual {v2}, Ljava/nio/ShortBuffer;->remaining()I
+
+    move-result v0
+
+    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 403
+    invoke-interface {p1, v0}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
+
+    return v1
+
+    :cond_b
+    if-lez v4, :cond_c
+
+    .line 411
+    invoke-virtual {v3}, Ljava/nio/ShortBuffer;->position()I
+
+    move-result p1
+
+    if-eq v4, p1, :cond_c
+
+    .line 412
+    sget-object p1, Lorg/oscim/renderer/bucket/RenderBuckets;->log:Lorg/slf4j/Logger;
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "wrong indice buffer size:  new size: "
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v2, " buffer pos: "
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 414
+    invoke-virtual {v3}, Ljava/nio/ShortBuffer;->position()I
+
+    move-result v2
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v2, " buffer limit: "
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 415
+    invoke-virtual {v3}, Ljava/nio/ShortBuffer;->limit()I
+
+    move-result v2
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v2, " buffer fill: "
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 416
+    invoke-virtual {v3}, Ljava/nio/ShortBuffer;->remaining()I
+
+    move-result v2
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 412
+    invoke-interface {p1, v0}, Lorg/slf4j/Logger;->debug(Ljava/lang/String;)V
+
+    return v1
+
+    .line 420
+    :cond_c
+    iget-object p1, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->vbo:Lorg/oscim/renderer/BufferObject;
+
+    if-nez p1, :cond_d
+
+    const p1, 0x8892
+
+    .line 421
+    invoke-static {p1, v0}, Lorg/oscim/renderer/BufferObject;->get(II)Lorg/oscim/renderer/BufferObject;
+
+    move-result-object p1
+
+    iput-object p1, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->vbo:Lorg/oscim/renderer/BufferObject;
+
+    .line 423
+    :cond_d
+    iget-object p1, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->vbo:Lorg/oscim/renderer/BufferObject;
+
+    invoke-virtual {v2}, Ljava/nio/ShortBuffer;->flip()Ljava/nio/Buffer;
+
+    move-result-object v1
+
+    mul-int/2addr v0, v6
+
+    invoke-virtual {p1, v1, v0}, Lorg/oscim/renderer/BufferObject;->loadBufferData(Ljava/nio/Buffer;I)V
+
+    if-lez v4, :cond_f
+
+    .line 426
+    iget-object p1, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
+
+    if-nez p1, :cond_e
+
+    const p1, 0x8893
+
+    .line 427
+    invoke-static {p1, v4}, Lorg/oscim/renderer/BufferObject;->get(II)Lorg/oscim/renderer/BufferObject;
+
+    move-result-object p1
+
+    iput-object p1, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
+
+    .line 429
+    :cond_e
+    iget-object p1, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->ibo:Lorg/oscim/renderer/BufferObject;
+
+    invoke-virtual {v3}, Ljava/nio/ShortBuffer;->flip()Ljava/nio/Buffer;
+
+    move-result-object v0
+
+    mul-int/2addr v4, v6
+
+    invoke-virtual {p1, v0, v4}, Lorg/oscim/renderer/BufferObject;->loadBufferData(Ljava/nio/Buffer;I)V
+
+    :cond_f
+    const/4 p1, 0x1
+
+    return p1
 .end method
 
 .method protected dispose()V
     .locals 0
 
-    .prologue
-    .line 307
+    .line 333
     invoke-virtual {p0}, Lorg/oscim/renderer/bucket/RenderBuckets;->clear()V
 
-    .line 308
     return-void
 .end method
 
 .method public get()Lorg/oscim/renderer/bucket/RenderBucket;
     .locals 1
 
-    .prologue
-    .line 175
+    .line 195
     iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
 
     return-object v0
 .end method
 
-.method public getLineBucket(I)Lorg/oscim/renderer/bucket/LineBucket;
+.method public getCircleBucket(I)Lorg/oscim/renderer/bucket/CircleBucket;
     .locals 1
-    .param p1, "level"    # I
 
-    .prologue
-    .line 126
-    const/4 v0, 0x0
+    const/16 v0, 0x8
 
+    .line 178
     invoke-direct {p0, p1, v0}, Lorg/oscim/renderer/bucket/RenderBuckets;->getBucket(II)Lorg/oscim/renderer/bucket/RenderBucket;
 
-    move-result-object v0
+    move-result-object p1
 
-    check-cast v0, Lorg/oscim/renderer/bucket/LineBucket;
+    check-cast p1, Lorg/oscim/renderer/bucket/CircleBucket;
 
-    return-object v0
+    return-object p1
+.end method
+
+.method public getLineBucket(I)Lorg/oscim/renderer/bucket/LineBucket;
+    .locals 1
+
+    const/4 v0, 0x0
+
+    .line 138
+    invoke-direct {p0, p1, v0}, Lorg/oscim/renderer/bucket/RenderBuckets;->getBucket(II)Lorg/oscim/renderer/bucket/RenderBucket;
+
+    move-result-object p1
+
+    check-cast p1, Lorg/oscim/renderer/bucket/LineBucket;
+
+    return-object p1
 .end method
 
 .method public getLineTexBucket(I)Lorg/oscim/renderer/bucket/LineTexBucket;
     .locals 1
-    .param p1, "level"    # I
 
-    .prologue
-    .line 150
     const/4 v0, 0x1
 
+    .line 162
     invoke-direct {p0, p1, v0}, Lorg/oscim/renderer/bucket/RenderBuckets;->getBucket(II)Lorg/oscim/renderer/bucket/RenderBucket;
 
-    move-result-object v0
+    move-result-object p1
 
-    check-cast v0, Lorg/oscim/renderer/bucket/LineTexBucket;
+    check-cast p1, Lorg/oscim/renderer/bucket/LineTexBucket;
 
-    return-object v0
+    return-object p1
 .end method
 
 .method public getMeshBucket(I)Lorg/oscim/renderer/bucket/MeshBucket;
     .locals 1
-    .param p1, "level"    # I
 
-    .prologue
-    .line 134
     const/4 v0, 0x3
 
+    .line 146
     invoke-direct {p0, p1, v0}, Lorg/oscim/renderer/bucket/RenderBuckets;->getBucket(II)Lorg/oscim/renderer/bucket/RenderBucket;
 
-    move-result-object v0
+    move-result-object p1
 
-    check-cast v0, Lorg/oscim/renderer/bucket/MeshBucket;
+    check-cast p1, Lorg/oscim/renderer/bucket/MeshBucket;
 
-    return-object v0
+    return-object p1
 .end method
 
 .method public getPolygonBucket(I)Lorg/oscim/renderer/bucket/PolygonBucket;
     .locals 1
-    .param p1, "level"    # I
 
-    .prologue
-    .line 142
     const/4 v0, 0x2
 
+    .line 154
     invoke-direct {p0, p1, v0}, Lorg/oscim/renderer/bucket/RenderBuckets;->getBucket(II)Lorg/oscim/renderer/bucket/RenderBucket;
 
-    move-result-object v0
+    move-result-object p1
 
-    check-cast v0, Lorg/oscim/renderer/bucket/PolygonBucket;
+    check-cast p1, Lorg/oscim/renderer/bucket/PolygonBucket;
 
-    return-object v0
+    return-object p1
 .end method
 
 .method public prepare()V
     .locals 1
 
-    .prologue
-    .line 311
+    .line 337
     iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
 
-    .local v0, "l":Lorg/oscim/renderer/bucket/RenderBucket;
     :goto_0
     if-eqz v0, :cond_0
 
-    .line 312
+    .line 338
     invoke-virtual {v0}, Lorg/oscim/renderer/bucket/RenderBucket;->prepare()V
 
-    .line 311
+    .line 337
     iget-object v0, v0, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
 
-    .end local v0    # "l":Lorg/oscim/renderer/bucket/RenderBucket;
     check-cast v0, Lorg/oscim/renderer/bucket/RenderBucket;
 
-    .restart local v0    # "l":Lorg/oscim/renderer/bucket/RenderBucket;
     goto :goto_0
 
-    .line 313
     :cond_0
     return-void
 .end method
 
 .method public set(Lorg/oscim/renderer/bucket/RenderBucket;)V
     .locals 1
-    .param p1, "buckets"    # Lorg/oscim/renderer/bucket/RenderBucket;
 
-    .prologue
-    .line 165
+    .line 185
     iget-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
 
-    .local v0, "l":Lorg/oscim/renderer/bucket/RenderBucket;
     :goto_0
     if-eqz v0, :cond_0
 
-    .line 166
+    .line 186
     invoke-virtual {v0}, Lorg/oscim/renderer/bucket/RenderBucket;->clear()V
 
-    .line 165
+    .line 185
     iget-object v0, v0, Lorg/oscim/renderer/bucket/RenderBucket;->next:Lorg/oscim/utils/pool/Inlist;
 
-    .end local v0    # "l":Lorg/oscim/renderer/bucket/RenderBucket;
     check-cast v0, Lorg/oscim/renderer/bucket/RenderBucket;
 
-    .restart local v0    # "l":Lorg/oscim/renderer/bucket/RenderBucket;
     goto :goto_0
 
-    .line 168
+    .line 188
     :cond_0
     iput-object p1, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
 
-    .line 169
     return-void
 .end method
 
 .method public setFrom(Lorg/oscim/renderer/bucket/RenderBuckets;)V
-    .locals 2
-    .param p1, "buckets"    # Lorg/oscim/renderer/bucket/RenderBuckets;
+    .locals 1
 
-    .prologue
-    const/4 v1, 0x0
-
-    .line 276
     if-ne p1, p0, :cond_0
 
-    .line 277
-    new-instance v0, Ljava/lang/IllegalArgumentException;
+    .line 299
+    new-instance p1, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "Cannot set from oneself!"
+    const-string v0, "Cannot set from oneself!"
 
-    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw v0
+    throw p1
 
-    .line 279
+    .line 301
     :cond_0
     iget-object v0, p1, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
 
     invoke-virtual {p0, v0}, Lorg/oscim/renderer/bucket/RenderBuckets;->set(Lorg/oscim/renderer/bucket/RenderBucket;)V
 
-    .line 281
-    iput-object v1, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->mCurBucket:Lorg/oscim/renderer/bucket/RenderBucket;
+    const/4 v0, 0x0
 
-    .line 282
-    iput-object v1, p1, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
+    .line 303
+    iput-object v0, p0, Lorg/oscim/renderer/bucket/RenderBuckets;->mCurBucket:Lorg/oscim/renderer/bucket/RenderBucket;
 
-    .line 283
-    iput-object v1, p1, Lorg/oscim/renderer/bucket/RenderBuckets;->mCurBucket:Lorg/oscim/renderer/bucket/RenderBucket;
+    .line 304
+    iput-object v0, p1, Lorg/oscim/renderer/bucket/RenderBuckets;->buckets:Lorg/oscim/renderer/bucket/RenderBucket;
 
-    .line 284
+    .line 305
+    iput-object v0, p1, Lorg/oscim/renderer/bucket/RenderBuckets;->mCurBucket:Lorg/oscim/renderer/bucket/RenderBucket;
+
     return-void
 .end method

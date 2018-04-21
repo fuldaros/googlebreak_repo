@@ -7,8 +7,7 @@
 .field public static CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator",
-            "<",
+            "Landroid/os/Parcelable$Creator<",
             "Lcom/google/android/gms/maps/model/VisibleRegion;",
             ">;"
         }
@@ -58,7 +57,6 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
     .line 66
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -74,24 +72,15 @@
 .method private constructor <init>()V
     .locals 0
 
-    .prologue
     .line 38
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    .line 39
     return-void
 .end method
 
 .method public constructor <init>(ILcom/google/android/gms/maps/model/LatLng;Lcom/google/android/gms/maps/model/LatLng;Lcom/google/android/gms/maps/model/LatLng;Lcom/google/android/gms/maps/model/LatLng;Lcom/google/android/gms/maps/model/LatLngBounds;)V
     .locals 0
-    .param p1, "versionCode"    # I
-    .param p2, "nearLeft"    # Lcom/google/android/gms/maps/model/LatLng;
-    .param p3, "nearRight"    # Lcom/google/android/gms/maps/model/LatLng;
-    .param p4, "farLeft"    # Lcom/google/android/gms/maps/model/LatLng;
-    .param p5, "farRight"    # Lcom/google/android/gms/maps/model/LatLng;
-    .param p6, "bounds"    # Lcom/google/android/gms/maps/model/LatLngBounds;
 
-    .prologue
     .line 42
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
@@ -113,20 +102,12 @@
     .line 48
     iput-object p6, p0, Lcom/google/android/gms/maps/model/VisibleRegion;->bounds:Lcom/google/android/gms/maps/model/LatLngBounds;
 
-    .line 49
     return-void
 .end method
 
 .method public constructor <init>(Lcom/google/android/gms/maps/model/LatLng;Lcom/google/android/gms/maps/model/LatLng;Lcom/google/android/gms/maps/model/LatLng;Lcom/google/android/gms/maps/model/LatLng;Lcom/google/android/gms/maps/model/LatLngBounds;)V
     .locals 7
-    .param p1, "nearLeft"    # Lcom/google/android/gms/maps/model/LatLng;
-    .param p2, "nearRight"    # Lcom/google/android/gms/maps/model/LatLng;
-    .param p3, "farLeft"    # Lcom/google/android/gms/maps/model/LatLng;
-    .param p4, "farRight"    # Lcom/google/android/gms/maps/model/LatLng;
-    .param p5, "bounds"    # Lcom/google/android/gms/maps/model/LatLngBounds;
 
-    .prologue
-    .line 53
     const/4 v1, 0x1
 
     move-object v0, p0
@@ -141,17 +122,15 @@
 
     move-object v6, p5
 
+    .line 53
     invoke-direct/range {v0 .. v6}, Lcom/google/android/gms/maps/model/VisibleRegion;-><init>(ILcom/google/android/gms/maps/model/LatLng;Lcom/google/android/gms/maps/model/LatLng;Lcom/google/android/gms/maps/model/LatLng;Lcom/google/android/gms/maps/model/LatLng;Lcom/google/android/gms/maps/model/LatLngBounds;)V
 
-    .line 54
     return-void
 .end method
 
 .method public constructor <init>(Lcom/google/android/gms/maps/model/LatLngBounds;)V
     .locals 8
-    .param p1, "bounds"    # Lcom/google/android/gms/maps/model/LatLngBounds;
 
-    .prologue
     .line 61
     iget-object v1, p1, Lcom/google/android/gms/maps/model/LatLngBounds;->southwest:Lcom/google/android/gms/maps/model/LatLng;
 
@@ -159,13 +138,13 @@
 
     iget-object v0, p1, Lcom/google/android/gms/maps/model/LatLngBounds;->southwest:Lcom/google/android/gms/maps/model/LatLng;
 
-    iget-wide v4, v0, Lcom/google/android/gms/maps/model/LatLng;->latitude:D
+    iget-wide v3, v0, Lcom/google/android/gms/maps/model/LatLng;->latitude:D
 
     iget-object v0, p1, Lcom/google/android/gms/maps/model/LatLngBounds;->northeast:Lcom/google/android/gms/maps/model/LatLng;
 
-    iget-wide v6, v0, Lcom/google/android/gms/maps/model/LatLng;->longitude:D
+    iget-wide v5, v0, Lcom/google/android/gms/maps/model/LatLng;->longitude:D
 
-    invoke-direct {v2, v4, v5, v6, v7}, Lcom/google/android/gms/maps/model/LatLng;-><init>(DD)V
+    invoke-direct {v2, v3, v4, v5, v6}, Lcom/google/android/gms/maps/model/LatLng;-><init>(DD)V
 
     new-instance v3, Lcom/google/android/gms/maps/model/LatLng;
 
@@ -187,6 +166,5 @@
 
     invoke-direct/range {v0 .. v5}, Lcom/google/android/gms/maps/model/VisibleRegion;-><init>(Lcom/google/android/gms/maps/model/LatLng;Lcom/google/android/gms/maps/model/LatLng;Lcom/google/android/gms/maps/model/LatLng;Lcom/google/android/gms/maps/model/LatLng;Lcom/google/android/gms/maps/model/LatLngBounds;)V
 
-    .line 64
     return-void
 .end method

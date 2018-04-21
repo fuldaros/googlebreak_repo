@@ -15,23 +15,22 @@
 .method public constructor <init>()V
     .locals 1
 
-    .prologue
-    .line 12
+    .line 29
     invoke-direct {p0}, Lorg/oscim/map/Viewport;-><init>()V
 
-    .line 14
     const/4 v0, 0x0
 
+    .line 31
     iput v0, p0, Lorg/oscim/map/ViewController;->mPivotY:F
 
-    .line 16
     const/16 v0, 0x10
 
+    .line 33
     new-array v0, v0, [F
 
     iput-object v0, p0, Lorg/oscim/map/ViewController;->mat:[F
 
-    .line 236
+    .line 257
     new-instance v0, Lorg/oscim/map/Viewport;
 
     invoke-direct {v0}, Lorg/oscim/map/Viewport;-><init>()V
@@ -41,115 +40,117 @@
     return-void
 .end method
 
-.method private applyRotation(DD)Lorg/oscim/core/Point;
-    .locals 15
-    .param p1, "mx"    # D
-    .param p3, "my"    # D
+.method private declared-synchronized applyRotation(DD)Lorg/oscim/core/Point;
+    .locals 9
 
-    .prologue
-    .line 95
-    iget-object v8, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+    monitor-enter p0
 
-    iget v8, v8, Lorg/oscim/core/MapPosition;->bearing:F
+    .line 123
+    :try_start_0
+    iget-object v0, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
-    const/4 v9, 0x0
+    iget v0, v0, Lorg/oscim/core/MapPosition;->bearing:F
 
-    cmpl-float v8, v8, v9
+    const/4 v1, 0x0
 
-    if-nez v8, :cond_0
+    cmpl-float v0, v0, v1
 
-    .line 96
-    iget-object v8, p0, Lorg/oscim/map/ViewController;->mMovePoint:Lorg/oscim/core/Point;
+    if-nez v0, :cond_0
 
-    move-wide/from16 v0, p1
+    .line 124
+    iget-object v0, p0, Lorg/oscim/map/ViewController;->mMovePoint:Lorg/oscim/core/Point;
 
-    iput-wide v0, v8, Lorg/oscim/core/Point;->x:D
+    iput-wide p1, v0, Lorg/oscim/core/Point;->x:D
 
-    .line 97
-    iget-object v8, p0, Lorg/oscim/map/ViewController;->mMovePoint:Lorg/oscim/core/Point;
+    .line 125
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mMovePoint:Lorg/oscim/core/Point;
 
-    move-wide/from16 v0, p3
+    iput-wide p3, p1, Lorg/oscim/core/Point;->y:D
 
-    iput-wide v0, v8, Lorg/oscim/core/Point;->y:D
+    goto :goto_0
 
-    .line 105
-    :goto_0
-    iget-object v8, p0, Lorg/oscim/map/ViewController;->mMovePoint:Lorg/oscim/core/Point;
-
-    return-object v8
-
-    .line 99
+    .line 127
     :cond_0
-    iget-object v8, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+    iget-object v0, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
-    iget v8, v8, Lorg/oscim/core/MapPosition;->bearing:F
+    iget v0, v0, Lorg/oscim/core/MapPosition;->bearing:F
 
-    float-to-double v8, v8
+    float-to-double v0, v0
 
-    invoke-static {v8, v9}, Ljava/lang/Math;->toRadians(D)D
+    invoke-static {v0, v1}, Ljava/lang/Math;->toRadians(D)D
+
+    move-result-wide v0
+
+    .line 128
+    invoke-static {v0, v1}, Ljava/lang/Math;->cos(D)D
 
     move-result-wide v2
 
-    .line 100
-    .local v2, "rad":D
-    invoke-static {v2, v3}, Ljava/lang/Math;->cos(D)D
+    .line 129
+    invoke-static {v0, v1}, Ljava/lang/Math;->sin(D)D
 
-    move-result-wide v4
+    move-result-wide v0
 
-    .line 101
-    .local v4, "rcos":D
-    invoke-static {v2, v3}, Ljava/lang/Math;->sin(D)D
+    .line 130
+    iget-object v4, p0, Lorg/oscim/map/ViewController;->mMovePoint:Lorg/oscim/core/Point;
 
-    move-result-wide v6
+    mul-double v5, p1, v2
 
-    .line 102
-    .local v6, "rsin":D
-    iget-object v8, p0, Lorg/oscim/map/ViewController;->mMovePoint:Lorg/oscim/core/Point;
+    mul-double v7, p3, v0
 
-    mul-double v10, p1, v4
+    add-double/2addr v5, v7
 
-    mul-double v12, p3, v6
+    iput-wide v5, v4, Lorg/oscim/core/Point;->x:D
 
-    add-double/2addr v10, v12
+    .line 131
+    iget-object v4, p0, Lorg/oscim/map/ViewController;->mMovePoint:Lorg/oscim/core/Point;
 
-    iput-wide v10, v8, Lorg/oscim/core/Point;->x:D
+    neg-double v0, v0
 
-    .line 103
-    iget-object v8, p0, Lorg/oscim/map/ViewController;->mMovePoint:Lorg/oscim/core/Point;
+    mul-double/2addr p1, v0
 
-    neg-double v10, v6
+    mul-double/2addr p3, v2
 
-    mul-double v10, v10, p1
+    add-double/2addr p1, p3
 
-    mul-double v12, p3, v4
+    iput-wide p1, v4, Lorg/oscim/core/Point;->y:D
 
-    add-double/2addr v10, v12
+    .line 133
+    :goto_0
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mMovePoint:Lorg/oscim/core/Point;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    iput-wide v10, v8, Lorg/oscim/core/Point;->y:D
+    monitor-exit p0
 
-    goto :goto_0
+    return-object p1
+
+    :catchall_0
+    move-exception p1
+
+    .line 122
+    monitor-exit p0
+
+    throw p1
 .end method
 
 .method private updateMatrices()V
-    .locals 5
+    .locals 4
 
-    .prologue
-    const/4 v4, 0x0
-
-    const/high16 v2, 0x3f800000    # 1.0f
-
-    const/4 v3, 0x0
-
-    .line 218
+    .line 239
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mRotationMatrix:Lorg/oscim/renderer/GLMatrix;
 
     iget-object v1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
     iget v1, v1, Lorg/oscim/core/MapPosition;->bearing:F
 
+    const/high16 v2, 0x3f800000    # 1.0f
+
+    const/4 v3, 0x0
+
     invoke-virtual {v0, v1, v3, v3, v2}, Lorg/oscim/renderer/GLMatrix;->setRotation(FFFF)V
 
-    .line 219
+    .line 240
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mTmpMatrix:Lorg/oscim/renderer/GLMatrix;
 
     iget-object v1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
@@ -158,21 +159,21 @@
 
     invoke-virtual {v0, v1, v2, v3, v3}, Lorg/oscim/renderer/GLMatrix;->setRotation(FFFF)V
 
-    .line 222
+    .line 243
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mRotationMatrix:Lorg/oscim/renderer/GLMatrix;
 
     iget-object v1, p0, Lorg/oscim/map/ViewController;->mTmpMatrix:Lorg/oscim/renderer/GLMatrix;
 
     invoke-virtual {v0, v1}, Lorg/oscim/renderer/GLMatrix;->multiplyLhs(Lorg/oscim/renderer/GLMatrix;)V
 
-    .line 224
+    .line 245
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mViewMatrix:Lorg/oscim/renderer/GLMatrix;
 
     iget-object v1, p0, Lorg/oscim/map/ViewController;->mRotationMatrix:Lorg/oscim/renderer/GLMatrix;
 
     invoke-virtual {v0, v1}, Lorg/oscim/renderer/GLMatrix;->copy(Lorg/oscim/renderer/GLMatrix;)V
 
-    .line 226
+    .line 247
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mTmpMatrix:Lorg/oscim/renderer/GLMatrix;
 
     iget v1, p0, Lorg/oscim/map/ViewController;->mPivotY:F
@@ -183,14 +184,14 @@
 
     invoke-virtual {v0, v3, v1, v3}, Lorg/oscim/renderer/GLMatrix;->setTranslation(FFF)V
 
-    .line 227
+    .line 248
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mViewMatrix:Lorg/oscim/renderer/GLMatrix;
 
     iget-object v1, p0, Lorg/oscim/map/ViewController;->mTmpMatrix:Lorg/oscim/renderer/GLMatrix;
 
     invoke-virtual {v0, v1}, Lorg/oscim/renderer/GLMatrix;->multiplyLhs(Lorg/oscim/renderer/GLMatrix;)V
 
-    .line 229
+    .line 250
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mViewProjMatrix:Lorg/oscim/renderer/GLMatrix;
 
     iget-object v1, p0, Lorg/oscim/map/ViewController;->mProjMatrix:Lorg/oscim/renderer/GLMatrix;
@@ -199,28 +200,29 @@
 
     invoke-virtual {v0, v1, v2}, Lorg/oscim/renderer/GLMatrix;->multiplyMM(Lorg/oscim/renderer/GLMatrix;Lorg/oscim/renderer/GLMatrix;)V
 
-    .line 231
+    .line 252
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mViewProjMatrix:Lorg/oscim/renderer/GLMatrix;
 
     iget-object v1, p0, Lorg/oscim/map/ViewController;->mat:[F
 
     invoke-virtual {v0, v1}, Lorg/oscim/renderer/GLMatrix;->get([F)V
 
-    .line 232
+    .line 253
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mat:[F
 
     iget-object v1, p0, Lorg/oscim/map/ViewController;->mat:[F
 
-    invoke-static {v0, v4, v1, v4}, Lorg/oscim/renderer/GLMatrix;->invertM([FI[FI)Z
+    const/4 v2, 0x0
 
-    .line 233
+    invoke-static {v0, v2, v1, v2}, Lorg/oscim/renderer/GLMatrix;->invertM([FI[FI)Z
+
+    .line 254
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mUnprojMatrix:Lorg/oscim/renderer/GLMatrix;
 
     iget-object v1, p0, Lorg/oscim/map/ViewController;->mat:[F
 
     invoke-virtual {v0, v1}, Lorg/oscim/renderer/GLMatrix;->set([F)V
 
-    .line 234
     return-void
 .end method
 
@@ -228,42 +230,39 @@
 # virtual methods
 .method public getSyncMapPosition(Lorg/oscim/core/MapPosition;)Z
     .locals 2
-    .param p1, "mapPosition"    # Lorg/oscim/core/MapPosition;
 
-    .prologue
-    .line 256
-    iget-object v1, p0, Lorg/oscim/map/ViewController;->mNextFrame:Lorg/oscim/map/Viewport;
-
-    monitor-enter v1
-
-    .line 257
-    :try_start_0
+    .line 285
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mNextFrame:Lorg/oscim/map/Viewport;
 
-    invoke-virtual {v0, p1}, Lorg/oscim/map/Viewport;->getMapPosition(Lorg/oscim/core/MapPosition;)Z
+    monitor-enter v0
 
-    move-result v0
+    .line 286
+    :try_start_0
+    iget-object v1, p0, Lorg/oscim/map/ViewController;->mNextFrame:Lorg/oscim/map/Viewport;
 
-    monitor-exit v1
+    invoke-virtual {v1, p1}, Lorg/oscim/map/Viewport;->getMapPosition(Lorg/oscim/core/MapPosition;)Z
 
-    return v0
+    move-result p1
 
-    .line 258
+    monitor-exit v0
+
+    return p1
+
     :catchall_0
-    move-exception v0
+    move-exception p1
 
-    monitor-exit v1
+    .line 287
+    monitor-exit v0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    throw v0
+    throw p1
 .end method
 
 .method public final getSyncViewport()Lorg/oscim/map/Viewport;
     .locals 1
 
-    .prologue
-    .line 240
+    .line 263
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mNextFrame:Lorg/oscim/map/Viewport;
 
     return-object v0
@@ -271,601 +270,626 @@
 
 .method public getSyncViewport(Lorg/oscim/map/Viewport;)Z
     .locals 2
-    .param p1, "v"    # Lorg/oscim/map/Viewport;
 
-    .prologue
-    .line 250
-    iget-object v1, p0, Lorg/oscim/map/ViewController;->mNextFrame:Lorg/oscim/map/Viewport;
-
-    monitor-enter v1
-
-    .line 251
-    :try_start_0
+    .line 279
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mNextFrame:Lorg/oscim/map/Viewport;
 
-    invoke-virtual {p1, v0}, Lorg/oscim/map/Viewport;->copy(Lorg/oscim/map/Viewport;)Z
+    monitor-enter v0
 
-    move-result v0
+    .line 280
+    :try_start_0
+    iget-object v1, p0, Lorg/oscim/map/ViewController;->mNextFrame:Lorg/oscim/map/Viewport;
 
-    monitor-exit v1
+    invoke-virtual {p1, v1}, Lorg/oscim/map/Viewport;->copy(Lorg/oscim/map/Viewport;)Z
 
-    return v0
+    move-result p1
 
-    .line 252
+    monitor-exit v0
+
+    return p1
+
     :catchall_0
-    move-exception v0
+    move-exception p1
 
-    monitor-exit v1
+    .line 281
+    monitor-exit v0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    throw v0
+    throw p1
 .end method
 
 .method public moveMap(FF)V
-    .locals 10
-    .param p1, "mx"    # F
-    .param p2, "my"    # F
+    .locals 6
 
-    .prologue
-    .line 72
+    .line 89
     invoke-static {}, Lorg/oscim/utils/ThreadUtils;->assertMainThread()V
 
-    .line 74
-    float-to-double v4, p1
+    float-to-double v0, p1
 
-    float-to-double v6, p2
+    float-to-double p1, p2
 
-    invoke-direct {p0, v4, v5, v6, v7}, Lorg/oscim/map/ViewController;->applyRotation(DD)Lorg/oscim/core/Point;
+    .line 91
+    invoke-direct {p0, v0, v1, p1, p2}, Lorg/oscim/map/ViewController;->applyRotation(DD)Lorg/oscim/core/Point;
 
-    move-result-object v0
+    move-result-object p1
 
-    .line 75
-    .local v0, "p":Lorg/oscim/core/Point;
-    iget-object v1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+    .line 92
+    iget-object p2, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
-    iget-wide v4, v1, Lorg/oscim/core/MapPosition;->scale:D
+    iget-wide v0, p2, Lorg/oscim/core/MapPosition;->scale:D
 
-    sget v1, Lorg/oscim/core/Tile;->SIZE:I
+    sget p2, Lorg/oscim/core/Tile;->SIZE:I
 
-    int-to-double v6, v1
+    int-to-double v2, p2
 
-    mul-double v2, v4, v6
+    mul-double/2addr v0, v2
 
-    .line 76
-    .local v2, "tileScale":D
-    iget-object v1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+    .line 93
+    iget-object p2, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
-    iget-wide v4, v1, Lorg/oscim/core/MapPosition;->x:D
+    iget-wide v2, p2, Lorg/oscim/core/MapPosition;->x:D
 
-    iget-wide v6, v0, Lorg/oscim/core/Point;->x:D
+    iget-wide v4, p1, Lorg/oscim/core/Point;->x:D
 
-    div-double/2addr v6, v2
+    div-double/2addr v4, v0
 
-    sub-double/2addr v4, v6
+    sub-double/2addr v2, v4
 
-    iget-object v1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+    iget-object p2, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
-    iget-wide v6, v1, Lorg/oscim/core/MapPosition;->y:D
+    iget-wide v4, p2, Lorg/oscim/core/MapPosition;->y:D
 
-    iget-wide v8, v0, Lorg/oscim/core/Point;->y:D
+    iget-wide p1, p1, Lorg/oscim/core/Point;->y:D
 
-    div-double/2addr v8, v2
+    div-double/2addr p1, v0
 
-    sub-double/2addr v6, v8
+    sub-double/2addr v4, p1
 
-    invoke-virtual {p0, v4, v5, v6, v7}, Lorg/oscim/map/ViewController;->moveTo(DD)V
+    invoke-virtual {p0, v2, v3, v4, v5}, Lorg/oscim/map/ViewController;->moveTo(DD)V
 
-    .line 77
     return-void
 .end method
 
 .method moveTo(DD)V
-    .locals 9
-    .param p1, "x"    # D
-    .param p3, "y"    # D
+    .locals 6
 
-    .prologue
-    const-wide/16 v2, 0x0
-
-    const-wide/high16 v4, 0x3ff0000000000000L    # 1.0
-
-    .line 81
+    .line 98
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
     iput-wide p1, v0, Lorg/oscim/core/MapPosition;->x:D
 
-    .line 82
-    iget-object v0, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+    .line 99
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
-    iput-wide p3, v0, Lorg/oscim/core/MapPosition;->y:D
+    iput-wide p3, p1, Lorg/oscim/core/MapPosition;->y:D
 
-    .line 85
-    iget-object v6, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+    .line 102
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
-    iget-object v0, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+    iget-object p2, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
-    iget-wide v0, v0, Lorg/oscim/core/MapPosition;->y:D
+    iget-wide v0, p2, Lorg/oscim/core/MapPosition;->y:D
+
+    const-wide/16 v2, 0x0
+
+    const-wide/high16 v4, 0x3ff0000000000000L    # 1.0
 
     invoke-static/range {v0 .. v5}, Lorg/oscim/utils/FastMath;->clamp(DDD)D
 
-    move-result-wide v0
+    move-result-wide p2
 
-    iput-wide v0, v6, Lorg/oscim/core/MapPosition;->y:D
+    iput-wide p2, p1, Lorg/oscim/core/MapPosition;->y:D
 
-    .line 88
+    .line 105
     :goto_0
-    iget-object v0, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
-    iget-wide v0, v0, Lorg/oscim/core/MapPosition;->x:D
+    iget-wide p1, p1, Lorg/oscim/core/MapPosition;->x:D
 
-    cmpl-double v0, v0, v4
+    const-wide/high16 p3, 0x3ff0000000000000L    # 1.0
+
+    cmpl-double v0, p1, p3
 
     if-lez v0, :cond_0
 
-    .line 89
-    iget-object v0, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+    .line 106
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
-    iget-wide v6, v0, Lorg/oscim/core/MapPosition;->x:D
+    iget-wide v0, p1, Lorg/oscim/core/MapPosition;->x:D
 
-    sub-double/2addr v6, v4
+    sub-double/2addr v0, p3
 
-    iput-wide v6, v0, Lorg/oscim/core/MapPosition;->x:D
+    iput-wide v0, p1, Lorg/oscim/core/MapPosition;->x:D
 
     goto :goto_0
 
-    .line 90
+    .line 107
     :cond_0
     :goto_1
-    iget-object v0, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
-    iget-wide v0, v0, Lorg/oscim/core/MapPosition;->x:D
+    iget-wide p1, p1, Lorg/oscim/core/MapPosition;->x:D
 
-    cmpg-double v0, v0, v2
+    const-wide/16 v0, 0x0
 
-    if-gez v0, :cond_1
+    cmpg-double v2, p1, v0
 
-    .line 91
-    iget-object v0, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+    if-gez v2, :cond_1
 
-    iget-wide v6, v0, Lorg/oscim/core/MapPosition;->x:D
+    .line 108
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
-    add-double/2addr v6, v4
+    iget-wide v0, p1, Lorg/oscim/core/MapPosition;->x:D
 
-    iput-wide v6, v0, Lorg/oscim/core/MapPosition;->x:D
+    add-double/2addr v0, p3
+
+    iput-wide v0, p1, Lorg/oscim/core/MapPosition;->x:D
 
     goto :goto_1
 
-    .line 92
+    .line 111
     :cond_1
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+
+    iget-wide p1, p1, Lorg/oscim/core/MapPosition;->x:D
+
+    iget-wide p3, p0, Lorg/oscim/map/ViewController;->mMaxX:D
+
+    cmpl-double v0, p1, p3
+
+    if-lez v0, :cond_2
+
+    .line 112
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+
+    iget-wide p2, p0, Lorg/oscim/map/ViewController;->mMaxX:D
+
+    iput-wide p2, p1, Lorg/oscim/core/MapPosition;->x:D
+
+    goto :goto_2
+
+    .line 113
+    :cond_2
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+
+    iget-wide p1, p1, Lorg/oscim/core/MapPosition;->x:D
+
+    iget-wide p3, p0, Lorg/oscim/map/ViewController;->mMinX:D
+
+    cmpg-double v0, p1, p3
+
+    if-gez v0, :cond_3
+
+    .line 114
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+
+    iget-wide p2, p0, Lorg/oscim/map/ViewController;->mMinX:D
+
+    iput-wide p2, p1, Lorg/oscim/core/MapPosition;->x:D
+
+    .line 116
+    :cond_3
+    :goto_2
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+
+    iget-wide p1, p1, Lorg/oscim/core/MapPosition;->y:D
+
+    iget-wide p3, p0, Lorg/oscim/map/ViewController;->mMaxY:D
+
+    cmpl-double v0, p1, p3
+
+    if-lez v0, :cond_4
+
+    .line 117
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+
+    iget-wide p2, p0, Lorg/oscim/map/ViewController;->mMaxY:D
+
+    iput-wide p2, p1, Lorg/oscim/core/MapPosition;->y:D
+
+    goto :goto_3
+
+    .line 118
+    :cond_4
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+
+    iget-wide p1, p1, Lorg/oscim/core/MapPosition;->y:D
+
+    iget-wide p3, p0, Lorg/oscim/map/ViewController;->mMinY:D
+
+    cmpg-double v0, p1, p3
+
+    if-gez v0, :cond_5
+
+    .line 119
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+
+    iget-wide p2, p0, Lorg/oscim/map/ViewController;->mMinY:D
+
+    iput-wide p2, p1, Lorg/oscim/core/MapPosition;->y:D
+
+    :cond_5
+    :goto_3
     return-void
 .end method
 
 .method public rotateMap(DFF)V
-    .locals 11
-    .param p1, "radians"    # D
-    .param p3, "pivotX"    # F
-    .param p4, "pivotY"    # F
+    .locals 10
 
-    .prologue
-    .line 154
+    .line 175
     invoke-static {}, Lorg/oscim/utils/ThreadUtils;->assertMainThread()V
 
-    .line 156
+    .line 177
     invoke-static {p1, p2}, Ljava/lang/Math;->sin(D)D
-
-    move-result-wide v2
-
-    .line 157
-    .local v2, "rsin":D
-    invoke-static {p1, p2}, Ljava/lang/Math;->cos(D)D
 
     move-result-wide v0
 
-    .line 159
-    .local v0, "rcos":D
-    iget v6, p0, Lorg/oscim/map/ViewController;->mHeight:F
+    .line 178
+    invoke-static {p1, p2}, Ljava/lang/Math;->cos(D)D
 
-    iget v7, p0, Lorg/oscim/map/ViewController;->mPivotY:F
+    move-result-wide v2
 
-    mul-float/2addr v6, v7
+    .line 180
+    iget v4, p0, Lorg/oscim/map/ViewController;->mHeight:F
 
-    sub-float/2addr p4, v6
+    iget v5, p0, Lorg/oscim/map/ViewController;->mPivotY:F
 
-    .line 161
-    float-to-double v6, p3
+    mul-float/2addr v4, v5
 
-    float-to-double v8, p3
+    sub-float/2addr p4, v4
 
-    mul-double/2addr v8, v0
+    float-to-double v4, p3
 
-    sub-double/2addr v6, v8
+    mul-double v6, v4, v2
 
-    float-to-double v8, p4
+    sub-double v6, v4, v6
 
-    mul-double/2addr v8, v2
+    float-to-double p3, p4
+
+    mul-double v8, p3, v0
 
     add-double/2addr v6, v8
 
-    double-to-float v4, v6
+    double-to-float v6, v6
 
-    .line 162
-    .local v4, "x":F
-    float-to-double v6, p4
+    mul-double/2addr v4, v0
 
-    float-to-double v8, p3
+    sub-double v0, p3, v4
 
-    mul-double/2addr v8, v2
+    mul-double/2addr p3, v2
 
-    sub-double/2addr v6, v8
+    sub-double/2addr v0, p3
 
-    float-to-double v8, p4
+    double-to-float p3, v0
 
-    mul-double/2addr v8, v0
+    .line 185
+    invoke-virtual {p0, v6, p3}, Lorg/oscim/map/ViewController;->moveMap(FF)V
 
-    sub-double/2addr v6, v8
+    .line 187
+    iget-object p3, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
-    double-to-float v5, v6
+    iget p3, p3, Lorg/oscim/core/MapPosition;->bearing:F
 
-    .line 164
-    .local v5, "y":F
-    invoke-virtual {p0, v4, v5}, Lorg/oscim/map/ViewController;->moveMap(FF)V
-
-    .line 166
-    iget-object v6, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
-
-    iget v6, v6, Lorg/oscim/core/MapPosition;->bearing:F
-
-    float-to-double v6, v6
+    float-to-double p3, p3
 
     invoke-static {p1, p2}, Ljava/lang/Math;->toDegrees(D)D
 
-    move-result-wide v8
+    move-result-wide p1
 
-    add-double/2addr v6, v8
+    add-double/2addr p3, p1
 
-    invoke-virtual {p0, v6, v7}, Lorg/oscim/map/ViewController;->setRotation(D)V
+    invoke-virtual {p0, p3, p4}, Lorg/oscim/map/ViewController;->setRotation(D)V
 
-    .line 167
     return-void
 .end method
 
 .method public scaleMap(FFF)Z
-    .locals 9
-    .param p1, "scale"    # F
-    .param p2, "pivotX"    # F
-    .param p3, "pivotY"    # F
+    .locals 11
 
-    .prologue
-    const/4 v6, 0x0
-
-    const/high16 v8, 0x3f800000    # 1.0f
-
-    const/4 v7, 0x0
-
-    .line 118
+    .line 143
     invoke-static {}, Lorg/oscim/utils/ThreadUtils;->assertMainThread()V
 
-    .line 122
-    float-to-double v2, p1
+    float-to-double v0, p1
 
-    const-wide v4, 0x3eb0c6f7a0b5ed8dL    # 1.0E-6
+    const-wide v2, 0x3eb0c6f7a0b5ed8dL    # 1.0E-6
 
-    cmpg-double v2, v2, v4
+    cmpg-double p1, v0, v2
 
-    if-gez v2, :cond_0
+    const/4 v2, 0x0
 
-    move v2, v6
+    if-gez p1, :cond_0
 
-    .line 142
-    :goto_0
     return v2
 
-    .line 125
+    .line 150
     :cond_0
-    iget-object v2, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
-    iget-wide v2, v2, Lorg/oscim/core/MapPosition;->scale:D
+    iget-wide v3, p1, Lorg/oscim/core/MapPosition;->scale:D
 
-    float-to-double v4, p1
+    mul-double v5, v3, v0
 
-    mul-double v0, v2, v4
+    .line 152
+    iget-wide v7, p0, Lorg/oscim/map/ViewController;->mMinScale:D
 
-    .line 127
-    .local v0, "newScale":D
-    iget-wide v2, p0, Lorg/oscim/map/ViewController;->mMinScale:D
+    iget-wide v9, p0, Lorg/oscim/map/ViewController;->mMaxScale:D
 
-    iget-wide v4, p0, Lorg/oscim/map/ViewController;->mMaxScale:D
-
-    invoke-static/range {v0 .. v5}, Lorg/oscim/utils/FastMath;->clamp(DDD)D
+    invoke-static/range {v5 .. v10}, Lorg/oscim/utils/FastMath;->clamp(DDD)D
 
     move-result-wide v0
 
-    .line 129
-    iget-object v2, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+    .line 154
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
-    iget-wide v2, v2, Lorg/oscim/core/MapPosition;->scale:D
+    iget-wide v3, p1, Lorg/oscim/core/MapPosition;->scale:D
 
-    cmpl-double v2, v0, v2
+    cmpl-double p1, v0, v3
 
-    if-nez v2, :cond_1
+    if-nez p1, :cond_1
 
-    move v2, v6
+    return v2
 
-    .line 130
-    goto :goto_0
-
-    .line 132
+    .line 157
     :cond_1
-    iget-object v2, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
-    iget-wide v2, v2, Lorg/oscim/core/MapPosition;->scale:D
+    iget-wide v2, p1, Lorg/oscim/core/MapPosition;->scale:D
 
     div-double v2, v0, v2
 
     double-to-float p1, v2
 
-    .line 134
+    .line 159
     iget-object v2, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
     iput-wide v0, v2, Lorg/oscim/core/MapPosition;->scale:D
 
-    .line 136
-    cmpl-float v2, p2, v7
+    const/4 v0, 0x0
 
-    if-nez v2, :cond_2
+    cmpl-float v1, p2, v0
 
-    cmpl-float v2, p3, v7
+    if-nez v1, :cond_2
 
-    if-eqz v2, :cond_3
+    cmpl-float v0, p3, v0
 
-    .line 137
+    if-eqz v0, :cond_3
+
+    .line 162
     :cond_2
-    iget v2, p0, Lorg/oscim/map/ViewController;->mHeight:F
+    iget v0, p0, Lorg/oscim/map/ViewController;->mHeight:F
 
-    iget v3, p0, Lorg/oscim/map/ViewController;->mPivotY:F
+    iget v1, p0, Lorg/oscim/map/ViewController;->mPivotY:F
 
-    mul-float/2addr v2, v3
+    mul-float/2addr v0, v1
 
-    sub-float/2addr p3, v2
+    sub-float/2addr p3, v0
 
-    .line 139
-    sub-float v2, v8, p1
+    const/high16 v0, 0x3f800000    # 1.0f
 
-    mul-float/2addr v2, p2
+    sub-float/2addr v0, p1
 
-    sub-float v3, v8, p1
+    mul-float/2addr p2, v0
 
-    mul-float/2addr v3, p3
+    mul-float/2addr p3, v0
 
-    invoke-virtual {p0, v2, v3}, Lorg/oscim/map/ViewController;->moveMap(FF)V
+    .line 164
+    invoke-virtual {p0, p2, p3}, Lorg/oscim/map/ViewController;->moveMap(FF)V
 
-    .line 142
     :cond_3
-    const/4 v2, 0x1
+    const/4 p1, 0x1
 
-    goto :goto_0
+    return p1
 .end method
 
 .method public setMapPosition(Lorg/oscim/core/MapPosition;)V
     .locals 1
-    .param p1, "mapPosition"    # Lorg/oscim/core/MapPosition;
 
-    .prologue
-    .line 199
+    .line 220
     invoke-static {}, Lorg/oscim/utils/ThreadUtils;->assertMainThread()V
 
-    .line 201
+    .line 222
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
     invoke-virtual {v0, p1}, Lorg/oscim/core/MapPosition;->copy(Lorg/oscim/core/MapPosition;)V
 
-    .line 202
-    iget-object v0, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
+    .line 223
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
-    invoke-virtual {p0, v0}, Lorg/oscim/map/ViewController;->limitPosition(Lorg/oscim/core/MapPosition;)Z
+    invoke-virtual {p0, p1}, Lorg/oscim/map/ViewController;->limitPosition(Lorg/oscim/core/MapPosition;)Z
 
-    .line 210
+    .line 231
     invoke-direct {p0}, Lorg/oscim/map/ViewController;->updateMatrices()V
 
-    .line 211
     return-void
 .end method
 
 .method public setRotation(D)V
     .locals 5
-    .param p1, "degree"    # D
 
-    .prologue
-    const-wide v2, 0x4076800000000000L    # 360.0
-
-    .line 170
+    .line 191
     invoke-static {}, Lorg/oscim/utils/ThreadUtils;->assertMainThread()V
 
-    .line 172
     :goto_0
     const-wide v0, 0x4066800000000000L    # 180.0
 
-    cmpl-double v0, p1, v0
+    cmpl-double v2, p1, v0
 
-    if-lez v0, :cond_0
+    const-wide v0, 0x4076800000000000L    # 360.0
 
-    .line 173
-    sub-double/2addr p1, v2
+    if-lez v2, :cond_0
+
+    sub-double/2addr p1, v0
 
     goto :goto_0
 
-    .line 174
     :cond_0
     :goto_1
-    const-wide v0, -0x3f99800000000000L    # -180.0
+    const-wide v2, -0x3f99800000000000L    # -180.0
 
-    cmpg-double v0, p1, v0
+    cmpg-double v4, p1, v2
 
-    if-gez v0, :cond_1
+    if-gez v4, :cond_1
 
-    .line 175
-    add-double/2addr p1, v2
+    add-double/2addr p1, v0
 
     goto :goto_1
 
-    .line 177
+    .line 198
     :cond_1
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
-    double-to-float v1, p1
+    double-to-float p1, p1
 
-    iput v1, v0, Lorg/oscim/core/MapPosition;->bearing:F
+    iput p1, v0, Lorg/oscim/core/MapPosition;->bearing:F
 
-    .line 179
+    .line 200
     invoke-direct {p0}, Lorg/oscim/map/ViewController;->updateMatrices()V
 
-    .line 180
     return-void
 .end method
 
 .method public setScreenSize(II)V
-    .locals 9
-    .param p1, "width"    # I
-    .param p2, "height"    # I
+    .locals 8
 
-    .prologue
-    const v3, 0x3e2aaaab
+    .line 36
+    invoke-static {}, Lorg/oscim/utils/ThreadUtils;->assertMainThread()V
 
-    const/4 v8, 0x0
+    int-to-float p2, p2
+
+    .line 38
+    iput p2, p0, Lorg/oscim/map/ViewController;->mHeight:F
+
+    int-to-float p1, p1
+
+    .line 39
+    iput p1, p0, Lorg/oscim/map/ViewController;->mWidth:F
+
+    .line 49
+    iget p1, p0, Lorg/oscim/map/ViewController;->mHeight:F
+
+    iget p2, p0, Lorg/oscim/map/ViewController;->mWidth:F
+
+    div-float/2addr p1, p2
+
+    const p2, 0x3e2aaaab
+
+    mul-float v4, p1, p2
+
+    .line 51
+    iget-object v0, p0, Lorg/oscim/map/ViewController;->mat:[F
+
+    neg-float v5, v4
 
     const/4 v1, 0x0
 
-    const/high16 v6, 0x3f800000    # 1.0f
-
-    .line 19
-    invoke-static {}, Lorg/oscim/utils/ThreadUtils;->assertMainThread()V
-
-    .line 21
-    int-to-float v0, p2
-
-    iput v0, p0, Lorg/oscim/map/ViewController;->mHeight:F
-
-    .line 22
-    int-to-float v0, p1
-
-    iput v0, p0, Lorg/oscim/map/ViewController;->mWidth:F
-
-    .line 32
-    iget v0, p0, Lorg/oscim/map/ViewController;->mHeight:F
-
-    iget v2, p0, Lorg/oscim/map/ViewController;->mWidth:F
-
-    div-float/2addr v0, v2
-
-    mul-float v4, v0, v3
-
-    .line 34
-    .local v4, "ratio":F
-    iget-object v0, p0, Lorg/oscim/map/ViewController;->mat:[F
-
     const v2, -0x41d55555
 
-    neg-float v5, v4
+    const v3, 0x3e2aaaab
+
+    const/high16 v6, 0x3f800000    # 1.0f
 
     const/high16 v7, 0x41000000    # 8.0f
 
     invoke-static/range {v0 .. v7}, Lorg/oscim/renderer/GLMatrix;->frustumM([FIFFFFFF)V
 
-    .line 37
-    iget-object v0, p0, Lorg/oscim/map/ViewController;->mProjMatrix:Lorg/oscim/renderer/GLMatrix;
+    .line 54
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mProjMatrix:Lorg/oscim/renderer/GLMatrix;
 
-    iget-object v2, p0, Lorg/oscim/map/ViewController;->mat:[F
+    iget-object p2, p0, Lorg/oscim/map/ViewController;->mat:[F
 
-    invoke-virtual {v0, v2}, Lorg/oscim/renderer/GLMatrix;->set([F)V
+    invoke-virtual {p1, p2}, Lorg/oscim/renderer/GLMatrix;->set([F)V
 
-    .line 39
-    iget-object v0, p0, Lorg/oscim/map/ViewController;->mTmpMatrix:Lorg/oscim/renderer/GLMatrix;
+    .line 56
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mTmpMatrix:Lorg/oscim/renderer/GLMatrix;
 
-    const/high16 v2, -0x3fc00000    # -3.0f
+    const/4 p2, 0x0
 
-    invoke-virtual {v0, v8, v8, v2}, Lorg/oscim/renderer/GLMatrix;->setTranslation(FFF)V
+    const/high16 v0, -0x3fc00000    # -3.0f
 
-    .line 40
-    iget-object v0, p0, Lorg/oscim/map/ViewController;->mProjMatrix:Lorg/oscim/renderer/GLMatrix;
+    invoke-virtual {p1, p2, p2, v0}, Lorg/oscim/renderer/GLMatrix;->setTranslation(FFF)V
 
-    iget-object v2, p0, Lorg/oscim/map/ViewController;->mTmpMatrix:Lorg/oscim/renderer/GLMatrix;
+    .line 57
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mProjMatrix:Lorg/oscim/renderer/GLMatrix;
 
-    invoke-virtual {v0, v2}, Lorg/oscim/renderer/GLMatrix;->multiplyRhs(Lorg/oscim/renderer/GLMatrix;)V
+    iget-object p2, p0, Lorg/oscim/map/ViewController;->mTmpMatrix:Lorg/oscim/renderer/GLMatrix;
 
-    .line 43
-    iget-object v0, p0, Lorg/oscim/map/ViewController;->mProjMatrix:Lorg/oscim/renderer/GLMatrix;
+    invoke-virtual {p1, p2}, Lorg/oscim/renderer/GLMatrix;->multiplyRhs(Lorg/oscim/renderer/GLMatrix;)V
 
-    iget-object v2, p0, Lorg/oscim/map/ViewController;->mat:[F
+    .line 60
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mProjMatrix:Lorg/oscim/renderer/GLMatrix;
 
-    invoke-virtual {v0, v2}, Lorg/oscim/renderer/GLMatrix;->get([F)V
+    iget-object p2, p0, Lorg/oscim/map/ViewController;->mat:[F
 
-    .line 44
-    iget-object v0, p0, Lorg/oscim/map/ViewController;->mat:[F
+    invoke-virtual {p1, p2}, Lorg/oscim/renderer/GLMatrix;->get([F)V
 
-    iget-object v2, p0, Lorg/oscim/map/ViewController;->mat:[F
+    .line 61
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mat:[F
 
-    invoke-static {v0, v1, v2, v1}, Lorg/oscim/renderer/GLMatrix;->invertM([FI[FI)Z
+    iget-object p2, p0, Lorg/oscim/map/ViewController;->mat:[F
 
-    .line 45
-    iget-object v0, p0, Lorg/oscim/map/ViewController;->mProjMatrixInverse:Lorg/oscim/renderer/GLMatrix;
+    const/4 v0, 0x0
 
-    iget-object v1, p0, Lorg/oscim/map/ViewController;->mat:[F
+    invoke-static {p1, v0, p2, v0}, Lorg/oscim/renderer/GLMatrix;->invertM([FI[FI)Z
 
-    invoke-virtual {v0, v1}, Lorg/oscim/renderer/GLMatrix;->set([F)V
+    .line 62
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mProjMatrixInverse:Lorg/oscim/renderer/GLMatrix;
 
-    .line 47
-    iget-object v0, p0, Lorg/oscim/map/ViewController;->mProjMatrixUnscaled:Lorg/oscim/renderer/GLMatrix;
+    iget-object p2, p0, Lorg/oscim/map/ViewController;->mat:[F
 
-    iget-object v1, p0, Lorg/oscim/map/ViewController;->mProjMatrix:Lorg/oscim/renderer/GLMatrix;
+    invoke-virtual {p1, p2}, Lorg/oscim/renderer/GLMatrix;->set([F)V
 
-    invoke-virtual {v0, v1}, Lorg/oscim/renderer/GLMatrix;->copy(Lorg/oscim/renderer/GLMatrix;)V
+    .line 64
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mProjMatrixUnscaled:Lorg/oscim/renderer/GLMatrix;
 
-    .line 50
-    iget-object v0, p0, Lorg/oscim/map/ViewController;->mTmpMatrix:Lorg/oscim/renderer/GLMatrix;
+    iget-object p2, p0, Lorg/oscim/map/ViewController;->mProjMatrix:Lorg/oscim/renderer/GLMatrix;
+
+    invoke-virtual {p1, p2}, Lorg/oscim/renderer/GLMatrix;->copy(Lorg/oscim/renderer/GLMatrix;)V
+
+    .line 67
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mTmpMatrix:Lorg/oscim/renderer/GLMatrix;
+
+    iget p2, p0, Lorg/oscim/map/ViewController;->mWidth:F
+
+    const/high16 v0, 0x3f800000    # 1.0f
+
+    div-float p2, v0, p2
 
     iget v1, p0, Lorg/oscim/map/ViewController;->mWidth:F
 
-    div-float v1, v6, v1
+    div-float v1, v0, v1
 
     iget v2, p0, Lorg/oscim/map/ViewController;->mWidth:F
 
-    div-float v2, v6, v2
+    div-float/2addr v0, v2
 
-    iget v3, p0, Lorg/oscim/map/ViewController;->mWidth:F
+    invoke-virtual {p1, p2, v1, v0}, Lorg/oscim/renderer/GLMatrix;->setScale(FFF)V
 
-    div-float v3, v6, v3
+    .line 68
+    iget-object p1, p0, Lorg/oscim/map/ViewController;->mProjMatrix:Lorg/oscim/renderer/GLMatrix;
 
-    invoke-virtual {v0, v1, v2, v3}, Lorg/oscim/renderer/GLMatrix;->setScale(FFF)V
+    iget-object p2, p0, Lorg/oscim/map/ViewController;->mTmpMatrix:Lorg/oscim/renderer/GLMatrix;
 
-    .line 51
-    iget-object v0, p0, Lorg/oscim/map/ViewController;->mProjMatrix:Lorg/oscim/renderer/GLMatrix;
+    invoke-virtual {p1, p2}, Lorg/oscim/renderer/GLMatrix;->multiplyRhs(Lorg/oscim/renderer/GLMatrix;)V
 
-    iget-object v1, p0, Lorg/oscim/map/ViewController;->mTmpMatrix:Lorg/oscim/renderer/GLMatrix;
-
-    invoke-virtual {v0, v1}, Lorg/oscim/renderer/GLMatrix;->multiplyRhs(Lorg/oscim/renderer/GLMatrix;)V
-
-    .line 53
+    .line 70
     invoke-direct {p0}, Lorg/oscim/map/ViewController;->updateMatrices()V
 
-    .line 54
     return-void
 .end method
 
 .method public setTilt(F)Z
     .locals 1
-    .param p1, "tilt"    # F
 
-    .prologue
-    .line 187
+    .line 208
     invoke-static {}, Lorg/oscim/utils/ThreadUtils;->assertMainThread()V
 
-    .line 189
+    .line 210
     invoke-virtual {p0, p1}, Lorg/oscim/map/ViewController;->limitTilt(F)F
 
     move-result p1
 
-    .line 190
+    .line 211
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
     iget v0, v0, Lorg/oscim/core/MapPosition;->tilt:F
@@ -874,66 +898,88 @@
 
     if-nez v0, :cond_0
 
-    .line 191
-    const/4 v0, 0x0
+    const/4 p1, 0x0
 
-    .line 195
-    :goto_0
-    return v0
+    return p1
 
-    .line 193
+    .line 214
     :cond_0
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
     iput p1, v0, Lorg/oscim/core/MapPosition;->tilt:F
 
-    .line 194
+    .line 215
     invoke-direct {p0}, Lorg/oscim/map/ViewController;->updateMatrices()V
 
-    .line 195
-    const/4 v0, 0x1
+    const/4 p1, 0x1
 
-    goto :goto_0
+    return p1
+.end method
+
+.method sizeChanged()Z
+    .locals 2
+
+    .line 267
+    iget-object v0, p0, Lorg/oscim/map/ViewController;->mNextFrame:Lorg/oscim/map/Viewport;
+
+    monitor-enter v0
+
+    .line 268
+    :try_start_0
+    iget-object v1, p0, Lorg/oscim/map/ViewController;->mNextFrame:Lorg/oscim/map/Viewport;
+
+    invoke-virtual {v1, p0}, Lorg/oscim/map/Viewport;->sizeChanged(Lorg/oscim/map/Viewport;)Z
+
+    move-result v1
+
+    monitor-exit v0
+
+    return v1
+
+    :catchall_0
+    move-exception v1
+
+    .line 269
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v1
 .end method
 
 .method syncViewport()V
     .locals 2
 
-    .prologue
-    .line 244
-    iget-object v1, p0, Lorg/oscim/map/ViewController;->mNextFrame:Lorg/oscim/map/Viewport;
-
-    monitor-enter v1
-
-    .line 245
-    :try_start_0
+    .line 273
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mNextFrame:Lorg/oscim/map/Viewport;
 
-    invoke-virtual {v0, p0}, Lorg/oscim/map/Viewport;->copy(Lorg/oscim/map/Viewport;)Z
+    monitor-enter v0
 
-    .line 246
-    monitor-exit v1
+    .line 274
+    :try_start_0
+    iget-object v1, p0, Lorg/oscim/map/ViewController;->mNextFrame:Lorg/oscim/map/Viewport;
 
-    .line 247
+    invoke-virtual {v1, p0}, Lorg/oscim/map/Viewport;->copy(Lorg/oscim/map/Viewport;)Z
+
+    .line 275
+    monitor-exit v0
+
     return-void
 
-    .line 246
     :catchall_0
-    move-exception v0
+    move-exception v1
 
-    monitor-exit v1
+    monitor-exit v0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    throw v0
+    throw v1
 .end method
 
 .method public tiltMap(F)Z
     .locals 1
-    .param p1, "move"    # F
 
-    .prologue
-    .line 183
+    .line 204
     iget-object v0, p0, Lorg/oscim/map/ViewController;->mPos:Lorg/oscim/core/MapPosition;
 
     iget v0, v0, Lorg/oscim/core/MapPosition;->tilt:F
@@ -942,7 +988,7 @@
 
     invoke-virtual {p0, v0}, Lorg/oscim/map/ViewController;->setTilt(F)Z
 
-    move-result v0
+    move-result p1
 
-    return v0
+    return p1
 .end method

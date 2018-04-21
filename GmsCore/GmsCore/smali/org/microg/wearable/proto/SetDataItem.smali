@@ -15,8 +15,7 @@
 .field public static final DEFAULT_ASSETS:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lorg/microg/wearable/proto/AssetEntry;",
             ">;"
         }
@@ -34,8 +33,7 @@
 .field public static final DEFAULT_UNKNOWN3:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -53,8 +51,7 @@
 
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lorg/microg/wearable/proto/AssetEntry;",
             ">;"
         }
@@ -119,8 +116,7 @@
 
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -137,10 +133,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 4
-
-    .prologue
-    const-wide/16 v2, 0x0
+    .locals 3
 
     .line 21
     invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;
@@ -154,31 +147,33 @@
 
     sput-object v0, Lorg/microg/wearable/proto/SetDataItem;->DEFAULT_DATA:Lokio/ByteString;
 
+    const-wide/16 v0, 0x0
+
     .line 23
-    invoke-static {v2, v3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+    invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
-    move-result-object v0
+    move-result-object v2
 
-    sput-object v0, Lorg/microg/wearable/proto/SetDataItem;->DEFAULT_SEQID:Ljava/lang/Long;
+    sput-object v2, Lorg/microg/wearable/proto/SetDataItem;->DEFAULT_SEQID:Ljava/lang/Long;
+
+    const/4 v2, 0x0
 
     .line 24
-    const/4 v0, 0x0
+    invoke-static {v2}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 
-    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+    move-result-object v2
 
-    move-result-object v0
-
-    sput-object v0, Lorg/microg/wearable/proto/SetDataItem;->DEFAULT_DELETED:Ljava/lang/Boolean;
+    sput-object v2, Lorg/microg/wearable/proto/SetDataItem;->DEFAULT_DELETED:Ljava/lang/Boolean;
 
     .line 26
     invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;
 
-    move-result-object v0
+    move-result-object v2
 
-    sput-object v0, Lorg/microg/wearable/proto/SetDataItem;->DEFAULT_ASSETS:Ljava/util/List;
+    sput-object v2, Lorg/microg/wearable/proto/SetDataItem;->DEFAULT_ASSETS:Ljava/util/List;
 
     .line 28
-    invoke-static {v2, v3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+    invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
     move-result-object v0
 
@@ -188,30 +183,20 @@
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lokio/ByteString;Ljava/lang/Long;Ljava/lang/Boolean;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Long;)V
-    .locals 1
-    .param p1, "packageName"    # Ljava/lang/String;
-    .param p2, "uri"    # Ljava/lang/String;
-    .param p4, "data"    # Lokio/ByteString;
-    .param p5, "seqId"    # Ljava/lang/Long;
-    .param p6, "deleted"    # Ljava/lang/Boolean;
-    .param p7, "source"    # Ljava/lang/String;
-    .param p9, "signatureDigest"    # Ljava/lang/String;
-    .param p10, "lastModified"    # Ljava/lang/Long;
+    .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
             "Ljava/lang/String;",
             "Ljava/lang/String;",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;",
             "Lokio/ByteString;",
             "Ljava/lang/Long;",
             "Ljava/lang/Boolean;",
             "Ljava/lang/String;",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lorg/microg/wearable/proto/AssetEntry;",
             ">;",
             "Ljava/lang/String;",
@@ -220,10 +205,7 @@
         }
     .end annotation
 
-    .prologue
     .line 60
-    .local p3, "unknown3":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    .local p8, "assets":Ljava/util/List;, "Ljava/util/List<Lorg/microg/wearable/proto/AssetEntry;>;"
     invoke-direct {p0}, Lcom/squareup/wire/Message;-><init>()V
 
     .line 61
@@ -235,9 +217,9 @@
     .line 63
     invoke-static {p3}, Lorg/microg/wearable/proto/SetDataItem;->immutableCopyOf(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object v0
+    move-result-object p1
 
-    iput-object v0, p0, Lorg/microg/wearable/proto/SetDataItem;->unknown3:Ljava/util/List;
+    iput-object p1, p0, Lorg/microg/wearable/proto/SetDataItem;->unknown3:Ljava/util/List;
 
     .line 64
     iput-object p4, p0, Lorg/microg/wearable/proto/SetDataItem;->data:Lokio/ByteString;
@@ -254,9 +236,9 @@
     .line 68
     invoke-static {p8}, Lorg/microg/wearable/proto/SetDataItem;->immutableCopyOf(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object v0
+    move-result-object p1
 
-    iput-object v0, p0, Lorg/microg/wearable/proto/SetDataItem;->assets:Ljava/util/List;
+    iput-object p1, p0, Lorg/microg/wearable/proto/SetDataItem;->assets:Ljava/util/List;
 
     .line 69
     iput-object p9, p0, Lorg/microg/wearable/proto/SetDataItem;->signatureDigest:Ljava/lang/String;
@@ -264,15 +246,12 @@
     .line 70
     iput-object p10, p0, Lorg/microg/wearable/proto/SetDataItem;->lastModified:Ljava/lang/Long;
 
-    .line 71
     return-void
 .end method
 
 .method private constructor <init>(Lorg/microg/wearable/proto/SetDataItem$Builder;)V
     .locals 11
-    .param p1, "builder"    # Lorg/microg/wearable/proto/SetDataItem$Builder;
 
-    .prologue
     .line 74
     iget-object v1, p1, Lorg/microg/wearable/proto/SetDataItem$Builder;->packageName:Ljava/lang/String;
 
@@ -301,16 +280,12 @@
     .line 75
     invoke-virtual {p0, p1}, Lorg/microg/wearable/proto/SetDataItem;->setBuilder(Lcom/squareup/wire/Message$Builder;)V
 
-    .line 76
     return-void
 .end method
 
 .method synthetic constructor <init>(Lorg/microg/wearable/proto/SetDataItem$Builder;Lorg/microg/wearable/proto/SetDataItem$1;)V
     .locals 0
-    .param p1, "x0"    # Lorg/microg/wearable/proto/SetDataItem$Builder;
-    .param p2, "x1"    # Lorg/microg/wearable/proto/SetDataItem$1;
 
-    .prologue
     .line 17
     invoke-direct {p0, p1}, Lorg/microg/wearable/proto/SetDataItem;-><init>(Lorg/microg/wearable/proto/SetDataItem$Builder;)V
 
@@ -318,216 +293,204 @@
 .end method
 
 .method static synthetic access$000(Ljava/util/List;)Ljava/util/List;
-    .locals 1
-    .param p0, "x0"    # Ljava/util/List;
+    .locals 0
 
-    .prologue
     .line 17
     invoke-static {p0}, Lorg/microg/wearable/proto/SetDataItem;->copyOf(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object v0
+    move-result-object p0
 
-    return-object v0
+    return-object p0
 .end method
 
 .method static synthetic access$100(Ljava/util/List;)Ljava/util/List;
-    .locals 1
-    .param p0, "x0"    # Ljava/util/List;
+    .locals 0
 
-    .prologue
     .line 17
     invoke-static {p0}, Lorg/microg/wearable/proto/SetDataItem;->copyOf(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object v0
+    move-result-object p0
 
-    return-object v0
+    return-object p0
 .end method
 
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 5
-    .param p1, "other"    # Ljava/lang/Object;
+    .locals 4
 
-    .prologue
-    const/4 v1, 0x1
+    const/4 v0, 0x1
+
+    if-ne p1, p0, :cond_0
+
+    return v0
+
+    .line 81
+    :cond_0
+    instance-of v1, p1, Lorg/microg/wearable/proto/SetDataItem;
 
     const/4 v2, 0x0
 
-    .line 80
-    if-ne p1, p0, :cond_1
+    if-nez v1, :cond_1
+
+    return v2
+
+    .line 82
+    :cond_1
+    check-cast p1, Lorg/microg/wearable/proto/SetDataItem;
+
+    .line 83
+    iget-object v1, p0, Lorg/microg/wearable/proto/SetDataItem;->packageName:Ljava/lang/String;
+
+    iget-object v3, p1, Lorg/microg/wearable/proto/SetDataItem;->packageName:Ljava/lang/String;
+
+    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/wearable/proto/SetDataItem;->uri:Ljava/lang/String;
+
+    iget-object v3, p1, Lorg/microg/wearable/proto/SetDataItem;->uri:Ljava/lang/String;
+
+    .line 84
+    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/wearable/proto/SetDataItem;->unknown3:Ljava/util/List;
+
+    iget-object v3, p1, Lorg/microg/wearable/proto/SetDataItem;->unknown3:Ljava/util/List;
+
+    .line 85
+    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/util/List;Ljava/util/List;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/wearable/proto/SetDataItem;->data:Lokio/ByteString;
+
+    iget-object v3, p1, Lorg/microg/wearable/proto/SetDataItem;->data:Lokio/ByteString;
+
+    .line 86
+    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/wearable/proto/SetDataItem;->seqId:Ljava/lang/Long;
+
+    iget-object v3, p1, Lorg/microg/wearable/proto/SetDataItem;->seqId:Ljava/lang/Long;
+
+    .line 87
+    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/wearable/proto/SetDataItem;->deleted:Ljava/lang/Boolean;
+
+    iget-object v3, p1, Lorg/microg/wearable/proto/SetDataItem;->deleted:Ljava/lang/Boolean;
+
+    .line 88
+    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/wearable/proto/SetDataItem;->source:Ljava/lang/String;
+
+    iget-object v3, p1, Lorg/microg/wearable/proto/SetDataItem;->source:Ljava/lang/String;
+
+    .line 89
+    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/wearable/proto/SetDataItem;->assets:Ljava/util/List;
+
+    iget-object v3, p1, Lorg/microg/wearable/proto/SetDataItem;->assets:Ljava/util/List;
+
+    .line 90
+    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/util/List;Ljava/util/List;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/wearable/proto/SetDataItem;->signatureDigest:Ljava/lang/String;
+
+    iget-object v3, p1, Lorg/microg/wearable/proto/SetDataItem;->signatureDigest:Ljava/lang/String;
+
+    .line 91
+    invoke-virtual {p0, v1, v3}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/wearable/proto/SetDataItem;->lastModified:Ljava/lang/Long;
+
+    iget-object p1, p1, Lorg/microg/wearable/proto/SetDataItem;->lastModified:Ljava/lang/Long;
 
     .line 92
-    :cond_0
-    :goto_0
-    return v1
+    invoke-virtual {p0, v1, p1}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
 
-    .line 81
-    :cond_1
-    instance-of v3, p1, Lorg/microg/wearable/proto/SetDataItem;
+    move-result p1
 
-    if-nez v3, :cond_2
-
-    move v1, v2
+    if-eqz p1, :cond_2
 
     goto :goto_0
 
     :cond_2
-    move-object v0, p1
+    move v0, v2
 
-    .line 82
-    check-cast v0, Lorg/microg/wearable/proto/SetDataItem;
-
-    .line 83
-    .local v0, "o":Lorg/microg/wearable/proto/SetDataItem;
-    iget-object v3, p0, Lorg/microg/wearable/proto/SetDataItem;->packageName:Ljava/lang/String;
-
-    iget-object v4, v0, Lorg/microg/wearable/proto/SetDataItem;->packageName:Ljava/lang/String;
-
-    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/wearable/proto/SetDataItem;->uri:Ljava/lang/String;
-
-    iget-object v4, v0, Lorg/microg/wearable/proto/SetDataItem;->uri:Ljava/lang/String;
-
-    .line 84
-    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/wearable/proto/SetDataItem;->unknown3:Ljava/util/List;
-
-    iget-object v4, v0, Lorg/microg/wearable/proto/SetDataItem;->unknown3:Ljava/util/List;
-
-    .line 85
-    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/util/List;Ljava/util/List;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/wearable/proto/SetDataItem;->data:Lokio/ByteString;
-
-    iget-object v4, v0, Lorg/microg/wearable/proto/SetDataItem;->data:Lokio/ByteString;
-
-    .line 86
-    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/wearable/proto/SetDataItem;->seqId:Ljava/lang/Long;
-
-    iget-object v4, v0, Lorg/microg/wearable/proto/SetDataItem;->seqId:Ljava/lang/Long;
-
-    .line 87
-    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/wearable/proto/SetDataItem;->deleted:Ljava/lang/Boolean;
-
-    iget-object v4, v0, Lorg/microg/wearable/proto/SetDataItem;->deleted:Ljava/lang/Boolean;
-
-    .line 88
-    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/wearable/proto/SetDataItem;->source:Ljava/lang/String;
-
-    iget-object v4, v0, Lorg/microg/wearable/proto/SetDataItem;->source:Ljava/lang/String;
-
-    .line 89
-    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/wearable/proto/SetDataItem;->assets:Ljava/util/List;
-
-    iget-object v4, v0, Lorg/microg/wearable/proto/SetDataItem;->assets:Ljava/util/List;
-
-    .line 90
-    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/util/List;Ljava/util/List;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/wearable/proto/SetDataItem;->signatureDigest:Ljava/lang/String;
-
-    iget-object v4, v0, Lorg/microg/wearable/proto/SetDataItem;->signatureDigest:Ljava/lang/String;
-
-    .line 91
-    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/wearable/proto/SetDataItem;->lastModified:Ljava/lang/Long;
-
-    iget-object v4, v0, Lorg/microg/wearable/proto/SetDataItem;->lastModified:Ljava/lang/Long;
-
-    .line 92
-    invoke-virtual {p0, v3, v4}, Lorg/microg/wearable/proto/SetDataItem;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-nez v3, :cond_0
-
-    :cond_3
-    move v1, v2
-
-    goto :goto_0
+    :goto_0
+    return v0
 .end method
 
 .method public hashCode()I
-    .locals 5
-
-    .prologue
-    const/4 v3, 0x1
-
-    const/4 v1, 0x0
+    .locals 4
 
     .line 97
     iget v0, p0, Lorg/microg/wearable/proto/SetDataItem;->hashCode:I
 
-    .line 98
-    .local v0, "result":I
-    if-nez v0, :cond_2
+    if-nez v0, :cond_a
 
     .line 99
-    iget-object v2, p0, Lorg/microg/wearable/proto/SetDataItem;->packageName:Ljava/lang/String;
+    iget-object v0, p0, Lorg/microg/wearable/proto/SetDataItem;->packageName:Ljava/lang/String;
 
-    if-eqz v2, :cond_3
+    const/4 v1, 0x0
 
-    iget-object v2, p0, Lorg/microg/wearable/proto/SetDataItem;->packageName:Ljava/lang/String;
+    if-eqz v0, :cond_0
 
-    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
+    iget-object v0, p0, Lorg/microg/wearable/proto/SetDataItem;->packageName:Ljava/lang/String;
+
+    invoke-virtual {v0}, Ljava/lang/String;->hashCode()I
 
     move-result v0
 
-    .line 100
-    :goto_0
-    mul-int/lit8 v4, v0, 0x25
+    goto :goto_0
 
+    :cond_0
+    move v0, v1
+
+    :goto_0
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 100
     iget-object v2, p0, Lorg/microg/wearable/proto/SetDataItem;->uri:Ljava/lang/String;
 
-    if-eqz v2, :cond_4
+    if-eqz v2, :cond_1
 
     iget-object v2, p0, Lorg/microg/wearable/proto/SetDataItem;->uri:Ljava/lang/String;
 
@@ -535,15 +498,22 @@
 
     move-result v2
 
+    goto :goto_1
+
+    :cond_1
+    move v2, v1
+
     :goto_1
-    add-int v0, v4, v2
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
 
     .line 101
-    mul-int/lit8 v4, v0, 0x25
-
     iget-object v2, p0, Lorg/microg/wearable/proto/SetDataItem;->unknown3:Ljava/util/List;
 
-    if-eqz v2, :cond_5
+    const/4 v3, 0x1
+
+    if-eqz v2, :cond_2
 
     iget-object v2, p0, Lorg/microg/wearable/proto/SetDataItem;->unknown3:Ljava/util/List;
 
@@ -551,15 +521,20 @@
 
     move-result v2
 
+    goto :goto_2
+
+    :cond_2
+    move v2, v3
+
     :goto_2
-    add-int v0, v4, v2
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
 
     .line 102
-    mul-int/lit8 v4, v0, 0x25
-
     iget-object v2, p0, Lorg/microg/wearable/proto/SetDataItem;->data:Lokio/ByteString;
 
-    if-eqz v2, :cond_6
+    if-eqz v2, :cond_3
 
     iget-object v2, p0, Lorg/microg/wearable/proto/SetDataItem;->data:Lokio/ByteString;
 
@@ -567,15 +542,20 @@
 
     move-result v2
 
+    goto :goto_3
+
+    :cond_3
+    move v2, v1
+
     :goto_3
-    add-int v0, v4, v2
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
 
     .line 103
-    mul-int/lit8 v4, v0, 0x25
-
     iget-object v2, p0, Lorg/microg/wearable/proto/SetDataItem;->seqId:Ljava/lang/Long;
 
-    if-eqz v2, :cond_7
+    if-eqz v2, :cond_4
 
     iget-object v2, p0, Lorg/microg/wearable/proto/SetDataItem;->seqId:Ljava/lang/Long;
 
@@ -583,15 +563,20 @@
 
     move-result v2
 
+    goto :goto_4
+
+    :cond_4
+    move v2, v1
+
     :goto_4
-    add-int v0, v4, v2
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
 
     .line 104
-    mul-int/lit8 v4, v0, 0x25
-
     iget-object v2, p0, Lorg/microg/wearable/proto/SetDataItem;->deleted:Ljava/lang/Boolean;
 
-    if-eqz v2, :cond_8
+    if-eqz v2, :cond_5
 
     iget-object v2, p0, Lorg/microg/wearable/proto/SetDataItem;->deleted:Ljava/lang/Boolean;
 
@@ -599,15 +584,20 @@
 
     move-result v2
 
+    goto :goto_5
+
+    :cond_5
+    move v2, v1
+
     :goto_5
-    add-int v0, v4, v2
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
 
     .line 105
-    mul-int/lit8 v4, v0, 0x25
-
     iget-object v2, p0, Lorg/microg/wearable/proto/SetDataItem;->source:Ljava/lang/String;
 
-    if-eqz v2, :cond_9
+    if-eqz v2, :cond_6
 
     iget-object v2, p0, Lorg/microg/wearable/proto/SetDataItem;->source:Ljava/lang/String;
 
@@ -615,31 +605,36 @@
 
     move-result v2
 
+    goto :goto_6
+
+    :cond_6
+    move v2, v1
+
     :goto_6
-    add-int v0, v4, v2
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
 
     .line 106
-    mul-int/lit8 v2, v0, 0x25
+    iget-object v2, p0, Lorg/microg/wearable/proto/SetDataItem;->assets:Ljava/util/List;
 
-    iget-object v4, p0, Lorg/microg/wearable/proto/SetDataItem;->assets:Ljava/util/List;
+    if-eqz v2, :cond_7
 
-    if-eqz v4, :cond_0
+    iget-object v2, p0, Lorg/microg/wearable/proto/SetDataItem;->assets:Ljava/util/List;
 
-    iget-object v3, p0, Lorg/microg/wearable/proto/SetDataItem;->assets:Ljava/util/List;
-
-    invoke-interface {v3}, Ljava/util/List;->hashCode()I
+    invoke-interface {v2}, Ljava/util/List;->hashCode()I
 
     move-result v3
 
-    :cond_0
-    add-int v0, v2, v3
+    :cond_7
+    add-int/2addr v0, v3
+
+    mul-int/lit8 v0, v0, 0x25
 
     .line 107
-    mul-int/lit8 v3, v0, 0x25
-
     iget-object v2, p0, Lorg/microg/wearable/proto/SetDataItem;->signatureDigest:Ljava/lang/String;
 
-    if-eqz v2, :cond_a
+    if-eqz v2, :cond_8
 
     iget-object v2, p0, Lorg/microg/wearable/proto/SetDataItem;->signatureDigest:Ljava/lang/String;
 
@@ -647,15 +642,20 @@
 
     move-result v2
 
+    goto :goto_7
+
+    :cond_8
+    move v2, v1
+
     :goto_7
-    add-int v0, v3, v2
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
 
     .line 108
-    mul-int/lit8 v2, v0, 0x25
+    iget-object v2, p0, Lorg/microg/wearable/proto/SetDataItem;->lastModified:Ljava/lang/Long;
 
-    iget-object v3, p0, Lorg/microg/wearable/proto/SetDataItem;->lastModified:Ljava/lang/Long;
-
-    if-eqz v3, :cond_1
+    if-eqz v2, :cond_9
 
     iget-object v1, p0, Lorg/microg/wearable/proto/SetDataItem;->lastModified:Ljava/lang/Long;
 
@@ -663,61 +663,12 @@
 
     move-result v1
 
-    :cond_1
-    add-int v0, v2, v1
+    :cond_9
+    add-int/2addr v0, v1
 
     .line 109
     iput v0, p0, Lorg/microg/wearable/proto/SetDataItem;->hashCode:I
 
-    .line 111
-    :cond_2
-    return v0
-
-    :cond_3
-    move v0, v1
-
-    .line 99
-    goto/16 :goto_0
-
-    :cond_4
-    move v2, v1
-
-    .line 100
-    goto :goto_1
-
-    :cond_5
-    move v2, v3
-
-    .line 101
-    goto :goto_2
-
-    :cond_6
-    move v2, v1
-
-    .line 102
-    goto :goto_3
-
-    :cond_7
-    move v2, v1
-
-    .line 103
-    goto :goto_4
-
-    :cond_8
-    move v2, v1
-
-    .line 104
-    goto :goto_5
-
-    :cond_9
-    move v2, v1
-
-    .line 105
-    goto :goto_6
-
     :cond_a
-    move v2, v1
-
-    .line 107
-    goto :goto_7
+    return v0
 .end method

@@ -6,8 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Ljava/util/AbstractList",
-        "<",
+        "Ljava/util/AbstractList<",
         "Lorg/oscim/layers/Layer;",
         ">;"
     }
@@ -17,11 +16,33 @@
 # instance fields
 .field private mDirtyLayers:Z
 
-.field private final mLayerList:Ljava/util/concurrent/CopyOnWriteArrayList;
+.field private final mEnableHandler:Lorg/oscim/layers/Layer$EnableHandler;
+
+.field private final mGroupIndex:Ljava/util/Map;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/concurrent/CopyOnWriteArrayList",
-            "<",
+            "Ljava/util/Map<",
+            "Ljava/lang/Integer;",
+            "Ljava/lang/Integer;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field private final mGroupList:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List<",
+            "Ljava/lang/Integer;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field private final mLayerList:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List<",
             "Lorg/oscim/layers/Layer;",
             ">;"
         }
@@ -38,200 +59,294 @@
 # direct methods
 .method constructor <init>(Lorg/oscim/map/Map;)V
     .locals 1
-    .param p1, "map"    # Lorg/oscim/map/Map;
 
-    .prologue
-    .line 39
+    .line 50
     invoke-direct {p0}, Ljava/util/AbstractList;-><init>()V
 
-    .line 40
-    iput-object p1, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
-
-    .line 41
+    .line 42
     new-instance v0, Ljava/util/concurrent/CopyOnWriteArrayList;
 
     invoke-direct {v0}, Ljava/util/concurrent/CopyOnWriteArrayList;-><init>()V
 
-    iput-object v0, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/concurrent/CopyOnWriteArrayList;
+    iput-object v0, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/List;
 
-    .line 42
+    .line 43
+    new-instance v0, Ljava/util/ArrayList;
+
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    iput-object v0, p0, Lorg/oscim/map/Layers;->mGroupList:Ljava/util/List;
+
+    .line 44
+    new-instance v0, Ljava/util/HashMap;
+
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+
+    iput-object v0, p0, Lorg/oscim/map/Layers;->mGroupIndex:Ljava/util/Map;
+
+    .line 51
+    iput-object p1, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
+
+    .line 52
+    new-instance p1, Lorg/oscim/map/Layers$1;
+
+    invoke-direct {p1, p0}, Lorg/oscim/map/Layers$1;-><init>(Lorg/oscim/map/Layers;)V
+
+    iput-object p1, p0, Lorg/oscim/map/Layers;->mEnableHandler:Lorg/oscim/layers/Layer$EnableHandler;
+
     return-void
 .end method
 
 .method private declared-synchronized updateLayers()V
-    .locals 9
+    .locals 8
 
-    .prologue
-    .line 133
     monitor-enter p0
 
+    .line 234
     :try_start_0
-    iget-object v7, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/concurrent/CopyOnWriteArrayList;
+    iget-object v0, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/List;
 
-    invoke-virtual {v7}, Ljava/util/concurrent/CopyOnWriteArrayList;->size()I
+    invoke-interface {v0}, Ljava/util/List;->size()I
 
-    move-result v7
+    move-result v0
 
-    new-array v7, v7, [Lorg/oscim/layers/Layer;
+    new-array v0, v0, [Lorg/oscim/layers/Layer;
 
-    iput-object v7, p0, Lorg/oscim/map/Layers;->mLayers:[Lorg/oscim/layers/Layer;
+    iput-object v0, p0, Lorg/oscim/map/Layers;->mLayers:[Lorg/oscim/layers/Layer;
 
-    .line 134
-    const/4 v5, 0x0
+    .line 237
+    iget-object v0, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/List;
 
-    .line 136
-    .local v5, "numRenderLayers":I
-    const/4 v2, 0x0
+    invoke-interface {v0}, Ljava/util/List;->size()I
 
-    .local v2, "i":I
-    iget-object v7, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/concurrent/CopyOnWriteArrayList;
+    move-result v0
 
-    invoke-virtual {v7}, Ljava/util/concurrent/CopyOnWriteArrayList;->size()I
+    const/4 v1, 0x0
 
-    move-result v4
+    move v2, v1
 
-    .local v4, "n":I
+    move v3, v2
+
     :goto_0
-    if-ge v2, v4, :cond_1
+    if-ge v2, v0, :cond_3
 
-    .line 137
-    iget-object v7, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/concurrent/CopyOnWriteArrayList;
+    .line 238
+    iget-object v4, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/List;
 
-    invoke-virtual {v7, v2}, Ljava/util/concurrent/CopyOnWriteArrayList;->get(I)Ljava/lang/Object;
+    invoke-interface {v4, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Lorg/oscim/layers/Layer;
+
+    .line 240
+    invoke-virtual {v4}, Lorg/oscim/layers/Layer;->isEnabled()Z
+
+    move-result v5
+
+    if-eqz v5, :cond_0
+
+    invoke-virtual {v4}, Lorg/oscim/layers/Layer;->getRenderer()Lorg/oscim/renderer/LayerRenderer;
+
+    move-result-object v5
+
+    if-eqz v5, :cond_0
+
+    add-int/lit8 v3, v3, 0x1
+
+    .line 243
+    :cond_0
+    instance-of v5, v4, Lorg/oscim/layers/GroupLayer;
+
+    if-eqz v5, :cond_2
+
+    .line 244
+    move-object v5, v4
+
+    check-cast v5, Lorg/oscim/layers/GroupLayer;
+
+    .line 245
+    iget-object v5, v5, Lorg/oscim/layers/GroupLayer;->layers:Ljava/util/List;
+
+    invoke-interface {v5}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    move-result-object v5
+
+    :cond_1
+    :goto_1
+    invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v6
+
+    if-eqz v6, :cond_2
+
+    invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v6
 
     check-cast v6, Lorg/oscim/layers/Layer;
 
-    .line 139
-    .local v6, "o":Lorg/oscim/layers/Layer;
+    .line 246
+    invoke-virtual {v6}, Lorg/oscim/layers/Layer;->isEnabled()Z
+
+    move-result v7
+
+    if-eqz v7, :cond_1
+
     invoke-virtual {v6}, Lorg/oscim/layers/Layer;->getRenderer()Lorg/oscim/renderer/LayerRenderer;
 
-    move-result-object v7
+    move-result-object v6
 
-    if-eqz v7, :cond_0
+    if-eqz v6, :cond_1
 
-    .line 140
-    add-int/lit8 v5, v5, 0x1
+    add-int/lit8 v3, v3, 0x1
 
-    .line 142
-    :cond_0
-    iget-object v7, p0, Lorg/oscim/map/Layers;->mLayers:[Lorg/oscim/layers/Layer;
+    goto :goto_1
 
-    sub-int v8, v4, v2
+    .line 251
+    :cond_2
+    iget-object v5, p0, Lorg/oscim/map/Layers;->mLayers:[Lorg/oscim/layers/Layer;
 
-    add-int/lit8 v8, v8, -0x1
+    sub-int v6, v0, v2
 
-    aput-object v6, v7, v8
+    add-int/lit8 v6, v6, -0x1
 
-    .line 136
+    aput-object v4, v5, v6
+
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 145
-    .end local v6    # "o":Lorg/oscim/layers/Layer;
-    :cond_1
-    new-array v7, v5, [Lorg/oscim/renderer/LayerRenderer;
+    .line 254
+    :cond_3
+    new-array v0, v3, [Lorg/oscim/renderer/LayerRenderer;
 
-    iput-object v7, p0, Lorg/oscim/map/Layers;->mLayerRenderer:[Lorg/oscim/renderer/LayerRenderer;
+    iput-object v0, p0, Lorg/oscim/map/Layers;->mLayerRenderer:[Lorg/oscim/renderer/LayerRenderer;
 
-    .line 147
-    const/4 v2, 0x0
+    .line 256
+    iget-object v0, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/List;
 
-    const/4 v0, 0x0
+    invoke-interface {v0}, Ljava/util/List;->size()I
 
-    .local v0, "cnt":I
-    iget-object v7, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/concurrent/CopyOnWriteArrayList;
+    move-result v0
 
-    invoke-virtual {v7}, Ljava/util/concurrent/CopyOnWriteArrayList;->size()I
+    move v2, v1
 
-    move-result v4
+    move v3, v2
 
-    move v1, v0
+    :goto_2
+    if-ge v2, v0, :cond_7
 
-    .end local v0    # "cnt":I
-    .local v1, "cnt":I
-    :goto_1
-    if-ge v2, v4, :cond_2
+    .line 257
+    iget-object v4, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/List;
 
-    .line 148
-    iget-object v7, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/concurrent/CopyOnWriteArrayList;
+    invoke-interface {v4, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    invoke-virtual {v7, v2}, Ljava/util/concurrent/CopyOnWriteArrayList;->get(I)Ljava/lang/Object;
+    move-result-object v4
+
+    check-cast v4, Lorg/oscim/layers/Layer;
+
+    .line 258
+    invoke-virtual {v4}, Lorg/oscim/layers/Layer;->getRenderer()Lorg/oscim/renderer/LayerRenderer;
+
+    move-result-object v5
+
+    .line 259
+    invoke-virtual {v4}, Lorg/oscim/layers/Layer;->isEnabled()Z
+
+    move-result v6
+
+    if-eqz v6, :cond_4
+
+    if-eqz v5, :cond_4
+
+    .line 260
+    iget-object v6, p0, Lorg/oscim/map/Layers;->mLayerRenderer:[Lorg/oscim/renderer/LayerRenderer;
+
+    add-int/lit8 v7, v3, 0x1
+
+    aput-object v5, v6, v3
+
+    move v3, v7
+
+    .line 262
+    :cond_4
+    instance-of v5, v4, Lorg/oscim/layers/GroupLayer;
+
+    if-eqz v5, :cond_6
+
+    .line 263
+    check-cast v4, Lorg/oscim/layers/GroupLayer;
+
+    .line 264
+    iget-object v4, v4, Lorg/oscim/layers/GroupLayer;->layers:Ljava/util/List;
+
+    invoke-interface {v4}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    move-result-object v4
+
+    :cond_5
+    :goto_3
+    invoke-interface {v4}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v5
+
+    if-eqz v5, :cond_6
+
+    invoke-interface {v4}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v5
+
+    check-cast v5, Lorg/oscim/layers/Layer;
+
+    .line 265
+    invoke-virtual {v5}, Lorg/oscim/layers/Layer;->getRenderer()Lorg/oscim/renderer/LayerRenderer;
 
     move-result-object v6
 
-    check-cast v6, Lorg/oscim/layers/Layer;
+    .line 266
+    invoke-virtual {v5}, Lorg/oscim/layers/Layer;->isEnabled()Z
 
-    .line 149
-    .restart local v6    # "o":Lorg/oscim/layers/Layer;
-    invoke-virtual {v6}, Lorg/oscim/layers/Layer;->getRenderer()Lorg/oscim/renderer/LayerRenderer;
+    move-result v5
 
-    move-result-object v3
+    if-eqz v5, :cond_5
 
-    .line 150
-    .local v3, "l":Lorg/oscim/renderer/LayerRenderer;
-    if-eqz v3, :cond_3
+    if-eqz v6, :cond_5
 
-    .line 151
-    iget-object v7, p0, Lorg/oscim/map/Layers;->mLayerRenderer:[Lorg/oscim/renderer/LayerRenderer;
+    .line 267
+    iget-object v5, p0, Lorg/oscim/map/Layers;->mLayerRenderer:[Lorg/oscim/renderer/LayerRenderer;
 
-    add-int/lit8 v0, v1, 0x1
+    add-int/lit8 v7, v3, 0x1
 
-    .end local v1    # "cnt":I
-    .restart local v0    # "cnt":I
-    aput-object v3, v7, v1
+    aput-object v6, v5, v3
 
-    .line 147
-    :goto_2
+    move v3, v7
+
+    goto :goto_3
+
+    :cond_6
     add-int/lit8 v2, v2, 0x1
 
-    move v1, v0
+    goto :goto_2
 
-    .end local v0    # "cnt":I
-    .restart local v1    # "cnt":I
-    goto :goto_1
-
-    .line 154
-    .end local v3    # "l":Lorg/oscim/renderer/LayerRenderer;
-    .end local v6    # "o":Lorg/oscim/layers/Layer;
-    :cond_2
-    const/4 v7, 0x0
-
-    iput-boolean v7, p0, Lorg/oscim/map/Layers;->mDirtyLayers:Z
+    .line 272
+    :cond_7
+    iput-boolean v1, p0, Lorg/oscim/map/Layers;->mDirtyLayers:Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 155
+    .line 273
     monitor-exit p0
 
     return-void
 
-    .line 133
-    .end local v1    # "cnt":I
-    .end local v2    # "i":I
-    .end local v4    # "n":I
-    .end local v5    # "numRenderLayers":I
     :catchall_0
-    move-exception v7
+    move-exception v0
 
+    .line 233
     monitor-exit p0
 
-    throw v7
-
-    .restart local v1    # "cnt":I
-    .restart local v2    # "i":I
-    .restart local v3    # "l":Lorg/oscim/renderer/LayerRenderer;
-    .restart local v4    # "n":I
-    .restart local v5    # "numRenderLayers":I
-    .restart local v6    # "o":Lorg/oscim/layers/Layer;
-    :cond_3
-    move v0, v1
-
-    .end local v1    # "cnt":I
-    .restart local v0    # "cnt":I
-    goto :goto_2
+    throw v0
 .end method
 
 
@@ -239,8 +354,7 @@
 .method public bridge synthetic add(ILjava/lang/Object;)V
     .locals 0
 
-    .prologue
-    .line 30
+    .line 37
     check-cast p2, Lorg/oscim/layers/Layer;
 
     invoke-virtual {p0, p1, p2}, Lorg/oscim/map/Layers;->add(ILorg/oscim/layers/Layer;)V
@@ -249,196 +363,247 @@
 .end method
 
 .method public declared-synchronized add(ILorg/oscim/layers/Layer;)V
-    .locals 3
-    .param p1, "index"    # I
-    .param p2, "layer"    # Lorg/oscim/layers/Layer;
+    .locals 4
 
-    .prologue
-    .line 56
     monitor-enter p0
 
+    .line 73
     :try_start_0
-    iget-object v1, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/concurrent/CopyOnWriteArrayList;
+    iget-object v0, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/List;
 
-    invoke-virtual {v1, p2}, Ljava/util/concurrent/CopyOnWriteArrayList;->contains(Ljava/lang/Object;)Z
+    invoke-interface {v0, p2}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 74
+    new-instance p1, Ljava/lang/IllegalArgumentException;
+
+    const-string p2, "layer added twice"
+
+    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw p1
+
+    .line 77
+    :cond_0
+    instance-of v0, p2, Lorg/oscim/map/Map$UpdateListener;
+
+    if-eqz v0, :cond_1
+
+    .line 78
+    iget-object v0, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
+
+    iget-object v0, v0, Lorg/oscim/map/Map;->events:Lorg/oscim/event/EventDispatcher;
+
+    move-object v1, p2
+
+    check-cast v1, Lorg/oscim/map/Map$UpdateListener;
+
+    invoke-virtual {v0, v1}, Lorg/oscim/event/EventDispatcher;->bind(Lorg/oscim/event/EventListener;)V
+
+    .line 79
+    :cond_1
+    instance-of v0, p2, Lorg/oscim/map/Map$InputListener;
+
+    if-eqz v0, :cond_2
+
+    .line 80
+    iget-object v0, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
+
+    iget-object v0, v0, Lorg/oscim/map/Map;->input:Lorg/oscim/event/EventDispatcher;
+
+    move-object v1, p2
+
+    check-cast v1, Lorg/oscim/map/Map$InputListener;
+
+    invoke-virtual {v0, v1}, Lorg/oscim/event/EventDispatcher;->bind(Lorg/oscim/event/EventListener;)V
+
+    .line 83
+    :cond_2
+    instance-of v0, p2, Lorg/oscim/layers/GroupLayer;
+
+    if-eqz v0, :cond_5
+
+    .line 84
+    move-object v0, p2
+
+    check-cast v0, Lorg/oscim/layers/GroupLayer;
+
+    .line 85
+    iget-object v0, v0, Lorg/oscim/layers/GroupLayer;->layers:Ljava/util/List;
+
+    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    move-result-object v0
+
+    :cond_3
+    :goto_0
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v1
 
-    if-eqz v1, :cond_0
+    if-eqz v1, :cond_5
 
-    .line 57
-    new-instance v1, Ljava/lang/IllegalArgumentException;
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    const-string v2, "layer added twice"
+    move-result-object v1
 
-    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    check-cast v1, Lorg/oscim/layers/Layer;
 
-    throw v1
+    .line 86
+    instance-of v2, v1, Lorg/oscim/map/Map$UpdateListener;
+
+    if-eqz v2, :cond_4
+
+    .line 87
+    iget-object v2, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
+
+    iget-object v2, v2, Lorg/oscim/map/Map;->events:Lorg/oscim/event/EventDispatcher;
+
+    move-object v3, v1
+
+    check-cast v3, Lorg/oscim/map/Map$UpdateListener;
+
+    invoke-virtual {v2, v3}, Lorg/oscim/event/EventDispatcher;->bind(Lorg/oscim/event/EventListener;)V
+
+    .line 88
+    :cond_4
+    instance-of v2, v1, Lorg/oscim/map/Map$InputListener;
+
+    if-eqz v2, :cond_3
+
+    .line 89
+    iget-object v2, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
+
+    iget-object v2, v2, Lorg/oscim/map/Map;->input:Lorg/oscim/event/EventDispatcher;
+
+    check-cast v1, Lorg/oscim/map/Map$InputListener;
+
+    invoke-virtual {v2, v1}, Lorg/oscim/event/EventDispatcher;->bind(Lorg/oscim/event/EventListener;)V
+
+    goto :goto_0
+
+    .line 93
+    :cond_5
+    iget-object v0, p0, Lorg/oscim/map/Layers;->mEnableHandler:Lorg/oscim/layers/Layer$EnableHandler;
+
+    invoke-virtual {p2, v0}, Lorg/oscim/layers/Layer;->setEnableHandler(Lorg/oscim/layers/Layer$EnableHandler;)V
+
+    .line 94
+    iget-object v0, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/List;
+
+    invoke-interface {v0, p1, p2}, Ljava/util/List;->add(ILjava/lang/Object;)V
+
+    const/4 p1, 0x1
+
+    .line 95
+    iput-boolean p1, p0, Lorg/oscim/map/Layers;->mDirtyLayers:Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 56
-    :catchall_0
-    move-exception v1
-
-    monitor-exit p0
-
-    throw v1
-
-    .line 59
-    :cond_0
-    :try_start_1
-    instance-of v1, p2, Lorg/oscim/map/Map$UpdateListener;
-
-    if-eqz v1, :cond_1
-
-    .line 60
-    iget-object v1, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
-
-    iget-object v2, v1, Lorg/oscim/map/Map;->events:Lorg/oscim/event/EventDispatcher;
-
-    move-object v0, p2
-
-    check-cast v0, Lorg/oscim/map/Map$UpdateListener;
-
-    move-object v1, v0
-
-    invoke-virtual {v2, v1}, Lorg/oscim/event/EventDispatcher;->bind(Lorg/oscim/event/EventListener;)V
-
-    .line 62
-    :cond_1
-    instance-of v1, p2, Lorg/oscim/map/Map$InputListener;
-
-    if-eqz v1, :cond_2
-
-    .line 63
-    iget-object v1, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
-
-    iget-object v2, v1, Lorg/oscim/map/Map;->input:Lorg/oscim/event/EventDispatcher;
-
-    move-object v0, p2
-
-    check-cast v0, Lorg/oscim/map/Map$InputListener;
-
-    move-object v1, v0
-
-    invoke-virtual {v2, v1}, Lorg/oscim/event/EventDispatcher;->bind(Lorg/oscim/event/EventListener;)V
-
-    .line 65
-    :cond_2
-    iget-object v1, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/concurrent/CopyOnWriteArrayList;
-
-    invoke-virtual {v1, p1, p2}, Ljava/util/concurrent/CopyOnWriteArrayList;->add(ILjava/lang/Object;)V
-
-    .line 66
-    const/4 v1, 0x1
-
-    iput-boolean v1, p0, Lorg/oscim/map/Layers;->mDirtyLayers:Z
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    .line 67
+    .line 96
     monitor-exit p0
 
     return-void
+
+    :catchall_0
+    move-exception p1
+
+    .line 72
+    monitor-exit p0
+
+    throw p1
 .end method
 
 .method destroy()V
     .locals 4
 
-    .prologue
-    .line 113
-    iget-boolean v1, p0, Lorg/oscim/map/Layers;->mDirtyLayers:Z
+    .line 204
+    iget-boolean v0, p0, Lorg/oscim/map/Layers;->mDirtyLayers:Z
 
-    if-eqz v1, :cond_0
+    if-eqz v0, :cond_0
 
-    .line 114
+    .line 205
     invoke-direct {p0}, Lorg/oscim/map/Layers;->updateLayers()V
 
-    .line 116
+    .line 207
     :cond_0
-    iget-object v2, p0, Lorg/oscim/map/Layers;->mLayers:[Lorg/oscim/layers/Layer;
+    iget-object v0, p0, Lorg/oscim/map/Layers;->mLayers:[Lorg/oscim/layers/Layer;
 
-    array-length v3, v2
+    array-length v1, v0
 
-    const/4 v1, 0x0
+    const/4 v2, 0x0
 
     :goto_0
-    if-ge v1, v3, :cond_1
+    if-ge v2, v1, :cond_1
 
-    aget-object v0, v2, v1
+    aget-object v3, v0, v2
 
-    .line 117
-    .local v0, "o":Lorg/oscim/layers/Layer;
-    invoke-virtual {v0}, Lorg/oscim/layers/Layer;->onDetach()V
+    .line 208
+    invoke-virtual {v3}, Lorg/oscim/layers/Layer;->onDetach()V
 
-    .line 116
-    add-int/lit8 v1, v1, 0x1
+    add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 118
-    .end local v0    # "o":Lorg/oscim/layers/Layer;
     :cond_1
     return-void
 .end method
 
 .method public bridge synthetic get(I)Ljava/lang/Object;
-    .locals 1
+    .locals 0
 
-    .prologue
-    .line 30
+    .line 37
     invoke-virtual {p0, p1}, Lorg/oscim/map/Layers;->get(I)Lorg/oscim/layers/Layer;
 
-    move-result-object v0
+    move-result-object p1
 
-    return-object v0
+    return-object p1
 .end method
 
 .method public declared-synchronized get(I)Lorg/oscim/layers/Layer;
     .locals 1
-    .param p1, "index"    # I
 
-    .prologue
-    .line 46
     monitor-enter p0
 
+    .line 63
     :try_start_0
-    iget-object v0, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/concurrent/CopyOnWriteArrayList;
+    iget-object v0, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/List;
 
-    invoke-virtual {v0, p1}, Ljava/util/concurrent/CopyOnWriteArrayList;->get(I)Ljava/lang/Object;
+    invoke-interface {v0, p1}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    move-result-object v0
+    move-result-object p1
 
-    check-cast v0, Lorg/oscim/layers/Layer;
+    check-cast p1, Lorg/oscim/layers/Layer;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     monitor-exit p0
 
-    return-object v0
+    return-object p1
 
     :catchall_0
-    move-exception v0
+    move-exception p1
 
     monitor-exit p0
 
-    throw v0
+    throw p1
 .end method
 
 .method public getLayerRenderer()[Lorg/oscim/renderer/LayerRenderer;
     .locals 1
 
-    .prologue
-    .line 106
+    .line 197
     iget-boolean v0, p0, Lorg/oscim/map/Layers;->mDirtyLayers:Z
 
     if-eqz v0, :cond_0
 
-    .line 107
+    .line 198
     invoke-direct {p0}, Lorg/oscim/map/Layers;->updateLayers()V
 
-    .line 109
+    .line 200
     :cond_0
     iget-object v0, p0, Lorg/oscim/map/Layers;->mLayerRenderer:[Lorg/oscim/renderer/LayerRenderer;
 
@@ -446,283 +611,496 @@
 .end method
 
 .method handleGesture(Lorg/oscim/event/Gesture;Lorg/oscim/event/MotionEvent;)Z
-    .locals 6
-    .param p1, "g"    # Lorg/oscim/event/Gesture;
-    .param p2, "e"    # Lorg/oscim/event/MotionEvent;
+    .locals 8
 
-    .prologue
-    const/4 v1, 0x0
+    .line 212
+    iget-boolean v0, p0, Lorg/oscim/map/Layers;->mDirtyLayers:Z
 
-    .line 121
-    iget-boolean v2, p0, Lorg/oscim/map/Layers;->mDirtyLayers:Z
+    if-eqz v0, :cond_0
 
-    if-eqz v2, :cond_0
-
-    .line 122
+    .line 213
     invoke-direct {p0}, Lorg/oscim/map/Layers;->updateLayers()V
 
-    .line 124
+    .line 215
     :cond_0
-    iget-object v3, p0, Lorg/oscim/map/Layers;->mLayers:[Lorg/oscim/layers/Layer;
+    iget-object v0, p0, Lorg/oscim/map/Layers;->mLayers:[Lorg/oscim/layers/Layer;
 
-    array-length v4, v3
+    const/4 v1, 0x0
 
-    move v2, v1
+    array-length v2, v0
+
+    move v3, v1
 
     :goto_0
-    if-ge v2, v4, :cond_1
+    if-ge v3, v2, :cond_4
 
-    aget-object v0, v3, v2
+    aget-object v4, v0, v3
 
-    .line 125
-    .local v0, "o":Lorg/oscim/layers/Layer;
-    instance-of v5, v0, Lorg/oscim/event/GestureListener;
+    .line 216
+    instance-of v5, v4, Lorg/oscim/event/GestureListener;
 
-    if-eqz v5, :cond_2
+    const/4 v6, 0x1
 
-    .line 126
-    check-cast v0, Lorg/oscim/event/GestureListener;
+    if-eqz v5, :cond_1
 
-    .end local v0    # "o":Lorg/oscim/layers/Layer;
-    invoke-interface {v0, p1, p2}, Lorg/oscim/event/GestureListener;->onGesture(Lorg/oscim/event/Gesture;Lorg/oscim/event/MotionEvent;)Z
+    .line 217
+    move-object v5, v4
+
+    check-cast v5, Lorg/oscim/event/GestureListener;
+
+    invoke-interface {v5, p1, p2}, Lorg/oscim/event/GestureListener;->onGesture(Lorg/oscim/event/Gesture;Lorg/oscim/event/MotionEvent;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_1
+
+    return v6
+
+    .line 220
+    :cond_1
+    instance-of v5, v4, Lorg/oscim/layers/GroupLayer;
+
+    if-eqz v5, :cond_3
+
+    .line 221
+    check-cast v4, Lorg/oscim/layers/GroupLayer;
+
+    .line 222
+    iget-object v4, v4, Lorg/oscim/layers/GroupLayer;->layers:Ljava/util/List;
+
+    invoke-interface {v4}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    move-result-object v4
+
+    :cond_2
+    invoke-interface {v4}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v5
+
+    if-eqz v5, :cond_3
+
+    invoke-interface {v4}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v5
+
+    check-cast v5, Lorg/oscim/layers/Layer;
+
+    .line 223
+    instance-of v7, v5, Lorg/oscim/event/GestureListener;
+
+    if-eqz v7, :cond_2
+
+    .line 224
+    check-cast v5, Lorg/oscim/event/GestureListener;
+
+    invoke-interface {v5, p1, p2}, Lorg/oscim/event/GestureListener;->onGesture(Lorg/oscim/event/Gesture;Lorg/oscim/event/MotionEvent;)Z
 
     move-result v5
 
     if-eqz v5, :cond_2
 
-    .line 127
-    const/4 v1, 0x1
+    return v6
 
-    .line 129
-    :cond_1
-    return v1
-
-    .line 124
-    :cond_2
-    add-int/lit8 v2, v2, 0x1
+    :cond_3
+    add-int/lit8 v3, v3, 0x1
 
     goto :goto_0
+
+    :cond_4
+    return v1
 .end method
 
 .method public bridge synthetic remove(I)Ljava/lang/Object;
-    .locals 1
+    .locals 0
 
-    .prologue
-    .line 30
+    .line 37
     invoke-virtual {p0, p1}, Lorg/oscim/map/Layers;->remove(I)Lorg/oscim/layers/Layer;
 
-    move-result-object v0
+    move-result-object p1
 
-    return-object v0
+    return-object p1
 .end method
 
 .method public declared-synchronized remove(I)Lorg/oscim/layers/Layer;
-    .locals 4
-    .param p1, "index"    # I
+    .locals 5
 
-    .prologue
-    .line 71
     monitor-enter p0
 
-    const/4 v2, 0x1
+    const/4 v0, 0x1
 
+    .line 122
     :try_start_0
-    iput-boolean v2, p0, Lorg/oscim/map/Layers;->mDirtyLayers:Z
+    iput-boolean v0, p0, Lorg/oscim/map/Layers;->mDirtyLayers:Z
 
-    .line 73
-    iget-object v2, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/concurrent/CopyOnWriteArrayList;
+    .line 124
+    iget-object v0, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/List;
 
-    invoke-virtual {v2, p1}, Ljava/util/concurrent/CopyOnWriteArrayList;->remove(I)Ljava/lang/Object;
+    invoke-interface {v0, p1}, Ljava/util/List;->remove(I)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lorg/oscim/layers/Layer;
+
+    .line 127
+    instance-of v1, v0, Lorg/oscim/map/Map$UpdateListener;
+
+    if-eqz v1, :cond_0
+
+    .line 128
+    iget-object v1, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
+
+    iget-object v1, v1, Lorg/oscim/map/Map;->events:Lorg/oscim/event/EventDispatcher;
+
+    move-object v2, v0
+
+    check-cast v2, Lorg/oscim/map/Map$UpdateListener;
+
+    invoke-virtual {v1, v2}, Lorg/oscim/event/EventDispatcher;->unbind(Lorg/oscim/event/EventListener;)V
+
+    .line 129
+    :cond_0
+    instance-of v1, v0, Lorg/oscim/map/Map$InputListener;
+
+    if-eqz v1, :cond_1
+
+    .line 130
+    iget-object v1, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
+
+    iget-object v1, v1, Lorg/oscim/map/Map;->input:Lorg/oscim/event/EventDispatcher;
+
+    move-object v2, v0
+
+    check-cast v2, Lorg/oscim/map/Map$InputListener;
+
+    invoke-virtual {v1, v2}, Lorg/oscim/event/EventDispatcher;->unbind(Lorg/oscim/event/EventListener;)V
+
+    .line 133
+    :cond_1
+    instance-of v1, v0, Lorg/oscim/layers/GroupLayer;
+
+    if-eqz v1, :cond_4
+
+    .line 134
+    move-object v1, v0
+
+    check-cast v1, Lorg/oscim/layers/GroupLayer;
+
+    .line 135
+    iget-object v1, v1, Lorg/oscim/layers/GroupLayer;->layers:Ljava/util/List;
+
+    invoke-interface {v1}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     move-result-object v1
 
-    check-cast v1, Lorg/oscim/layers/Layer;
+    :cond_2
+    :goto_0
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
-    .line 75
-    .local v1, "remove":Lorg/oscim/layers/Layer;
-    instance-of v2, v1, Lorg/oscim/map/Map$UpdateListener;
+    move-result v2
 
-    if-eqz v2, :cond_0
+    if-eqz v2, :cond_4
 
-    .line 76
-    iget-object v2, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    iget-object v3, v2, Lorg/oscim/map/Map;->events:Lorg/oscim/event/EventDispatcher;
+    move-result-object v2
 
-    move-object v0, v1
+    check-cast v2, Lorg/oscim/layers/Layer;
 
-    check-cast v0, Lorg/oscim/map/Map$UpdateListener;
+    .line 136
+    instance-of v3, v2, Lorg/oscim/map/Map$UpdateListener;
 
-    move-object v2, v0
+    if-eqz v3, :cond_3
+
+    .line 137
+    iget-object v3, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
+
+    iget-object v3, v3, Lorg/oscim/map/Map;->events:Lorg/oscim/event/EventDispatcher;
+
+    move-object v4, v2
+
+    check-cast v4, Lorg/oscim/map/Map$UpdateListener;
+
+    invoke-virtual {v3, v4}, Lorg/oscim/event/EventDispatcher;->unbind(Lorg/oscim/event/EventListener;)V
+
+    .line 138
+    :cond_3
+    instance-of v3, v2, Lorg/oscim/map/Map$InputListener;
+
+    if-eqz v3, :cond_2
+
+    .line 139
+    iget-object v3, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
+
+    iget-object v3, v3, Lorg/oscim/map/Map;->input:Lorg/oscim/event/EventDispatcher;
+
+    check-cast v2, Lorg/oscim/map/Map$InputListener;
 
     invoke-virtual {v3, v2}, Lorg/oscim/event/EventDispatcher;->unbind(Lorg/oscim/event/EventListener;)V
 
-    .line 77
-    :cond_0
-    instance-of v2, v1, Lorg/oscim/map/Map$InputListener;
+    goto :goto_0
 
-    if-eqz v2, :cond_1
+    .line 144
+    :cond_4
+    iget-object v1, p0, Lorg/oscim/map/Layers;->mGroupIndex:Ljava/util/Map;
 
-    .line 78
-    iget-object v2, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
+    invoke-interface {v1}, Ljava/util/Map;->keySet()Ljava/util/Set;
 
-    iget-object v3, v2, Lorg/oscim/map/Map;->input:Lorg/oscim/event/EventDispatcher;
+    move-result-object v1
 
-    move-object v0, v1
+    invoke-interface {v1}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
 
-    check-cast v0, Lorg/oscim/map/Map$InputListener;
+    move-result-object v1
 
-    move-object v2, v0
+    :cond_5
+    :goto_1
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
-    invoke-virtual {v3, v2}, Lorg/oscim/event/EventDispatcher;->unbind(Lorg/oscim/event/EventListener;)V
+    move-result v2
+
+    if-eqz v2, :cond_6
+
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Ljava/lang/Integer;
+
+    .line 145
+    iget-object v3, p0, Lorg/oscim/map/Layers;->mGroupIndex:Ljava/util/Map;
+
+    invoke-interface {v3, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Ljava/lang/Integer;
+
+    invoke-virtual {v3}, Ljava/lang/Integer;->intValue()I
+
+    move-result v3
+
+    if-le v3, p1, :cond_5
+
+    .line 147
+    iget-object v4, p0, Lorg/oscim/map/Layers;->mGroupIndex:Ljava/util/Map;
+
+    add-int/lit8 v3, v3, -0x1
+
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v3
+
+    invoke-interface {v4, v2, v3}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    goto :goto_1
+
+    :cond_6
+    const/4 p1, 0x0
+
+    .line 150
+    invoke-virtual {v0, p1}, Lorg/oscim/layers/Layer;->setEnableHandler(Lorg/oscim/layers/Layer$EnableHandler;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 80
-    :cond_1
+    .line 151
     monitor-exit p0
 
-    return-object v1
+    return-object v0
 
-    .line 71
-    .end local v1    # "remove":Lorg/oscim/layers/Layer;
     :catchall_0
-    move-exception v2
+    move-exception p1
 
+    .line 121
     monitor-exit p0
 
-    throw v2
+    throw p1
 .end method
 
 .method public bridge synthetic set(ILjava/lang/Object;)Ljava/lang/Object;
-    .locals 1
+    .locals 0
 
-    .prologue
-    .line 30
+    .line 37
     check-cast p2, Lorg/oscim/layers/Layer;
 
     invoke-virtual {p0, p1, p2}, Lorg/oscim/map/Layers;->set(ILorg/oscim/layers/Layer;)Lorg/oscim/layers/Layer;
 
-    move-result-object v0
+    move-result-object p1
 
-    return-object v0
+    return-object p1
 .end method
 
 .method public declared-synchronized set(ILorg/oscim/layers/Layer;)Lorg/oscim/layers/Layer;
-    .locals 4
-    .param p1, "index"    # I
-    .param p2, "layer"    # Lorg/oscim/layers/Layer;
+    .locals 3
 
-    .prologue
-    .line 85
     monitor-enter p0
 
+    .line 156
     :try_start_0
-    iget-object v2, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/concurrent/CopyOnWriteArrayList;
+    iget-object v0, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/List;
 
-    invoke-virtual {v2, p2}, Ljava/util/concurrent/CopyOnWriteArrayList;->contains(Ljava/lang/Object;)Z
+    invoke-interface {v0, p2}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
 
-    move-result v2
+    move-result v0
 
-    if-eqz v2, :cond_0
+    if-eqz v0, :cond_0
 
-    .line 86
-    new-instance v2, Ljava/lang/IllegalArgumentException;
+    .line 157
+    new-instance p1, Ljava/lang/IllegalArgumentException;
 
-    const-string v3, "layer added twice"
+    const-string p2, "layer added twice"
 
-    invoke-direct {v2, v3}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw v2
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    throw p1
 
-    .line 85
-    :catchall_0
-    move-exception v2
-
-    monitor-exit p0
-
-    throw v2
-
-    .line 88
     :cond_0
-    const/4 v2, 0x1
+    const/4 v0, 0x1
 
-    :try_start_1
-    iput-boolean v2, p0, Lorg/oscim/map/Layers;->mDirtyLayers:Z
+    .line 159
+    iput-boolean v0, p0, Lorg/oscim/map/Layers;->mDirtyLayers:Z
 
-    .line 89
-    iget-object v2, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/concurrent/CopyOnWriteArrayList;
+    .line 160
+    iget-object v0, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/List;
 
-    invoke-virtual {v2, p1, p2}, Ljava/util/concurrent/CopyOnWriteArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {v0, p1, p2}, Ljava/util/List;->set(ILjava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object v1
+    move-result-object p1
 
-    check-cast v1, Lorg/oscim/layers/Layer;
+    check-cast p1, Lorg/oscim/layers/Layer;
 
-    .line 92
-    .local v1, "remove":Lorg/oscim/layers/Layer;
-    instance-of v2, v1, Lorg/oscim/map/Map$UpdateListener;
+    .line 163
+    instance-of p2, p1, Lorg/oscim/map/Map$UpdateListener;
 
-    if-eqz v2, :cond_1
+    if-eqz p2, :cond_1
 
-    .line 93
-    iget-object v2, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
+    .line 164
+    iget-object p2, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
 
-    iget-object v3, v2, Lorg/oscim/map/Map;->events:Lorg/oscim/event/EventDispatcher;
+    iget-object p2, p2, Lorg/oscim/map/Map;->events:Lorg/oscim/event/EventDispatcher;
 
-    move-object v0, v1
+    move-object v0, p1
 
     check-cast v0, Lorg/oscim/map/Map$UpdateListener;
 
-    move-object v2, v0
+    invoke-virtual {p2, v0}, Lorg/oscim/event/EventDispatcher;->unbind(Lorg/oscim/event/EventListener;)V
 
-    invoke-virtual {v3, v2}, Lorg/oscim/event/EventDispatcher;->unbind(Lorg/oscim/event/EventListener;)V
-
-    .line 94
+    .line 165
     :cond_1
-    instance-of v2, v1, Lorg/oscim/map/Map$InputListener;
+    instance-of p2, p1, Lorg/oscim/map/Map$InputListener;
 
-    if-eqz v2, :cond_2
+    if-eqz p2, :cond_2
 
-    .line 95
-    iget-object v2, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
+    .line 166
+    iget-object p2, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
 
-    iget-object v3, v2, Lorg/oscim/map/Map;->input:Lorg/oscim/event/EventDispatcher;
+    iget-object p2, p2, Lorg/oscim/map/Map;->input:Lorg/oscim/event/EventDispatcher;
 
-    move-object v0, v1
+    move-object v0, p1
 
     check-cast v0, Lorg/oscim/map/Map$InputListener;
 
+    invoke-virtual {p2, v0}, Lorg/oscim/event/EventDispatcher;->unbind(Lorg/oscim/event/EventListener;)V
+
+    .line 169
+    :cond_2
+    instance-of p2, p1, Lorg/oscim/layers/GroupLayer;
+
+    if-eqz p2, :cond_5
+
+    .line 170
+    move-object p2, p1
+
+    check-cast p2, Lorg/oscim/layers/GroupLayer;
+
+    .line 171
+    iget-object p2, p2, Lorg/oscim/layers/GroupLayer;->layers:Ljava/util/List;
+
+    invoke-interface {p2}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    move-result-object p2
+
+    :cond_3
+    :goto_0
+    invoke-interface {p2}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_5
+
+    invoke-interface {p2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lorg/oscim/layers/Layer;
+
+    .line 172
+    instance-of v1, v0, Lorg/oscim/map/Map$UpdateListener;
+
+    if-eqz v1, :cond_4
+
+    .line 173
+    iget-object v1, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
+
+    iget-object v1, v1, Lorg/oscim/map/Map;->events:Lorg/oscim/event/EventDispatcher;
+
     move-object v2, v0
 
-    invoke-virtual {v3, v2}, Lorg/oscim/event/EventDispatcher;->unbind(Lorg/oscim/event/EventListener;)V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    check-cast v2, Lorg/oscim/map/Map$UpdateListener;
 
-    .line 97
-    :cond_2
+    invoke-virtual {v1, v2}, Lorg/oscim/event/EventDispatcher;->unbind(Lorg/oscim/event/EventListener;)V
+
+    .line 174
+    :cond_4
+    instance-of v1, v0, Lorg/oscim/map/Map$InputListener;
+
+    if-eqz v1, :cond_3
+
+    .line 175
+    iget-object v1, p0, Lorg/oscim/map/Layers;->mMap:Lorg/oscim/map/Map;
+
+    iget-object v1, v1, Lorg/oscim/map/Map;->input:Lorg/oscim/event/EventDispatcher;
+
+    check-cast v0, Lorg/oscim/map/Map$InputListener;
+
+    invoke-virtual {v1, v0}, Lorg/oscim/event/EventDispatcher;->unbind(Lorg/oscim/event/EventListener;)V
+
+    goto :goto_0
+
+    :cond_5
+    const/4 p2, 0x0
+
+    .line 179
+    invoke-virtual {p1, p2}, Lorg/oscim/layers/Layer;->setEnableHandler(Lorg/oscim/layers/Layer$EnableHandler;)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 180
     monitor-exit p0
 
-    return-object v1
+    return-object p1
+
+    :catchall_0
+    move-exception p1
+
+    .line 155
+    monitor-exit p0
+
+    throw p1
 .end method
 
 .method public declared-synchronized size()I
     .locals 1
 
-    .prologue
-    .line 51
     monitor-enter p0
 
+    .line 68
     :try_start_0
-    iget-object v0, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/concurrent/CopyOnWriteArrayList;
+    iget-object v0, p0, Lorg/oscim/map/Layers;->mLayerList:Ljava/util/List;
 
-    invoke-virtual {v0}, Ljava/util/concurrent/CopyOnWriteArrayList;->size()I
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    invoke-interface {v0}, Ljava/util/List;->size()I
 
     move-result v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     monitor-exit p0
 

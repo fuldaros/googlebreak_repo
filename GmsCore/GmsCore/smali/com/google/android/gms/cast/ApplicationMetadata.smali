@@ -7,8 +7,7 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator",
-            "<",
+            "Landroid/os/Parcelable$Creator<",
             "Lcom/google/android/gms/cast/ApplicationMetadata;",
             ">;"
         }
@@ -26,8 +25,7 @@
 .field private images:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Lcom/google/android/gms/common/images/WebImage;",
             ">;"
         }
@@ -48,8 +46,7 @@
 .field private namespaces:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -84,7 +81,6 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
     .line 67
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -100,13 +96,12 @@
 .method public constructor <init>()V
     .locals 1
 
-    .prologue
     .line 30
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    .line 32
     const/4 v0, 0x1
 
+    .line 32
     iput v0, p0, Lcom/google/android/gms/cast/ApplicationMetadata;->versionCode:I
 
     return-void

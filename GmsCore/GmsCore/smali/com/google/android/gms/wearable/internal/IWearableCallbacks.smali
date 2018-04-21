@@ -15,7 +15,7 @@
 
 
 # virtual methods
-.method public abstract onDataHolder(Lcom/google/android/gms/common/data/DataHolder;)V
+.method public abstract onDataItemChanged(Lcom/google/android/gms/common/data/DataHolder;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -24,6 +24,14 @@
 .end method
 
 .method public abstract onDeleteDataItemsResponse(Lcom/google/android/gms/wearable/internal/DeleteDataItemsResponse;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract onGetCloudSyncSettingResponse(Lcom/google/android/gms/wearable/internal/GetCloudSyncSettingResponse;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

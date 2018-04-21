@@ -14,300 +14,238 @@
 # direct methods
 .method public static halfOf(I)I
     .locals 1
-    .param p0, "i"    # I
 
-    .prologue
-    .line 33
     const v0, 0xffff
 
-    and-int/2addr v0, p0
+    and-int/2addr p0, v0
 
-    return v0
+    return p0
 .end method
 
 .method public static readBinder(Landroid/os/Parcel;I)Landroid/os/IBinder;
-    .locals 4
-    .param p0, "parcel"    # Landroid/os/Parcel;
-    .param p1, "position"    # I
+    .locals 2
 
-    .prologue
     .line 110
     invoke-static {p0, p1}, Lorg/microg/safeparcel/SafeParcelReader;->readStart(Landroid/os/Parcel;I)I
 
-    move-result v1
+    move-result p1
 
     .line 111
-    .local v1, "length":I
     invoke-virtual {p0}, Landroid/os/Parcel;->dataPosition()I
 
-    move-result v2
+    move-result v0
 
-    .line 112
-    .local v2, "start":I
-    if-nez v1, :cond_0
+    if-nez p1, :cond_0
 
-    .line 113
-    const/4 v0, 0x0
+    const/4 p0, 0x0
 
-    .line 116
-    :goto_0
-    return-object v0
+    return-object p0
 
     .line 114
     :cond_0
     invoke-virtual {p0}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
-    move-result-object v0
+    move-result-object v1
+
+    add-int/2addr v0, p1
 
     .line 115
-    .local v0, "binder":Landroid/os/IBinder;
-    add-int v3, v2, v1
+    invoke-virtual {p0, v0}, Landroid/os/Parcel;->setDataPosition(I)V
 
-    invoke-virtual {p0, v3}, Landroid/os/Parcel;->setDataPosition(I)V
-
-    goto :goto_0
+    return-object v1
 .end method
 
 .method public static readBool(Landroid/os/Parcel;I)Z
     .locals 1
-    .param p0, "parcel"    # Landroid/os/Parcel;
-    .param p1, "position"    # I
 
-    .prologue
-    .line 80
     const/4 v0, 0x4
 
+    .line 80
     invoke-static {p0, p1, v0}, Lorg/microg/safeparcel/SafeParcelReader;->readStart(Landroid/os/Parcel;II)V
 
     .line 81
     invoke-virtual {p0}, Landroid/os/Parcel;->readInt()I
 
-    move-result v0
+    move-result p0
 
-    if-eqz v0, :cond_0
+    if-eqz p0, :cond_0
 
-    const/4 v0, 0x1
-
-    :goto_0
-    return v0
-
-    :cond_0
-    const/4 v0, 0x0
+    const/4 p0, 0x1
 
     goto :goto_0
+
+    :cond_0
+    const/4 p0, 0x0
+
+    :goto_0
+    return p0
 .end method
 
 .method public static readBundle(Landroid/os/Parcel;ILjava/lang/ClassLoader;)Landroid/os/Bundle;
-    .locals 4
-    .param p0, "parcel"    # Landroid/os/Parcel;
-    .param p1, "position"    # I
-    .param p2, "classLoader"    # Ljava/lang/ClassLoader;
+    .locals 1
 
-    .prologue
     .line 190
     invoke-static {p0, p1}, Lorg/microg/safeparcel/SafeParcelReader;->readStart(Landroid/os/Parcel;I)I
 
-    move-result v1
+    move-result p1
 
     .line 191
-    .local v1, "length":I
     invoke-virtual {p0}, Landroid/os/Parcel;->dataPosition()I
 
-    move-result v2
+    move-result v0
 
-    .line 192
-    .local v2, "start":I
-    if-nez v1, :cond_0
+    if-nez p1, :cond_0
 
-    .line 193
-    const/4 v0, 0x0
+    const/4 p0, 0x0
 
-    .line 196
-    :goto_0
-    return-object v0
+    return-object p0
 
     .line 194
     :cond_0
     invoke-virtual {p0, p2}, Landroid/os/Parcel;->readBundle(Ljava/lang/ClassLoader;)Landroid/os/Bundle;
 
-    move-result-object v0
+    move-result-object p2
+
+    add-int/2addr v0, p1
 
     .line 195
-    .local v0, "bundle":Landroid/os/Bundle;
-    add-int v3, v2, v1
+    invoke-virtual {p0, v0}, Landroid/os/Parcel;->setDataPosition(I)V
 
-    invoke-virtual {p0, v3}, Landroid/os/Parcel;->setDataPosition(I)V
-
-    goto :goto_0
+    return-object p2
 .end method
 
 .method public static readByteArray(Landroid/os/Parcel;I)[B
-    .locals 4
-    .param p0, "parcel"    # Landroid/os/Parcel;
-    .param p1, "position"    # I
+    .locals 2
 
-    .prologue
     .line 180
     invoke-static {p0, p1}, Lorg/microg/safeparcel/SafeParcelReader;->readStart(Landroid/os/Parcel;I)I
 
-    move-result v1
+    move-result p1
 
     .line 181
-    .local v1, "length":I
     invoke-virtual {p0}, Landroid/os/Parcel;->dataPosition()I
 
-    move-result v2
+    move-result v0
 
-    .line 182
-    .local v2, "start":I
-    if-nez v1, :cond_0
+    if-nez p1, :cond_0
 
-    .line 183
-    const/4 v0, 0x0
+    const/4 p0, 0x0
 
-    .line 186
-    :goto_0
-    return-object v0
+    return-object p0
 
     .line 184
     :cond_0
     invoke-virtual {p0}, Landroid/os/Parcel;->createByteArray()[B
 
-    move-result-object v0
+    move-result-object v1
+
+    add-int/2addr v0, p1
 
     .line 185
-    .local v0, "arr":[B
-    add-int v3, v2, v1
+    invoke-virtual {p0, v0}, Landroid/os/Parcel;->setDataPosition(I)V
 
-    invoke-virtual {p0, v3}, Landroid/os/Parcel;->setDataPosition(I)V
-
-    goto :goto_0
+    return-object v1
 .end method
 
 .method public static readDouble(Landroid/os/Parcel;I)D
-    .locals 2
-    .param p0, "parcel"    # Landroid/os/Parcel;
-    .param p1, "position"    # I
+    .locals 1
 
-    .prologue
-    .line 95
     const/16 v0, 0x8
 
+    .line 95
     invoke-static {p0, p1, v0}, Lorg/microg/safeparcel/SafeParcelReader;->readStart(Landroid/os/Parcel;II)V
 
     .line 96
     invoke-virtual {p0}, Landroid/os/Parcel;->readDouble()D
 
-    move-result-wide v0
+    move-result-wide p0
 
-    return-wide v0
+    return-wide p0
 .end method
 
 .method public static readFloat(Landroid/os/Parcel;I)F
     .locals 1
-    .param p0, "parcel"    # Landroid/os/Parcel;
-    .param p1, "position"    # I
 
-    .prologue
-    .line 90
     const/4 v0, 0x4
 
+    .line 90
     invoke-static {p0, p1, v0}, Lorg/microg/safeparcel/SafeParcelReader;->readStart(Landroid/os/Parcel;II)V
 
     .line 91
     invoke-virtual {p0}, Landroid/os/Parcel;->readFloat()F
 
-    move-result v0
+    move-result p0
 
-    return v0
+    return p0
 .end method
 
 .method public static readInt(Landroid/os/Parcel;I)I
     .locals 1
-    .param p0, "parcel"    # Landroid/os/Parcel;
-    .param p1, "position"    # I
 
-    .prologue
-    .line 65
     const/4 v0, 0x4
 
+    .line 65
     invoke-static {p0, p1, v0}, Lorg/microg/safeparcel/SafeParcelReader;->readStart(Landroid/os/Parcel;II)V
 
     .line 66
     invoke-virtual {p0}, Landroid/os/Parcel;->readInt()I
 
-    move-result v0
+    move-result p0
 
-    return v0
+    return p0
 .end method
 
 .method public static readList(Landroid/os/Parcel;ILjava/lang/ClassLoader;)Ljava/util/ArrayList;
-    .locals 4
-    .param p0, "parcel"    # Landroid/os/Parcel;
-    .param p1, "position"    # I
-    .param p2, "classLoader"    # Ljava/lang/ClassLoader;
+    .locals 1
 
-    .prologue
     .line 130
     invoke-static {p0, p1}, Lorg/microg/safeparcel/SafeParcelReader;->readStart(Landroid/os/Parcel;I)I
 
-    move-result v0
+    move-result p1
 
     .line 131
-    .local v0, "length":I
     invoke-virtual {p0}, Landroid/os/Parcel;->dataPosition()I
 
-    move-result v2
+    move-result v0
 
-    .line 132
-    .local v2, "start":I
-    if-nez v0, :cond_0
+    if-nez p1, :cond_0
 
-    .line 133
-    const/4 v1, 0x0
+    const/4 p0, 0x0
 
-    .line 136
-    :goto_0
-    return-object v1
+    return-object p0
 
     .line 134
     :cond_0
     invoke-virtual {p0, p2}, Landroid/os/Parcel;->readArrayList(Ljava/lang/ClassLoader;)Ljava/util/ArrayList;
 
-    move-result-object v1
+    move-result-object p2
+
+    add-int/2addr v0, p1
 
     .line 135
-    .local v1, "list":Ljava/util/ArrayList;
-    add-int v3, v2, v0
+    invoke-virtual {p0, v0}, Landroid/os/Parcel;->setDataPosition(I)V
 
-    invoke-virtual {p0, v3}, Landroid/os/Parcel;->setDataPosition(I)V
-
-    goto :goto_0
+    return-object p2
 .end method
 
 .method public static readLong(Landroid/os/Parcel;I)J
-    .locals 2
-    .param p0, "parcel"    # Landroid/os/Parcel;
-    .param p1, "position"    # I
+    .locals 1
 
-    .prologue
-    .line 85
     const/16 v0, 0x8
 
+    .line 85
     invoke-static {p0, p1, v0}, Lorg/microg/safeparcel/SafeParcelReader;->readStart(Landroid/os/Parcel;II)V
 
     .line 86
     invoke-virtual {p0}, Landroid/os/Parcel;->readLong()J
 
-    move-result-wide v0
+    move-result-wide p0
 
-    return-wide v0
+    return-wide p0
 .end method
 
 .method public static readParcelable(Landroid/os/Parcel;ILandroid/os/Parcelable$Creator;)Landroid/os/Parcelable;
-    .locals 4
-    .param p0, "parcel"    # Landroid/os/Parcel;
-    .param p1, "position"    # I
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "<T::",
@@ -315,56 +253,45 @@
             ">(",
             "Landroid/os/Parcel;",
             "I",
-            "Landroid/os/Parcelable$Creator",
-            "<TT;>;)TT;"
+            "Landroid/os/Parcelable$Creator<",
+            "TT;>;)TT;"
         }
     .end annotation
 
-    .prologue
     .line 120
-    .local p2, "creator":Landroid/os/Parcelable$Creator;, "Landroid/os/Parcelable$Creator<TT;>;"
     invoke-static {p0, p1}, Lorg/microg/safeparcel/SafeParcelReader;->readStart(Landroid/os/Parcel;I)I
+
+    move-result p1
+
+    .line 121
+    invoke-virtual {p0}, Landroid/os/Parcel;->dataPosition()I
 
     move-result v0
 
-    .line 121
-    .local v0, "length":I
-    invoke-virtual {p0}, Landroid/os/Parcel;->dataPosition()I
+    if-nez p1, :cond_0
 
-    move-result v1
+    const/4 p0, 0x0
 
-    .line 122
-    .local v1, "start":I
-    if-nez v0, :cond_0
-
-    .line 123
-    const/4 v2, 0x0
-
-    .line 126
-    :goto_0
-    return-object v2
+    return-object p0
 
     .line 124
     :cond_0
     invoke-interface {p2, p0}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
 
-    move-result-object v2
+    move-result-object p2
 
-    check-cast v2, Landroid/os/Parcelable;
+    check-cast p2, Landroid/os/Parcelable;
+
+    add-int/2addr v0, p1
 
     .line 125
-    .local v2, "t":Landroid/os/Parcelable;, "TT;"
-    add-int v3, v1, v0
+    invoke-virtual {p0, v0}, Landroid/os/Parcel;->setDataPosition(I)V
 
-    invoke-virtual {p0, v3}, Landroid/os/Parcel;->setDataPosition(I)V
-
-    goto :goto_0
+    return-object p2
 .end method
 
 .method public static readParcelableArray(Landroid/os/Parcel;ILandroid/os/Parcelable$Creator;)[Landroid/os/Parcelable;
-    .locals 4
-    .param p0, "parcel"    # Landroid/os/Parcel;
-    .param p1, "position"    # I
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "<T::",
@@ -372,56 +299,45 @@
             ">(",
             "Landroid/os/Parcel;",
             "I",
-            "Landroid/os/Parcelable$Creator",
-            "<TT;>;)[TT;"
+            "Landroid/os/Parcelable$Creator<",
+            "TT;>;)[TT;"
         }
     .end annotation
 
-    .prologue
     .line 160
-    .local p2, "creator":Landroid/os/Parcelable$Creator;, "Landroid/os/Parcelable$Creator<TT;>;"
     invoke-static {p0, p1}, Lorg/microg/safeparcel/SafeParcelReader;->readStart(Landroid/os/Parcel;I)I
 
-    move-result v1
+    move-result p1
 
     .line 161
-    .local v1, "length":I
     invoke-virtual {p0}, Landroid/os/Parcel;->dataPosition()I
 
-    move-result v2
+    move-result v0
 
-    .line 162
-    .local v2, "start":I
-    if-nez v1, :cond_0
+    if-nez p1, :cond_0
 
-    .line 163
-    const/4 v0, 0x0
+    const/4 p0, 0x0
 
-    .line 166
-    :goto_0
-    return-object v0
+    return-object p0
 
     .line 164
     :cond_0
     invoke-virtual {p0, p2}, Landroid/os/Parcel;->createTypedArray(Landroid/os/Parcelable$Creator;)[Ljava/lang/Object;
 
-    move-result-object v0
+    move-result-object p2
 
-    check-cast v0, [Landroid/os/Parcelable;
+    check-cast p2, [Landroid/os/Parcelable;
+
+    add-int/2addr v0, p1
 
     .line 165
-    .local v0, "arr":[Landroid/os/Parcelable;, "[TT;"
-    add-int v3, v2, v1
+    invoke-virtual {p0, v0}, Landroid/os/Parcel;->setDataPosition(I)V
 
-    invoke-virtual {p0, v3}, Landroid/os/Parcel;->setDataPosition(I)V
-
-    goto :goto_0
+    return-object p2
 .end method
 
 .method public static readParcelableList(Landroid/os/Parcel;ILandroid/os/Parcelable$Creator;)Ljava/util/ArrayList;
-    .locals 4
-    .param p0, "parcel"    # Landroid/os/Parcel;
-    .param p1, "position"    # I
+    .locals 1
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "<T::",
@@ -429,396 +345,316 @@
             ">(",
             "Landroid/os/Parcel;",
             "I",
-            "Landroid/os/Parcelable$Creator",
-            "<TT;>;)",
-            "Ljava/util/ArrayList",
-            "<TT;>;"
+            "Landroid/os/Parcelable$Creator<",
+            "TT;>;)",
+            "Ljava/util/ArrayList<",
+            "TT;>;"
         }
     .end annotation
 
-    .prologue
     .line 140
-    .local p2, "creator":Landroid/os/Parcelable$Creator;, "Landroid/os/Parcelable$Creator<TT;>;"
     invoke-static {p0, p1}, Lorg/microg/safeparcel/SafeParcelReader;->readStart(Landroid/os/Parcel;I)I
+
+    move-result p1
+
+    .line 141
+    invoke-virtual {p0}, Landroid/os/Parcel;->dataPosition()I
 
     move-result v0
 
-    .line 141
-    .local v0, "length":I
-    invoke-virtual {p0}, Landroid/os/Parcel;->dataPosition()I
+    if-nez p1, :cond_0
 
-    move-result v2
+    const/4 p0, 0x0
 
-    .line 142
-    .local v2, "start":I
-    if-nez v0, :cond_0
-
-    .line 143
-    const/4 v1, 0x0
-
-    .line 146
-    :goto_0
-    return-object v1
+    return-object p0
 
     .line 144
     :cond_0
     invoke-virtual {p0, p2}, Landroid/os/Parcel;->createTypedArrayList(Landroid/os/Parcelable$Creator;)Ljava/util/ArrayList;
 
-    move-result-object v1
+    move-result-object p2
+
+    add-int/2addr v0, p1
 
     .line 145
-    .local v1, "list":Ljava/util/ArrayList;, "Ljava/util/ArrayList<TT;>;"
-    add-int v3, v2, v0
+    invoke-virtual {p0, v0}, Landroid/os/Parcel;->setDataPosition(I)V
 
-    invoke-virtual {p0, v3}, Landroid/os/Parcel;->setDataPosition(I)V
-
-    goto :goto_0
+    return-object p2
 .end method
 
 .method public static readSingleInt(Landroid/os/Parcel;)I
-    .locals 1
-    .param p0, "parcel"    # Landroid/os/Parcel;
+    .locals 0
 
-    .prologue
     .line 37
     invoke-virtual {p0}, Landroid/os/Parcel;->readInt()I
 
-    move-result v0
+    move-result p0
 
-    return v0
+    return p0
 .end method
 
 .method public static readStart(Landroid/os/Parcel;)I
-    .locals 7
-    .param p0, "parcel"    # Landroid/os/Parcel;
+    .locals 5
 
-    .prologue
     .line 53
     invoke-static {p0}, Lorg/microg/safeparcel/SafeParcelReader;->readSingleInt(Landroid/os/Parcel;)I
 
-    move-result v1
+    move-result v0
 
     .line 54
-    .local v1, "first":I
-    invoke-static {p0, v1}, Lorg/microg/safeparcel/SafeParcelReader;->readStart(Landroid/os/Parcel;I)I
+    invoke-static {p0, v0}, Lorg/microg/safeparcel/SafeParcelReader;->readStart(Landroid/os/Parcel;I)I
+
+    move-result v1
+
+    .line 55
+    invoke-virtual {p0}, Landroid/os/Parcel;->dataPosition()I
 
     move-result v2
 
-    .line 55
-    .local v2, "length":I
-    invoke-virtual {p0}, Landroid/os/Parcel;->dataPosition()I
+    .line 56
+    invoke-static {v0}, Lorg/microg/safeparcel/SafeParcelReader;->halfOf(I)I
 
     move-result v3
 
-    .line 56
-    .local v3, "start":I
-    invoke-static {v1}, Lorg/microg/safeparcel/SafeParcelReader;->halfOf(I)I
+    const/16 v4, 0x4f45
 
-    move-result v4
-
-    const/16 v5, 0x4f45
-
-    if-eq v4, v5, :cond_0
+    if-eq v3, v4, :cond_0
 
     .line 57
-    new-instance v4, Lorg/microg/safeparcel/SafeParcelReader$ReadException;
-
-    new-instance v5, Ljava/lang/StringBuilder;
-
-    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v6, "Expected object header. Got 0x"
-
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v5
-
-    invoke-static {v1}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
-
-    move-result-object v6
-
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v5
-
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v5
-
-    invoke-direct {v4, v5, p0}, Lorg/microg/safeparcel/SafeParcelReader$ReadException;-><init>(Ljava/lang/String;Landroid/os/Parcel;)V
-
-    throw v4
-
-    .line 58
-    :cond_0
-    add-int v0, v3, v2
-
-    .line 59
-    .local v0, "end":I
-    if-lt v0, v3, :cond_1
-
-    invoke-virtual {p0}, Landroid/os/Parcel;->dataSize()I
-
-    move-result v4
-
-    if-le v0, v4, :cond_2
-
-    .line 60
-    :cond_1
-    new-instance v4, Lorg/microg/safeparcel/SafeParcelReader$ReadException;
-
-    new-instance v5, Ljava/lang/StringBuilder;
-
-    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v6, "Size read is invalid start="
-
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v5
-
-    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v5
-
-    const-string v6, " end="
-
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v5
-
-    invoke-virtual {v5, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v5
-
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v5
-
-    invoke-direct {v4, v5, p0}, Lorg/microg/safeparcel/SafeParcelReader$ReadException;-><init>(Ljava/lang/String;Landroid/os/Parcel;)V
-
-    throw v4
-
-    .line 61
-    :cond_2
-    return v0
-.end method
-
-.method private static readStart(Landroid/os/Parcel;I)I
-    .locals 2
-    .param p0, "parcel"    # Landroid/os/Parcel;
-    .param p1, "first"    # I
-
-    .prologue
-    const/high16 v1, -0x10000
-
-    .line 41
-    and-int v0, p1, v1
-
-    if-eq v0, v1, :cond_0
-
-    .line 42
-    shr-int/lit8 v0, p1, 0x10
-
-    const v1, 0xffff
-
-    and-int/2addr v0, v1
-
-    .line 43
-    :goto_0
-    return v0
-
-    :cond_0
-    invoke-virtual {p0}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    goto :goto_0
-.end method
-
-.method private static readStart(Landroid/os/Parcel;II)V
-    .locals 4
-    .param p0, "parcel"    # Landroid/os/Parcel;
-    .param p1, "position"    # I
-    .param p2, "length"    # I
-
-    .prologue
-    .line 47
-    invoke-static {p0, p1}, Lorg/microg/safeparcel/SafeParcelReader;->readStart(Landroid/os/Parcel;I)I
-
-    move-result v0
-
-    .line 48
-    .local v0, "i":I
-    if-eq v0, p2, :cond_0
-
-    .line 49
     new-instance v1, Lorg/microg/safeparcel/SafeParcelReader$ReadException;
 
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Expected size "
+    const-string v3, "Expected object header. Got 0x"
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v3, " got "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v3, " (0x"
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
 
     invoke-static {v0}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v0
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v3, ")"
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v0
 
-    invoke-direct {v1, v2, p0}, Lorg/microg/safeparcel/SafeParcelReader$ReadException;-><init>(Ljava/lang/String;Landroid/os/Parcel;)V
+    invoke-direct {v1, v0, p0}, Lorg/microg/safeparcel/SafeParcelReader$ReadException;-><init>(Ljava/lang/String;Landroid/os/Parcel;)V
 
     throw v1
 
-    .line 50
+    :cond_0
+    add-int/2addr v1, v2
+
+    if-lt v1, v2, :cond_2
+
+    .line 59
+    invoke-virtual {p0}, Landroid/os/Parcel;->dataSize()I
+
+    move-result v0
+
+    if-le v1, v0, :cond_1
+
+    goto :goto_0
+
+    :cond_1
+    return v1
+
+    .line 60
+    :cond_2
+    :goto_0
+    new-instance v0, Lorg/microg/safeparcel/SafeParcelReader$ReadException;
+
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "Size read is invalid start="
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v2, " end="
+
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-direct {v0, v1, p0}, Lorg/microg/safeparcel/SafeParcelReader$ReadException;-><init>(Ljava/lang/String;Landroid/os/Parcel;)V
+
+    throw v0
+.end method
+
+.method private static readStart(Landroid/os/Parcel;I)I
+    .locals 2
+
+    const/high16 v0, -0x10000
+
+    and-int v1, p1, v0
+
+    if-eq v1, v0, :cond_0
+
+    shr-int/lit8 p0, p1, 0x10
+
+    const p1, 0xffff
+
+    and-int/2addr p0, p1
+
+    return p0
+
+    .line 43
+    :cond_0
+    invoke-virtual {p0}, Landroid/os/Parcel;->readInt()I
+
+    move-result p0
+
+    return p0
+.end method
+
+.method private static readStart(Landroid/os/Parcel;II)V
+    .locals 3
+
+    .line 47
+    invoke-static {p0, p1}, Lorg/microg/safeparcel/SafeParcelReader;->readStart(Landroid/os/Parcel;I)I
+
+    move-result p1
+
+    if-eq p1, p2, :cond_0
+
+    .line 49
+    new-instance v0, Lorg/microg/safeparcel/SafeParcelReader$ReadException;
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "Expected size "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string p2, " got "
+
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string p2, " (0x"
+
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-static {p1}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string p1, ")"
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-direct {v0, p1, p0}, Lorg/microg/safeparcel/SafeParcelReader$ReadException;-><init>(Ljava/lang/String;Landroid/os/Parcel;)V
+
+    throw v0
+
     :cond_0
     return-void
 .end method
 
 .method public static readString(Landroid/os/Parcel;I)Ljava/lang/String;
-    .locals 4
-    .param p0, "parcel"    # Landroid/os/Parcel;
-    .param p1, "position"    # I
+    .locals 2
 
-    .prologue
     .line 100
     invoke-static {p0, p1}, Lorg/microg/safeparcel/SafeParcelReader;->readStart(Landroid/os/Parcel;I)I
 
-    move-result v0
+    move-result p1
 
     .line 101
-    .local v0, "length":I
     invoke-virtual {p0}, Landroid/os/Parcel;->dataPosition()I
 
-    move-result v1
+    move-result v0
 
-    .line 102
-    .local v1, "start":I
-    if-nez v0, :cond_0
+    if-nez p1, :cond_0
 
-    .line 103
-    const/4 v2, 0x0
+    const/4 p0, 0x0
 
-    .line 106
-    :goto_0
-    return-object v2
+    return-object p0
 
     .line 104
     :cond_0
     invoke-virtual {p0}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v1
+
+    add-int/2addr v0, p1
 
     .line 105
-    .local v2, "string":Ljava/lang/String;
-    add-int v3, v1, v0
+    invoke-virtual {p0, v0}, Landroid/os/Parcel;->setDataPosition(I)V
 
-    invoke-virtual {p0, v3}, Landroid/os/Parcel;->setDataPosition(I)V
-
-    goto :goto_0
+    return-object v1
 .end method
 
 .method public static readStringArray(Landroid/os/Parcel;I)[Ljava/lang/String;
-    .locals 4
-    .param p0, "parcel"    # Landroid/os/Parcel;
-    .param p1, "position"    # I
+    .locals 2
 
-    .prologue
     .line 170
     invoke-static {p0, p1}, Lorg/microg/safeparcel/SafeParcelReader;->readStart(Landroid/os/Parcel;I)I
 
-    move-result v1
+    move-result p1
 
     .line 171
-    .local v1, "length":I
     invoke-virtual {p0}, Landroid/os/Parcel;->dataPosition()I
 
-    move-result v2
+    move-result v0
 
-    .line 172
-    .local v2, "start":I
-    if-nez v1, :cond_0
+    if-nez p1, :cond_0
 
-    .line 173
-    const/4 v0, 0x0
+    const/4 p0, 0x0
 
-    .line 176
-    :goto_0
-    return-object v0
+    return-object p0
 
     .line 174
     :cond_0
     invoke-virtual {p0}, Landroid/os/Parcel;->createStringArray()[Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v1
+
+    add-int/2addr v0, p1
 
     .line 175
-    .local v0, "arr":[Ljava/lang/String;
-    add-int v3, v2, v1
+    invoke-virtual {p0, v0}, Landroid/os/Parcel;->setDataPosition(I)V
 
-    invoke-virtual {p0, v3}, Landroid/os/Parcel;->setDataPosition(I)V
-
-    goto :goto_0
+    return-object v1
 .end method
 
 .method public static skip(Landroid/os/Parcel;I)V
-    .locals 2
-    .param p0, "parcel"    # Landroid/os/Parcel;
-    .param p1, "position"    # I
+    .locals 1
 
-    .prologue
     .line 200
     invoke-static {p0, p1}, Lorg/microg/safeparcel/SafeParcelReader;->readStart(Landroid/os/Parcel;I)I
 
-    move-result v0
+    move-result p1
 
     .line 201
-    .local v0, "i":I
     invoke-virtual {p0}, Landroid/os/Parcel;->dataPosition()I
 
-    move-result v1
+    move-result v0
 
-    add-int/2addr v1, v0
+    add-int/2addr v0, p1
 
-    invoke-virtual {p0, v1}, Landroid/os/Parcel;->setDataPosition(I)V
+    invoke-virtual {p0, v0}, Landroid/os/Parcel;->setDataPosition(I)V
 
-    .line 202
     return-void
 .end method

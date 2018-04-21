@@ -7,7 +7,6 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
     .line 42
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -18,9 +17,7 @@
 # virtual methods
 .method public createNode(Lcom/vividsolutions/jts/geom/Coordinate;)Lcom/vividsolutions/jts/geomgraph/Node;
     .locals 2
-    .param p1, "coord"    # Lcom/vividsolutions/jts/geom/Coordinate;
 
-    .prologue
     .line 48
     new-instance v0, Lcom/vividsolutions/jts/geomgraph/Node;
 

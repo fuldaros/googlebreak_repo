@@ -19,8 +19,7 @@
 .annotation system Ldalvik/annotation/Signature;
     value = {
         "Ljava/lang/Object;",
-        "Ljava/util/Comparator",
-        "<",
+        "Ljava/util/Comparator<",
         "Landroid/location/Location;",
         ">;"
     }
@@ -35,7 +34,6 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .prologue
     .line 142
     new-instance v0, Lorg/microg/nlp/location/BackendFuser$LocationComparator;
 
@@ -49,7 +47,6 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
     .line 140
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -59,39 +56,27 @@
 
 # virtual methods
 .method public compare(Landroid/location/Location;Landroid/location/Location;)I
-    .locals 8
-    .param p1, "lhs"    # Landroid/location/Location;
-    .param p2, "rhs"    # Landroid/location/Location;
+    .locals 10
 
-    .prologue
-    const-wide/16 v6, 0x7530
+    if-ne p1, p2, :cond_0
 
+    const/4 p1, 0x0
+
+    return p1
+
+    :cond_0
     const/4 v0, 0x1
 
-    const/4 v1, -0x1
+    if-nez p1, :cond_1
 
-    .line 150
-    if-ne p1, p2, :cond_1
-
-    .line 151
-    const/4 v0, 0x0
-
-    .line 170
-    :cond_0
-    :goto_0
     return v0
 
-    .line 152
     :cond_1
-    if-eqz p1, :cond_0
+    const/4 v1, -0x1
 
-    .line 155
     if-nez p2, :cond_2
 
-    move v0, v1
-
-    .line 156
-    goto :goto_0
+    return v1
 
     .line 158
     :cond_2
@@ -99,22 +84,22 @@
 
     move-result v2
 
-    if-eqz v2, :cond_0
+    if-nez v2, :cond_3
+
+    return v0
 
     .line 161
+    :cond_3
     invoke-virtual {p2}, Landroid/location/Location;->hasAccuracy()Z
 
     move-result v2
 
-    if-nez v2, :cond_3
+    if-nez v2, :cond_4
 
-    move v0, v1
-
-    .line 162
-    goto :goto_0
+    return v1
 
     .line 164
-    :cond_3
+    :cond_4
     invoke-virtual {p2}, Landroid/location/Location;->getTime()J
 
     move-result-wide v2
@@ -123,13 +108,18 @@
 
     move-result-wide v4
 
-    add-long/2addr v4, v6
+    const-wide/16 v6, 0x7530
 
-    cmp-long v2, v2, v4
+    add-long v8, v4, v6
 
-    if-gtz v2, :cond_0
+    cmp-long v4, v2, v8
+
+    if-lez v4, :cond_5
+
+    return v0
 
     .line 167
+    :cond_5
     invoke-virtual {p1}, Landroid/location/Location;->getTime()J
 
     move-result-wide v2
@@ -138,38 +128,34 @@
 
     move-result-wide v4
 
-    add-long/2addr v4, v6
+    add-long v8, v4, v6
 
-    cmp-long v0, v2, v4
+    cmp-long v0, v2, v8
 
-    if-lez v0, :cond_4
+    if-lez v0, :cond_6
 
-    move v0, v1
-
-    .line 168
-    goto :goto_0
+    return v1
 
     .line 170
-    :cond_4
+    :cond_6
     invoke-virtual {p1}, Landroid/location/Location;->getAccuracy()F
 
-    move-result v0
+    move-result p1
 
     invoke-virtual {p2}, Landroid/location/Location;->getAccuracy()F
 
-    move-result v1
+    move-result p2
 
-    sub-float/2addr v0, v1
+    sub-float/2addr p1, p2
 
-    float-to-int v0, v0
+    float-to-int p1, p1
 
-    goto :goto_0
+    return p1
 .end method
 
 .method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
-    .locals 1
+    .locals 0
 
-    .prologue
     .line 140
     check-cast p1, Landroid/location/Location;
 
@@ -177,7 +163,7 @@
 
     invoke-virtual {p0, p1, p2}, Lorg/microg/nlp/location/BackendFuser$LocationComparator;->compare(Landroid/location/Location;Landroid/location/Location;)I
 
-    move-result v0
+    move-result p1
 
-    return v0
+    return p1
 .end method

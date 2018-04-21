@@ -4,155 +4,127 @@
 
 
 # instance fields
-.field public final maxLatitudeE6:I
+.field public maxLatitudeE6:I
 
-.field public final maxLongitudeE6:I
+.field public maxLongitudeE6:I
 
-.field public final minLatitudeE6:I
+.field public minLatitudeE6:I
 
-.field public final minLongitudeE6:I
+.field public minLongitudeE6:I
 
 
 # direct methods
 .method public constructor <init>(DDDD)V
-    .locals 5
-    .param p1, "minLatitude"    # D
-    .param p3, "minLongitude"    # D
-    .param p5, "maxLatitude"    # D
-    .param p7, "maxLongitude"    # D
-
-    .prologue
-    const-wide v2, 0x412e848000000000L    # 1000000.0
-
-    .line 74
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 75
-    mul-double v0, p1, v2
-
-    double-to-int v0, v0
-
-    iput v0, p0, Lorg/oscim/core/BoundingBox;->minLatitudeE6:I
-
-    .line 76
-    mul-double v0, p3, v2
-
-    double-to-int v0, v0
-
-    iput v0, p0, Lorg/oscim/core/BoundingBox;->minLongitudeE6:I
+    .locals 2
 
     .line 77
-    mul-double v0, p5, v2
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    double-to-int v0, v0
+    const-wide v0, 0x412e848000000000L    # 1000000.0
 
-    iput v0, p0, Lorg/oscim/core/BoundingBox;->maxLatitudeE6:I
+    mul-double/2addr p1, v0
+
+    double-to-int p1, p1
 
     .line 78
-    mul-double v0, p7, v2
+    iput p1, p0, Lorg/oscim/core/BoundingBox;->minLatitudeE6:I
 
-    double-to-int v0, v0
+    mul-double/2addr p3, v0
 
-    iput v0, p0, Lorg/oscim/core/BoundingBox;->maxLongitudeE6:I
+    double-to-int p1, p3
 
     .line 79
+    iput p1, p0, Lorg/oscim/core/BoundingBox;->minLongitudeE6:I
+
+    mul-double/2addr p5, v0
+
+    double-to-int p1, p5
+
+    .line 80
+    iput p1, p0, Lorg/oscim/core/BoundingBox;->maxLatitudeE6:I
+
+    mul-double/2addr p7, v0
+
+    double-to-int p1, p7
+
+    .line 81
+    iput p1, p0, Lorg/oscim/core/BoundingBox;->maxLongitudeE6:I
+
     return-void
 .end method
 
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 5
-    .param p1, "obj"    # Ljava/lang/Object;
+    .locals 4
 
-    .prologue
-    const/4 v1, 0x1
+    const/4 v0, 0x1
+
+    if-ne p0, p1, :cond_0
+
+    return v0
+
+    .line 121
+    :cond_0
+    instance-of v1, p1, Lorg/oscim/core/BoundingBox;
 
     const/4 v2, 0x0
 
-    .line 96
-    if-ne p0, p1, :cond_1
+    if-nez v1, :cond_1
 
-    .line 111
-    :cond_0
-    :goto_0
-    return v1
+    return v2
 
-    .line 98
+    .line 124
     :cond_1
-    instance-of v3, p1, Lorg/oscim/core/BoundingBox;
+    check-cast p1, Lorg/oscim/core/BoundingBox;
 
-    if-nez v3, :cond_2
+    .line 125
+    iget v1, p0, Lorg/oscim/core/BoundingBox;->maxLatitudeE6:I
 
-    move v1, v2
+    iget v3, p1, Lorg/oscim/core/BoundingBox;->maxLatitudeE6:I
 
-    .line 99
-    goto :goto_0
+    if-eq v1, v3, :cond_2
 
+    return v2
+
+    .line 127
     :cond_2
-    move-object v0, p1
+    iget v1, p0, Lorg/oscim/core/BoundingBox;->maxLongitudeE6:I
 
-    .line 101
-    check-cast v0, Lorg/oscim/core/BoundingBox;
+    iget v3, p1, Lorg/oscim/core/BoundingBox;->maxLongitudeE6:I
 
-    .line 102
-    .local v0, "other":Lorg/oscim/core/BoundingBox;
-    iget v3, p0, Lorg/oscim/core/BoundingBox;->maxLatitudeE6:I
+    if-eq v1, v3, :cond_3
 
-    iget v4, v0, Lorg/oscim/core/BoundingBox;->maxLatitudeE6:I
+    return v2
 
-    if-eq v3, v4, :cond_3
-
-    move v1, v2
-
-    .line 103
-    goto :goto_0
-
-    .line 104
+    .line 129
     :cond_3
-    iget v3, p0, Lorg/oscim/core/BoundingBox;->maxLongitudeE6:I
+    iget v1, p0, Lorg/oscim/core/BoundingBox;->minLatitudeE6:I
 
-    iget v4, v0, Lorg/oscim/core/BoundingBox;->maxLongitudeE6:I
+    iget v3, p1, Lorg/oscim/core/BoundingBox;->minLatitudeE6:I
 
-    if-eq v3, v4, :cond_4
+    if-eq v1, v3, :cond_4
 
-    move v1, v2
+    return v2
 
-    .line 105
-    goto :goto_0
-
-    .line 106
+    .line 131
     :cond_4
-    iget v3, p0, Lorg/oscim/core/BoundingBox;->minLatitudeE6:I
+    iget v1, p0, Lorg/oscim/core/BoundingBox;->minLongitudeE6:I
 
-    iget v4, v0, Lorg/oscim/core/BoundingBox;->minLatitudeE6:I
+    iget p1, p1, Lorg/oscim/core/BoundingBox;->minLongitudeE6:I
 
-    if-eq v3, v4, :cond_5
+    if-eq v1, p1, :cond_5
 
-    move v1, v2
+    return v2
 
-    .line 107
-    goto :goto_0
-
-    .line 108
     :cond_5
-    iget v3, p0, Lorg/oscim/core/BoundingBox;->minLongitudeE6:I
-
-    iget v4, v0, Lorg/oscim/core/BoundingBox;->minLongitudeE6:I
-
-    if-eq v3, v4, :cond_0
-
-    move v1, v2
-
-    .line 109
-    goto :goto_0
+    return v0
 .end method
 
 .method public getMaxLatitude()D
     .locals 4
 
-    .prologue
-    .line 129
+    .line 278
     iget v0, p0, Lorg/oscim/core/BoundingBox;->maxLatitudeE6:I
 
     int-to-double v0, v0
@@ -167,8 +139,7 @@
 .method public getMaxLongitude()D
     .locals 4
 
-    .prologue
-    .line 136
+    .line 285
     iget v0, p0, Lorg/oscim/core/BoundingBox;->maxLongitudeE6:I
 
     int-to-double v0, v0
@@ -183,8 +154,7 @@
 .method public getMinLatitude()D
     .locals 4
 
-    .prologue
-    .line 143
+    .line 292
     iget v0, p0, Lorg/oscim/core/BoundingBox;->minLatitudeE6:I
 
     int-to-double v0, v0
@@ -199,8 +169,7 @@
 .method public getMinLongitude()D
     .locals 4
 
-    .prologue
-    .line 150
+    .line 299
     iget v0, p0, Lorg/oscim/core/BoundingBox;->minLongitudeE6:I
 
     int-to-double v0, v0
@@ -215,114 +184,101 @@
 .method public hashCode()I
     .locals 3
 
-    .prologue
-    .line 155
-    const/4 v0, 0x7
+    .line 305
+    iget v0, p0, Lorg/oscim/core/BoundingBox;->maxLatitudeE6:I
 
-    .line 156
-    .local v0, "result":I
-    iget v1, p0, Lorg/oscim/core/BoundingBox;->maxLatitudeE6:I
+    const/16 v1, 0xd9
 
-    add-int/lit16 v0, v1, 0xd9
+    add-int/2addr v1, v0
 
-    .line 157
-    mul-int/lit8 v1, v0, 0x1f
+    const/16 v0, 0x1f
 
+    mul-int/2addr v1, v0
+
+    .line 306
     iget v2, p0, Lorg/oscim/core/BoundingBox;->maxLongitudeE6:I
 
-    add-int v0, v1, v2
+    add-int/2addr v1, v2
 
-    .line 158
-    mul-int/lit8 v1, v0, 0x1f
+    mul-int/2addr v1, v0
 
+    .line 307
     iget v2, p0, Lorg/oscim/core/BoundingBox;->minLatitudeE6:I
 
-    add-int v0, v1, v2
+    add-int/2addr v1, v2
 
-    .line 159
-    mul-int/lit8 v1, v0, 0x1f
+    mul-int/2addr v0, v1
 
-    iget v2, p0, Lorg/oscim/core/BoundingBox;->minLongitudeE6:I
+    .line 308
+    iget v1, p0, Lorg/oscim/core/BoundingBox;->minLongitudeE6:I
 
-    add-int v0, v1, v2
+    add-int/2addr v0, v1
 
-    .line 160
     return v0
 .end method
 
 .method public toString()Ljava/lang/String;
-    .locals 2
+    .locals 3
 
-    .prologue
-    .line 165
+    .line 367
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
     const-string v1, "BoundingBox [minLat="
 
-    .line 166
+    .line 368
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    .line 369
+    invoke-virtual {p0}, Lorg/oscim/core/BoundingBox;->getMinLatitude()D
 
-    iget v1, p0, Lorg/oscim/core/BoundingBox;->minLatitudeE6:I
+    move-result-wide v1
 
-    .line 167
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v0
+    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
 
     const-string v1, ", minLon="
 
-    .line 168
+    .line 370
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    .line 371
+    invoke-virtual {p0}, Lorg/oscim/core/BoundingBox;->getMinLongitude()D
 
-    iget v1, p0, Lorg/oscim/core/BoundingBox;->minLongitudeE6:I
+    move-result-wide v1
 
-    .line 169
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v0
+    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
 
     const-string v1, ", maxLat="
 
-    .line 170
+    .line 372
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    .line 373
+    invoke-virtual {p0}, Lorg/oscim/core/BoundingBox;->getMaxLatitude()D
 
-    iget v1, p0, Lorg/oscim/core/BoundingBox;->maxLatitudeE6:I
+    move-result-wide v1
 
-    .line 171
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v0
+    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
 
     const-string v1, ", maxLon="
 
-    .line 172
+    .line 374
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    .line 375
+    invoke-virtual {p0}, Lorg/oscim/core/BoundingBox;->getMaxLongitude()D
 
-    iget v1, p0, Lorg/oscim/core/BoundingBox;->maxLongitudeE6:I
+    move-result-wide v1
 
-    .line 173
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v0
+    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
 
     const-string v1, "]"
 
-    .line 174
+    .line 376
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
-    .line 175
+    .line 377
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0

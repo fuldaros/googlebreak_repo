@@ -24,8 +24,7 @@
 .field public static final DEFAULT_AVAILABLEFEATURE:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -41,8 +40,7 @@
 .field public static final DEFAULT_GLEXTENSION:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -60,8 +58,7 @@
 .field public static final DEFAULT_LOCALE:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -73,8 +70,7 @@
 .field public static final DEFAULT_NATIVEPLATFORM:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -88,8 +84,7 @@
 .field public static final DEFAULT_SHAREDLIBRARY:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -111,8 +106,7 @@
 
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -149,8 +143,7 @@
 
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -194,8 +187,7 @@
 
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -218,8 +210,7 @@
 
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -249,8 +240,7 @@
 
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;"
         }
@@ -276,123 +266,122 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
-    const/4 v1, 0x0
+    const/4 v0, 0x0
 
     .line 1264
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v0
+    move-result-object v1
 
-    sput-object v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_TOUCHSCREEN:Ljava/lang/Integer;
+    sput-object v1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_TOUCHSCREEN:Ljava/lang/Integer;
 
     .line 1265
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v0
+    move-result-object v1
 
-    sput-object v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_KEYBOARDTYPE:Ljava/lang/Integer;
+    sput-object v1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_KEYBOARDTYPE:Ljava/lang/Integer;
 
     .line 1266
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v0
+    move-result-object v1
 
-    sput-object v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_NAVIGATION:Ljava/lang/Integer;
+    sput-object v1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_NAVIGATION:Ljava/lang/Integer;
 
     .line 1267
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v0
+    move-result-object v1
 
-    sput-object v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_SCREENLAYOUT:Ljava/lang/Integer;
+    sput-object v1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_SCREENLAYOUT:Ljava/lang/Integer;
 
     .line 1268
-    invoke-static {v1}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 
-    move-result-object v0
+    move-result-object v1
 
-    sput-object v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_HASHARDKEYBOARD:Ljava/lang/Boolean;
+    sput-object v1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_HASHARDKEYBOARD:Ljava/lang/Boolean;
 
     .line 1269
-    invoke-static {v1}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 
-    move-result-object v0
+    move-result-object v1
 
-    sput-object v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_HASFIVEWAYNAVIGATION:Ljava/lang/Boolean;
+    sput-object v1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_HASFIVEWAYNAVIGATION:Ljava/lang/Boolean;
 
     .line 1270
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v0
+    move-result-object v1
 
-    sput-object v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_DENSITYDPI:Ljava/lang/Integer;
+    sput-object v1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_DENSITYDPI:Ljava/lang/Integer;
 
     .line 1271
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v0
+    move-result-object v1
 
-    sput-object v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_GLESVERSION:Ljava/lang/Integer;
+    sput-object v1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_GLESVERSION:Ljava/lang/Integer;
 
     .line 1272
     invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;
 
-    move-result-object v0
+    move-result-object v1
 
-    sput-object v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_SHAREDLIBRARY:Ljava/util/List;
+    sput-object v1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_SHAREDLIBRARY:Ljava/util/List;
 
     .line 1273
     invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;
 
-    move-result-object v0
+    move-result-object v1
 
-    sput-object v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_AVAILABLEFEATURE:Ljava/util/List;
+    sput-object v1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_AVAILABLEFEATURE:Ljava/util/List;
 
     .line 1274
     invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;
 
-    move-result-object v0
+    move-result-object v1
 
-    sput-object v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_NATIVEPLATFORM:Ljava/util/List;
+    sput-object v1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_NATIVEPLATFORM:Ljava/util/List;
 
     .line 1275
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v0
+    move-result-object v1
 
-    sput-object v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_WIDTHPIXELS:Ljava/lang/Integer;
+    sput-object v1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_WIDTHPIXELS:Ljava/lang/Integer;
 
     .line 1276
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v0
+    move-result-object v1
 
-    sput-object v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_HEIGHTPIXELS:Ljava/lang/Integer;
+    sput-object v1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_HEIGHTPIXELS:Ljava/lang/Integer;
 
     .line 1277
     invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;
 
-    move-result-object v0
+    move-result-object v1
 
-    sput-object v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_LOCALE:Ljava/util/List;
+    sput-object v1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_LOCALE:Ljava/util/List;
 
     .line 1278
     invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;
 
-    move-result-object v0
+    move-result-object v1
 
-    sput-object v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_GLEXTENSION:Ljava/util/List;
+    sput-object v1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_GLEXTENSION:Ljava/util/List;
 
     .line 1279
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v0
+    move-result-object v1
 
-    sput-object v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_DEVICECLASS:Ljava/lang/Integer;
+    sput-object v1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->DEFAULT_DEVICECLASS:Ljava/lang/Integer;
 
     .line 1280
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v0
 
@@ -403,18 +392,6 @@
 
 .method public constructor <init>(Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/util/List;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Integer;)V
     .locals 2
-    .param p1, "touchScreen"    # Ljava/lang/Integer;
-    .param p2, "keyboardType"    # Ljava/lang/Integer;
-    .param p3, "navigation"    # Ljava/lang/Integer;
-    .param p4, "screenLayout"    # Ljava/lang/Integer;
-    .param p5, "hasHardKeyboard"    # Ljava/lang/Boolean;
-    .param p6, "hasFiveWayNavigation"    # Ljava/lang/Boolean;
-    .param p7, "densityDpi"    # Ljava/lang/Integer;
-    .param p8, "glEsVersion"    # Ljava/lang/Integer;
-    .param p12, "widthPixels"    # Ljava/lang/Integer;
-    .param p13, "heightPixels"    # Ljava/lang/Integer;
-    .param p16, "deviceClass"    # Ljava/lang/Integer;
-    .param p17, "maxApkDownloadSizeMb"    # Ljava/lang/Integer;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -426,26 +403,21 @@
             "Ljava/lang/Boolean;",
             "Ljava/lang/Integer;",
             "Ljava/lang/Integer;",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;",
             "Ljava/lang/Integer;",
             "Ljava/lang/Integer;",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;",
-            "Ljava/util/List",
-            "<",
+            "Ljava/util/List<",
             "Ljava/lang/String;",
             ">;",
             "Ljava/lang/Integer;",
@@ -454,191 +426,174 @@
         }
     .end annotation
 
-    .prologue
+    move-object v0, p0
+
     .line 1401
-    .local p9, "sharedLibrary":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    .local p10, "availableFeature":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    .local p11, "nativePlatform":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    .local p14, "locale":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    .local p15, "glExtension":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    invoke-direct {p0}, Lcom/squareup/wire/Message;-><init>()V
+    invoke-direct {v0}, Lcom/squareup/wire/Message;-><init>()V
+
+    move-object v1, p1
 
     .line 1402
-    iput-object p1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->touchScreen:Ljava/lang/Integer;
+    iput-object v1, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->touchScreen:Ljava/lang/Integer;
+
+    move-object v1, p2
 
     .line 1403
-    iput-object p2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->keyboardType:Ljava/lang/Integer;
+    iput-object v1, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->keyboardType:Ljava/lang/Integer;
+
+    move-object v1, p3
 
     .line 1404
-    iput-object p3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->navigation:Ljava/lang/Integer;
+    iput-object v1, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->navigation:Ljava/lang/Integer;
+
+    move-object v1, p4
 
     .line 1405
-    iput-object p4, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->screenLayout:Ljava/lang/Integer;
+    iput-object v1, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->screenLayout:Ljava/lang/Integer;
+
+    move-object v1, p5
 
     .line 1406
-    iput-object p5, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasHardKeyboard:Ljava/lang/Boolean;
+    iput-object v1, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasHardKeyboard:Ljava/lang/Boolean;
+
+    move-object v1, p6
 
     .line 1407
-    iput-object p6, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasFiveWayNavigation:Ljava/lang/Boolean;
+    iput-object v1, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasFiveWayNavigation:Ljava/lang/Boolean;
+
+    move-object v1, p7
 
     .line 1408
-    iput-object p7, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->densityDpi:Ljava/lang/Integer;
+    iput-object v1, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->densityDpi:Ljava/lang/Integer;
+
+    move-object v1, p8
 
     .line 1409
-    iput-object p8, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glEsVersion:Ljava/lang/Integer;
+    iput-object v1, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glEsVersion:Ljava/lang/Integer;
 
     .line 1410
     invoke-static {p9}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->immutableCopyOf(Ljava/util/List;)Ljava/util/List;
 
     move-result-object v1
 
-    iput-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->sharedLibrary:Ljava/util/List;
+    iput-object v1, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->sharedLibrary:Ljava/util/List;
 
     .line 1411
     invoke-static {p10}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->immutableCopyOf(Ljava/util/List;)Ljava/util/List;
 
     move-result-object v1
 
-    iput-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->availableFeature:Ljava/util/List;
+    iput-object v1, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->availableFeature:Ljava/util/List;
 
     .line 1412
     invoke-static {p11}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->immutableCopyOf(Ljava/util/List;)Ljava/util/List;
 
     move-result-object v1
 
-    iput-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->nativePlatform:Ljava/util/List;
+    iput-object v1, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->nativePlatform:Ljava/util/List;
+
+    move-object v1, p12
 
     .line 1413
-    iput-object p12, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->widthPixels:Ljava/lang/Integer;
+    iput-object v1, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->widthPixels:Ljava/lang/Integer;
+
+    move-object v1, p13
 
     .line 1414
-    iput-object p13, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->heightPixels:Ljava/lang/Integer;
+    iput-object v1, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->heightPixels:Ljava/lang/Integer;
 
     .line 1415
     invoke-static/range {p14 .. p14}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->immutableCopyOf(Ljava/util/List;)Ljava/util/List;
 
     move-result-object v1
 
-    iput-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->locale:Ljava/util/List;
+    iput-object v1, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->locale:Ljava/util/List;
 
     .line 1416
     invoke-static/range {p15 .. p15}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->immutableCopyOf(Ljava/util/List;)Ljava/util/List;
 
     move-result-object v1
 
-    iput-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glExtension:Ljava/util/List;
+    iput-object v1, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glExtension:Ljava/util/List;
+
+    move-object/from16 v1, p16
 
     .line 1417
-    move-object/from16 v0, p16
+    iput-object v1, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->deviceClass:Ljava/lang/Integer;
 
-    iput-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->deviceClass:Ljava/lang/Integer;
+    move-object/from16 v1, p17
 
     .line 1418
-    move-object/from16 v0, p17
+    iput-object v1, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->maxApkDownloadSizeMb:Ljava/lang/Integer;
 
-    iput-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->maxApkDownloadSizeMb:Ljava/lang/Integer;
-
-    .line 1419
     return-void
 .end method
 
 .method private constructor <init>(Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;)V
-    .locals 19
-    .param p1, "builder"    # Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;
+    .locals 21
 
-    .prologue
+    move-object/from16 v0, p1
+
     .line 1422
-    move-object/from16 v0, p1
-
     iget-object v2, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->touchScreen:Ljava/lang/Integer;
-
-    move-object/from16 v0, p1
 
     iget-object v3, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->keyboardType:Ljava/lang/Integer;
 
-    move-object/from16 v0, p1
-
     iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->navigation:Ljava/lang/Integer;
-
-    move-object/from16 v0, p1
 
     iget-object v5, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->screenLayout:Ljava/lang/Integer;
 
-    move-object/from16 v0, p1
-
     iget-object v6, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->hasHardKeyboard:Ljava/lang/Boolean;
-
-    move-object/from16 v0, p1
 
     iget-object v7, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->hasFiveWayNavigation:Ljava/lang/Boolean;
 
-    move-object/from16 v0, p1
-
     iget-object v8, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->densityDpi:Ljava/lang/Integer;
-
-    move-object/from16 v0, p1
 
     iget-object v9, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->glEsVersion:Ljava/lang/Integer;
 
-    move-object/from16 v0, p1
-
     iget-object v10, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->sharedLibrary:Ljava/util/List;
-
-    move-object/from16 v0, p1
 
     iget-object v11, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->availableFeature:Ljava/util/List;
 
-    move-object/from16 v0, p1
-
     iget-object v12, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->nativePlatform:Ljava/util/List;
-
-    move-object/from16 v0, p1
 
     iget-object v13, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->widthPixels:Ljava/lang/Integer;
 
-    move-object/from16 v0, p1
-
     iget-object v14, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->heightPixels:Ljava/lang/Integer;
-
-    move-object/from16 v0, p1
 
     iget-object v15, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->locale:Ljava/util/List;
 
-    move-object/from16 v0, p1
+    iget-object v1, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->glExtension:Ljava/util/List;
 
-    iget-object v0, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->glExtension:Ljava/util/List;
+    move-object/from16 v19, v15
 
-    move-object/from16 v16, v0
+    iget-object v15, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->deviceClass:Ljava/lang/Integer;
 
-    move-object/from16 v0, p1
+    move-object/from16 v20, v15
 
-    iget-object v0, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->deviceClass:Ljava/lang/Integer;
+    iget-object v15, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->maxApkDownloadSizeMb:Ljava/lang/Integer;
 
-    move-object/from16 v17, v0
-
-    move-object/from16 v0, p1
-
-    iget-object v0, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;->maxApkDownloadSizeMb:Ljava/lang/Integer;
-
-    move-object/from16 v18, v0
+    move-object/from16 v16, v1
 
     move-object/from16 v1, p0
+
+    move-object/from16 v18, v15
+
+    move-object/from16 v17, v20
+
+    move-object/from16 v15, v19
 
     invoke-direct/range {v1 .. v18}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;-><init>(Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/util/List;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Integer;)V
 
     .line 1423
     invoke-virtual/range {p0 .. p1}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->setBuilder(Lcom/squareup/wire/Message$Builder;)V
 
-    .line 1424
     return-void
 .end method
 
 .method synthetic constructor <init>(Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;Lorg/microg/gms/checkin/CheckinRequest$1;)V
     .locals 0
-    .param p1, "x0"    # Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;
-    .param p2, "x1"    # Lorg/microg/gms/checkin/CheckinRequest$1;
 
-    .prologue
     .line 1262
     invoke-direct {p0, p1}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;-><init>(Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig$Builder;)V
 
@@ -646,556 +601,605 @@
 .end method
 
 .method static synthetic access$1200(Ljava/util/List;)Ljava/util/List;
-    .locals 1
-    .param p0, "x0"    # Ljava/util/List;
+    .locals 0
 
-    .prologue
     .line 1262
     invoke-static {p0}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->copyOf(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object v0
+    move-result-object p0
 
-    return-object v0
+    return-object p0
 .end method
 
 .method static synthetic access$1300(Ljava/util/List;)Ljava/util/List;
-    .locals 1
-    .param p0, "x0"    # Ljava/util/List;
+    .locals 0
 
-    .prologue
     .line 1262
     invoke-static {p0}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->copyOf(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object v0
+    move-result-object p0
 
-    return-object v0
+    return-object p0
 .end method
 
 .method static synthetic access$1400(Ljava/util/List;)Ljava/util/List;
-    .locals 1
-    .param p0, "x0"    # Ljava/util/List;
+    .locals 0
 
-    .prologue
     .line 1262
     invoke-static {p0}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->copyOf(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object v0
+    move-result-object p0
 
-    return-object v0
+    return-object p0
 .end method
 
 .method static synthetic access$1500(Ljava/util/List;)Ljava/util/List;
-    .locals 1
-    .param p0, "x0"    # Ljava/util/List;
+    .locals 0
 
-    .prologue
     .line 1262
     invoke-static {p0}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->copyOf(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object v0
+    move-result-object p0
 
-    return-object v0
+    return-object p0
 .end method
 
 .method static synthetic access$1600(Ljava/util/List;)Ljava/util/List;
-    .locals 1
-    .param p0, "x0"    # Ljava/util/List;
+    .locals 0
 
-    .prologue
     .line 1262
     invoke-static {p0}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->copyOf(Ljava/util/List;)Ljava/util/List;
 
-    move-result-object v0
+    move-result-object p0
 
-    return-object v0
+    return-object p0
 .end method
 
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 5
-    .param p1, "other"    # Ljava/lang/Object;
+    .locals 4
 
-    .prologue
-    const/4 v1, 0x1
+    const/4 v0, 0x1
+
+    if-ne p1, p0, :cond_0
+
+    return v0
+
+    .line 1429
+    :cond_0
+    instance-of v1, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;
 
     const/4 v2, 0x0
 
-    .line 1428
-    if-ne p1, p0, :cond_1
+    if-nez v1, :cond_1
+
+    return v2
+
+    .line 1430
+    :cond_1
+    check-cast p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;
 
     .line 1431
-    :cond_0
-    :goto_0
-    return v1
+    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->touchScreen:Ljava/lang/Integer;
 
-    .line 1429
-    :cond_1
-    instance-of v3, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;
+    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->touchScreen:Ljava/lang/Integer;
 
-    if-nez v3, :cond_2
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
 
-    move v1, v2
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->keyboardType:Ljava/lang/Integer;
+
+    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->keyboardType:Ljava/lang/Integer;
+
+    .line 1432
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->navigation:Ljava/lang/Integer;
+
+    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->navigation:Ljava/lang/Integer;
+
+    .line 1433
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->screenLayout:Ljava/lang/Integer;
+
+    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->screenLayout:Ljava/lang/Integer;
+
+    .line 1434
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasHardKeyboard:Ljava/lang/Boolean;
+
+    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasHardKeyboard:Ljava/lang/Boolean;
+
+    .line 1435
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasFiveWayNavigation:Ljava/lang/Boolean;
+
+    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasFiveWayNavigation:Ljava/lang/Boolean;
+
+    .line 1436
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->densityDpi:Ljava/lang/Integer;
+
+    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->densityDpi:Ljava/lang/Integer;
+
+    .line 1437
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glEsVersion:Ljava/lang/Integer;
+
+    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glEsVersion:Ljava/lang/Integer;
+
+    .line 1438
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->sharedLibrary:Ljava/util/List;
+
+    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->sharedLibrary:Ljava/util/List;
+
+    .line 1439
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/util/List;Ljava/util/List;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->availableFeature:Ljava/util/List;
+
+    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->availableFeature:Ljava/util/List;
+
+    .line 1440
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/util/List;Ljava/util/List;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->nativePlatform:Ljava/util/List;
+
+    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->nativePlatform:Ljava/util/List;
+
+    .line 1441
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/util/List;Ljava/util/List;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->widthPixels:Ljava/lang/Integer;
+
+    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->widthPixels:Ljava/lang/Integer;
+
+    .line 1442
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->heightPixels:Ljava/lang/Integer;
+
+    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->heightPixels:Ljava/lang/Integer;
+
+    .line 1443
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->locale:Ljava/util/List;
+
+    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->locale:Ljava/util/List;
+
+    .line 1444
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/util/List;Ljava/util/List;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glExtension:Ljava/util/List;
+
+    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glExtension:Ljava/util/List;
+
+    .line 1445
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/util/List;Ljava/util/List;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->deviceClass:Ljava/lang/Integer;
+
+    iget-object v3, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->deviceClass:Ljava/lang/Integer;
+
+    .line 1446
+    invoke-virtual {p0, v1, v3}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->maxApkDownloadSizeMb:Ljava/lang/Integer;
+
+    iget-object p1, p1, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->maxApkDownloadSizeMb:Ljava/lang/Integer;
+
+    .line 1447
+    invoke-virtual {p0, v1, p1}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result p1
+
+    if-eqz p1, :cond_2
 
     goto :goto_0
 
     :cond_2
-    move-object v0, p1
+    move v0, v2
 
-    .line 1430
-    check-cast v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;
-
-    .line 1431
-    .local v0, "o":Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;
-    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->touchScreen:Ljava/lang/Integer;
-
-    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->touchScreen:Ljava/lang/Integer;
-
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->keyboardType:Ljava/lang/Integer;
-
-    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->keyboardType:Ljava/lang/Integer;
-
-    .line 1432
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->navigation:Ljava/lang/Integer;
-
-    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->navigation:Ljava/lang/Integer;
-
-    .line 1433
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->screenLayout:Ljava/lang/Integer;
-
-    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->screenLayout:Ljava/lang/Integer;
-
-    .line 1434
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasHardKeyboard:Ljava/lang/Boolean;
-
-    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasHardKeyboard:Ljava/lang/Boolean;
-
-    .line 1435
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasFiveWayNavigation:Ljava/lang/Boolean;
-
-    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasFiveWayNavigation:Ljava/lang/Boolean;
-
-    .line 1436
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->densityDpi:Ljava/lang/Integer;
-
-    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->densityDpi:Ljava/lang/Integer;
-
-    .line 1437
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glEsVersion:Ljava/lang/Integer;
-
-    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glEsVersion:Ljava/lang/Integer;
-
-    .line 1438
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->sharedLibrary:Ljava/util/List;
-
-    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->sharedLibrary:Ljava/util/List;
-
-    .line 1439
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/util/List;Ljava/util/List;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->availableFeature:Ljava/util/List;
-
-    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->availableFeature:Ljava/util/List;
-
-    .line 1440
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/util/List;Ljava/util/List;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->nativePlatform:Ljava/util/List;
-
-    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->nativePlatform:Ljava/util/List;
-
-    .line 1441
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/util/List;Ljava/util/List;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->widthPixels:Ljava/lang/Integer;
-
-    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->widthPixels:Ljava/lang/Integer;
-
-    .line 1442
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->heightPixels:Ljava/lang/Integer;
-
-    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->heightPixels:Ljava/lang/Integer;
-
-    .line 1443
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->locale:Ljava/util/List;
-
-    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->locale:Ljava/util/List;
-
-    .line 1444
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/util/List;Ljava/util/List;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glExtension:Ljava/util/List;
-
-    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glExtension:Ljava/util/List;
-
-    .line 1445
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/util/List;Ljava/util/List;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->deviceClass:Ljava/lang/Integer;
-
-    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->deviceClass:Ljava/lang/Integer;
-
-    .line 1446
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->maxApkDownloadSizeMb:Ljava/lang/Integer;
-
-    iget-object v4, v0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->maxApkDownloadSizeMb:Ljava/lang/Integer;
-
-    .line 1447
-    invoke-virtual {p0, v3, v4}, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-nez v3, :cond_0
-
-    :cond_3
-    move v1, v2
-
-    goto/16 :goto_0
+    :goto_0
+    return v0
 .end method
 
 .method public hashCode()I
-    .locals 5
-
-    .prologue
-    const/4 v3, 0x1
-
-    const/4 v1, 0x0
+    .locals 4
 
     .line 1452
     iget v0, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hashCode:I
 
-    .line 1453
-    .local v0, "result":I
-    if-nez v0, :cond_2
+    if-nez v0, :cond_11
 
     .line 1454
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->touchScreen:Ljava/lang/Integer;
+    iget-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->touchScreen:Ljava/lang/Integer;
 
-    if-eqz v2, :cond_3
+    const/4 v1, 0x0
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->touchScreen:Ljava/lang/Integer;
+    if-eqz v0, :cond_0
 
-    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
+    iget-object v0, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->touchScreen:Ljava/lang/Integer;
+
+    invoke-virtual {v0}, Ljava/lang/Integer;->hashCode()I
 
     move-result v0
 
-    .line 1455
+    goto :goto_0
+
+    :cond_0
+    move v0, v1
+
     :goto_0
-    mul-int/lit8 v4, v0, 0x25
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 1455
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->keyboardType:Ljava/lang/Integer;
+
+    if-eqz v2, :cond_1
 
     iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->keyboardType:Ljava/lang/Integer;
+
+    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
+
+    move-result v2
+
+    goto :goto_1
+
+    :cond_1
+    move v2, v1
+
+    :goto_1
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 1456
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->navigation:Ljava/lang/Integer;
+
+    if-eqz v2, :cond_2
+
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->navigation:Ljava/lang/Integer;
+
+    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
+
+    move-result v2
+
+    goto :goto_2
+
+    :cond_2
+    move v2, v1
+
+    :goto_2
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 1457
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->screenLayout:Ljava/lang/Integer;
+
+    if-eqz v2, :cond_3
+
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->screenLayout:Ljava/lang/Integer;
+
+    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
+
+    move-result v2
+
+    goto :goto_3
+
+    :cond_3
+    move v2, v1
+
+    :goto_3
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 1458
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasHardKeyboard:Ljava/lang/Boolean;
 
     if-eqz v2, :cond_4
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->keyboardType:Ljava/lang/Integer;
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasHardKeyboard:Ljava/lang/Boolean;
 
-    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
+    invoke-virtual {v2}, Ljava/lang/Boolean;->hashCode()I
 
     move-result v2
 
-    :goto_1
-    add-int v0, v4, v2
+    goto :goto_4
 
-    .line 1456
-    mul-int/lit8 v4, v0, 0x25
+    :cond_4
+    move v2, v1
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->navigation:Ljava/lang/Integer;
+    :goto_4
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 1459
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasFiveWayNavigation:Ljava/lang/Boolean;
 
     if-eqz v2, :cond_5
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->navigation:Ljava/lang/Integer;
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasFiveWayNavigation:Ljava/lang/Boolean;
 
-    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
+    invoke-virtual {v2}, Ljava/lang/Boolean;->hashCode()I
 
     move-result v2
 
-    :goto_2
-    add-int v0, v4, v2
+    goto :goto_5
 
-    .line 1457
-    mul-int/lit8 v4, v0, 0x25
+    :cond_5
+    move v2, v1
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->screenLayout:Ljava/lang/Integer;
+    :goto_5
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 1460
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->densityDpi:Ljava/lang/Integer;
 
     if-eqz v2, :cond_6
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->screenLayout:Ljava/lang/Integer;
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->densityDpi:Ljava/lang/Integer;
 
     invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
 
     move-result v2
 
-    :goto_3
-    add-int v0, v4, v2
+    goto :goto_6
 
-    .line 1458
-    mul-int/lit8 v4, v0, 0x25
+    :cond_6
+    move v2, v1
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasHardKeyboard:Ljava/lang/Boolean;
+    :goto_6
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 1461
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glEsVersion:Ljava/lang/Integer;
 
     if-eqz v2, :cond_7
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasHardKeyboard:Ljava/lang/Boolean;
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glEsVersion:Ljava/lang/Integer;
 
-    invoke-virtual {v2}, Ljava/lang/Boolean;->hashCode()I
+    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
 
     move-result v2
 
-    :goto_4
-    add-int v0, v4, v2
+    goto :goto_7
 
-    .line 1459
-    mul-int/lit8 v4, v0, 0x25
+    :cond_7
+    move v2, v1
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasFiveWayNavigation:Ljava/lang/Boolean;
+    :goto_7
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 1462
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->sharedLibrary:Ljava/util/List;
+
+    const/4 v3, 0x1
 
     if-eqz v2, :cond_8
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hasFiveWayNavigation:Ljava/lang/Boolean;
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->sharedLibrary:Ljava/util/List;
 
-    invoke-virtual {v2}, Ljava/lang/Boolean;->hashCode()I
+    invoke-interface {v2}, Ljava/util/List;->hashCode()I
 
     move-result v2
 
-    :goto_5
-    add-int v0, v4, v2
+    goto :goto_8
 
-    .line 1460
-    mul-int/lit8 v4, v0, 0x25
+    :cond_8
+    move v2, v3
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->densityDpi:Ljava/lang/Integer;
+    :goto_8
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 1463
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->availableFeature:Ljava/util/List;
 
     if-eqz v2, :cond_9
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->densityDpi:Ljava/lang/Integer;
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->availableFeature:Ljava/util/List;
 
-    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
+    invoke-interface {v2}, Ljava/util/List;->hashCode()I
 
     move-result v2
 
-    :goto_6
-    add-int v0, v4, v2
+    goto :goto_9
 
-    .line 1461
-    mul-int/lit8 v4, v0, 0x25
+    :cond_9
+    move v2, v3
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glEsVersion:Ljava/lang/Integer;
+    :goto_9
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 1464
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->nativePlatform:Ljava/util/List;
 
     if-eqz v2, :cond_a
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glEsVersion:Ljava/lang/Integer;
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->nativePlatform:Ljava/util/List;
 
-    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
+    invoke-interface {v2}, Ljava/util/List;->hashCode()I
 
     move-result v2
 
-    :goto_7
-    add-int v0, v4, v2
+    goto :goto_a
 
-    .line 1462
-    mul-int/lit8 v4, v0, 0x25
+    :cond_a
+    move v2, v3
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->sharedLibrary:Ljava/util/List;
+    :goto_a
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 1465
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->widthPixels:Ljava/lang/Integer;
 
     if-eqz v2, :cond_b
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->sharedLibrary:Ljava/util/List;
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->widthPixels:Ljava/lang/Integer;
 
-    invoke-interface {v2}, Ljava/util/List;->hashCode()I
+    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
 
     move-result v2
 
-    :goto_8
-    add-int v0, v4, v2
+    goto :goto_b
 
-    .line 1463
-    mul-int/lit8 v4, v0, 0x25
+    :cond_b
+    move v2, v1
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->availableFeature:Ljava/util/List;
+    :goto_b
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 1466
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->heightPixels:Ljava/lang/Integer;
 
     if-eqz v2, :cond_c
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->availableFeature:Ljava/util/List;
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->heightPixels:Ljava/lang/Integer;
 
-    invoke-interface {v2}, Ljava/util/List;->hashCode()I
+    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
 
     move-result v2
 
-    :goto_9
-    add-int v0, v4, v2
+    goto :goto_c
 
-    .line 1464
-    mul-int/lit8 v4, v0, 0x25
+    :cond_c
+    move v2, v1
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->nativePlatform:Ljava/util/List;
+    :goto_c
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 1467
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->locale:Ljava/util/List;
 
     if-eqz v2, :cond_d
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->nativePlatform:Ljava/util/List;
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->locale:Ljava/util/List;
 
     invoke-interface {v2}, Ljava/util/List;->hashCode()I
 
     move-result v2
 
-    :goto_a
-    add-int v0, v4, v2
+    goto :goto_d
 
-    .line 1465
-    mul-int/lit8 v4, v0, 0x25
+    :cond_d
+    move v2, v3
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->widthPixels:Ljava/lang/Integer;
+    :goto_d
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
+
+    .line 1468
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glExtension:Ljava/util/List;
 
     if-eqz v2, :cond_e
 
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->widthPixels:Ljava/lang/Integer;
-
-    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
-
-    move-result v2
-
-    :goto_b
-    add-int v0, v4, v2
-
-    .line 1466
-    mul-int/lit8 v4, v0, 0x25
-
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->heightPixels:Ljava/lang/Integer;
-
-    if-eqz v2, :cond_f
-
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->heightPixels:Ljava/lang/Integer;
-
-    invoke-virtual {v2}, Ljava/lang/Integer;->hashCode()I
-
-    move-result v2
-
-    :goto_c
-    add-int v0, v4, v2
-
-    .line 1467
-    mul-int/lit8 v4, v0, 0x25
-
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->locale:Ljava/util/List;
-
-    if-eqz v2, :cond_10
-
-    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->locale:Ljava/util/List;
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glExtension:Ljava/util/List;
 
     invoke-interface {v2}, Ljava/util/List;->hashCode()I
 
-    move-result v2
-
-    :goto_d
-    add-int v0, v4, v2
-
-    .line 1468
-    mul-int/lit8 v2, v0, 0x25
-
-    iget-object v4, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glExtension:Ljava/util/List;
-
-    if-eqz v4, :cond_0
-
-    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->glExtension:Ljava/util/List;
-
-    invoke-interface {v3}, Ljava/util/List;->hashCode()I
-
     move-result v3
 
-    :cond_0
-    add-int v0, v2, v3
+    :cond_e
+    add-int/2addr v0, v3
+
+    mul-int/lit8 v0, v0, 0x25
 
     .line 1469
-    mul-int/lit8 v3, v0, 0x25
-
     iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->deviceClass:Ljava/lang/Integer;
 
-    if-eqz v2, :cond_11
+    if-eqz v2, :cond_f
 
     iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->deviceClass:Ljava/lang/Integer;
 
@@ -1203,15 +1207,20 @@
 
     move-result v2
 
+    goto :goto_e
+
+    :cond_f
+    move v2, v1
+
     :goto_e
-    add-int v0, v3, v2
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x25
 
     .line 1470
-    mul-int/lit8 v2, v0, 0x25
+    iget-object v2, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->maxApkDownloadSizeMb:Ljava/lang/Integer;
 
-    iget-object v3, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->maxApkDownloadSizeMb:Ljava/lang/Integer;
-
-    if-eqz v3, :cond_1
+    if-eqz v2, :cond_10
 
     iget-object v1, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->maxApkDownloadSizeMb:Ljava/lang/Integer;
 
@@ -1219,103 +1228,12 @@
 
     move-result v1
 
-    :cond_1
-    add-int v0, v2, v1
+    :cond_10
+    add-int/2addr v0, v1
 
     .line 1471
     iput v0, p0, Lorg/microg/gms/checkin/CheckinRequest$DeviceConfig;->hashCode:I
 
-    .line 1473
-    :cond_2
-    return v0
-
-    :cond_3
-    move v0, v1
-
-    .line 1454
-    goto/16 :goto_0
-
-    :cond_4
-    move v2, v1
-
-    .line 1455
-    goto/16 :goto_1
-
-    :cond_5
-    move v2, v1
-
-    .line 1456
-    goto/16 :goto_2
-
-    :cond_6
-    move v2, v1
-
-    .line 1457
-    goto/16 :goto_3
-
-    :cond_7
-    move v2, v1
-
-    .line 1458
-    goto/16 :goto_4
-
-    :cond_8
-    move v2, v1
-
-    .line 1459
-    goto/16 :goto_5
-
-    :cond_9
-    move v2, v1
-
-    .line 1460
-    goto/16 :goto_6
-
-    :cond_a
-    move v2, v1
-
-    .line 1461
-    goto/16 :goto_7
-
-    :cond_b
-    move v2, v3
-
-    .line 1462
-    goto/16 :goto_8
-
-    :cond_c
-    move v2, v3
-
-    .line 1463
-    goto/16 :goto_9
-
-    :cond_d
-    move v2, v3
-
-    .line 1464
-    goto :goto_a
-
-    :cond_e
-    move v2, v1
-
-    .line 1465
-    goto :goto_b
-
-    :cond_f
-    move v2, v1
-
-    .line 1466
-    goto :goto_c
-
-    :cond_10
-    move v2, v3
-
-    .line 1467
-    goto :goto_d
-
     :cond_11
-    move v2, v1
-
-    .line 1469
-    goto :goto_e
+    return v0
 .end method

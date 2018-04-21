@@ -22,89 +22,78 @@
 
 # direct methods
 .method public constructor <init>(Lorg/oscim/layers/vector/AbstractVectorLayer;)V
-    .locals 1
-    .param p1, "this$0"    # Lorg/oscim/layers/vector/AbstractVectorLayer;
+    .locals 0
 
-    .prologue
-    .line 142
-    .local p0, "this":Lorg/oscim/layers/vector/AbstractVectorLayer$Renderer;, "Lorg/oscim/layers/vector/AbstractVectorLayer<TT;>.Renderer;"
+    .line 146
     iput-object p1, p0, Lorg/oscim/layers/vector/AbstractVectorLayer$Renderer;->this$0:Lorg/oscim/layers/vector/AbstractVectorLayer;
 
     invoke-direct {p0}, Lorg/oscim/renderer/BucketRenderer;-><init>()V
 
-    .line 140
-    new-instance v0, Lorg/oscim/core/MapPosition;
-
-    invoke-direct {v0}, Lorg/oscim/core/MapPosition;-><init>()V
-
-    iput-object v0, p0, Lorg/oscim/layers/vector/AbstractVectorLayer$Renderer;->mTmpPos:Lorg/oscim/core/MapPosition;
-
-    .line 143
-    const/4 v0, 0x1
-
-    iput-boolean v0, p0, Lorg/oscim/layers/vector/AbstractVectorLayer$Renderer;->mFlipOnDateLine:Z
-
     .line 144
+    new-instance p1, Lorg/oscim/core/MapPosition;
+
+    invoke-direct {p1}, Lorg/oscim/core/MapPosition;-><init>()V
+
+    iput-object p1, p0, Lorg/oscim/layers/vector/AbstractVectorLayer$Renderer;->mTmpPos:Lorg/oscim/core/MapPosition;
+
+    const/4 p1, 0x1
+
+    .line 147
+    iput-boolean p1, p0, Lorg/oscim/layers/vector/AbstractVectorLayer$Renderer;->mFlipOnDateLine:Z
+
     return-void
 .end method
 
 
 # virtual methods
 .method public update(Lorg/oscim/renderer/GLViewport;)V
-    .locals 6
-    .param p1, "v"    # Lorg/oscim/renderer/GLViewport;
+    .locals 5
 
-    .prologue
-    .line 149
-    .local p0, "this":Lorg/oscim/layers/vector/AbstractVectorLayer$Renderer;, "Lorg/oscim/layers/vector/AbstractVectorLayer<TT;>.Renderer;"
-    iget-object v1, p0, Lorg/oscim/layers/vector/AbstractVectorLayer$Renderer;->this$0:Lorg/oscim/layers/vector/AbstractVectorLayer;
+    .line 153
+    iget-object p1, p0, Lorg/oscim/layers/vector/AbstractVectorLayer$Renderer;->this$0:Lorg/oscim/layers/vector/AbstractVectorLayer;
 
-    iget-object v1, v1, Lorg/oscim/layers/vector/AbstractVectorLayer;->mWorker:Lorg/oscim/layers/vector/AbstractVectorLayer$Worker;
+    iget-object p1, p1, Lorg/oscim/layers/vector/AbstractVectorLayer;->mWorker:Lorg/oscim/layers/vector/AbstractVectorLayer$Worker;
 
-    invoke-virtual {v1}, Lorg/oscim/layers/vector/AbstractVectorLayer$Worker;->poll()Ljava/lang/Object;
+    invoke-virtual {p1}, Lorg/oscim/layers/vector/AbstractVectorLayer$Worker;->poll()Ljava/lang/Object;
 
-    move-result-object v0
+    move-result-object p1
 
-    check-cast v0, Lorg/oscim/layers/vector/AbstractVectorLayer$Task;
+    check-cast p1, Lorg/oscim/layers/vector/AbstractVectorLayer$Task;
 
-    .line 151
-    .local v0, "t":Lorg/oscim/layers/vector/AbstractVectorLayer$Task;
-    if-nez v0, :cond_0
+    if-nez p1, :cond_0
 
-    .line 160
-    :goto_0
     return-void
 
-    .line 154
+    .line 158
     :cond_0
-    iget-object v1, p0, Lorg/oscim/layers/vector/AbstractVectorLayer$Renderer;->mMapPosition:Lorg/oscim/core/MapPosition;
+    iget-object v0, p0, Lorg/oscim/layers/vector/AbstractVectorLayer$Renderer;->mMapPosition:Lorg/oscim/core/MapPosition;
 
-    iget-object v2, v0, Lorg/oscim/layers/vector/AbstractVectorLayer$Task;->position:Lorg/oscim/core/MapPosition;
+    iget-object v1, p1, Lorg/oscim/layers/vector/AbstractVectorLayer$Task;->position:Lorg/oscim/core/MapPosition;
 
-    invoke-virtual {v1, v2}, Lorg/oscim/core/MapPosition;->copy(Lorg/oscim/core/MapPosition;)V
-
-    .line 155
-    iget-object v1, p0, Lorg/oscim/layers/vector/AbstractVectorLayer$Renderer;->mMapPosition:Lorg/oscim/core/MapPosition;
-
-    iget-object v2, p0, Lorg/oscim/layers/vector/AbstractVectorLayer$Renderer;->mMapPosition:Lorg/oscim/core/MapPosition;
-
-    iget-wide v2, v2, Lorg/oscim/core/MapPosition;->scale:D
-
-    const-wide/high16 v4, 0x4010000000000000L    # 4.0
-
-    div-double/2addr v2, v4
-
-    invoke-virtual {v1, v2, v3}, Lorg/oscim/core/MapPosition;->setScale(D)Lorg/oscim/core/MapPosition;
-
-    .line 157
-    iget-object v1, p0, Lorg/oscim/layers/vector/AbstractVectorLayer$Renderer;->buckets:Lorg/oscim/renderer/bucket/RenderBuckets;
-
-    iget-object v2, v0, Lorg/oscim/layers/vector/AbstractVectorLayer$Task;->buckets:Lorg/oscim/renderer/bucket/RenderBuckets;
-
-    invoke-virtual {v1, v2}, Lorg/oscim/renderer/bucket/RenderBuckets;->setFrom(Lorg/oscim/renderer/bucket/RenderBuckets;)V
+    invoke-virtual {v0, v1}, Lorg/oscim/core/MapPosition;->copy(Lorg/oscim/core/MapPosition;)V
 
     .line 159
+    iget-object v0, p0, Lorg/oscim/layers/vector/AbstractVectorLayer$Renderer;->mMapPosition:Lorg/oscim/core/MapPosition;
+
+    iget-object v1, p0, Lorg/oscim/layers/vector/AbstractVectorLayer$Renderer;->mMapPosition:Lorg/oscim/core/MapPosition;
+
+    iget-wide v1, v1, Lorg/oscim/core/MapPosition;->scale:D
+
+    const-wide/high16 v3, 0x4010000000000000L    # 4.0
+
+    div-double/2addr v1, v3
+
+    invoke-virtual {v0, v1, v2}, Lorg/oscim/core/MapPosition;->setScale(D)Lorg/oscim/core/MapPosition;
+
+    .line 161
+    iget-object v0, p0, Lorg/oscim/layers/vector/AbstractVectorLayer$Renderer;->buckets:Lorg/oscim/renderer/bucket/RenderBuckets;
+
+    iget-object p1, p1, Lorg/oscim/layers/vector/AbstractVectorLayer$Task;->buckets:Lorg/oscim/renderer/bucket/RenderBuckets;
+
+    invoke-virtual {v0, p1}, Lorg/oscim/renderer/bucket/RenderBuckets;->setFrom(Lorg/oscim/renderer/bucket/RenderBuckets;)V
+
+    .line 163
     invoke-virtual {p0}, Lorg/oscim/layers/vector/AbstractVectorLayer$Renderer;->compile()V
 
-    goto :goto_0
+    return-void
 .end method

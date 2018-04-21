@@ -14,11 +14,7 @@
 # direct methods
 .method public constructor <init>(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)V
     .locals 0
-    .param p1, "p0"    # Lcom/vividsolutions/jts/geom/Coordinate;
-    .param p2, "p1"    # Lcom/vividsolutions/jts/geom/Coordinate;
-    .param p3, "p2"    # Lcom/vividsolutions/jts/geom/Coordinate;
 
-    .prologue
     .line 436
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -31,111 +27,75 @@
     .line 439
     iput-object p3, p0, Lcom/vividsolutions/jts/geom/Triangle;->p2:Lcom/vividsolutions/jts/geom/Coordinate;
 
-    .line 440
     return-void
 .end method
 
 .method public static inCentre(Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;Lcom/vividsolutions/jts/geom/Coordinate;)Lcom/vividsolutions/jts/geom/Coordinate;
-    .locals 18
-    .param p0, "a"    # Lcom/vividsolutions/jts/geom/Coordinate;
-    .param p1, "b"    # Lcom/vividsolutions/jts/geom/Coordinate;
-    .param p2, "c"    # Lcom/vividsolutions/jts/geom/Coordinate;
+    .locals 12
 
-    .prologue
     .line 208
-    invoke-virtual/range {p1 .. p2}, Lcom/vividsolutions/jts/geom/Coordinate;->distance(Lcom/vividsolutions/jts/geom/Coordinate;)D
+    invoke-virtual {p1, p2}, Lcom/vividsolutions/jts/geom/Coordinate;->distance(Lcom/vividsolutions/jts/geom/Coordinate;)D
 
-    move-result-wide v8
+    move-result-wide v0
 
     .line 209
-    .local v8, "len0":D
-    move-object/from16 v0, p0
+    invoke-virtual {p0, p2}, Lcom/vividsolutions/jts/geom/Coordinate;->distance(Lcom/vividsolutions/jts/geom/Coordinate;)D
 
-    move-object/from16 v1, p2
-
-    invoke-virtual {v0, v1}, Lcom/vividsolutions/jts/geom/Coordinate;->distance(Lcom/vividsolutions/jts/geom/Coordinate;)D
-
-    move-result-wide v10
+    move-result-wide v2
 
     .line 210
-    .local v10, "len1":D
-    invoke-virtual/range {p0 .. p1}, Lcom/vividsolutions/jts/geom/Coordinate;->distance(Lcom/vividsolutions/jts/geom/Coordinate;)D
+    invoke-virtual {p0, p1}, Lcom/vividsolutions/jts/geom/Coordinate;->distance(Lcom/vividsolutions/jts/geom/Coordinate;)D
 
-    move-result-wide v12
+    move-result-wide v4
 
-    .line 211
-    .local v12, "len2":D
-    add-double v14, v8, v10
+    add-double v6, v0, v2
 
-    add-double v2, v14, v12
+    add-double/2addr v6, v4
 
     .line 213
-    .local v2, "circum":D
-    move-object/from16 v0, p0
+    iget-wide v8, p0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    iget-wide v14, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    mul-double/2addr v8, v0
 
-    mul-double/2addr v14, v8
+    iget-wide v10, p1, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    move-object/from16 v0, p1
+    mul-double/2addr v10, v2
 
-    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
+    add-double/2addr v8, v10
 
-    move-wide/from16 v16, v0
+    iget-wide v10, p2, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
 
-    mul-double v16, v16, v10
+    mul-double/2addr v10, v4
 
-    add-double v14, v14, v16
+    add-double/2addr v8, v10
 
-    move-object/from16 v0, p2
-
-    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->x:D
-
-    move-wide/from16 v16, v0
-
-    mul-double v16, v16, v12
-
-    add-double v14, v14, v16
-
-    div-double v4, v14, v2
+    div-double/2addr v8, v6
 
     .line 214
-    .local v4, "inCentreX":D
-    move-object/from16 v0, p0
+    iget-wide v10, p0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    iget-wide v14, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    mul-double/2addr v0, v10
 
-    mul-double/2addr v14, v8
+    iget-wide p0, p1, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    move-object/from16 v0, p1
+    mul-double/2addr v2, p0
 
-    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
+    add-double/2addr v0, v2
 
-    move-wide/from16 v16, v0
+    iget-wide p0, p2, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
 
-    mul-double v16, v16, v10
+    mul-double/2addr v4, p0
 
-    add-double v14, v14, v16
+    add-double/2addr v0, v4
 
-    move-object/from16 v0, p2
-
-    iget-wide v0, v0, Lcom/vividsolutions/jts/geom/Coordinate;->y:D
-
-    move-wide/from16 v16, v0
-
-    mul-double v16, v16, v12
-
-    add-double v14, v14, v16
-
-    div-double v6, v14, v2
+    div-double/2addr v0, v6
 
     .line 215
-    .local v6, "inCentreY":D
-    new-instance v14, Lcom/vividsolutions/jts/geom/Coordinate;
+    new-instance p0, Lcom/vividsolutions/jts/geom/Coordinate;
 
-    invoke-direct {v14, v4, v5, v6, v7}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(DD)V
+    invoke-direct {p0, v8, v9, v0, v1}, Lcom/vividsolutions/jts/geom/Coordinate;-><init>(DD)V
 
-    return-object v14
+    return-object p0
 .end method
 
 
@@ -143,7 +103,6 @@
 .method public inCentre()Lcom/vividsolutions/jts/geom/Coordinate;
     .locals 3
 
-    .prologue
     .line 453
     iget-object v0, p0, Lcom/vividsolutions/jts/geom/Triangle;->p0:Lcom/vividsolutions/jts/geom/Coordinate;
 

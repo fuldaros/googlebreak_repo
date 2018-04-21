@@ -17,14 +17,10 @@
 # direct methods
 .method public constructor <init>(FF)V
     .locals 0
-    .param p1, "value"    # F
-    .param p2, "power"    # F
 
-    .prologue
-    .line 240
+    .line 244
     invoke-direct {p0, p1, p2}, Lorg/oscim/utils/math/Interpolation$Elastic;-><init>(FF)V
 
-    .line 241
     return-void
 .end method
 
@@ -32,10 +28,8 @@
 # virtual methods
 .method public apply(F)F
     .locals 4
-    .param p1, "a"    # F
 
-    .prologue
-    .line 245
+    .line 249
     iget v0, p0, Lorg/oscim/utils/math/Interpolation$ElasticIn;->value:F
 
     float-to-double v0, v0
@@ -58,17 +52,17 @@
 
     const/high16 v1, 0x41a00000    # 20.0f
 
-    mul-float/2addr v1, p1
+    mul-float/2addr p1, v1
 
-    invoke-static {v1}, Lorg/oscim/utils/math/MathUtils;->sin(F)F
+    invoke-static {p1}, Lorg/oscim/utils/math/MathUtils;->sin(F)F
 
-    move-result v1
+    move-result p1
 
-    mul-float/2addr v0, v1
+    mul-float/2addr v0, p1
 
-    const v1, 0x3f8c3958    # 1.0955f
+    const p1, 0x3f8c3958    # 1.0955f
 
-    mul-float/2addr v0, v1
+    mul-float/2addr v0, p1
 
     return v0
 .end method

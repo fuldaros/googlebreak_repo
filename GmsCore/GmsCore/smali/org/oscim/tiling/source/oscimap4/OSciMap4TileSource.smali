@@ -15,7 +15,6 @@
 .method public constructor <init>()V
     .locals 1
 
-    .prologue
     .line 49
     invoke-static {}, Lorg/oscim/tiling/source/oscimap4/OSciMap4TileSource;->builder()Lorg/oscim/tiling/source/oscimap4/OSciMap4TileSource$Builder;
 
@@ -23,7 +22,6 @@
 
     invoke-direct {p0, v0}, Lorg/oscim/tiling/source/oscimap4/OSciMap4TileSource;-><init>(Lorg/oscim/tiling/source/oscimap4/OSciMap4TileSource$Builder;)V
 
-    .line 50
     return-void
 .end method
 
@@ -32,17 +30,14 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
-            "Lorg/oscim/tiling/source/oscimap4/OSciMap4TileSource$Builder",
-            "<*>;)V"
+            "Lorg/oscim/tiling/source/oscimap4/OSciMap4TileSource$Builder<",
+            "*>;)V"
         }
     .end annotation
 
-    .prologue
     .line 45
-    .local p1, "builder":Lorg/oscim/tiling/source/oscimap4/OSciMap4TileSource$Builder;, "Lorg/oscim/tiling/source/oscimap4/OSciMap4TileSource$Builder<*>;"
     invoke-direct {p0, p1}, Lorg/oscim/tiling/source/UrlTileSource;-><init>(Lorg/oscim/tiling/source/UrlTileSource$Builder;)V
 
-    .line 46
     return-void
 .end method
 
@@ -51,12 +46,11 @@
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Lorg/oscim/tiling/source/oscimap4/OSciMap4TileSource$Builder",
-            "<*>;"
+            "Lorg/oscim/tiling/source/oscimap4/OSciMap4TileSource$Builder<",
+            "*>;"
         }
     .end annotation
 
-    .prologue
     .line 41
     new-instance v0, Lorg/oscim/tiling/source/oscimap4/OSciMap4TileSource$Builder;
 
@@ -70,7 +64,6 @@
 .method public getDataSource()Lorg/oscim/tiling/ITileDataSource;
     .locals 3
 
-    .prologue
     .line 58
     new-instance v0, Lorg/oscim/tiling/source/UrlTileDataSource;
 

@@ -19,26 +19,13 @@
 
 
 # direct methods
-.method private constructor <init>(Landroid/support/v7/widget/ListPopupWindow;)V
+.method constructor <init>(Landroid/support/v7/widget/ListPopupWindow;)V
     .locals 0
 
-    .prologue
-    .line 1766
+    .line 1322
     iput-object p1, p0, Landroid/support/v7/widget/ListPopupWindow$PopupDataSetObserver;->this$0:Landroid/support/v7/widget/ListPopupWindow;
 
     invoke-direct {p0}, Landroid/database/DataSetObserver;-><init>()V
-
-    return-void
-.end method
-
-.method synthetic constructor <init>(Landroid/support/v7/widget/ListPopupWindow;Landroid/support/v7/widget/ListPopupWindow$1;)V
-    .locals 0
-    .param p1, "x0"    # Landroid/support/v7/widget/ListPopupWindow;
-    .param p2, "x1"    # Landroid/support/v7/widget/ListPopupWindow$1;
-
-    .prologue
-    .line 1766
-    invoke-direct {p0, p1}, Landroid/support/v7/widget/ListPopupWindow$PopupDataSetObserver;-><init>(Landroid/support/v7/widget/ListPopupWindow;)V
 
     return-void
 .end method
@@ -48,8 +35,7 @@
 .method public onChanged()V
     .locals 1
 
-    .prologue
-    .line 1769
+    .line 1327
     iget-object v0, p0, Landroid/support/v7/widget/ListPopupWindow$PopupDataSetObserver;->this$0:Landroid/support/v7/widget/ListPopupWindow;
 
     invoke-virtual {v0}, Landroid/support/v7/widget/ListPopupWindow;->isShowing()Z
@@ -58,12 +44,11 @@
 
     if-eqz v0, :cond_0
 
-    .line 1771
+    .line 1329
     iget-object v0, p0, Landroid/support/v7/widget/ListPopupWindow$PopupDataSetObserver;->this$0:Landroid/support/v7/widget/ListPopupWindow;
 
     invoke-virtual {v0}, Landroid/support/v7/widget/ListPopupWindow;->show()V
 
-    .line 1773
     :cond_0
     return-void
 .end method
@@ -71,12 +56,10 @@
 .method public onInvalidated()V
     .locals 1
 
-    .prologue
-    .line 1777
+    .line 1335
     iget-object v0, p0, Landroid/support/v7/widget/ListPopupWindow$PopupDataSetObserver;->this$0:Landroid/support/v7/widget/ListPopupWindow;
 
     invoke-virtual {v0}, Landroid/support/v7/widget/ListPopupWindow;->dismiss()V
 
-    .line 1778
     return-void
 .end method

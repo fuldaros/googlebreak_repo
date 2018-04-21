@@ -14,14 +14,13 @@
 
 .field public static final VERSION_CODE:I = -0x1
 
-.field public static final VERSION_NAME:Ljava/lang/String; = "0.2.3"
+.field public static final VERSION_NAME:Ljava/lang/String; = "0.2.3-38-gdb0be6b"
 
 
 # direct methods
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
     .line 6
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 

@@ -15,8 +15,7 @@
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lorg/oscim/event/EventDispatcher",
-        "<",
+        "Lorg/oscim/event/EventDispatcher<",
         "Lorg/oscim/map/Map$InputListener;",
         "Lorg/oscim/event/MotionEvent;",
         ">;"
@@ -31,10 +30,8 @@
 # direct methods
 .method constructor <init>(Lorg/oscim/map/Map;)V
     .locals 0
-    .param p1, "this$0"    # Lorg/oscim/map/Map;
 
-    .prologue
-    .line 112
+    .line 138
     iput-object p1, p0, Lorg/oscim/map/Map$1;->this$0:Lorg/oscim/map/Map;
 
     invoke-direct {p0}, Lorg/oscim/event/EventDispatcher;-><init>()V
@@ -47,8 +44,7 @@
 .method public bridge synthetic tell(Lorg/oscim/event/EventListener;Lorg/oscim/event/Event;Ljava/lang/Object;)V
     .locals 0
 
-    .prologue
-    .line 112
+    .line 138
     check-cast p1, Lorg/oscim/map/Map$InputListener;
 
     check-cast p3, Lorg/oscim/event/MotionEvent;
@@ -60,14 +56,9 @@
 
 .method public tell(Lorg/oscim/map/Map$InputListener;Lorg/oscim/event/Event;Lorg/oscim/event/MotionEvent;)V
     .locals 0
-    .param p1, "l"    # Lorg/oscim/map/Map$InputListener;
-    .param p2, "e"    # Lorg/oscim/event/Event;
-    .param p3, "d"    # Lorg/oscim/event/MotionEvent;
 
-    .prologue
-    .line 116
+    .line 142
     invoke-interface {p1, p2, p3}, Lorg/oscim/map/Map$InputListener;->onInputEvent(Lorg/oscim/event/Event;Lorg/oscim/event/MotionEvent;)V
 
-    .line 117
     return-void
 .end method

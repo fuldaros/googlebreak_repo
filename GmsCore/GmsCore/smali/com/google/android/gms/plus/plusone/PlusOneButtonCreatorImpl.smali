@@ -7,7 +7,6 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
     .line 28
     invoke-direct {p0}, Lcom/google/android/gms/plus/internal/IPlusOneButtonCreator$Stub;-><init>()V
 
@@ -18,30 +17,27 @@
 # virtual methods
 .method public create(Lcom/google/android/gms/dynamic/IObjectWrapper;IILjava/lang/String;I)Lcom/google/android/gms/dynamic/IObjectWrapper;
     .locals 6
-    .param p1, "context"    # Lcom/google/android/gms/dynamic/IObjectWrapper;
-    .param p2, "size"    # I
-    .param p3, "annotation"    # I
-    .param p4, "url"    # Ljava/lang/String;
-    .param p5, "activityRequestCode"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
     .line 31
     invoke-static {p1}, Lcom/google/android/gms/dynamic/ObjectWrapper;->unwrap(Lcom/google/android/gms/dynamic/IObjectWrapper;)Ljava/lang/Object;
 
-    move-result-object v1
+    move-result-object p1
+
+    move-object v1, p1
 
     check-cast v1, Landroid/content/Context;
 
     .line 32
-    .local v1, "ctx":Landroid/content/Context;
-    new-instance v0, Lorg/microg/gms/plus/PlusOneButtonImpl;
+    new-instance p1, Lorg/microg/gms/plus/PlusOneButtonImpl;
 
     const-string v5, "<<default account>>"
+
+    move-object v0, p1
 
     move v2, p2
 
@@ -51,37 +47,34 @@
 
     invoke-direct/range {v0 .. v5}, Lorg/microg/gms/plus/PlusOneButtonImpl;-><init>(Landroid/content/Context;IILjava/lang/String;Ljava/lang/String;)V
 
-    invoke-static {v0}, Lcom/google/android/gms/dynamic/ObjectWrapper;->wrap(Ljava/lang/Object;)Lcom/google/android/gms/dynamic/ObjectWrapper;
+    invoke-static {p1}, Lcom/google/android/gms/dynamic/ObjectWrapper;->wrap(Ljava/lang/Object;)Lcom/google/android/gms/dynamic/ObjectWrapper;
 
-    move-result-object v0
+    move-result-object p1
 
-    return-object v0
+    return-object p1
 .end method
 
 .method public createForAccount(Lcom/google/android/gms/dynamic/IObjectWrapper;IILjava/lang/String;Ljava/lang/String;)Lcom/google/android/gms/dynamic/IObjectWrapper;
     .locals 6
-    .param p1, "context"    # Lcom/google/android/gms/dynamic/IObjectWrapper;
-    .param p2, "size"    # I
-    .param p3, "annotation"    # I
-    .param p4, "url"    # Ljava/lang/String;
-    .param p5, "account"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
     .line 37
     invoke-static {p1}, Lcom/google/android/gms/dynamic/ObjectWrapper;->unwrap(Lcom/google/android/gms/dynamic/IObjectWrapper;)Ljava/lang/Object;
 
-    move-result-object v1
+    move-result-object p1
+
+    move-object v1, p1
 
     check-cast v1, Landroid/content/Context;
 
     .line 38
-    .local v1, "ctx":Landroid/content/Context;
-    new-instance v0, Lorg/microg/gms/plus/PlusOneButtonImpl;
+    new-instance p1, Lorg/microg/gms/plus/PlusOneButtonImpl;
+
+    move-object v0, p1
 
     move v2, p2
 
@@ -93,9 +86,9 @@
 
     invoke-direct/range {v0 .. v5}, Lorg/microg/gms/plus/PlusOneButtonImpl;-><init>(Landroid/content/Context;IILjava/lang/String;Ljava/lang/String;)V
 
-    invoke-static {v0}, Lcom/google/android/gms/dynamic/ObjectWrapper;->wrap(Ljava/lang/Object;)Lcom/google/android/gms/dynamic/ObjectWrapper;
+    invoke-static {p1}, Lcom/google/android/gms/dynamic/ObjectWrapper;->wrap(Ljava/lang/Object;)Lcom/google/android/gms/dynamic/ObjectWrapper;
 
-    move-result-object v0
+    move-result-object p1
 
-    return-object v0
+    return-object p1
 .end method

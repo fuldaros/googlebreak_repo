@@ -207,6 +207,38 @@
     .end annotation
 .end method
 
+.method public abstract setCameraIdleListener(Lcom/google/android/gms/maps/internal/IOnCameraIdleListener;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setCameraMoveCanceledListener(Lcom/google/android/gms/maps/internal/IOnCameraMoveCanceledListener;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setCameraMoveListener(Lcom/google/android/gms/maps/internal/IOnCameraMoveListener;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setCameraMoveStartedListener(Lcom/google/android/gms/maps/internal/IOnCameraMoveStartedListener;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract setIndoorEnabled(Z)V
     .annotation system Ldalvik/annotation/Throws;
         value = {

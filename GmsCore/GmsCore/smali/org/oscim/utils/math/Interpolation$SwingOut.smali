@@ -21,47 +21,41 @@
 # direct methods
 .method public constructor <init>(F)V
     .locals 0
-    .param p1, "scale"    # F
 
-    .prologue
-    .line 397
+    .line 401
     invoke-direct {p0}, Lorg/oscim/utils/math/Interpolation;-><init>()V
 
-    .line 398
+    .line 402
     iput p1, p0, Lorg/oscim/utils/math/Interpolation$SwingOut;->scale:F
 
-    .line 399
     return-void
 .end method
 
 
 # virtual methods
 .method public apply(F)F
-    .locals 4
-    .param p1, "a"    # F
+    .locals 3
 
-    .prologue
-    const/high16 v3, 0x3f800000    # 1.0f
+    const/high16 v0, 0x3f800000    # 1.0f
 
-    .line 403
-    sub-float/2addr p1, v3
+    sub-float/2addr p1, v0
 
-    .line 404
-    mul-float v0, p1, p1
+    mul-float v1, p1, p1
 
-    iget v1, p0, Lorg/oscim/utils/math/Interpolation$SwingOut;->scale:F
-
-    add-float/2addr v1, v3
-
-    mul-float/2addr v1, p1
-
+    .line 408
     iget v2, p0, Lorg/oscim/utils/math/Interpolation$SwingOut;->scale:F
 
-    add-float/2addr v1, v2
+    add-float/2addr v2, v0
 
-    mul-float/2addr v0, v1
+    mul-float/2addr v2, p1
 
-    add-float/2addr v0, v3
+    iget p1, p0, Lorg/oscim/utils/math/Interpolation$SwingOut;->scale:F
 
-    return v0
+    add-float/2addr v2, p1
+
+    mul-float/2addr v1, v2
+
+    add-float/2addr v1, v0
+
+    return v1
 .end method

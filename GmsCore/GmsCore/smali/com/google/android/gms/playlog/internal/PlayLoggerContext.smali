@@ -7,8 +7,7 @@
 .field public static CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator",
-            "<",
+            "Landroid/os/Parcelable$Creator<",
             "Lcom/google/android/gms/playlog/internal/PlayLoggerContext;",
             ">;"
         }
@@ -17,6 +16,12 @@
 
 
 # instance fields
+.field public final isAnonymous:Z
+    .annotation runtime Lorg/microg/safeparcel/SafeParceled;
+        value = 0x9
+    .end annotation
+.end field
+
 .field public final logAndroidId:Z
     .annotation runtime Lorg/microg/safeparcel/SafeParceled;
         value = 0x7
@@ -47,6 +52,18 @@
     .end annotation
 .end field
 
+.field public final packageVersionCode:I
+    .annotation runtime Lorg/microg/safeparcel/SafeParceled;
+        value = 0x3
+    .end annotation
+.end field
+
+.field public final qosTier:I
+    .annotation runtime Lorg/microg/safeparcel/SafeParceled;
+        value = 0xa
+    .end annotation
+.end field
+
 .field public final uploadAccount:Ljava/lang/String;
     .annotation runtime Lorg/microg/safeparcel/SafeParceled;
         value = 0x5
@@ -64,8 +81,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
-    .line 72
+    .line 100
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
     const-class v1, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;
@@ -80,143 +96,147 @@
 .method private constructor <init>()V
     .locals 1
 
-    .prologue
-    .line 45
+    .line 54
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    .line 24
     const/4 v0, 0x1
 
+    .line 24
     iput v0, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->versionCode:I
 
-    .line 46
     const/4 v0, 0x0
 
+    .line 55
     iput-object v0, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->logSourceName:Ljava/lang/String;
 
     iput-object v0, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->uploadAccount:Ljava/lang/String;
 
     iput-object v0, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->packageName:Ljava/lang/String;
 
-    .line 47
     const/4 v0, -0x1
 
+    .line 56
     iput v0, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->loggingId:I
 
     iput v0, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->logSource:I
 
-    .line 48
+    iput v0, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->packageVersionCode:I
+
+    iput v0, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->qosTier:I
+
     const/4 v0, 0x0
 
+    .line 57
     iput-boolean v0, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->logAndroidId:Z
 
-    .line 49
+    iput-boolean v0, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->isAnonymous:Z
+
     return-void
 .end method
 
 
 # virtual methods
 .method public toString()Ljava/lang/String;
-    .locals 3
+    .locals 2
 
-    .prologue
-    const/16 v2, 0x27
-
-    .line 62
+    .line 86
     new-instance v0, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+    const-string v1, "PlayLoggerContext["
 
-    const-string v1, "PlayLoggerContext{packageName=\'"
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
+    iget v1, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->versionCode:I
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v1, ", package="
+
+    .line 87
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget-object v1, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->packageName:Ljava/lang/String;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    const-string v1, ", packageVersionCode="
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    .line 88
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    iget v1, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->packageVersionCode:I
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     const-string v1, ", logSource="
 
+    .line 89
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget v1, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->logSource:I
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    const-string v1, ", uploadAccount="
 
-    const-string v1, ", uploadAccount=\'"
-
+    .line 90
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget-object v1, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->uploadAccount:Ljava/lang/String;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
     const-string v1, ", loggingId="
 
+    .line 91
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget v1, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->loggingId:I
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
     const-string v1, ", logAndroidId="
 
+    .line 92
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget-boolean v1, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->logAndroidId:Z
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    const-string v1, ", logSourceName="
 
-    const-string v1, ", logSourceName=\'"
-
+    .line 93
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
 
     iget-object v1, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->logSourceName:Ljava/lang/String;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    const-string v1, ", isAnonymous="
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    .line 94
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    iget-boolean v1, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->isAnonymous:Z
 
-    const/16 v1, 0x7d
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
+    const-string v1, ", qosTier="
+
+    .line 95
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget v1, p0, Lcom/google/android/gms/playlog/internal/PlayLoggerContext;->qosTier:I
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const/16 v1, 0x5d
+
+    .line 96
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    move-result-object v0
-
+    .line 97
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0

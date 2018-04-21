@@ -19,8 +19,7 @@
 .annotation system Ldalvik/annotation/Signature;
     value = {
         "Ljava/lang/Object;",
-        "Ljava/util/Comparator",
-        "<",
+        "Ljava/util/Comparator<",
         "Lorg/oscim/layers/tile/MapTile;",
         ">;"
     }
@@ -31,8 +30,7 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
-    .line 96
+    .line 98
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -41,76 +39,68 @@
 
 # virtual methods
 .method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
-    .locals 1
+    .locals 0
 
-    .prologue
-    .line 96
+    .line 98
     check-cast p1, Lorg/oscim/layers/tile/MapTile;
 
     check-cast p2, Lorg/oscim/layers/tile/MapTile;
 
     invoke-virtual {p0, p1, p2}, Lorg/oscim/layers/tile/TileSet$CoordComparator;->compare(Lorg/oscim/layers/tile/MapTile;Lorg/oscim/layers/tile/MapTile;)I
 
-    move-result v0
+    move-result p1
 
-    return v0
+    return p1
 .end method
 
 .method public compare(Lorg/oscim/layers/tile/MapTile;Lorg/oscim/layers/tile/MapTile;)I
     .locals 4
-    .param p1, "lhs"    # Lorg/oscim/layers/tile/MapTile;
-    .param p2, "rhs"    # Lorg/oscim/layers/tile/MapTile;
-
-    .prologue
-    const/4 v0, 0x1
-
-    const/4 v1, -0x1
-
-    .line 100
-    iget v2, p1, Lorg/oscim/layers/tile/MapTile;->tileX:I
-
-    iget v3, p2, Lorg/oscim/layers/tile/MapTile;->tileX:I
-
-    if-ne v2, v3, :cond_2
-
-    .line 101
-    iget v2, p1, Lorg/oscim/layers/tile/MapTile;->tileY:I
-
-    iget v3, p2, Lorg/oscim/layers/tile/MapTile;->tileY:I
-
-    if-ne v2, v3, :cond_1
 
     .line 102
-    const/4 v0, 0x0
+    iget v0, p1, Lorg/oscim/layers/tile/MapTile;->tileX:I
 
-    .line 112
+    iget v1, p2, Lorg/oscim/layers/tile/MapTile;->tileX:I
+
+    const/4 v2, -0x1
+
+    const/4 v3, 0x1
+
+    if-ne v0, v1, :cond_2
+
+    .line 103
+    iget v0, p1, Lorg/oscim/layers/tile/MapTile;->tileY:I
+
+    iget v1, p2, Lorg/oscim/layers/tile/MapTile;->tileY:I
+
+    if-ne v0, v1, :cond_0
+
+    const/4 p1, 0x0
+
+    return p1
+
+    .line 106
     :cond_0
-    :goto_0
-    return v0
+    iget p1, p1, Lorg/oscim/layers/tile/MapTile;->tileY:I
 
-    .line 104
+    iget p2, p2, Lorg/oscim/layers/tile/MapTile;->tileY:I
+
+    if-ge p1, p2, :cond_1
+
+    return v3
+
     :cond_1
-    iget v2, p1, Lorg/oscim/layers/tile/MapTile;->tileY:I
+    return v2
 
-    iget v3, p2, Lorg/oscim/layers/tile/MapTile;->tileY:I
-
-    if-lt v2, v3, :cond_0
-
-    move v0, v1
-
-    .line 107
-    goto :goto_0
-
-    .line 109
+    .line 111
     :cond_2
-    iget v2, p1, Lorg/oscim/layers/tile/MapTile;->tileX:I
+    iget p1, p1, Lorg/oscim/layers/tile/MapTile;->tileX:I
 
-    iget v3, p2, Lorg/oscim/layers/tile/MapTile;->tileX:I
+    iget p2, p2, Lorg/oscim/layers/tile/MapTile;->tileX:I
 
-    if-lt v2, v3, :cond_0
+    if-ge p1, p2, :cond_3
 
-    move v0, v1
+    return v3
 
-    .line 112
-    goto :goto_0
+    :cond_3
+    return v2
 .end method

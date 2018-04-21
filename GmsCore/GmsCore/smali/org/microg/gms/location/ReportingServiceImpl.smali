@@ -7,7 +7,6 @@
 .method public constructor <init>()V
     .locals 0
 
-    .prologue
     .line 29
     invoke-direct {p0}, Lcom/google/android/gms/location/reporting/internal/IReportingService$Stub;-><init>()V
 
@@ -17,121 +16,107 @@
 
 # virtual methods
 .method public cancelUploadRequest(J)I
-    .locals 2
-    .param p1, "l"    # J
+    .locals 0
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
+    const-string p1, "GmsLocReportSvcImpl"
+
+    const-string p2, "cancelUploadRequest"
+
     .line 52
-    const-string v0, "GmsLocReportSvcImpl"
+    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    const-string v1, "cancelUploadRequest"
+    const/4 p1, 0x0
 
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 53
-    const/4 v0, 0x0
-
-    return v0
+    return p1
 .end method
 
 .method public getReportingState(Landroid/accounts/Account;)Lcom/google/android/gms/location/reporting/ReportingState;
-    .locals 2
-    .param p1, "account"    # Landroid/accounts/Account;
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
+    const-string p1, "GmsLocReportSvcImpl"
+
+    const-string v0, "getReportingState"
+
     .line 34
-    const-string v0, "GmsLocReportSvcImpl"
-
-    const-string v1, "getReportingState"
-
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {p1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 35
-    new-instance v0, Lcom/google/android/gms/location/reporting/ReportingState;
+    new-instance p1, Lcom/google/android/gms/location/reporting/ReportingState;
 
-    invoke-direct {v0}, Lcom/google/android/gms/location/reporting/ReportingState;-><init>()V
+    invoke-direct {p1}, Lcom/google/android/gms/location/reporting/ReportingState;-><init>()V
 
-    return-object v0
+    return-object p1
 .end method
 
 .method public reportDeviceAtPlace(Landroid/accounts/Account;Lcom/google/android/gms/location/places/PlaceReport;)I
-    .locals 2
-    .param p1, "account"    # Landroid/accounts/Account;
-    .param p2, "report"    # Lcom/google/android/gms/location/places/PlaceReport;
+    .locals 0
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
+    const-string p1, "GmsLocReportSvcImpl"
+
+    const-string p2, "reportDeviceAtPlace"
+
     .line 58
-    const-string v0, "GmsLocReportSvcImpl"
+    invoke-static {p1, p2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    const-string v1, "reportDeviceAtPlace"
+    const/4 p1, 0x0
 
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 59
-    const/4 v0, 0x0
-
-    return v0
+    return p1
 .end method
 
 .method public requestUpload(Lcom/google/android/gms/location/reporting/UploadRequest;)Lcom/google/android/gms/location/reporting/UploadRequestResult;
-    .locals 2
-    .param p1, "request"    # Lcom/google/android/gms/location/reporting/UploadRequest;
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
+    const-string p1, "GmsLocReportSvcImpl"
+
+    const-string v0, "requestUpload"
+
     .line 46
-    const-string v0, "GmsLocReportSvcImpl"
-
-    const-string v1, "requestUpload"
-
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {p1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 47
-    new-instance v0, Lcom/google/android/gms/location/reporting/UploadRequestResult;
+    new-instance p1, Lcom/google/android/gms/location/reporting/UploadRequestResult;
 
-    invoke-direct {v0}, Lcom/google/android/gms/location/reporting/UploadRequestResult;-><init>()V
+    invoke-direct {p1}, Lcom/google/android/gms/location/reporting/UploadRequestResult;-><init>()V
 
-    return-object v0
+    return-object p1
 .end method
 
 .method public tryOptIn(Landroid/accounts/Account;)I
-    .locals 2
-    .param p1, "account"    # Landroid/accounts/Account;
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
         }
     .end annotation
 
-    .prologue
+    const-string p1, "GmsLocReportSvcImpl"
+
+    const-string v0, "tryOptIn"
+
     .line 40
-    const-string v0, "GmsLocReportSvcImpl"
+    invoke-static {p1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    const-string v1, "tryOptIn"
+    const/4 p1, 0x0
 
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 41
-    const/4 v0, 0x0
-
-    return v0
+    return p1
 .end method

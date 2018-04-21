@@ -7,8 +7,7 @@
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/os/Parcelable$Creator",
-            "<",
+            "Landroid/os/Parcelable$Creator<",
             "Lcom/google/android/gms/appdatasearch/PIMEUpdateResponse;",
             ">;"
         }
@@ -46,7 +45,6 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .prologue
     .line 41
     new-instance v0, Lorg/microg/safeparcel/AutoSafeParcelable$AutoCreator;
 
@@ -62,27 +60,25 @@
 .method public constructor <init>()V
     .locals 1
 
-    .prologue
     .line 35
     invoke-direct {p0}, Lorg/microg/safeparcel/AutoSafeParcelable;-><init>()V
 
-    .line 36
     const/4 v0, 0x1
 
+    .line 36
     iput v0, p0, Lcom/google/android/gms/appdatasearch/PIMEUpdateResponse;->versionCode:I
 
-    .line 37
     const/4 v0, 0x0
 
+    .line 37
     iput-object v0, p0, Lcom/google/android/gms/appdatasearch/PIMEUpdateResponse;->bytes:[B
 
-    .line 38
     const/4 v0, 0x0
 
+    .line 38
     new-array v0, v0, [Lcom/google/android/gms/appdatasearch/PIMEUpdate;
 
     iput-object v0, p0, Lcom/google/android/gms/appdatasearch/PIMEUpdateResponse;->updates:[Lcom/google/android/gms/appdatasearch/PIMEUpdate;
 
-    .line 39
     return-void
 .end method
